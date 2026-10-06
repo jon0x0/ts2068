@@ -1,0 +1,26 @@
+<!doctype html>
+
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Sinistar TS2068 · scrolling flight port</title>
+
+<style>body{margin:32px auto;padding:0 24px;max-width:1000px;background:#080d19;color:#e4e9f3;font:17px/1.5 system-ui}h1{font-size:30px;margin-bottom:8px}p{max-width:850px}iframe{width:100%;height:min(65vw,600px);border:1px solid #28354a;background:#000}a{color:#8addf2}button{background:#233852;color:white;border:1px solid #536880;border-radius:6px;padding:8px 18px;font:inherit}.tag{color:#8addf2;font-size:13px;letter-spacing:2px}#status{font-size:14px;color:#adc1d5}</style></head>
+
+<body><div class="tag">ORIGINAL SOURCE PORT · MILESTONE 02</div><h1>Flight through the starfield</h1>
+
+<p>The original ship turns and accelerates while the arcade camera follows it. Ten stars scroll with the camera, revealing movement through space. Automatic flight, 32 headings, eight pixel phases, extended color.</p>
+
+<iframe id="emulator" src="emulator/" title="Native TS2068 flight cartridge"></iframe>
+
+<p id="status" role="status">Booting the cartridge…</p>
+
+<button id="reset">Restart flight</button><p><a href="../pursuit-web/">New: Sinistar pursuit experiment (6–7 visible fps)</a></p>
+
+<p><a href="../build/sinistar-flight.dck">Download cartridge</a> · <a href="../../revisions/v3-60hz/WATCH.html">Saved Sinistar speech demo</a></p>
+
+<p>This milestone adds the arcade’s soft-follow and hard-edge camera rules and star movement. Stars use a white palette and repeat at the screen edges. Enemies, weapons, controls, and speech remain to be connected.</p>
+
+<p>Verified at 60.1145 updates/second in TSRun and native Fuse. Buffered final-byte updates pass the raster checks without detected tearing. Hardware testing is pending.</p>
+
+<script>const frame=document.getElementById('emulator');document.getElementById('reset').onclick=()=>frame.contentWindow.audioLab?.reset();window.addEventListener('message',e=>{if(e.origin!==location.origin||e.source!==frame.contentWindow)return;if(e.data.type==='audio-lab-ready')document.getElementById('status').textContent='Running · automatic flight · 60.1 Hz · silent milestone';if(e.data.type==='audio-lab-error')document.getElementById('status').textContent=e.data.message;});</script></body></html>
+

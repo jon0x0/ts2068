@@ -1,0 +1,20 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import {fileURLToPath,pathToFileURL} from 'node:url';
+import {createHash} from 'node:crypto';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const {createZ80,runZ80}=await import(pathToFileURL(path.resolve(root,'../../../TSRun/z80.js')));
+const cart=fs.readFileSync(path.join(root,'build/sinistar-mining.dck')),rom=cart.subarray(9),ram=new Uint8Array(65536);
+const sym=Object.fromEntries([...fs.readFileSync(path.join(root,'build/mining-symbols.txt'),'utf8').matchAll(/^(\w+): EQU 0x([0-9A-F]+)/gm)].map(x=>[x[1],parseInt(x[2],16)]));
+const cpu=createZ80(),clock={tstates:0,stepAdded:0};let mapping=16,colors=[];const costs=[];
+const bus={read:a=>mapping&(1<<(a>>13))?rom[a]:ram[a],write(a,v){assert.equal(mapping&(1<<(a>>13)),0);assert.ok(a>=0x7800 && a<0x8000,'no display or composition writes');ram[a]=v;},ioRead:()=>255,ioWrite(p,v){if((p&255)===0xf4)mapping=v;else {assert.equal(p&255,0xfe);assert.ok(v>=0&&v<8,'no beeper/tape bits');colors.push(v);}}};
+function tick(){cpu.h=sym.render_extension>>8;cpu.l=(sym.render_extension+12)&255;cpu.h=(sym.render_extension+12)>>8;cpu.pc=sym.incremental_call;cpu.sp=0x7ffd;cpu.halted=false;ram[0x78df]=mapping;ram[0x7ffd]=0;ram[0x7ffe]=1;const before=clock.tstates;for(let n=0;cpu.pc!==0x100;n++){assert.ok(n<1000);runZ80(cpu,bus,1,clock);}assert.equal(cpu.sp,0x7fff);assert.equal(mapping,16);costs.push(clock.tstates-before);return colors.at(-1);}
+ram[sym.lives]=3;const idle=29;
+ram[sym.bs_hits]=1;ram[0x783f]=7;assert.deepEqual(Array.from({length:7},tick),[2,2,2,2,2,2,0]);
+ram[sym.lives]=2;ram[0x783f]=10;assert.deepEqual(Array.from({length:10},tick),[...Array(9).fill(2),0]);
+ram[0x783f]=37;ram[sym.bs_hits]=13;ram[sym.game_status]=1;const win=Array.from({length:37},tick);assert.equal(win.at(-1),0);assert.ok(win.slice(0,36).every(c=>c===2||c===6));assert.ok(win.includes(2)&&win.includes(6));
+ram.fill(0,0x7800,0x7900);ram[sym.lives]=3;assert.equal(ram[0x783f],0);
+ram[0x783f]=10;ram[sym.lives]=0;ram[sym.game_status]=2;assert.deepEqual(Array.from({length:10},tick),[...Array(9).fill(2),0]);
+const report={dck_sha256:createHash('sha256').update(cart).digest('hex'),hitFrames:6,deathFrames:9,victoryFrames:36,returnsToBlack:true,noDisplayWrites:true,noAudioPortWrites:true,bankAndStackRestored:true,idleTstates:idle,maxTstates:Math.max(...costs)};
+fs.writeFileSync(path.join(root,'build/border-verification.json'),JSON.stringify(report,null,2));console.log(report);

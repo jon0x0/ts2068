@@ -1,0 +1,48 @@
+{
+  "dck_sha256": "ea8064fc45310c55eaf33e801b3feaf80cca64feaa001958b6d5dfc4fa44048e",
+  "frames": 269,
+  "cadence": {
+    "7": 5,
+    "8": 152,
+    "9": 111
+  },
+  "average_visible_fps": 7.1603053435114505,
+  "max_work_tstates": 427635,
+  "max_publish_tstates": 9267,
+  "max_preparation_phase_tstates": {
+    "background_and_face": 179810,
+    "player": 11239,
+    "compile": 229793
+  },
+  "max_generated_code_bytes": 2286,
+  "wrong_display_writes": 0,
+  "unchanged_display_writes": 0,
+  "rom_writes": 0,
+  "raster_mismatch_frames": 0,
+  "raster_mismatch_pixels": 0,
+  "headings": 32,
+  "pixel_phases": 8,
+  "physics_steps": 2259,
+  "face_frames": 269,
+  "face_ship_overlaps": 264,
+  "star_wraps": 400,
+  "star_ship_overlaps": 7,
+  "ranges": {
+    "x": [
+      61,
+      174
+    ],
+    "y": [
+      78,
+      119
+    ],
+    "cameraX": [
+      -1161,
+      1175
+    ],
+    "cameraY": [
+      -552,
+      556
+    ]
+  }
+}

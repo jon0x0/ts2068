@@ -1,0 +1,5249 @@
+{
+  "dck_sha256": "50ab05955433c7e3355f7a34069c8b7ca5f00450640b41b06cd4673240a971f5",
+  "conditions": "Natural scrolling with continuous right input, no repositioning of world rocks. 360-refresh warmup then 120 completed pictures. Invulnerable pilot. Assembly scenarios retain native worker/mining; chase scenarios disable worker and keep native pursuit. Busy chase holds fire and repeats I am Sinistar speech as a stress test. F toggles the real mode.",
+  "scenes": [
+    {
+      "pictureTimings": [
+        {
+          "tstates": 527424,
+          "rocks": 5,
+          "faceVisible": false,
+          "pieces": 0,
+          "speech": false
+        },
+        {
+          "tstates": 638277,
+          "rocks": 5,
+          "faceVisible": false,
+          "pieces": 0,
+          "speech": false
+        },
+        {
+          "tstates": 597828,
+          "rocks": 5,
+          "faceVisible": false,
+          "pieces": 0,
+          "speech": false
+        },
+        {
+          "tstates": 584208,
+          "rocks": 5,
+          "faceVisible": false,
+          "pieces": 0,
+          "speech": false
+        },
+        {
+          "tstates": 638807,
+          "rocks": 5,
+          "faceVisible": false,
+          "pieces": 0,
+          "speech": false
+        },
+        {
+          "tstates": 594098,
+          "rocks": 4,
+          "faceVisible": false,
+          "pieces": 0,
+          "speech": false
+        },
+        {
+          "tstates": 520638,
+          "rocks": 4,
+          "faceVisible": false,
+          "pieces": 0,
+          "speech": false
+        },
+        {
+          "tstates": 642807,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 595421,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 585377,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 638478,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 596797,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 584539,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 639954,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 594872,
+          "rocks": 4,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 524195,
+          "rocks": 4,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 580131,
+          "rocks": 4,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 535258,
+          "rocks": 4,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 524839,
+          "rocks": 4,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 524610,
+          "rocks": 3,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 476211,
+          "rocks": 3,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 466352,
+          "rocks": 3,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 519202,
+          "rocks": 3,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 480193,
+          "rocks": 4,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 468454,
+          "rocks": 4,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 523269,
+          "rocks": 3,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 478787,
+          "rocks": 3,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 465939,
+          "rocks": 3,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 519244,
+          "rocks": 3,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 419695,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 407930,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 410681,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 464396,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 419245,
+          "rocks": 3,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 408318,
+          "rocks": 3,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 411477,
+          "rocks": 4,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 465510,
+          "rocks": 4,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 418667,
+          "rocks": 4,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 407310,
+          "rocks": 4,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 410816,
+          "rocks": 4,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 578370,
+          "rocks": 5,
+          "faceVisible": false,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 716902,
+          "rocks": 5,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 704262,
+          "rocks": 5,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 815754,
+          "rocks": 6,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 772379,
+          "rocks": 6,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 817873,
+          "rocks": 6,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 876722,
+          "rocks": 6,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 826717,
+          "rocks": 5,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 811839,
+          "rocks": 5,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 772562,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 643163,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 695833,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 655312,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 643100,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 698688,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 652664,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 643190,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 699926,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 651743,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 582701,
+          "rocks": 2,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 581120,
+          "rocks": 2,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 535891,
+          "rocks": 2,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 525605,
+          "rocks": 2,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 528246,
+          "rocks": 2,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 641089,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 655215,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 584937,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 695381,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 716845,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 703065,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 700579,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 591459,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 582362,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 520248,
+          "rocks": 3,
+          "faceVisible": false,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 421140,
+          "rocks": 3,
+          "faceVisible": false,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 408301,
+          "rocks": 3,
+          "faceVisible": false,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 410452,
+          "rocks": 3,
+          "faceVisible": false,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 464947,
+          "rocks": 3,
+          "faceVisible": false,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 418024,
+          "rocks": 3,
+          "faceVisible": false,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 407316,
+          "rocks": 3,
+          "faceVisible": false,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 410816,
+          "rocks": 4,
+          "faceVisible": false,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 462408,
+          "rocks": 4,
+          "faceVisible": false,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 420972,
+          "rocks": 4,
+          "faceVisible": false,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 468591,
+          "rocks": 4,
+          "faceVisible": false,
+          "pieces": 3,
+          "speech": false
+        },
+        {
+          "tstates": 520928,
+          "rocks": 4,
+          "faceVisible": false,
+          "pieces": 3,
+          "speech": false
+        },
+        {
+          "tstates": 479978,
+          "rocks": 4,
+          "faceVisible": false,
+          "pieces": 3,
+          "speech": false
+        },
+        {
+          "tstates": 466561,
+          "rocks": 4,
+          "faceVisible": false,
+          "pieces": 3,
+          "speech": false
+        },
+        {
+          "tstates": 522102,
+          "rocks": 4,
+          "faceVisible": false,
+          "pieces": 3,
+          "speech": false
+        },
+        {
+          "tstates": 476985,
+          "rocks": 3,
+          "faceVisible": false,
+          "pieces": 3,
+          "speech": false
+        },
+        {
+          "tstates": 465347,
+          "rocks": 3,
+          "faceVisible": false,
+          "pieces": 3,
+          "speech": false
+        },
+        {
+          "tstates": 517697,
+          "rocks": 3,
+          "faceVisible": false,
+          "pieces": 3,
+          "speech": false
+        },
+        {
+          "tstates": 539986,
+          "rocks": 4,
+          "faceVisible": false,
+          "pieces": 3,
+          "speech": false
+        },
+        {
+          "tstates": 526974,
+          "rocks": 3,
+          "faceVisible": false,
+          "pieces": 3,
+          "speech": false
+        },
+        {
+          "tstates": 465339,
+          "rocks": 3,
+          "faceVisible": false,
+          "pieces": 3,
+          "speech": false
+        },
+        {
+          "tstates": 417644,
+          "rocks": 3,
+          "faceVisible": false,
+          "pieces": 3,
+          "speech": false
+        },
+        {
+          "tstates": 467259,
+          "rocks": 4,
+          "faceVisible": false,
+          "pieces": 3,
+          "speech": false
+        },
+        {
+          "tstates": 580175,
+          "rocks": 4,
+          "faceVisible": false,
+          "pieces": 3,
+          "speech": false
+        },
+        {
+          "tstates": 537982,
+          "rocks": 4,
+          "faceVisible": false,
+          "pieces": 3,
+          "speech": false
+        },
+        {
+          "tstates": 526281,
+          "rocks": 4,
+          "faceVisible": false,
+          "pieces": 3,
+          "speech": false
+        },
+        {
+          "tstates": 580228,
+          "rocks": 4,
+          "faceVisible": false,
+          "pieces": 3,
+          "speech": false
+        },
+        {
+          "tstates": 595863,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 3,
+          "speech": false
+        },
+        {
+          "tstates": 585048,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 3,
+          "speech": false
+        },
+        {
+          "tstates": 640450,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 3,
+          "speech": false
+        },
+        {
+          "tstates": 595314,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 3,
+          "speech": false
+        },
+        {
+          "tstates": 584239,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 3,
+          "speech": false
+        },
+        {
+          "tstates": 587325,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 3,
+          "speech": false
+        },
+        {
+          "tstates": 638711,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 3,
+          "speech": false
+        },
+        {
+          "tstates": 595650,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 3,
+          "speech": false
+        },
+        {
+          "tstates": 644087,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 3,
+          "speech": false
+        },
+        {
+          "tstates": 698562,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 3,
+          "speech": false
+        },
+        {
+          "tstates": 655635,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 3,
+          "speech": false
+        },
+        {
+          "tstates": 644082,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 3,
+          "speech": false
+        },
+        {
+          "tstates": 759272,
+          "rocks": 5,
+          "faceVisible": true,
+          "pieces": 3,
+          "speech": false
+        },
+        {
+          "tstates": 771812,
+          "rocks": 5,
+          "faceVisible": true,
+          "pieces": 3,
+          "speech": false
+        },
+        {
+          "tstates": 700450,
+          "rocks": 5,
+          "faceVisible": true,
+          "pieces": 3,
+          "speech": false
+        },
+        {
+          "tstates": 755062,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 3,
+          "speech": false
+        },
+        {
+          "tstates": 713020,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 3,
+          "speech": false
+        },
+        {
+          "tstates": 641920,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 3,
+          "speech": false
+        },
+        {
+          "tstates": 699582,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 3,
+          "speech": false
+        }
+      ],
+      "overlapRejections": {},
+      "fastPathGateCounts": {
+        "not awake": 120
+      },
+      "comparedBitmapBytes": 110060,
+      "changedBitmapBytes": 37745,
+      "unchangedBitmapComparisonPercent": 65.705069961839,
+      "name": "normal assembly",
+      "fast": false,
+      "active_sinistar": false,
+      "continuousSpeechAndFiring": false,
+      "seconds": 19.51974433106576,
+      "fps": 6.147621503885144,
+      "pictures": 120,
+      "visibleFacePictures": 58,
+      "fastPictures": 0,
+      "visible_histogram": {
+        "2": 9,
+        "3": 46,
+        "4": 47,
+        "5": 14,
+        "6": 4
+      },
+      "speed_pixels_per_tick": {
+        "player_average": 0.9844060014959338,
+        "player_peak": 0.9844060014959528,
+        "sinistar_average": 0,
+        "sinistar_peak": 0
+      },
+      "time_percent": {
+        "physics": 15,
+        "composition": 51.7,
+        "dirty_comparison": 22.4,
+        "radar_preparation": 2.9,
+        "screen_publication": 1.9,
+        "refresh_wait": 5.4,
+        "interrupts": 0.7,
+        "other": 0.2
+      },
+      "tstates_per_picture": 573880.4833333333,
+      "routines": {
+        "game_step": {
+          "calls": 1043,
+          "inclusive": 10362124,
+          "exclusive": 3869960
+        },
+        "wb_population": {
+          "calls": 1043,
+          "inclusive": 3781856,
+          "exclusive": 3760520
+        },
+        "wb_worker": {
+          "calls": 1043,
+          "inclusive": 1522178,
+          "exclusive": 1514141
+        },
+        "wb_move_player": {
+          "calls": 1043,
+          "inclusive": 767231,
+          "exclusive": 764693
+        },
+        "mining_pursuit_step": {
+          "calls": 1043,
+          "inclusive": 227826,
+          "exclusive": 227403
+        },
+        "render": {
+          "calls": 120,
+          "inclusive": 58370995,
+          "exclusive": 9803363
+        },
+        "population_clear": {
+          "calls": 120,
+          "inclusive": 6350599,
+          "exclusive": 6303539
+        },
+        "population_draw": {
+          "calls": 120,
+          "inclusive": 10123093,
+          "exclusive": 1202404
+        },
+        "stage": {
+          "calls": 311,
+          "inclusive": 2808820,
+          "exclusive": 2786189
+        },
+        "scene_sprite": {
+          "calls": 308,
+          "inclusive": 4954999,
+          "exclusive": 3913711
+        },
+        "clear_four": {
+          "calls": 240,
+          "inclusive": 2952210,
+          "exclusive": 2930028
+        },
+        "compile": {
+          "calls": 120,
+          "inclusive": 15532589,
+          "exclusive": 15411952
+        },
+        "radar_entry": {
+          "calls": 38,
+          "inclusive": 1991568,
+          "exclusive": 1974859
+        },
+        "stars_clear": {
+          "calls": 120,
+          "inclusive": 989028,
+          "exclusive": 985221
+        },
+        "stars_draw": {
+          "calls": 120,
+          "inclusive": 803060,
+          "exclusive": 798407
+        },
+        "draw_assembly": {
+          "calls": 0,
+          "inclusive": 0,
+          "exclusive": 0
+        },
+        "draw_cached_face": {
+          "calls": 0,
+          "inclusive": 0,
+          "exclusive": 0
+        },
+        "fast_select": {
+          "calls": 120,
+          "inclusive": 12452,
+          "exclusive": 12029
+        },
+        "wb_pop_prepare": {
+          "calls": 120,
+          "inclusive": 2547850,
+          "exclusive": 2520275
+        },
+        "wb_clip_sprite": {
+          "calls": 308,
+          "inclusive": 1011995,
+          "exclusive": 1001842
+        },
+        "fast_publish": {
+          "calls": 120,
+          "inclusive": 3360,
+          "exclusive": 3360
+        },
+        "radar_publish": {
+          "calls": 120,
+          "inclusive": 95832,
+          "exclusive": 95832
+        },
+        "isr": {
+          "calls": 1052,
+          "inclusive": 466740,
+          "exclusive": 249324
+        },
+        "mode_filter": {
+          "calls": 120,
+          "inclusive": 28532,
+          "exclusive": 28109
+        },
+        "draw_rock": {
+          "calls": 438,
+          "inclusive": 9386998,
+          "exclusive": 1963360
+        },
+        "draw_ship": {
+          "calls": 120,
+          "inclusive": 685880,
+          "exclusive": 681650
+        },
+        "world_project": {
+          "calls": 120,
+          "inclusive": 469992,
+          "exclusive": 467454
+        },
+        "world_restore": {
+          "calls": 120,
+          "inclusive": 185880,
+          "exclusive": 185880
+        },
+        "wb_bullet": {
+          "calls": 1043,
+          "inclusive": 29204,
+          "exclusive": 29204
+        },
+        "game_rules": {
+          "calls": 1043,
+          "inclusive": 140075,
+          "exclusive": 138806
+        },
+        "speech_tick": {
+          "calls": 1052,
+          "inclusive": 79952,
+          "exclusive": 79952
+        },
+        "sfx_tick": {
+          "calls": 1052,
+          "inclusive": 137464,
+          "exclusive": 137464
+        },
+        "wait_for_refresh": {
+          "calls": 120,
+          "inclusive": 3737155,
+          "exclusive": 3684808
+        },
+        "visible_publish": {
+          "calls": 120,
+          "inclusive": 1307841,
+          "exclusive": 1208649
+        }
+      }
+    },
+    {
+      "pictureTimings": [
+        {
+          "tstates": 351737,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 0,
+          "speech": false
+        },
+        {
+          "tstates": 400956,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 0,
+          "speech": false
+        },
+        {
+          "tstates": 365206,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 0,
+          "speech": false
+        },
+        {
+          "tstates": 349571,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 0,
+          "speech": false
+        },
+        {
+          "tstates": 351278,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 0,
+          "speech": false
+        },
+        {
+          "tstates": 403965,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 0,
+          "speech": false
+        },
+        {
+          "tstates": 420824,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 0,
+          "speech": false
+        },
+        {
+          "tstates": 407821,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 0,
+          "speech": false
+        },
+        {
+          "tstates": 410060,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 0,
+          "speech": false
+        },
+        {
+          "tstates": 462046,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 0,
+          "speech": false
+        },
+        {
+          "tstates": 361909,
+          "rocks": 1,
+          "faceVisible": false,
+          "pieces": 0,
+          "speech": false
+        },
+        {
+          "tstates": 349657,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 0,
+          "speech": false
+        },
+        {
+          "tstates": 411922,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 0,
+          "speech": false
+        },
+        {
+          "tstates": 461882,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 0,
+          "speech": false
+        },
+        {
+          "tstates": 481457,
+          "rocks": 2,
+          "faceVisible": true,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 465712,
+          "rocks": 2,
+          "faceVisible": true,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 520362,
+          "rocks": 2,
+          "faceVisible": true,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 479875,
+          "rocks": 2,
+          "faceVisible": true,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 467099,
+          "rocks": 2,
+          "faceVisible": true,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 520817,
+          "rocks": 2,
+          "faceVisible": true,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 536987,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 407102,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 353059,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 463832,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 360949,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 348898,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 352290,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 351521,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 404792,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 360822,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 349795,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 350887,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 352344,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 341371,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 364538,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 291004,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 293292,
+          "rocks": 1,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 293561,
+          "rocks": 1,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 348720,
+          "rocks": 1,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 358995,
+          "rocks": 1,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 231091,
+          "rocks": 1,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 234347,
+          "rocks": 1,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 235211,
+          "rocks": 1,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 234671,
+          "rocks": 1,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 343441,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 363627,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 352001,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 352303,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 405990,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 358629,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 349131,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 352627,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 402778,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 362322,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 407810,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 350617,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 338155,
+          "rocks": 1,
+          "faceVisible": false,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 425827,
+          "rocks": 1,
+          "faceVisible": true,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 409387,
+          "rocks": 1,
+          "faceVisible": true,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 409723,
+          "rocks": 1,
+          "faceVisible": true,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 462013,
+          "rocks": 1,
+          "faceVisible": true,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 421365,
+          "rocks": 1,
+          "faceVisible": true,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 408972,
+          "rocks": 1,
+          "faceVisible": true,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 410047,
+          "rocks": 1,
+          "faceVisible": true,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 411410,
+          "rocks": 1,
+          "faceVisible": true,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 460372,
+          "rocks": 1,
+          "faceVisible": true,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 421891,
+          "rocks": 1,
+          "faceVisible": true,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 408252,
+          "rocks": 1,
+          "faceVisible": true,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 469990,
+          "rocks": 1,
+          "faceVisible": true,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 409939,
+          "rocks": 1,
+          "faceVisible": true,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 465178,
+          "rocks": 1,
+          "faceVisible": true,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 417940,
+          "rocks": 1,
+          "faceVisible": true,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 407775,
+          "rocks": 1,
+          "faceVisible": true,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 411086,
+          "rocks": 1,
+          "faceVisible": true,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 410600,
+          "rocks": 1,
+          "faceVisible": true,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 404147,
+          "rocks": 1,
+          "faceVisible": true,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 419659,
+          "rocks": 1,
+          "faceVisible": true,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 467546,
+          "rocks": 2,
+          "faceVisible": true,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 470408,
+          "rocks": 1,
+          "faceVisible": true,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 578091,
+          "rocks": 1,
+          "faceVisible": true,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 541648,
+          "rocks": 1,
+          "faceVisible": true,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 527505,
+          "rocks": 1,
+          "faceVisible": true,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 528192,
+          "rocks": 1,
+          "faceVisible": true,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 582271,
+          "rocks": 1,
+          "faceVisible": true,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 536149,
+          "rocks": 2,
+          "faceVisible": true,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 525721,
+          "rocks": 2,
+          "faceVisible": true,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 578499,
+          "rocks": 2,
+          "faceVisible": true,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 539142,
+          "rocks": 2,
+          "faceVisible": true,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 525407,
+          "rocks": 2,
+          "faceVisible": true,
+          "pieces": 1,
+          "speech": false
+        },
+        {
+          "tstates": 527345,
+          "rocks": 2,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 578209,
+          "rocks": 2,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 537572,
+          "rocks": 2,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 525726,
+          "rocks": 2,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 528381,
+          "rocks": 2,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 519100,
+          "rocks": 1,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 539374,
+          "rocks": 2,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 585748,
+          "rocks": 2,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 697362,
+          "rocks": 2,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 598851,
+          "rocks": 2,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 583719,
+          "rocks": 2,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 641359,
+          "rocks": 2,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 593698,
+          "rocks": 2,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 582989,
+          "rocks": 2,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 577719,
+          "rocks": 2,
+          "faceVisible": true,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 420416,
+          "rocks": 1,
+          "faceVisible": false,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 290451,
+          "rocks": 1,
+          "faceVisible": false,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 292941,
+          "rocks": 1,
+          "faceVisible": false,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 293750,
+          "rocks": 1,
+          "faceVisible": false,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 344039,
+          "rocks": 1,
+          "faceVisible": false,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 303658,
+          "rocks": 1,
+          "faceVisible": false,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 291365,
+          "rocks": 1,
+          "faceVisible": false,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 293413,
+          "rocks": 1,
+          "faceVisible": false,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 293238,
+          "rocks": 1,
+          "faceVisible": false,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 344530,
+          "rocks": 1,
+          "faceVisible": false,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 362642,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 290807,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 293332,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 293953,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 2,
+          "speech": false
+        },
+        {
+          "tstates": 342395,
+          "rocks": 2,
+          "faceVisible": false,
+          "pieces": 2,
+          "speech": false
+        }
+      ],
+      "overlapRejections": {},
+      "fastPathGateCounts": {
+        "not awake": 120
+      },
+      "comparedBitmapBytes": 69071,
+      "changedBitmapBytes": 17748,
+      "unchangedBitmapComparisonPercent": 74.30470095988186,
+      "name": "fast assembly",
+      "fast": true,
+      "active_sinistar": false,
+      "continuousSpeechAndFiring": false,
+      "seconds": 14.152636337868481,
+      "fps": 8.478985620432688,
+      "pictures": 120,
+      "visibleFacePictures": 53,
+      "fastPictures": 0,
+      "visible_histogram": {
+        "1": 47,
+        "2": 73
+      },
+      "speed_pixels_per_tick": {
+        "player_average": 0.9844060014959366,
+        "player_peak": 0.9844060014959528,
+        "sinistar_average": 0,
+        "sinistar_peak": 0
+      },
+      "time_percent": {
+        "physics": 14.6,
+        "composition": 50.7,
+        "dirty_comparison": 22.5,
+        "radar_preparation": 2.9,
+        "screen_publication": 1.4,
+        "refresh_wait": 7.1,
+        "interrupts": 0.7,
+        "other": 0.2
+      },
+      "tstates_per_picture": 416087.50833333336,
+      "routines": {
+        "game_step": {
+          "calls": 747,
+          "inclusive": 7302680,
+          "exclusive": 2760114
+        },
+        "wb_population": {
+          "calls": 747,
+          "inclusive": 2655612,
+          "exclusive": 2640727
+        },
+        "wb_worker": {
+          "calls": 747,
+          "inclusive": 1039849,
+          "exclusive": 1033927
+        },
+        "wb_move_player": {
+          "calls": 747,
+          "inclusive": 548907,
+          "exclusive": 547638
+        },
+        "mining_pursuit_step": {
+          "calls": 747,
+          "inclusive": 165183,
+          "exclusive": 162962
+        },
+        "render": {
+          "calls": 120,
+          "inclusive": 42531114,
+          "exclusive": 8559886
+        },
+        "population_clear": {
+          "calls": 120,
+          "inclusive": 2942467,
+          "exclusive": 2923855
+        },
+        "population_draw": {
+          "calls": 120,
+          "inclusive": 3599048,
+          "exclusive": 847133
+        },
+        "stage": {
+          "calls": 165,
+          "inclusive": 1384634,
+          "exclusive": 1371732
+        },
+        "scene_sprite": {
+          "calls": 163,
+          "inclusive": 1709784,
+          "exclusive": 1176302
+        },
+        "clear_four": {
+          "calls": 240,
+          "inclusive": 3098706,
+          "exclusive": 3072902
+        },
+        "compile": {
+          "calls": 120,
+          "inclusive": 11336831,
+          "exclusive": 11249902
+        },
+        "radar_entry": {
+          "calls": 29,
+          "inclusive": 1472629,
+          "exclusive": 1465861
+        },
+        "stars_clear": {
+          "calls": 120,
+          "inclusive": 996039,
+          "exclusive": 985569
+        },
+        "stars_draw": {
+          "calls": 120,
+          "inclusive": 809372,
+          "exclusive": 803450
+        },
+        "draw_assembly": {
+          "calls": 0,
+          "inclusive": 0,
+          "exclusive": 0
+        },
+        "draw_cached_face": {
+          "calls": 0,
+          "inclusive": 0,
+          "exclusive": 0
+        },
+        "fast_select": {
+          "calls": 120,
+          "inclusive": 12000,
+          "exclusive": 12000
+        },
+        "wb_pop_prepare": {
+          "calls": 120,
+          "inclusive": 2068781,
+          "exclusive": 2057360
+        },
+        "wb_clip_sprite": {
+          "calls": 163,
+          "inclusive": 527137,
+          "exclusive": 524599
+        },
+        "fast_publish": {
+          "calls": 120,
+          "inclusive": 3360,
+          "exclusive": 3360
+        },
+        "radar_publish": {
+          "calls": 120,
+          "inclusive": 67861,
+          "exclusive": 67861
+        },
+        "isr": {
+          "calls": 752,
+          "inclusive": 332592,
+          "exclusive": 178224
+        },
+        "mode_filter": {
+          "calls": 120,
+          "inclusive": 397229,
+          "exclusive": 393845
+        },
+        "draw_rock": {
+          "calls": 193,
+          "inclusive": 3460067,
+          "exclusive": 1254214
+        },
+        "draw_ship": {
+          "calls": 120,
+          "inclusive": 689496,
+          "exclusive": 681882
+        },
+        "world_project": {
+          "calls": 120,
+          "inclusive": 473156,
+          "exclusive": 467657
+        },
+        "world_restore": {
+          "calls": 120,
+          "inclusive": 185880,
+          "exclusive": 185880
+        },
+        "wb_bullet": {
+          "calls": 747,
+          "inclusive": 20916,
+          "exclusive": 20916
+        },
+        "game_rules": {
+          "calls": 747,
+          "inclusive": 100255,
+          "exclusive": 99409
+        },
+        "speech_tick": {
+          "calls": 752,
+          "inclusive": 57152,
+          "exclusive": 57152
+        },
+        "sfx_tick": {
+          "calls": 752,
+          "inclusive": 97216,
+          "exclusive": 97216
+        },
+        "wait_for_refresh": {
+          "calls": 120,
+          "inclusive": 3578669,
+          "exclusive": 3526691
+        },
+        "visible_publish": {
+          "calls": 120,
+          "inclusive": 675212,
+          "exclusive": 603991
+        }
+      }
+    },
+    {
+      "pictureTimings": [
+        {
+          "tstates": 699369,
+          "rocks": 5,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 653938,
+          "rocks": 5,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 641262,
+          "rocks": 5,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 696476,
+          "rocks": 5,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 592894,
+          "rocks": 5,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 524170,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 580576,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 599812,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 586418,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 639105,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 597401,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 582633,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 636662,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 598817,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 643198,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 755695,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 652910,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 581795,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 579382,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 539761,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 524782,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 638124,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 598981,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 517693,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 586383,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 596150,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 457412,
+          "rocks": 2,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 528376,
+          "rocks": 2,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 477832,
+          "rocks": 2,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 527802,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 578293,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 598616,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 524220,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 579375,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 598595,
+          "rocks": 5,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 645608,
+          "rocks": 5,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 699473,
+          "rocks": 5,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 713507,
+          "rocks": 6,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 751873,
+          "rocks": 6,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 713182,
+          "rocks": 6,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 694029,
+          "rocks": 5,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 594666,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 516140,
+          "rocks": 5,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 588191,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 537800,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 460717,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 523526,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 540355,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 525903,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 579978,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 479113,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 467620,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 580315,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 538368,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 463505,
+          "rocks": 2,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 462183,
+          "rocks": 2,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 421095,
+          "rocks": 2,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 406738,
+          "rocks": 2,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 411369,
+          "rocks": 2,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 521284,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 541079,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 526814,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 636928,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 659113,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 583122,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 580465,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 478307,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 458400,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 525066,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 481692,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 465704,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 455609,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 486602,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 465073,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 579799,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 539419,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 525935,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 513368,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 548241,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 584421,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 638887,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 594819,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 523480,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 635948,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 658727,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 526137,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 577774,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 597757,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 581817,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 642496,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 594310,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 586907,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 513059,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 485580,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 466888,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 521173,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 479490,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 467778,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 579118,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 538562,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 586377,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 640489,
+          "rocks": 5,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 654818,
+          "rocks": 5,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 644352,
+          "rocks": 5,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 693993,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 593279,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 585630,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 574822,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 545217,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 586487,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 636563,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 598117,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 582098,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 641467,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 655017,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 642824,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 693812,
+          "rocks": 4,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 595847,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 524245,
+          "rocks": 3,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        }
+      ],
+      "overlapRejections": {
+        "actor 3": 68
+      },
+      "fastPathGateCounts": {
+        "later overlap/stream gates": 33,
+        "eye transition": 73,
+        "movement exceeds one pixel": 14
+      },
+      "comparedBitmapBytes": 134630,
+      "changedBitmapBytes": 64327,
+      "unchangedBitmapComparisonPercent": 52.21941617767214,
+      "name": "normal chase",
+      "fast": false,
+      "active_sinistar": true,
+      "continuousSpeechAndFiring": false,
+      "seconds": 19.445793934240363,
+      "fps": 6.171000289615469,
+      "pictures": 120,
+      "visibleFacePictures": 120,
+      "fastPictures": 0,
+      "visible_histogram": {
+        "2": 8,
+        "3": 44,
+        "4": 51,
+        "5": 14,
+        "6": 3
+      },
+      "speed_pixels_per_tick": {
+        "player_average": 0.984406001495933,
+        "player_peak": 0.9844060014959528,
+        "sinistar_average": 0.9916137592977687,
+        "sinistar_peak": 1.3445673386353696
+      },
+      "time_percent": {
+        "physics": 17.5,
+        "composition": 44.1,
+        "dirty_comparison": 26.9,
+        "radar_preparation": 3,
+        "screen_publication": 3.1,
+        "refresh_wait": 4.4,
+        "interrupts": 0.8,
+        "other": 0.2
+      },
+      "tstates_per_picture": 571706.3416666667,
+      "routines": {
+        "game_step": {
+          "calls": 1162,
+          "inclusive": 12054822,
+          "exclusive": 4353930
+        },
+        "wb_population": {
+          "calls": 1162,
+          "inclusive": 4301985,
+          "exclusive": 4272123
+        },
+        "wb_worker": {
+          "calls": 1162,
+          "inclusive": 79866,
+          "exclusive": 77970
+        },
+        "wb_move_player": {
+          "calls": 1162,
+          "inclusive": 857782,
+          "exclusive": 852094
+        },
+        "mining_pursuit_step": {
+          "calls": 1162,
+          "inclusive": 2246182,
+          "exclusive": 2229118
+        },
+        "render": {
+          "calls": 120,
+          "inclusive": 56403708,
+          "exclusive": 1874567
+        },
+        "population_clear": {
+          "calls": 120,
+          "inclusive": 6772504,
+          "exclusive": 6719890
+        },
+        "population_draw": {
+          "calls": 120,
+          "inclusive": 10026338,
+          "exclusive": 1205780
+        },
+        "stage": {
+          "calls": 275,
+          "inclusive": 2533989,
+          "exclusive": 2515977
+        },
+        "scene_sprite": {
+          "calls": 275,
+          "inclusive": 4629131,
+          "exclusive": 3714122
+        },
+        "clear_four": {
+          "calls": 240,
+          "inclusive": 2515823,
+          "exclusive": 2494967
+        },
+        "compile": {
+          "calls": 120,
+          "inclusive": 18623867,
+          "exclusive": 18476927
+        },
+        "radar_entry": {
+          "calls": 40,
+          "inclusive": 2047010,
+          "exclusive": 2028050
+        },
+        "stars_clear": {
+          "calls": 120,
+          "inclusive": 994517,
+          "exclusive": 985511
+        },
+        "stars_draw": {
+          "calls": 120,
+          "inclusive": 752660,
+          "exclusive": 745076
+        },
+        "draw_assembly": {
+          "calls": 0,
+          "inclusive": 0,
+          "exclusive": 0
+        },
+        "draw_cached_face": {
+          "calls": 120,
+          "inclusive": 3056639,
+          "exclusive": 3029621
+        },
+        "fast_select": {
+          "calls": 120,
+          "inclusive": 129742,
+          "exclusive": 129268
+        },
+        "wb_pop_prepare": {
+          "calls": 120,
+          "inclusive": 2544826,
+          "exclusive": 2526814
+        },
+        "wb_clip_sprite": {
+          "calls": 275,
+          "inclusive": 882777,
+          "exclusive": 875667
+        },
+        "fast_publish": {
+          "calls": 120,
+          "inclusive": 3360,
+          "exclusive": 3360
+        },
+        "radar_publish": {
+          "calls": 120,
+          "inclusive": 94535,
+          "exclusive": 94535
+        },
+        "isr": {
+          "calls": 1169,
+          "inclusive": 554106,
+          "exclusive": 277053
+        },
+        "mode_filter": {
+          "calls": 120,
+          "inclusive": 28080,
+          "exclusive": 28080
+        },
+        "draw_rock": {
+          "calls": 440,
+          "inclusive": 9239970,
+          "exclusive": 2062156
+        },
+        "draw_ship": {
+          "calls": 120,
+          "inclusive": 685384,
+          "exclusive": 681592
+        },
+        "world_project": {
+          "calls": 120,
+          "inclusive": 474322,
+          "exclusive": 467686
+        },
+        "world_restore": {
+          "calls": 120,
+          "inclusive": 185880,
+          "exclusive": 185880
+        },
+        "wb_bullet": {
+          "calls": 1162,
+          "inclusive": 32536,
+          "exclusive": 32536
+        },
+        "game_rules": {
+          "calls": 1162,
+          "inclusive": 155049,
+          "exclusive": 154575
+        },
+        "speech_tick": {
+          "calls": 1169,
+          "inclusive": 148463,
+          "exclusive": 148463
+        },
+        "sfx_tick": {
+          "calls": 1169,
+          "inclusive": 128590,
+          "exclusive": 128590
+        },
+        "wait_for_refresh": {
+          "calls": 120,
+          "inclusive": 3089913,
+          "exclusive": 3033033
+        },
+        "visible_publish": {
+          "calls": 120,
+          "inclusive": 2152362,
+          "exclusive": 2054467
+        }
+      }
+    },
+    {
+      "pictureTimings": [
+        {
+          "tstates": 302777,
+          "rocks": 1,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 292239,
+          "rocks": 1,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 321967,
+          "rocks": 1,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 323454,
+          "rocks": 1,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 292548,
+          "rocks": 1,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 293521,
+          "rocks": 1,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 295113,
+          "rocks": 1,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 320475,
+          "rocks": 1,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 324413,
+          "rocks": 1,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 291570,
+          "rocks": 1,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 292995,
+          "rocks": 1,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 292266,
+          "rocks": 1,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 324043,
+          "rocks": 1,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 256937,
+          "rocks": 1,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 240301,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 236452,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 167618,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 241296,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 265049,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 264672,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 235476,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 232526,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 234725,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 234927,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 263700,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 264743,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 169148,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 242996,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 233281,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 169952,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 240365,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 264169,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 205470,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 234860,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 236924,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 167294,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 242483,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 169426,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 270092,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 265939,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 232202,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 170397,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 242173,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 233362,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 262145,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 200991,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 240621,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 235278,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 236331,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 233173,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 264571,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 263872,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 235756,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 168589,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 243185,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 234091,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 260758,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 265580,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 169620,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 176091,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 176010,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 243023,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 232998,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 262428,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 267747,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 232850,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 234873,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 234550,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 169574,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 270497,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 264981,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 235440,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 233349,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 234644,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 235116,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 196657,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 215441,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 167928,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 241579,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 169237,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 241215,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 234914,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 263602,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 205969,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 169318,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 176145,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 242753,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 235049,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 167739,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 203457,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 213984,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 236452,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 167793,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 242942,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 167874,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 241498,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 197116,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 213444,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 236317,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 233335,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 236115,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 168036,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 241323,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 263737,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 264738,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 236695,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 294074,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 231919,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 234671,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 196994,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 148590,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 176037,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 176064,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 243077,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 232917,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 234887,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 265353,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 265869,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 231668,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        }
+      ],
+      "overlapRejections": {
+        "actor 3": 113
+      },
+      "fastPathGateCounts": {
+        "later overlap/stream gates": 85,
+        "eye transition": 30,
+        "movement exceeds one pixel": 5
+      },
+      "comparedBitmapBytes": 45497,
+      "changedBitmapBytes": 25013,
+      "unchangedBitmapComparisonPercent": 45.02274875266501,
+      "name": "fast chase",
+      "fast": true,
+      "active_sinistar": true,
+      "continuousSpeechAndFiring": false,
+      "seconds": 7.97700283446712,
+      "fps": 15.043243996542499,
+      "pictures": 120,
+      "visibleFacePictures": 120,
+      "fastPictures": 0,
+      "visible_histogram": {
+        "0": 105,
+        "1": 15
+      },
+      "speed_pixels_per_tick": {
+        "player_average": 0.9844060014959422,
+        "player_peak": 0.9844060014959528,
+        "sinistar_average": 1.0031272675987286,
+        "sinistar_peak": 1.3445673386353696
+      },
+      "time_percent": {
+        "physics": 10.7,
+        "composition": 38,
+        "dirty_comparison": 32.3,
+        "radar_preparation": 1.9,
+        "screen_publication": 2.9,
+        "refresh_wait": 13.2,
+        "interrupts": 0.8,
+        "other": 0.2
+      },
+      "tstates_per_picture": 234523.88333333333,
+      "routines": {
+        "game_step": {
+          "calls": 476,
+          "inclusive": 3030712,
+          "exclusive": 1613806
+        },
+        "wb_population": {
+          "calls": 476,
+          "inclusive": 24752,
+          "exclusive": 24752
+        },
+        "wb_worker": {
+          "calls": 476,
+          "inclusive": 31892,
+          "exclusive": 31892
+        },
+        "wb_move_player": {
+          "calls": 476,
+          "inclusive": 350417,
+          "exclusive": 348995
+        },
+        "mining_pursuit_step": {
+          "calls": 476,
+          "inclusive": 910758,
+          "exclusive": 910284
+        },
+        "render": {
+          "calls": 120,
+          "inclusive": 25047877,
+          "exclusive": 1860071
+        },
+        "population_clear": {
+          "calls": 120,
+          "inclusive": 5760,
+          "exclusive": 5760
+        },
+        "population_draw": {
+          "calls": 120,
+          "inclusive": 5760,
+          "exclusive": 5760
+        },
+        "stage": {
+          "calls": 6,
+          "inclusive": 54870,
+          "exclusive": 54870
+        },
+        "scene_sprite": {
+          "calls": 6,
+          "inclusive": 125889,
+          "exclusive": 74001
+        },
+        "clear_four": {
+          "calls": 240,
+          "inclusive": 2047345,
+          "exclusive": 2032177
+        },
+        "compile": {
+          "calls": 120,
+          "inclusive": 9169144,
+          "exclusive": 9089986
+        },
+        "radar_entry": {
+          "calls": 19,
+          "inclusive": 524146,
+          "exclusive": 524146
+        },
+        "stars_clear": {
+          "calls": 120,
+          "inclusive": 1003571,
+          "exclusive": 986033
+        },
+        "stars_draw": {
+          "calls": 120,
+          "inclusive": 765777,
+          "exclusive": 755349
+        },
+        "draw_assembly": {
+          "calls": 0,
+          "inclusive": 0,
+          "exclusive": 0
+        },
+        "draw_cached_face": {
+          "calls": 120,
+          "inclusive": 2805137,
+          "exclusive": 2792813
+        },
+        "fast_select": {
+          "calls": 120,
+          "inclusive": 180964,
+          "exclusive": 180964
+        },
+        "wb_pop_prepare": {
+          "calls": 120,
+          "inclusive": 10080,
+          "exclusive": 10080
+        },
+        "wb_clip_sprite": {
+          "calls": 6,
+          "inclusive": 51414,
+          "exclusive": 51414
+        },
+        "fast_publish": {
+          "calls": 120,
+          "inclusive": 3360,
+          "exclusive": 3360
+        },
+        "radar_publish": {
+          "calls": 120,
+          "inclusive": 4603,
+          "exclusive": 4603
+        },
+        "isr": {
+          "calls": 480,
+          "inclusive": 227520,
+          "exclusive": 113760
+        },
+        "mode_filter": {
+          "calls": 120,
+          "inclusive": 428694,
+          "exclusive": 427746
+        },
+        "draw_rock": {
+          "calls": 15,
+          "inclusive": 293105,
+          "exclusive": 111872
+        },
+        "draw_ship": {
+          "calls": 120,
+          "inclusive": 685887,
+          "exclusive": 681621
+        },
+        "world_project": {
+          "calls": 120,
+          "inclusive": 468789,
+          "exclusive": 467367
+        },
+        "world_restore": {
+          "calls": 120,
+          "inclusive": 185880,
+          "exclusive": 185880
+        },
+        "wb_bullet": {
+          "calls": 476,
+          "inclusive": 13328,
+          "exclusive": 13328
+        },
+        "game_rules": {
+          "calls": 476,
+          "inclusive": 81019,
+          "exclusive": 80545
+        },
+        "speech_tick": {
+          "calls": 480,
+          "inclusive": 60960,
+          "exclusive": 60960
+        },
+        "sfx_tick": {
+          "calls": 480,
+          "inclusive": 52800,
+          "exclusive": 52800
+        },
+        "wait_for_refresh": {
+          "calls": 120,
+          "inclusive": 3772452,
+          "exclusive": 3715572
+        },
+        "visible_publish": {
+          "calls": 120,
+          "inclusive": 813985,
+          "exclusive": 806022
+        }
+      }
+    },
+    {
+      "pictureTimings": [
+        {
+          "tstates": 243468,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 233875,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 233659,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 262310,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 266241,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 234339,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 234941,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 169048,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 243077,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 260836,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 267059,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 233295,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 233447,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 236394,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 169264,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 268500,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 267720,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 168724,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 175295,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 241417,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 236533,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 232932,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 264556,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 198465,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 242367,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 294452,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 232917,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 234563,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 263700,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 264851,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 169094,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 176010,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 243144,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 233214,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 234118,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 197237,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 215495,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 232998,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 234860,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 237410,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 232296,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 263424,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 267313,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 234339,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 232391,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 170316,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 242281,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 259448,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 267227,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 169553,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 240702,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 169817,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 241417,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 236412,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 260620,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 268705,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 232121,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 235737,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 294371,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 293656,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 260013,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 265764,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 169574,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 175983,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 176118,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 242915,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 233052,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 262428,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 267801,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 232890,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 234685,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 234644,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 236587,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 196063,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 213444,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 235818,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 233416,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 234632,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 235007,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 169156,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 270335,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 140535,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 239972,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        },
+        {
+          "tstates": 170790,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 241215,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 234914,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 236155,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 260796,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 200788,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 176037,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 242861,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 235008,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 167780,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 176091,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 268608,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 267802,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 233064,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 236142,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 233443,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 169669,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 268338,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 267856,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 167684,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 242726,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 168171,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 241297,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 236343,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 196225,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 212972,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 295720,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 294128,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 231757,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 169493,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 203430,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 148698,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 175956,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 243185,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 232863,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": true
+        },
+        {
+          "tstates": 233636,
+          "rocks": 0,
+          "faceVisible": true,
+          "pieces": 20,
+          "speech": false
+        }
+      ],
+      "overlapRejections": {},
+      "fastPathGateCounts": {
+        "speech active": 120
+      },
+      "comparedBitmapBytes": 39560,
+      "changedBitmapBytes": 23566,
+      "unchangedBitmapComparisonPercent": 40.429726996966636,
+      "name": "fast chase with speech and shooting",
+      "fast": true,
+      "active_sinistar": true,
+      "continuousSpeechAndFiring": true,
+      "seconds": 7.762765589569161,
+      "fps": 15.458408297326942,
+      "pictures": 120,
+      "visibleFacePictures": 120,
+      "fastPictures": 0,
+      "visible_histogram": {
+        "0": 120
+      },
+      "speed_pixels_per_tick": {
+        "player_average": 0.9844060014959426,
+        "player_peak": 0.9844060014959528,
+        "sinistar_average": 1.002845097268936,
+        "sinistar_peak": 1.3445673386353696
+      },
+      "time_percent": {
+        "physics": 12,
+        "composition": 37.1,
+        "dirty_comparison": 31.1,
+        "radar_preparation": 1.8,
+        "screen_publication": 2.8,
+        "refresh_wait": 11.6,
+        "interrupts": 3.3,
+        "other": 0.2
+      },
+      "tstates_per_picture": 228225.30833333332,
+      "routines": {
+        "game_step": {
+          "calls": 463,
+          "inclusive": 3312031,
+          "exclusive": 1493602
+        },
+        "wb_population": {
+          "calls": 463,
+          "inclusive": 24076,
+          "exclusive": 24076
+        },
+        "wb_worker": {
+          "calls": 463,
+          "inclusive": 31021,
+          "exclusive": 31021
+        },
+        "wb_move_player": {
+          "calls": 463,
+          "inclusive": 339379,
+          "exclusive": 339379
+        },
+        "mining_pursuit_step": {
+          "calls": 463,
+          "inclusive": 901257,
+          "exclusive": 889419
+        },
+        "render": {
+          "calls": 120,
+          "inclusive": 24012263,
+          "exclusive": 1885198
+        },
+        "population_clear": {
+          "calls": 120,
+          "inclusive": 5760,
+          "exclusive": 5760
+        },
+        "population_draw": {
+          "calls": 120,
+          "inclusive": 5760,
+          "exclusive": 5760
+        },
+        "stage": {
+          "calls": 46,
+          "inclusive": 85818,
+          "exclusive": 68061
+        },
+        "scene_sprite": {
+          "calls": 46,
+          "inclusive": 71916,
+          "exclusive": 46808
+        },
+        "clear_four": {
+          "calls": 240,
+          "inclusive": 1885252,
+          "exclusive": 1830008
+        },
+        "compile": {
+          "calls": 120,
+          "inclusive": 8781216,
+          "exclusive": 8516889
+        },
+        "radar_entry": {
+          "calls": 18,
+          "inclusive": 491826,
+          "exclusive": 491826
+        },
+        "stars_clear": {
+          "calls": 120,
+          "inclusive": 1051146,
+          "exclusive": 985917
+        },
+        "stars_draw": {
+          "calls": 120,
+          "inclusive": 802932,
+          "exclusive": 755580
+        },
+        "draw_assembly": {
+          "calls": 0,
+          "inclusive": 0,
+          "exclusive": 0
+        },
+        "draw_cached_face": {
+          "calls": 120,
+          "inclusive": 2805316,
+          "exclusive": 2767829
+        },
+        "fast_select": {
+          "calls": 120,
+          "inclusive": 21796,
+          "exclusive": 21796
+        },
+        "wb_pop_prepare": {
+          "calls": 120,
+          "inclusive": 10080,
+          "exclusive": 10080
+        },
+        "wb_clip_sprite": {
+          "calls": 46,
+          "inclusive": 21162,
+          "exclusive": 21162
+        },
+        "fast_publish": {
+          "calls": 120,
+          "inclusive": 3360,
+          "exclusive": 3360
+        },
+        "radar_publish": {
+          "calls": 120,
+          "inclusive": 3805,
+          "exclusive": 3805
+        },
+        "isr": {
+          "calls": 467,
+          "inclusive": 912250,
+          "exclusive": 110679
+        },
+        "mode_filter": {
+          "calls": 120,
+          "inclusive": 492104,
+          "exclusive": 428968
+        },
+        "draw_rock": {
+          "calls": 0,
+          "inclusive": 0,
+          "exclusive": 0
+        },
+        "draw_ship": {
+          "calls": 120,
+          "inclusive": 727406,
+          "exclusive": 682027
+        },
+        "world_project": {
+          "calls": 120,
+          "inclusive": 481294,
+          "exclusive": 467483
+        },
+        "world_restore": {
+          "calls": 120,
+          "inclusive": 185880,
+          "exclusive": 185880
+        },
+        "wb_bullet": {
+          "calls": 463,
+          "inclusive": 427098,
+          "exclusive": 425125
+        },
+        "game_rules": {
+          "calls": 463,
+          "inclusive": 85613,
+          "exclusive": 81667
+        },
+        "speech_tick": {
+          "calls": 467,
+          "inclusive": 765381,
+          "exclusive": 765381
+        },
+        "sfx_tick": {
+          "calls": 467,
+          "inclusive": 36190,
+          "exclusive": 36190
+        },
+        "wait_for_refresh": {
+          "calls": 120,
+          "inclusive": 3415231,
+          "exclusive": 3183971
+        },
+        "visible_publish": {
+          "calls": 120,
+          "inclusive": 766752,
+          "exclusive": 759587
+        }
+      }
+    }
+  ]
+}

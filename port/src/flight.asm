@@ -1,0 +1,360 @@
+ ORG $8000
+ DB $02,$02,$08,$80,$EF,$01,0,0
+posx EQU $7870
+posy EQU $7860
+velx EQU $7872
+vely EQU $7862
+angle EQU $7828
+frames EQU $782a
+oldxy EQU $782c
+newxy EQU $782e
+delta EQU $7830
+unit EQU $7831
+start:
+ di
+ ld sp,$7fff
+ ld a,$10
+ ld ($7804),a
+ out ($f4),a
+ ld a,2
+ ld ($7805),a
+ out ($ff),a
+ xor a
+ out ($fe),a
+ ld hl,$7820
+ ld de,$7821
+ ld bc,111
+ ld (hl),a
+ ldir
+ ld hl,$e000
+ ld de,$e001
+ ld bc,6143
+ ld (hl),a
+ ldir
+ call stars_init
+ ld hl,$e000
+ ld de,$a000
+ ld bc,6144
+ ldir
+ ld hl,$e000
+ ld de,$4000
+ ld bc,6144
+ ldir
+ ld hl,$c000
+ ld de,$c001
+ ld bc,6143
+ ld (hl),7
+ ldir
+ ld hl,$c000
+ ld de,$6000
+ ld bc,6144
+ ldir
+ ld hl,$7b00
+ ld (posx),hl
+ ld hl,$3800
+ ld (posy),hl
+ ld a,1
+ ld ($7877),a
+ ld hl,$600f
+ ld (oldxy),hl
+ ld hl,$7a00
+ ld de,$7a01
+ ld bc,256
+ ld (hl),$7b
+ ldir
+ ld a,$c3
+ ld ($7b7b),a
+ ld hl,isr
+ ld ($7b7c),hl
+ ld a,$7a
+ ld i,a
+ im 2
+ ei
+loop:
+frame_start:
+ call flight_step
+ call render
+frame_done:
+ ld hl,(frames)
+ inc hl
+ ld (frames),hl
+ jr loop
+
+flight_step:
+; Automated joystick direction advances 1 angle unit every 2 refreshes.
+; This drives the ported routines, not precomputed positions or velocities.
+ ld hl,(frames)
+ srl h
+ rr l
+ ld b,l
+ ld a,(angle)
+ ld c,a
+ ld a,b
+ sub c
+ ld (delta),a
+ ld a,c
+ ld c,127
+ call player_turn
+ ld (angle),a
+ call player_sincos
+ ld (unit),de
+ ld a,e
+ ld ($7866),a
+ ld a,d
+ ld ($7876),a
+ ld a,(delta)
+ add a,$20
+ cp $40
+ jr nc,integrate
+ ld a,(unit)
+ ld l,a
+ add a,a
+ sbc a,a
+ ld h,a
+ add hl,hl
+ add hl,hl
+ ld de,(vely)
+ ld c,127
+ call player_accelerate
+ ld (vely),hl
+ ld a,(unit+1)
+ ld l,a
+ add a,a
+ sbc a,a
+ ld h,a
+ add hl,hl
+ add hl,hl
+ add hl,hl
+ ld de,(velx)
+ ld c,127
+ call player_accelerate
+ ld (velx),hl
+integrate:
+ ld ix,$7860
+ call camera_axis
+ ld ix,$7870
+ call camera_axis
+ ld de,($7864)
+ ld hl,$7880
+ call camera_integrate
+ ld de,($7874)
+ ld hl,$7883
+ call camera_integrate
+ ld hl,(posx)
+ ld de,(velx)
+ add hl,de
+ ld de,($7874)
+ add hl,de
+ ld (posx),hl
+ ld a,h
+ srl a
+ srl a
+ srl a
+ ld (newxy),a
+ ld hl,(posy)
+ ld de,(vely)
+ add hl,de
+ ld de,($7864)
+ add hl,de
+ ld (posy),hl
+ ld a,152
+ sub h
+ ld (newxy+1),a
+ ret
+
+; Input BC=(y, byte-x), output HL=nonlinear offset. BC preserved.
+offset:
+ ld a,b
+ and $c0
+ rrca
+ rrca
+ rrca
+ ld h,a
+ ld a,b
+ and 7
+ or h
+ ld h,a
+ ld a,b
+ and $38
+ rlca
+ rlca
+ or c
+ ld l,a
+ ret
+
+render:
+ call stars_update
+; Restore the old rectangle in protected buffers.
+ ld bc,(oldxy)
+ ld a,12
+restore_row:
+ push af
+ call offset
+ ld a,h
+ or $a0
+ ld h,a
+ DUP 3
+ ld a,h
+ xor $40
+ ld h,a
+ ld a,(hl)
+ push af
+ ld a,h
+ xor $40
+ ld h,a
+ pop af
+ ld (hl),a
+ ld a,h
+ xor $60
+ ld h,a
+ ld (hl),7
+ ld a,h
+ xor $60
+ ld h,a
+ inc l
+ EDUP
+ inc b
+ pop af
+ dec a
+ jr nz,restore_row
+; Fetch the selected 8-way pre-shifted sprite to HOME scratch.
+ ld a,(angle)
+ add a,4
+ and $f8
+ ld e,a
+ ld a,(posx+1)
+ and 7
+ or e
+ ld l,a
+ ld h,0
+ ld d,h
+ ld e,l
+ add hl,hl
+ add hl,de
+ ld de,sprites
+ add hl,de
+ ld a,(hl)
+ inc hl
+ ld e,(hl)
+ inc hl
+ ld d,(hl)
+ ex de,hl
+ ld ($7804),a
+ out ($f4),a
+ ld de,$7c00
+ ld bc,108
+ ldir
+ ld a,$10
+ ld ($7804),a
+ out ($f4),a
+ ld de,$7c00
+ ld bc,(newxy)
+ ld a,12
+compose_row:
+ push af
+ call offset
+ ld a,h
+ or $a0
+ ld h,a
+ DUP 3
+ ld a,(de)
+ inc de
+ cp 255
+ jr z,1f
+ and (hl)
+ ld (hl),a
+ ld a,(de)
+ or (hl)
+ ld (hl),a
+ inc de
+ ld a,h
+ xor $60
+ ld h,a
+ ld a,(de)
+ ld (hl),a
+ ld a,h
+ xor $60
+ ld h,a
+ jr 2f
+1:
+ inc de
+2:
+ inc de
+ inc l
+ EDUP
+ inc b
+ pop af
+ dec a
+ jp nz,compose_row
+ready:
+; Prepare during the preceding refresh, publish just after the next IRQ.
+ halt
+publish:
+ call stars_commit
+ ld bc,(oldxy)
+ call commit
+ ld bc,(newxy)
+ call commit
+ ld hl,(newxy)
+ ld (oldxy),hl
+ ret
+
+; Publish only final composed bytes: no separate screen erasure.
+commit:
+ ld a,12
+commit_row:
+ push af
+ call offset
+ ld a,h
+ or $a0
+ ld h,a
+ ld a,h
+ xor $e0
+ ld d,a
+ ld e,l
+ DUP 3
+ ld a,(de)
+ xor (hl)
+ jr z,1f
+ ld a,(hl)
+ ld (de),a
+1:
+ ld a,h
+ xor $60
+ ld h,a
+ ld a,d
+ xor $20
+ ld d,a
+ ld a,(de)
+ xor (hl)
+ jr z,2f
+ ld a,(hl)
+ ld (de),a
+2:
+ ld a,h
+ xor $60
+ ld h,a
+ ld a,d
+ xor $20
+ ld d,a
+ inc l
+ inc e
+ EDUP
+ inc b
+ pop af
+ dec a
+ jp nz,commit_row
+ ret
+
+isr:
+ ei
+ reti
+ INCLUDE "motion.asm"
+ INCLUDE "player.asm"
+ INCLUDE "camera.asm"
+ INCLUDE "stars.asm"
+sprites:
+ INCLUDE "../build/sprite-pointers.asm"
+end_code:
+ ASSERT end_code <= $a000
+ DS $a000-$,255

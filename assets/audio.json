@@ -1,0 +1,62 @@
+[
+  {
+    "name": "run-coward",
+    "count": 97,
+    "bytes": 1358,
+    "seconds": 1.6135874040372955,
+    "source": "run-coward-arcade.wav",
+    "source_sha256": "ade83dc0d354f1751ba06c885050e4c939b5da77ce5fb478d1317c2f6da5c9c7",
+    "source_seconds": 1.6010373030121683,
+    "codec": "speech2ay harmonic3 + conservative ayfit",
+    "optimizer": {
+      "baseline": {
+        "spectrum": 0.2791561186752828,
+        "waveform": 0.4857168694880718,
+        "periodicity": 0.05009715089003552,
+        "roughness": 0.10887988720421893
+      },
+      "retained": {
+        "spectrum": 0.26646282957489836,
+        "waveform": 0.4757231687144612,
+        "periodicity": 0.04661754303435717,
+        "roughness": 0.10077389100529693
+      },
+      "accepted_blocks": 3,
+      "candidate_evaluations": 23424,
+      "search_objective": "joint",
+      "acceptance_objective": "joint",
+      "passes": 4,
+      "search_mode": "conservative"
+    }
+  },
+  {
+    "name": "i-hunger",
+    "count": 62,
+    "bytes": 868,
+    "seconds": 1.0313651448485806,
+    "source": "i-hunger-arcade.wav",
+    "source_sha256": "744427c07776bb4419629d85ea096088bc4e1a62d21bbf1b0861d4247e90263f",
+    "source_seconds": 1.018751246758428,
+    "codec": "speech2ay harmonic3 + conservative ayfit",
+    "optimizer": {
+      "baseline": {
+        "spectrum": 0.3478499511766016,
+        "waveform": 0.5401920045240621,
+        "periodicity": 0.06730990416203664,
+        "roughness": 0.1778210593838895
+      },
+      "retained": {
+        "spectrum": 0.334055460493907,
+        "waveform": 0.5375789382125278,
+        "periodicity": 0.06417823531641408,
+        "roughness": 0.17297074640217844
+      },
+      "accepted_blocks": 1,
+      "candidate_evaluations": 15204,
+      "search_objective": "joint",
+      "acceptance_objective": "joint",
+      "passes": 4,
+      "search_mode": "conservative"
+    }
+  }
+]

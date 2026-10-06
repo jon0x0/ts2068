@@ -1,0 +1,17 @@
+{
+  "dck_sha256": "50ab05955433c7e3355f7a34069c8b7ca5f00450640b41b06cd4673240a971f5",
+  "stages": 20,
+  "phases": 160,
+  "composited": 160,
+  "culled": 28,
+  "atomicSwaps": 21,
+  "supersedingPiece": true,
+  "buildCallsPerStage": 52,
+  "pictureUpdatesPerStage": 26,
+  "maxBuildTstates": 52298,
+  "maxDecodeTstates": 378,
+  "maxDrawTstates": 30520,
+  "maxOverlapTstates": 13618,
+  "romWrites": 0,
+  "bankAndStackRestored": true
+}

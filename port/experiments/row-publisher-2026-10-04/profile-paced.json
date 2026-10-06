@@ -1,0 +1,21 @@
+{
+  "dck_sha256": "f858eca9fd49b934f6f4f3fe80cfb08dda9bf890595fdf77dc64f409310548e1",
+  "frames": 500,
+  "fast_frames": 59,
+  "refresh_intervals": {
+    "3": 17,
+    "4": 417,
+    "5": 62,
+    "6": 3
+  },
+  "tstates_per_picture": 240784.85571142283,
+  "pictures_per_second": 14.652084283192032,
+  "stages": {
+    "frame_start -> composition_start": 32339,
+    "mr_shift_ready -> mr_after_piece": 23442,
+    "mr_after_piece -> compile": 7941,
+    "compile -> ready": 109482,
+    "ready -> publish": 29852,
+    "publish -> publication_done": 8371
+  }
+}

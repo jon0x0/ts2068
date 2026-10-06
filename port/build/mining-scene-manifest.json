@@ -1,0 +1,291 @@
+{
+  "stage": "native playable scrolling-world milestone",
+  "dck_sha256": "50ab05955433c7e3355f7a34069c8b7ca5f00450640b41b06cd4673240a971f5",
+  "sprite_bytes": {
+    "0": 8192,
+    "1": 8189,
+    "2": 8189,
+    "3": 8192,
+    "5": 8186,
+    "6": 8191,
+    "7": 7231
+  },
+  "source_sha256": {
+    "SAM/SCANNER.SRC": "68df3606057044dcf69b337c0816f26409b2a58e80a568856b7efc81fda708ed",
+    "SAM/EXECJNK.SRC": "38fb2cdce83200b709a73ff1f533367e5e302fe0b3f1408936813eb5657715cb",
+    "SAM/IMAGE.SRC": "11e5b1384ccbc045716338121d1d77382616f0500aff93becd414a71160e0096",
+    "FALS/N1ALL.SRC": "46ca120eab01ba90795f04af4fcb78fd19ca3b79fe45d9be6f67bbe05c65de12",
+    "FALS/N1SYM.EQU": "07f2071b9030d042f55838d90b2d2afe650552ca9ac97dc7642640e2895deea3",
+    "WITT/WORKER.SRC": "acd67b8dbb062bbe1834795f93e1bf94153bca9f0e2286f23c5068760b1b4c20",
+    "WITT/COLLISIO.SRC": "1a398aca026fa69d3e85e3b5baeb6472f1009597fc75755b1cd1cce9dbffd406",
+    "SAM/ADDPIEC.SRC": "bfd1f1700c93c25eaf1506635e27a778500de71772ea77ada776378802de3b45",
+    "SAM/SAMTABLE.SRC": "776b7aa77762967a7ffae044759edc929ddee871fd7f0d52eabdaf60a84a539c",
+    "WITT/ANISINI.SRC": "a4660e6ccde3f32ada031709c55e4022c9db7e403e685ddfcfd4e17c58d262b5",
+    "WITT/CHASE.SRC": "3047bd1d0642dc6e9d05623514d7c1457768fe78727554a2ab2357c835f1dfa7",
+    "WITT/VELOCITY.SRC": "7a6c232f69257467b8a728ff0f02d0401c590248b8cf269b65585ded5d68d21b",
+    "WITT/SINIBOMB.SRC": "90d614074b04dd37c213105c7c69efda918c1c51dcce606e94830abf3fa1060c",
+    "WITT/STBLSBOM.SRC": "5d6410cf6d3ee7a94a7e352a73dcfaec92988969d90b3471393a1966b7138694",
+    "WITT/STBLSINI.SRC": "0d4cb5495806681ca69d9c3537de8d44b4c2a3469b9f36791f9276397e6a65c8",
+    "WITT/SINI.SRC": "ddca320d0c829cf76f957df503e4c4ccbfcef17733696283dfbd973d81fe5682",
+    "WITT/THINK.SRC": "4c9152d923f5f9f9f0b8452d0816634fd0253d2629c3bc3f73e9dc04bdc9d5c8",
+    "WITT/SUBPART.SRC": "ac6b481962659e13361718aea9e47973946f5725264034277ff18ddc2d7a03b9"
+  },
+  "incremental_rendering": {
+    "bank": 2,
+    "origin": 22574,
+    "bytes": 951,
+    "capacity": 1024,
+    "scratch": "HOME 7BA0-7BAB",
+    "stationary_face": "dirty spans and eye rows 12-25",
+    "restoration": "old rectangle minus new opaque face"
+  },
+  "compiled_planetoids": {
+    "rows": 209,
+    "bytes": 6190,
+    "mapping": 20
+  },
+  "speech_storage": {
+    "format": "lossless 7-byte register packing",
+    "raw_bytes": 6020,
+    "stored_bytes": 3010,
+    "world_code_bytes": 4742,
+    "world_code_capacity": 4750
+  },
+  "sfx": {
+    "source": "https://github.com/synamaxmusic/sinistar/blob/main/VSNDRM9.ASM",
+    "source_sha256": "082af72109451bf8f330026e5d7aa6e2446d2990a6f6e1e24f446d3cdebb9e14",
+    "method": "GWAVE table reconstruction, 894.886kHz loop timing, approximate boundary overhead, 0.20s assembly cue; speech2ay harmonic1",
+    "effects": [
+      {
+        "name": "shot",
+        "preset": "PFIREV",
+        "vector": [
+          17,
+          6,
+          6,
+          2,
+          32,
+          3,
+          66
+        ],
+        "frames": 20,
+        "bytes": 100,
+        "seconds": 0.3180952380952381,
+        "wav_sha256": "7e0b110b8c27177829e7cb42aa7b60b83c61cd408bdc2b9b79b8b676959dd1cd"
+      },
+      {
+        "name": "pickup",
+        "preset": "PCRYSV",
+        "vector": [
+          24,
+          17,
+          9,
+          0,
+          0,
+          20,
+          64
+        ],
+        "frames": 14,
+        "bytes": 70,
+        "seconds": 0.21873015873015872,
+        "wav_sha256": "7910ec600446b6aa69ffd72494c173c06e0bfd6cccef8d55e9a0b4019a2f5931"
+      },
+      {
+        "name": "assembly",
+        "preset": "CLANGV",
+        "vector": [
+          104,
+          32,
+          0,
+          2,
+          38,
+          3,
+          4
+        ],
+        "frames": 13,
+        "bytes": 65,
+        "seconds": 0.2,
+        "wav_sha256": "43045b524b2d3f7d00e7552799716a9c0208adc4569e9c4f0b0c595db586b953"
+      },
+      {
+        "name": "bomb-launch",
+        "preset": "BBSV",
+        "vector": [
+          116,
+          18,
+          9,
+          0,
+          0,
+          10,
+          56
+        ],
+        "frames": 74,
+        "bytes": 370,
+        "seconds": 1.2228571428571429,
+        "wav_sha256": "bb83dba7420f1cdfb9a080851d8913abd680b73e017ea3efdb170933834e56d8"
+      }
+    ]
+  },
+  "voices": {
+    "beware-i-live": {
+      "frames": 125,
+      "bytes": 1750,
+      "source": "https://seanriddle.com/bewareil.wav",
+      "sha256": "32133d4425fc7d45908724a85533f0e64f8246d7ea1909b084422787cef01767",
+      "seconds": 2.0793652113882675,
+      "source_seconds": 2.070416916018352
+    },
+    "i-am-sinistar": {
+      "frames": 135,
+      "bytes": 1890,
+      "source": "https://seanriddle.com/iamsinis.wav",
+      "sha256": "325cbf6b350425e241ed8f1474e227c1c084c968d9a27da537bafcf64cd8d505",
+      "seconds": 2.245714428299329,
+      "source_seconds": 2.2427688011170956
+    },
+    "sinistar-roar": {
+      "frames": 170,
+      "bytes": 2380,
+      "source": "https://seanriddle.com/aargh.wav",
+      "sha256": "098bb5b551775f64b2aa1d383bc30cd7ade969bed79cff36f79466992f2675c4",
+      "seconds": 2.8279366874880436,
+      "source_seconds": 2.8188709355675243
+    }
+  },
+  "speech": {
+    "frames": 125,
+    "bytes": 1750,
+    "source": "https://seanriddle.com/bewareil.wav",
+    "sha256": "32133d4425fc7d45908724a85533f0e64f8246d7ea1909b084422787cef01767",
+    "seconds": 2.0793652113882675,
+    "source_seconds": 2.070416916018352
+  },
+  "face_atlas": {
+    "poses": 30,
+    "shared_padded_rows": 532,
+    "banks": [
+      0,
+      1,
+      7
+    ],
+    "runtime_shift": "opening-mouth camera phases only; assembly uses RAM phase caches"
+  },
+  "fast_transitions": {
+    "rows": 532,
+    "pairs": 252,
+    "streams": 93,
+    "kernels": 91,
+    "budget_bytes_min": 275,
+    "budget_bytes_max": 4949,
+    "source_banks": [
+      0,
+      1,
+      7
+    ],
+    "bytes": 21247,
+    "horizontal_template_bytes": 0,
+    "boot_cache_windows": [
+      [
+        40960,
+        1680,
+        0,
+        0
+      ],
+      [
+        49920,
+        1260,
+        1680,
+        0
+      ],
+      [
+        22784,
+        420,
+        2940,
+        0
+      ]
+    ]
+  },
+  "packed_publication": {
+    "record_bytes": 4,
+    "direction": "descending stack build, top-down publication",
+    "changed_only": true
+  },
+  "retained_planetoids": {
+    "projection_bytes": 9,
+    "previous": "HOME 5B00-5B98",
+    "flags": "HOME 5BA0-5BB0",
+    "repair": "dirty rows of unchanged fully visible rocks"
+  },
+  "home_render_helpers": {
+    "address": 42640,
+    "bytes": 363,
+    "capacity": 368,
+    "boot_source": 32405,
+    "boot_tail_free": 87,
+    "flags": "HOME 5BCA-5BCE",
+    "covered_player_default": false,
+    "covered_stars_default": true
+  },
+  "ship_storage": "cell count, occupancy mask, common-triple indices with literal escapes; HOME c000 dictionary and 7c00 cache",
+  "world": {
+    "size": [
+      512,
+      512
+    ],
+    "viewport": [
+      256,
+      112
+    ],
+    "camera": "adapted dead zone",
+    "stars": 10,
+    "planetoids": 18,
+    "types": [
+      10,
+      2,
+      2,
+      2,
+      2
+    ],
+    "planetoid_art": "shared IPLAN1",
+    "radar": [
+      64,
+      16
+    ],
+    "radar_scale": [
+      8,
+      32
+    ],
+    "secondary_motion_groups": 4,
+    "radar_refresh_ticks": 24,
+    "hidden_sprite_staging": false
+  },
+  "assembly_cache": {
+    "sets": 2,
+    "phases": 8,
+    "ram": "HOME 8000-9FFF",
+    "bytes_per_set": 4096,
+    "bitmap_bytes": 2856,
+    "bitmap_phase_bytes": 357,
+    "transparent_row_zero_omitted": true,
+    "overlap_rows_offset": 2856,
+    "mask_indices_offset": 2912,
+    "mask_patterns_offset": 3276,
+    "mask_pattern_capacity": 100,
+    "mask_count_offset": 4095,
+    "state": "HOME 5BD0-5C23",
+    "normalized_colors": "HOME DE00-DF6B",
+    "selected_mask_lookup": "HOME BF00-BF63, retained until phase/stage change or bank-6 staging",
+    "row_mask_scratch": "HOME BF80-BF86",
+    "home_helpers": "HOME DF70-DFFE",
+    "dirty_rows": "HOME BE00-BE33 and BE40-BE73",
+    "code_bank": 3,
+    "code_bytes": 1632,
+    "code_capacity": 1792,
+    "rows_per_build_call": 1,
+    "calls_per_picture": 2,
+    "pictures_per_stage": 26,
+    "rows_per_draw_call": 13,
+    "composition": "dirty-cell intersection only; masked on object overlap, direct elsewhere",
+    "culling": "object bounds fully inside opaque assembly mask"
+  }
+}

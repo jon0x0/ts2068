@@ -1,0 +1,7 @@
+REJECTED EXPERIMENT — NOT THE PLAYABLE BUILD
+
+The cached conditional row-publisher experiments did not resolve active Sinistar choppiness. The two-group attempt was slower (9.74 pictures/sec in the controlled moving-face workload) and its initial staging allocation conflicted with the face program. A staging relocation was attempted but this candidate has not completed validation. Do not use or publish it.
+
+The restored playable-fast-v1 build measures 14.756 pictures/sec: 465 of 499 measured intervals were four refreshes, 31 were five, and 3 were six. This is still visibly choppy. Next renderer work needs a substantial reduction in total native composition/publication cost; changing the movement speed or reporting only an average does not solve the problem.
+
+profile_mining.mjs now reports refresh-interval histograms for an apples-to-apples comparison against the saved build. The workload deliberately relocates the face after physics; use normal gameplay captures as an additional check before claiming smoothness.

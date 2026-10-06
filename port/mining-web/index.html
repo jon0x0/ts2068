@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Sinistar TS2068 — playable prototype</title><style>body{max-width:1000px;margin:28px auto;padding:0 24px;background:#080d19;color:#e4e9f3;font:17px/1.5 system-ui}h1{font-size:30px;margin:6px 0}iframe{width:100%;height:min(60vw,530px);border:1px solid #28354a;background:black}a{color:#8addf2}button{padding:8px 15px;margin-right:8px;background:#233852;color:white;border:1px solid #536880;border-radius:5px;font:inherit}.tag{font-size:13px;color:#8addf2;letter-spacing:2px}#stats{font-variant-numeric:tabular-nums;color:#8addf2}p{max-width:900px}details{margin:20px 0;color:#b7c4d8}</style></head><body>
+<div class="tag">NATIVE TS2068 CARTRIDGE · PLAYABLE PROTOTYPE</div>
+<h1>Mine crystals. Destroy Sinistar.</h1>
+<p>Press <strong>Space or joystick fire</strong> at the native arcade-logo title screen to begin. You have <strong>three lives and three Sinibombs</strong>. Shoot planetoids and collect their crystals: each gives three bombs, up to 24. Workers build Sinistar from twenty pieces. When he awakens with <strong>“Beware! I Live!”</strong>, dodge his pursuit and land thirteen Sinibombs to win. Bomb hits now slow and briefly stun him using the arcade rules.</p>
+<iframe id="emulator" src="emulator/?build=50ab0595" title="Playable native TS2068 cartridge"></iframe>
+<p id="stats" role="status">Booting cartridge…</p>
+<button id="restart">New game</button><button id="sound">Enable sound / focus game</button>
+<p><strong>Q/A/O/P</strong> move · <strong>Space</strong> shoots · <strong>B</strong> launches Sinibombs · <strong>R</strong> restarts · <strong>F</strong> toggles fast chase mode (off initially). Joystick 1 supports directions and regular fire. Release directions to coast. Hold fire for repeated shots or B for successive bombs.</p>
+<p>Explore the scrolling world and mine its <strong>18 persistent planetoids</strong>. Objects move offscreen and remain in the world; shattered rocks replenish away from you. Ten stars scroll with the camera.</p>
+
+<p><strong>Top radar:</strong> white is you, cyan is planetoids, red is the worker, and yellow is Sinistar. Blue corners show the current viewport. The player stays centered on radar.</p>
+
+<p>This is a functional world milestone. Precomputed assembly masks improve the controlled scrolling-overlap fixture from <strong>8.62 to 9.81 fps</strong>. Stationary assembly remains around 19 fps; busy scrolling scenes remain slower.</p>
+
+<p><strong>Precomputed masks:</strong> all eight horizontal mask phases build in the back cache. The selected lookup is reused and assembly composition touches only dirty cells. Transparent gaps and fully covered-object culling remain enabled. New pieces appear after cache preparation completes.</p><p><strong>F: fast mode.</strong> At most two visible planetoids, with mining supply retained before awakening. Natural fast assembly measures 8.48 fps and fast pursuit 15.04 fps. <a href="../ASSEMBLY_CACHE.md">Current performance and tests</a>. <a href="../README.md">Original-source gameplay audit and remaining features</a>.</p>
+<details><summary>Implementation and remaining adaptations</summary><p>World coordinates, camera, clipping, mining, assembly, homing bombs, speech, and effects run in the Z80 cartridge. The scanner covers the full 512 by 512 world, including offscreen planetoids. Drawing publishes only changed final bitmap and attribute bytes. Precomputed Sinistar movement remains available when old and new object bounds permit it.</p><p>The first-wave population follows the source count: ten type-1 planetoids and two each of types 2â€“5. These currently share one pre-shifted planetoid image and initial mass. Starting positions and replenishment are simplified. Secondary planetoids integrate in four groups, preserving average scaled velocity. One worker, one free crystal, one bullet and one Sinibomb are active at a time. Multiple workers, warriors, full arcade AI, wave progression and separate planetoid artwork remain pending. The camera uses a dead zone adapted to the smaller display. The source uses ten stars with a common camera displacement; randomized edge-star replacement is pending.</p><p>Sinistar speech always takes priority over shooting effects. Complete archived recordings are resynthesized through AY speech2ay streams. The original saved demos remain available separately. See SCROLLING.md in the saved revision for tests and limitations.</p></details>
+
+<p><a href="../build/sinistar-mining.dck">Download playable cartridge</a> · <a href="/port/pursuit-web/">Preserved pursuit demo</a></p>
+<script>
+const f=document.getElementById('emulator');
+document.getElementById('restart').onclick=()=>f.contentWindow.audioLab?.reset();
+document.getElementById('sound').onclick=()=>f.contentWindow.audioLab?.start();
+const gameKeys=new Set(['KeyQ','KeyA','KeyO','KeyP','KeyB','KeyR','KeyF','Space']);
+for(const type of ['keydown','keyup'])window.addEventListener(type,event=>{
+ if(event.ctrlKey||event.altKey||event.metaKey||!gameKeys.has(event.code))return;
+ event.preventDefault();
+ const input=f.contentWindow.audioLab;
+ if(input)input[type==='keydown'?'keyDown':'keyUp'](event);
+});
+window.addEventListener('message',e=>{
+ if(e.origin!==location.origin||e.source!==f.contentWindow)return;
+ if(e.data.type==='mining-state'){
+  const s=e.data.message;
+  const fastLabel=s.fastEnabled?(s.fastActive&&s.awakeDone?' · FAST CHASE (2 rocks max)':' · FAST MODE (2 rocks max)'):' · Fast mode off';
+  const phase=!s.lives&&!s.status?'SINISTAR - press Space or joystick fire':s.status===1?'VICTORY — release fire, then fire to play again':s.status===2?'GAME OVER — release fire, then fire to retry':s.awakeDone?'Sinistar is hunting':s.built?'Beware! I Live!':'Mine and collect crystals';
+  document.getElementById('stats').textContent=phase+fastLabel+' · Lives '+s.lives+(s.protected?' (protected)':'')+' · Bombs '+s.collected+'/24 · Crystals '+s.crystals+' · Sinistar hits '+s.bombHits+'/13 · Assembly '+s.assembly+'/20 · Rock '+(s.alive?'intact':'regenerating');
+ }
+ if(e.data.type==='audio-lab-error')document.getElementById('stats').textContent=e.data.message;
+});
+</script></body></html>

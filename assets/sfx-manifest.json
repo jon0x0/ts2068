@@ -1,0 +1,75 @@
+{
+  "source": "https://github.com/synamaxmusic/sinistar/blob/main/VSNDRM9.ASM",
+  "source_sha256": "082af72109451bf8f330026e5d7aa6e2446d2990a6f6e1e24f446d3cdebb9e14",
+  "method": "GWAVE table reconstruction, 894.886kHz loop timing, approximate boundary overhead, 0.20s assembly cue; speech2ay harmonic1",
+  "effects": [
+    {
+      "name": "shot",
+      "preset": "PFIREV",
+      "vector": [
+        17,
+        6,
+        6,
+        2,
+        32,
+        3,
+        66
+      ],
+      "frames": 20,
+      "bytes": 100,
+      "seconds": 0.3180952380952381,
+      "wav_sha256": "7e0b110b8c27177829e7cb42aa7b60b83c61cd408bdc2b9b79b8b676959dd1cd"
+    },
+    {
+      "name": "pickup",
+      "preset": "PCRYSV",
+      "vector": [
+        24,
+        17,
+        9,
+        0,
+        0,
+        20,
+        64
+      ],
+      "frames": 14,
+      "bytes": 70,
+      "seconds": 0.21873015873015872,
+      "wav_sha256": "7910ec600446b6aa69ffd72494c173c06e0bfd6cccef8d55e9a0b4019a2f5931"
+    },
+    {
+      "name": "assembly",
+      "preset": "CLANGV",
+      "vector": [
+        104,
+        32,
+        0,
+        2,
+        38,
+        3,
+        4
+      ],
+      "frames": 13,
+      "bytes": 65,
+      "seconds": 0.2,
+      "wav_sha256": "43045b524b2d3f7d00e7552799716a9c0208adc4569e9c4f0b0c595db586b953"
+    },
+    {
+      "name": "bomb-launch",
+      "preset": "BBSV",
+      "vector": [
+        116,
+        18,
+        9,
+        0,
+        0,
+        10,
+        56
+      ],
+      "frames": 74,
+      "bytes": 370,
+      "seconds": 1.2228571428571429,
+      "wav_sha256": "bb83dba7420f1cdfb9a080851d8913abd680b73e017ea3efdb170933834e56d8"
+    }
+  ]
+}

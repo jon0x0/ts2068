@@ -1,0 +1,27 @@
+<!doctype html>
+
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Sinistar TS2068 · pursuit experiment</title>
+
+<style>body{margin:32px auto;padding:0 24px;max-width:1000px;background:#080d19;color:#e4e9f3;font:17px/1.5 system-ui}h1{font-size:30px;margin-bottom:8px}p{max-width:850px}iframe{width:100%;height:min(65vw,600px);border:1px solid #28354a;background:#000}a{color:#8addf2}button{background:#233852;color:white;border:1px solid #536880;border-radius:6px;padding:8px 18px;font:inherit}.tag{color:#8addf2;font-size:13px;letter-spacing:2px}#status{font-size:14px;color:#adc1d5}</style></head>
+
+<body><div class="tag">ORIGINAL SOURCE PORT · MILESTONE 05 · PLAYER INPUT</div><h1>Sinistar pursues the player</h1>
+
+<p>Sinistar now follows the player using translated pursuit arithmetic. Its original 49×52 image moves through the scrolling scene, with the player drawn in front when they overlap. A scheduled one-second stun begins about 8.5 seconds into motion and repeats roughly every 17 seconds. Sinistar pauses, then resumes pursuit while the stars and player keep moving.</p>
+
+<iframe id="emulator" src="emulator/?renderer=03d0cda7" title="Native TS2068 flight cartridge"></iframe>
+
+<p id="status" role="status">Booting the cartridge…</p>
+
+<p><strong>Click the display to play:</strong> Q/A/O/P = up/down/left/right, or use joystick 1 / a gamepad. Release to coast. D resumes the demo. Fire and Sinibomb launch are not connected yet.</p>
+<button id="reset">Restart pursuit</button><p><a href="../web/">Return to the verified 60 Hz flight scene</a></p>
+
+<p><a href="../build/sinistar-pursuit.dck">Download cartridge</a> · <a href="../../revisions/v3-60hz/WATCH.html">Saved Sinistar speech demo</a></p>
+
+<p>This is a pursuit and renderer test, not gameplay. Mouth and speech are inactive. The stun and conditional stop logic is ported; collisions, orbiting, death animation, and the original scheduler remain to be ported.</p>
+
+<p>Motion follows the 60 Hz clock, but the optimized compositor displays about 30 frames/second across this scripted sequence; native Fuse measures about 23. Wide redraws occasionally use a slower path. The final screen writes pass TSRun’s raster checks without detected flicker. The relocated face-drawing path uses 12.3% fewer cycles on average in isolated tests; overlapping pursuit still uses the general compositor. Hardware testing is pending.</p>
+
+<script>const frame=document.getElementById('emulator');document.getElementById('reset').onclick=()=>frame.contentWindow.audioLab?.reset();window.addEventListener('message',e=>{if(e.origin!==location.origin||e.source!==frame.contentWindow)return;if(e.data.type==='audio-lab-ready')document.getElementById('status').textContent='Running - pursuit experiment - QAOP or joystick to take control; D for demo - silent';if(e.data.type==='audio-lab-error')document.getElementById('status').textContent=e.data.message;});</script></body></html>
+

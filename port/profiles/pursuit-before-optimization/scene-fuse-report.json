@@ -1,0 +1,21 @@
+{
+  "dck_sha256": "ea8064fc45310c55eaf33e801b3feaf80cca64feaa001958b6d5dfc4fa44048e",
+  "checkpoints": [
+    {
+      "idle_entries": 1,
+      "pc": 32973,
+      "sp": 32767,
+      "video_frame": 152,
+      "tstates": 6626
+    },
+    {
+      "idle_entries": 128,
+      "pc": 32973,
+      "sp": 32767,
+      "video_frame": 1345,
+      "tstates": 7726
+    }
+  ],
+  "elapsed_refreshes": 1193,
+  "completed_intervals": 127
+}
