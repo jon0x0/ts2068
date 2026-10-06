@@ -1,4 +1,5 @@
  DEFINE PLAYABLE_GAME
+ DEFINE SCENE_FASTMATH 1
  ORG $8000
  DB $02,$02,$08,$80,$ef,$01,0,0
 angle EQU $7828
@@ -142,21 +143,8 @@ manual_target:
  ld (angle),a
  call player_sincos
  ld ($78e8),de
- ld a,(control_power)
- or a
- jr z,move_player
- ld a,d
- call signed_word
- add hl,hl
- ld (pvx),hl
- ld a,e
- call signed_word
- add hl,hl
- ex de,hl
- ld hl,0
- or a
- sbc hl,de
- ld (pvy),hl
+ ld hl,world_extension+99
+ call world_call
 move_player:
  call world_move_player
  call world_step
@@ -335,7 +323,7 @@ vibration_damp:
  ld (rock_alive),a
  ld a,1
  ld (shattered),a
- ret
+ jp sfx_explosion
 crystal_step:
  ld a,(game_mode)
  or a

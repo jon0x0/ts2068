@@ -68,7 +68,7 @@
  ld ($5bcb),a ; Background stars are occluded; player remains visible.
  ld hl,$5bd0
  ld de,$5bd1
- ld bc,83
+ ld bc,111
  ld (hl),0
  ldir
  ld a,$80

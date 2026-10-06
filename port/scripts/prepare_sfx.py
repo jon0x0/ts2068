@@ -62,3 +62,7 @@ for name,label in [('shot','PFIREV'),('pickup','PCRYSV'),('assembly','CLANGV'),(
  packed=rows[:,[0,1,6,7,8]].tobytes();target.with_suffix('.packed').write_bytes(packed)
  item=dict(name=name,preset=label,vector=vector,frames=count,bytes=len(packed),seconds=len(pcm)/rate,wav_sha256=hashlib.sha256(target.read_bytes()).hexdigest());report.append(item);print(item)
 (ROOT/'assets/sfx-manifest.json').write_text(json.dumps(dict(source='https://github.com/synamaxmusic/sinistar/blob/main/VSNDRM9.ASM',source_sha256=hashlib.sha256(src.encode()).hexdigest(),method='GWAVE table reconstruction, 894.886kHz loop timing, approximate boundary overhead, 0.20s assembly cue; speech2ay harmonic1',effects=report),indent=2)+'\n')
+
+# The playable format is packed by the explosion converter, preserving these AY frames.
+import subprocess
+subprocess.run([sys.executable,str(Path(__file__).with_name("prepare_explosion_sfx.py"))],check=True)

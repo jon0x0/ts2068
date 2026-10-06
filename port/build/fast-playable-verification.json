@@ -1,0 +1,10 @@
+{
+  "attributeFlashes": 7,
+  "dck_sha256": "524e906a1805b55789a0430daab31c33464e51af55208f1a34c12d8ff3635063",
+  "earned_ammo": 24,
+  "win": true,
+  "restart": true,
+  "contact_damage": true,
+  "respawn_protection": true,
+  "loss": true
+}

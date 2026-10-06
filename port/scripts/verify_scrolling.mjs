@@ -5,6 +5,11 @@ const api=await import(pathToFileURL(path.join(up,'machine.js')));
 const build='build';
 const sym=Object.fromEntries([...fs.readFileSync(path.join(root,build,'mining-symbols.txt'),'utf8').matchAll(/^(\w+): EQU 0x([0-9A-F]+)/gm)].map(x=>[x[1],parseInt(x[2],16)]));
 const cart=fs.readFileSync(path.join(root,build,'sinistar-mining.dck')),assets=JSON.parse(fs.readFileSync(path.join(root,build,'mining-assets.json')));
+for(let frame=0;frame<4;frame++)for(let phase=0;phase<8;phase++){
+ const raw=Array.from({length:36},()=>[255,0,0x46]).flat(),r=frame+2;
+ for(const [dx,dy] of [[-r,-r],[0,-r],[r,-r],[-r,0],[r,0],[-r,r],[0,r],[r,r]]){const x=6+dx+phase,y=6+dy,i=(y*3+(x>>3))*3,bit=128>>(x&7);raw[i]&=~bit;raw[i+1]|=bit;}
+ assets.push({kind:'explosion',index:frame*8+phase,data:raw});
+}
 const fastTest=process.argv.includes('--fast');let priorFast=false,restorationPicture=false;
 const coverTest=process.argv.includes('--cover');let chaseInitialized=false,coveredFastPictures=0;
 const keys=new Uint8Array(8).fill(31),m=api.createMachine(keys,new Uint8Array(2).fill(255));
@@ -40,7 +45,7 @@ function compose(){
  }
  let p=xy('rock_x','rock_y',0);if(get('rock_alive'))sprite('rock',p[0]&7,...p,5,28);
  for(const a of records)if(m.ram[a+7]){const x=relative(word(a)-word(0x5884)),y=relative(word(a+2)-word(0x5886));sprite('rock',x&7,x,y,5,28);}
- p=xy('worker_x','worker_y',8);if(get('worker_alive'))sprite('worker',p[0]&7,...p,3,12);
+ p=xy('worker_x','worker_y',8);if(get('worker_alive'))sprite(get('worker_alive')===2?'explosion':'worker',(p[0]&7)+(get('worker_alive')===2?((32-m.ram[0x5c27])>>3)*8:0),...p,3,12);
  p=pos('cx','cy',2);if(get('crystal_alive'))sprite('crystal',p[0]&7,...p,2,4);
  p=pos('bx','by',4);if(get('bullet_alive'))sprite('bullet',p[0]&7,...p,2,2);
  p=pos('px','py',6);if(m.ram[sym.rects+14])sprite('ship',((get('angle')+4)&248)|(p[0]&7),...p,3,12);
@@ -56,11 +61,11 @@ function radarModel(){
  const px=m.ram[sym.px+1]+256*m.ram[0x7c96],py=m.ram[sym.py+1]+256*m.ram[0x7c97];
  const position=(x,y)=>[((wrap(x-px)>>3)+32)&63,((wrap(y-py)>>5)+8)&15];
  const dot=(x,y,color,shape)=>{let at=(y&15)*8+((x>>3)&7);if(![7,1,color].includes(attrs[at])&&color!==0x47)at=(at+8)&127;attrs[at]=color;pixels[at]|=shape>>(x&7);};
- const [x,y]=position(word(0x5884),word(0x5886)+64);for(const [dx,dy] of [[0,0],[31,0],[0,3],[31,3]])dot(x+dx,y+dy,1,0xe0);
+ const [x,y]=position(word(0x5884),word(0x5886)+64);dot(x,y,1,0xe0);for(let dx=0;dx<32;dx++)for(const dy of [0,3])dot(x+dx,y+dy,1,0x80);for(const dx of [0,31])for(const dy of [1,2])dot(x+dx,y+dy,1,0x80);
  const mark=(x,y,c,s)=>dot(...position(x,y),c,s);
  if(get('rock_alive'))mark(get('rock_x')+256*m.ram[0x586e],get('rock_y')+256*m.ram[0x586f],5,0xc0);
  for(const a of records)if(m.ram[a+7])mark(word(a),word(a+2),5,0xc0);
- if(get('worker_alive'))mark(get('worker_x')+256*m.ram[0x7c98],get('worker_y')+256*m.ram[0x7c99],2,0x80);
+ if(get('worker_alive')===1)mark(get('worker_x')+256*m.ram[0x7c98],get('worker_y')+256*m.ram[0x7c99],2,0x80);
  if(get('assembly_count')&&get('bs_hits')<13)mark(m.ram[sym.face_x+1]+256*m.ram[0x7c9a],m.ram[sym.face_y+1]+256*m.ram[0x7c9b],0x46,0xe0);
  dot(32,8,0x47,0xe0);return {pixels,attrs};
 }
@@ -86,6 +91,7 @@ if(assemblyTest){
  // A newer delivery interrupts preparation. It must never publish the half-built set.
  for(const [stage,count] of [[4,7],[11,7],[18,40]])for(let n=0;n<count;n++)cases.push({cam:0,x:97,y:90,assembly:stage,cacheFixture:true,shipOffset:8,rockOffset:20});
 }
+for(let phase=0;phase<8;phase++)for(const explosionTicks of [32,24,16,8])for(const explosionX of [-7,104,251])cases.push({cam:0,x:96+phase,y:88,assembly:10,cacheFixture:true,explosionTicks,explosionX:explosionX+phase});
 const rd=m.bus.read;m.bus.read=a=>{if(a===m.cpu.pc){
  if(a===sym.fast_select&&m.ram[0x580f])retries++;
  if(coverTest&&a===sym.frame_start)m.ram[0x5bcb]=3;
@@ -103,6 +109,7 @@ const rd=m.bus.read;m.bus.read=a=>{if(a===m.cpu.pc){
   const fixed=(name,axis,n)=>{put(sym[name],(wrap(n)&255)*256);m.ram[0x7c90+axis]=wrap(n)>>8;};
   fixed('px',6,cam+(shipOffset===undefined?100:x+shipOffset));fixed('py',7,wrap(cam+31)+110);fixed('face_x',10,cam+x);fixed('face_y',11,wrap(cam+31)+y);
   set('assembly_count',Math.min(20,assembly));set('sinistar_built',Number(assembly>=20));set('awake_done',Number(assembly===20));set('awake_mouth',Number(assembly===21));set('eye_phase',eye);set('bs_hits',0);set('worker_alive',0);set('crystal_alive',0);set('bullet_alive',0);set('bs_active',0);
+  if(cases[caseIndex].explosionTicks){actor('worker_x',8,cam+cases[caseIndex].explosionX);actor('worker_y',9,wrap(cam+31)+100);set('worker_alive',2);m.ram[0x5c27]=cases[caseIndex].explosionTicks;}
   if(cases[caseIndex].retainedPhase!==undefined){
    const {retainedPhase:p,retainedStep:n}=cases[caseIndex];
    records.forEach((at,i)=>{put(at,i<3?[56+p,103+p,-7+p][i]&511:350);put(at+2,i<3?[125,140,172][i]:350);m.ram[at+7]=(n===7&&i===1)?0:96;});

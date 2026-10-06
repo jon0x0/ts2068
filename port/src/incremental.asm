@@ -258,7 +258,6 @@ ib_write:
  out ($fe),a
  ret
 
- INCLUDE "../build/effects-origin.asm"
 inc_flash:
  ld hl,effects_origin
 inc_effect_call:

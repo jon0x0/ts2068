@@ -132,10 +132,10 @@ The dedicated native border test covers expiry, colors, bank/stack restoration, 
 
 # Current v6 additions
 
-- HOME 5B00–5B98: previous nine-byte projections for 17 secondary planetoids. 5BA0–5BB0: changed flags. Used only with HOME2 visible by world/render dispatch; compiled rock code receives its flag in 78E4 before DOCK2 is mapped.
-- HOME 7BB0/2/4: saved compiler SP, packed-list start, saved publisher SP. 7BBC–7BBE: RAM jump thunk for fixed-width comparisons. 7BC0–7BC7: compiler row/span state. 7BD0/1: pending left span for direct-face exclusion.
-- HOME 7BE0–7BE2: width-selected clear-kernel jump. 7BE3–7BE5: normal/dirty-row planetoid jump. IM2 trampoline 7B7B is unaffected.
-- HOME E000–FFFD: descending four-byte publication records (flags, value, destination low/high), initially SP=FFFE. Compiler and publisher restore the ordinary stack; IRQs use free/consumed record space. The regression trace peaks at 2,600 record bytes and asserts at least 512 bytes of lower headroom. 78F0 now encodes E000 + seven timing-budget units per record, not an executable code end pointer.
+- HOME 5B00Ã¢â‚¬â€œ5B98: previous nine-byte projections for 17 secondary planetoids. 5BA0Ã¢â‚¬â€œ5BB0: changed flags. Used only with HOME2 visible by world/render dispatch; compiled rock code receives its flag in 78E4 before DOCK2 is mapped.
+- HOME 7BB0/2/4: saved compiler SP, packed-list start, saved publisher SP. 7BBCÃ¢â‚¬â€œ7BBE: RAM jump thunk for fixed-width comparisons. 7BC0Ã¢â‚¬â€œ7BC7: compiler row/span state. 7BD0/1: pending left span for direct-face exclusion.
+- HOME 7BE0Ã¢â‚¬â€œ7BE2: width-selected clear-kernel jump. 7BE3Ã¢â‚¬â€œ7BE5: normal/dirty-row planetoid jump. IM2 trampoline 7B7B is unaffected.
+- HOME E000Ã¢â‚¬â€œFFFD: descending four-byte publication records (flags, value, destination low/high), initially SP=FFFE. Compiler and publisher restore the ordinary stack; IRQs use free/consumed record space. The regression trace peaks at 2,600 record bytes and asserts at least 512 bytes of lower headroom. 78F0 now encodes E000 + seven timing-budget units per record, not an executable code end pointer.
 - The legacy boot template fill is harmless but no longer used for publication. The failed gap-tracking experiments are absent from this cartridge.
 - DOCK2 also holds the 16-byte compiled-rock phase pointer table. No cartridge chunk is written at runtime.
 
@@ -161,35 +161,35 @@ No original 6809 code is executed; reviewed routines are translated to Z80.
 
 
 
-| 0 | 0000–1FFF | absent | HOME ROM; untouched |
+| 0 | 0000Ã¢â‚¬â€œ1FFF | absent | HOME ROM; untouched |
 
 
 
-| 1 | 2000–3FFF | absent | HOME ROM; untouched |
+| 1 | 2000Ã¢â‚¬â€œ3FFF | absent | HOME ROM; untouched |
 
 
 
-| 2 | 4000–5FFF | absent | HOME RAM bitmap |
+| 2 | 4000Ã¢â‚¬â€œ5FFF | absent | HOME RAM bitmap |
 
 
 
-| 3 | 6000–7FFF | absent | HOME ECM attributes; state 7800–781F; IM2 7A00–7B00, trampoline 7B7B; stack below 7FFF |
+| 3 | 6000Ã¢â‚¬â€œ7FFF | absent | HOME ECM attributes; state 7800Ã¢â‚¬â€œ781F; IM2 7A00Ã¢â‚¬â€œ7B00, trampoline 7B7B; stack below 7FFF |
 
 
 
-| 4 | 8000–9FFF | resident header/code/tables, read-only | DOCK throughout execution |
+| 4 | 8000Ã¢â‚¬â€œ9FFF | resident header/code/tables, read-only | DOCK throughout execution |
 
 
 
-| 5 | A000–BFFF | absent | HOME RAM, reserved for future object storage |
+| 5 | A000Ã¢â‚¬â€œBFFF | absent | HOME RAM, reserved for future object storage |
 
 
 
-| 6 | C000–DFFF | absent | HOME RAM, reserved |
+| 6 | C000Ã¢â‚¬â€œDFFF | absent | HOME RAM, reserved |
 
 
 
-| 7 | E000–FFFF | absent | HOME RAM, reserved |
+| 7 | E000Ã¢â‚¬â€œFFFF | absent | HOME RAM, reserved |
 
 
 
@@ -241,11 +241,11 @@ and never accesses a mapped data chunk. Software mapping shadow is $7804.
 
 
 
-HOME5 $A000–B7FF = composed bitmap; HOME6 $C000–D7FF = composed attributes;
+HOME5 $A000Ã¢â‚¬â€œB7FF = composed bitmap; HOME6 $C000Ã¢â‚¬â€œD7FF = composed attributes;
 
 
 
-HOME7 $E000–F7FF = static star bitmap. All three use display scanline layout.
+HOME7 $E000Ã¢â‚¬â€œF7FF = static star bitmap. All three use display scanline layout.
 
 
 
@@ -257,7 +257,7 @@ is committed. No visible erase pass. Only nonzero XOR differences are written.
 
 
 
-State $7820–783F holds position/velocity/angle, old and new rectangle, frame
+State $7820Ã¢â‚¬â€œ783F holds position/velocity/angle, old and new rectangle, frame
 
 
 
@@ -289,11 +289,11 @@ camera bytes are $7886/$7887; current deltas $7888/$7889. Ten five-byte star
 
 
 
-records (x,y,bitmap offset16,mask) occupy $7D00–7D31. Twenty dirty bitmap
+records (x,y,bitmap offset16,mask) occupy $7D00Ã¢â‚¬â€œ7D31. Twenty dirty bitmap
 
 
 
-addresses occupy $7D80–7DA7. HOME7 bitmap becomes dynamic background.
+addresses occupy $7D80Ã¢â‚¬â€œ7DA7. HOME7 bitmap becomes dynamic background.
 
 
 
@@ -317,7 +317,7 @@ Player phase data uses remaining ROM space in DOCK0/1/2/5/6/7; this build has no
 
 DOCK3 player spill. DOCK3 stores compressed relative transition data, copied at
 
-startup into HOME $E000–EAFF, $B940–BFFF, and $D800–DFFF. These caches do not
+startup into HOME $E000Ã¢â‚¬â€œEAFF, $B940Ã¢â‚¬â€œBFFF, and $D800Ã¢â‚¬â€œDFFF. These caches do not
 
 overlap the shadows, old stars, player staging, or generated publication lists.
 
@@ -327,15 +327,15 @@ called through the same HOME stub as the phase blitters.
 
 
 
-HOME $A000–B7FF and $C000–D7FF hold final bitmap/attribute planes.
+HOME $A000Ã¢â‚¬â€œB7FF and $C000Ã¢â‚¬â€œD7FF hold final bitmap/attribute planes.
 
 Player sprites stage at $B800; DOCK5 sources first pass through $7C00.
 
-The previous ten star records are copied to $B900–B931 before updating $7E00–7E31.
+The previous ten star records are copied to $B900Ã¢â‚¬â€œB931 before updating $7E00Ã¢â‚¬â€œ7E31.
 
 
 
-HOME $EB00–EFFF holds threaded publication records: handler word, display address,
+HOME $EB00Ã¢â‚¬â€œEFFF holds threaded publication records: handler word, display address,
 
 and shadow address, followed by the normal-stack restoration handler. There can
 
@@ -349,7 +349,7 @@ The usual HOME3 stack pointer is saved at $78B6 and restored before frame_done.
 
 
 
-HOME $F000–FFFF holds fallback final-byte store code (five bytes per write plus
+HOME $F000Ã¢â‚¬â€œFFFF holds fallback final-byte store code (five bytes per write plus
 
 RET). Its row capacity check stops before starting a row at or above $FE00,
 
@@ -359,11 +359,11 @@ threaded records execute only with HSR=$10; no cartridge ROM is modified.
 
 
 
-Dirty row bounds ($7900–79BF and $7D00–7DBF) are used for separated rectangles and
+Dirty row bounds ($7900Ã¢â‚¬â€œ79BF and $7D00Ã¢â‚¬â€œ7DBF) are used for separated rectangles and
 
 the fallback compiler. Scalar bitmap/color bounds and budget scratch use
 
-$78C0–78D5. Pursuit state and rectangles remain at $7890–78AF. RAM jump stubs at
+$78C0Ã¢â‚¬â€œ78D5. Pursuit state and rectangles remain at $7890Ã¢â‚¬â€œ78AF. RAM jump stubs at
 
 $7B80 (unrolled row loop), $7B83 (next Sinistar row), and $7B86 (ROM blitter) are
 
@@ -379,7 +379,7 @@ main/alternate general registers untouched.
 
 $78D6 selects the independent sprite path. $78DA/$78DC hold its publication
 
-budget and current row cost. $78E0–E3 and $78E4–E7 hold the two swept byte-cell
+budget and current row cost. $78E0Ã¢â‚¬â€œE3 and $78E4Ã¢â‚¬â€œE7 hold the two swept byte-cell
 
 rectangles (min x, max x exclusive, min y, max y exclusive). Each is limited to
 
@@ -407,7 +407,7 @@ phase. $78F0/$78F2 hold relocated color/bitmap stream pointers, $78F4 the bitmap
 
 base byte x, $78F5 the current bitmap y, and $78F6 the run length.
 
-The 72 resident pointer pairs select old-phase × dy × dx entries for -1..1 moves.
+The 72 resident pointer pairs select old-phase Ãƒâ€” dy Ãƒâ€” dx entries for -1..1 moves.
 
 Colors encode row offsets and eight-bit cell masks relative to the old origin;
 
@@ -445,19 +445,19 @@ assembled-code verifier. No new chunk, display, stack, or interrupt mapping.
 
 For the current playable scrolling cartridge, additional HOME state is at
 
-5884–588B (camera/current-previous), 5891–5896 (world counters), 58B4–58BD
+5884Ã¢â‚¬â€œ588B (camera/current-previous), 5891Ã¢â‚¬â€œ5896 (world counters), 58B4Ã¢â‚¬â€œ58BD
 
-(one secondary planetoid), 58C0–58E7 (current/previous stars), 58ED–58F4
+(one secondary planetoid), 58C0Ã¢â‚¬â€œ58E7 (current/previous stars), 58EDÃ¢â‚¬â€œ58F4
 
-(scanner/population scratch), 7C84–7C8D (saved primary clipping state),
+(scanner/population scratch), 7C84Ã¢â‚¬â€œ7C8D (saved primary clipping state),
 
-7C90–7CBD (world high bits, saved and projected coordinates), 7CD0–7CEB
+7C90Ã¢â‚¬â€œ7CBD (world high bits, saved and projected coordinates), 7CD0Ã¢â‚¬â€œ7CEB
 
-(sprite clipping), 7CEC–7CEF (last secondary rectangle), 79B0–79FF and
+(sprite clipping), 7CECÃ¢â‚¬â€œ7CEF (last secondary rectangle), 79B0Ã¢â‚¬â€œ79FF and
 
-7DB0–7DFF (sixteen planetoid records), and 7D00–7D3F (previous rectangles).
+7DB0Ã¢â‚¬â€œ7DFF (sixteen planetoid records), and 7D00Ã¢â‚¬â€œ7D3F (previous rectangles).
 
-The BC80–BD18 picture cache follows the B800–BC43 assembly staging area and
+The BC80Ã¢â‚¬â€œBD18 picture cache follows the B800Ã¢â‚¬â€œBC43 assembly staging area and
 
 precedes the BE00 compressed bank-transfer scratch. The scanner now runs
 
@@ -485,7 +485,7 @@ they allocate no object RAM and are not linked into the pursuit renderer yet.
 
 
 
-HOME `$5897` is the native end-screen latch: 0 undrawn, 1 waiting for fire release, 2 ready for a fresh press. World vector `world_extension+96` draws the result once in live bitmap/ECM rows 24–46 and handles restart. It does not write the shadow-cache area beneath that reserved band.
+HOME `$5897` is the native end-screen latch: 0 undrawn, 1 waiting for fire release, 2 ready for a fresh press. World vector `world_extension+96` draws the result once in live bitmap/ECM rows 24Ã¢â‚¬â€œ46 and handles restart. It does not write the shadow-cache area beneath that reserved band.
 
 
 
@@ -493,17 +493,17 @@ HOME `$5897` is the native end-screen latch: 0 undrawn, 1 waiting for fire relea
 
 
 
-DOCK2 contains 7,341 bytes of row programs and phase pointers. HSR 14 maps this source/code bank during shadow composition; DOCK4, HOME stack and both shadow planes remain visible. Live bitmap reads are deferred until HSR returns to 10. Raw clipped-rock phases occupy HOME A000–A68F (phases 0–3), C300–C7EB (4–6), and 5900–5AA3 (7), copied at boot from DOCK3. These replace the horizontal transition caches; no remaining runtime path reads those old templates. SFX at 5C40 and dictionary at C000 remain separate. Resident end_code is 9F47; world code is 4,630 of 4,750 bytes.
+DOCK2 contains 7,341 bytes of row programs and phase pointers. HSR 14 maps this source/code bank during shadow composition; DOCK4, HOME stack and both shadow planes remain visible. Live bitmap reads are deferred until HSR returns to 10. Raw clipped-rock phases occupy HOME A000Ã¢â‚¬â€œA68F (phases 0Ã¢â‚¬â€œ3), C300Ã¢â‚¬â€œC7EB (4Ã¢â‚¬â€œ6), and 5900Ã¢â‚¬â€œ5AA3 (7), copied at boot from DOCK3. These replace the horizontal transition caches; no remaining runtime path reads those old templates. SFX at 5C40 and dictionary at C000 remain separate. Resident end_code is 9F47; world code is 4,630 of 4,750 bytes.
 
 
 ## Incremental overlap revision bf381583
 
-DOCK2 5CAD reserves 768 bytes for the incremental renderer, assembled from incremental.asm. It maps alongside resident DOCK4 (and atlas banks 0/1/7 when needed). Scratch HOME 7BA0–7BAB stays visible: restoration flag, retained-face flag, temporary strip rectangle, copy width and intersection bounds. HOME 58xx is deliberately not used by this helper because DOCK2 hides it. The helper restores the previous mapping and leaves interrupts enabled. IM2 ends at 7B00, with its trampoline at 7B7B; scratch does not overlap either.
+DOCK2 5CAD reserves 768 bytes for the incremental renderer, assembled from incremental.asm. It maps alongside resident DOCK4 (and atlas banks 0/1/7 when needed). Scratch HOME 7BA0Ã¢â‚¬â€œ7BAB stays visible: restoration flag, retained-face flag, temporary strip rectangle, copy width and intersection bounds. HOME 58xx is deliberately not used by this helper because DOCK2 hides it. The helper restores the previous mapping and leaves interrupts enabled. IM2 ends at 7B00, with its trampoline at 7B7B; scratch does not overlap either.
 
 
 ## v16 HOME helpers and visibility state
 
-Boot copies home-render.bin from the checked tail of DOCK3 to HOME A690–A7FF, after raw rock cache A000–A68F and before playfield shadow A800. The builder asserts that both the HOME allocation and boot-bank gap fit. Helpers execute with the caller's bank mapping; population preparation calls world-bank routines only with DOCK6 visible. Clear/draw wrappers use the existing world_call trampoline.
+Boot copies home-render.bin from the checked tail of DOCK3 to HOME A690Ã¢â‚¬â€œA7FF, after raw rock cache A000Ã¢â‚¬â€œA68F and before playfield shadow A800. The builder asserts that both the HOME allocation and boot-bank gap fit. Helpers execute with the caller's bank mapping; population preparation calls world-bank routines only with DOCK6 visible. Clear/draw wrappers use the existing world_call trampoline.
 
 HOME 5BCA: current-or-previous secondary visibility; 5BCB: diagnostic rendering bits (bit 0 omit fully covered player, bit 1 hide covered stars; default 2); 5BCC: changed-eye flag; 5BCD: previous projected population visibility; 5BCE: any remaining secondary mass, including offscreen. These extend mode state, before SFX cache 5C40. Reinitialization clears all flags before setting default policy 2.
 
@@ -520,4 +520,9 @@ Each HOME 8000/9000 cache set now uses 4056 bytes: bitmaps +0 (2912 bytes), base
 
 ## v20 mask cache override
 
-The earlier assembly-cache layout is superseded by ASSEMBLY_CACHE.md. Each HOME 4 KB set contains 2856 bitmap bytes, 52 overlap flags, 364 mask-pattern indices, and 800 pattern bytes. DE00–DF6B stores front colors; BF00–BF63 retains the current phase lookup until source staging invalidates it; BF80–BF86 is row scratch. Pattern interning uses 5C14–5C23. The renderer extension reserves 1024 bytes. Shared compiled-rock tails save 1167 ROM bytes.
+The earlier assembly-cache layout is superseded by ASSEMBLY_CACHE.md. Each HOME 4 KB set contains 2856 bitmap bytes, 52 overlap flags, 364 mask-pattern indices, and 800 pattern bytes. DE00Ã¢â‚¬â€œDF6B stores front colors; BF00Ã¢â‚¬â€œBF63 retains the current phase lookup until source staging invalidates it; BF80Ã¢â‚¬â€œBF86 is row scratch. Pattern interning uses 5C14Ã¢â‚¬â€œ5C23. The renderer extension reserves 1024 bytes. Shared compiled-rock tails save 1167 ROM bytes.
+
+
+## v21 gameplay additions
+
+HOME 5C24: worker kill count; 5C25: bounce recovery ticks; 5C26: SFX frame hold; 5C27: worker explosion ticks; 5C29â€“5C2A: internal worker score. Boot clears through 5C3F. SFX at 5C40 uses 552 bytes, ending at 5E67; radar queue remains at 5EA0. The packed SFX decoder is in DOCK6 so interrupts preserve the comparison-stream stack in HOME E000â€“FFFF. DOCK7 gameplay effects are foreground-only. Resident code ends at 9FF8; world code uses 5103 of 5140 reserved bytes.

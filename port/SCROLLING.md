@@ -1,3 +1,9 @@
+# Latest playable checkpoint: worker combat (v21)
+
+Shootable workers, carried-crystal release, worker replacement, fragment explosions, speech2ay QBANG-style effects, gradual faster acceleration, planetoid bounce, and a complete camera-relative scanner outline are now included. Saved viewer: `/port/revisions/playable-worker-combat-v21/mining-web/`. See README.md for details and limitations, FAST_MODE_PROFILE.md for current timings. V20 remains saved and tagged separately.
+
+---
+
 # Latest graphics revision: precomputed assembly masks (v20)
 
 See [ASSEMBLY_CACHE.md](ASSEMBLY_CACHE.md) for current measurements and verification. Changing-phase assembly overlap improves from 8.62 to 9.81 fps. Natural fast assembly averages 8.48 fps; fast pursuit 15.04 fps, or 15.46 with speech/shooting. Some fast-mode assembly remains below 10 fps. The older results below describe their named revisions, not v20.
@@ -165,13 +171,13 @@ Verification: 480 independent composition fixtures plus native scrolling (626 pi
 
 ---
 
-# Incremental overlap restoration — revision bf381583
+# Incremental overlap restoration â€” revision bf381583
 
 Open http://127.0.0.1:8768/port/revisions/playable-incremental-overlap-v5/mining-web/ .
 
 Old rectangles are subtracted from the new opaque Sinistar rectangle once. At most four exposed strips are erased; overlapping cells are left for the current face to overwrite. Dirty bounds still include old actors so their previous images are repaired. No live-screen erase is introduced.
 
-When Sinistar is stationary, fully visible, awake and shut-mouthed, its shadow image is retained. Only dirty overlap spans are copied from the current face atlas. Eye changes mark rows 12–25; the builder verifies that all differing cells across all eye pairs and all eight fine phases lie in that range. Moved faces, clipping, mouth transitions, assembly changes and transitions from the direct-screen path retain the complete-copy fallback. This is not yet arbitrary-displacement incremental rendering, nor elimination of every layered overlap write.
+When Sinistar is stationary, fully visible, awake and shut-mouthed, its shadow image is retained. Only dirty overlap spans are copied from the current face atlas. Eye changes mark rows 12â€“25; the builder verifies that all differing cells across all eye pairs and all eight fine phases lie in that range. Moved faces, clipping, mouth transitions, assembly changes and transitions from the direct-screen path retain the complete-copy fallback. This is not yet arbitrary-displacement incremental rendering, nor elimination of every layered overlap write.
 
 Compared with compiled-rocks v4, the controlled one-rock chase improves 11.371 to 11.952 fps and the three-rock chase 7.704 to 7.932 fps. The no-Sinistar scene remains 19.261 fps. Mixed scrolling measures 8.089 versus 8.146 fps: essentially unchanged, slightly slower in this trace. The 20 fps chase target remains unmet. Tests suppress combat/speech for controlled timing; no physical hardware verification was performed.
 
@@ -179,7 +185,7 @@ Verification: `verify_incremental.mjs` checks 600 rectangle pairs, 47,562 restor
 
 The following describes the preceding milestones and unchanged world behavior.
 
-# Playable scrolling world — compiled planetoids revision 93b7974f
+# Playable scrolling world â€” compiled planetoids revision 93b7974f
 
 
 
@@ -225,11 +231,11 @@ The following culling milestone discussion is historical background.
 
 
 
-The culling revision skips sprite staging for fully hidden objects, skips invisible secondary rectangles within the banked iterator, and marks new planetoid rectangles without redundantly clearing them. Old rectangles are still erased in shadow, preserving overlaps and edge restoration. Radar refresh is limited to once per 16 physics ticks (about 3.8 Hz), with publication on the next picture. In the same keyboard-flight trace, performance improves from 5.805 to 6.891 rendered fps, about 19%. The trace sees 1–6 planetoids, averaging 2.77, not all 18 simultaneously. Sprite clipping is a small fraction of frame work; composition and changed-byte comparison dominate. Population and world dimensions are unchanged.
+The culling revision skips sprite staging for fully hidden objects, skips invisible secondary rectangles within the banked iterator, and marks new planetoid rectangles without redundantly clearing them. Old rectangles are still erased in shadow, preserving overlaps and edge restoration. Radar refresh is limited to once per 16 physics ticks (about 3.8 Hz), with publication on the next picture. In the same keyboard-flight trace, performance improves from 5.805 to 6.891 rendered fps, about 19%. The trace sees 1â€“6 planetoids, averaging 2.77, not all 18 simultaneously. Sprite clipping is a small fraction of frame work; composition and changed-byte comparison dominate. Population and world dimensions are unchanged.
 
 
 
-The native 64 KB cartridge now uses persistent 512×512 world coordinates for the player, planetoids, worker, crystal, bullets, Sinistar, and Sinibombs. A dead-zone camera follows the ship. Graphics clip against the 256×112 playfield instead of deleting an object when it reaches an edge. Movement, homing, mining, and contact calculations use wrapped world distances. The earlier standalone translation of the arcade's soft/hard camera is not yet used by this playable adaptation.
+The native 64 KB cartridge now uses persistent 512Ã—512 world coordinates for the player, planetoids, worker, crystal, bullets, Sinistar, and Sinibombs. A dead-zone camera follows the ship. Graphics clip against the 256Ã—112 playfield instead of deleting an object when it reaches an edge. Movement, homing, mining, and contact calculations use wrapped world distances. The earlier standalone translation of the arcade's soft/hard camera is not yet used by this playable adaptation.
 
 
 
@@ -241,7 +247,7 @@ Ten stars move opposite the camera and wrap around the visible playfield. Their 
 
 
 
-`FALS/N1ALL.SRC`, `InPop0`, specifies ten type-1 planetoids and two each of types 2–5: 18 total. This build maintains that first-wave population, rather than recycling a single visible rock. All 18 retain their positions offscreen, drift, appear on the scanner, can be shot, release crystals, and can shatter. Depleted slots replenish away from the player, gradually rather than every time the camera moves.
+`FALS/N1ALL.SRC`, `InPop0`, specifies ten type-1 planetoids and two each of types 2â€“5: 18 total. This build maintains that first-wave population, rather than recycling a single visible rock. All 18 retain their positions offscreen, drift, appear on the scanner, can be shot, release crystals, and can shatter. Depleted slots replenish away from the player, gradually rather than every time the camera moves.
 
 
 
@@ -249,7 +255,7 @@ The surviving source's `AdjPop`/`PopFil` fills shortages at sector edges while a
 
 
 
-The nine `SCIVELT` directions retain the existing display-scaled velocities: ±108/256 horizontal and ±28/256 vertical pixels per physics tick. Secondary planetoids use four interleaved groups, integrating four ticks of displacement once per four ticks. This preserves average speed and fractional motion while reducing CPU cost. Those display scaling factors and cadence are adaptations, not literal arcade pixel speeds.
+The nine `SCIVELT` directions retain the existing display-scaled velocities: Â±108/256 horizontal and Â±28/256 vertical pixels per physics tick. Secondary planetoids use four interleaved groups, integrating four ticks of displacement once per four ticks. This preserves average speed and fractional motion while reducing CPU cost. Those display scaling factors and cadence are adaptations, not literal arcade pixel speeds.
 
 
 
@@ -257,7 +263,7 @@ The nine `SCIVELT` directions retain the existing display-scaled velocities: ±1
 
 
 
-The top scanner maps the entire 512×512 world into 64×16 pixels: horizontal scale 1/8, vertical scale 1/32. Both axes include the ninth coordinate bit. The previous vertical mapping aliased contacts separated by 256 world units; that is corrected.
+The top scanner maps the entire 512Ã—512 world into 64Ã—16 pixels: horizontal scale 1/8, vertical scale 1/32. Both axes include the ninth coordinate bit. The previous vertical mapping aliased contacts separated by 256 world units; that is corrected.
 
 
 

@@ -149,10 +149,14 @@ worker_increase:
 ; This is not the arcade worker spawner or resource economy.
 worker_resupply:
  ld a,(assembly_count)
- or a
- ret z
  cp 20
  ret nc
+ or a
+ jr nz,worker_supply_delay
+ ld a,(game_mode)
+ or a
+ ret z
+worker_supply_delay:
  ld hl,worker_delay
  ld a,(hl)
  or a

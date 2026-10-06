@@ -24,6 +24,7 @@ def main():
     assert len(pairs)==9
     speeds=[(round(vs*128*256/304),round(-vl*64*112/256)) for vl,vs in pairs]
     (out/'world-bank-speeds.asm').write_text('wb_rock_speeds:\n'+''.join(f' DB {x},{y}\n' for x,y in speeds)+'wb_rock_speeds4:\n'+''.join(f' DW {x*4},{y*4}\n' for x,y in speeds))
+    (out/'effect-rock-speeds.asm').write_text(' DB '+','.join(str(v) for pair in speeds for v in pair)+'\n')
     (out/'world-speeds.asm').write_text('rock_speeds:\n'+''.join(f' DB {x},{y}\n' for x,y in speeds))
 
     # Fixed-width compare/emit kernels: no per-cell loop or emitter call.
@@ -141,7 +142,7 @@ def main():
         data=(ROOT.parent/f"assets/sfx-{effect['name']}.packed").read_bytes()
         sfx_clips += [f" DB {effect['frames']}",f" DW {0x5c40+len(sfx_payload)}"]
         sfx_payload.extend(data)
-    assert len(sfx_payload)<=0x3c0 and cursor[3]+len(sfx_payload)<=8192
+    assert len(sfx_payload)<=0x260 and cursor[3]+len(sfx_payload)<=8192
     assert fast_report['boot_cache_windows'][-1][3]<=0x340
     source=0x6000+cursor[3]
     banks[3][cursor[3]:cursor[3]+len(sfx_payload)]=sfx_payload;cursor[3]+=len(sfx_payload)
@@ -221,7 +222,7 @@ def main():
     voice_offsets=[0,len(packed_voices[0]),len(packed_voices[0])+len(packed_voices[1])]
     speech_payload=b''.join(packed_voices)
     extension_address=0xc000+len(speech_payload)
-    extension_capacity=4750
+    extension_capacity=5140
     (out/'world-origin.asm').write_text(f'world_extension EQU {extension_address}\n')
     banks[6][:len(speech_payload)]=speech_payload;cursor[6]=len(speech_payload)+extension_capacity
     pointers=[];metadata=[]
@@ -353,7 +354,7 @@ def main():
     banks[7][effects_origin-0xe000:effects_origin-0xe000+len(effects)]=effects
     cursor[7]+=len(effects)
     with (out/'mining-symbols.txt').open('a') as f:
-        f.write('\n'+''.join(line+'\n' for line in (out/'effects-symbols.txt').read_text().splitlines() if line.startswith(('ring_','mode_'))))
+        f.write('\n'+''.join(line+'\n' for line in (out/'effects-symbols.txt').read_text().splitlines() if line.startswith(('ring_','mode_','fx_'))))
     subprocess.run([str(exe),'--dirbol','--raw=build/title.bin','--sym=build/title-symbols.txt','src/title.asm'],cwd=ROOT,check=True)
     title=(out/'title.bin').read_bytes()
     assert cursor[3]+len(title)<=8192, 'Title exceeds boot bank'

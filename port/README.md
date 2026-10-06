@@ -1,20 +1,32 @@
 # Sinistar TS2068 port - scrolling flight
 
-## Graphics work and gameplay audit, 6 October 2026
+## Worker combat and movement checkpoint — v21
 
-The v20 graphics work caches all eight assembly-mask phases using shared adjacent-byte patterns, retains the selected lookup, and intersects assembly composition with each row's actual dirty cells. Background transparency and fully covered-object suppression remain enabled. See ASSEMBLY_CACHE.md for measurements and memory constraints.
+V20 is checked in locally as commit `9c52e75`, tag `playable-mask-cache-v20`. Its saved viewer and cartridge are unchanged. V21 retains the assembly mask cache and adds:
 
-The following requested arcade features remain gameplay work; the graphics revision does not implement them:
+- Player shots destroy workers, release carried crystals, award 150 points to the internal worker-score counter, and produce an expanding eight-fragment explosion. The adapted replacement worker respawns after three seconds, including before the first construction delivery. Score display is not yet implemented.
+- Worker destruction and planetoid destruction request a QBANG-style explosion reconstructed from the original CANNON/FNOISE arithmetic and converted through speech2ay. The reconstruction uses approximate sound-CPU timing; it is not a bit-exact sound-board emulation. Sinistar speech always wins.
+- Player motion uses the translated arcade acceleration arithmetic instead of immediately assigning velocity. A screen-adapted target of twice the former speed reaches about 1.94–1.95 pixels per physics tick; release directions to coast. The full-power multiply uses a shift/subtract fast path. This is a tuned TS2068 adaptation, not a claim of identical arcade axis scaling.
+- Contact with primary and secondary planetoids reflects approaching player velocity in the moving rock's reference frame. Wrapped coordinates and an eight-tick recovery guard prevent repeated inversions under held thrust. Planetoids are treated as heavy obstacles; the arcade's exact mass exchange and altered planetoid trajectory remain unported. Secondary checks share the existing four interleaved population groups.
+- Radar now draws the complete small viewport outline around the centered player, positioned from camera/world coordinates. Contact colors and 8x1 attribute conflict staggering remain intact. Update frequency stays at one preparation per 24 physics ticks.
 
-- **Shootable workers and fragments:** WITT/COLLISIO.SRC, `COLLIDE WORKER,PLSHOT` / `WORKCR,PLSHOT`, invokes `QBang`, kills the worker and shot, and awards 150 points. A carrying worker leaves its crystal. Our bullet collision path currently tests planetoids, not workers. Implement worker death, a small fragment animation, crystal release, and respawn as one feature so killing the sole adapted worker cannot prevent construction permanently.
-- **Explosion sound:** VSNDRM9.ASM maps `QBANG` to `CANNON`/`FNOISE`, not the existing `BBSV` bomb-launch effect. Generate this source-derived sound through speech2ay and preserve speech priority. The current port has firing, pickup, assembly, bomb-launch effects, and a Sinistar hit scream; that is not a complete explosion-sound implementation.
-- **Planetoid bounce:** SAM/BOUNCE.SRC reverses velocities relative to the mass-weighted center of momentum. WITT/COLLISIO.SRC routes player/planetoid contact through `PreBou`, `Bounce`, `PosBou`. Use wrapped world coordinates and an object-bound broad phase, then retain a contact/separation guard. Do not implement a repeated inversion every frame inside a bounding box.
-- **Player speed and acceleration:** SAM/EXECJNK.SRC scales the long-axis unit vector by four and the short axis by eight, then accelerates toward the target. The playable adapter currently assigns twice the signed unit vector directly (about one TS pixel per physics tick). Restore acceleration and explicitly account for the port's axis/display scaling; higher display fps alone does not correct movement speed.
-- **Scanner outline:** SAM/SCANNER.SRC `SCANVEL` positions the small screen border relative to the player and camera. The current 64x16 adaptation already centers the player and projects the viewport, but draws corner markers rather than a complete outline. Extend that outline without increasing scanner update frequency, preserve per-line color staggering, and test wraparound/dead-zone scrolling.
-- **Additional Run taunts:** WITT/ANISINI.SRC documents `Run, Coward!` and `Run! Run! Run!`; the sound source has the latter at command 29. The standalone `Run!` observation still needs sample/sequence verification. Do not label a cut-off `Run Coward` recording as a verified independent arcade phrase. These taunts are not in the current playable three-clip speech table.
-- **Visible Sinistar damage:** SAM/ADDPIEC.SRC `SUBPIEC` removes a body piece and queues fragments; WITT/SUBPART.SRC requests the scream, slows Sinistar, and flashes the screen. The port already counts thirteen bomb hits, slows/stuns Sinistar, plays the scream, and shows the halo, but continues drawing the complete body until the final hit. Remove the actual outer pieces in source order, retain the head until the last hit, and reuse precomputed masks so damaged pursuit does not require runtime shifting.
+The explosion is a compact port-specific fragment effect rather than pixel-identical arcade fragments. No graphics work is added for hidden explosions beyond existing object culling.
 
-Acceptance checks should cover worker death while carrying a crystal, rebuilding after worker respawn, seam-crossing bounces, held-thrust separation, camera-relative scanner outlines, speech/SFX arbitration, and a visibly different body after every successful Sinibomb hit. Keep fast-mode performance profiles separate for building, awakening, damaged pursuit, and hit effects.
+### Storage and interrupt constraints
+
+All five effects use a three-byte register format; the four previous effects decode to identical AY register frames. Explosion register updates hold for three refreshes (about 20 Hz) over the full reconstructed sample. The total HOME SFX cache is 552 bytes at 5C40–5E67, below the radar queue at 5EA0. Speech is unchanged.
+
+The decoder lives in DOCK6 because interrupts can arrive while the renderer's comparison-stream stack is in HOME E000–FFFF. Mapping DOCK7 in that interrupt path would hide the stack. Tests exercise both normal and high-RAM stack locations. The world extension reserves 5140 bytes and uses 5103; the cartridge remains 64 KB.
+
+### Still outstanding from the arcade audit
+
+- **Visible Sinistar damage:** remove the twelve outer pieces in original source order, with the head remaining until the final hit. The existing thirteen-hit counter, scream, slowdown and halo do not yet remove individual visible pieces. Precomputed damaged poses/masks need a storage pass before adding this without regressing pursuit speed.
+- **Additional taunts:** the source documents “Run, Coward!” and “Run! Run! Run!”; the playable speech table still contains assembly, identity and roar. A standalone “Run!” recording/sequence remains unverified.
+- Exact mass-based bounce, original fragment artwork, and a score HUD remain adaptations to finish.
+
+Source references: WITT/COLLISIO.SRC (worker hits/QBang), SAM/BOUNCE.SRC (arcade mass exchange), SAM/EXECJNK.SRC (acceleration), SAM/SCANNER.SRC (viewport position), SAM/ADDPIEC.SRC and WITT/SUBPART.SRC (piece removal), WITT/ANISINI.SRC and VSNDRM9.ASM (speech and sound). The original source checkout is pinned as a Git submodule.
+
+Verification: `verify_gameplay_features.mjs` covers seam-crossing worker hits and bounces, crystal release, replacement before assembly, acceleration/coasting, all four explosion stages at eight shifts, scanner outline, exact packed AY frames, speech priority, and both ISR stack locations. `verify_scrolling.mjs --fast --assembly` includes 1078 scenarios, including explosions clipped at either edge and overlapping assembly. Full playable lifecycle and 18000-refresh rendering stress are also exercised. See FAST_MODE_PROFILE.md for current performance; older sections describe their named builds.
 
 **Current playable milestone:** [Scrolling world](SCROLLING.md), including stars, 18 persistent planetoids and world-relative radar. The following flight/pursuit notes describe earlier separate builds.
 
@@ -54,7 +66,7 @@ star cells are published first, then the two ship rectangles.
 
 Color pairs come from the existing demo assets; background stars sharing covered
 
-8×1 cells inherit the sprite palette. This remains an ECM approximation.
+8Ã—1 cells inherit the sprite palette. This remains an ECM approximation.
 
 TSRun verified 2,261 updates, all 32 headings, all eight pixel phases, and 2,260
 
@@ -66,7 +78,7 @@ work is 43,104 T-states of 58,688 per refresh; the publishing pass uses at most
 
 15,965. Native Fuse independently verified 1,023 consecutive refresh intervals.
 
-These guarantees cover this scene: y is restricted to 48–143 so the publishing
+These guarantees cover this scene: y is restricted to 48â€“143 so the publishing
 
 pass finishes ahead of the affected raster. General screen coverage needs a new
 
@@ -98,7 +110,7 @@ Original material remains attributed to its authors; this import grants no new l
 
 | `WITT/STBLSINI.SRC` | generated little-endian ROM table | Parsed directly from pinned original expressions |
 
-| `WITT/VELOCITY.SRC`, `updscreen` arithmetic; `SAM/FUNCTION.SRC`, `asrdN` | `smooth_velocity` | Every 16-bit difference at shifts 0–7 tested |
+| `WITT/VELOCITY.SRC`, `updscreen` arithmetic; `SAM/FUNCTION.SRC`, `asrdN` | `smooth_velocity` | Every 16-bit difference at shifts 0â€“7 tested |
 
 | `SAM/EXECJNK.SRC`, rotation block from `SUBB PLYRANG` to `STA PLYRANG` | `player_turn` | Every signed angular difference and radius tested |
 
@@ -112,7 +124,7 @@ Original material remains attributed to its authors; this import grants no new l
 
 | `SAM/IRQ.SRC`, star camera deltas | `src/stars.asm` | Full-scene comparison including 400 star wraps and 68 ship overlaps |
 
-The scene also preserves the original ±32 angular acceleration gate and
+The scene also preserves the original Â±32 angular acceleration gate and
 
 `(angle+4)&$F8` image selection. Its screen adapter reverses the long-axis sign
 
@@ -200,7 +212,7 @@ colors, and randomizes one coordinate on the first wrap in an interrupt. This
 
 milestone uses white 1-bit stars, fixed repeatable seeds, and toroidal wrapping
 
-on the TS2068's 256×192 display. Those are explicit display adaptations, not
+on the TS2068's 256Ã—192 display. Those are explicit display adaptations, not
 
 claims of exact original star placement/color. Source camera arithmetic remains
 

@@ -55,11 +55,11 @@ function radarModel(){
  const px=m.ram[sym.px+1]+256*m.ram[0x7c96],py=m.ram[sym.py+1]+256*m.ram[0x7c97];
  const position=(x,y)=>[((wrap(x-px)>>3)+32)&63,((wrap(y-py)>>5)+8)&15];
  const dot=(x,y,color,shape)=>{let at=(y&15)*8+((x>>3)&7);if(![7,1,color].includes(attrs[at])&&color!==0x47)at=(at+8)&127;attrs[at]=color;pixels[at]|=shape>>(x&7);};
- const [x,y]=position(word(0x5884),word(0x5886)+64);for(const [dx,dy] of [[0,0],[31,0],[0,3],[31,3]])dot(x+dx,y+dy,1,0xe0);
+ const [x,y]=position(word(0x5884),word(0x5886)+64);dot(x,y,1,0xe0);for(let dx=0;dx<32;dx++)for(const dy of [0,3])dot(x+dx,y+dy,1,0x80);for(const dx of [0,31])for(const dy of [1,2])dot(x+dx,y+dy,1,0x80);
  const mark=(x,y,c,s)=>dot(...position(x,y),c,s);
  if(get('rock_alive'))mark(get('rock_x')+256*m.ram[0x586e],get('rock_y')+256*m.ram[0x586f],5,0xc0);
  for(const a of records)if(m.ram[a+7])mark(word(a),word(a+2),5,0xc0);
- if(get('worker_alive'))mark(get('worker_x')+256*m.ram[0x7c98],get('worker_y')+256*m.ram[0x7c99],2,0x80);
+ if(get('worker_alive')===1)mark(get('worker_x')+256*m.ram[0x7c98],get('worker_y')+256*m.ram[0x7c99],2,0x80);
  if(get('assembly_count')&&get('bs_hits')<13)mark(m.ram[sym.face_x+1]+256*m.ram[0x7c9a],m.ram[sym.face_y+1]+256*m.ram[0x7c9b],0x46,0xe0);
  dot(32,8,0x47,0xe0);return {pixels,attrs};
 }

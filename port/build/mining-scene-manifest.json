@@ -1,14 +1,14 @@
 {
   "stage": "native playable scrolling-world milestone",
-  "dck_sha256": "50ab05955433c7e3355f7a34069c8b7ca5f00450640b41b06cd4673240a971f5",
+  "dck_sha256": "524e906a1805b55789a0430daab31c33464e51af55208f1a34c12d8ff3635063",
   "sprite_bytes": {
     "0": 8192,
     "1": 8189,
     "2": 8189,
     "3": 8192,
     "5": 8186,
-    "6": 8191,
-    "7": 7231
+    "6": 8184,
+    "7": 7953
   },
   "source_sha256": {
     "SAM/SCANNER.SRC": "68df3606057044dcf69b337c0816f26409b2a58e80a568856b7efc81fda708ed",
@@ -48,8 +48,8 @@
     "format": "lossless 7-byte register packing",
     "raw_bytes": 6020,
     "stored_bytes": 3010,
-    "world_code_bytes": 4742,
-    "world_code_capacity": 4750
+    "world_code_bytes": 5103,
+    "world_code_capacity": 5140
   },
   "sfx": {
     "source": "https://github.com/synamaxmusic/sinistar/blob/main/VSNDRM9.ASM",
@@ -69,9 +69,11 @@
           66
         ],
         "frames": 20,
-        "bytes": 100,
+        "bytes": 60,
         "seconds": 0.3180952380952381,
-        "wav_sha256": "7e0b110b8c27177829e7cb42aa7b60b83c61cd408bdc2b9b79b8b676959dd1cd"
+        "wav_sha256": "7e0b110b8c27177829e7cb42aa7b60b83c61cd408bdc2b9b79b8b676959dd1cd",
+        "source_frames": 20,
+        "refresh_step": 1
       },
       {
         "name": "pickup",
@@ -86,9 +88,11 @@
           64
         ],
         "frames": 14,
-        "bytes": 70,
+        "bytes": 42,
         "seconds": 0.21873015873015872,
-        "wav_sha256": "7910ec600446b6aa69ffd72494c173c06e0bfd6cccef8d55e9a0b4019a2f5931"
+        "wav_sha256": "7910ec600446b6aa69ffd72494c173c06e0bfd6cccef8d55e9a0b4019a2f5931",
+        "source_frames": 14,
+        "refresh_step": 1
       },
       {
         "name": "assembly",
@@ -103,9 +107,11 @@
           4
         ],
         "frames": 13,
-        "bytes": 65,
+        "bytes": 39,
         "seconds": 0.2,
-        "wav_sha256": "43045b524b2d3f7d00e7552799716a9c0208adc4569e9c4f0b0c595db586b953"
+        "wav_sha256": "43045b524b2d3f7d00e7552799716a9c0208adc4569e9c4f0b0c595db586b953",
+        "source_frames": 13,
+        "refresh_step": 1
       },
       {
         "name": "bomb-launch",
@@ -120,11 +126,25 @@
           56
         ],
         "frames": 74,
-        "bytes": 370,
+        "bytes": 222,
         "seconds": 1.2228571428571429,
-        "wav_sha256": "bb83dba7420f1cdfb9a080851d8913abd680b73e017ea3efdb170933834e56d8"
+        "wav_sha256": "bb83dba7420f1cdfb9a080851d8913abd680b73e017ea3efdb170933834e56d8",
+        "source_frames": 74,
+        "refresh_step": 1
+      },
+      {
+        "name": "explosion",
+        "preset": "QBANG/CANNON/FNOISE",
+        "frames": 63,
+        "seconds": 3.1296598639455784,
+        "wav_sha256": "2f7dcfaa173f5488474c7572d46a1577ea6672247196a76e0834b6ca8f41e548",
+        "source_frames": 189,
+        "refresh_step": 3,
+        "bytes": 189
       }
-    ]
+    ],
+    "format": "3 bytes: tone low, tone high/volume, noise/mixer; explosion holds each sample three refreshes",
+    "explosion_method": "QBANG filtered-noise arithmetic, fixed deterministic seed, approximate 6800 loop timings; speech2ay harmonic1; 20 Hz register updates"
   },
   "voices": {
     "beware-i-live": {
@@ -221,7 +241,7 @@
     "bytes": 363,
     "capacity": 368,
     "boot_source": 32405,
-    "boot_tail_free": 87,
+    "boot_tail_free": 140,
     "flags": "HOME 5BCA-5BCE",
     "covered_player_default": false,
     "covered_stars_default": true

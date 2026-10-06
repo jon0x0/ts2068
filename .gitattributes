@@ -1,0 +1,11 @@
+*.asm text
+*.py text
+*.mjs text
+*.md text
+*.bin binary
+*.dck binary
+*.ay binary
+*.packed binary
+*.wav binary
+*.png binary
+*.mp4 binary

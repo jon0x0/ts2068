@@ -1,8 +1,9 @@
  INCLUDE "../build/world-equ.asm"
- INCLUDE "../build/effects-origin.asm"
  ORG effects_origin
  jp ring_effect
  jp mode_filter
+ jp fx_bounce
+ jp fx_explosion
 
 ; ECM halo with a protected radius-40 center. Row descriptors DC80, original attributes B800.
 ; INK=PAPER makes each selected cell solid without touching bitmap pixels.
@@ -473,3 +474,4 @@ mode_records:
  DW $79b7,$79c1,$79cb,$79d5,$79df,$79e9,$79f3,$79fd
  DW $7db7,$7dc1,$7dcb,$7dd5,$7ddf,$7de9,$7df3,$7dfd,$58bb
  INCLUDE "../build/ring-points.asm"
+ INCLUDE "gameplay-effects.asm"

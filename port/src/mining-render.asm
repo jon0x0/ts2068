@@ -362,6 +362,8 @@ mr_draw_crystal:
  ld h,1
  ld bc,108
  call stage
+ ld hl,world_extension+102
+ call world_call
  ld l,4
  call scene_sprite
 mr_after_worker:

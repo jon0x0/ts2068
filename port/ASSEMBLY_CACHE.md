@@ -1,4 +1,10 @@
-# Precomputed assembly masks — v20
+# V21 retained-cache check
+
+V21 preserves this cache design. On cartridge `524e906a1805b55789a0430daab31c33464e51af55208f1a34c12d8ff3635063`, the controlled changing-phase overlap fixture measures 9.84 fps, nineteen-piece fixed overlap 19.43 fps, and one rock without Sinistar 19.30 fps. Natural gameplay moves through the world faster now; its separate results are in FAST_MODE_PROFILE.md. All mask/reference tests pass. The v20 design and measurements below remain historical documentation.
+
+---
+
+# Precomputed assembly masks â€” v20
 
 Cartridge SHA-256: `50ab05955433c7e3355f7a34069c8b7ca5f00450640b41b06cd4673240a971f5`.
 
@@ -21,7 +27,7 @@ Native 3.528 MHz emulation. Controlled fixtures use one rock with worker, combat
 | Controlled fixture | v19 fps | v20 fps |
 |---|---:|---:|
 | Fixed assembly, player apart | 19.63 | 19.43 |
-| Fixed assembly, player overlap | 19.00 | 18.53–18.82 |
+| Fixed assembly, player overlap | 19.00 | 18.53â€“18.82 |
 | Changing scroll phase, player overlap | 8.62 | 9.81 |
 | One rock, no Sinistar | 20.09 | 20.09 |
 
@@ -45,13 +51,13 @@ Each 4 KB HOME cache at 8000 or 9000 contains:
 
 | Offset | Contents |
 |---|---|
-| 0 | Eight 357-byte bitmap phases (51 rows × 7); universally transparent row zero omitted |
+| 0 | Eight 357-byte bitmap phases (51 rows Ã— 7); universally transparent row zero omitted |
 | 2856 | 52 byte-sized overlap flags |
-| 2912 | 364 pattern indices (52 × 7) |
+| 2912 | 364 pattern indices (52 Ã— 7) |
 | 3276 | 100 eight-byte mask patterns |
 | 4095 | Pattern count |
 
-Front-image colors occupy DE00–DF6B. BF00–BF63 retains the selected mask lookup; BF80–BF86 is row scratch. A sixteen-slot pattern-interning accelerator occupies 5C14–5C23. No extra cartridge bank is required.
+Front-image colors occupy DE00â€“DF6B. BF00â€“BF63 retains the selected mask lookup; BF80â€“BF86 is row scratch. A sixteen-slot pattern-interning accelerator occupies 5C14â€“5C23. No extra cartridge bank is required.
 
 The back set builds over 52 row calls, two per picture, and swaps atomically after 26 picture updates. Construction changes restart the back set while the front remains valid. New pieces therefore appear after preparation finishes. Precomputing all phases increases the worst measured builder call from 9,275 to 52,298 T-states. This remains below one 58,688-T-state refresh but matters while pieces are being added.
 

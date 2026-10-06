@@ -1,3 +1,25 @@
+# V21 gameplay performance
+
+Cartridge SHA-256: `524e906a1805b55789a0430daab31c33464e51af55208f1a34c12d8ff3635063`.
+
+The player now accelerates to about twice the previous speed and bounces off rocks. These runs therefore traverse different positions and cause more scrolling work than v20; they are not matched-pose rendering comparisons. The faster movement does not mean a higher graphics frame rate.
+
+| Continuous-right scenario | fps |
+|---|---:|
+| normal assembly | 5.55 |
+| fast assembly | 7.84 |
+| normal chase | 5.46 |
+| fast chase | 13.49 |
+| fast chase with speech and shooting | 14.84 |
+
+Measured at native 3.528 MHz: 360-refresh warmup, 120 pictures per scene, invulnerable pilot. Normal/fast assembly retain mining workers; chase disables workers; the busy chase repeatedly speaks and fires. Fast assembly remains below 10 fps. Fast pursuit remains below the 20 fps target. V20 natural fast assembly/pursuit were 8.48/15.04 fps; v21 are 7.84/13.49 fps with the faster movement and new collision/acceleration logic.
+
+Fast assembly time: physics 20.0%, composition 45.7%, dirty comparison 20.8%, radar preparation 4.4%. Fast pursuit: physics 14.1%, composition 37.9%, dirty comparison 29.2%, radar 3.4%. Graphics still dominate; narrower independent dirty spans and cheaper multi-object composition remain worthwhile. The new full radar outline is a smaller additional cost and can be emitted as byte spans in a later optimization. Acceleration already uses the existing exact shift/subtract multiply optimization.
+
+No clock increase or skipped physics ticks. Planetoid bounce uses existing interleaved population visits. Speech priority remains intact. See README.md for implemented features and remaining adaptations.
+
+---
+
 # Latest graphics revision: precomputed assembly masks (v20)
 
 See [ASSEMBLY_CACHE.md](ASSEMBLY_CACHE.md) for current measurements and verification. Changing-phase assembly overlap improves from 8.62 to 9.81 fps. Natural fast assembly averages 8.48 fps; fast pursuit 15.04 fps, or 15.46 with speech/shooting. Some fast-mode assembly remains below 10 fps. The older results below describe their named revisions, not v20.
@@ -10,7 +32,7 @@ See [ASSEMBLY_CACHE.md](ASSEMBLY_CACHE.md) for current measurements and verifica
 
 > v17 changes only clipped-rectangle cleanup. The measurements below are the saved v16 performance baseline, not a new v17 benchmark. See SCROLLING.md for the reproduced failure and regression results.
 
-# Empty populations, eye updates and star occlusion — v16
+# Empty populations, eye updates and star occlusion â€” v16
 
 Cartridge SHA-256: `ce687c43ea195017ac1b1321d96d2b2878a2548320fdd8a050e76ffdeffe064e`.
 

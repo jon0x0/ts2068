@@ -123,6 +123,10 @@ wb_bullet:
  ld a,5
  ld de,(bvy)
  call wb_integrate
+ call wb_worker_hit
+ ld a,(bullet_alive)
+ or a
+ ret z
  ld a,(rock_alive)
  or a
  ret z
@@ -221,6 +225,8 @@ wb_contact:
 ; assembly target. Moving an axis follows the shortest route across the seam.
 wb_worker:
  ld a,(worker_alive)
+ cp 2
+ jp z,wb_worker_dying
  or a
  jp z,worker_resupply
  ld a,(assembly_count)

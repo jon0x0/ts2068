@@ -16,9 +16,11 @@
         66
       ],
       "frames": 20,
-      "bytes": 100,
+      "bytes": 60,
       "seconds": 0.3180952380952381,
-      "wav_sha256": "7e0b110b8c27177829e7cb42aa7b60b83c61cd408bdc2b9b79b8b676959dd1cd"
+      "wav_sha256": "7e0b110b8c27177829e7cb42aa7b60b83c61cd408bdc2b9b79b8b676959dd1cd",
+      "source_frames": 20,
+      "refresh_step": 1
     },
     {
       "name": "pickup",
@@ -33,9 +35,11 @@
         64
       ],
       "frames": 14,
-      "bytes": 70,
+      "bytes": 42,
       "seconds": 0.21873015873015872,
-      "wav_sha256": "7910ec600446b6aa69ffd72494c173c06e0bfd6cccef8d55e9a0b4019a2f5931"
+      "wav_sha256": "7910ec600446b6aa69ffd72494c173c06e0bfd6cccef8d55e9a0b4019a2f5931",
+      "source_frames": 14,
+      "refresh_step": 1
     },
     {
       "name": "assembly",
@@ -50,9 +54,11 @@
         4
       ],
       "frames": 13,
-      "bytes": 65,
+      "bytes": 39,
       "seconds": 0.2,
-      "wav_sha256": "43045b524b2d3f7d00e7552799716a9c0208adc4569e9c4f0b0c595db586b953"
+      "wav_sha256": "43045b524b2d3f7d00e7552799716a9c0208adc4569e9c4f0b0c595db586b953",
+      "source_frames": 13,
+      "refresh_step": 1
     },
     {
       "name": "bomb-launch",
@@ -67,9 +73,23 @@
         56
       ],
       "frames": 74,
-      "bytes": 370,
+      "bytes": 222,
       "seconds": 1.2228571428571429,
-      "wav_sha256": "bb83dba7420f1cdfb9a080851d8913abd680b73e017ea3efdb170933834e56d8"
+      "wav_sha256": "bb83dba7420f1cdfb9a080851d8913abd680b73e017ea3efdb170933834e56d8",
+      "source_frames": 74,
+      "refresh_step": 1
+    },
+    {
+      "name": "explosion",
+      "preset": "QBANG/CANNON/FNOISE",
+      "frames": 63,
+      "seconds": 3.1296598639455784,
+      "wav_sha256": "2f7dcfaa173f5488474c7572d46a1577ea6672247196a76e0834b6ca8f41e548",
+      "source_frames": 189,
+      "refresh_step": 3,
+      "bytes": 189
     }
-  ]
+  ],
+  "format": "3 bytes: tone low, tone high/volume, noise/mixer; explosion holds each sample three refreshes",
+  "explosion_method": "QBANG filtered-noise arithmetic, fixed deterministic seed, approximate 6800 loop timings; speech2ay harmonic1; 20 Hz register updates"
 }

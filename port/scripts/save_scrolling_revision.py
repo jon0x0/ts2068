@@ -157,6 +157,13 @@ if args.name=='playable-mask-cache-v20':
     s=s.replace('<details><summary>', '<p><strong>Precomputed masks:</strong> all eight horizontal mask phases build in the back cache. The selected lookup is reused and assembly composition touches only dirty cells. Transparent gaps and fully covered-object culling remain enabled. New pieces appear after cache preparation completes.</p><p><strong>F: fast mode.</strong> At most two visible planetoids, with mining supply retained before awakening. Natural fast assembly measures 8.48 fps and fast pursuit 15.04 fps. <a href="../ASSEMBLY_CACHE.md">Current performance and tests</a>. <a href="../README.md">Original-source gameplay audit and remaining features</a>.</p>\n<details><summary>',1)
     page.write_text(s,encoding='utf-8')
 
+if args.name=='playable-worker-combat-v21':
+    s=page.read_text(encoding='utf-8')
+    s=s.replace('The measured scrolling scene renders about <strong>6 fps</strong> on the emulated TS2068; it still needs substantial drawing optimization to approach arcade smoothness.', 'Player movement now accelerates to roughly twice the earlier speed. Graphics still run below the 20 fps target in busy scenes.')
+    s=s.replace('Blue corners show the current viewport.', 'A blue outline shows the current viewport.')
+    s=s.replace('<details><summary>', '<p><strong>Worker combat:</strong> shoot workers to destroy them in an expanding fragment explosion. Carried crystals drop, and replacement workers keep construction viable. Worker and planetoid destruction play a speech2ay explosion effect; Sinistar speech retains priority.</p><p><strong>Movement:</strong> gradual acceleration, faster travel, coasting, and bounce off planetoids. The bounce treats rocks as heavy moving obstacles. The top scanner now draws the complete camera-relative viewport outline.</p><p><strong>F: fast mode.</strong> Limits visible planetoids to two and maintains mining supply before awakening. Precomputed assembly masks and covered-object culling remain enabled. <a href="../FAST_MODE_PROFILE.md">Performance results</a>. <a href="../README.md">Changes and remaining arcade features</a>.</p>\n<details><summary>',1)
+    page.write_text(s,encoding='utf-8')
+
 assert '<iframe' in page.read_text(encoding='utf-8') and '<!doctype html>' in page.read_text(encoding='utf-8').lower(), 'Launcher must remain HTML with an emulator frame'
 
 assert not dest.exists(), 'Preserve an existing saved revision'
@@ -177,14 +184,16 @@ for p in (root/'build').iterdir():
 
     if not p.is_file() or p.name=='fast-final-profile.json':continue
 
-    # An archived verification must describe this exact cartridge.
-    if p.name.endswith('verification.json') and json.loads(p.read_text(encoding='utf-8')).get('dck_sha256')!=digest:continue
+    # Do not package old measurements as evidence for the current cartridge.
+    if p.suffix=='.json':
+        data=json.loads(p.read_text(encoding='utf-8'))
+        if isinstance(data,dict) and data.get('dck_sha256') and data['dck_sha256']!=digest:continue
 
     current_report=p.name in ['assembly-cache-verification.json','assembly-scrolling-verification.json','mining-scene-verification.json','mining-eyes-verification.json','mining-covered-verification.json','fast-stars-scrolling-verification.json','scrolling-verification.json','population-verification.json','pursuit-timing-verification.json','playable-verification.json','voices-verification.json','mining-transitions-verification.json','scrolling-profile.json','end-screen-verification.json','incremental-verification.json','border-verification.json','attribute-flash-verification.json','cycling-raster-verification.json','fast-mode-verification.json','fast-playable-verification.json','fast-scrolling-verification.json','fast-mode-profile.json','one-planetoid-profile-current.json','one-planetoid-profile-culling-v2.json']
 
     native=p.name.startswith(('home-render','mining-','world-','fast-','assembly-','awakening-','speech-','sfx-','sinibomb-','title-','boot-','incremental','attribute-flash','render-kernels','rock-programs','player-tables','sinistar-speeds','scrolling-screen','sinistar-mining','effects','ring-points','ring-phases','mode-notice'))
 
-    if current_report or p.name in ['stress-fast-verification.json','stress-covered-verification.json'] or (native and p.suffix in ['.bin','.dck','.asm','.json','.txt','.png'] and 'verification' not in p.name and 'trace' not in p.name):shutil.copy2(p,dest/'build'/p.name)
+    if current_report or p.name in ['gameplay-features-verification.json','stress-fast-verification.json','stress-covered-verification.json'] or (native and p.suffix in ['.bin','.dck','.asm','.json','.txt','.png'] and 'verification' not in p.name and 'trace' not in p.name):shutil.copy2(p,dest/'build'/p.name)
 
 (dest/'SHA256SUMS').write_text(''.join(hashlib.sha256(p.read_bytes()).hexdigest()+'  '+p.relative_to(dest).as_posix()+'\n' for p in sorted(dest.rglob('*')) if p.is_file()),encoding='utf-8')
 

@@ -1,5 +1,6 @@
-; speech2ay harmonic1 effects, boot-cached in HOME 5C40..5E9C.
-; All playback stays in HOME/resident code: safe during fast preparation.
+; Packed speech2ay harmonic1 effects, HOME 5C40 below radar at 5EA0.
+ INCLUDE "../build/effects-origin.asm"
+; HOME stream data, resident scheduler, DOCK6 decoder; safe with high-RAM stack.
 sfx_pending EQU $5860
 sfx_active EQU $5861
 sfx_left EQU $5862
@@ -19,6 +20,10 @@ sfx_assembly:
 sfx_bomb:
  push af
  ld a,4
+ jr sfx_request
+sfx_explosion:
+ push af
+ ld a,5
 sfx_request:
  push bc
  ld b,a
@@ -78,11 +83,19 @@ sfx_available:
  ld (sfx_ptr),de
  xor a
  ld (sfx_pending),a
+ ld ($5c26),a
  ld e,9
  call sfx_zero
  ld e,10
  call sfx_zero
 sfx_continue:
+ ld hl,$5c26
+ ld a,(hl)
+ or a
+ jr z,sfx_hold_done
+ dec (hl)
+ ret
+sfx_hold_done:
  ld a,(sfx_left)
  or a
  jr nz,sfx_frame
@@ -94,23 +107,15 @@ sfx_continue:
  ld e,8
  jp sfx_zero
 sfx_frame:
+ ld a,$50
+ out ($f4),a
  ld hl,(sfx_ptr)
- ld e,0
-sfx_register:
- ld a,(hl)
- inc hl
- ld bc,$fff5
- out (c),e
- inc c
- out (c),a
- inc e
- ld a,e
- cp 2
- jr nz,sfx_next
- ld e,6
-sfx_next:
- cp 9
- jr nz,sfx_register
+ call world_extension+105
+ ld a,(sfx_active)
+ cp 5
+ jr nz,sfx_frame_done
+ ld a,2
+ ld ($5c26),a
 sfx_frame_done:
  ld (sfx_ptr),hl
  ld hl,sfx_left

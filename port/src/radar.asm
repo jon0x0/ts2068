@@ -27,22 +27,45 @@ radar_entry:
  pop af
  ld de,$01e0
  call radar_relative_common
+ ; Full camera-relative viewport outline; markers are added afterwards.
+ ld de,$0180
+ ld b,32
+radar_view_h:
+ push bc
  ld a,($58ed)
- add a,31
+ add a,b
+ dec a
  ld c,a
  ld a,($58ee)
+ push bc
  call radar_dot
- ld a,($58ed)
- ld c,a
+ pop bc
  ld a,($58ee)
  add a,3
  call radar_dot
+ pop bc
+ djnz radar_view_h
+ ld b,2
+radar_view_v:
+ push bc
  ld a,($58ed)
- add a,31
  ld c,a
  ld a,($58ee)
- add a,3
+ add a,b
+ push af
  call radar_dot
+ pop af
+ ld hl,$58ed
+ ld c,(hl)
+ push af
+ ld a,c
+ add a,31
+ ld c,a
+ pop af
+ call radar_dot
+ pop bc
+ djnz radar_view_v
+radar_view_done:
  ld a,(rock_alive)
  or a
  jr z,radar_worker
@@ -78,8 +101,8 @@ radar_planet_next:
  cp 17
  jr c,radar_planets
  ld a,(worker_alive)
- or a
- jr z,radar_face
+ cp 1
+ jr nz,radar_face
  ld a,(worker_x)
  ld c,a
  ld a,(worker_y)

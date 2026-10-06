@@ -187,6 +187,7 @@ wpp_x_sign:
 wpp_y_sign:
  and 1
  ld (ix+3),a
+ call wb_planet_bounce
  call wpp_hit
  call wpp_mine
 wpp_next:
@@ -281,7 +282,7 @@ wpp_damp:
  cp 2
  ret nz
  ld (ix+7),0
- ret
+ jp sfx_explosion
 wb_pop_begin:
  ld a,(game_mode)
  or a

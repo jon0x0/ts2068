@@ -1,5 +1,5 @@
 {
-  "dck_sha256": "50ab05955433c7e3355f7a34069c8b7ca5f00450640b41b06cd4673240a971f5",
+  "dck_sha256": "524e906a1805b55789a0430daab31c33464e51af55208f1a34c12d8ff3635063",
   "conditions": "Controlled one-rock workload: face and player pinned relative to camera, assembly image fixed, worker/combat disabled; 40 pictures after 360-refresh warmup. Measures native rendering cost, not general gameplay fps.",
   "scenes": [
     {
@@ -7,15 +7,15 @@
       "fastPathGateCounts": {
         "not awake": 40
       },
-      "comparedBitmapBytes": 5204,
-      "changedBitmapBytes": 763,
-      "unchangedBitmapComparisonPercent": 85.33820138355111,
+      "comparedBitmapBytes": 5226,
+      "changedBitmapBytes": 765,
+      "unchangedBitmapComparisonPercent": 85.36165327210104,
       "name": "10 pieces, phase 0, apart",
       "fast": true,
       "active_sinistar": false,
       "continuousSpeechAndFiring": false,
-      "seconds": 2.0589427437641725,
-      "fps": 19.427446499494074,
+      "seconds": 2.041887755102041,
+      "fps": 19.589715399415304,
       "pictures": 40,
       "visibleFacePictures": 40,
       "fastPictures": 0,
@@ -23,52 +23,52 @@
         "1": 40
       },
       "speed_pixels_per_tick": {
-        "player_average": 0.9844060014959541,
-        "player_peak": 0.9844060014959528,
+        "player_average": 0.12109375,
+        "player_peak": 0.12109375,
         "sinistar_average": 0,
         "sinistar_peak": 0
       },
       "time_percent": {
-        "physics": 8.1,
-        "composition": 58,
-        "dirty_comparison": 20.6,
-        "radar_preparation": 1.6,
+        "physics": 8.3,
+        "composition": 58.5,
+        "dirty_comparison": 20.8,
+        "radar_preparation": 2.2,
         "screen_publication": 0.5,
-        "refresh_wait": 10.5,
+        "refresh_wait": 9,
         "interrupts": 0.5,
         "other": 0.2
       },
-      "tstates_per_picture": 181598.75,
+      "tstates_per_picture": 180094.5,
       "routines": {
         "game_step": {
-          "calls": 86,
-          "inclusive": 587061,
-          "exclusive": 297846
+          "calls": 81,
+          "inclusive": 602600,
+          "exclusive": 328623
         },
         "wb_population": {
-          "calls": 86,
-          "inclusive": 110597,
-          "exclusive": 110597
+          "calls": 81,
+          "inclusive": 106014,
+          "exclusive": 106014
         },
         "wb_worker": {
-          "calls": 86,
-          "inclusive": 85609,
-          "exclusive": 85609
+          "calls": 81,
+          "inclusive": 78809,
+          "exclusive": 78809
         },
         "wb_move_player": {
-          "calls": 86,
-          "inclusive": 60415,
-          "exclusive": 60415
+          "calls": 81,
+          "inclusive": 58455,
+          "exclusive": 57087
         },
         "mining_pursuit_step": {
-          "calls": 86,
-          "inclusive": 18748,
-          "exclusive": 18748
+          "calls": 81,
+          "inclusive": 17658,
+          "exclusive": 17658
         },
         "render": {
           "calls": 40,
-          "inclusive": 6664072,
-          "exclusive": 773112
+          "inclusive": 6588953,
+          "exclusive": 772817
         },
         "population_clear": {
           "calls": 40,
@@ -92,28 +92,28 @@
         },
         "clear_four": {
           "calls": 80,
-          "inclusive": 340704,
-          "exclusive": 327168
+          "inclusive": 344670,
+          "exclusive": 327342
         },
         "compile": {
           "calls": 40,
-          "inclusive": 1497391,
-          "exclusive": 1495699
+          "inclusive": 1497049,
+          "exclusive": 1497049
         },
         "radar_entry": {
-          "calls": 4,
-          "inclusive": 113492,
-          "exclusive": 113492
+          "calls": 3,
+          "inclusive": 155028,
+          "exclusive": 155028
         },
         "stars_clear": {
           "calls": 40,
-          "inclusive": 328320,
-          "exclusive": 328320
+          "inclusive": 329290,
+          "exclusive": 328378
         },
         "stars_draw": {
           "calls": 40,
-          "inclusive": 293482,
-          "exclusive": 291790
+          "inclusive": 291674,
+          "exclusive": 291674
         },
         "draw_assembly": {
           "calls": 0,
@@ -122,7 +122,7 @@
         },
         "assembly_cache_call": {
           "calls": 320,
-          "inclusive": 1380656,
+          "inclusive": 1380894,
           "exclusive": 0
         },
         "wb_shift_assembly": {
@@ -142,8 +142,8 @@
         },
         "wb_pop_prepare": {
           "calls": 40,
-          "inclusive": 458968,
-          "exclusive": 457276
+          "inclusive": 457160,
+          "exclusive": 457160
         },
         "wb_clip_sprite": {
           "calls": 0,
@@ -161,9 +161,9 @@
           "exclusive": 1120
         },
         "isr": {
-          "calls": 88,
-          "inclusive": 37224,
-          "exclusive": 20856
+          "calls": 83,
+          "inclusive": 37848,
+          "exclusive": 19671
         },
         "mode_filter": {
           "calls": 40,
@@ -172,8 +172,8 @@
         },
         "draw_rock": {
           "calls": 40,
-          "inclusive": 195609,
-          "exclusive": 195609
+          "inclusive": 194845,
+          "exclusive": 194845
         },
         "draw_ship": {
           "calls": 40,
@@ -191,24 +191,24 @@
           "exclusive": 61960
         },
         "wb_bullet": {
-          "calls": 86,
-          "inclusive": 2408,
-          "exclusive": 2408
+          "calls": 81,
+          "inclusive": 2268,
+          "exclusive": 2268
         },
         "game_rules": {
-          "calls": 86,
-          "inclusive": 11438,
-          "exclusive": 11438
+          "calls": 81,
+          "inclusive": 10773,
+          "exclusive": 10773
         },
         "speech_tick": {
-          "calls": 88,
-          "inclusive": 6688,
-          "exclusive": 6688
+          "calls": 83,
+          "inclusive": 6308,
+          "exclusive": 6308
         },
         "sfx_tick": {
-          "calls": 88,
-          "inclusive": 9680,
-          "exclusive": 9680
+          "calls": 83,
+          "inclusive": 11869,
+          "exclusive": 11869
         },
         "cache_build": {
           "calls": 80,
@@ -217,8 +217,8 @@
         },
         "cache_draw": {
           "calls": 160,
-          "inclusive": 960195,
-          "exclusive": 960195
+          "inclusive": 960467,
+          "exclusive": 960467
         },
         "cache_prepare": {
           "calls": 40,
@@ -227,18 +227,18 @@
         },
         "cache_overlap": {
           "calls": 40,
-          "inclusive": 382381,
-          "exclusive": 382381
+          "inclusive": 382347,
+          "exclusive": 382347
         },
         "wait_for_refresh": {
           "calls": 40,
-          "inclusive": 779565,
-          "exclusive": 762645
+          "inclusive": 664391,
+          "exclusive": 646151
         },
         "visible_publish": {
           "calls": 40,
-          "inclusive": 39041,
-          "exclusive": 36801
+          "inclusive": 39095,
+          "exclusive": 36855
         }
       }
     },
@@ -247,15 +247,15 @@
       "fastPathGateCounts": {
         "not awake": 40
       },
-      "comparedBitmapBytes": 5204,
-      "changedBitmapBytes": 757,
-      "unchangedBitmapComparisonPercent": 85.45349730976172,
+      "comparedBitmapBytes": 5226,
+      "changedBitmapBytes": 760,
+      "unchangedBitmapComparisonPercent": 85.45732874091082,
       "name": "10 pieces, phase 1, apart",
       "fast": true,
       "active_sinistar": false,
       "continuousSpeechAndFiring": false,
-      "seconds": 2.0589427437641725,
-      "fps": 19.427446499494074,
+      "seconds": 2.0418786848072563,
+      "fps": 19.589802419518282,
       "pictures": 40,
       "visibleFacePictures": 40,
       "fastPictures": 0,
@@ -263,52 +263,52 @@
         "1": 40
       },
       "speed_pixels_per_tick": {
-        "player_average": 0.9844060014959541,
-        "player_peak": 0.9844060014959528,
+        "player_average": 0.12109375,
+        "player_peak": 0.12109375,
         "sinistar_average": 0,
         "sinistar_peak": 0
       },
       "time_percent": {
-        "physics": 8.1,
-        "composition": 58,
-        "dirty_comparison": 20.6,
-        "radar_preparation": 1.6,
+        "physics": 8.3,
+        "composition": 58.5,
+        "dirty_comparison": 20.8,
+        "radar_preparation": 2.2,
         "screen_publication": 0.5,
-        "refresh_wait": 10.5,
+        "refresh_wait": 9,
         "interrupts": 0.5,
         "other": 0.2
       },
-      "tstates_per_picture": 181598.75,
+      "tstates_per_picture": 180093.7,
       "routines": {
         "game_step": {
-          "calls": 86,
-          "inclusive": 587061,
-          "exclusive": 297846
+          "calls": 81,
+          "inclusive": 602595,
+          "exclusive": 328623
         },
         "wb_population": {
-          "calls": 86,
-          "inclusive": 110597,
-          "exclusive": 110597
+          "calls": 81,
+          "inclusive": 106014,
+          "exclusive": 106014
         },
         "wb_worker": {
-          "calls": 86,
-          "inclusive": 85609,
-          "exclusive": 85609
+          "calls": 81,
+          "inclusive": 78804,
+          "exclusive": 78804
         },
         "wb_move_player": {
-          "calls": 86,
-          "inclusive": 60415,
-          "exclusive": 60415
+          "calls": 81,
+          "inclusive": 58455,
+          "exclusive": 57087
         },
         "mining_pursuit_step": {
-          "calls": 86,
-          "inclusive": 18748,
-          "exclusive": 18748
+          "calls": 81,
+          "inclusive": 17658,
+          "exclusive": 17658
         },
         "render": {
           "calls": 40,
-          "inclusive": 6664072,
-          "exclusive": 773112
+          "inclusive": 6588926,
+          "exclusive": 772817
         },
         "population_clear": {
           "calls": 40,
@@ -332,28 +332,28 @@
         },
         "clear_four": {
           "calls": 80,
-          "inclusive": 340704,
-          "exclusive": 327168
+          "inclusive": 345155,
+          "exclusive": 327371
         },
         "compile": {
           "calls": 40,
-          "inclusive": 1497217,
-          "exclusive": 1495525
+          "inclusive": 1496904,
+          "exclusive": 1496904
         },
         "radar_entry": {
-          "calls": 4,
-          "inclusive": 113492,
-          "exclusive": 113492
+          "calls": 3,
+          "inclusive": 155028,
+          "exclusive": 155028
         },
         "stars_clear": {
           "calls": 40,
-          "inclusive": 328320,
-          "exclusive": 328320
+          "inclusive": 328805,
+          "exclusive": 328349
         },
         "stars_draw": {
           "calls": 40,
-          "inclusive": 293482,
-          "exclusive": 291790
+          "inclusive": 291674,
+          "exclusive": 291674
         },
         "draw_assembly": {
           "calls": 0,
@@ -362,7 +362,7 @@
         },
         "assembly_cache_call": {
           "calls": 320,
-          "inclusive": 1380184,
+          "inclusive": 1380342,
           "exclusive": 0
         },
         "wb_shift_assembly": {
@@ -382,8 +382,8 @@
         },
         "wb_pop_prepare": {
           "calls": 40,
-          "inclusive": 458968,
-          "exclusive": 457276
+          "inclusive": 457160,
+          "exclusive": 457160
         },
         "wb_clip_sprite": {
           "calls": 0,
@@ -401,9 +401,9 @@
           "exclusive": 1120
         },
         "isr": {
-          "calls": 88,
-          "inclusive": 37224,
-          "exclusive": 20856
+          "calls": 83,
+          "inclusive": 37848,
+          "exclusive": 19671
         },
         "mode_filter": {
           "calls": 40,
@@ -412,8 +412,8 @@
         },
         "draw_rock": {
           "calls": 40,
-          "inclusive": 195609,
-          "exclusive": 195609
+          "inclusive": 194845,
+          "exclusive": 194845
         },
         "draw_ship": {
           "calls": 40,
@@ -431,24 +431,24 @@
           "exclusive": 61960
         },
         "wb_bullet": {
-          "calls": 86,
-          "inclusive": 2408,
-          "exclusive": 2408
+          "calls": 81,
+          "inclusive": 2268,
+          "exclusive": 2268
         },
         "game_rules": {
-          "calls": 86,
-          "inclusive": 11438,
-          "exclusive": 11438
+          "calls": 81,
+          "inclusive": 10773,
+          "exclusive": 10773
         },
         "speech_tick": {
-          "calls": 88,
-          "inclusive": 6688,
-          "exclusive": 6688
+          "calls": 83,
+          "inclusive": 6308,
+          "exclusive": 6308
         },
         "sfx_tick": {
-          "calls": 88,
-          "inclusive": 9680,
-          "exclusive": 9680
+          "calls": 83,
+          "inclusive": 11869,
+          "exclusive": 11869
         },
         "cache_build": {
           "calls": 80,
@@ -457,8 +457,8 @@
         },
         "cache_draw": {
           "calls": 160,
-          "inclusive": 959723,
-          "exclusive": 959723
+          "inclusive": 959915,
+          "exclusive": 959915
         },
         "cache_prepare": {
           "calls": 40,
@@ -467,498 +467,498 @@
         },
         "cache_overlap": {
           "calls": 40,
-          "inclusive": 382381,
-          "exclusive": 382381
+          "inclusive": 382347,
+          "exclusive": 382347
         },
         "wait_for_refresh": {
           "calls": 40,
-          "inclusive": 780373,
-          "exclusive": 763453
-        },
-        "visible_publish": {
-          "calls": 40,
-          "inclusive": 38879,
-          "exclusive": 36639
-        }
-      }
-    },
-    {
-      "overlapRejections": {},
-      "fastPathGateCounts": {
-        "not awake": 40
-      },
-      "comparedBitmapBytes": 5204,
-      "changedBitmapBytes": 757,
-      "unchangedBitmapComparisonPercent": 85.45349730976172,
-      "name": "10 pieces, phase 4, apart",
-      "fast": true,
-      "active_sinistar": false,
-      "continuousSpeechAndFiring": false,
-      "seconds": 2.058935090702948,
-      "fps": 19.427518711307926,
-      "pictures": 40,
-      "visibleFacePictures": 40,
-      "fastPictures": 0,
-      "visible_histogram": {
-        "1": 40
-      },
-      "speed_pixels_per_tick": {
-        "player_average": 0.9844060014959541,
-        "player_peak": 0.9844060014959528,
-        "sinistar_average": 0,
-        "sinistar_peak": 0
-      },
-      "time_percent": {
-        "physics": 8.1,
-        "composition": 58,
-        "dirty_comparison": 20.6,
-        "radar_preparation": 1.6,
-        "screen_publication": 0.5,
-        "refresh_wait": 10.5,
-        "interrupts": 0.5,
-        "other": 0.2
-      },
-      "tstates_per_picture": 181598.075,
-      "routines": {
-        "game_step": {
-          "calls": 86,
-          "inclusive": 587061,
-          "exclusive": 297846
-        },
-        "wb_population": {
-          "calls": 86,
-          "inclusive": 110597,
-          "exclusive": 110597
-        },
-        "wb_worker": {
-          "calls": 86,
-          "inclusive": 85609,
-          "exclusive": 85609
-        },
-        "wb_move_player": {
-          "calls": 86,
-          "inclusive": 60415,
-          "exclusive": 60415
-        },
-        "mining_pursuit_step": {
-          "calls": 86,
-          "inclusive": 18748,
-          "exclusive": 18748
-        },
-        "render": {
-          "calls": 40,
-          "inclusive": 6664045,
-          "exclusive": 773112
-        },
-        "population_clear": {
-          "calls": 40,
-          "inclusive": 1920,
-          "exclusive": 1920
-        },
-        "population_draw": {
-          "calls": 40,
-          "inclusive": 1920,
-          "exclusive": 1920
-        },
-        "stage": {
-          "calls": 0,
-          "inclusive": 0,
-          "exclusive": 0
-        },
-        "scene_sprite": {
-          "calls": 0,
-          "inclusive": 0,
-          "exclusive": 0
-        },
-        "clear_four": {
-          "calls": 80,
-          "inclusive": 340704,
-          "exclusive": 327168
-        },
-        "compile": {
-          "calls": 40,
-          "inclusive": 1497217,
-          "exclusive": 1495525
-        },
-        "radar_entry": {
-          "calls": 4,
-          "inclusive": 113492,
-          "exclusive": 113492
-        },
-        "stars_clear": {
-          "calls": 40,
-          "inclusive": 328320,
-          "exclusive": 328320
-        },
-        "stars_draw": {
-          "calls": 40,
-          "inclusive": 293732,
-          "exclusive": 292040
-        },
-        "draw_assembly": {
-          "calls": 0,
-          "inclusive": 0,
-          "exclusive": 0
-        },
-        "assembly_cache_call": {
-          "calls": 320,
-          "inclusive": 1380314,
-          "exclusive": 0
-        },
-        "wb_shift_assembly": {
-          "calls": 0,
-          "inclusive": 0,
-          "exclusive": 0
-        },
-        "draw_cached_face": {
-          "calls": 0,
-          "inclusive": 0,
-          "exclusive": 0
-        },
-        "fast_select": {
-          "calls": 40,
-          "inclusive": 4000,
-          "exclusive": 4000
-        },
-        "wb_pop_prepare": {
-          "calls": 40,
-          "inclusive": 458968,
-          "exclusive": 457276
-        },
-        "wb_clip_sprite": {
-          "calls": 0,
-          "inclusive": 0,
-          "exclusive": 0
-        },
-        "fast_publish": {
-          "calls": 40,
-          "inclusive": 1120,
-          "exclusive": 1120
-        },
-        "radar_publish": {
-          "calls": 40,
-          "inclusive": 1120,
-          "exclusive": 1120
-        },
-        "isr": {
-          "calls": 88,
-          "inclusive": 37224,
-          "exclusive": 20856
-        },
-        "mode_filter": {
-          "calls": 40,
-          "inclusive": 9360,
-          "exclusive": 9360
-        },
-        "draw_rock": {
-          "calls": 40,
-          "inclusive": 195609,
-          "exclusive": 195609
-        },
-        "draw_ship": {
-          "calls": 40,
-          "inclusive": 227120,
-          "exclusive": 227120
-        },
-        "world_project": {
-          "calls": 40,
-          "inclusive": 155760,
-          "exclusive": 155760
-        },
-        "world_restore": {
-          "calls": 40,
-          "inclusive": 61960,
-          "exclusive": 61960
-        },
-        "wb_bullet": {
-          "calls": 86,
-          "inclusive": 2408,
-          "exclusive": 2408
-        },
-        "game_rules": {
-          "calls": 86,
-          "inclusive": 11438,
-          "exclusive": 11438
-        },
-        "speech_tick": {
-          "calls": 88,
-          "inclusive": 6688,
-          "exclusive": 6688
-        },
-        "sfx_tick": {
-          "calls": 88,
-          "inclusive": 9680,
-          "exclusive": 9680
-        },
-        "cache_build": {
-          "calls": 80,
-          "inclusive": 22960,
-          "exclusive": 22960
-        },
-        "cache_draw": {
-          "calls": 160,
-          "inclusive": 959776,
-          "exclusive": 959776
-        },
-        "cache_prepare": {
-          "calls": 40,
-          "inclusive": 15120,
-          "exclusive": 15120
-        },
-        "cache_overlap": {
-          "calls": 40,
-          "inclusive": 382458,
-          "exclusive": 382458
-        },
-        "wait_for_refresh": {
-          "calls": 40,
-          "inclusive": 779966,
-          "exclusive": 763046
-        },
-        "visible_publish": {
-          "calls": 40,
-          "inclusive": 38879,
-          "exclusive": 36639
-        }
-      }
-    },
-    {
-      "overlapRejections": {},
-      "fastPathGateCounts": {
-        "not awake": 40
-      },
-      "comparedBitmapBytes": 5204,
-      "changedBitmapBytes": 760,
-      "unchangedBitmapComparisonPercent": 85.39584934665642,
-      "name": "10 pieces, phase 7, apart",
-      "fast": true,
-      "active_sinistar": false,
-      "continuousSpeechAndFiring": false,
-      "seconds": 2.0589427437641725,
-      "fps": 19.427446499494074,
-      "pictures": 40,
-      "visibleFacePictures": 40,
-      "fastPictures": 0,
-      "visible_histogram": {
-        "1": 40
-      },
-      "speed_pixels_per_tick": {
-        "player_average": 0.9844060014959541,
-        "player_peak": 0.9844060014959528,
-        "sinistar_average": 0,
-        "sinistar_peak": 0
-      },
-      "time_percent": {
-        "physics": 8.1,
-        "composition": 58,
-        "dirty_comparison": 20.6,
-        "radar_preparation": 1.6,
-        "screen_publication": 0.5,
-        "refresh_wait": 10.5,
-        "interrupts": 0.5,
-        "other": 0.2
-      },
-      "tstates_per_picture": 181598.75,
-      "routines": {
-        "game_step": {
-          "calls": 86,
-          "inclusive": 587061,
-          "exclusive": 297846
-        },
-        "wb_population": {
-          "calls": 86,
-          "inclusive": 110597,
-          "exclusive": 110597
-        },
-        "wb_worker": {
-          "calls": 86,
-          "inclusive": 85609,
-          "exclusive": 85609
-        },
-        "wb_move_player": {
-          "calls": 86,
-          "inclusive": 60415,
-          "exclusive": 60415
-        },
-        "mining_pursuit_step": {
-          "calls": 86,
-          "inclusive": 18748,
-          "exclusive": 18748
-        },
-        "render": {
-          "calls": 40,
-          "inclusive": 6664072,
-          "exclusive": 773112
-        },
-        "population_clear": {
-          "calls": 40,
-          "inclusive": 1920,
-          "exclusive": 1920
-        },
-        "population_draw": {
-          "calls": 40,
-          "inclusive": 1920,
-          "exclusive": 1920
-        },
-        "stage": {
-          "calls": 0,
-          "inclusive": 0,
-          "exclusive": 0
-        },
-        "scene_sprite": {
-          "calls": 0,
-          "inclusive": 0,
-          "exclusive": 0
-        },
-        "clear_four": {
-          "calls": 80,
-          "inclusive": 340704,
-          "exclusive": 327168
-        },
-        "compile": {
-          "calls": 40,
-          "inclusive": 1497304,
-          "exclusive": 1495612
-        },
-        "radar_entry": {
-          "calls": 4,
-          "inclusive": 113492,
-          "exclusive": 113492
-        },
-        "stars_clear": {
-          "calls": 40,
-          "inclusive": 328320,
-          "exclusive": 328320
-        },
-        "stars_draw": {
-          "calls": 40,
-          "inclusive": 293982,
-          "exclusive": 292290
-        },
-        "draw_assembly": {
-          "calls": 0,
-          "inclusive": 0,
-          "exclusive": 0
-        },
-        "assembly_cache_call": {
-          "calls": 320,
-          "inclusive": 1379358,
-          "exclusive": 0
-        },
-        "wb_shift_assembly": {
-          "calls": 0,
-          "inclusive": 0,
-          "exclusive": 0
-        },
-        "draw_cached_face": {
-          "calls": 0,
-          "inclusive": 0,
-          "exclusive": 0
-        },
-        "fast_select": {
-          "calls": 40,
-          "inclusive": 4000,
-          "exclusive": 4000
-        },
-        "wb_pop_prepare": {
-          "calls": 40,
-          "inclusive": 458968,
-          "exclusive": 457276
-        },
-        "wb_clip_sprite": {
-          "calls": 0,
-          "inclusive": 0,
-          "exclusive": 0
-        },
-        "fast_publish": {
-          "calls": 40,
-          "inclusive": 1120,
-          "exclusive": 1120
-        },
-        "radar_publish": {
-          "calls": 40,
-          "inclusive": 1120,
-          "exclusive": 1120
-        },
-        "isr": {
-          "calls": 88,
-          "inclusive": 37224,
-          "exclusive": 20856
-        },
-        "mode_filter": {
-          "calls": 40,
-          "inclusive": 9360,
-          "exclusive": 9360
-        },
-        "draw_rock": {
-          "calls": 40,
-          "inclusive": 195609,
-          "exclusive": 195609
-        },
-        "draw_ship": {
-          "calls": 40,
-          "inclusive": 227120,
-          "exclusive": 227120
-        },
-        "world_project": {
-          "calls": 40,
-          "inclusive": 155760,
-          "exclusive": 155760
-        },
-        "world_restore": {
-          "calls": 40,
-          "inclusive": 61960,
-          "exclusive": 61960
-        },
-        "wb_bullet": {
-          "calls": 86,
-          "inclusive": 2408,
-          "exclusive": 2408
-        },
-        "game_rules": {
-          "calls": 86,
-          "inclusive": 11438,
-          "exclusive": 11438
-        },
-        "speech_tick": {
-          "calls": 88,
-          "inclusive": 6688,
-          "exclusive": 6688
-        },
-        "sfx_tick": {
-          "calls": 88,
-          "inclusive": 9680,
-          "exclusive": 9680
-        },
-        "cache_build": {
-          "calls": 80,
-          "inclusive": 22960,
-          "exclusive": 22960
-        },
-        "cache_draw": {
-          "calls": 160,
-          "inclusive": 958743,
-          "exclusive": 958743
-        },
-        "cache_prepare": {
-          "calls": 40,
-          "inclusive": 15120,
-          "exclusive": 15120
-        },
-        "cache_overlap": {
-          "calls": 40,
-          "inclusive": 382535,
-          "exclusive": 382535
-        },
-        "wait_for_refresh": {
-          "calls": 40,
-          "inclusive": 780531,
-          "exclusive": 763611
+          "inclusive": 665196,
+          "exclusive": 646956
         },
         "visible_publish": {
           "calls": 40,
           "inclusive": 38960,
           "exclusive": 36720
+        }
+      }
+    },
+    {
+      "overlapRejections": {},
+      "fastPathGateCounts": {
+        "not awake": 40
+      },
+      "comparedBitmapBytes": 5226,
+      "changedBitmapBytes": 762,
+      "unchangedBitmapComparisonPercent": 85.41905855338692,
+      "name": "10 pieces, phase 4, apart",
+      "fast": true,
+      "active_sinistar": false,
+      "continuousSpeechAndFiring": false,
+      "seconds": 2.0418863378684806,
+      "fps": 19.589728996255438,
+      "pictures": 40,
+      "visibleFacePictures": 40,
+      "fastPictures": 0,
+      "visible_histogram": {
+        "1": 40
+      },
+      "speed_pixels_per_tick": {
+        "player_average": 0.12109375,
+        "player_peak": 0.12109375,
+        "sinistar_average": 0,
+        "sinistar_peak": 0
+      },
+      "time_percent": {
+        "physics": 8.5,
+        "composition": 58.5,
+        "dirty_comparison": 20.8,
+        "radar_preparation": 2.2,
+        "screen_publication": 0.5,
+        "refresh_wait": 8.9,
+        "interrupts": 0.5,
+        "other": 0.2
+      },
+      "tstates_per_picture": 180094.375,
+      "routines": {
+        "game_step": {
+          "calls": 82,
+          "inclusive": 610413,
+          "exclusive": 332650
+        },
+        "wb_population": {
+          "calls": 82,
+          "inclusive": 107160,
+          "exclusive": 107160
+        },
+        "wb_worker": {
+          "calls": 82,
+          "inclusive": 80387,
+          "exclusive": 80387
+        },
+        "wb_move_player": {
+          "calls": 82,
+          "inclusive": 59138,
+          "exclusive": 57770
+        },
+        "mining_pursuit_step": {
+          "calls": 82,
+          "inclusive": 17876,
+          "exclusive": 17876
+        },
+        "render": {
+          "calls": 40,
+          "inclusive": 6581017,
+          "exclusive": 772846
+        },
+        "population_clear": {
+          "calls": 40,
+          "inclusive": 1920,
+          "exclusive": 1920
+        },
+        "population_draw": {
+          "calls": 40,
+          "inclusive": 1920,
+          "exclusive": 1920
+        },
+        "stage": {
+          "calls": 0,
+          "inclusive": 0,
+          "exclusive": 0
+        },
+        "scene_sprite": {
+          "calls": 0,
+          "inclusive": 0,
+          "exclusive": 0
+        },
+        "clear_four": {
+          "calls": 80,
+          "inclusive": 344185,
+          "exclusive": 327313
+        },
+        "compile": {
+          "calls": 40,
+          "inclusive": 1496962,
+          "exclusive": 1496962
+        },
+        "radar_entry": {
+          "calls": 3,
+          "inclusive": 155028,
+          "exclusive": 155028
+        },
+        "stars_clear": {
+          "calls": 40,
+          "inclusive": 329775,
+          "exclusive": 328407
+        },
+        "stars_draw": {
+          "calls": 40,
+          "inclusive": 292174,
+          "exclusive": 292174
+        },
+        "draw_assembly": {
+          "calls": 0,
+          "inclusive": 0,
+          "exclusive": 0
+        },
+        "assembly_cache_call": {
+          "calls": 320,
+          "inclusive": 1380525,
+          "exclusive": 0
+        },
+        "wb_shift_assembly": {
+          "calls": 0,
+          "inclusive": 0,
+          "exclusive": 0
+        },
+        "draw_cached_face": {
+          "calls": 0,
+          "inclusive": 0,
+          "exclusive": 0
+        },
+        "fast_select": {
+          "calls": 40,
+          "inclusive": 4000,
+          "exclusive": 4000
+        },
+        "wb_pop_prepare": {
+          "calls": 40,
+          "inclusive": 457160,
+          "exclusive": 457160
+        },
+        "wb_clip_sprite": {
+          "calls": 0,
+          "inclusive": 0,
+          "exclusive": 0
+        },
+        "fast_publish": {
+          "calls": 40,
+          "inclusive": 1120,
+          "exclusive": 1120
+        },
+        "radar_publish": {
+          "calls": 40,
+          "inclusive": 1120,
+          "exclusive": 1120
+        },
+        "isr": {
+          "calls": 84,
+          "inclusive": 38304,
+          "exclusive": 19908
+        },
+        "mode_filter": {
+          "calls": 40,
+          "inclusive": 9360,
+          "exclusive": 9360
+        },
+        "draw_rock": {
+          "calls": 40,
+          "inclusive": 194845,
+          "exclusive": 194845
+        },
+        "draw_ship": {
+          "calls": 40,
+          "inclusive": 227120,
+          "exclusive": 227120
+        },
+        "world_project": {
+          "calls": 40,
+          "inclusive": 155760,
+          "exclusive": 155760
+        },
+        "world_restore": {
+          "calls": 40,
+          "inclusive": 61960,
+          "exclusive": 61960
+        },
+        "wb_bullet": {
+          "calls": 82,
+          "inclusive": 2296,
+          "exclusive": 2296
+        },
+        "game_rules": {
+          "calls": 82,
+          "inclusive": 10906,
+          "exclusive": 10906
+        },
+        "speech_tick": {
+          "calls": 84,
+          "inclusive": 6384,
+          "exclusive": 6384
+        },
+        "sfx_tick": {
+          "calls": 84,
+          "inclusive": 12012,
+          "exclusive": 12012
+        },
+        "cache_build": {
+          "calls": 80,
+          "inclusive": 22960,
+          "exclusive": 22960
+        },
+        "cache_draw": {
+          "calls": 160,
+          "inclusive": 959944,
+          "exclusive": 959944
+        },
+        "cache_prepare": {
+          "calls": 40,
+          "inclusive": 15120,
+          "exclusive": 15120
+        },
+        "cache_overlap": {
+          "calls": 40,
+          "inclusive": 382501,
+          "exclusive": 382501
+        },
+        "wait_for_refresh": {
+          "calls": 40,
+          "inclusive": 656007,
+          "exclusive": 637767
+        },
+        "visible_publish": {
+          "calls": 40,
+          "inclusive": 39014,
+          "exclusive": 36774
+        }
+      }
+    },
+    {
+      "overlapRejections": {},
+      "fastPathGateCounts": {
+        "not awake": 40
+      },
+      "comparedBitmapBytes": 5226,
+      "changedBitmapBytes": 764,
+      "unchangedBitmapComparisonPercent": 85.380788365863,
+      "name": "10 pieces, phase 7, apart",
+      "fast": true,
+      "active_sinistar": false,
+      "continuousSpeechAndFiring": false,
+      "seconds": 2.041887755102041,
+      "fps": 19.589715399415304,
+      "pictures": 40,
+      "visibleFacePictures": 40,
+      "fastPictures": 0,
+      "visible_histogram": {
+        "1": 40
+      },
+      "speed_pixels_per_tick": {
+        "player_average": 0.12109375,
+        "player_peak": 0.12109375,
+        "sinistar_average": 0,
+        "sinistar_peak": 0
+      },
+      "time_percent": {
+        "physics": 8.5,
+        "composition": 58.5,
+        "dirty_comparison": 20.8,
+        "radar_preparation": 2.2,
+        "screen_publication": 0.5,
+        "refresh_wait": 8.9,
+        "interrupts": 0.5,
+        "other": 0.2
+      },
+      "tstates_per_picture": 180094.5,
+      "routines": {
+        "game_step": {
+          "calls": 82,
+          "inclusive": 610418,
+          "exclusive": 332650
+        },
+        "wb_population": {
+          "calls": 82,
+          "inclusive": 107165,
+          "exclusive": 107165
+        },
+        "wb_worker": {
+          "calls": 82,
+          "inclusive": 80387,
+          "exclusive": 80387
+        },
+        "wb_move_player": {
+          "calls": 82,
+          "inclusive": 59138,
+          "exclusive": 57770
+        },
+        "mining_pursuit_step": {
+          "calls": 82,
+          "inclusive": 17876,
+          "exclusive": 17876
+        },
+        "render": {
+          "calls": 40,
+          "inclusive": 6581017,
+          "exclusive": 772846
+        },
+        "population_clear": {
+          "calls": 40,
+          "inclusive": 1920,
+          "exclusive": 1920
+        },
+        "population_draw": {
+          "calls": 40,
+          "inclusive": 1920,
+          "exclusive": 1920
+        },
+        "stage": {
+          "calls": 0,
+          "inclusive": 0,
+          "exclusive": 0
+        },
+        "scene_sprite": {
+          "calls": 0,
+          "inclusive": 0,
+          "exclusive": 0
+        },
+        "clear_four": {
+          "calls": 80,
+          "inclusive": 344185,
+          "exclusive": 327313
+        },
+        "compile": {
+          "calls": 40,
+          "inclusive": 1497020,
+          "exclusive": 1497020
+        },
+        "radar_entry": {
+          "calls": 3,
+          "inclusive": 155028,
+          "exclusive": 155028
+        },
+        "stars_clear": {
+          "calls": 40,
+          "inclusive": 329775,
+          "exclusive": 328407
+        },
+        "stars_draw": {
+          "calls": 40,
+          "inclusive": 292174,
+          "exclusive": 292174
+        },
+        "draw_assembly": {
+          "calls": 0,
+          "inclusive": 0,
+          "exclusive": 0
+        },
+        "assembly_cache_call": {
+          "calls": 320,
+          "inclusive": 1379427,
+          "exclusive": 0
+        },
+        "wb_shift_assembly": {
+          "calls": 0,
+          "inclusive": 0,
+          "exclusive": 0
+        },
+        "draw_cached_face": {
+          "calls": 0,
+          "inclusive": 0,
+          "exclusive": 0
+        },
+        "fast_select": {
+          "calls": 40,
+          "inclusive": 4000,
+          "exclusive": 4000
+        },
+        "wb_pop_prepare": {
+          "calls": 40,
+          "inclusive": 457160,
+          "exclusive": 457160
+        },
+        "wb_clip_sprite": {
+          "calls": 0,
+          "inclusive": 0,
+          "exclusive": 0
+        },
+        "fast_publish": {
+          "calls": 40,
+          "inclusive": 1120,
+          "exclusive": 1120
+        },
+        "radar_publish": {
+          "calls": 40,
+          "inclusive": 1120,
+          "exclusive": 1120
+        },
+        "isr": {
+          "calls": 84,
+          "inclusive": 38304,
+          "exclusive": 19908
+        },
+        "mode_filter": {
+          "calls": 40,
+          "inclusive": 9360,
+          "exclusive": 9360
+        },
+        "draw_rock": {
+          "calls": 40,
+          "inclusive": 194845,
+          "exclusive": 194845
+        },
+        "draw_ship": {
+          "calls": 40,
+          "inclusive": 227120,
+          "exclusive": 227120
+        },
+        "world_project": {
+          "calls": 40,
+          "inclusive": 155760,
+          "exclusive": 155760
+        },
+        "world_restore": {
+          "calls": 40,
+          "inclusive": 61960,
+          "exclusive": 61960
+        },
+        "wb_bullet": {
+          "calls": 82,
+          "inclusive": 2296,
+          "exclusive": 2296
+        },
+        "game_rules": {
+          "calls": 82,
+          "inclusive": 10906,
+          "exclusive": 10906
+        },
+        "speech_tick": {
+          "calls": 84,
+          "inclusive": 6384,
+          "exclusive": 6384
+        },
+        "sfx_tick": {
+          "calls": 84,
+          "inclusive": 12012,
+          "exclusive": 12012
+        },
+        "cache_build": {
+          "calls": 80,
+          "inclusive": 22960,
+          "exclusive": 22960
+        },
+        "cache_draw": {
+          "calls": 160,
+          "inclusive": 958846,
+          "exclusive": 958846
+        },
+        "cache_prepare": {
+          "calls": 40,
+          "inclusive": 15120,
+          "exclusive": 15120
+        },
+        "cache_overlap": {
+          "calls": 40,
+          "inclusive": 382501,
+          "exclusive": 382501
+        },
+        "wait_for_refresh": {
+          "calls": 40,
+          "inclusive": 656993,
+          "exclusive": 638753
+        },
+        "visible_publish": {
+          "calls": 40,
+          "inclusive": 39068,
+          "exclusive": 36828
         }
       }
     },
@@ -974,8 +974,8 @@
       "fast": true,
       "active_sinistar": false,
       "continuousSpeechAndFiring": false,
-      "seconds": 2.158774943310658,
-      "fps": 18.52902736524111,
+      "seconds": 2.0420654761904764,
+      "fps": 19.588010505236586,
       "pictures": 40,
       "visibleFacePictures": 40,
       "fastPictures": 0,
@@ -983,52 +983,52 @@
         "1": 40
       },
       "speed_pixels_per_tick": {
-        "player_average": 0.9844060014959541,
-        "player_peak": 0.9844060014959528,
+        "player_average": 0.12109375,
+        "player_peak": 0.12109375,
         "sinistar_average": 0,
         "sinistar_peak": 0
       },
       "time_percent": {
-        "physics": 8.1,
-        "composition": 62.6,
-        "dirty_comparison": 16.5,
-        "radar_preparation": 1.5,
+        "physics": 8.2,
+        "composition": 66.2,
+        "dirty_comparison": 17.5,
+        "radar_preparation": 2.1,
         "screen_publication": 0.1,
-        "refresh_wait": 10.4,
+        "refresh_wait": 5.2,
         "interrupts": 0.5,
         "other": 0.2
       },
-      "tstates_per_picture": 190403.95,
+      "tstates_per_picture": 180110.175,
       "routines": {
         "game_step": {
-          "calls": 92,
-          "inclusive": 619721,
-          "exclusive": 318908
+          "calls": 81,
+          "inclusive": 588572,
+          "exclusive": 328800
         },
         "wb_population": {
-          "calls": 92,
-          "inclusive": 123917,
-          "exclusive": 123917
+          "calls": 81,
+          "inclusive": 107474,
+          "exclusive": 106106
         },
         "wb_worker": {
-          "calls": 92,
-          "inclusive": 79192,
-          "exclusive": 79192
+          "calls": 81,
+          "inclusive": 66276,
+          "exclusive": 66276
         },
         "wb_move_player": {
-          "calls": 92,
-          "inclusive": 62836,
-          "exclusive": 62836
+          "calls": 81,
+          "inclusive": 55323,
+          "exclusive": 55323
         },
         "mining_pursuit_step": {
-          "calls": 92,
-          "inclusive": 20056,
-          "exclusive": 20056
+          "calls": 81,
+          "inclusive": 17658,
+          "exclusive": 17658
         },
         "render": {
           "calls": 40,
-          "inclusive": 6982912,
-          "exclusive": 773170
+          "inclusive": 6603608,
+          "exclusive": 772846
         },
         "population_clear": {
           "calls": 40,
@@ -1052,28 +1052,28 @@
         },
         "clear_four": {
           "calls": 80,
-          "inclusive": 338444,
-          "exclusive": 327023
+          "inclusive": 345155,
+          "exclusive": 327371
         },
         "compile": {
           "calls": 40,
-          "inclusive": 1262680,
-          "exclusive": 1258450
+          "inclusive": 1258160,
+          "exclusive": 1258160
         },
         "radar_entry": {
-          "calls": 4,
-          "inclusive": 112652,
-          "exclusive": 112652
+          "calls": 3,
+          "inclusive": 154209,
+          "exclusive": 154209
         },
         "stars_clear": {
           "calls": 40,
-          "inclusive": 330128,
-          "exclusive": 328436
+          "inclusive": 328320,
+          "exclusive": 328320
         },
         "stars_draw": {
           "calls": 40,
-          "inclusive": 296128,
-          "exclusive": 294436
+          "inclusive": 294320,
+          "exclusive": 294320
         },
         "draw_assembly": {
           "calls": 0,
@@ -1102,8 +1102,8 @@
         },
         "wb_pop_prepare": {
           "calls": 40,
-          "inclusive": 458968,
-          "exclusive": 457276
+          "inclusive": 457160,
+          "exclusive": 457160
         },
         "wb_clip_sprite": {
           "calls": 0,
@@ -1121,9 +1121,9 @@
           "exclusive": 1120
         },
         "isr": {
-          "calls": 95,
-          "inclusive": 40185,
-          "exclusive": 22515
+          "calls": 83,
+          "inclusive": 37848,
+          "exclusive": 19671
         },
         "mode_filter": {
           "calls": 40,
@@ -1151,24 +1151,24 @@
           "exclusive": 61960
         },
         "wb_bullet": {
-          "calls": 92,
-          "inclusive": 2576,
-          "exclusive": 2576
+          "calls": 81,
+          "inclusive": 2268,
+          "exclusive": 2268
         },
         "game_rules": {
-          "calls": 92,
-          "inclusive": 12236,
-          "exclusive": 12236
+          "calls": 81,
+          "inclusive": 10773,
+          "exclusive": 10773
         },
         "speech_tick": {
-          "calls": 95,
-          "inclusive": 7220,
-          "exclusive": 7220
+          "calls": 83,
+          "inclusive": 6308,
+          "exclusive": 6308
         },
         "sfx_tick": {
-          "calls": 95,
-          "inclusive": 10450,
-          "exclusive": 10450
+          "calls": 83,
+          "inclusive": 11869,
+          "exclusive": 11869
         },
         "cache_build": {
           "calls": 80,
@@ -1192,8 +1192,8 @@
         },
         "wait_for_refresh": {
           "calls": 40,
-          "inclusive": 811444,
-          "exclusive": 794524
+          "inclusive": 396222,
+          "exclusive": 377982
         },
         "visible_publish": {
           "calls": 40,
@@ -1214,8 +1214,8 @@
       "fast": true,
       "active_sinistar": false,
       "continuousSpeechAndFiring": false,
-      "seconds": 2.158774943310658,
-      "fps": 18.52902736524111,
+      "seconds": 2.0420654761904764,
+      "fps": 19.588010505236586,
       "pictures": 40,
       "visibleFacePictures": 40,
       "fastPictures": 0,
@@ -1223,52 +1223,52 @@
         "1": 40
       },
       "speed_pixels_per_tick": {
-        "player_average": 0.9844060014959541,
-        "player_peak": 0.9844060014959528,
+        "player_average": 0.12109375,
+        "player_peak": 0.12109375,
         "sinistar_average": 0,
         "sinistar_peak": 0
       },
       "time_percent": {
-        "physics": 8.1,
-        "composition": 62.5,
-        "dirty_comparison": 16.5,
-        "radar_preparation": 1.5,
+        "physics": 8.2,
+        "composition": 66.1,
+        "dirty_comparison": 17.5,
+        "radar_preparation": 2.1,
         "screen_publication": 0.1,
-        "refresh_wait": 10.5,
+        "refresh_wait": 5.3,
         "interrupts": 0.5,
         "other": 0.2
       },
-      "tstates_per_picture": 190403.95,
+      "tstates_per_picture": 180110.175,
       "routines": {
         "game_step": {
-          "calls": 92,
-          "inclusive": 619721,
-          "exclusive": 318908
+          "calls": 81,
+          "inclusive": 588572,
+          "exclusive": 328800
         },
         "wb_population": {
-          "calls": 92,
-          "inclusive": 123917,
-          "exclusive": 123917
+          "calls": 81,
+          "inclusive": 107474,
+          "exclusive": 106106
         },
         "wb_worker": {
-          "calls": 92,
-          "inclusive": 79192,
-          "exclusive": 79192
+          "calls": 81,
+          "inclusive": 66276,
+          "exclusive": 66276
         },
         "wb_move_player": {
-          "calls": 92,
-          "inclusive": 62836,
-          "exclusive": 62836
+          "calls": 81,
+          "inclusive": 55323,
+          "exclusive": 55323
         },
         "mining_pursuit_step": {
-          "calls": 92,
-          "inclusive": 20056,
-          "exclusive": 20056
+          "calls": 81,
+          "inclusive": 17658,
+          "exclusive": 17658
         },
         "render": {
           "calls": 40,
-          "inclusive": 6982912,
-          "exclusive": 773170
+          "inclusive": 6603608,
+          "exclusive": 772846
         },
         "population_clear": {
           "calls": 40,
@@ -1292,28 +1292,28 @@
         },
         "clear_four": {
           "calls": 80,
-          "inclusive": 338444,
-          "exclusive": 327023
+          "inclusive": 345155,
+          "exclusive": 327371
         },
         "compile": {
           "calls": 40,
-          "inclusive": 1262680,
-          "exclusive": 1258450
+          "inclusive": 1258160,
+          "exclusive": 1258160
         },
         "radar_entry": {
-          "calls": 4,
-          "inclusive": 112652,
-          "exclusive": 112652
+          "calls": 3,
+          "inclusive": 154209,
+          "exclusive": 154209
         },
         "stars_clear": {
           "calls": 40,
-          "inclusive": 330128,
-          "exclusive": 328436
+          "inclusive": 328320,
+          "exclusive": 328320
         },
         "stars_draw": {
           "calls": 40,
-          "inclusive": 296128,
-          "exclusive": 294436
+          "inclusive": 294320,
+          "exclusive": 294320
         },
         "draw_assembly": {
           "calls": 0,
@@ -1342,8 +1342,8 @@
         },
         "wb_pop_prepare": {
           "calls": 40,
-          "inclusive": 458968,
-          "exclusive": 457276
+          "inclusive": 457160,
+          "exclusive": 457160
         },
         "wb_clip_sprite": {
           "calls": 0,
@@ -1361,9 +1361,9 @@
           "exclusive": 1120
         },
         "isr": {
-          "calls": 95,
-          "inclusive": 40185,
-          "exclusive": 22515
+          "calls": 83,
+          "inclusive": 37848,
+          "exclusive": 19671
         },
         "mode_filter": {
           "calls": 40,
@@ -1391,24 +1391,24 @@
           "exclusive": 61960
         },
         "wb_bullet": {
-          "calls": 92,
-          "inclusive": 2576,
-          "exclusive": 2576
+          "calls": 81,
+          "inclusive": 2268,
+          "exclusive": 2268
         },
         "game_rules": {
-          "calls": 92,
-          "inclusive": 12236,
-          "exclusive": 12236
+          "calls": 81,
+          "inclusive": 10773,
+          "exclusive": 10773
         },
         "speech_tick": {
-          "calls": 95,
-          "inclusive": 7220,
-          "exclusive": 7220
+          "calls": 83,
+          "inclusive": 6308,
+          "exclusive": 6308
         },
         "sfx_tick": {
-          "calls": 95,
-          "inclusive": 10450,
-          "exclusive": 10450
+          "calls": 83,
+          "inclusive": 11869,
+          "exclusive": 11869
         },
         "cache_build": {
           "calls": 80,
@@ -1432,8 +1432,8 @@
         },
         "wait_for_refresh": {
           "calls": 40,
-          "inclusive": 817844,
-          "exclusive": 800924
+          "inclusive": 402622,
+          "exclusive": 384382
         },
         "visible_publish": {
           "calls": 40,
@@ -1454,8 +1454,8 @@
       "fast": true,
       "active_sinistar": false,
       "continuousSpeechAndFiring": false,
-      "seconds": 2.158774943310658,
-      "fps": 18.52902736524111,
+      "seconds": 2.0420654761904764,
+      "fps": 19.588010505236586,
       "pictures": 40,
       "visibleFacePictures": 40,
       "fastPictures": 0,
@@ -1463,52 +1463,52 @@
         "1": 40
       },
       "speed_pixels_per_tick": {
-        "player_average": 0.9844060014959541,
-        "player_peak": 0.9844060014959528,
+        "player_average": 0.12109375,
+        "player_peak": 0.12109375,
         "sinistar_average": 0,
         "sinistar_peak": 0
       },
       "time_percent": {
-        "physics": 8.1,
-        "composition": 62.2,
-        "dirty_comparison": 16.5,
-        "radar_preparation": 1.5,
+        "physics": 8.2,
+        "composition": 65.8,
+        "dirty_comparison": 17.5,
+        "radar_preparation": 2.1,
         "screen_publication": 0.1,
-        "refresh_wait": 10.8,
+        "refresh_wait": 5.6,
         "interrupts": 0.5,
         "other": 0.2
       },
-      "tstates_per_picture": 190403.95,
+      "tstates_per_picture": 180110.175,
       "routines": {
         "game_step": {
-          "calls": 92,
-          "inclusive": 619721,
-          "exclusive": 318908
+          "calls": 81,
+          "inclusive": 588572,
+          "exclusive": 328800
         },
         "wb_population": {
-          "calls": 92,
-          "inclusive": 123917,
-          "exclusive": 123917
+          "calls": 81,
+          "inclusive": 107474,
+          "exclusive": 106106
         },
         "wb_worker": {
-          "calls": 92,
-          "inclusive": 79192,
-          "exclusive": 79192
+          "calls": 81,
+          "inclusive": 66276,
+          "exclusive": 66276
         },
         "wb_move_player": {
-          "calls": 92,
-          "inclusive": 62836,
-          "exclusive": 62836
+          "calls": 81,
+          "inclusive": 55323,
+          "exclusive": 55323
         },
         "mining_pursuit_step": {
-          "calls": 92,
-          "inclusive": 20056,
-          "exclusive": 20056
+          "calls": 81,
+          "inclusive": 17658,
+          "exclusive": 17658
         },
         "render": {
           "calls": 40,
-          "inclusive": 6982912,
-          "exclusive": 773170
+          "inclusive": 6603608,
+          "exclusive": 772846
         },
         "population_clear": {
           "calls": 40,
@@ -1532,28 +1532,28 @@
         },
         "clear_four": {
           "calls": 80,
-          "inclusive": 338444,
-          "exclusive": 327023
+          "inclusive": 345155,
+          "exclusive": 327371
         },
         "compile": {
           "calls": 40,
-          "inclusive": 1262680,
-          "exclusive": 1258450
+          "inclusive": 1258160,
+          "exclusive": 1258160
         },
         "radar_entry": {
-          "calls": 4,
-          "inclusive": 112652,
-          "exclusive": 112652
+          "calls": 3,
+          "inclusive": 154209,
+          "exclusive": 154209
         },
         "stars_clear": {
           "calls": 40,
-          "inclusive": 330128,
-          "exclusive": 328436
+          "inclusive": 328320,
+          "exclusive": 328320
         },
         "stars_draw": {
           "calls": 40,
-          "inclusive": 296128,
-          "exclusive": 294436
+          "inclusive": 294320,
+          "exclusive": 294320
         },
         "draw_assembly": {
           "calls": 0,
@@ -1582,8 +1582,8 @@
         },
         "wb_pop_prepare": {
           "calls": 40,
-          "inclusive": 458968,
-          "exclusive": 457276
+          "inclusive": 457160,
+          "exclusive": 457160
         },
         "wb_clip_sprite": {
           "calls": 0,
@@ -1601,9 +1601,9 @@
           "exclusive": 1120
         },
         "isr": {
-          "calls": 95,
-          "inclusive": 40185,
-          "exclusive": 22515
+          "calls": 83,
+          "inclusive": 37848,
+          "exclusive": 19671
         },
         "mode_filter": {
           "calls": 40,
@@ -1631,24 +1631,24 @@
           "exclusive": 61960
         },
         "wb_bullet": {
-          "calls": 92,
-          "inclusive": 2576,
-          "exclusive": 2576
+          "calls": 81,
+          "inclusive": 2268,
+          "exclusive": 2268
         },
         "game_rules": {
-          "calls": 92,
-          "inclusive": 12236,
-          "exclusive": 12236
+          "calls": 81,
+          "inclusive": 10773,
+          "exclusive": 10773
         },
         "speech_tick": {
-          "calls": 95,
-          "inclusive": 7220,
-          "exclusive": 7220
+          "calls": 83,
+          "inclusive": 6308,
+          "exclusive": 6308
         },
         "sfx_tick": {
-          "calls": 95,
-          "inclusive": 10450,
-          "exclusive": 10450
+          "calls": 83,
+          "inclusive": 11869,
+          "exclusive": 11869
         },
         "cache_build": {
           "calls": 80,
@@ -1672,8 +1672,8 @@
         },
         "wait_for_refresh": {
           "calls": 40,
-          "inclusive": 840244,
-          "exclusive": 823324
+          "inclusive": 425022,
+          "exclusive": 406782
         },
         "visible_publish": {
           "calls": 40,
@@ -1694,8 +1694,8 @@
       "fast": true,
       "active_sinistar": false,
       "continuousSpeechAndFiring": false,
-      "seconds": 2.158774943310658,
-      "fps": 18.52902736524111,
+      "seconds": 2.0420654761904764,
+      "fps": 19.588010505236586,
       "pictures": 40,
       "visibleFacePictures": 40,
       "fastPictures": 0,
@@ -1703,52 +1703,52 @@
         "1": 40
       },
       "speed_pixels_per_tick": {
-        "player_average": 0.9844060014959541,
-        "player_peak": 0.9844060014959528,
+        "player_average": 0.12109375,
+        "player_peak": 0.12109375,
         "sinistar_average": 0,
         "sinistar_peak": 0
       },
       "time_percent": {
-        "physics": 8.1,
-        "composition": 62.6,
-        "dirty_comparison": 16.5,
-        "radar_preparation": 1.5,
+        "physics": 8.2,
+        "composition": 66.2,
+        "dirty_comparison": 17.5,
+        "radar_preparation": 2.1,
         "screen_publication": 0.1,
-        "refresh_wait": 10.4,
+        "refresh_wait": 5.2,
         "interrupts": 0.5,
         "other": 0.2
       },
-      "tstates_per_picture": 190403.95,
+      "tstates_per_picture": 180110.175,
       "routines": {
         "game_step": {
-          "calls": 92,
-          "inclusive": 619721,
-          "exclusive": 318908
+          "calls": 81,
+          "inclusive": 588572,
+          "exclusive": 328800
         },
         "wb_population": {
-          "calls": 92,
-          "inclusive": 123917,
-          "exclusive": 123917
+          "calls": 81,
+          "inclusive": 107474,
+          "exclusive": 106106
         },
         "wb_worker": {
-          "calls": 92,
-          "inclusive": 79192,
-          "exclusive": 79192
+          "calls": 81,
+          "inclusive": 66276,
+          "exclusive": 66276
         },
         "wb_move_player": {
-          "calls": 92,
-          "inclusive": 62836,
-          "exclusive": 62836
+          "calls": 81,
+          "inclusive": 55323,
+          "exclusive": 55323
         },
         "mining_pursuit_step": {
-          "calls": 92,
-          "inclusive": 20056,
-          "exclusive": 20056
+          "calls": 81,
+          "inclusive": 17658,
+          "exclusive": 17658
         },
         "render": {
           "calls": 40,
-          "inclusive": 6982912,
-          "exclusive": 773170
+          "inclusive": 6603608,
+          "exclusive": 772846
         },
         "population_clear": {
           "calls": 40,
@@ -1772,28 +1772,28 @@
         },
         "clear_four": {
           "calls": 80,
-          "inclusive": 338444,
-          "exclusive": 327023
+          "inclusive": 345155,
+          "exclusive": 327371
         },
         "compile": {
           "calls": 40,
-          "inclusive": 1262680,
-          "exclusive": 1258450
+          "inclusive": 1258160,
+          "exclusive": 1258160
         },
         "radar_entry": {
-          "calls": 4,
-          "inclusive": 112652,
-          "exclusive": 112652
+          "calls": 3,
+          "inclusive": 154209,
+          "exclusive": 154209
         },
         "stars_clear": {
           "calls": 40,
-          "inclusive": 330128,
-          "exclusive": 328436
+          "inclusive": 328320,
+          "exclusive": 328320
         },
         "stars_draw": {
           "calls": 40,
-          "inclusive": 296128,
-          "exclusive": 294436
+          "inclusive": 294320,
+          "exclusive": 294320
         },
         "draw_assembly": {
           "calls": 0,
@@ -1822,8 +1822,8 @@
         },
         "wb_pop_prepare": {
           "calls": 40,
-          "inclusive": 458968,
-          "exclusive": 457276
+          "inclusive": 457160,
+          "exclusive": 457160
         },
         "wb_clip_sprite": {
           "calls": 0,
@@ -1841,9 +1841,9 @@
           "exclusive": 1120
         },
         "isr": {
-          "calls": 95,
-          "inclusive": 40185,
-          "exclusive": 22515
+          "calls": 83,
+          "inclusive": 37848,
+          "exclusive": 19671
         },
         "mode_filter": {
           "calls": 40,
@@ -1871,24 +1871,24 @@
           "exclusive": 61960
         },
         "wb_bullet": {
-          "calls": 92,
-          "inclusive": 2576,
-          "exclusive": 2576
+          "calls": 81,
+          "inclusive": 2268,
+          "exclusive": 2268
         },
         "game_rules": {
-          "calls": 92,
-          "inclusive": 12236,
-          "exclusive": 12236
+          "calls": 81,
+          "inclusive": 10773,
+          "exclusive": 10773
         },
         "speech_tick": {
-          "calls": 95,
-          "inclusive": 7220,
-          "exclusive": 7220
+          "calls": 83,
+          "inclusive": 6308,
+          "exclusive": 6308
         },
         "sfx_tick": {
-          "calls": 95,
-          "inclusive": 10450,
-          "exclusive": 10450
+          "calls": 83,
+          "inclusive": 11869,
+          "exclusive": 11869
         },
         "cache_build": {
           "calls": 80,
@@ -1912,8 +1912,8 @@
         },
         "wait_for_refresh": {
           "calls": 40,
-          "inclusive": 811444,
-          "exclusive": 794524
+          "inclusive": 396222,
+          "exclusive": 377982
         },
         "visible_publish": {
           "calls": 40,
@@ -1934,8 +1934,8 @@
       "fast": true,
       "active_sinistar": false,
       "continuousSpeechAndFiring": false,
-      "seconds": 1.9910439342403627,
-      "fps": 20.08996351718431,
+      "seconds": 2.0729138321995464,
+      "fps": 19.296508797742177,
       "pictures": 40,
       "visibleFacePictures": 0,
       "fastPictures": 0,
@@ -1943,52 +1943,52 @@
         "1": 40
       },
       "speed_pixels_per_tick": {
-        "player_average": 0.9844060014959544,
-        "player_peak": 0.9844060014959528,
+        "player_average": 0.12109375,
+        "player_peak": 0.12109375,
         "sinistar_average": 0,
         "sinistar_peak": 0
       },
       "time_percent": {
-        "physics": 9.8,
-        "composition": 37.4,
-        "dirty_comparison": 21.3,
-        "radar_preparation": 2,
-        "screen_publication": 0.6,
-        "refresh_wait": 27.9,
-        "interrupts": 0.7,
+        "physics": 12.8,
+        "composition": 35.9,
+        "dirty_comparison": 20.5,
+        "radar_preparation": 3.5,
+        "screen_publication": 0.5,
+        "refresh_wait": 25.7,
+        "interrupts": 0.8,
         "other": 0.2
       },
-      "tstates_per_picture": 175610.075,
+      "tstates_per_picture": 182831,
       "routines": {
         "game_step": {
-          "calls": 117,
-          "inclusive": 691562,
-          "exclusive": 405027
+          "calls": 122,
+          "inclusive": 939345,
+          "exclusive": 494774
         },
         "wb_population": {
-          "calls": 117,
-          "inclusive": 154169,
-          "exclusive": 154169
+          "calls": 122,
+          "inclusive": 166210,
+          "exclusive": 163930
         },
         "wb_worker": {
-          "calls": 117,
-          "inclusive": 6435,
-          "exclusive": 6435
+          "calls": 122,
+          "inclusive": 147120,
+          "exclusive": 147120
         },
         "wb_move_player": {
-          "calls": 117,
-          "inclusive": 81588,
-          "exclusive": 81588
+          "calls": 122,
+          "inclusive": 85003,
+          "exclusive": 85003
         },
         "mining_pursuit_step": {
-          "calls": 117,
-          "inclusive": 25506,
-          "exclusive": 25506
+          "calls": 122,
+          "inclusive": 26596,
+          "exclusive": 26596
         },
         "render": {
           "calls": 40,
-          "inclusive": 6316366,
-          "exclusive": 601478
+          "inclusive": 6356830,
+          "exclusive": 600782
         },
         "population_clear": {
           "calls": 40,
@@ -2012,23 +2012,23 @@
         },
         "clear_four": {
           "calls": 80,
-          "inclusive": 330308,
-          "exclusive": 326501
+          "inclusive": 326240,
+          "exclusive": 326240
         },
         "compile": {
           "calls": 40,
-          "inclusive": 1515796,
+          "inclusive": 1517116,
           "exclusive": 1498876
         },
         "radar_entry": {
           "calls": 5,
-          "inclusive": 137570,
-          "exclusive": 137570
+          "inclusive": 254085,
+          "exclusive": 254085
         },
         "stars_clear": {
           "calls": 40,
-          "inclusive": 330128,
-          "exclusive": 328436
+          "inclusive": 346265,
+          "exclusive": 329393
         },
         "stars_draw": {
           "calls": 40,
@@ -2081,9 +2081,9 @@
           "exclusive": 1120
         },
         "isr": {
-          "calls": 120,
-          "inclusive": 50760,
-          "exclusive": 28440
+          "calls": 125,
+          "inclusive": 57000,
+          "exclusive": 29625
         },
         "mode_filter": {
           "calls": 40,
@@ -2092,8 +2092,8 @@
         },
         "draw_rock": {
           "calls": 40,
-          "inclusive": 194483,
-          "exclusive": 194483
+          "inclusive": 195032,
+          "exclusive": 195032
         },
         "draw_ship": {
           "calls": 40,
@@ -2111,24 +2111,24 @@
           "exclusive": 61960
         },
         "wb_bullet": {
-          "calls": 117,
-          "inclusive": 3276,
-          "exclusive": 3276
+          "calls": 122,
+          "inclusive": 3416,
+          "exclusive": 3416
         },
         "game_rules": {
-          "calls": 117,
-          "inclusive": 15561,
-          "exclusive": 15561
+          "calls": 122,
+          "inclusive": 16226,
+          "exclusive": 16226
         },
         "speech_tick": {
-          "calls": 120,
-          "inclusive": 9120,
-          "exclusive": 9120
+          "calls": 125,
+          "inclusive": 9500,
+          "exclusive": 9500
         },
         "sfx_tick": {
-          "calls": 120,
-          "inclusive": 13200,
-          "exclusive": 13200
+          "calls": 125,
+          "inclusive": 17875,
+          "exclusive": 17875
         },
         "cache_build": {
           "calls": 0,
@@ -2152,8 +2152,8 @@
         },
         "wait_for_refresh": {
           "calls": 40,
-          "inclusive": 1979114,
-          "exclusive": 1962194
+          "inclusive": 1899874,
+          "exclusive": 1881634
         },
         "visible_publish": {
           "calls": 40,
@@ -2174,8 +2174,8 @@
       "fast": true,
       "active_sinistar": false,
       "continuousSpeechAndFiring": false,
-      "seconds": 2.125513038548753,
-      "fps": 18.818985945770063,
+      "seconds": 2.058626133786848,
+      "fps": 19.430434377329068,
       "pictures": 40,
       "visibleFacePictures": 40,
       "fastPictures": 0,
@@ -2183,52 +2183,52 @@
         "1": 40
       },
       "speed_pixels_per_tick": {
-        "player_average": 0.9844060014959541,
-        "player_peak": 0.9844060014959528,
+        "player_average": 0.12109375,
+        "player_peak": 0.12109375,
         "sinistar_average": 0,
         "sinistar_peak": 0
       },
       "time_percent": {
-        "physics": 8.1,
-        "composition": 64.8,
-        "dirty_comparison": 16.8,
-        "radar_preparation": 1.5,
+        "physics": 8.2,
+        "composition": 66.9,
+        "dirty_comparison": 17.3,
+        "radar_preparation": 2.8,
         "screen_publication": 0.1,
-        "refresh_wait": 8,
+        "refresh_wait": 3.9,
         "interrupts": 0.5,
         "other": 0.2
       },
-      "tstates_per_picture": 187470.25,
+      "tstates_per_picture": 181570.825,
       "routines": {
         "game_step": {
-          "calls": 90,
-          "inclusive": 605781,
-          "exclusive": 311774
+          "calls": 82,
+          "inclusive": 596744,
+          "exclusive": 332784
         },
         "wb_population": {
-          "calls": 90,
-          "inclusive": 121363,
-          "exclusive": 121363
+          "calls": 82,
+          "inclusive": 109105,
+          "exclusive": 107281
         },
         "wb_worker": {
-          "calls": 90,
-          "inclusive": 77064,
-          "exclusive": 77064
+          "calls": 82,
+          "inclusive": 67771,
+          "exclusive": 67771
         },
         "wb_move_player": {
-          "calls": 90,
-          "inclusive": 61470,
-          "exclusive": 61470
+          "calls": 82,
+          "inclusive": 56006,
+          "exclusive": 56006
         },
         "mining_pursuit_step": {
-          "calls": 90,
-          "inclusive": 19620,
-          "exclusive": 19620
+          "calls": 82,
+          "inclusive": 17876,
+          "exclusive": 17876
         },
         "render": {
           "calls": 40,
-          "inclusive": 6879740,
-          "exclusive": 773112
+          "inclusive": 6653744,
+          "exclusive": 773025
         },
         "population_clear": {
           "calls": 40,
@@ -2252,28 +2252,28 @@
         },
         "clear_four": {
           "calls": 80,
-          "inclusive": 338896,
-          "exclusive": 327052
+          "inclusive": 344670,
+          "exclusive": 327342
         },
         "compile": {
           "calls": 40,
-          "inclusive": 1261776,
-          "exclusive": 1258392
+          "inclusive": 1258160,
+          "exclusive": 1258160
         },
         "radar_entry": {
           "calls": 4,
-          "inclusive": 112652,
-          "exclusive": 112652
+          "inclusive": 205612,
+          "exclusive": 205612
         },
         "stars_clear": {
           "calls": 40,
-          "inclusive": 330128,
-          "exclusive": 328436
+          "inclusive": 328805,
+          "exclusive": 328349
         },
         "stars_draw": {
           "calls": 40,
-          "inclusive": 286128,
-          "exclusive": 284436
+          "inclusive": 284320,
+          "exclusive": 284320
         },
         "draw_assembly": {
           "calls": 0,
@@ -2302,8 +2302,8 @@
         },
         "wb_pop_prepare": {
           "calls": 40,
-          "inclusive": 458968,
-          "exclusive": 457276
+          "inclusive": 457160,
+          "exclusive": 457160
         },
         "wb_clip_sprite": {
           "calls": 0,
@@ -2321,9 +2321,9 @@
           "exclusive": 1120
         },
         "isr": {
-          "calls": 92,
-          "inclusive": 38916,
-          "exclusive": 21804
+          "calls": 84,
+          "inclusive": 38304,
+          "exclusive": 19908
         },
         "mode_filter": {
           "calls": 40,
@@ -2351,24 +2351,24 @@
           "exclusive": 61960
         },
         "wb_bullet": {
-          "calls": 90,
-          "inclusive": 2520,
-          "exclusive": 2520
+          "calls": 82,
+          "inclusive": 2296,
+          "exclusive": 2296
         },
         "game_rules": {
-          "calls": 90,
-          "inclusive": 11970,
-          "exclusive": 11970
+          "calls": 82,
+          "inclusive": 10906,
+          "exclusive": 10906
         },
         "speech_tick": {
-          "calls": 92,
-          "inclusive": 6992,
-          "exclusive": 6992
+          "calls": 84,
+          "inclusive": 6384,
+          "exclusive": 6384
         },
         "sfx_tick": {
-          "calls": 92,
-          "inclusive": 10120,
-          "exclusive": 10120
+          "calls": 84,
+          "inclusive": 12012,
+          "exclusive": 12012
         },
         "cache_build": {
           "calls": 80,
@@ -2392,8 +2392,8 @@
         },
         "wait_for_refresh": {
           "calls": 40,
-          "inclusive": 616868,
-          "exclusive": 599948
+          "inclusive": 302016,
+          "exclusive": 283776
         },
         "visible_publish": {
           "calls": 40,
@@ -2414,8 +2414,8 @@
       "fast": true,
       "active_sinistar": false,
       "continuousSpeechAndFiring": false,
-      "seconds": 4.075658446712018,
-      "fps": 9.814365095355194,
+      "seconds": 4.0670362811791385,
+      "fps": 9.835171666676889,
       "pictures": 40,
       "visibleFacePictures": 40,
       "fastPictures": 0,
@@ -2423,52 +2423,52 @@
         "1": 40
       },
       "speed_pixels_per_tick": {
-        "player_average": 0.9844060014959544,
-        "player_peak": 0.9844060014959528,
+        "player_average": 0.12109375,
+        "player_peak": 0.12109375,
         "sinistar_average": 0,
         "sinistar_peak": 0
       },
       "time_percent": {
-        "physics": 6.5,
-        "composition": 61.5,
+        "physics": 6.3,
+        "composition": 61.6,
         "dirty_comparison": 22.1,
-        "radar_preparation": 1.2,
+        "radar_preparation": 1.8,
         "screen_publication": 1.6,
-        "refresh_wait": 6.6,
+        "refresh_wait": 6.1,
         "interrupts": 0.4,
         "other": 0.1
       },
-      "tstates_per_picture": 359473.075,
+      "tstates_per_picture": 358712.6,
       "routines": {
         "game_step": {
-          "calls": 136,
-          "inclusive": 933019,
-          "exclusive": 471329
+          "calls": 121,
+          "inclusive": 902732,
+          "exclusive": 491046
         },
         "wb_population": {
-          "calls": 136,
-          "inclusive": 177278,
-          "exclusive": 177278
+          "calls": 121,
+          "inclusive": 162634,
+          "exclusive": 162634
         },
         "wb_worker": {
-          "calls": 136,
-          "inclusive": 139980,
-          "exclusive": 139134
+          "calls": 121,
+          "inclusive": 120550,
+          "exclusive": 120550
         },
         "wb_move_player": {
-          "calls": 136,
-          "inclusive": 92888,
-          "exclusive": 92888
+          "calls": 121,
+          "inclusive": 82643,
+          "exclusive": 82643
         },
         "mining_pursuit_step": {
-          "calls": 136,
-          "inclusive": 29648,
-          "exclusive": 29648
+          "calls": 121,
+          "inclusive": 26378,
+          "exclusive": 26378
         },
         "render": {
           "calls": 40,
-          "inclusive": 13427187,
-          "exclusive": 773760
+          "inclusive": 13428825,
+          "exclusive": 774190
         },
         "population_clear": {
           "calls": 40,
@@ -2492,23 +2492,23 @@
         },
         "clear_four": {
           "calls": 80,
-          "inclusive": 1481720,
-          "exclusive": 1477490
+          "inclusive": 1477200,
+          "exclusive": 1477200
         },
         "compile": {
           "calls": 40,
-          "inclusive": 3193870,
-          "exclusive": 3174835
+          "inclusive": 3192930,
+          "exclusive": 3174690
         },
         "radar_entry": {
-          "calls": 6,
-          "inclusive": 168978,
-          "exclusive": 168978
+          "calls": 5,
+          "inclusive": 259440,
+          "exclusive": 257160
         },
         "stars_clear": {
           "calls": 40,
-          "inclusive": 335552,
-          "exclusive": 328784
+          "inclusive": 329775,
+          "exclusive": 328407
         },
         "stars_draw": {
           "calls": 40,
@@ -2537,13 +2537,13 @@
         },
         "fast_select": {
           "calls": 40,
-          "inclusive": 4452,
-          "exclusive": 4029
+          "inclusive": 4000,
+          "exclusive": 4000
         },
         "wb_pop_prepare": {
           "calls": 40,
-          "inclusive": 462132,
-          "exclusive": 457479
+          "inclusive": 458130,
+          "exclusive": 457218
         },
         "wb_clip_sprite": {
           "calls": 0,
@@ -2561,9 +2561,9 @@
           "exclusive": 1120
         },
         "isr": {
-          "calls": 139,
-          "inclusive": 58797,
-          "exclusive": 32943
+          "calls": 125,
+          "inclusive": 57000,
+          "exclusive": 29625
         },
         "mode_filter": {
           "calls": 40,
@@ -2591,24 +2591,24 @@
           "exclusive": 61960
         },
         "wb_bullet": {
-          "calls": 136,
-          "inclusive": 3808,
-          "exclusive": 3808
+          "calls": 121,
+          "inclusive": 3388,
+          "exclusive": 3388
         },
         "game_rules": {
-          "calls": 136,
-          "inclusive": 18088,
-          "exclusive": 18088
+          "calls": 121,
+          "inclusive": 16093,
+          "exclusive": 16093
         },
         "speech_tick": {
-          "calls": 139,
-          "inclusive": 10564,
-          "exclusive": 10564
+          "calls": 125,
+          "inclusive": 9500,
+          "exclusive": 9500
         },
         "sfx_tick": {
-          "calls": 139,
-          "inclusive": 15290,
-          "exclusive": 15290
+          "calls": 125,
+          "inclusive": 17875,
+          "exclusive": 17875
         },
         "cache_build": {
           "calls": 80,
@@ -2632,8 +2632,8 @@
         },
         "wait_for_refresh": {
           "calls": 40,
-          "inclusive": 971811,
-          "exclusive": 954891
+          "inclusive": 888210,
+          "exclusive": 869970
         },
         "visible_publish": {
           "calls": 40,

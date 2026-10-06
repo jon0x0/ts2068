@@ -33,6 +33,9 @@
  jp wb_awake_shift
  jp wb_pop_prepare
  jp wb_end_screen
+ jp wb_thrust
+ jp wb_explosion_sprite
+ jp wb_sfx_frame
 wb_world_step:
  ld a,(game_mode)
  or a
@@ -89,7 +92,16 @@ wb_world_x:
  ld a,h
 wb_world_y:
  ld (rock_y),a
- ret
+ ld a,(rock_x)
+ ld l,a
+ ld a,($586e)
+ ld h,a
+ ld a,(rock_y)
+ ld e,a
+ ld a,($586f)
+ ld d,a
+ ld a,($586c)
+ jp wb_bounce_call
 wb_rock_next_velocity:
  ld a,($5bb2)
  or a
@@ -806,3 +818,4 @@ wsa_palette_next:
  INCLUDE "world-population.asm"
  INCLUDE "radar.asm"
  INCLUDE "end-screen.asm"
+ INCLUDE "world-gameplay.asm"

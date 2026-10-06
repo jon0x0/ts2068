@@ -1,0 +1,33 @@
+{
+  "dck_sha256": "524e906a1805b55789a0430daab31c33464e51af55208f1a34c12d8ff3635063",
+  "workerCases": 4,
+  "bounceCases": 4,
+  "maxBounceTstates": 785,
+  "speeds": [
+    [
+      0,
+      0,
+      -496
+    ],
+    [
+      64,
+      496,
+      0
+    ],
+    [
+      128,
+      0,
+      500
+    ],
+    [
+      192,
+      -500,
+      0
+    ]
+  ],
+  "fragmentCases": 32,
+  "audioFrames": 310,
+  "radarOutline": true,
+  "speechPriority": true,
+  "romWrites": 0
+}
