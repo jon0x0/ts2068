@@ -36,7 +36,7 @@ async function boot(){
   const output=sfx.context.createGain();
   sfx.node.disconnect();sfx.node.connect(output);output.connect(sfx.context.destination);
   cpu.setSoundRate(machine,sfx.context.sampleRate);cpu.enableSound(machine,true);sound.setSoundStereo(sfx,false);
-  let last=0,carry=frameMs,started=false,touch=255,lastState='';
+  let last=0,carry=frameMs,started=false,touch=255,lastState='',paused=false,soundEnabled=true;
   const held=new Map(),releases=new Map();
   function step(){
     cpu.runFrame(machine);
@@ -51,25 +51,31 @@ async function boot(){
     if(!last)last=now;
     carry+=Math.min(80,now-last);last=now;
     let ran=0;
-    while(carry>=frameMs&&ran<4){step();carry-=frameMs;ran++;}
-    if(started&&sound.soundIsRunning(sfx)&&sound.soundWantsFrame(sfx)&&ran<4){step();carry=Math.max(carry,0)-frameMs;}
+    if(paused)carry=0;
+    while(!paused&&carry>=frameMs&&ran<4){step();carry-=frameMs;ran++;}
+    if(!paused&&started&&sound.soundIsRunning(sfx)&&sound.soundWantsFrame(sfx)&&ran<4){step();carry=Math.max(carry,0)-frameMs;}
     video.drawScreen(gfx,machine.pixels);
-    const state={lives:machine.ram[0x7838],bombs:machine.ram[0x7826],attract:!!machine.ram[0x5e7b],muted:!!machine.ram[0x5e6e],fast:!!machine.ram[0x5bb1],bounce:!machine.ram[0x5c2b]};
+    const state={paused,lives:machine.ram[0x7838],bombs:machine.ram[0x7826],attract:!!machine.ram[0x5e7b],muted:!!machine.ram[0x5e6e],fast:!!machine.ram[0x5bb1],bounce:!machine.ram[0x5c2b]};
     const encoded=JSON.stringify(state);if(encoded!==lastState){lastState=encoded;notify('sinistar-state',state);}
   }
   window.sinistar={
-    setSound(on){output.gain.value=on?1:0;this.start();},
+    setSound(on){soundEnabled=on;output.gain.value=on&&!paused?1:0;this.start();},
+    setPaused(on){
+      paused=on;this.release();carry=0;last=0;sound.resetSound(sfx);
+      output.gain.value=soundEnabled&&!paused?1:0;
+      if(!paused)this.start();
+    },
     setCrt(on){video.setCrt(gfx,on);},
     key(event,down){
-      this.start();event.preventDefault();
+      event.preventDefault();if(paused)return;this.start();
       if(down){clearTimeout(releases.get(event.code));releases.delete(event.code);if(!held.has(event.code))held.set(event.code,performance.now());keys.handleKeyDown(kbd,event);}
       else {const delay=Math.max(0,80-(performance.now()-(held.get(event.code)??0)));releases.set(event.code,setTimeout(()=>{keys.handleKeyUp(kbd,event);held.delete(event.code);releases.delete(event.code);},delay));}
     },
-    contacts(value){touch=value;this.start();},
+    contacts(value){if(paused)return;touch=value;this.start();},
     release(){touch=255;for(const timer of releases.values())clearTimeout(timer);releases.clear();held.clear();keys.handleBlur(kbd);},
     start(){started=true;sound.resumeSound(sfx);return true;},
     press(code){
-      this.start();const event={code,preventDefault(){},repeat:false};
+      if(paused)return;this.start();const event={code,preventDefault(){},repeat:false};
       keys.handleKeyDown(kbd,event);setTimeout(()=>keys.handleKeyUp(kbd,event),120);
     },
     reset(){this.release();sound.resetSound(sfx);cpu.resetMachine(machine);},

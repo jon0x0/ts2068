@@ -13,7 +13,12 @@ window.addEventListener('message',event=>{
   if(event.origin!==location.origin||event.source!==frame.contentWindow)return;
   if(event.data.type==='sinistar-ready'){ready=true;document.querySelectorAll('button').forEach(b=>b.disabled=false);document.querySelector('#status').textContent='';}
   if(event.data.type==='sinistar-error')document.querySelector('#status').textContent=event.data.message;
-  if(event.data.type==='sinistar-state'){const s=event.data.message;document.querySelector('#status').textContent=`${s.attract?'Attract mode — press Fire or Enter to start':s.lives?'Lives '+s.lives:'Press Fire or Enter to start'} · Bombs ${s.bombs} · Game sound ${s.muted?'OFF (S)':'ON'} · Fast mode ${s.fast?'ON':'OFF'} · Bounce ${s.bounce?'ON':'OFF'}`;}
+  if(event.data.type==='sinistar-state'){const s=event.data.message;
+    for(const [id,on] of [['fast',s.fast],['bounce',s.bounce],['pause',s.paused]])document.getElementById(id).setAttribute('aria-pressed',String(on));
+    document.querySelector('#pause').textContent=s.paused?'Resume':'Pause';
+    for(const id of ['fast','bounce','start','restart'])document.getElementById(id).disabled=s.paused;
+    document.querySelector('main').classList.toggle('paused',s.paused);
+document.querySelector('#status').textContent=`${s.attract?'Attract mode — press Fire or Enter to start':s.lives?'Lives '+s.lives:'Press Fire or Enter to start'} · Bombs ${s.bombs} · Game sound ${s.muted?'OFF (S)':'ON'} · Fast mode ${s.fast?'ON':'OFF'} · Bounce ${s.bounce?'ON':'OFF'}`;}
 });
 const pad=document.querySelector('#pad'),fire=document.querySelector('#fire');
 let padId=null,fireId=null,bombId=null,fireRelease=null;
@@ -87,3 +92,14 @@ soundToggle.addEventListener('click',()=>{
   soundToggle.textContent=soundEnabled?'Audio On':'Audio Off';
   soundToggle.setAttribute('aria-pressed',String(soundEnabled));
 });
+
+// Session options stay away from the active thumb controls.
+for(const [id,label,code,on] of [['fast','Fast mode','KeyF',false],['bounce','Bounce','KeyC',true],['pause','Pause',null,false]]){
+  const button=document.createElement('button');button.id=id;button.textContent=label;
+  button.disabled=!ready;button.setAttribute('aria-pressed',String(on));
+  button.addEventListener('click',()=>{
+    if(code)api().press(code);
+    else {release();api().setPaused(button.getAttribute('aria-pressed')!=='true');}
+  });
+  document.querySelector('#session-actions').append(button);
+}

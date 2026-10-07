@@ -9,3 +9,12 @@ main:fullscreen #controls-help,main:fullscreen #status,main:fullscreen header a{
 main:fullscreen #stage{flex:1;min-height:0;height:0}
 main:fullscreen iframe{min-height:0}
 @media(max-width:640px){main:fullscreen #stage{grid-template-rows:minmax(0,1fr) min(185px,30dvh)}main:fullscreen.touch-off #stage{grid-template-rows:minmax(0,1fr) 0}}
+
+/* Two rows keep options in the top-right, separate from Fire and Sinibomb. */
+#session-actions{width:180px;display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px}
+#session-actions button{flex:1 0 42%;min-height:34px;padding:6px 8px}
+#session-actions #pause{flex-basis:100%}
+#session-actions button[aria-pressed=true]{background:#0bf;color:#000}
+header{min-height:126px;padding-right:196px}
+.paused #emulator{opacity:.7}
+@media(max-width:640px){#session-actions{width:150px}header{padding-right:162px;min-height:134px}}

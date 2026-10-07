@@ -23,3 +23,8 @@ enabled for gameplay sound. Attract mode remains silent.
 The cartridge is byte-identical to `port/build/sinistar-mining.dck`. Use
 `TSRUN_ROOT` pointing at this page's `tsrun/` directory to run the configurable
 native frontend/playable/voice/render-stress regression scripts against it.
+
+Upper-right session controls include Fast mode (F), Bounce (C), and Pause/Resume.
+Fast and Bounce indicators follow cartridge state, including keyboard changes.
+Pause stops emulation and clears queued audio and held inputs; Resume preserves
+the prior browser audio setting and continues without catching up elapsed time.
