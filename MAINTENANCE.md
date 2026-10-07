@@ -18,6 +18,9 @@ The initial import is Sinistar commit `d957358`, under
 commit, preserving the complete prior history. The original development
 checkout has not moved and remains the development source for now.
 
+Last synchronized source commit: `12a7dd6`. This adds the static browser player
+and checks against the isolated current TSRun. The source cartridge is unchanged.
+
 For subsequent imports, commit and verify changes in that development checkout
 first. Apply the committed diff since the last imported revision with the
 `arcade-ports/sinistar/` prefix in this repository, review it, and record
@@ -25,11 +28,15 @@ the new source commit here. Treat changes to the source `.gitmodules` separately
 the hub owns submodule registration at its root. Do not develop independently
 in both copies without merging those changes back.
 
-The imported files retain their original relative layout. A compatible TSRun
-checkout at the hub root supplies the local emulator dependency; it is not
-published as part of this source import. The Sinistar server maps `/tsrun/`
-to that dependency. GitHub Pages does not provide that server route, so a
-hosted Sinistar player requires a separate publishing package.
+The imported files retain their original relative layout. The browser player
+at `arcade-ports/sinistar/play/` bundles unmodified TSRun commit `41dbe3e` and
+requires only a static web server; it can be hosted beneath a project URL.
+Existing public players and emulator checkouts remain independent.
+
+For the older development viewer and the default native test setup, a
+compatible TSRun checkout at the hub root supplies the local emulator
+dependency. The development server maps `/tsrun/` to that checkout. Use the
+new `play/` package for static hosting instead.
 
 ## Preparation checks
 

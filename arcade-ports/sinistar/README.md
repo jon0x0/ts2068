@@ -6,7 +6,12 @@ session high scores. See [port development notes](port/README.md) for the
 revision history, measurements and remaining arcade adaptations. Physical
 hardware validation is still outstanding.
 
-Run `python scripts/serve.py`, then open
+**New browser player:** run `python -m http.server 8772 --bind 127.0.0.1`, then
+open <http://127.0.0.1:8772/play/>. This self-contained player uses Josef's
+October 4, 2026 TSRun, pinned separately from the existing emulator copies,
+and includes the keyboard guide. See [player setup](play/README.md).
+
+For the earlier development viewer, run `python scripts/serve.py`, then open
 <http://127.0.0.1:8768/port/mining-web/>. The cartridge is
 `port/build/sinistar-mining.dck` (64 KiB payload plus a nine-byte DCK header).
 The earlier scripted 60 Hz demo is documented below; its timing does not
@@ -43,10 +48,9 @@ comparison tests also require local saved revisions, which are not checked in.
 
 ## Publishing and project organization
 
-The browser player currently uses the local server's `/tsrun/` route. Pushing
-this source repository alone does not create a self-contained hosted player.
-Prepare a publishing package with its emulator dependencies before enabling
-a public Sinistar page.
+The new `play/` package is ready for static hosting, with a local cartridge and
+an unmodified, pinned TSRun copy. The earlier development viewer still uses the
+local server's `/tsrun/` route. Neither player has been deployed by this change.
 
 A shared ports repository can contain Sinistar and future ports' source while
 linking to Berzerk's existing project and player. Retain the local directories

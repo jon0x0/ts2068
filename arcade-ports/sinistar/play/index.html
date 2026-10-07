@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Play the Sinistar port for the Timex Sinclair 2068 in TSRun. Keyboard controls and cartridge download.">
+  <title>Sinistar · TS2068 Arcade ports</title>
+  <link rel="icon" href="tsrun/favicon.ico">
+  <link rel="stylesheet" href="player.css">
+  <script type="module" src="player.js"></script>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">TS2068 Arcade ports</p>
+      <div class="headline"><h1>Sinistar</h1><span class="badge">Playable port · v58</span></div>
+      <p class="intro">Mine crystals. Build your Sinibomb supply. Destroy Sinistar before he catches you.</p>
+      <p class="start-hint"><strong>Press <kbd>Space</kbd> to start and shoot.</strong> Move with <kbd>Q</kbd> up, <kbd>A</kbd> down, <kbd>O</kbd> left and <kbd>P</kbd> right. Launch a Sinibomb with <kbd>B</kbd>.</p>
+    </header>
+
+    <section class="player" aria-label="Play Sinistar">
+      <div class="player-bar">
+        <span><span class="live-dot" aria-hidden="true"></span> Sinistar on TSRun</span>
+        <a id="standalone" href="tsrun/index.html">Open emulator in its own tab ↗</a>
+      </div>
+      <iframe id="emulator" title="Sinistar running in the TSRun TS2068 emulator" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      <div class="player-footer">
+        <p id="player-status" role="status">Loading TSRun…</p>
+        <a class="download" href="assets/sinistar.dck" download="sinistar.dck">Download cartridge ↓</a>
+      </div>
+    </section>
+
+    <section class="controls" aria-labelledby="controls-heading">
+      <div class="section-heading"><h2 id="controls-heading">Keyboard controls</h2><p>Click the game screen first if keys aren’t reaching it.</p></div>
+      <div class="control-grid">
+        <article class="control-card"><h3>Fly</h3>
+          <div class="direction-keys" aria-label="Q up, A down, O left, P right"><span></span><kbd>Q ↑</kbd><span></span><kbd>O ←</kbd><kbd>A ↓</kbd><kbd>P →</kbd></div>
+          <p>Hold keys to accelerate. Combine vertical and horizontal keys for diagonals. Release them to coast.</p>
+        </article>
+        <article class="control-card"><h3>Fight</h3>
+          <dl><div><dt><kbd>Space</kbd></dt><dd>Start / shoot</dd></div><div><dt><kbd>B</kbd></dt><dd>Launch Sinibomb</dd></div><div><dt><kbd>R</kbd></dt><dd>Restart the game</dd></div></dl>
+          <p>Hold Space for repeat fire, or B for successive bombs. You start with three lives and three bombs.</p>
+        </article>
+        <article class="control-card"><h3>Adjust</h3>
+          <dl><div><dt><kbd>S</kbd></dt><dd>Toggle game sound</dd></div><div><dt><kbd>C</kbd></dt><dd>Toggle rock bounce</dd></div><div><dt><kbd>F</kbd></dt><dd>Toggle fast chase mode</dd></div></dl>
+          <p>Bounce starts on; fast mode starts off. Fast mode limits visible planetoids to two.</p>
+        </article>
+      </div>
+      <p class="initials"><strong>Entering high-score initials:</strong> use <kbd>O</kbd> / <kbd>P</kbd> to change the letter, then <kbd>Enter</kbd> or <kbd>Space</kbd> to confirm each letter. Enter also starts a game from the title.</p>
+    </section>
+
+    <section class="how-to" aria-labelledby="how-heading">
+      <h2 id="how-heading">Survive the hunt</h2>
+      <ol><li><strong>Mine.</strong> Shoot planetoids and fly over the released crystals. Each crystal adds three Sinibombs, up to 24.</li><li><strong>Watch.</strong> The worker builds Sinistar from twenty pieces. On the radar: you are white, rocks cyan, the worker red and Sinistar yellow.</li><li><strong>Fight back.</strong> When you hear “Beware! I live!”, keep moving and launch your bombs. Thirteen hits destroy Sinistar.</li></ol>
+    </section>
+
+    <details><summary>Sound, gamepads and emulator controls</summary>
+      <p>A click or keypress enables browser audio. The attract demo is deliberately silent. During play, <kbd>S</kbd> controls the game’s sound; TSRun’s separate <strong>Mute</strong> switch must also be off.</p>
+      <p>A compatible gamepad on Joystick 1 supplies directions and fire. Use <kbd>B</kbd> for bombs. Physical gamepad behavior depends on your browser and controller.</p>
+      <p>Use TSRun’s <strong>Full</strong> button for fullscreen, <strong>Pause</strong> to pause, <strong>CRT</strong> for the display filter and <strong>Keys</strong> for its on-screen keyboard. On a phone, open Keys to reach the game’s letter keys.</p>
+    </details>
+    <footer>
+      <p>A playable TS2068 adaptation; hardware validation is pending. One worker, projectile and Sinibomb are active at a time. This is not a complete reproduction of every arcade feature.</p>
+      <p>Emulation by <a href="https://github.com/josef-jelinek/TSRun">Josef Jelinek’s TSRun</a> · <a href="https://github.com/josef-jelinek/TSRun/commit/41dbe3e41c692a1806f2cb900c5a0faa1549ae77">October 4, 2026 version</a> · <a href="../port/README.md">Port development notes</a></p>
+    </footer>
+  </main>
+</body>
+</html>

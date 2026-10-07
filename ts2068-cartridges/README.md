@@ -1,4 +1,4 @@
-# TS2068 cartridges
+# TS2068 Cartridges
 
 Direct `.dck` links from the projects listed in the [TS2068 hub](../).
 Cartridges stay in their owning repositories; this directory is a catalog.
@@ -10,7 +10,7 @@ the projects are updated. File paths were checked on October 7, 2026.
 | Cartridge | Download | Project |
 | --- | --- | --- |
 | Berzerk | [berzerk.dck](https://raw.githubusercontent.com/jon0x0/berzerk_ts2068/main/personalizations/berzerk/assets/berzerk.dck) | [Project](https://github.com/jon0x0/berzerk_ts2068) · [Play](https://jon0x0.github.io/berzerk_ts2068/) |
-| Sinistar v58 | [sinistar-mining.dck](../arcade-ports/sinistar/port/build/sinistar-mining.dck?raw=true) | [Source and setup](../arcade-ports/sinistar/) |
+| Sinistar v58 | [sinistar.dck](../arcade-ports/sinistar/play/assets/sinistar.dck?raw=true) | [Browser player and setup](../arcade-ports/sinistar/play/) · [Source](../arcade-ports/sinistar/) |
 
 ## Applications and audio
 

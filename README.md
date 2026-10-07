@@ -17,15 +17,18 @@ games, applications, audio and demos, linking to their owning projects.
 | AI skill | Reusable AI skills, tools, examples and technical references for TS2068 development | [Repository](https://github.com/jon0x0/AISkill_TS2068) |
 | TSRun | Browser emulator used by the playable ports and demos; upstream project by Josef Jelinek | [Repository](https://github.com/josef-jelinek/TSRun) · [Emulator](https://josef-jelinek.github.io/TSRun/) |
 
-## Arcade ports
+## TS2068 Arcade ports
 
 | Project | Status | Links |
 | --- | --- | --- |
 | Berzerk | Existing standalone project with TSRun touch controls | [Repository](https://github.com/jon0x0/berzerk_ts2068) · [Play](https://jon0x0.github.io/berzerk_ts2068/) |
-| Sinistar | Playable v58 development checkpoint; emulator-verified, physical hardware validation pending | [Source and setup](arcade-ports/sinistar/) · [Cartridge](arcade-ports/sinistar/port/build/sinistar-mining.dck) · [Development notes](arcade-ports/sinistar/port/README.md) |
+| Sinistar | Playable v58 development checkpoint; emulator-verified, physical hardware validation pending | [Browser player and setup](arcade-ports/sinistar/play/) · [Source](arcade-ports/sinistar/) · [Cartridge](arcade-ports/sinistar/play/assets/sinistar.dck) |
 
-Sinistar's browser player currently runs through its local Python server. A
-public player has not yet been deployed.
+Sinistar includes a self-contained browser player using Josef's October 4,
+2026 TSRun, isolated from the versions used by other projects. Serve this
+repository with `python -m http.server 8772 --bind 127.0.0.1` and open
+<http://127.0.0.1:8772/arcade-ports/sinistar/play/>. A public player has not yet
+been deployed.
 
 ## Spectrum ports
 

@@ -2,7 +2,7 @@
 // Native pursuit and deterministic direction changes cross radar and screen edges.
 import {acceptTitle} from './accept_title.mjs';
 import fs from 'node:fs';import path from 'node:path';import assert from 'node:assert/strict';import {fileURLToPath,pathToFileURL} from 'node:url';import {createHash} from 'node:crypto';
-const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),up=path.resolve(root,'../../../TSRun');
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),up=process.env.TSRUN_ROOT ? path.resolve(process.env.TSRUN_ROOT) : path.resolve(root,'../../../TSRun');
 const api=await import(pathToFileURL(path.join(up,'machine.js')));
 const sym=Object.fromEntries([...fs.readFileSync(path.join(root,'build/mining-symbols.txt'),'utf8').matchAll(/^(\w+): EQU 0x([0-9A-F]+)/gm)].map(x=>[x[1],parseInt(x[2],16)]));
 const cart=fs.readFileSync(path.join(root,'build/sinistar-mining.dck')),assets=JSON.parse(fs.readFileSync(path.join(root,'build/mining-assets.json')));

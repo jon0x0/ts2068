@@ -9,3 +9,5 @@
 *.wav binary
 *.png binary
 *.mp4 binary
+# Preserve the exact pinned upstream bytes on every checkout/platform.
+play/tsrun/** -text
