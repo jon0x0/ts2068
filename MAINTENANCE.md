@@ -18,9 +18,10 @@ The initial import is Sinistar commit `d957358`, under
 commit, preserving the complete prior history. The original development
 checkout has not moved and remains the development source for now.
 
-Last synchronized source commit: `9953257`. This includes both static browser
+Last synchronized source commit: `a884b53`. This includes both static browser
 players, full keyboard instructions and the isolated Berzerk virtual D-pad
-runtime. The source cartridge is unchanged.
+runtime. Fullscreen hides the D-pad player's guide and restores it on exit.
+The source cartridge is unchanged.
 
 For subsequent imports, commit and verify changes in that development checkout
 first. Apply the committed diff since the last imported revision with the

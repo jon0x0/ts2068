@@ -3,3 +3,9 @@
 /* Session actions are deliberately separate from the active thumb controls. */
 main{position:relative}header{padding-right:180px;min-height:54px}#session-actions{position:absolute;top:10px;right:16px;display:flex;gap:8px;z-index:2}#session-actions button{font-size:12px;min-height:40px;padding:8px 12px}
 @media(max-width:640px){header{padding-right:150px;min-height:100px;align-content:flex-start}header .brand{flex-basis:100%}header a{font-size:11px}#session-actions{top:8px;right:12px;gap:6px}#session-actions button{padding:7px 9px;font-size:11px}#actions{justify-content:center}.touch-off #actions{min-height:0}.touch-off #stage{grid-template-rows:clamp(200px,65vw,350px) 0;row-gap:0}}
+/* Fullscreen gives the instruction area back to the game. */
+main:fullscreen{overflow:hidden}
+main:fullscreen #controls-help,main:fullscreen #status,main:fullscreen header a{display:none}
+main:fullscreen #stage{flex:1;min-height:0;height:0}
+main:fullscreen iframe{min-height:0}
+@media(max-width:640px){main:fullscreen #stage{grid-template-rows:minmax(0,1fr) min(185px,30dvh)}main:fullscreen.touch-off #stage{grid-template-rows:minmax(0,1fr) 0}}

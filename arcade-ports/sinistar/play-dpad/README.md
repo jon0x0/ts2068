@@ -14,7 +14,9 @@ personalization. Sinistar uses joystick 1, native fire bit 7, and a separate
 held B-key Sinibomb button. Berzerk's bit-4 fire mirroring and active-player
 RAM lookup are removed. Start and restart replace coin/two-player actions.
 
-All keyboard controls are visible beneath the screen, including in fullscreen.
+All keyboard controls are visible beneath the screen in normal view. Fullscreen
+hides the guide and status line to give the game more space, retaining the D-pad,
+Fire and Sinibomb controls. Exiting fullscreen restores the guide.
 The browser Audio switch and cartridge S toggle are separate; both must be
 enabled for gameplay sound. Attract mode remains silent.
 
