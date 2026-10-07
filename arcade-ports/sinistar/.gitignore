@@ -1,0 +1,11 @@
+build/capture.rgb
+__pycache__/
+*.pyc
+
+# Generated captures, caches and immutable local revision bundles.
+/build/
+/port/build/
+/revisions/
+/port/revisions/
+/port/reference/original/.git/
+/tmp/

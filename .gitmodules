@@ -1,3 +1,3 @@
-[submodule "port/reference/original"]
-	path = port/reference/original
+[submodule "sinistar-original"]
+	path = arcade-ports/sinistar/port/reference/original
 	url = https://github.com/historicalsource/sinistar.git

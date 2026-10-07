@@ -1,11 +1,2 @@
-build/capture.rgb
-__pycache__/
-*.pyc
-
-# Generated captures, caches and immutable local revision bundles.
-/build/
-/port/build/
-/revisions/
-/port/revisions/
-/port/reference/original/.git/
-/tmp/
+# Local emulator dependency; retain its own repository and existing checkout.
+/TSRun/
