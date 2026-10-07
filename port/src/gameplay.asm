@@ -6,21 +6,27 @@ invulnerable EQU $7839
 rock_respawn EQU $783a
 crystals_taken EQU $783b
 game_init:
+ xor a
+ ld ($7bfb),a
  ld a,1
  ld (game_mode),a
  ld (control_mode),a
  ld a,3
  ld (lives),a
  ld (bombs),a
- ret
-game_gate:
- ld a,(game_mode)
+ ld a,($5e7b)
  or a
  ret z
- ld bc,$fbfe
- in a,(c)
- bit 3,a
- jp z,start
+ xor a
+ ld (bombs),a
+ ret
+game_gate:
+ ld a,($7bfb)
+ or a
+ jp nz,death_tick
+ ld hl,world_extension+120
+ call world_call
+ ret c
  ld a,(game_status)
  or a
  ret z
@@ -33,12 +39,8 @@ game_rules:
  ld a,(bs_hits)
  cp 13
  jr c,game_contact
- ld a,1
- ld (game_status),a
- ld a,37
- ld ($783f),a
- ld ($783e),a
- ret
+ ld a,2
+ jp death_start
 game_contact:
  ld hl,invulnerable
  ld a,(hl)
@@ -55,6 +57,9 @@ game_vulnerable:
  call world_call
  jr nc,game_resources
 game_touch:
+ ld a,1
+ jp death_start
+game_death_done:
  xor a
  ld (sini_stun),a
  ld hl,0

@@ -10,7 +10,7 @@ wb_end_screen:
  cp 1
  ld hl,we_lost
  jr nz,we_message
- ld hl,we_won
+ jr we_input ; frontend already drew the two-line arcade victory message
 we_message:
  ld bc,24*256+11
  call we_text
@@ -40,7 +40,7 @@ we_input:
 we_pressed:
  ld a,($5897)
  cp 2
- jp z,start
+ jp z,title_boot
  scf
  ret
 we_text:
@@ -74,7 +74,7 @@ we_row:
  ld a,h
  xor $20
  ld h,a
- ld (hl),71
+ ld (hl),7
  inc de
  inc b
  pop af
@@ -103,5 +103,4 @@ we_font:
  DB $88,$88,$88,$a8,$a8,$d8,$88
  DB $88,$88,$50,$20,$20,$20,$20
 we_lost: DB 4,1,6,2,0,8,13,2,9,255
-we_won: DB 15,8,12,0,14,5,7,255
 we_prompt: DB 3,5,9,2,0,11,8,0,9,2,10,11,1,9,11,255

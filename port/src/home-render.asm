@@ -19,6 +19,13 @@ hp_prepare:
  xor a
  ld ($58f4),a
 wpp_prepare:
+ ; Hidden objects still require one final old-image erase. Set the flag
+ ; once; visible, unchanged projections may clear it below.
+ ld a,($58f4)
+ add a,$a0
+ ld l,a
+ ld h,$5b
+ ld (hl),1
  ld a,($58f4)
  call wp_calc
  ld a,(rects+2)
@@ -29,7 +36,7 @@ wpp_prepare:
  inc hl
  inc hl
  ld (hl),0
- jr hp_flag
+ jr wpp_cache_done
 hp_visible:
  ; Retain an aggregate for the next picture's final disappearance erase.
  ld ($5bca),a
@@ -46,22 +53,11 @@ hp_visible:
  ld a,($58f0)
  ld (de),a
 hp_flag:
- ; Retain visible projection identity (including fine phase and clipping).
- ld a,($58f4)
- add a,$a0
- ld l,a
- ld h,$5b
- ld (hl),1
- ld a,($58f4)
- call wp_cache
- ld a,(hl)
- inc hl
- inc hl
- ld a,(hl)
- or a
- jr z,wpp_cache_done
- dec hl
- dec hl
+ ; DE already points to the final byte of the freshly copied projection.
+ ; Reuse it instead of looking up the cache address and visibility again.
+ ex de,hl
+ ld de,-8
+ add hl,de
  push hl
  ld de,$bc80-$5b00
  or a

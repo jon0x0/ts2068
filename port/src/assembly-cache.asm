@@ -359,11 +359,11 @@ ac_overlap_lookup:
  ld bc,51
  ldir
  ld ix,$b800
- ld b,7
+ ld b,8
 ac_main_objects:
  push bc
  ld a,b
- cp 2
+ cp 3
  call nz,ac_object
  ld de,4
  add ix,de
@@ -870,7 +870,7 @@ ac_home_prepare:
 ac_home_rects:
  ld hl,rects
  ld de,$b800
- ld bc,28
+ ld bc,32
  ldir
 ac_home_prepare_loop:
  ld a,2
@@ -880,7 +880,7 @@ ac_home_prepare_loop:
  call assembly_cache_call
  ld hl,$b800
  ld de,rects
- ld bc,28
+ ld bc,32
  ldir
  ret
 ac_home_call:

@@ -16,35 +16,17 @@ radar_entry:
  add hl,de
  ld a,l
  ld l,h
- ld c,a
- ld a,($5885)
- ld h,a
- ld a,c
- ld c,0
- push af
- ld a,($5884)
- ld c,a
- pop af
+ ld bc,($5884)
+ ld h,b
  ld de,$01e0
  call radar_relative_common
  ; Full camera-relative viewport outline; markers are added afterwards.
- ld de,$0180
- ld b,32
-radar_view_h:
- push bc
- ld a,($58ed)
- add a,b
- dec a
- ld c,a
  ld a,($58ee)
- push bc
- call radar_dot
- pop bc
+ call radar_line
  ld a,($58ee)
  add a,3
- call radar_dot
- pop bc
- djnz radar_view_h
+ call radar_line
+ ld de,$0180
  ld b,2
 radar_view_v:
  push bc
@@ -71,7 +53,6 @@ radar_view_done:
  jr z,radar_worker
  ld a,(rock_x)
  ld c,a
- ld a,(rock_y)
  ld de,$05c0
  ld hl,($586e)
  ld a,h
@@ -137,7 +118,7 @@ radar_player:
  call radar_dot
  xor a
  ld ($5868),a
- ld ix,$5ea0
+ ld ix,$e000
  ld de,$7e00
  ld b,0
 radar_row:
@@ -146,7 +127,8 @@ radar_row:
  or $40
  ld h,a
  ld a,b
- and 8
+ add a,8
+ and 24
  rlca
  rlca
  or 12
@@ -191,17 +173,15 @@ radar_relative_common:
  ld d,a
  or a
  sbc hl,de
+ ; Carry inserts the ninth coordinate bit; mask discards wrapped bits.
  ld a,h
- and 1
- ld h,a
- ld b,3
-radar_xscale:
- srl h
- rr l
- djnz radar_xscale
+ rrca
  ld a,l
- add a,32
+ rra
+ rrca
+ rrca
  and 63
+ xor 32
  ld c,a
  ld ($58ed),a
  pop af
@@ -215,16 +195,15 @@ radar_xscale:
  or a
  sbc hl,de
  ld a,h
- and 1
- ld h,a
- ld b,5
-radar_yscale:
- srl h
- rr l
- djnz radar_yscale
+ rrca
  ld a,l
- add a,8
+ rra
+ rrca
+ rrca
+ rrca
+ rrca
  and 15
+ xor 8
  ld ($58ee),a
  pop de
  ; A=y, C=x, D=attribute, E=precomputed shape mask.
@@ -295,5 +274,58 @@ radar_emit_room:
  ld a,($5868)
  inc a
  ld ($5868),a
+ ret
+; 32 contiguous viewport pixels: one partial byte, three full bytes,
+; and the complementary trailing byte. The low three address bits wrap.
+radar_line:
+ and 15
+ rlca
+ rlca
+ rlca
+ ld c,a
+ ld a,($58ed)
+ ld e,a
+ and 7
+ ld b,a
+ ld a,255
+ jr z,radar_line_mask
+radar_line_shift:
+ srl a
+ djnz radar_line_shift
+radar_line_mask:
+ ld d,a
+ ld a,e
+ rrca
+ rrca
+ rrca
+ and 7
+ or c
+ ld l,a
+ ld h,$7e
+ ld e,d
+ ld b,5
+radar_line_byte:
+ ld a,e
+ or a
+ jr z,radar_line_skip
+ ld (hl),a
+ set 7,l
+ ld (hl),1
+ res 7,l
+radar_line_skip:
+ ld a,l
+ inc a
+ and 7
+ or c
+ ld l,a
+ ld e,255
+ ld a,b
+ cp 2
+ jr nz,radar_line_next
+ ld a,d
+ cpl
+ ld e,a
+radar_line_next:
+ djnz radar_line_byte
  ret
 radar_end:

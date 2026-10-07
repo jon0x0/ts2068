@@ -1,14 +1,14 @@
 {
   "stage": "native playable scrolling-world milestone",
-  "dck_sha256": "524e906a1805b55789a0430daab31c33464e51af55208f1a34c12d8ff3635063",
+  "dck_sha256": "e16a68ead32e6aeed388f1ceb33f62061c45cff4680a89437df12c38e2500617",
   "sprite_bytes": {
     "0": 8192,
-    "1": 8189,
-    "2": 8189,
+    "1": 8190,
+    "2": 8190,
     "3": 8192,
     "5": 8186,
-    "6": 8184,
-    "7": 7953
+    "6": 8183,
+    "7": 8100
   },
   "source_sha256": {
     "SAM/SCANNER.SRC": "68df3606057044dcf69b337c0816f26409b2a58e80a568856b7efc81fda708ed",
@@ -32,24 +32,40 @@
   },
   "incremental_rendering": {
     "bank": 2,
-    "origin": 22574,
-    "bytes": 951,
-    "capacity": 1024,
+    "origin": 21291,
+    "bytes": 1091,
+    "capacity": 1120,
     "scratch": "HOME 7BA0-7BAB",
     "stationary_face": "dirty spans and eye rows 12-25",
     "restoration": "old rectangle minus new opaque face"
   },
   "compiled_planetoids": {
     "rows": 209,
-    "bytes": 6190,
+    "bytes": 4907,
     "mapping": 20
   },
+  "roar_mixer": {
+    "address": 32608,
+    "bytes": 96,
+    "stack_boundary": 32720,
+    "boot_source": 32319,
+    "impact_refreshes": 12
+  },
   "speech_storage": {
-    "format": "lossless 7-byte register packing",
-    "raw_bytes": 6020,
-    "stored_bytes": 3010,
-    "world_code_bytes": 5103,
-    "world_code_capacity": 5140
+    "format": "paired ordinary speech; fourteen-register deltas for edited roar",
+    "raw_bytes": 13314,
+    "stored_bytes": 5582,
+    "roar_bytes": 1284,
+    "roar_address": 26326,
+    "world_code_bytes": 5993,
+    "world_code_capacity": 6000
+  },
+  "rock_boot_storage": {
+    "raw_bytes": 3360,
+    "stored_bytes": 1750,
+    "decoder_bytes": 28,
+    "dictionary_entries": 210,
+    "runtime_graphics_unchanged": true
   },
   "sfx": {
     "source": "https://github.com/synamaxmusic/sinistar/blob/main/VSNDRM9.ASM",
@@ -144,7 +160,42 @@
       }
     ],
     "format": "3 bytes: tone low, tone high/volume, noise/mixer; explosion holds each sample three refreshes",
-    "explosion_method": "QBANG filtered-noise arithmetic, fixed deterministic seed, approximate 6800 loop timings; speech2ay harmonic1; 20 Hz register updates"
+    "explosion_method": "QBANG filtered-noise reconstruction; speech2ay/Ayumi noise-aware fit to the actual 3-refresh register holds",
+    "explosion_fit": {
+      "method": "speech2ay Ayumi noise-aware restricted search; 3-refresh stateful blocks",
+      "source_sha256": "2f7dcfaa173f5488474c7572d46a1577ea6672247196a76e0834b6ca8f41e548",
+      "frames": 189,
+      "noise_frames": 189,
+      "mean_seed_cost": 0.7816374353193818,
+      "mean_fitted_cost": 0.2654452571422098,
+      "cost_note": "Per-block costs use the candidate stream history; objective scores do not establish perceived quality.",
+      "register_periods": [
+        1,
+        8,
+        14,
+        15,
+        18,
+        19,
+        20,
+        21,
+        22,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31
+      ]
+    },
+    "player_impact": {
+      "bytes": 90,
+      "frames": 30,
+      "storage": "resident DOCK4",
+      "chain": "existing explosion after thirty audio refreshes",
+      "source": "RemingtonGunshot.wav by fastson, CC BY 3.0; noise-only AY fit"
+    }
   },
   "voices": {
     "beware-i-live": {
@@ -164,12 +215,97 @@
       "source_seconds": 2.2427688011170956
     },
     "sinistar-roar": {
+      "source": "User AY editor export",
+      "project": "sinistar-roar-edited.json",
       "frames": 170,
-      "bytes": 2380,
-      "source": "https://seanriddle.com/aargh.wav",
-      "sha256": "098bb5b551775f64b2aa1d383bc30cd7ade969bed79cff36f79466992f2675c4",
-      "seconds": 2.8279366874880436,
-      "source_seconds": 2.8188709355675243
+      "frame_tstates": 58688,
+      "cpu_hz": 3528000,
+      "sha256": "f1ceb6f33b83fffd759be5b88cbff47c3cf21a4930f3480c849967910185612d",
+      "lossless": true
+    },
+    "i-hunger": {
+      "name": "i-hunger",
+      "count": 62,
+      "bytes": 868,
+      "seconds": 1.0313651448485806,
+      "source": "i-hunger-arcade.wav",
+      "source_sha256": "744427c07776bb4419629d85ea096088bc4e1a62d21bbf1b0861d4247e90263f",
+      "source_seconds": 1.018751246758428,
+      "codec": "speech2ay harmonic3 + conservative ayfit",
+      "optimizer": {
+        "baseline": {
+          "spectrum": 0.3478499511766016,
+          "waveform": 0.5401920045240621,
+          "periodicity": 0.06730990416203664,
+          "roughness": 0.1778210593838895
+        },
+        "retained": {
+          "spectrum": 0.334055460493907,
+          "waveform": 0.5375789382125278,
+          "periodicity": 0.06417823531641408,
+          "roughness": 0.17297074640217844
+        },
+        "accepted_blocks": 1,
+        "candidate_evaluations": 15204,
+        "search_objective": "joint",
+        "acceptance_objective": "joint",
+        "passes": 4,
+        "search_mode": "conservative"
+      }
+    },
+    "beware-coward": {
+      "frames": 115,
+      "bytes": 1610,
+      "source": "https://seanriddle.com/bewareco.wav",
+      "sha256": "a0eea02936d02da705355a4b4aaa5c8f79e299cbebf47fb36b73916ebfd057f5",
+      "seconds": 1.913015994477206,
+      "source_seconds": 1.9116297626171952
+    },
+    "run-coward": {
+      "name": "run-coward",
+      "count": 97,
+      "bytes": 1358,
+      "seconds": 1.6135874040372955,
+      "source": "run-coward-arcade.wav",
+      "source_sha256": "ade83dc0d354f1751ba06c885050e4c939b5da77ce5fb478d1317c2f6da5c9c7",
+      "source_seconds": 1.6010373030121683,
+      "codec": "speech2ay harmonic3 + conservative ayfit",
+      "optimizer": {
+        "baseline": {
+          "spectrum": 0.2791561186752828,
+          "waveform": 0.4857168694880718,
+          "periodicity": 0.05009715089003552,
+          "roughness": 0.10887988720421893
+        },
+        "retained": {
+          "spectrum": 0.26646282957489836,
+          "waveform": 0.4757231687144612,
+          "periodicity": 0.04661754303435717,
+          "roughness": 0.10077389100529693
+        },
+        "accepted_blocks": 3,
+        "candidate_evaluations": 23424,
+        "search_objective": "joint",
+        "acceptance_objective": "joint",
+        "passes": 4,
+        "search_mode": "conservative"
+      }
+    },
+    "run-run-run": {
+      "frames": 116,
+      "bytes": 1624,
+      "source": "https://seanriddle.com/runrunru.wav",
+      "sha256": "e3c245233b9c5972818e983c46639ed55d16b691948624c929c9f0d25638ef5e",
+      "seconds": 1.9296509161683122,
+      "source_seconds": 1.926590863754239
+    },
+    "i-hunger-coward": {
+      "frames": 131,
+      "bytes": 1834,
+      "source": "https://seanriddle.com/ihungerc.wav",
+      "sha256": "c4a547d5eac3cdaea94e1ca3212a4654655119fc30555f30a2dc62980ec4f41d",
+      "seconds": 2.1791747415349043,
+      "source_seconds": 2.178136844205067
     }
   },
   "speech": {
@@ -202,7 +338,7 @@
       1,
       7
     ],
-    "bytes": 21247,
+    "bytes": 19170,
     "horizontal_template_bytes": 0,
     "boot_cache_windows": [
       [
@@ -238,10 +374,10 @@
   },
   "home_render_helpers": {
     "address": 42640,
-    "bytes": 363,
+    "bytes": 353,
     "capacity": 368,
-    "boot_source": 32405,
-    "boot_tail_free": 140,
+    "boot_source": 32415,
+    "boot_tail_free": 11,
     "flags": "HOME 5BCA-5BCE",
     "covered_player_default": false,
     "covered_stars_default": true

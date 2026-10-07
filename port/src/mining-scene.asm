@@ -107,8 +107,10 @@ isr:
  push hl
  ld a,$10
  out ($f4),a
- call speech_tick
- call sfx_tick
+ ld ($5e70),sp
+ ld sp,$5ed0
+ call audio_tick
+ ld sp,($5e70)
  ld a,($783f)
  or a
  jr z,border_idle
@@ -182,7 +184,6 @@ fire_input:
  bit 7,a
  ret nz
 fire_shot:
- ld a,6
  ld hl,world_extension+54
  call world_call
  ld hl,(px)
@@ -195,15 +196,23 @@ fire_shot:
  ld de,($78e8)
  ld a,d
  call signed_word
+ ; 12x unit vector: longer reach at the same 24-tick repeat interval.
  add hl,hl
  add hl,hl
+ ld b,h
+ ld c,l
  add hl,hl
+ add hl,bc
  ld (bvx),hl
  ld a,e
  call signed_word
+ ; 12x unit vector: longer reach at the same 24-tick repeat interval.
  add hl,hl
  add hl,hl
+ ld b,h
+ ld c,l
  add hl,hl
+ add hl,bc
  ex de,hl
  ld hl,0
  or a
@@ -213,6 +222,10 @@ fire_shot:
  ld (bullet_alive),a
  jp sfx_shot
 bullet_step:
+ IFDEF PLAYABLE_GAME
+ ld hl,world_extension+39
+ jp world_call
+ ELSE
  ld a,(game_mode)
  or a
  ld hl,world_extension+39
@@ -266,6 +279,7 @@ bullet_rock_sector:
  ld (richter),a
  ld hl,hits
  inc (hl)
+ ENDIF
 kill_bullet:
  xor a
  ld (bullet_alive),a
@@ -325,6 +339,10 @@ vibration_damp:
  ld (shattered),a
  jp sfx_explosion
 crystal_step:
+ IFDEF PLAYABLE_GAME
+ ld hl,world_extension+45
+ jp world_call
+ ELSE
  ld a,(game_mode)
  or a
  ld hl,world_extension+45
@@ -371,6 +389,7 @@ game_ammo_ok:
  ld (hl),a
  ld hl,crystals_taken
  inc (hl)
+ ENDIF
 kill_crystal:
  xor a
  ld (crystal_alive),a
@@ -392,6 +411,18 @@ kill_crystal:
  INCLUDE "population-render.asm"
 sprites:
  INCLUDE "../build/mining-pointers.asm"
+ INCLUDE "explosion-unpack.asm"
+ INCLUDE "../build/damage-pieces.asm"
+audio_tick:
+ ld a,$d0
+ out ($f4),a
+ call effects_origin+42
+ ld a,$10
+ out ($f4),a
+ ret c
+ call speech_tick
+ jp sfx_tick
+ INCLUDE "death-effects.asm"
 end_code:
  ASSERT end_code <= $a000
  DS $a000-$,255

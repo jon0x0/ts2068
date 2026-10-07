@@ -3,8 +3,8 @@ const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const {createZ80,runZ80}=await import(pathToFileURL(path.resolve(root,'../../../TSRun/z80.js')));
 const cart=fs.readFileSync(path.join(root,'build/sinistar-mining.dck')),rom=cart.subarray(9),ram=new Uint8Array(65536),cpu=createZ80(),clock={tstates:0,stepAdded:0};
 const sym=Object.fromEntries([...fs.readFileSync(path.join(root,'build/mining-symbols.txt'),'utf8').matchAll(/^(\w+): EQU 0x([0-9A-F]+)/gm)].map(x=>[x[1],parseInt(x[2],16)]));
-let mapping=16,selected=0,romWrites=0;const ay=new Uint8Array(16);
-const bus={read:a=>mapping&(1<<(a>>13))?rom[a]:ram[a],write(a,v){if(mapping&(1<<(a>>13)))romWrites++;else ram[a]=v;},ioRead:()=>255,ioWrite(p,v){if((p&255)===0xf4)mapping=v;else if((p&255)===0xf5)selected=v;else if((p&255)===0xf6)ay[selected&15]=v;}};
+let mapping=16,selected=0,romWrites=0,keyC=false;const ay=new Uint8Array(16);
+const bus={read:a=>mapping&(1<<(a>>13))?rom[a]:ram[a],write(a,v){if(mapping&(1<<(a>>13)))romWrites++;else ram[a]=v;},ioRead:p=>p===0xfefe&&keyC?247:255,ioWrite(p,v){if((p&255)===0xf4)mapping=v;else if((p&255)===0xf5)selected=v;else if((p&255)===0xf6)ay[selected&15]=v;}};
 function invoke(name,bank=0x50,regs={},stack=0x7ffd){mapping=bank;ram[0x78df]=bank;Object.assign(cpu,regs);cpu.pc=sym[name];assert.ok(cpu.pc,name);cpu.sp=stack;ram[stack]=0;ram[stack+1]=1;cpu.halted=false;const before=clock.tstates;for(let n=0;cpu.pc!==0x100;n++){assert.ok(n<200000,`bounded ${name}`);runZ80(cpu,bus,1,clock);}assert.equal(cpu.sp,stack+2,name);return clock.tstates-before;}
 const set=(n,v)=>ram[sym[n]]=v,word=(n,v)=>{set(n,v&255);ram[sym[n]+1]=(v>>8)&255;},value=n=>{const v=ram[sym[n]]+256*ram[sym[n]+1];return v&32768?v-65536:v;};
 function axis(n,high,v){word(n,(v&255)*256);ram[high]=(v>>8)&1;}
@@ -35,11 +35,40 @@ for(const rockX of [100,508])for(const side of [-1,1]){
 }
 reset();axis('px',0x7c96,94);axis('py',0x7c97,108);word('pvx',-500);invoke('wb_bounce_call',0x50,{h:0,l:100,d:0,e:100,a:0});assert.equal(value('pvx'),-500,'separating contact does not bounce');
 
+// Native C matrix input: no auto-repeat toggling, immediate recovery release,
+// both the primary and secondary rock entry points, and native notice expiry.
+reset();ram[0x5c25]=8;keyC=true;invoke('mode_bounce_key',0x90);
+assert.equal(ram[0x5c2b],1);assert.equal(ram[0x5c25],0);
+for(let i=0;i<20;i++)invoke('mode_bounce_key',0x90);
+assert.equal(ram[0x5c2b],1,'holding C toggles only once');
+const noticeBaseline=path.join(root,'revisions/playable-edited-roar-v29/build');
+const noticeRom=fs.readFileSync(path.join(noticeBaseline,'sinistar-mining.dck')).subarray(9);
+const noticeSymbols=Object.fromEntries([...fs.readFileSync(path.join(noticeBaseline,'mining-symbols.txt'),'utf8').matchAll(/^(\w+): EQU 0x([0-9A-F]+)/gm)].map(x=>[x[1],parseInt(x[2],16)]));
+function noticeExpected(label){for(let y=0;y<7;y++)for(let x=0;x<13;x++){
+ const line=52+y,addr=0x4000+((line&7)<<8)+((line&56)<<2)+9+x;
+ assert.equal(ram[addr],label?noticeRom[noticeSymbols[label]+y*13+x]:0,'notice bitmap');
+ assert.equal(ram[addr+0x2000],7,'notice attributes use normal black');
+}}
+invoke('mode_notice',0x90);noticeExpected('mode_bounce_off');
+ram[0x7802]=89;invoke('mode_notice',0x90);noticeExpected('mode_bounce_off');
+ram[0x7802]=90;invoke('mode_notice',0x90);noticeExpected(null);
+axis('px',0x7c96,94);axis('py',0x7c97,108);word('pvx',500);
+invoke('wb_bounce_call',0x50,{h:0,l:100,d:0,e:100,a:0});assert.equal(value('pvx'),500,'primary rock ignored when disabled');
+ram.set([100,0,100,0,0,0,0],0x7f00);invoke('wb_planet_bounce',0x50,{ix:0x7f00});assert.equal(value('pvx'),500,'secondary rock ignored when disabled');
+keyC=false;invoke('mode_bounce_key',0x90);keyC=true;invoke('mode_bounce_key',0x90);
+assert.equal(ram[0x5c2b],0);invoke('mode_notice',0x90);noticeExpected('mode_bounce_on');
+invoke('wb_bounce_call',0x50,{h:0,l:100,d:0,e:100,a:0});assert.equal(value('pvx'),-500,'bounce restored');
+keyC=false;
+for(const enabled of [0,1]){ram[0x5bb1]=enabled;ram[0x5c2d]=0;ram[0x5bc6]=2;invoke('mode_notice',0x90);noticeExpected(enabled?'mode_on_text':'mode_off_text');}
+
 let fragmentCases=0;
+const explosionAssets=JSON.parse(fs.readFileSync(path.join(root,'build/mining-assets.json'))).filter(a=>a.kind==='arcade-explosion');
+function explosionExpected(frame,phase){const src=explosionAssets.find(a=>a.index===frame).data,raw=[...src];if(phase)for(let y=0;y<26;y++){let previous=7;for(let x=0;x<4;x++){const i=(y*4+x)*3;raw[i]=((src[i]>>>phase)|((x?src[i-3]:255)<<(8-phase)))&255;raw[i+1]=((src[i+1]>>>phase)|((x?src[i-2]:0)<<(8-phase)))&255;if(raw[i]!==255){if(raw[i+2]===1)raw[i+2]=previous;previous=raw[i+2];}}}return raw;}
+let maximumExplosionStage=0;
 for(let phase=0;phase<8;phase++)for(const ticks of [32,24,16,8]){
- reset();set('worker_alive',2);set('worker_x',phase);ram[0x5c27]=ticks;ram.fill(0x55,0xb7f0,0xb880);invoke('wb_explosion_sprite');assert.equal(mapping,0x50);assert.ok(ram.subarray(0xb7f0,0xb800).every(v=>v===0x55));assert.ok(ram.subarray(0xb86c,0xb880).every(v=>v===0x55));
- const pixels=[];for(let y=0;y<12;y++)for(let x=0;x<24;x++){const i=0xb800+y*9+3*(x>>3),bit=128>>(x&7);if(ram[i+1]&bit){assert.equal(ram[i]&bit,0);pixels.push([x-phase,y]);}}
- assert.equal(pixels.length,8);const radius=2+(32-ticks)/8;assert.ok(pixels.every(([x,y])=>Math.max(Math.abs(x-6),Math.abs(y-6))===radius),'fragments expand');fragmentCases++;
+ reset();set('worker_alive',2);set('worker_x',phase);ram[0x5c27]=ticks;ram.fill(0x55,0xb7f0,0xb948);maximumExplosionStage=Math.max(maximumExplosionStage,invoke('wb_explosion_sprite'));assert.equal(mapping,0x50);assert.ok(ram.subarray(0xb7f0,0xb800).every(v=>v===0x55));assert.ok(ram.subarray(0xb938,0xb948).every(v=>v===0x55));
+ assert.deepEqual([...ram.slice(0xb800,0xb938)],explosionExpected((32-ticks)/8,phase),'original IEXPLO worker frame');
+ ram[0x783c]=phase;ram[0x783e]=ticks/8;invoke('ring_effect',0x94);assert.deepEqual([...ram.slice(0xb800,0xb938)],explosionExpected((32-ticks)/8,phase),'same original frame for bomb impact');fragmentCases++;
 }
 
 reset();axis('px',0x7c96,128);axis('py',0x7c97,112);ram[0x5886]=48;invoke('radar_entry');
@@ -55,5 +84,5 @@ for(let i=0;i<effects.length;i++){
 }
 reset();set('speech_left',30);invoke('sfx_explosion',16);assert.equal(ram[sym.sfx_pending],0,'speech rejects explosion');set('speech_active',1);set('sfx_active',5);set('sfx_left',10);invoke('sfx_tick',16);assert.equal(ram[sym.sfx_left],0,'speech preempts effect');
 assert.equal(romWrites,0);
-const report={dck_sha256:createHash('sha256').update(cart).digest('hex'),workerCases,bounceCases,maxBounceTstates:maxBounce,speeds,fragmentCases,audioFrames,radarOutline:true,speechPriority:true,romWrites};
+const report={dck_sha256:createHash('sha256').update(cart).digest('hex'),workerCases,bounceCases,bounceToggle:true,bounceNotice:true,maxBounceTstates:maxBounce,speeds,fragmentCases,audioFrames,radarOutline:true,speechPriority:true,romWrites};
 fs.writeFileSync(path.join(root,'build/gameplay-features-verification.json'),JSON.stringify(report,null,2));console.log(report);

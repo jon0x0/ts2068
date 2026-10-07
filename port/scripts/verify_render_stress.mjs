@@ -6,6 +6,7 @@ const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),up=pa
 const api=await import(pathToFileURL(path.join(up,'machine.js')));
 const sym=Object.fromEntries([...fs.readFileSync(path.join(root,'build/mining-symbols.txt'),'utf8').matchAll(/^(\w+): EQU 0x([0-9A-F]+)/gm)].map(x=>[x[1],parseInt(x[2],16)]));
 const cart=fs.readFileSync(path.join(root,'build/sinistar-mining.dck')),assets=JSON.parse(fs.readFileSync(path.join(root,'build/mining-assets.json')));
+const damagePieces=JSON.parse(fs.readFileSync(path.join(root,'build','damage-pieces.json')));
 const fastTest=process.argv.includes('--fast');let priorFast=false,restorationPicture=false;
 const coverTest=process.argv.includes('--cover');let chaseInitialized=false,coveredFastPictures=0;
 const keys=new Uint8Array(8).fill(31),m=api.createMachine(keys,new Uint8Array(2).fill(255));
@@ -22,7 +23,7 @@ function compose(){
    const i=(r*w+c)*3,mask=opaque?0:src[i],priorMask=opaque?0:(c?src[i-3]:255);
    raw[i]=((mask>>>shift)|((c?priorMask:255)<<(8-shift)))&255;
    raw[i+1]=((src[i+1]>>>shift)|((c?src[i-2]:0)<<(8-shift)))&255;
-   if(kind==='assembly'&&raw[i]!==255&&raw[i+2]===1)raw[i+2]=previous;
+   if((kind==='assembly'||kind==='arcade-explosion')&&raw[i]!==255&&raw[i+2]===1)raw[i+2]=previous;
    if(raw[i]!==255)previous=raw[i+2];
   }}}
   for(let r=0;r<h;r++)for(let c=0;c<w;c++){
@@ -35,18 +36,24 @@ function compose(){
  const pos=(x,y,axis)=>[relative(m.ram[sym[x]+1]+256*m.ram[0x7cb0+axis]),relative(m.ram[sym[y]+1]+256*m.ram[0x7cb1+axis])];
  const f=pos('face_x','face_y',10);
  if(get('assembly_count')&&get('bs_hits')<13){
-  if(get('sinistar_built'))sprite('awakening',get('eye_phase')*3+get('awake_mouth'),...f,7,52,f[0]&7,!get('awake_done'));
+  if(get('sinistar_built'))sprite('awakening',get('eye_phase')*3+get('awake_mouth'),...f,7,52,f[0]&7,!get('awake_done')||!!get('awake_mouth'));
   else sprite('assembly',get('assembly_count')-1,...f,7,52,f[0]&7);
+ }
+ if(get('bs_hits')>0&&get('bs_hits')<13&&get('assembly_count'))for(const r of damagePieces.slice(0,get('bs_hits'))){
+  for(let yy=f[1]+r.y;yy<f[1]+r.y+r.height;yy++)for(let xx=f[0]+r.x;xx<f[0]+r.x+r.width;xx++){
+   if(xx<0||xx>=256||yy<64||yy>=176)continue;const o=off(xx>>3,yy);pix[o]&=~(128>>(xx&7));if(!pix[o])attr[o]=7;
+  }
  }
  let p=xy('rock_x','rock_y',0);if(get('rock_alive'))sprite('rock',p[0]&7,...p,5,28);
  for(const a of records)if(m.ram[a+7]){const x=relative(word(a)-word(0x5884)),y=relative(word(a+2)-word(0x5886));sprite('rock',x&7,x,y,5,28);}
- p=xy('worker_x','worker_y',8);if(get('worker_alive'))sprite('worker',p[0]&7,...p,3,12);
+ p=xy('worker_x','worker_y',8);if(get('worker_alive')===2)sprite('arcade-explosion',((32-m.ram[0x5c27])>>3),...p,4,26,p[0]&7);else if(get('worker_alive'))sprite('worker',p[0]&7,...p,3,12);
  p=pos('cx','cy',2);if(get('crystal_alive'))sprite('crystal',p[0]&7,...p,2,4);
  p=pos('bx','by',4);if(get('bullet_alive'))sprite('bullet',p[0]&7,...p,2,2);
  p=pos('px','py',6);if(m.ram[sym.rects+14])sprite('ship',((get('angle')+4)&248)|(p[0]&7),...p,3,12);
  p=xy('bs_x','bs_y',12);if(get('bs_active'))sprite('sinibomb',p[0]&7,...p,2,6);
+ if(m.ram[0x783e]){const x=relative(m.ram[0x783c]+256*m.ram[0x7cbe]),y=relative(m.ram[0x783d]+256*m.ram[0x7cbf]);sprite('arcade-explosion',(4-m.ram[0x783e])&3,x,y,4,26,x&7);}
  for(let a=0x58c0;a<0x58d4;a+=2){const sx=m.ram[a]>>3,sy=m.ram[a+1]+64;
-  if((m.ram[0x5bcb]&2)&&get('awake_done')&&get('assembly_count')&&get('bs_hits')<13&&sx>=Math.floor(f[0]/8)&&sx<Math.floor(f[0]/8)+7&&sy>=f[1]&&sy<f[1]+52)continue;
+  if((m.ram[0x5bcb]&2)&&!get('bs_hits')&&get('awake_done')&&get('assembly_count')&&get('bs_hits')<13&&sx>=Math.floor(f[0]/8)&&sx<Math.floor(f[0]/8)+7&&sy>=f[1]&&sy<f[1]+52)continue;
   const o=off(sx,sy);if(!pix[o]){pix[o]=128>>(m.ram[a]&7);attr[o]=7;}}
  return {pix,attr};
 }
@@ -65,7 +72,7 @@ function radarModel(){
 }
 let incrementalFaces=0,incrementalRestores=0,retainedRockRows=0;
 let pictures=0,radars=0,maxRecords=0,rasterLate=0,romWrites=0,expected=null,start=0,firstPopulation=null,radarExpected;
-const write=m.bus.write;m.bus.write=(a,v)=>{if(expected&&!m.ram[0x783c]&&((a>=0x4000&&a<0x5800)||(a>=0x6000&&a<0x7800))){const y=((a&0x1800)>>5)|((a&0x700)>>8)|((a&0xe0)>>2);if(y>=64&&m.tstates-start>=(40+y)*224)rasterLate++;}if(expected&&(m.portF4&(1<<(a>>13))))romWrites++;write(a,v);};
+const write=m.bus.write;m.bus.write=(a,v)=>{if(expected&&((a>=0x4000&&a<0x5800)||(a>=0x6000&&a<0x7800))){const y=((a&0x1800)>>5)|((a&0x700)>>8)|((a&0xe0)>>2);if(y>=64&&m.tstates-start>=(40+y)*224)rasterLate++;}if(expected&&(m.portF4&(1<<(a>>13))))romWrites++;write(a,v);};
 const inject=false;const caseIndex=0;
 const rd=m.bus.read;m.bus.read=a=>{if(a===m.cpu.pc){
  if(coverTest&&a===sym.frame_start)m.ram[0x5bcb]=3;

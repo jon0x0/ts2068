@@ -100,76 +100,28 @@ fx_no_contact:
 fx_rock_speeds:
  INCLUDE "../build/effect-rock-speeds.asm"
 
-; Eight precomputed fragment positions per frame; only the selected byte's
-; pixel mask is shifted at staging time. Reuses the worker's 12x12 rectangle.
+; Four original IEXPLO frames, shared by workers and bomb impacts.
 fx_explosion:
- ld hl,$b800
- ld (hl),255
- inc hl
- ld (hl),0
- inc hl
- ld (hl),$46
- ld hl,$b800
- ld de,$b803
- ld bc,105
- ldir
+ ld a,(worker_x)
+ and 7
+ ld c,a
  ld a,($5c27)
  dec a
  and 24
  xor 24
+ rrca
+ rrca
+ rrca
+fx_arcade_explosion:
  add a,a
  ld l,a
  ld h,0
- ld de,fx_particles
+ ld de,fx_explosion_pointers
  add hl,de
- push hl
- pop ix
- ld b,8
-fx_particle:
- push bc
- ld a,(worker_x)
- and 7
- add a,(ix+0)
- ld c,a
- and 7
- ld b,a
- ld a,$80
- jr z,fx_particle_mask
-fx_particle_shift:
- rrca
- djnz fx_particle_shift
-fx_particle_mask:
- ld e,a
- ld a,c
- srl a
- srl a
- srl a
- ld c,a
- ld a,(ix+1)
- add a,a
- add a,(ix+1)
- add a,c
- ld c,a
- add a,a
- add a,c
- ld l,a
- ld h,$b8
- ld a,e
- cpl
- and (hl)
- ld (hl),a
+ ld e,(hl)
  inc hl
- ld a,e
- or (hl)
- ld (hl),a
- inc ix
- inc ix
- pop bc
- djnz fx_particle
- ret
-fx_particles:
- DB 4,4,6,4,8,4,4,6,8,6,4,8,6,8,8,8
- DB 3,3,6,3,9,3,3,6,9,6,3,9,6,9,9,9
- DB 2,2,6,2,10,2,2,6,10,6,2,10,6,10,10,10
- DB 1,1,6,1,11,1,1,6,11,6,1,11,6,11,11,11
-
+ ld d,(hl)
+ ex de,hl
+ ld de,fx_explosion_dictionary
+ jp explosion_unpack
+ INCLUDE "../build/explosion-art.asm"

@@ -17,6 +17,10 @@ assembly_target_y EQU $78bb
 assembly_x EQU 192
 assembly_y EQU 80
 worker_step:
+ IFDEF PLAYABLE_GAME
+ ld hl,world_extension+42
+ jp world_call
+ ELSE
  ld a,(game_mode)
  or a
  ld hl,world_extension+42
@@ -98,6 +102,7 @@ worker_deliver:
  jr nz,worker_attach
  ; Delivery consumes carrier and crystal, as WORKER.SRC does after AddPart.
  ; Advance one outer piece, then consume the carrier.
+ ENDIF
 worker_not_built_entry:
  ld hl,assembly_count
  inc (hl)
@@ -123,6 +128,7 @@ worker_not_built:
  ld hl,worker_deliveries
  inc (hl)
  jp sfx_assembly
+ IFNDEF PLAYABLE_GAME
 worker_attach:
  ld a,(worker_x)
  add a,4
@@ -134,6 +140,7 @@ worker_attach:
  ld h,a
  ld (cy),hl
  ret
+ ENDIF
 worker_move:
  ld a,(hl)
  cp b
@@ -148,6 +155,18 @@ worker_increase:
 ; Deterministic test supply after the first genuinely mined crystal.
 ; This is not the arcade worker spawner or resource economy.
 worker_resupply:
+ IFDEF PLAYABLE_GAME
+ ld hl,worker_delay
+ ld a,(hl)
+ or a
+ jr z,worker_supply_ready
+ dec (hl)
+ ret nz
+worker_supply_ready:
+ ld a,1
+ ld (worker_alive),a
+ ret
+ ELSE
  ld a,(assembly_count)
  cp 20
  ret nc
@@ -188,6 +207,8 @@ worker_fixture_supply:
  ret
  INCLUDE "../build/assembly-targets.asm"
 
+ ENDIF
+
 ; Original AniSC2 mouth positions/durations, advanced once per physics tick.
 ; AY speech is started by the ISR; arcade off-sector/death gates remain pending.
 awake_mouth EQU $78bd
@@ -203,37 +224,8 @@ awakening_step:
  or a
  ret z
  call eyebrow_step
- ld a,(awake_done)
- or a
- ret nz
- ld hl,awake_timer
- ld a,(hl)
- or a
- jr z,awake_next
- dec (hl)
- ret nz
-awake_next:
- ld a,(awake_index)
- ld l,a
- ld h,0
- ld de,awakening_sequence
- add hl,de
- ld a,(hl)
- cp 255
- jr z,awake_end
- ld (awake_mouth),a
- inc hl
- ld a,(hl)
- ld (awake_timer),a
- ld hl,awake_index
- inc (hl)
- inc (hl)
- ret
-awake_end:
- ld a,1
- ld (awake_done),a
- ret
- INCLUDE "../build/awakening-sequence.asm"
+ ld hl,world_extension+114
+ jp world_call
 
 ; Task16-style cadence adapter; source cycles AEYE1,2,3 independently of speech.
 eyebrow_step:

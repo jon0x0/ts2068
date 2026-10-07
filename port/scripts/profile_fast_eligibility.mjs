@@ -5,7 +5,7 @@ import fs from 'node:fs';import path from 'node:path';import assert from 'node:a
 import {fileURLToPath,pathToFileURL} from 'node:url';import {createHash} from 'node:crypto';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),up=path.resolve(root,'../../../TSRun');
 const api=await import(pathToFileURL(path.join(up,'machine.js')));
-const variant=process.argv[2]||'eligibility',build=variant==='v1'?path.join(root,'revisions/playable-scrolling-world-v1/build'):path.join(root,'build');
+const variant=process.argv[2]||'eligibility',build=process.argv[3]?path.resolve(process.argv[3]):variant==='v1'?path.join(root,'revisions/playable-scrolling-world-v1/build'):path.join(root,'build');
 const cart=fs.readFileSync(path.join(build,'sinistar-mining.dck'));
 const sym=Object.fromEntries([...fs.readFileSync(path.join(build,'mining-symbols.txt'),'utf8').matchAll(/^(\w+): EQU 0x([0-9A-F]+)/gm)].map(x=>[x[1],parseInt(x[2],16)]));
 const records=[...Array.from({length:8},(_,i)=>0x79b0+i*10),...Array.from({length:8},(_,i)=>0x7db0+i*10),0x58b4];
@@ -28,8 +28,13 @@ function runScene(rocks,face){
   }
   if(a===sym.frame_start){
    const camx=word(0x5884),camy=word(0x5886);
-   const x=(camx+24)&511,y=(camy+76)&511;set('rock_alive',1);set('rock_x',x&255);set('rock_y',y&255);m.ram[0x586e]=x>>8;m.ram[0x586f]=y>>8;
-   records.forEach((p,i)=>{put(p,(camx+(i<rocks-1?72+i*134:320))&511);put(p+2,(camy+(i<rocks-1?68+i*74:300))&511);m.ram[p+7]=96;});
+   if(face&&process.argv.includes('--speaking-face'))set('awake_mouth',1);
+
+   if(face&&process.argv.includes('--hidden-speaking-face')){const fx=(camx+321)&511,fy=(camy+100)&511;put(sym.face_x,(fx&255)*256);put(sym.face_y,(fy&255)*256);m.ram[0x7c9a]=fx>>8;m.ram[0x7c9b]=fy>>8;set('awake_mouth',1);}
+
+   const drift=process.argv.includes('--moving-rocks')?Math.abs((Math.floor(m.tstates/58688)%64)-32)>>1:0;
+   const x=(camx+24+drift)&511,y=(camy+76)&511;set('rock_alive',1);set('rock_x',x&255);set('rock_y',y&255);m.ram[0x586e]=x>>8;m.ram[0x586f]=y>>8;
+   records.forEach((p,i)=>{put(p,(camx+(i<rocks-1?72+i*134+drift:320))&511);put(p+2,(camy+(i<rocks-1?(process.argv.includes('--edge-rocks')?(i===0?52:164):68+i*74):300))&511);m.ram[p+7]=96;});
    if(!measuring&&m.tstates>360*58688){measuring=true;start=m.tstates;pending=[];}
   }
   if(measuring&&!finished){
@@ -59,5 +64,5 @@ function runScene(rocks,face){
  group.other=total-Object.values(group).reduce((a,b)=>a+b,0);assert.ok(group.other>=0,'non-overlapping accounting');
  return {fast_gate_conditions:gates,screen_displacement_histogram:deltas,visible_planetoids:rocks,active_sinistar:face,seconds:total/3528000,fps:pictures/(total/3528000),pictures,visibleFacePictures,fastPictures,visible_histogram:hist,speed_pixels_per_tick:{player_average:playerSum/speedSamples,player_peak:playerMax,sinistar_average:faceSum/speedSamples,sinistar_peak:faceMax},time_percent:Object.fromEntries(Object.entries(group).map(([n,v])=>[n,Math.round(v/total*1000)/10])),tstates_per_picture:total/pictures,routines:stats};
 }
-const report={variant,dck_sha256:createHash('sha256').update(cart).digest('hex'),conditions:'Continuous right input; 18 simulated planetoids; one or three positioned in view before each render; no worker, firing, speech or damage; active Sinistar follows native pursuit; 360-refresh warmup, 120 measured pictures.',scenes:[runScene(1,false),runScene(1,true),runScene(3,true)]};
+const report={variant,dck_sha256:createHash('sha256').update(cart).digest('hex'),edge_rocks:process.argv.includes('--edge-rocks'),moving_rocks:process.argv.includes('--moving-rocks'),hidden_speaking_face:process.argv.includes('--hidden-speaking-face'),speaking_face:process.argv.includes('--speaking-face'),conditions:'Continuous right input; 18 simulated planetoids; one or three positioned in view before each render; no worker, firing, speech or damage; active Sinistar follows native pursuit; 360-refresh warmup, 120 measured pictures.',scenes:[runScene(1,false),runScene(1,true),runScene(2,false),runScene(2,true),runScene(3,false),runScene(3,true)]};
 fs.writeFileSync(path.join(root,`build/one-planetoid-profile-${variant}.json`),JSON.stringify(report,null,2));console.log(JSON.stringify(report.scenes.map(({routines,...s})=>s),null,2));

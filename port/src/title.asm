@@ -3,12 +3,12 @@
  ORG title_source
 title_entry:
  ld hl,title_data
- ld de,$4000
+ ld de,$a000
 title_run:
  ld a,(hl)
  inc hl
  or a
- jr z,title_wait
+ jr z,title_transpose
  ld b,a
  bit 7,a
  jr nz,title_repeat
@@ -28,17 +28,29 @@ title_byte:
  inc de
  djnz title_byte
  jr title_run
+title_transpose:
+ ld de,$a000
+ ld bc,0
+title_column:
+ call offset
+ set 6,h
+ ld a,(de)
+ ld (hl),a
+ inc de
+ inc b
+ ld a,b
+ cp 192
+ jr nz,title_column
+ ld b,0
+ inc c
+ ld a,c
+ cp 32
+ jr nz,title_column
 title_wait:
- ld bc,$7ffe
- in a,(c)
- bit 0,a
- jp z,title_return
- ld a,14
- out ($f5),a
- ld bc,$01f6
- in a,(c)
- bit 7,a
- jr nz,title_wait
- jp title_return
+ ld a,$98
+ out ($f4),a
+ jp effects_origin+15
 title_data:
  INCBIN "../build/title-rle.bin"
+
+ INCLUDE "frontend-title.asm"

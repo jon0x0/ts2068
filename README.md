@@ -1,4 +1,64 @@
-# Sinistar TS2068 — 60 Hz cartridge demo
+# Sinistar TS2068 port
+
+The current playable cartridge is **v58**, with scrolling flight, mining,
+Sinibombs, worker combat, Sinistar assembly/pursuit, speech, attract mode and
+session high scores. See [port development notes](port/README.md) for the
+revision history, measurements and remaining arcade adaptations. Physical
+hardware validation is still outstanding.
+
+Run `python scripts/serve.py`, then open
+<http://127.0.0.1:8768/port/mining-web/>. The cartridge is
+`port/build/sinistar-mining.dck` (64 KiB payload plus a nine-byte DCK header).
+The earlier scripted 60 Hz demo is documented below; its timing does not
+describe the playable game.
+
+## Build and verify the playable port
+
+Initialize the pinned original-source submodule with
+`git submodule update --init --recursive`. Install Python dependencies
+`numpy`, `Pillow` and `scipy`; the Windows SjASMPlus executable is included
+under `tools/`. Use a current Node.js runtime for the emulator tests.
+The existing directory layout is required by the local server and tests:
+
+```text
+Timex/
+  TSRun/
+  cartridgeconversion/
+    berserk/
+    elite/
+    sinistar/
+```
+
+```powershell
+python port/scripts/build_mining.py
+node port/scripts/verify_frontend.mjs
+node port/scripts/verify_playable.mjs --fast
+node port/scripts/verify_render_stress.mjs --fast
+node port/ay-editor/verify.mjs
+```
+
+The build uses the checked-in fitted audio assets. Re-fitting audio requires
+the separate speech2ay/Ayumi tools described in the port notes. Some historical
+comparison tests also require local saved revisions, which are not checked in.
+
+## Publishing and project organization
+
+The browser player currently uses the local server's `/tsrun/` route. Pushing
+this source repository alone does not create a self-contained hosted player.
+Prepare a publishing package with its emulator dependencies before enabling
+a public Sinistar page.
+
+A shared ports repository can contain Sinistar and future ports' source while
+linking to Berzerk's existing project and player. Retain the local directories
+and existing publishing repositories. Preserve Berzerk's published
+URL, <https://jon0x0.github.io/berzerk_ts2068/>, and its
+`personalizations/berzerk/` entry path. No repository rename or directory move
+is required to add the umbrella page. Import Sinistar's history under
+`sinistar/` in a separately prepared umbrella checkout; the current development
+checkout can stay in place. The umbrella repository destination has not yet
+been configured.
+
+## Earlier 60 Hz cartridge demo
 
 **Saved version:** `revisions/v3-60hz/WATCH.html` plays the accepted recording
 offline. The frozen cartridge, source, and verification evidence are beside it,

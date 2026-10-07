@@ -6,16 +6,23 @@
  jp inc_restore
  jp inc_border
  jp inc_flash
- jp inc_ring_phase
- jp inc_ring_fill
+ jp damage_render
+ ret
+ nop
+ nop
  jp inc_assembly_draw
  jp inc_ship
  jp inc_cached_face
+ jp inc_mouth_four
+ jp inc_speaking_face
 inc_prepare:
  ld hl,effects_origin+3
  call inc_effect_call
  xor a
  ld ($7ba1),a
+ ld a,(bs_hits)
+ or a
+ ret nz
  ld a,($78f6)
  ld hl,$78f7
  or (hl)
@@ -273,70 +280,7 @@ inc_effect_call:
  out ($f4),a
  ret
 
-; E = closest horizontal pixel distance to the cell, D = abs(dy).
-; Return the first radius whose disc touches this cell; 3 is outer radius 49.
-inc_ring_phase:
- ld l,d
- ld h,0
- ld bc,inc_ring_tables
- add hl,bc
- ld b,0
-inc_ring_check:
- ld a,(hl)
- cp 255
- jr z,inc_ring_later
- cp e
- jr nc,inc_ring_found
-inc_ring_later:
- ld a,l
- add a,50
- ld l,a
- jr nc,inc_ring_nocarry
- inc h
-inc_ring_nocarry:
- inc b
- ld a,b
- cp 3
- jr nz,inc_ring_check
-inc_ring_found:
- ld a,b
- ret
- INCLUDE "../build/ring-phases.asm"
-
-inc_ring_fill:
- ld iyl,d
- ld hl,$b800
- ld bc,($7bec)
-inc_ring_fill_cell:
- ld e,(hl)
- inc hl
- ld d,(hl)
- inc hl
- inc hl
- ld a,iyl
- cp (hl)
- inc hl
- jr c,inc_ring_fill_next
- ; Attribute address high bits encode scanline y modulo eight.
- ld a,d
- add a,iyl
- rrca
- jr c,inc_ring_white
- rrca
- ld a,$76
- jr nc,inc_ring_color
- ld a,$52
- jr inc_ring_color
-inc_ring_white:
- ld a,$7f
-inc_ring_color:
- ld (de),a
-inc_ring_fill_next:
- dec bc
- ld a,b
- or c
- jr nz,inc_ring_fill_cell
- ret
+ INCLUDE "damage-render.asm"
 
 inc_assembly_draw:
  ld a,(game_mode)
@@ -363,3 +307,81 @@ inc_ship_clip:
  jp $dfef
 
  INCLUDE "cached-face.asm"
+
+; Four-pixel mouth shift, exactly equivalent to four carry-fed bit passes.
+; Only mouth rows 33..45 need shifting; the body is already pre-shifted.
+inc_mouth_four:
+ ld hl,$bab5
+ ld e,13
+im4_row:
+ ld d,2
+ ld a,15
+im4_plane:
+ push hl
+ ld b,7
+im4_cell:
+ rrd
+ inc hl
+ inc hl
+ inc hl
+ djnz im4_cell
+ pop hl
+ inc hl
+ xor a
+ dec d
+ jr nz,im4_plane
+ ld bc,19
+ add hl,bc
+ dec e
+ jr nz,im4_row
+ ret
+
+; Shifted awake poses have one masked left edge, then opaque cells.
+; Keep the attribute pointer in alternate HL instead of switching planes
+; twice per cell. Other sprites retain the general transparency compositor.
+inc_speaking_face:
+ ld a,(rects+23)
+ ld iyh,a
+ ld ixl,e
+ ld de,$b800
+isf_row:
+ call offset
+ ld a,h
+ or $a0
+ ld h,a
+ push bc
+ push hl
+ exx
+ pop hl
+ ld a,h
+ xor $60
+ ld h,a
+ exx
+ ld b,ixl
+ ; Only the first cell can preserve pixels from the previous background.
+ ld a,(de)
+ inc de
+ and (hl)
+ ld c,a
+ ld a,(de)
+ or c
+ jr isf_store
+isf_cell:
+ inc de
+ ld a,(de)
+isf_store:
+ ld (hl),a
+ inc de
+ ld a,(de)
+ exx
+ ld (hl),a
+ inc l
+ exx
+ inc de
+ inc l
+ djnz isf_cell
+ pop bc
+ inc b
+ dec iyh
+ jr nz,isf_row
+ ret

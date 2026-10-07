@@ -50,17 +50,19 @@ async function boot(){
     if(started&&sound.soundIsRunning(sfx)&&sound.soundWantsFrame(sfx)&&ran<4){step();carry=Math.max(carry,0)-frameMs;}
     video.drawScreen(gfx,machine.pixels);
     const planetRecords=[...Array.from({length:8},(_,i)=>0x79b0+i*10),...Array.from({length:8},(_,i)=>0x7db0+i*10),0x58b4];
-    const state={fastEnabled:machine.ram[0x5bb1]!==0,fastActive:machine.ram[0x5bb2]!==0,planetoids:Number(machine.ram[0x7810]!==0)+planetRecords.filter(a=>machine.ram[a+7]!==0).length,status:machine.ram[0x782f],lives:machine.ram[0x7838],protected:machine.ram[0x7839]>0,crystals:machine.ram[0x783b],bombHits:machine.ram[0x78ac],awakeDone:machine.ram[0x78c1],mouth:machine.ram[0x78bd],built:machine.ram[0x78bc],assembly:machine.ram[0x78b7],worker:machine.ram[0x78b3],mission:machine.ram[0x78b2],pickups:machine.ram[0x78b4],deliveries:machine.ram[0x78b5],hits:machine.ram[0x7827],collected:machine.ram[0x7826],released:machine.ram[0x782c],richter:machine.ram[0x7811],mass:machine.ram[0x7812],alive:machine.ram[0x7810],manual:machine.ram[0x78a4]};
+    const score=150*machine.ram[0x5c24]+200*machine.ram[0x783b]+500*Math.min(12,machine.ram[0x78ac])+(machine.ram[0x78ac]>=13?15000:0);
+    const state={score,soundEnabled:started&&machine.ram[0x5e6e]===0,soundStarted:started,attract:machine.ram[0x5e7b]!==0,fastEnabled:machine.ram[0x5bb1]!==0,fastActive:machine.ram[0x5bb2]!==0,planetoids:Number(machine.ram[0x7810]!==0)+planetRecords.filter(a=>machine.ram[a+7]!==0).length,status:machine.ram[0x782f],lives:machine.ram[0x7838],protected:machine.ram[0x7839]>0,crystals:machine.ram[0x783b],bombHits:machine.ram[0x78ac],awakeDone:machine.ram[0x78c1],mouth:machine.ram[0x78bd],built:machine.ram[0x78bc],assembly:machine.ram[0x78b7],worker:machine.ram[0x78b3],mission:machine.ram[0x78b2],pickups:machine.ram[0x78b4],deliveries:machine.ram[0x78b5],hits:machine.ram[0x7827],collected:machine.ram[0x7826],released:machine.ram[0x782c],richter:machine.ram[0x7811],mass:machine.ram[0x7812],alive:machine.ram[0x7810],manual:machine.ram[0x78a4]};
     const encoded=JSON.stringify(state);if(encoded!==lastState){lastState=encoded;notify('mining-state',state);}
 
   }
   window.audioLab={
     start(){started=true;sound.resumeSound(sfx);window.focus();canvas.focus();return true;},
+    toggleSound(){if(!started){this.start();return;}this.press("KeyS");},
     press(code){
       this.start();const event={code,preventDefault(){},repeat:false};
       keys.handleKeyDown(kbd,event);setTimeout(()=>keys.handleKeyUp(kbd,event),120);
     },
-    keyDown(event){this.start();keys.handleKeyDown(kbd,event);},
+    keyDown(event){if(event.code==="KeyS"&&event.repeat){event.preventDefault();return;}if(event.code==="KeyS"&&!started){event.preventDefault();this.start();return;}this.start();keys.handleKeyDown(kbd,event);},
     keyUp(event){keys.handleKeyUp(kbd,event);},
     reset(){keys.handleBlur(kbd);sound.resetSound(sfx);cpu.resetMachine(machine);this.start();},
   };

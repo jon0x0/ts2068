@@ -1,3 +1,27 @@
+## v33: native radar trim and live score
+
+Adds mirrored blue ribbed wedges beside the 64x16 radar and a blue divider at y63, above the y64..175 playfield. This is a compact TS2068 adaptation of the arcade frame, not pixel-identical arcade artwork. Static trim is initialized once; attract instruction transitions restore the divider.
+
+The six-digit white score at the upper left shares the high-score calculation: worker 150, collected crystal 200, outer piece 500, face 15000. Existing omission: five-point mining awards are not yet accumulated. Poll every 16 physics ticks; write only changed scores (60 bitmap/attribute bytes). No playfield compose work is added. HOME 7BF9..7BFA stores the cached score. Effects ROM uses 8002/8192 bytes.
+
+Measured native HUD cost: 65 T on skipped ticks, 330 T for an unchanged zero score, 4684 T for the 2050-point update. Typical idle overhead is 0.14% CPU; even the 76000-point unchanged fixture costs about 0.94% averaged over its 16-tick polling interval. Initial trim/score costs 12660 T once. Full fast-mode stress: 3627 pictures/18000 refreshes, no late raster writes or ROM writes (v32: 3621 pictures; cadence varies, not a claimed speedup).
+
+Original worker behavior: WITT/WORKER.SRC intercepts targets to collect crystals or ram the player; its EVADE routine targets the player when it has nothing else to do. The current serialized one-worker adaptation and speed are preserved. Multi-worker harassment is not added in v33.
+
+# Current: attract audio and sound control v32
+
+Attract audio now follows the arcade silent-demo rule. Workers approach from four sides with the delivery delay. **S** toggles native sound; the browser has a matching ON/OFF button. See [ATTRACT.md](ATTRACT.md) for source evidence, memory details and tests.
+
+---
+
+# Current: arcade attract and scores v31
+
+The attract player now mines, collects, watches worker assembly and bombs Sinistar. The original instructions appear over gameplay, including an explicit B Sinibomb reminder. Both 30-entry arcade score tables are seeded and editable in RAM. Original title and edited roar are preserved. See [ATTRACT.md](ATTRACT.md) for sources, adaptations, memory changes and current verification.
+
+The sections below record earlier revisions.
+
+---
+
 # Sustainable fast-mode assembly v15
 
 Cartridge `2689d68ab4f0330deea395d68a86ca579959190bb94b81b350d90961c5fe1569`. Fast-mode replenishment is now suppressed only after Sinistar awakens. Before pursuit, excess visible secondary planetoids recycle through normal far-sector refill; the primary mine can regenerate. The two-visible-rock cap remains. Six repeated cull/refill cycles and a complete fast-mode mining/build/win/restart/loss sequence pass.
@@ -483,6 +507,8 @@ they allocate no object RAM and are not linked into the pursuit renderer yet.
 
 # Composition/endings revision addition
 
+Bounce toggle v24: HOME 5C2B is bounce-disabled (zero at boot), 5C2C is the C-key latch, and 5C2D selects the temporary notice (0 fast mode, 1 bounce). All are inside the existing startup clear. The native notice renderer clears its bitmap directly instead of storing a blank bitmap in ROM.
+
 
 
 HOME `$5897` is the native end-screen latch: 0 undrawn, 1 waiting for fire release, 2 ready for a fresh press. World vector `world_extension+96` draws the result once in live bitmap/ECM rows 24Ã¢â‚¬â€œ46 and handles restart. It does not write the shadow-cache area beneath that reserved band.
@@ -526,3 +552,50 @@ The earlier assembly-cache layout is superseded by ASSEMBLY_CACHE.md. Each HOME 
 ## v21 gameplay additions
 
 HOME 5C24: worker kill count; 5C25: bounce recovery ticks; 5C26: SFX frame hold; 5C27: worker explosion ticks; 5C29â€“5C2A: internal worker score. Boot clears through 5C3F. SFX at 5C40 uses 552 bytes, ending at 5E67; radar queue remains at 5EA0. The packed SFX decoder is in DOCK6 so interrupts preserve the comparison-stream stack in HOME E000â€“FFFF. DOCK7 gameplay effects are foreground-only. Resident code ends at 9FF8; world code uses 5103 of 5140 reserved bytes.
+
+
+## v25 speech and lossless graphics storage (supersedes earlier speech layout)
+
+DOCK6 world extension now starts at C000, with a 5900-byte reservation. Complete speech clips use 11 bytes per pair of AY frames (odd final frame: 6 bytes), totaling 5233 bytes. Builder allocation uses free space in DOCK6/5/0/1 and records each clip mapping and pointer; it excludes banks that would hide the interrupt stack. ISR bank switches restore the foreground mapping. The cartridge remains eight 8 KB banks.
+
+HOME 5C2E stores speech mapping, 5C2F Task64 clock, 5C30 RnSpch, 5C31–34 two RNG words, 5C35–36 current/prior out-of-sector flags, 5C37–38 mouth table cursor, 5C3A awakening clock, 5C3B second-frame volume, 5C3C packed-pair phase, 5C3D ISR-requested mouth pose and 5C3E mouth-shift mask scratch. All lie inside the existing startup clear ending at 5C3F; SFX still begins at 5C40.
+
+HOME 7F00–7F34 is the 53-byte decompressed graphics-transition stream. Its source uses at most three parent deltas. The assembly delta decoder stays resident and writes HOME D800 with DOCK6 unmapped. Speaking reuses precomputed body rows and shifts only mouth rows 33–45. See TAUNTS.md and build/mining-scene-manifest.json for validation and current allocation.
+
+
+## v26 independent impact object and original IEXPLO data
+
+Current/previous rectangle arrays at 7840/7860 now use all 32 reserved bytes for eight objects. Index 7 is the bomb impact, 4 bytes wide by 26 rows; worker index 4 expands to the same dimensions while exploding. World projection includes low coordinates 783C/D, high bits 7C9E/F, backups 7CAE/F, and projected high bits 7CBE/F. Clipping uses 7CEC–7CEF for object 7; the last secondary planetoid's previous rectangle moves from there to 7F40–7F43. 7F44 is foreground explosion fine-phase scratch. Transition decoding still uses only 7F00–7F34. Main drawing uses the HOME BFFF stack; no new buffer overlaps its stack.
+
+783E is now the impact picture lifetime (0–4), not a request for a blocking attribute flash. 783F remains the refresh-clock border timer. HOME 5C3F records that the active bomb has survived a picture publication; it clears on launch. Boot already clears these locations. IEXPLO staging occupies B800–B937 (312 bytes), safely before the existing BC80 population projection cache. Its dictionary/indices remain in DOCK7, with the decoder in resident DOCK4. SFX and speech both guard the fast renderer's temporary HOME D800 stack.
+
+
+## v27 piece-removal renderer
+
+The 48-byte removal table is resident DOCK4. The damage routine replaces unused halo helpers in the DOCK2 rendering extension; its entry is render_extension+18. The unused +21 vector is a RET and padding. Intact Sinistar retains direct transitions; nonzero damage selects full composition and disables eye-only retention. HOME 7F45 is the current column, 7F46 clipped height, 7F47 remaining piece count, 7F48 remaining byte columns, and 7F50–7F52 the three-byte preserve mask. State is transient per call; no new persistent state or cartridge bank is required. Source descriptors and original SUBPIEC order are in build/damage-pieces.json. See DAMAGE.md.
+
+
+### v28 audio helper
+
+- HOME 7F53: bomb-impact refresh countdown (12 to zero).
+- HOME 7F60–7FAD: 78-byte boot-copied roar request/mixer helper. 7FD0–7FFF reserved for the regular stack; tested low-water 7FDB.
+- Boot source: tail of DOCK3 immediately before the A690 renderer helper. Copy via BC00, unmap DOCK3, then copy into HOME 7F60. BC00 is startup-only scratch here.
+- Speech paired format: bit 7 of the packed high-period byte selects tone A/B + noise C. In this mode the unused C low-period byte also supplies R6. Other modes retain their original representation.
+
+
+## Editor roar v29
+
+ROM3 6000–66D5 holds the boot rock dictionary and indices (1,750 bytes); 66D6–6BD9 holds the 1,284-byte roar delta stream, followed by the 28-byte boot decoder. Assembly code remains at 6D20. Boot uses HOME B7FF as its temporary stack for three dictionary-expansion calls, then restores 7FFF before continuing initialization.
+
+Roar decoding runs in ROM6. It loads speech_ptr before mapping ROM3 with HSR=58, performs no stack operations or HOME3 accesses while ROM3 is mapped, and restores HSR=50 before storing the advanced pointer, copying registers, calling mouth logic or returning. The pristine 14-byte previous frame is HOME 5E80–5E8D; the SFX builder now enforces an end no later than 5E80. Radar begins at 5EA0. The output frame is 5874–5881; 5882 onward remains pursuit state. The first delta frame defines all registers, so no initialization dependency exists.
+
+HOME 7F60 helper is 96 bytes (ends 7FBF), including the conditional R13 write after R0–12. Regular-stack boundary remains 7FD0; native playback reached 7FD9. World reservation is 6,000 bytes, with 5,953 used. Boot-to-helper gap is checked by the builder (one byte in this revision). Other seven clips retain their paired format and byte-exact register values.
+
+
+## Frontend v30
+
+ROM7 gains frontend code behind fixed effects vectors +12 (game gate) and +15 (title cycle). The world bridge updates both HSR and its interrupt-restoration shadow before entering ROM7. Live calls retain HOME3 for stack/state; title UI uses SP=BFFF with interrupts disabled and ROM3+4+7 visible. Attribute writes temporarily unmap ROM3 while executing ROM7, then restore the font mapping.
+
+HOME 5E68–5E76 contains three five-byte records (16-bit score in tens, three glyph-index initials); 5E77–78 is the initialization signature; 5E79–7A is the completed score; 5E7B is demo mode; 5E7C–7D is the initials pointer; 5E7E is UI ink. These end before the v29 roar frame at 5E80. Gameplay-only scratch 7BF0–7BF6 holds completion latch, timer, and carried initials during insertion. It is never accessed by title code while ROM3 hides HOME3.
+
+The original arcade font and prompts occupy the gap after the rock boot decoder. The first instruction page occupies unused space after assembly-cache code, within its existing reservation; the builder checks both bounds. Notice bitmaps use a 13-entry nibble dictionary, decoded only when F/C notices change. Existing notice pixels and timing remain intact. The eight-bank 64 KB cartridge limit is enforced.

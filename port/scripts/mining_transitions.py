@@ -20,7 +20,7 @@ def build(out, banks, cursor, poses):
     for pose in poses:
         tables.append(alloc(words(row_address(pose[y*14:y*14+14]) for y in range(52))))
     shut=[[poses[e*3] if p==0 else poses[9+e*7+p-1] for p in range(8)] for e in range(3)]
-    cases=[];pairs={};streams={};masks=set()
+    cases=[];pairs={};streams={};masks=set();stream_bases=[]
     for eye in range(3):
         for phase in range(8):
             for dy in (-1,0,1):
@@ -36,7 +36,20 @@ def build(out, banks, cursor, poses):
                         masks.update(pair);stream.append(pairs[pair]);casepairs.append(pair)
                     assert len(pairs)<=256
                     stream=bytes(stream)
-                    if stream not in streams:streams[stream]=alloc(stream)
+                    if stream not in streams:
+                        padded=stream.ljust(53,b'\0')
+                        candidates=[(sum(a!=b for a,b in zip(padded,base)),address,base,depth)
+                                    for base,address,depth in stream_bases if depth<3]
+                        best=min(candidates,default=(999,0,b'',0),key=lambda x:(x[0],x[3]))
+                        changes,parent,base,depth=best
+                        if 10+changes<54:
+                            mask=bytearray(7);values=bytearray()
+                            for j,(a,b) in enumerate(zip(padded,base)):
+                                if a!=b:mask[j//8]|=1<<(j%8);values.append(a)
+                            data=b'\1'+words([parent])+mask+values;depth+=1
+                        else:data=b'\0'+padded;depth=0
+                        address=alloc(data);streams[stream]=address
+                        stream_bases.append((padded,address,depth))
                     cases.append(dict(eye=eye,phase=phase,dx=dx,dy=dy,address=streams[stream],pairs=casepairs))
     kernels={};costs={}
     for mask in sorted(masks):

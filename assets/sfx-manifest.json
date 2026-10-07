@@ -91,5 +91,33 @@
     }
   ],
   "format": "3 bytes: tone low, tone high/volume, noise/mixer; explosion holds each sample three refreshes",
-  "explosion_method": "QBANG filtered-noise arithmetic, fixed deterministic seed, approximate 6800 loop timings; speech2ay harmonic1; 20 Hz register updates"
+  "explosion_method": "QBANG filtered-noise reconstruction; speech2ay/Ayumi noise-aware fit to the actual 3-refresh register holds",
+  "explosion_fit": {
+    "method": "speech2ay Ayumi noise-aware restricted search; 3-refresh stateful blocks",
+    "source_sha256": "2f7dcfaa173f5488474c7572d46a1577ea6672247196a76e0834b6ca8f41e548",
+    "frames": 189,
+    "noise_frames": 189,
+    "mean_seed_cost": 0.7816374353193818,
+    "mean_fitted_cost": 0.2654452571422098,
+    "cost_note": "Per-block costs use the candidate stream history; objective scores do not establish perceived quality.",
+    "register_periods": [
+      1,
+      8,
+      14,
+      15,
+      18,
+      19,
+      20,
+      21,
+      22,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31
+    ]
+  }
 }

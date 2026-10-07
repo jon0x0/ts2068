@@ -39,7 +39,18 @@ wb_planet_bounce:
  ld d,(ix+3)
  ld a,(ix+6)
 wb_bounce_call:
- push ix
+ ; Cheap necessary X condition before switching ROM banks. The full 9-bit
+ ; wrapped X/Y test still runs for candidates, including opposite sectors.
+ ld c,a
+ ld a,(px+1)
+ sub l
+ add a,10
+ cp 34
+ ret nc
+ ld a,($5c2b) ; Nonzero disables planetoid bounce for keyboard play.
+ or a
+ ret nz
+ ld a,c
  push af
  ld a,$d0
  ld ($78df),a
@@ -49,7 +60,6 @@ wb_bounce_call:
  ld a,$50
  ld ($78df),a
  out ($f4),a
- pop ix
  ret
 
 wb_explosion_sprite:
@@ -97,6 +107,7 @@ wb_worker_hit:
  ld a,1
  ld (crystal_alive),a
 wb_worker_explode:
+ call worker_impact_origin
  ld a,2
  ld (worker_alive),a
  ld a,32

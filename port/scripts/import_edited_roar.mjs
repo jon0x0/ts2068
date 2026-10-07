@@ -1,0 +1,17 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+import {compile,render,wav} from '../ay-editor/synth.mjs';
+const dir=new URL('../../assets/',import.meta.url);
+const project=JSON.parse(fs.readFileSync(new URL('sinistar-roar-edited.json',dir)));
+const raw=Buffer.from(compile(project.current.rows,project.current.pitch).flat());
+assert.equal(raw.length,170*14);
+assert.deepEqual(raw,fs.readFileSync(new URL('sinistar-roar.ay',dir)),'JSON must compile to the saved register export exactly');
+const report={source:'User AY editor export',project:'sinistar-roar-edited.json',frames:170,frame_tstates:58688,cpu_hz:3528000,sha256:createHash('sha256').update(raw).digest('hex'),lossless:true};
+fs.writeFileSync(new URL('sinistar-roar.json',dir),JSON.stringify(report,null,2)+'\n');
+const preview=new URL('../build/edited-roar-audio/',import.meta.url);
+fs.mkdirSync(preview,{recursive:true});
+for(const name of ['sinistar-roar-edited.json','sinistar-roar.ay','sinistar-roar.json'])fs.copyFileSync(new URL(name,dir),new URL(name,preview));
+fs.writeFileSync(new URL('edited-roar.wav',preview),Buffer.from(wav(render(compile(project.current.rows,project.current.pitch)))));
+fs.writeFileSync(new URL('index.html',preview),`<!doctype html><meta charset="utf-8"><title>Saved editor roar</title><style>body{background:#10151f;color:#eef;font:18px system-ui;max-width:700px;margin:60px auto}audio{width:100%}a{color:#9cf}</style><h1>Your saved roar</h1><p>Exact edited registers, rendered through the TSRun AY model. The game adds a brief channel-C noise burst on bomb impacts.</p><audio controls src="edited-roar.wav"></audio><p><a href="sinistar-roar-edited.json">Saved JSON</a> · <a href="sinistar-roar.ay">AY registers</a></p><p><a href="../mining-web/">Play the game</a></p>`);
+console.log(report);

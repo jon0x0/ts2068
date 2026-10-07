@@ -1,0 +1,8 @@
+{
+  "frames": 12,
+  "bytes": 36,
+  "source": "VSNDRM9 GUNSHOT: SAMPC=128, DSFLG=0, FMAX=C0; approximate reconstruction",
+  "codec": "speech2ay harmonic1",
+  "delay_seconds": 0.19961906029327367,
+  "sha256": "bbc96b3387394cf565b0325cfd5e7fe39bd2f24d7ee9c3bf87069549093b9286"
+}

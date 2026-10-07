@@ -33,6 +33,9 @@ world_call:
 world_dispatch:
  jp (hl)
 radar_step:
+ ld a,($7bfb)
+ or a
+ ret nz
  ld a,(game_mode)
  or a
  ret z
@@ -52,7 +55,7 @@ radar_publish:
  ld b,a
  xor a
  ld ($5868),a
- ld hl,$5ea0
+ ld hl,$e000
 radar_write:
  ld e,(hl)
  inc hl
@@ -83,3 +86,12 @@ scene_sprite:
  call world_call
  ret c
  jp draw_sprite
+
+; Shifted speaking face: clipping precedes a dedicated opaque-row compositor.
+scene_sinistar:
+ ld a,5
+ ld hl,world_extension+33
+ call world_call
+ ret c
+ ld hl,render_extension+36
+ jp incremental_call

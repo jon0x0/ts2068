@@ -28,13 +28,12 @@ sfx_request:
  push bc
  ld b,a
  ld a,(speech_left)
- or a
- jr nz,sfx_reject
+ ld c,a
  ld a,(speech_active)
- or a
- jr nz,sfx_reject
+ or c
+ ld c,a
  ld a,(speech_pending)
- or a
+ or c
  jr nz,sfx_reject
  ld a,b
  cp 1
@@ -43,6 +42,16 @@ sfx_request:
  cp 2
  jr nc,sfx_reject
  ld a,(sfx_active)
+ ; Preserve the blast attack, but allow the next real shot to cut its tail.
+ ; Explosion has 63 three-refresh blocks: left < 60 after ten refreshes.
+ ; Other event sounds retain priority, and speech always wins above.
+ cp 5
+ jr nz,sfx_other_active
+ ld a,(sfx_left)
+ cp 60
+ jr c,sfx_accept
+ jr sfx_reject
+sfx_other_active:
  cp 2
  jr nc,sfx_reject
 sfx_accept:
@@ -102,6 +111,8 @@ sfx_hold_done:
  ld a,(sfx_active)
  or a
  ret z
+ cp 6
+ jp z,player_impact_chain
  xor a
  ld (sfx_active),a
  ld e,8

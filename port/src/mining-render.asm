@@ -1,4 +1,4 @@
-; Seven native objects, composed in HOME before changed-byte publication.
+; Eight native objects, composed in HOME before changed-byte publication.
 ; All sprites stay at y>=64. Publication timing is checked against the raster.
 render:
  ld hl,world_extension+51
@@ -44,6 +44,13 @@ mr_bullet:
  ld a,(px+1)
  ld c,3
  ld d,12
+ push af
+ ld a,($7bfb)
+ cp 1
+ jr nz,mr_player_present
+ ld c,0
+mr_player_present:
+ pop af
  call make_rect
  ld a,(worker_alive)
  or a
@@ -53,8 +60,14 @@ mr_bullet:
 mr_worker_rect:
  ld a,(worker_y)
  ld b,a
- ld a,(worker_x)
  ld d,12
+ ld a,(worker_alive)
+ cp 2
+ jr nz,mr_worker_size
+ ld c,4
+ ld d,26
+mr_worker_size:
+ ld a,(worker_x)
  call make_rect
  ld a,(assembly_count)
  or a
@@ -81,6 +94,17 @@ mr_bomb_rect:
  ld b,a
  ld a,(bs_x)
  ld d,6
+ call make_rect
+ ld a,($783e)
+ or a
+ ld c,4
+ jr nz,mr_impact_rect
+ ld c,0
+mr_impact_rect:
+ ld a,($783d)
+ ld b,a
+ ld a,($783c)
+ ld d,26
  call make_rect
  call world_clip
  ld hl,world_extension+93
@@ -151,6 +175,8 @@ rock_dirty_flag:
  ld hl,eye_previous
  xor (hl)
  or b
+ ld hl,bs_hits
+ or (hl)
  ld ($78d5),a
  ld b,a
  ld a,(face_x+1)
@@ -226,29 +252,17 @@ composition_start:
  ld bc,1089
  ldir
 mr_patch_start:
- ld hl,$b800
-mr_unpack:
- ld e,(hl)
- inc hl
- ld a,(hl)
- inc hl
- cp $ff
- jp z,mr_piece_cached
- add a,$d8
- ld d,a
- ld a,(hl)
- ld (de),a
- inc hl
- inc de
- ld a,(hl)
- ld (de),a
- inc hl
- inc de
- ld a,(hl)
- ld (de),a
- inc hl
- jr mr_unpack
+ call mr_assembly_patch
+ jp mr_piece_cached
 mr_awake_image:
+ ; An offscreen awake face has no persistent image-building work. In
+ ; particular, do not unpack/shift a speaking pose that clipping will discard.
+ ld a,(rects+22)
+ or a
+ jp z,mr_after_piece
+ ld a,(awake_mouth)
+ or a
+ jr nz,mr_phase_zero
  ld a,(awake_done)
  or a
  jr z,mr_phase_zero
@@ -297,14 +311,17 @@ mr_select_face:
  ld c,a
  ld a,(awake_done)
  or a
- jr nz,mr_face_atlas
+ jr z,mr_speaking_phase
+ ld a,(awake_mouth)
+ or a
+ jr z,mr_face_atlas
+mr_speaking_phase:
  ld a,(face_x+1)
  and 7
  jr z,mr_face_atlas
  ld hl,world_extension+90
  call world_call
- ld l,5
- call scene_sprite
+ call scene_sinistar
  jr mr_after_piece
 mr_face_atlas:
  ld a,c
@@ -321,9 +338,11 @@ mr_shift_ready:
  out ($f4),a
  jr mr_after_piece
 mr_piece_cached:
+ IFNDEF PLAYABLE_GAME
  ld a,(game_mode)
  or a
  jr z,mr_stationary
+ ENDIF
  ld a,(assembly_count)
  ld ($5bd7),a
  xor a
@@ -332,6 +351,7 @@ mr_piece_cached:
  call assembly_cache_call
  call $df70
  jp mr_after_piece
+ IFNDEF PLAYABLE_GAME
 mr_stationary:
  ld a,1
  ld ($78ee),a
@@ -341,7 +361,10 @@ mr_stationary:
  call draw_assembly
  xor a
  ld ($78ee),a
+ ENDIF
 mr_after_piece:
+ ld hl,render_extension+18
+ call incremental_call
  ld a,(rects+2)
  or a
  jr z,mr_draw_crystal
@@ -438,6 +461,14 @@ mr_after_player:
  ld l,6
  call scene_sprite
 mr_no_bomb:
+ ld a,(rects+30)
+ or a
+ jr z,mr_no_impact
+ ld hl,render_extension+15
+ call incremental_call
+ ld l,7
+ call scene_sprite
+mr_no_impact:
  call stars_draw_call
  ld hl,render_extension+24
  call incremental_call
@@ -481,12 +512,17 @@ publication_done:
  ld ($78e6),a
  ld hl,rects
  ld de,oldrects
- ld bc,28
+ ld bc,32
  ldir
  call world_restore
  call radar_step
- ld hl,render_extension+15
- call incremental_call
+ ld a,(bs_active)
+ ld ($5c3f),a
+ ld hl,$783e
+ ld a,(hl)
+ or a
+ ret z
+ dec (hl)
  ret
 make_rect:
  srl a
@@ -502,7 +538,7 @@ make_rect:
  inc hl
  ret
 clear_four:
- ld b,7
+ ld b,8
  ld a,($78e4)
  or a
  jr nz,cf_loop
@@ -512,7 +548,7 @@ clear_four:
 cf_loop:
  ; Check whether the direct face has deliberately been omitted from shadow.
  ld a,b
- cp 2
+ cp 3
  jr nz,cf_clear
  ld a,($78f6)
  or a
@@ -553,7 +589,7 @@ cf_same_rect:
 cf_clear:
  push bc
  ld a,b
- cp 2
+ cp 3
  jr nz,cf_regular
  ld a,(sinistar_built)
  or a
@@ -781,6 +817,7 @@ us_next:
 draw_cached_face:
  ld hl,render_extension+30
  jp incremental_call
+ IFNDEF PLAYABLE_GAME
 draw_assembly:
 assembly_select:
  ld a,(rects+22)
@@ -795,6 +832,7 @@ assembly_full:
  ld ($78e1),a
  ld de,$d800
  jr sprite_row
+ ENDIF
 draw_ship:
  ld hl,render_extension+27
  jp incremental_call
@@ -810,6 +848,7 @@ draw_sprite:
  ld ($78e1),a
  ld de,$b800
 sprite_row:
+ IFNDEF PLAYABLE_GAME
  ld a,($78ee)
  or a
  jr z,sprite_row_draw
@@ -833,6 +872,7 @@ sprite_skip_carry:
  ex de,hl
  jr sprite_row_finish
 sprite_row_draw:
+ ENDIF
  call offset
  ld a,h
  or $a0
@@ -924,6 +964,64 @@ span_lookup:
  pop hl
  jp $7bbc
  INCLUDE "mining-fast.asm"
+mr_assembly_patch:
+ ld hl,$b800
+ ld de,$d800
+mr_assembly_record:
+ ld a,(hl)
+ inc hl
+ cp 255
+ ret z
+ ld c,a
+ and 31
+ cp 31
+ jr z,mr_assembly_absolute
+ push hl
+ ld l,a
+ ld h,0
+ ld b,h
+ add hl,hl
+ add a,l
+ ld l,a
+ add hl,de
+ ex de,hl
+ pop hl
+ jr mr_assembly_value
+mr_assembly_absolute:
+ ld e,(hl)
+ inc hl
+ ld a,(hl)
+ add a,$d8
+ ld d,a
+ inc hl
+mr_assembly_value:
+ ld a,(hl)
+ inc hl
+ ld (de),a
+ inc de
+ ld a,(hl)
+ inc hl
+ ld (de),a
+ inc de
+ push hl
+ ld a,c
+ rlca
+ rlca
+ rlca
+ and 7
+ ld l,a
+ ld h,0
+ ld bc,mr_assembly_colors
+ add hl,bc
+ ld a,(hl)
+ ld (de),a
+ pop hl
+ dec de
+ dec de
+ jr mr_assembly_record
+mr_assembly_colors:
+ DB 7,15,23,2,55
+
  INCLUDE "../build/render-kernels.asm"
  INCLUDE "fast-eyes.asm"
 ; B=y, C=byte x. Both nonlinear scanline address bytes are precomputed.
@@ -942,14 +1040,11 @@ offset:
 
 
 
-; Fully visible rocks use offline row programs; clipped edges keep the
-; reference masked compositor. Neither route erases the live display.
+; Horizontally complete rocks use offline row programs, including vertical
+; clipping. Side-clipped rocks retain the reference masked compositor. Neither route erases the live display.
 draw_rock:
  ld a,(rects+2)
  cp 5
- jp nz,rock_fallback
- ld a,(rects+3)
- cp 28
  jp nz,rock_fallback
  ld a,$14
  ld ($78df),a
@@ -963,7 +1058,13 @@ draw_rock:
  ld e,(hl)
  inc hl
  ld d,(hl)
- push de
+ ex de,hl
+ ld a,($7cd0) ; source rows hidden above the protected playfield
+ add a,a
+ ld e,a
+ ld d,0
+ add hl,de
+ push hl
  pop iy
  ld hl,rock_program_row
  ld a,($78e4)
@@ -975,7 +1076,7 @@ rock_loop_selected:
  ld a,$c3
  ld ($7be3),a
  ld bc,(rects)
- ld a,28
+ ld a,(rects+3)
  jp $7be3
 rock_program_dirty:
  push af
@@ -1015,8 +1116,6 @@ rock_program_row:
  ld b,(iy+1)
  inc iy
  inc iy
- push bc
- pop ix
  call rock_program_call
  pop bc
  pop af
@@ -1029,7 +1128,8 @@ rock_row_advance:
  out ($f4),a
  ret
 rock_program_call:
- jp (ix)
+ push bc
+ ret
 rock_fallback:
  ld bc,420
  call stage
@@ -1043,7 +1143,7 @@ clear_plain:
  ld a,(iy+2)
  or a
  ret z
- ld ($78e1),a
+ push ix
  dec a
  add a,a
  ld l,a
@@ -1055,9 +1155,12 @@ clear_plain:
  ld b,(hl)
  ld ($7be1),bc
  ld a,(iy+3)
- ld ($78e0),a
+ ld ixl,a
  ld c,(iy+0)
  ld b,(iy+1)
+ ld a,(iy+2)
+ add a,c
+ ld ixh,a
 co_row:
  ld l,b
  ld h,$79
@@ -1067,8 +1170,7 @@ co_row:
  ld (hl),a
 co_max:
  ld h,$7d
- ld a,($78e1)
- add a,c
+ ld a,ixh
  cp (hl)
  jr c,co_clear
  ld (hl),a
@@ -1080,14 +1182,13 @@ co_clear:
  xor $60
  ld d,a
  ld e,l
- push bc
+ ; The unrolled clear kernels preserve BC; keep the row coordinates live.
  ld a,7
  call $7be0
- pop bc
  inc b
- ld hl,$78e0
- dec (hl)
+ dec ixl
  jr nz,co_row
+ pop ix
  ret
 
 ; Build all ordinary-frame records in one descending stack pass. Ordinary
@@ -1097,13 +1198,9 @@ compile_stream:
  ld sp,$fffe
  ld a,$c3
  ld ($7bbc),a
- ld a,175
- ld ($7bc0),a
+ ld iyl,175
 stream_row:
- xor a
- ld ($7bc3),a
- ld ($7bd0),a
- ld a,($7bc0)
+ ld a,iyl
  ld b,a
  ld l,a
  ld h,$79
@@ -1114,6 +1211,8 @@ stream_row:
  sub c
  jp c,stream_next
  jp z,stream_next
+ xor a
+ ld iyh,a
  ; Direct transitions omit their protected envelope from comparison.
  ld a,($78f6)
  or a
@@ -1143,7 +1242,7 @@ stream_cut:
  sub c
  jr c,stream_no_left
  jr z,stream_no_left
- ld ($7bd0),a
+ ld iyh,a
  ld a,c
  ld ($7bd1),a
 stream_no_left:
@@ -1153,16 +1252,16 @@ stream_no_left:
  ld c,a
  jr stream_whole
 stream_left_only:
- ld a,($7bd0)
+ ld a,iyh
  or a
  jp z,stream_next
  ld e,d
  xor a
- ld ($7bd0),a
+ ld iyh,a
 stream_whole:
  ld a,e
  sub c
- ld ($7bc2),a
+ ld ixl,a
  dec a
  add a,c
  ld c,a
@@ -1173,45 +1272,43 @@ stream_whole:
  xor $e0
  ld d,a
  ld e,l
- ld ($7bc4),hl
- ld ($7bc6),de
- ld a,($7bc2)
+ ld a,ixl
  ld b,a
  jp span_lookup
 stream_after_span:
- ld a,($7bc3)
- or a
+ ; Bitmap shadow is A000; attribute shadow is C000. The pointer itself
+ ; identifies the completed plane, so no per-row memory flag is needed.
+ bit 6,h
  jr nz,stream_after_pair
- inc a
- ld ($7bc3),a
- ld hl,($7bc4)
+; The compare kernel decrements only L/E. Recover the right edge modulo
+ ; 256, including column zero, instead of storing/reloading both pointers.
+ ld a,ixl
+ add a,l
+ ld l,a
+ ld e,a
  ld a,h
  xor $60
  ld h,a
- ld de,($7bc6)
- ld a,d
- xor $20
+ xor $a0
  ld d,a
  jp $7bbc
 stream_after_pair:
- ld a,($7bd0)
+ ld a,iyh
  or a
  jr z,stream_next
  ld e,a
  xor a
- ld ($7bd0),a
- ld ($7bc3),a
+ ld iyh,a
  ld a,($7bd1)
  ld c,a
  add a,e
  ld e,a
- ld a,($7bc0)
+ ld a,iyl
  ld b,a
  jp stream_whole
 stream_next:
- ld hl,$7bc0
- dec (hl)
- ld a,(hl)
+ dec iyl
+ ld a,iyl
  cp 63
  jp nz,stream_row
  ld ($7bb2),sp

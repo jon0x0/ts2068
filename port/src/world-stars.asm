@@ -33,23 +33,13 @@ ws_initialized:
  and 1
  neg
  ld h,a
- ex de,hl
- ld ix,$58c0
- ld b,10
-ws_each:
- ld a,(ix+0)
- add a,c
- ld (ix+0),a
- ld l,(ix+1)
- ld h,0
- add hl,de
+ ; Reduce camera Y displacement once, not separately for every star.
+ ; H/L hold the signed wrapped displacement in -256..255.
+ ld de,112
 ws_negative:
  bit 7,h
  jr z,ws_positive
- push de
- ld de,112
  add hl,de
- pop de
  jr ws_negative
 ws_positive:
  ld a,h
@@ -57,18 +47,28 @@ ws_positive:
  jr nz,ws_subtract
  ld a,l
  cp 112
- jr c,ws_y_done
+ jr c,ws_normalized
 ws_subtract:
- push de
- ld de,112
  or a
  sbc hl,de
- pop de
  jr ws_positive
+ws_normalized:
+ ld e,l
+ ld hl,$58c0
+ ld b,10
+ws_each:
+ ld a,(hl)
+ add a,c
+ ld (hl),a
+ inc hl
+ ld a,(hl)
+ add a,e
+ cp 112
+ jr c,ws_y_done
+ sub 112
 ws_y_done:
- ld (ix+1),l
- inc ix
- inc ix
+ ld (hl),a
+ inc hl
  djnz ws_each
  ret
 ws_seeds:
@@ -82,9 +82,10 @@ wb_star_overlap:
 wso_each:
  ld a,(hl)
  inc hl
- srl a
- srl a
- srl a
+ rrca
+ rrca
+ rrca
+ and 31
  ld c,a
  ld a,($5800)
  cp c
@@ -113,9 +114,10 @@ wso_bottom:
  dec hl
  ld a,(hl)
  inc hl
- srl a
- srl a
- srl a
+ rrca
+ rrca
+ rrca
+ and 31
  ld c,a
  call ws_cover_current
  jr c,wso_reject
@@ -136,35 +138,43 @@ wso_next:
  xor a
  ret
 
+; Only previously drawn star cells need erasure. New positions are tested
+; against the composed shadow image by stars_draw; clearing them first
+; unnecessarily damages retained sprites and widens dirty intervals.
+stars_mark:
+ ld l,b
+ ld h,$79
+ ld a,c
+ cp (hl)
+ jr nc,sm_max
+ ld (hl),a
+sm_max:
+ inc a
+ ld h,$7d
+ cp (hl)
+ ret c
+ ld (hl),a
+ ret
 stars_clear:
  ld a,(game_mode)
  or a
  ret z
- ld ix,$58c0
- ld d,20
+ ld hl,$58d4
+ ld d,10
 sc_each:
- ld a,(ix+0)
- srl a
- srl a
- srl a
+ ld a,(hl)
+ inc hl
+ rrca
+ rrca
+ rrca
+ and 31
  ld c,a
- ld a,(ix+1)
+ ld a,(hl)
+ inc hl
  add a,64
  ld b,a
- ld a,b
- ld l,a
- ld h,$79
- ld a,c
- cp (hl)
- jr nc,sc_max
- ld (hl),a
-sc_max:
- inc a
- ld h,$7d
- cp (hl)
- jr c,sc_pixel
- ld (hl),a
-sc_pixel:
+ push hl
+ call stars_mark
  push de
  call offset
  ld a,h
@@ -173,8 +183,7 @@ sc_pixel:
  ld (hl),0
  call stars_attribute
  pop de
- inc ix
- inc ix
+ pop hl
  dec d
  jr nz,sc_each
  ret
@@ -217,6 +226,9 @@ sd_mask:
  or a
  jr nz,sd_next
  ld (hl),e
+ push hl
+ call stars_mark
+ pop hl
  call stars_attribute
  jr sd_next
 sd_hidden:
@@ -230,6 +242,10 @@ sd_next:
 
 ; BC = screen row / byte column. Preserve HL, DE and IX; carry = exposed.
 ws_cover_current:
+ ld a,(bs_hits)
+ or a
+ scf
+ ret nz
  ld a,($5bcb)
  and 2
  scf

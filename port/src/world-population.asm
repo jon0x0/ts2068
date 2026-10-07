@@ -22,7 +22,7 @@ wp_record:
  ret
 wp_old:
  cp 16
- ld hl,$7cec
+ ld hl,$7f40
  ret z
  add a,a
  add a,a
@@ -38,8 +38,8 @@ wp_init:
  ld (hl),0
  ldir
  ld hl,0
- ld ($7cec),hl
- ld ($7cee),hl
+ ld ($7f40),hl
+ ld ($7f42),hl
  ld iy,wp_seeds
  ld b,17
 wpi_each:
@@ -199,7 +199,6 @@ wpp_skipped:
  ret z
  ld b,a
  jp wpp_each
- ret
 wpp_hit:
  ld a,(bullet_alive)
  or a
@@ -335,9 +334,10 @@ wpc_x_visible:
  and 1
  ld ($7c8c),a
  ld a,l
- srl a
- srl a
- srl a
+ rrca
+ rrca
+ rrca
+ and 31
  ld (rects),a
  ld l,(ix+2)
  ld h,(ix+3)

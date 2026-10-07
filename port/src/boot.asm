@@ -58,6 +58,9 @@
  INCLUDE "../build/fast-cache-init.asm"
  INCLUDE "../build/sfx-cache-init.asm"
  INCLUDE "../build/home-render-init.asm"
+ INCLUDE "../build/roar-init.asm"
+ xor a
+ ld ($7f53),a
  INCLUDE "../build/assembly-home-init.asm"
  ld hl,$5bb1
  ld de,$5bb2

@@ -1,8 +1,9 @@
 {
+  "source": "User AY editor export",
+  "project": "sinistar-roar-edited.json",
   "frames": 170,
-  "bytes": 2380,
-  "source": "https://seanriddle.com/aargh.wav",
-  "sha256": "098bb5b551775f64b2aa1d383bc30cd7ade969bed79cff36f79466992f2675c4",
-  "seconds": 2.8279366874880436,
-  "source_seconds": 2.8188709355675243
+  "frame_tstates": 58688,
+  "cpu_hz": 3528000,
+  "sha256": "f1ceb6f33b83fffd759be5b88cbff47c3cf21a4930f3480c849967910185612d",
+  "lossless": true
 }

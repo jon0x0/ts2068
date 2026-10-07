@@ -2,6 +2,13 @@
 ; 5800..5859 scratch; descending records below DB00, after assembly.
  INCLUDE "../build/fast-tables.asm"
 fast_select:
+ ld a,(bs_hits)
+ or a
+ jr z,fs_intact
+ xor a
+ ld ($78f6),a
+ ret
+fs_intact:
  xor a
  ld ($78f6),a
  ld a,($580f)
@@ -16,6 +23,11 @@ fast_select:
  ; Preparation temporarily uses a HOME D800 stack. The speech ISR maps
  ; DOCK6, so wait for speech completion before borrowing that stack.
  call $a69c
+ ret nz
+ ; SFX also maps DOCK6 in the ISR: never borrow HOME D800 while active.
+ ld a,(sfx_pending)
+ ld hl,sfx_left
+ or (hl)
  ret nz
  ld a,(rects+23)
  cp 52
@@ -147,6 +159,12 @@ fs_size:
  out ($f4),a
  ret
 fs_eye_budget_ok:
+ ; Decode the small transition table before the stack-fed graphics work.
+ ld hl,world_extension+108
+ call world_call
+ ld a,$93
+ ld ($78df),a
+ out ($f4),a
  ; New shut-mouth pose, independently indexed by eye and fine X phase.
  ld a,(eye_phase)
  add a,a
@@ -180,10 +198,10 @@ fast_prepared:
  ld ($78f6),a
  ret
 fs_objects:
- ld b,7
+ ld b,8
 fs_object:
  ld a,b
- cp 2
+ cp 3
  jr z,fs_next
  ld a,(iy+2)
  or a

@@ -49,6 +49,8 @@ if __name__=='__main__':
         w.setparams((1,2,rate,0,'NONE','not compressed'))
         w.writeframes((pcm*28000).astype('<i2').tobytes())
     raw,count,info=encode(target,'harmonic1')
+    from fit_explosion_noise import fit_noise
+    raw,fit=fit_noise(target,raw,ROOT/'port/build/explosion-audio-v22')
     target.with_suffix('.ay').write_bytes(raw)
     report=json.loads((ROOT/'assets/sfx-manifest.json').read_text())
     report['effects']=[e for e in report['effects'] if e['name']!='explosion']
@@ -67,6 +69,7 @@ if __name__=='__main__':
         total+=len(packed)
     assert total<=0x260,(total,'SFX must not overlap radar queue')
     report['format']='3 bytes: tone low, tone high/volume, noise/mixer; explosion holds each sample three refreshes'
-    report['explosion_method']='QBANG filtered-noise arithmetic, fixed deterministic seed, approximate 6800 loop timings; speech2ay harmonic1; 20 Hz register updates'
+    report['explosion_method']='QBANG filtered-noise reconstruction; speech2ay/Ayumi noise-aware fit to the actual 3-refresh register holds'
+    report['explosion_fit']=fit
     (ROOT/'assets/sfx-manifest.json').write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps(dict(cache_bytes=total,effects=report['effects']),indent=2))

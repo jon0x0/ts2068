@@ -4,6 +4,18 @@
 control_mode EQU $78a4
 control_power EQU $78a5
 read_controls:
+ IFDEF PLAYABLE_GAME
+ ld a,($5e7b)
+ or a
+ jr z,rc_live
+ xor a
+ ld (control_power),a
+ ld a,(angle)
+ ld b,a
+ scf
+ ret
+rc_live:
+ ENDIF
  ld bc,$fdfe
  in a,(c)
  bit 2,a

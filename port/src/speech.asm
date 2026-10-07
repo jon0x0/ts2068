@@ -3,7 +3,7 @@
 speech_left EQU $78f8
 speech_ptr EQU $78fa
 speech_started EQU $78fc
-speech_pending EQU $78fd ; 1 assembly, 2 player death, 3 Sinibomb hit
+speech_pending EQU $78fd ; 1 assembly, 2 identity, 3 roar, 4..8 ordinary taunts
 speech_active EQU $78fe
 speech_init:
  ld a,$10
@@ -14,7 +14,8 @@ speech_hit:
  push af
  ld a,7
  ld ($783f),a
- ld ($783e),a
+ ld a,12
+ ld ($7f53),a
  ld a,3
  ld (speech_pending),a
  pop af
@@ -23,7 +24,6 @@ speech_death:
  push af
  ld a,10
  ld ($783f),a
- ld ($783e),a
  ld a,(speech_left)
  or a
  jr nz,speech_death_end
@@ -37,6 +37,7 @@ speech_death_end:
  ret
 speech_tick:
  ld a,(speech_pending)
+ call $7f60
  or a
  jr nz,speech_start
  ld a,(speech_left)
@@ -52,21 +53,9 @@ speech_tick:
  ld (speech_started),a
 speech_start:
  ld (speech_active),a
- dec a
- ld e,a
- add a,a
- add a,e
- ld e,a
- ld d,0
- ld hl,speech_clips
- add hl,de
- ld a,(hl)
- ld (speech_left),a
- inc hl
- ld e,(hl)
- inc hl
- ld d,(hl)
- ld (speech_ptr),de
+ ld a,$50
+ out ($f4),a
+ call world_extension+117
  xor a
  ld (speech_pending),a
 speech_frame:
@@ -74,6 +63,7 @@ speech_frame:
  out ($f4),a
 speech_bytes:
  call world_extension+12
+ call $7f63
  ld e,0
 speech_register:
  ld a,(hl)
@@ -87,6 +77,7 @@ speech_register:
  cp 13
  jr nz,speech_register
 speech_skip_shape:
+ call $7f66
  ld hl,speech_left
  dec (hl)
  ret
@@ -96,6 +87,8 @@ speech_idle:
  ret z
  xor a
  ld (speech_active),a
+ ld ($7f53),a
+ ld ($5c3d),a
  ld e,8
 speech_silence:
  ld bc,$fff5

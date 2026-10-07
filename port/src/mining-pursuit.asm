@@ -9,5 +9,8 @@ face_vy EQU $78cc
 face_oldx EQU $78ce
 face_oldy EQU $78cf
 mining_pursuit_step:
+ ld a,($5e7b)
+ or a
+ ret nz
  ld hl,world_extension+18
  jp world_call

@@ -7,12 +7,10 @@ wb_get:
  ld b,(hl)
  ld l,a
  ld h,0
- add hl,hl
  ld de,wb_coordinates
  add hl,de
  ld e,(hl)
- inc hl
- ld d,(hl)
+ ld d,$78
  ld a,(de)
  ld l,a
  ld h,b
@@ -87,7 +85,7 @@ wb_shot_high:
  ld a,h
  and 1
  ld ($7c95),a
- ld a,60
+ ld a,24 ; bound the single projectile slot to 0.4 seconds
  ld ($5891),a
  ret
 wb_crystal_high:
@@ -231,13 +229,16 @@ wb_worker:
  jp z,worker_resupply
  ld a,(assembly_count)
  cp 20
- ret nc
+ jp nc,wb_worker_harass
  ld a,(worker_mission)
  cp 6
  jr z,ww_deliver
  ld a,(crystal_alive)
  cp 1
  jr z,ww_crystal
+ ld a,(rock_alive)
+ or a
+ jp z,wb_worker_harass
  ld a,($586e)
  ld ($7c90),a
  ld a,($586f)
@@ -345,10 +346,22 @@ wb_bomb:
  ld a,(bombs)
  or a
  ret z
+ ld a,($5e7b)
+ or a
+ jr nz,wbm_demo
  ld bc,$7ffe
  in a,(c)
  bit 4,a
  ret nz
+ jr wbm_launch
+wbm_demo:
+ ld a,(frames)
+ and 127
+ ret nz
+ ld a,(sinistar_built)
+ or a
+ ret z
+wbm_launch:
  ld hl,bombs
  dec (hl)
  ld hl,bs_fired
@@ -377,6 +390,8 @@ wb_bomb:
  ld (bs_fuel),a
  ld a,1
  ld (bs_active),a
+ xor a
+ ld ($5c3f),a ; A launch must survive until a displayed picture.
  jp sfx_bomb
 wbm_move:
  ld hl,bs_fuel
@@ -442,8 +457,12 @@ wbm_track:
  ld a,l
  cp 9
  ret nc
+ ld a,($5c3f)
+ or a
+ ret z
  ld hl,bs_hits
  inc (hl)
+ call bomb_impact
  call wb_sinistar_hit
  call speech_hit
  jp bs_kill
@@ -471,19 +490,95 @@ was_cell:
  ld a,(hl)
  ld (de),a
  inc de
- push hl
- push bc
- ld bc,9
- add hl,bc
- ld a,(hl)
- pop bc
- pop hl
- ld (de),a
  inc de
  inc hl
  djnz was_cell
+ ; Copy the adjacent palette plane as a separate sequential pass instead
+ ; of pushing registers and adding nine for each of seven cells.
+ inc hl
+ inc hl
+ push hl
+ ld hl,-19
+ add hl,de
+ ex de,hl
+ pop hl
+ ld b,7
+was_attr:
+ ld a,(hl)
+ ld (de),a
+ inc hl
+ inc de
+ inc de
+ inc de
+ djnz was_attr
+ dec de
+ dec de
  pop bc
  djnz was_row
+ ; Only rows 33..45 differ between shut/open/wide poses. Restore every
+ ; other bitmap row from the already shifted shut-mouth atlas, retaining
+ ; the original phase-zero palette so this is pixel/attribute identical.
+ ld a,($5896)
+ ld b,a
+ ld a,255
+was_edge_mask:
+ srl a
+ djnz was_edge_mask
+ cpl
+ ld ($5c3e),a
+ ld a,(eye_phase)
+ add a,a
+ add a,a
+ add a,a
+ ld b,a
+ ld a,($5896)
+ add a,b
+ ld l,a
+ ld h,0
+ add hl,hl
+ ld de,fast_pose_table
+ add hl,de
+ ld e,(hl)
+ inc hl
+ ld d,(hl)
+ push de
+ pop ix
+ ld de,$b800
+ ld b,52
+was_body_row:
+ push bc
+ ld l,(ix+0)
+ ld h,(ix+1)
+ inc ix
+ inc ix
+ ld a,b
+ cp 20
+ jr nc,was_body_copy
+ cp 7
+ jr nc,was_body_skip
+was_body_copy:
+ ld a,($5c3e)
+ ld (de),a
+ inc de
+ inc hl
+ ld b,7
+was_body_cell:
+ ld a,(hl)
+ ld (de),a
+ inc hl
+ inc de
+ inc de
+ inc de
+ djnz was_body_cell
+ dec de
+ jr was_body_next
+was_body_skip:
+ ld hl,21
+ add hl,de
+ ex de,hl
+was_body_next:
+ pop bc
+ djnz was_body_row
  ld a,$50
  ld ($78df),a
  out ($f4),a

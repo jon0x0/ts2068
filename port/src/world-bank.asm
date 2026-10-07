@@ -36,6 +36,22 @@
  jp wb_thrust
  jp wb_explosion_sprite
  jp wb_sfx_frame
+ jp wb_transition_unpack
+ jp mr_assembly_patch
+ jp wb_taunt_step
+ jp wb_speech_start
+ jp wb_front
+wb_front:
+ ld a,$d0
+ ld ($78df),a
+ out ($f4),a
+ call effects_origin+12
+ push af
+ ld a,$50
+ ld ($78df),a
+ out ($f4),a
+ pop af
+ ret
 wb_world_step:
  ld a,(game_mode)
  or a
@@ -141,42 +157,41 @@ wb_world_index:
  ret
  INCLUDE "../build/world-bank-speeds.asm"
 wb_worker_mine:
- call wb_rock_fully_visible
- ret c
- ld a,(game_mode)
+; Idle workers use the original EVADE mission: intercept the player.
+wb_worker_harass:
+ ld a,($5e7b)
  or a
- ret z
- ld a,(rock_alive)
+ ret nz
+ ld a,(frames)
+ and 1
+ ret nz
+ ld c,6
+ call ww_follow
+ ret nz
+ ld a,($5c25)
  or a
- ret z
- ld a,(rock_x)
- sub 8
- ld b,a
- ld hl,worker_x
- call worker_move
- ld a,(rock_y)
- add a,8
- ld b,a
- ld hl,worker_y
- call worker_move
- ld a,(rock_x)
- sub 8
- ld hl,worker_x
- cp (hl)
  ret nz
- ld a,(rock_y)
- add a,8
- ld hl,worker_y
- cp (hl)
- ret nz
- ld a,($5865)
- and 15
- ret nz
- ld a,(mass)
- ld b,a
- ld a,(richter)
- call rock_add_vibration
- ld (richter),a
+ ; Light ram: recoil without removing a life. Rate limited by bounce recovery.
+ ld hl,(pvx)
+ ld a,h
+ cpl
+ ld h,a
+ ld a,l
+ cpl
+ ld l,a
+ inc hl
+ ld (pvx),hl
+ ld hl,(pvy)
+ ld a,h
+ cpl
+ ld h,a
+ ld a,l
+ cpl
+ ld l,a
+ inc hl
+ ld (pvy),hl
+ ld a,12
+ ld ($5c25),a
  ret
 wb_rock_fully_visible:
  ld a,(game_mode)
@@ -205,6 +220,11 @@ wb_rock_fully_visible:
 ; Lossless reconstruction of all thirteen written AY registers. Register 13
 ; is always 255 in these streams (no envelope restart), enforced at build time.
 speech_unpack:
+ ld a,(speech_active)
+ cp 3
+ jp z,wb_roar_unpack
+ ld a,($5c2e)
+ out ($f4),a
  ld hl,(speech_ptr)
  ld de,$5874
  ldi
@@ -215,15 +235,30 @@ speech_unpack:
  ld a,(hl)
  inc hl
  ld c,a
- and 15
- ld ($5877),a
+ and 7
+ ld ($5875),a
  ld a,c
  rrca
  rrca
  rrca
- rrca
- and 15
- ld ($5875),a
+ and 3
+ ld ($5877),a
+ ld a,c
+ rlca
+ rlca
+ rlca
+ and 1
+ ld ($5879),a
+ bit 6,c
+ ld a,56
+ jr z,wb_speech_mixer
+ ld a,31
+wb_speech_mixer:
+ bit 7,c
+ jr z,wb_speech_mixer_ready
+ ld a,52
+wb_speech_mixer_ready:
+ ld ($587b),a
  ld a,(hl)
  inc hl
  ld c,a
@@ -235,7 +270,11 @@ speech_unpack:
  rrca
  rrca
  and 15
- ld ($5879),a
+ ld ($587d),a
+ ld a,($5c3c)
+ xor 1
+ ld ($5c3c),a
+ jr z,wb_speech_second
  ld a,(hl)
  inc hl
  ld c,a
@@ -247,10 +286,12 @@ speech_unpack:
  rrca
  rrca
  and 15
- ld ($587d),a
- ld a,(hl)
- inc hl
- ld ($587b),a
+ ld ($5c3b),a
+ jr wb_speech_decoded
+wb_speech_second:
+ ld a,($5c3b)
+ ld ($587e),a
+wb_speech_decoded:
  ld (speech_ptr),hl
  ld a,5
  ld ($587a),a
@@ -258,6 +299,44 @@ speech_unpack:
  ld ($587f),a
  xor a
  ld ($5880),a
+ ld a,$50
+ out ($f4),a
+ call wb_mouth_tick
+ ld hl,$5874
+ ret
+
+; Delta stream in ROM3: no stack access while HOME3 is hidden. ROM6 code
+; remains visible. Restore HOME3 before calling the mouth driver or returning.
+; Keep pristine frame state apart from the temporary bomb mix output.
+wb_roar_unpack:
+ ld hl,(speech_ptr)
+ ld a,$58
+ out ($f4),a
+ ld c,(hl)
+ inc hl
+ ld b,(hl)
+ inc hl
+ ld de,$5e80
+wb_roar_delta:
+ srl b
+ rr c
+ jr nc,wb_roar_same
+ ld a,(hl)
+ inc hl
+ ld (de),a
+wb_roar_same:
+ inc e
+ ld a,e
+ cp $8e
+ jr nz,wb_roar_delta
+ ld a,$50
+ out ($f4),a
+ ld (speech_ptr),hl
+ ld hl,$5e80
+ ld de,$5874
+ ld bc,14
+ ldir
+ call wb_mouth_tick
  ld hl,$5874
  ret
 
@@ -523,12 +602,11 @@ wb_project:
  ld ($7c91),a
  ld ix,wb_coordinates
  ld iy,$7c90
- ld b,14
+ ld b,16
+ ld d,$78
 wp_axis:
  push bc
  ld e,(ix+0)
- ld d,(ix+1)
- inc ix
  inc ix
  ld a,(de)
  ld (iy+16),a
@@ -562,11 +640,10 @@ wb_restore:
  ret z
  ld ix,wb_coordinates
  ld hl,$7ca0
- ld b,14
+ ld b,16
+ ld d,$78
 wr_axis:
  ld e,(ix+0)
- ld d,(ix+1)
- inc ix
  inc ix
  ld a,(hl)
  inc hl
@@ -578,10 +655,15 @@ wr_axis:
  ld ($586f),a
  ret
 wb_coordinates:
- DW rock_x,rock_y,cx+1,cy+1,bx+1,by+1,px+1,py+1
- DW worker_x,worker_y,face_x+1,face_y+1,bs_x,bs_y
+ ; All integer coordinate bytes are in HOME page 78. Store only offsets.
+ DB rock_x&255,rock_y&255,(cx+1)&255,(cy+1)&255,(bx+1)&255,(by+1)&255,(px+1)&255,(py+1)&255
+ DB worker_x&255,worker_y&255,(face_x+1)&255,(face_y+1)&255,bs_x&255,bs_y&255,$3c,$3d
+ ASSERT (rock_x>>8)=$78 && (rock_y>>8)=$78 && ((cx+1)>>8)=$78 && ((cy+1)>>8)=$78
+ ASSERT ((bx+1)>>8)=$78 && ((by+1)>>8)=$78 && ((px+1)>>8)=$78 && ((py+1)>>8)=$78
+ ASSERT (worker_x>>8)=$78 && (worker_y>>8)=$78 && ((face_x+1)>>8)=$78 && ((face_y+1)>>8)=$78
+ ASSERT (bs_x>>8)=$78 && (bs_y>>8)=$78
 
-; Clip seven byte rectangles; retain top/left source skips and original stride.
+; Clip eight byte rectangles; retain top/left source skips and original stride.
 wb_clip:
  ld a,(game_mode)
  or a
@@ -589,7 +671,7 @@ wb_clip:
  ld iy,rects
  ld ix,$7cd0
  ld hl,$7cb0
- ld b,7
+ ld b,8
 wc_object:
  push bc
  push hl
@@ -754,9 +836,18 @@ wb_shift_assembly:
  or a
  ret z
  ld ($588f),a
+ cp 4
+ jr c,wsa_phase
+ ld hl,render_extension+33
+ call incremental_call
+ ld a,($588f)
+ and 3
+ ld ($588f),a
+ jr z,wsa_palette_start
 wsa_phase:
- ld hl,$b800
- ld a,52
+ ; Body rows were copied from the precomputed fine-phase atlas above.
+ ld hl,$bab5 ; B800 + 33*21
+ ld a,13
  ld ($5890),a
 wsa_row:
  push hl
@@ -789,6 +880,7 @@ wsa_bits:
  ld hl,$588f
  dec (hl)
  jr nz,wsa_phase
+wsa_palette_start:
  ; Carry the preceding cell's palette into newly exposed transparent cells.
  ld hl,$b800
  ld d,52
@@ -819,3 +911,5 @@ wsa_palette_next:
  INCLUDE "radar.asm"
  INCLUDE "end-screen.asm"
  INCLUDE "world-gameplay.asm"
+ INCLUDE "taunt-storage.asm"
+ INCLUDE "taunts.asm"
