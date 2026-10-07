@@ -11,6 +11,11 @@ open <http://127.0.0.1:8772/play/>. This self-contained player uses Josef's
 October 4, 2026 TSRun, pinned separately from the existing emulator copies,
 and includes the keyboard guide. See [player setup](play/README.md).
 
+**Virtual D-pad comparison:** <http://127.0.0.1:8772/play-dpad/> uses a separate
+copy of Berzerk's modified TSRun, with its circular D-pad, Fire and a Sinistar
+bomb button. Full keyboard instructions remain visible below the game.
+See [comparison setup](play-dpad/README.md).
+
 For the earlier development viewer, run `python scripts/serve.py`, then open
 <http://127.0.0.1:8768/port/mining-web/>. The cartridge is
 `port/build/sinistar-mining.dck` (64 KiB payload plus a nine-byte DCK header).
@@ -48,9 +53,10 @@ comparison tests also require local saved revisions, which are not checked in.
 
 ## Publishing and project organization
 
-The new `play/` package is ready for static hosting, with a local cartridge and
-an unmodified, pinned TSRun copy. The earlier development viewer still uses the
-local server's `/tsrun/` route. Neither player has been deployed by this change.
+The `play/` and `play-dpad/` packages support static hosting, each with its own
+local cartridge and pinned TSRun copy. Published players are linked from the
+[TS2068 hub](https://jon0x0.github.io/ts2068/). The earlier development viewer
+still uses the local server's `/tsrun/` route.
 
 A shared ports repository can contain Sinistar and future ports' source while
 linking to Berzerk's existing project and player. Retain the local directories

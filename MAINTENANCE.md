@@ -18,8 +18,9 @@ The initial import is Sinistar commit `d957358`, under
 commit, preserving the complete prior history. The original development
 checkout has not moved and remains the development source for now.
 
-Last synchronized source commit: `12a7dd6`. This adds the static browser player
-and checks against the isolated current TSRun. The source cartridge is unchanged.
+Last synchronized source commit: `9953257`. This includes both static browser
+players, full keyboard instructions and the isolated Berzerk virtual D-pad
+runtime. The source cartridge is unchanged.
 
 For subsequent imports, commit and verify changes in that development checkout
 first. Apply the committed diff since the last imported revision with the
@@ -49,5 +50,7 @@ test completed 18,000 refreshes with no late raster writes or ROM writes.
 Cartridge SHA-256:
 `e16a68ead32e6aeed388f1ceb33f62061c45cff4680a89437df12c38e2500617`.
 
-The hub is prepared locally for `jon0x0/ts2068`; creating the remote repository,
-pushing it and enabling any Pages site are separate publication steps.
+The public repository is `jon0x0/ts2068`. GitHub Pages serves the main branch
+root at https://jon0x0.github.io/ts2068/. Run `python scripts/build_site.py`
+after updating the hub or cartridge catalog, then commit and push to publish.
+The D-pad and newer TSRun demos keep separate emulator snapshots.

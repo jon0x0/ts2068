@@ -1,0 +1,20 @@
+{
+  "title": "Sinistar",
+  "actions": [
+    {
+      "id": "start",
+      "label": "Start",
+      "code": "Enter",
+      "placement": "session-actions"
+    },
+    {
+      "id": "restart",
+      "label": "Restart (R)",
+      "code": "KeyR",
+      "placement": "session-actions"
+    }
+  ],
+  "touchPad": {
+    "deadZone": 0.45
+  }
+}

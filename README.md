@@ -7,7 +7,7 @@ This repository is a central directory and a home for new project source.
 Existing projects keep their repositories and published URLs. Adding a project
 here does not require moving it or changing links shared elsewhere.
 
-**[Cartridge downloads](ts2068-cartridges/)** — a catalog of `.dck` files for
+**[Project hub](https://jon0x0.github.io/ts2068/)** � **[Cartridge downloads](https://jon0x0.github.io/ts2068/ts2068-cartridges/)** — a catalog of `.dck` files for
 games, applications, audio and demos, linking to their owning projects.
 
 ## Development tools
@@ -22,13 +22,17 @@ games, applications, audio and demos, linking to their owning projects.
 | Project | Status | Links |
 | --- | --- | --- |
 | Berzerk | Existing standalone project with TSRun touch controls | [Repository](https://github.com/jon0x0/berzerk_ts2068) · [Play](https://jon0x0.github.io/berzerk_ts2068/) |
-| Sinistar | Playable v58 development checkpoint; emulator-verified, physical hardware validation pending | [Browser player and setup](arcade-ports/sinistar/play/) · [Source](arcade-ports/sinistar/) · [Cartridge](arcade-ports/sinistar/play/assets/sinistar.dck) |
+| Sinistar | Playable v58 development checkpoint; emulator-verified, physical hardware validation pending | [Play with virtual D-pad](https://jon0x0.github.io/ts2068/arcade-ports/sinistar/play-dpad/) � [Newer TSRun](https://jon0x0.github.io/ts2068/arcade-ports/sinistar/play/) · [Source](arcade-ports/sinistar/) · [Cartridge](arcade-ports/sinistar/play/assets/sinistar.dck) |
 
 Sinistar includes a self-contained browser player using Josef's October 4,
 2026 TSRun, isolated from the versions used by other projects. Serve this
 repository with `python -m http.server 8772 --bind 127.0.0.1` and open
-<http://127.0.0.1:8772/arcade-ports/sinistar/play/>. A public player has not yet
-been deployed.
+<http://127.0.0.1:8772/arcade-ports/sinistar/play/>. Public players are linked above.
+
+For comparison, [Sinistar with Berzerk's virtual D-pad](arcade-ports/sinistar/play-dpad/)
+uses a separate copy of the modified emulator, with Fire and Sinibomb touch
+buttons and the full keyboard guide visible beneath the game. The newer
+TSRun player and the existing Berzerk project are preserved.
 
 ## Spectrum ports
 

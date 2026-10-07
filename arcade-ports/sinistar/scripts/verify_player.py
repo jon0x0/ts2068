@@ -2,13 +2,16 @@
 from pathlib import Path
 import hashlib
 import json
+import argparse
 from html.parser import HTMLParser
 from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
-PLAYER = ROOT / 'play'
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--dpad', action='store_true', help='Verify the Berzerk-derived comparison player')
+PLAYER = ROOT / ('play-dpad' if parser.parse_args().dpad else 'play')
 version = json.loads((PLAYER / 'tsrun-version.json').read_text())
-assert version['modifications'] == []
+assert version.get('modifications', []) == []
 actual = {p.relative_to(PLAYER / 'tsrun').as_posix()
           for p in (PLAYER / 'tsrun').rglob('*') if p.is_file()}
 assert actual == set(version['files']), 'Missing or unexpected upstream files'

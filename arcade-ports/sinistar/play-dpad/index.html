@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Sinistar · Virtual D-pad test</title><link rel="icon" href="tsrun/favicon.ico"><link rel="stylesheet" href="style.css"><script type="module" src="controls.js"></script></head>
+<body><main>
+<header><strong class="brand">SINISTAR<span>TS2068 · Virtual D-pad</span></strong><button id="fullscreen">Fullscreen</button><a href="../play/">Compare newer TSRun ↗</a></header>
+<nav id="session-actions" aria-label="Game session controls"></nav>
+<div id="stage">
+  <div id="pad" role="group" aria-label="Drag to move in eight directions"><span id="knob"></span></div>
+  <iframe id="emulator" src="emulator/index.html" title="Sinistar with Berzerk's modified TSRun" allow="autoplay; gamepad"></iframe>
+  <div id="actions"><button id="fire" disabled>FIRE</button><button id="bomb" disabled>SINIBOMB</button></div>
+</div>
+<section id="controls-help" aria-label="Full keyboard and touch controls">
+  <h1>Sinistar controls</h1>
+  <p><strong>Fly:</strong> <kbd>Q</kbd> up · <kbd>A</kbd> down · <kbd>O</kbd> left · <kbd>P</kbd> right. Combine keys for diagonals; release to coast.</p>
+  <p><strong>Fight:</strong> <kbd>Space</kbd> start / shoot · <kbd>B</kbd> Sinibomb · <kbd>Enter</kbd> start from title / attract · <kbd>R</kbd> restart during play. Hold Space or B to repeat.</p>
+  <p><strong>Settings:</strong> <kbd>S</kbd> game sound · <kbd>C</kbd> rock bounce (starts on) · <kbd>F</kbd> fast mode (starts off; two visible rocks). Press and release to toggle.</p>
+  <p><strong>High-score initials:</strong> <kbd>O</kbd> previous letter · <kbd>P</kbd> next letter · <kbd>Enter</kbd> or <kbd>Space</kbd> confirm each of three letters.</p>
+  <p><strong>Touch:</strong> drag the D-pad; hold FIRE or SINIBOMB. FIRE starts the game too. <strong>Gamepad:</strong> joystick 1 directions and fire; use <kbd>B</kbd> or SINIBOMB for bombs.</p>
+  <p>Click or press a key to enable browser audio. Attract mode is silent. <strong>Audio On/Off</strong> mutes browser output separately from <kbd>S</kbd>. Fullscreen retains this guide; <kbd>Esc</kbd> exits.</p>
+  <p class="links"><a href="assets/sinistar.dck" download>Download cartridge</a> · <a href="../play/">Newer TSRun page</a> · <a href="README.md">About this comparison</a></p>
+</section>
+<p id="status" role="status">Loading cartridge…</p>
+</main></body></html>
