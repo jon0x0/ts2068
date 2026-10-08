@@ -1,5 +1,7 @@
 # Sinistar TS2068 port
 
+**[Making the Timex do more by drawing less — graphics and optimization article](https://jon0x0.github.io/ts2068/articles/drawing-less/)**
+
 The current playable cartridge is **v58**, with scrolling flight, mining,
 Sinibombs, worker combat, Sinistar assembly/pursuit, speech, attract mode and
 session high scores. See [port development notes](port/README.md) for the

@@ -7,7 +7,7 @@ ROOT = Path(__file__).resolve().parents[1]
 GITHUB = 'https://github.com/jon0x0/'
 groups = {
     'TS2068 Arcade ports': [
-        ('Sinistar', 'Mine crystals, build your Sinibomb supply and survive the hunt.', [('Play · virtual D-pad', 'arcade-ports/sinistar/play-dpad/'), ('Newer TSRun comparison', 'arcade-ports/sinistar/play/'), ('Source', GITHUB+'ts2068/tree/main/arcade-ports/sinistar')]),
+        ('Sinistar', 'Mine crystals, build your Sinibomb supply and survive the hunt.', [('Play · virtual D-pad', 'arcade-ports/sinistar/play-dpad/'), ('Newer TSRun comparison', 'arcade-ports/sinistar/play/'), ('Original 60 Hz demo', 'arcade-ports/sinistar/web/'), ('Source', GITHUB+'ts2068/tree/main/arcade-ports/sinistar'), ('Graphics & optimization article', 'articles/drawing-less/')]),
         ('Berzerk', 'The arcade port with virtual D-pad and touch controls.', [('Play', 'https://jon0x0.github.io/berzerk_ts2068/'), ('Project', GITHUB+'berzerk_ts2068')]),
     ],
     'Development tools': [
