@@ -1,6 +1,6 @@
-<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Sinistar AY sound editor</title>
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AY browser-based live editor</title>
 <link rel="stylesheet" href="style.css"><main>
-<header><div><small>SINISTAR · SOUND WORKSHOP</small><h1>Shape the roar.</h1><p>Draw a curve. Hear the chip. Keep what works.</p></div><span class="badge">AY · 3 voices · ~60 updates/sec</span></header>
+<header><div><small>SINISTAR · SOUND WORKSHOP</small><h1>AY browser-based live editor</h1><p>Draw a curve. Hear the chip. Keep what works.</p></div><span class="badge">AY · 3 voices · ~60 updates/sec</span></header>
 <div class="transport"><button id="play" class="primary">▶ Play edits</button><button id="playOnce">Play once</button><button id="stop">■ Stop</button><button id="baseline">Hear starting version</button><label><input id="loop" type="checkbox" checked> Loop selection</label><label><input id="auto" type="checkbox" checked> Audition after drawing</label><label>Monitor <input id="gain" type="range" min="0" max="1" step=".01" value=".8"></label></div>
 <div class="top"><label>Starting sound <select id="preset" aria-label="Starting sound"></select></label><button id="undo">Undo</button><button id="redo">Redo</button><button id="reset">Reset sound</button><span id="status" role="status">Loading sounds…</span></div>
 <div class="layout"><aside><h2>Edit a curve</h2><div id="tracks"></div><details><summary>Advanced AY envelope</summary><div id="advanced"></div><p>The envelope and noise generators are shared. Changing either affects every channel using it.</p></details></aside>

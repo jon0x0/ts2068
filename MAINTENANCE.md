@@ -18,7 +18,7 @@ The initial import is Sinistar commit `d957358`, under
 commit, preserving the complete prior history. The original development
 checkout has not moved and remains the development source for now.
 
-Last synchronized source commit: `55d0130`. This includes both static browser
+Last synchronized source commit: `815e5f5`. This includes both static browser
 players, full keyboard instructions and the isolated Berzerk virtual D-pad
 runtime. Fullscreen hides the D-pad player's guide and restores it on exit.
 Upper-right controls include Fast mode, Bounce and emulator Pause/Resume.
