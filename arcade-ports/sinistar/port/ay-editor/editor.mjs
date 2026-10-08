@@ -1,12 +1,12 @@
 import {compile,validateRows,wav,HZ,RATE} from './synth.mjs';
 const $=s=>document.getElementById(s),clone=o=>JSON.parse(JSON.stringify(o)),KEY='sinistar-ay-editor-v1';
-const requestedPreset=new URLSearchParams(location.search).get('preset');
+const requestedPreset=new URLSearchParams(location.search).get('preset')||'real-gunshot';
 const storageKey=id=>id==='player-impact'||id?.startsWith('real-gunshot')?KEY+'-'+id:KEY;
 function soundInfo(){
  const real=state.preset.startsWith('real-gunshot'),impact=state.preset==='player-impact'||real;
- document.querySelector('h1').textContent=impact?'Shape the gunshot.':'Shape the roar.';
+ document.querySelector('h1').textContent='AY browser-based live editor';
  $('referenceTitle').textContent=real?'Recorded Remington 1858 — fastson (CC BY 3.0)':impact?'Source-derived gunshot':'Original arcade recording';
- $('original').src=real?'../build/real-gunshot/recorded-reference.wav':impact?'../../assets/sfx-player-impact.wav':'original.wav';
+ $('original').src=real?'recorded-reference.wav':impact?'../../assets/sfx-player-impact.wav':'original.wav';
  $('sourceCredit').hidden=!real;
  $('soundHint').textContent=real?`Recorded gunshot fit: ${state.rows.length} frames. Start with Noise period and Volume A. Tone A is disabled, so pitch changes have no effect until you enable it. Keep B/C silent and hardware envelopes off for the current cartridge format.`:impact?'Gunshot: 12 frames / 0.20 seconds. For the current cartridge format, edit Tone A, Volume A (0–15), Noise period, and A tone/noise switches. Keep B/C silent and leave hardware envelopes off.':'Draw across the plot to reshape the sound.';
 }
@@ -129,6 +129,6 @@ try{
  for(const group of ['Sound','Levels','Individual pitch','Routing']){const h=document.createElement('h3');h.textContent=group;$('tracks').append(h);for(const t of tracks.filter(t=>t.group===group))makeButton(t,$('tracks'));}
  for(const t of tracks.filter(t=>t.advanced))makeButton(t,$('advanced'));
  let saved;try{saved=JSON.parse(localStorage.getItem(storageKey(requestedPreset)));if(saved)validateProject(saved);}catch{saved=null;}
- if(saved&&(!requestedPreset||saved.current.preset===requestedPreset))restoreProject(saved);else loadSound(presets.find(p=>p.id===requestedPreset)||presets.find(p=>p.id==='up05'));
+ if(saved&&(!requestedPreset||saved.current.preset===requestedPreset))restoreProject(saved);else loadSound(presets.find(p=>p.id===requestedPreset)||presets.find(p=>p.id==='real-gunshot'));
 }catch(e){message(e.message);}
 function makeButton(t,parent){const b=document.createElement('button');b.textContent=t.label;b.dataset.track=t.id;b.onclick=()=>{track=t.id;fields();draw();autosave();};parent.append(b);}

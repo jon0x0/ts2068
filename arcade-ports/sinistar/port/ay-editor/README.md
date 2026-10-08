@@ -1,6 +1,6 @@
 # Sinistar AY sound editor
 
-Open `http://127.0.0.1:8768/port/ay-editor/` with the existing `scripts/serve.py` server. The default is **05 · Slow fall**, selected by the user. The other nine +6–10% fits, the original-pitch optimizer, v28 noise fit, and −30% fit are available as starting sounds.
+Open `http://127.0.0.1:8768/port/ay-editor/` with the existing `scripts/serve.py` server. The default is **Real gunshot — fitted noise attack (0.20 s)**: the short 12-frame sample. The other nine +6–10% fits, the original-pitch optimizer, v28 noise fit, and −30% fit are available as starting sounds.
 
 Choose a curve, then draw or drag a straight line. A selection can be set numerically or by dragging in Select time range mode. Playback loops that selection; edits replace the preview at its current time with a short crossfade. Automatic audition after drawing can be disabled. Undo/redo tracks gestures, and Reset sound restores the selected starting version. Compare using Hear starting version.
 
@@ -16,4 +16,4 @@ Validation: `node port/ay-editor/verify.mjs` checks every preset's unedited expo
 
 Gunshot editor: `?preset=player-impact` opens the exact twelve v42 attack frames, with a separate browser autosave and `sinistar-player-impact-edited` export filenames. The source audio reference switches to the reconstructed GUNSHOT. Use channel A fixed volume/tone/noise controls to stay compatible with the current three-byte cartridge format.
 
-Recorded gunshot fits: `?preset=real-gunshot` (12 frames, 36 packed bytes) and `?preset=real-gunshot-full` (30 frames). Channel-A noise-only parameters fitted with the stateful speech2ay/Ayumi worker. Volume/noise curves are editable; tone pitch has no effect while tone is disabled. Both have separate autosaves/filenames and start without looping. Source: RemingtonGunshot.wav by fastson, Freesound 50618, CC BY 3.0. Cropped/level-adjusted reference and optimizer report are in `port/build/real-gunshot`. Cartridge assets unchanged.
+Recorded gunshot fits: `?preset=real-gunshot` (12 frames, 36 packed bytes) and `?preset=real-gunshot-full` (30 frames). Channel-A noise-only parameters fitted with the stateful speech2ay/Ayumi worker. Volume/noise curves are editable; tone pitch has no effect while tone is disabled. Both have separate autosaves/filenames and start without looping. Source: RemingtonGunshot.wav by fastson, Freesound 50618, CC BY 3.0. The cropped/level-adjusted reference is bundled as `recorded-reference.wav`; the optimizer report is in `port/build/real-gunshot`. Cartridge assets unchanged.
