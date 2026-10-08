@@ -70,6 +70,10 @@ been configured.
 
 ## Earlier 60 Hz cartridge demo
 
+**[Run the original 60 Hz demo on GitHub Pages](https://jon0x0.github.io/ts2068/arcade-ports/sinistar/web/).**
+Click **Start with sound**. The `web/` package now includes its emulator and
+assets and works with an ordinary static server. See [demo setup](web/README.md).
+
 **Saved version:** `revisions/v3-60hz/WATCH.html` plays the accepted recording
 offline. The frozen cartridge, source, and verification evidence are beside it,
 with a complete `SHA256SUMS.json`. Live saved viewer:

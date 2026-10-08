@@ -3,7 +3,7 @@ import {createHash} from 'node:crypto';
 import path from 'node:path';
 import {pathToFileURL} from 'node:url';
 import assert from 'node:assert/strict';
-const root=path.resolve('.'),upstream=path.resolve('../../TSRun');
+const root=path.resolve('.'),upstream=path.resolve(process.env.TSRUN_ROOT||'../../TSRun');
 const api=await import(pathToFileURL(path.join(upstream,'machine.js')));
 const m=api.createMachine(new Uint8Array(8).fill(31),new Uint8Array(2).fill(255));
 m.homeRom.set(fs.readFileSync(path.join(upstream,'roms/ts2068-0.rom')));
