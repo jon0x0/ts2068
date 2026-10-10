@@ -22,7 +22,7 @@ groups = {
         ('Aqueduct', 'Aqueduct and speedboat parallax demo.', [('Play', 'https://jon0x0.github.io/aqueduct_ts2068/'), ('Project', GITHUB+'aqueduct_ts2068')]),
     ],
     'Applications': [
-        ('TSWriter', 'Native word processor with proportional fonts, extended color, pictures and RTF interchange.', [('Open', 'https://jon0x0.github.io/TSWriter/'), ('Project', GITHUB+'TSWriter')]),
+        ('TSWriter', 'Native word processor with proportional fonts, extended color, pictures and RTF interchange.', [('Run in browser', 'https://jon0x0.github.io/TSWriter/play/'), ('Project page', 'https://jon0x0.github.io/TSWriter/'), ('Project', GITHUB+'TSWriter')]),
     ],
     'Audio and video': [
         ('speech2ay', 'Harmonic AY synthesis for speech and effects, with the TS2068 Audio Lab.', [('Audio Lab', 'https://jon0x0.github.io/speech2ay/'), ('Project', GITHUB+'speech2ay')]),

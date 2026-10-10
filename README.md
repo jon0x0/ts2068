@@ -55,7 +55,7 @@ added when it is ready for publication.
 
 | Project | Description | Links |
 | --- | --- | --- |
-| TSWriter | Native word processor with proportional fonts, extended color, pictures and RTF interchange | [Repository](https://github.com/jon0x0/TSWriter) Â· [Project page](https://jon0x0.github.io/TSWriter/) |
+| TSWriter | Native word processor with proportional fonts, extended color, pictures and RTF interchange | [Repository](https://github.com/jon0x0/TSWriter) Â· [Run in browser](https://jon0x0.github.io/TSWriter/play/) · [Project page](https://jon0x0.github.io/TSWriter/) |
 
 ## Audio and video
 
