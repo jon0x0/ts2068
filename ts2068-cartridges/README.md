@@ -16,7 +16,7 @@ the projects are updated. File paths were checked on October 7, 2026.
 
 | Cartridge | Download | Project |
 | --- | --- | --- |
-| TSWriter | [writer.dck](https://raw.githubusercontent.com/jon0x0/TSWriter/main/docs/downloads/writer.dck) | [Project](https://github.com/jon0x0/TSWriter) |
+| TSWriter | [writer.dck](https://raw.githubusercontent.com/jon0x0/TSWriter/main/docs/downloads/writer.dck) | [Run TSWriter](https://jon0x0.github.io/TSWriter/play/) · [Project](https://github.com/jon0x0/TSWriter) |
 | TS2068 Audio Lab | [TS2068-Audio-Lab.dck](https://raw.githubusercontent.com/jon0x0/speech2ay/main/web/assets/TS2068-Audio-Lab.dck) | [speech2ay](https://github.com/jon0x0/speech2ay) |
 
 ## Demos
