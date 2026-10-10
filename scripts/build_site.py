@@ -15,6 +15,9 @@ groups = {
         ('TSRun', 'Josef Jelinek’s TS2068 browser emulator.', [('Emulator', 'https://josef-jelinek.github.io/TSRun/'), ('Project', 'https://github.com/josef-jelinek/TSRun')]),
     ],
     'Demos': [
+        ('Boing Ball', 'Amiga-inspired bouncing ball in TS2068 Extended Colour Mode with AY sound.', [('Play', 'https://jon0x0.github.io/TSVideoCodec/?demo=boing'), ('Project', GITHUB+'TSVideoCodec')]),
+        ('Juggler', 'Banked video cartridge demonstrating temporal reconstruction.', [('Play', 'https://jon0x0.github.io/TSVideoCodec/?demo=juggler'), ('Project', GITHUB+'TSVideoCodec')]),
+        ('Newton', 'Tape-loadable TSVideoCodec RAM-player demo.', [('Play', 'https://jon0x0.github.io/TSVideoCodec/?demo=newton'), ('Project', GITHUB+'TSVideoCodec')]),
         ('Beast demo', 'Shadow of the Beast inspired parallax cartridge.', [('Play', 'https://jon0x0.github.io/beastdemo_ts2068/'), ('Project', GITHUB+'beastdemo_ts2068')]),
         ('Aqueduct', 'Aqueduct and speedboat parallax demo.', [('Play', 'https://jon0x0.github.io/aqueduct_ts2068/'), ('Project', GITHUB+'aqueduct_ts2068')]),
     ],

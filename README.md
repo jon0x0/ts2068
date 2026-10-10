@@ -45,6 +45,9 @@ added when it is ready for publication.
 
 | Project | Description | Links |
 | --- | --- | --- |
+| Boing Ball | Bouncing ball in Extended Colour Mode with AY sound | [Play](https://jon0x0.github.io/TSVideoCodec/?demo=boing) · [Repository](https://github.com/jon0x0/TSVideoCodec) |
+| Juggler | Banked video cartridge with temporal reconstruction | [Play](https://jon0x0.github.io/TSVideoCodec/?demo=juggler) · [Repository](https://github.com/jon0x0/TSVideoCodec) |
+| Newton | Tape-loadable RAM-player demo | [Play](https://jon0x0.github.io/TSVideoCodec/?demo=newton) · [Repository](https://github.com/jon0x0/TSVideoCodec) |
 | Beast demo | Shadow of the Beast inspired parallax cartridge demo | [Repository](https://github.com/jon0x0/beastdemo_ts2068) Â· [Play](https://jon0x0.github.io/beastdemo_ts2068/) |
 | Aqueduct | Aqueduct and speedboat parallax demo | [Repository](https://github.com/jon0x0/aqueduct_ts2068) Â· [Play](https://jon0x0.github.io/aqueduct_ts2068/) |
 
