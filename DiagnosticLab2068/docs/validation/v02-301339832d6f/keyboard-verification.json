@@ -1,0 +1,187 @@
+{
+  "result": "PASS",
+  "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+  "source_image_sha256": "bbafcbb28a6acb8ef17b20a7ab47200071630a41f6d60582d3a3099295fd19a6",
+  "cases": [
+    {
+      "name": "CS matrix row0/bit0 exact full-key highlight and release",
+      "result": "PASS"
+    },
+    {
+      "name": "Z matrix row0/bit1 exact full-key highlight and release",
+      "result": "PASS"
+    },
+    {
+      "name": "X matrix row0/bit2 exact full-key highlight and release",
+      "result": "PASS"
+    },
+    {
+      "name": "C matrix row0/bit3 exact full-key highlight and release",
+      "result": "PASS"
+    },
+    {
+      "name": "V matrix row0/bit4 exact full-key highlight and release",
+      "result": "PASS"
+    },
+    {
+      "name": "A matrix row1/bit0 exact full-key highlight and release",
+      "result": "PASS"
+    },
+    {
+      "name": "S matrix row1/bit1 exact full-key highlight and release",
+      "result": "PASS"
+    },
+    {
+      "name": "D matrix row1/bit2 exact full-key highlight and release",
+      "result": "PASS"
+    },
+    {
+      "name": "F matrix row1/bit3 exact full-key highlight and release",
+      "result": "PASS"
+    },
+    {
+      "name": "G matrix row1/bit4 exact full-key highlight and release",
+      "result": "PASS"
+    },
+    {
+      "name": "Q matrix row2/bit0 exact full-key highlight and release",
+      "result": "PASS"
+    },
+    {
+      "name": "W matrix row2/bit1 exact full-key highlight and release",
+      "result": "PASS"
+    },
+    {
+      "name": "E matrix row2/bit2 exact full-key highlight and release",
+      "result": "PASS"
+    },
+    {
+      "name": "R matrix row2/bit3 exact full-key highlight and release",
+      "result": "PASS"
+    },
+    {
+      "name": "T matrix row2/bit4 exact full-key highlight and release",
+      "result": "PASS"
+    },
+    {
+      "name": "1 matrix row3/bit0 exact full-key highlight and release",
+      "result": "PASS"
+    },
+    {
+      "name": "2 matrix row3/bit1 exact full-key highlight and release",
+      "result": "PASS"
+    },
+    {
+      "name": "3 matrix row3/bit2 exact full-key highlight and release",
+      "result": "PASS"
+    },
+    {
+      "name": "4 matrix row3/bit3 exact full-key highlight and release",
+      "result": "PASS"
+    },
+    {
+      "name": "5 matrix row3/bit4 exact full-key highlight and release",
+      "result": "PASS"
+    },
+    {
+      "name": "0 matrix row4/bit0 exact full-key highlight and release",
+      "result": "PASS"
+    },
+    {
+      "name": "9 matrix row4/bit1 exact full-key highlight and release",
+      "result": "PASS"
+    },
+    {
+      "name": "8 matrix row4/bit2 exact full-key highlight and release",
+      "result": "PASS"
+    },
+    {
+      "name": "7 matrix row4/bit3 exact full-key highlight and release",
+      "result": "PASS"
+    },
+    {
+      "name": "6 matrix row4/bit4 exact full-key highlight and release",
+      "result": "PASS"
+    },
+    {
+      "name": "P matrix row5/bit0 exact full-key highlight and release",
+      "result": "PASS"
+    },
+    {
+      "name": "O matrix row5/bit1 exact full-key highlight and release",
+      "result": "PASS"
+    },
+    {
+      "name": "I matrix row5/bit2 exact full-key highlight and release",
+      "result": "PASS"
+    },
+    {
+      "name": "U matrix row5/bit3 exact full-key highlight and release",
+      "result": "PASS"
+    },
+    {
+      "name": "Y matrix row5/bit4 exact full-key highlight and release",
+      "result": "PASS"
+    },
+    {
+      "name": "EN matrix row6/bit0 exact full-key highlight and release",
+      "result": "PASS"
+    },
+    {
+      "name": "L matrix row6/bit1 exact full-key highlight and release",
+      "result": "PASS"
+    },
+    {
+      "name": "K matrix row6/bit2 exact full-key highlight and release",
+      "result": "PASS"
+    },
+    {
+      "name": "J matrix row6/bit3 exact full-key highlight and release",
+      "result": "PASS"
+    },
+    {
+      "name": "H matrix row6/bit4 exact full-key highlight and release",
+      "result": "PASS"
+    },
+    {
+      "name": "SPACE matrix row7/bit0 exact full-key highlight and release",
+      "result": "PASS"
+    },
+    {
+      "name": "SY matrix row7/bit1 exact full-key highlight and release",
+      "result": "PASS"
+    },
+    {
+      "name": "M matrix row7/bit2 exact full-key highlight and release",
+      "result": "PASS"
+    },
+    {
+      "name": "N matrix row7/bit3 exact full-key highlight and release",
+      "result": "PASS"
+    },
+    {
+      "name": "B matrix row7/bit4 exact full-key highlight and release",
+      "result": "PASS"
+    },
+    {
+      "name": "BREAK requires CAPS+SPACE; ENTER+SPACE exit leaves BREAK history accurate",
+      "result": "PASS"
+    },
+    {
+      "name": "keyboard exit survives all HOME writes lost",
+      "result": "PASS"
+    },
+    {
+      "name": "corrupt history changes only bounded colors, exit survives",
+      "result": "PASS"
+    },
+    {
+      "name": "actual artwork capture: W/shared CAPS held, A released, other keys unseen",
+      "result": "PASS"
+    }
+  ],
+  "limitations": [
+    "Post-entry TSRun matrix/write/history models",
+    "Physical contacts, readability and signal timing require target testing"
+  ]
+}

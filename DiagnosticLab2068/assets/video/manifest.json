@@ -1,0 +1,74 @@
+{
+  "standard-pixels.bin": {
+    "bytes": 6144,
+    "load_address": "4000",
+    "mode": 0,
+    "sha256": "612f7806b0e2ac1cf80220cff3f1562b5573ae46b776608080a09d11267fb7cc"
+  },
+  "standard-attributes.bin": {
+    "bytes": 768,
+    "load_address": "5800",
+    "mode": 0,
+    "sha256": "9ca9e5b424fddc29da4840792d5032081582e0cfd013a855e08e30e0bec7a7bc"
+  },
+  "secondary-pixels.bin": {
+    "bytes": 6144,
+    "load_address": "6000",
+    "mode": 1,
+    "sha256": "0e418c773d97d995d8bff6bb8cb57711d3139879a2f39a1f5013c57a338a69c5"
+  },
+  "secondary-attributes.bin": {
+    "bytes": 768,
+    "load_address": "7800",
+    "mode": 1,
+    "sha256": "463b36efcb9770c0476ef7afe10ac52c97d570a892c927e3ab180657bd08990c"
+  },
+  "ecm-pixels.bin": {
+    "bytes": 6144,
+    "load_address": "4000",
+    "mode": 2,
+    "sha256": "9a92fbd5679875fc7ab2558e91867bdef1569053dba661d0b4007fa53a6c1ecb"
+  },
+  "ecm-attributes.bin": {
+    "bytes": 6144,
+    "load_address": "6000",
+    "mode": 2,
+    "sha256": "c1aef99fecb300d0fb2469ae04efe8fe161e8f8794a6ab798b3eb2428ebc9134"
+  },
+  "hires-primary.bin": {
+    "bytes": 6144,
+    "load_address": "4000",
+    "mode": 6,
+    "sha256": "131e17bf0366a1a938df06f3c09c44b3a1ecdecbb785e873ec7e9458a4e391d1"
+  },
+  "hires-secondary.bin": {
+    "bytes": 6144,
+    "load_address": "6000",
+    "mode": 6,
+    "sha256": "a79e546cff558c9166819cce8d38193edc62b7b9699b8f34d2cd3bacb494376f"
+  },
+  "attribute-128-pixels.bin": {
+    "bytes": 6144,
+    "load_address": "4000",
+    "mode": 0,
+    "sha256": "2aae510ff90722bff9dcf38f850cb80bb84bbd5cf6e3b71064e9e64e3d9b8266"
+  },
+  "attribute-128-attributes.bin": {
+    "bytes": 768,
+    "load_address": "5800",
+    "mode": 0,
+    "sha256": "a5757a401f5df5cfae5eb2b7c279bda64c100da0da1fb41e6b80cc82eac8df29"
+  },
+  "colorbar-pixels.bin": {
+    "bytes": 6144,
+    "load_address": "4000",
+    "mode": 0,
+    "sha256": "271423d5641a9f877b9dae53c94cb563f40a81d1a6a6657f72aadabaad57bada"
+  },
+  "colorbar-attributes.bin": {
+    "bytes": 768,
+    "load_address": "5800",
+    "mode": 0,
+    "sha256": "c2f70671bba9c549c4421bf56391851a981acd8aeef441fcfa8c30b9083ca84f"
+  }
+}

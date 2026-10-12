@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "profile_id": "user-tspico-board22-unverified",
+  "reported_on": "2026-10-12",
+  "reported_labels": {
+    "firmware": "1.00",
+    "micropython": "1.20.0",
+    "default_rom": "1.00",
+    "board": "2.2"
+  },
+  "version_labels_authoritative": false,
+  "actual_build_fingerprint": null,
+  "source_reference_profile": "local TS-Pico-1_1.20260717, separate inspected snapshot",
+  "capabilities_verified": [],
+  "runtime_consumed": false,
+  "external_sram_test_implemented": false,
+  "physical_cartridge_coexistence": "unverified",
+  "development_firmware_policy": "Select explicitly verified capabilities and mapping/recovery contract, never a version-string whitelist."
+}

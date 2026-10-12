@@ -1,0 +1,138 @@
+{
+  "result": "PASS",
+  "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+  "cases": [
+    {
+      "name": "default boot register/math/shift and16 qualified opposing address pairs",
+      "result": "PASS"
+    },
+    {
+      "name": "CPU boot stage1 mismatch repeats8/1 before any HOME writes",
+      "result": "PASS"
+    },
+    {
+      "name": "CPU boot stage2 mismatch repeats8/2 before any HOME writes",
+      "result": "PASS"
+    },
+    {
+      "name": "CPU boot stage3 mismatch repeats8/3 before any HOME writes",
+      "result": "PASS"
+    },
+    {
+      "name": "post-entry HOME address-pair A0 alias repeats9/1",
+      "result": "PASS",
+      "scope": "pair alias during boot probe; ROM/I/O fetch healthy"
+    },
+    {
+      "name": "post-entry HOME address-pair A1 alias repeats9/2",
+      "result": "PASS",
+      "scope": "pair alias during boot probe; ROM/I/O fetch healthy"
+    },
+    {
+      "name": "post-entry HOME address-pair A2 alias repeats9/3",
+      "result": "PASS",
+      "scope": "pair alias during boot probe; ROM/I/O fetch healthy"
+    },
+    {
+      "name": "post-entry HOME address-pair A3 alias repeats9/4",
+      "result": "PASS",
+      "scope": "pair alias during boot probe; ROM/I/O fetch healthy"
+    },
+    {
+      "name": "post-entry HOME address-pair A4 alias repeats9/5",
+      "result": "PASS",
+      "scope": "pair alias during boot probe; ROM/I/O fetch healthy"
+    },
+    {
+      "name": "post-entry HOME address-pair A5 alias repeats9/6",
+      "result": "PASS",
+      "scope": "pair alias during boot probe; ROM/I/O fetch healthy"
+    },
+    {
+      "name": "post-entry HOME address-pair A6 alias repeats9/7",
+      "result": "PASS",
+      "scope": "pair alias during boot probe; ROM/I/O fetch healthy"
+    },
+    {
+      "name": "post-entry HOME address-pair A7 alias repeats9/8",
+      "result": "PASS",
+      "scope": "pair alias during boot probe; ROM/I/O fetch healthy"
+    },
+    {
+      "name": "post-entry HOME address-pair A8 alias repeats9/9",
+      "result": "PASS",
+      "scope": "pair alias during boot probe; ROM/I/O fetch healthy"
+    },
+    {
+      "name": "post-entry HOME address-pair A9 alias repeats9/10",
+      "result": "PASS",
+      "scope": "pair alias during boot probe; ROM/I/O fetch healthy"
+    },
+    {
+      "name": "post-entry HOME address-pair A10 alias repeats9/11",
+      "result": "PASS",
+      "scope": "pair alias during boot probe; ROM/I/O fetch healthy"
+    },
+    {
+      "name": "post-entry HOME address-pair A11 alias repeats9/12",
+      "result": "PASS",
+      "scope": "pair alias during boot probe; ROM/I/O fetch healthy"
+    },
+    {
+      "name": "post-entry HOME address-pair A12 alias repeats9/13",
+      "result": "PASS",
+      "scope": "pair alias during boot probe; ROM/I/O fetch healthy"
+    },
+    {
+      "name": "post-entry HOME address-pair A13 alias repeats9/14",
+      "result": "PASS",
+      "scope": "pair alias during boot probe; ROM/I/O fetch healthy"
+    },
+    {
+      "name": "post-entry HOME address-pair A14 alias repeats9/15",
+      "result": "PASS",
+      "scope": "pair alias during boot probe; ROM/I/O fetch healthy"
+    },
+    {
+      "name": "post-entry HOME address-pair A15 alias repeats9/16",
+      "result": "PASS",
+      "scope": "pair alias during boot probe; ROM/I/O fetch healthy"
+    },
+    {
+      "name": "pair qualifier D0 mismatch uses RAM chip classifier rather than address code",
+      "result": "PASS"
+    },
+    {
+      "name": "pair qualifier D3 mismatch uses RAM chip classifier rather than address code",
+      "result": "PASS"
+    },
+    {
+      "name": "pair qualifier D4 mismatch uses RAM chip classifier rather than address code",
+      "result": "PASS"
+    },
+    {
+      "name": "pair qualifier D7 mismatch uses RAM chip classifier rather than address code",
+      "result": "PASS"
+    },
+    {
+      "name": "new late data-write failure caught before alias attribution",
+      "result": "PASS"
+    },
+    {
+      "name": "HOME data D0/D1 dominant-AND bridge passes00/FF and fails boot55/AA qualifier",
+      "result": "PASS",
+      "scope": "HOME read data path; opcode/I/O path healthy"
+    },
+    {
+      "name": "HOME data D3/D4 dominant-AND bridge passes00/FF and fails boot55/AA qualifier",
+      "result": "PASS",
+      "scope": "HOME read data path; opcode/I/O path healthy"
+    }
+  ],
+  "limitations": [
+    "Faults injected after passive entry; not proof of HOME bootstrap survival",
+    "CPU injections alter selected internal results, not physical transistor faults",
+    "Address cases model localized HOME aliases with healthy ROM/I/O, not universal global stuck lines",
+    "No physical electrical/thermal validation"
+  ]
+}

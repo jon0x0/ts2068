@@ -1,0 +1,120 @@
+{
+  "image_sha256": "e09e53177d654dca3fcfa2ce67b4976f7c33b54eaf9daa203919660e33a9e936",
+  "result": "PASS",
+  "configuration": "TSRun HOME ROM replaced; no DOCK; EXROM FF; PC0 reset and dirty RAM",
+  "cases": [
+    {
+      "name": "PC0 reset, no DOCK/EXROM, dirty RAM, no stack, quick CPU/RAM/address checks",
+      "result": "PASS"
+    },
+    {
+      "name": "heldR cold reset completeRAM and guarded pass acknowledgement",
+      "result": "PASS"
+    },
+    {
+      "name": "cold reset stuck HOME4000 D0 chip/bit code",
+      "result": "PASS"
+    },
+    {
+      "name": "cold reset stuck HOME4000 D3 chip/bit code",
+      "result": "PASS"
+    },
+    {
+      "name": "cold reset stuck HOME4000 D4 chip/bit code",
+      "result": "PASS"
+    },
+    {
+      "name": "cold reset stuck HOME4000 D7 chip/bit code",
+      "result": "PASS"
+    },
+    {
+      "name": "cold reset stuck HOME8000 D0 chip/bit code",
+      "result": "PASS"
+    },
+    {
+      "name": "cold reset stuck HOME8000 D3 chip/bit code",
+      "result": "PASS"
+    },
+    {
+      "name": "cold reset stuck HOME8000 D4 chip/bit code",
+      "result": "PASS"
+    },
+    {
+      "name": "cold reset stuck HOME8000 D7 chip/bit code",
+      "result": "PASS"
+    },
+    {
+      "name": "cold reset stuck HOMEc000 D0 chip/bit code",
+      "result": "PASS"
+    },
+    {
+      "name": "cold reset stuck HOMEc000 D3 chip/bit code",
+      "result": "PASS"
+    },
+    {
+      "name": "cold reset stuck HOMEc000 D4 chip/bit code",
+      "result": "PASS"
+    },
+    {
+      "name": "cold reset stuck HOMEc000 D7 chip/bit code",
+      "result": "PASS"
+    },
+    {
+      "name": "HOME image integrity mismatch reports before RAM use",
+      "result": "PASS"
+    },
+    {
+      "name": "cold reset with every HOME RAM write lost still reports chip1/multiple bits",
+      "result": "PASS"
+    },
+    {
+      "name": "unsupported standalone bank selection shows unavailable rather than entering RAM",
+      "result": "PASS"
+    },
+    {
+      "name": "main J opens input-safe joystick/EAR observer",
+      "result": "PASS"
+    },
+    {
+      "name": "HOME packed fullinfo screen",
+      "result": "PASS"
+    },
+    {
+      "name": "HOME packed fullsummary screen",
+      "result": "PASS"
+    },
+    {
+      "name": "HOME packed rammenu screen",
+      "result": "PASS"
+    },
+    {
+      "name": "HOME packed rampass screen",
+      "result": "PASS"
+    },
+    {
+      "name": "HOME packed beeper screen",
+      "result": "PASS"
+    },
+    {
+      "name": "HOME packed keyboard screen",
+      "result": "PASS"
+    },
+    {
+      "name": "HOME packed inputs screen",
+      "result": "PASS"
+    },
+    {
+      "name": "HOME Full completes RAM/beeper/AY then keyboard and honest HOME summary",
+      "result": "PASS"
+    },
+    {
+      "name": "HOME fixed-vector IRQ inhibit/arrival without stack reads",
+      "result": "PASS"
+    }
+  ],
+  "limitations": [
+    "Electrical ROM/socket adapter and cold hardware boot not physically verified",
+    "Localized HOME data faults; global opcode/address/control-bus failure may prevent execution",
+    "SCLD HOME mapping/reset/opcode paths required"
+  ]
+}

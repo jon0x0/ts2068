@@ -1,0 +1,75 @@
+{
+  "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+  "result": "PASS",
+  "cases": [
+    {
+      "name": "fullinfo",
+      "result": "PASS",
+      "display_bytes": 6912,
+      "stack_unchanged": true
+    },
+    {
+      "name": "rammenu",
+      "result": "PASS",
+      "display_bytes": 6912,
+      "stack_unchanged": true
+    },
+    {
+      "name": "startupfull",
+      "result": "PASS",
+      "display_bytes": 6912,
+      "stack_unchanged": true
+    },
+    {
+      "name": "soak",
+      "result": "PASS",
+      "display_bytes": 6912,
+      "stack_unchanged": true
+    },
+    {
+      "name": "soakstop",
+      "result": "PASS",
+      "display_bytes": 6912,
+      "stack_unchanged": true
+    },
+    {
+      "name": "beeper",
+      "result": "PASS",
+      "display_bytes": 6912,
+      "stack_unchanged": true
+    },
+    {
+      "name": "aylisten",
+      "result": "PASS",
+      "display_bytes": 6912,
+      "stack_unchanged": true
+    },
+    {
+      "name": "keyboard",
+      "result": "PASS",
+      "display_bytes": 6912,
+      "stack_unchanged": true
+    },
+    {
+      "name": "rampass",
+      "result": "PASS",
+      "display_bytes": 6912,
+      "stack_unchanged": true
+    },
+    {
+      "name": "pass",
+      "result": "PASS",
+      "display_bytes": 6912,
+      "stack_unchanged": true
+    },
+    {
+      "name": "cpuinfo",
+      "result": "PASS",
+      "display_bytes": 6912,
+      "stack_unchanged": true
+    }
+  ],
+  "limitations": [
+    "Model display memory comparisons; actual visibility still requires working video RAM/output"
+  ]
+}

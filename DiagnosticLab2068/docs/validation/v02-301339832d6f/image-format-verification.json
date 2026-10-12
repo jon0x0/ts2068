@@ -1,0 +1,31 @@
+{
+  "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+  "picorom_sha256": "fcaa11612b0c4c07a85924864730fa5c621675c5cb6d4504848126a60e6df730",
+  "result": "PASS",
+  "cases": [
+    {
+      "name": "eight ROM descriptors, header-free64K payload and BIN identity",
+      "result": "PASS"
+    },
+    {
+      "name": "PicoROM manifest byte length and SHA256",
+      "result": "PASS"
+    },
+    {
+      "name": "independent TS2068 skill DCK-to-PicoROM conversion matches payload",
+      "result": "PASS"
+    },
+    {
+      "name": "inspected TSPico v1.1 DCK_IMAGE converts diagnostic identically",
+      "result": "PASS"
+    }
+  ],
+  "sources": {
+    "skill_converter_sha256": "1d7ac23f6b92c083317acbc7ca35d1231a44b2ce46459e871034fbf10dc91032",
+    "tspico_source_sha256": "d70b3b042e932889253eafaa9243e2a775e8e52300a3c78027dc18f7b9ada6f6"
+  },
+  "limitations": [
+    "No USB upload, flash commit, SRAM access, PIO timing or physical coexistence tested",
+    "Optional source checks apply only to the recorded local snapshots"
+  ]
+}

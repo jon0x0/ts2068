@@ -1,0 +1,1032 @@
+{
+  "version": "0.2",
+  "entry": "0100",
+  "descriptors": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+  ],
+  "dck_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+  "bin_sha256": "fcaa11612b0c4c07a85924864730fa5c621675c5cb6d4504848126a60e6df730",
+  "phases": [
+    {
+      "phase": 1,
+      "name": "full-pattern",
+      "expected": 0
+    },
+    {
+      "phase": 2,
+      "name": "full-pattern",
+      "expected": 255
+    },
+    {
+      "phase": 3,
+      "name": "full-pattern",
+      "expected": 85
+    },
+    {
+      "phase": 4,
+      "name": "full-pattern",
+      "expected": 170
+    },
+    {
+      "phase": 5,
+      "name": "full-pattern",
+      "expected": 15
+    },
+    {
+      "phase": 6,
+      "name": "full-pattern",
+      "expected": 240
+    },
+    {
+      "phase": 7,
+      "name": "full-pattern",
+      "expected": 51
+    },
+    {
+      "phase": 8,
+      "name": "full-pattern",
+      "expected": 204
+    },
+    {
+      "phase": 9,
+      "name": "walking-bit-immediate",
+      "expected": 1
+    },
+    {
+      "phase": 10,
+      "name": "walking-bit-immediate",
+      "expected": 254
+    },
+    {
+      "phase": 11,
+      "name": "walking-bit-immediate",
+      "expected": 2
+    },
+    {
+      "phase": 12,
+      "name": "walking-bit-immediate",
+      "expected": 253
+    },
+    {
+      "phase": 13,
+      "name": "walking-bit-immediate",
+      "expected": 4
+    },
+    {
+      "phase": 14,
+      "name": "walking-bit-immediate",
+      "expected": 251
+    },
+    {
+      "phase": 15,
+      "name": "walking-bit-immediate",
+      "expected": 8
+    },
+    {
+      "phase": 16,
+      "name": "walking-bit-immediate",
+      "expected": 247
+    },
+    {
+      "phase": 17,
+      "name": "walking-bit-immediate",
+      "expected": 16
+    },
+    {
+      "phase": 18,
+      "name": "walking-bit-immediate",
+      "expected": 239
+    },
+    {
+      "phase": 19,
+      "name": "walking-bit-immediate",
+      "expected": 32
+    },
+    {
+      "phase": 20,
+      "name": "walking-bit-immediate",
+      "expected": 223
+    },
+    {
+      "phase": 21,
+      "name": "walking-bit-immediate",
+      "expected": 64
+    },
+    {
+      "phase": 22,
+      "name": "walking-bit-immediate",
+      "expected": 191
+    },
+    {
+      "phase": 23,
+      "name": "walking-bit-immediate",
+      "expected": 128
+    },
+    {
+      "phase": 24,
+      "name": "walking-bit-immediate",
+      "expected": 127
+    },
+    {
+      "phase": 25,
+      "name": "march-initialize",
+      "expected": 0
+    },
+    {
+      "phase": 26,
+      "name": "march-up",
+      "expected": 0
+    },
+    {
+      "phase": 27,
+      "name": "march-up",
+      "expected": 255
+    },
+    {
+      "phase": 28,
+      "name": "march-down",
+      "expected": 0
+    },
+    {
+      "phase": 29,
+      "name": "march-down",
+      "expected": 255
+    },
+    {
+      "phase": 30,
+      "name": "march-up",
+      "expected": 0
+    }
+  ],
+  "assets": [
+    {
+      "name": "fullinfo",
+      "bank": 2,
+      "address": "4800",
+      "packed": 515,
+      "unpacked": 1536,
+      "destination": "6400"
+    },
+    {
+      "name": "fullsummary",
+      "bank": 2,
+      "address": "4A03",
+      "packed": 525,
+      "unpacked": 1536,
+      "destination": "6400"
+    },
+    {
+      "name": "cpuinfo",
+      "bank": 2,
+      "address": "4C10",
+      "packed": 546,
+      "unpacked": 1536,
+      "destination": "6400"
+    },
+    {
+      "name": "startupquick",
+      "bank": 2,
+      "address": "4E32",
+      "packed": 438,
+      "unpacked": 1536,
+      "destination": "6400"
+    },
+    {
+      "name": "startupfull",
+      "bank": 2,
+      "address": "4FE8",
+      "packed": 434,
+      "unpacked": 1536,
+      "destination": "6400"
+    },
+    {
+      "name": "menu",
+      "bank": 2,
+      "address": "519A",
+      "packed": 561,
+      "unpacked": 1536,
+      "destination": "6400"
+    },
+    {
+      "name": "rammenu",
+      "bank": 2,
+      "address": "53CB",
+      "packed": 383,
+      "unpacked": 1536,
+      "destination": "6400"
+    },
+    {
+      "name": "videomenu",
+      "bank": 2,
+      "address": "554A",
+      "packed": 401,
+      "unpacked": 1536,
+      "destination": "6400"
+    },
+    {
+      "name": "soundmenu",
+      "bank": 2,
+      "address": "56DB",
+      "packed": 299,
+      "unpacked": 1536,
+      "destination": "6400"
+    },
+    {
+      "name": "rommenu",
+      "bank": 2,
+      "address": "5806",
+      "packed": 370,
+      "unpacked": 1536,
+      "destination": "6400"
+    },
+    {
+      "name": "irqmenu",
+      "bank": 2,
+      "address": "5978",
+      "packed": 384,
+      "unpacked": 1536,
+      "destination": "6400"
+    },
+    {
+      "name": "soak",
+      "bank": 2,
+      "address": "5AF8",
+      "packed": 377,
+      "unpacked": 1536,
+      "destination": "6400"
+    },
+    {
+      "name": "soakstop",
+      "bank": 2,
+      "address": "5C71",
+      "packed": 262,
+      "unpacked": 1536,
+      "destination": "6400"
+    },
+    {
+      "name": "bank",
+      "bank": 2,
+      "address": "5D77",
+      "packed": 308,
+      "unpacked": 1536,
+      "destination": "6400"
+    },
+    {
+      "name": "rampass",
+      "bank": 1,
+      "address": "3700",
+      "packed": 351,
+      "unpacked": 1536,
+      "destination": "6400"
+    },
+    {
+      "name": "pass",
+      "bank": 2,
+      "address": "5EAB",
+      "packed": 233,
+      "unpacked": 1536,
+      "destination": "6400"
+    },
+    {
+      "name": "fail",
+      "bank": 1,
+      "address": "385F",
+      "packed": 299,
+      "unpacked": 1536,
+      "destination": "6400"
+    },
+    {
+      "name": "romresult",
+      "bank": 1,
+      "address": "398A",
+      "packed": 245,
+      "unpacked": 1536,
+      "destination": "6400"
+    },
+    {
+      "name": "beeper",
+      "bank": 1,
+      "address": "3A7F",
+      "packed": 291,
+      "unpacked": 1536,
+      "destination": "6400"
+    },
+    {
+      "name": "aylisten",
+      "bank": 1,
+      "address": "3BA2",
+      "packed": 419,
+      "unpacked": 1536,
+      "destination": "6400"
+    },
+    {
+      "name": "help",
+      "bank": 4,
+      "address": "8400",
+      "packed": 492,
+      "unpacked": 1536,
+      "destination": "6400"
+    },
+    {
+      "name": "soundguide",
+      "bank": 4,
+      "address": "85EC",
+      "packed": 510,
+      "unpacked": 1536,
+      "destination": "6400"
+    },
+    {
+      "name": "inputs",
+      "bank": 1,
+      "address": "3D45",
+      "packed": 347,
+      "unpacked": 1536,
+      "destination": "6400"
+    },
+    {
+      "name": "keyboard_pixels",
+      "bank": 3,
+      "address": "6000",
+      "packed": 3637,
+      "unpacked": 6144,
+      "destination": "4000"
+    },
+    {
+      "name": "keyboard_attrs",
+      "bank": 3,
+      "address": "6E35",
+      "packed": 266,
+      "unpacked": 768,
+      "destination": "5800"
+    },
+    {
+      "name": "bars",
+      "bank": 3,
+      "address": "6F3F",
+      "packed": 246,
+      "unpacked": 6144,
+      "destination": "4000"
+    },
+    {
+      "name": "bars_attrs",
+      "bank": 3,
+      "address": "7035",
+      "packed": 324,
+      "unpacked": 768,
+      "destination": "5800"
+    },
+    {
+      "name": "standard",
+      "bank": 3,
+      "address": "7179",
+      "packed": 3491,
+      "unpacked": 6144,
+      "destination": "4000"
+    },
+    {
+      "name": "standard_attrs",
+      "bank": 4,
+      "address": "87EA",
+      "packed": 384,
+      "unpacked": 768,
+      "destination": "5800"
+    },
+    {
+      "name": "secondary",
+      "bank": 4,
+      "address": "896A",
+      "packed": 3491,
+      "unpacked": 6144,
+      "destination": "6000"
+    },
+    {
+      "name": "secondary_attrs",
+      "bank": 4,
+      "address": "970D",
+      "packed": 384,
+      "unpacked": 768,
+      "destination": "7800"
+    },
+    {
+      "name": "mix128",
+      "bank": 1,
+      "address": "3EA0",
+      "packed": 96,
+      "unpacked": 6144,
+      "destination": "4000"
+    },
+    {
+      "name": "mix128_attrs",
+      "bank": 4,
+      "address": "988D",
+      "packed": 774,
+      "unpacked": 768,
+      "destination": "5800"
+    },
+    {
+      "name": "ecm",
+      "bank": 5,
+      "address": "A000",
+      "packed": 5651,
+      "unpacked": 6144,
+      "destination": "4000"
+    },
+    {
+      "name": "ecm_attrs",
+      "bank": 6,
+      "address": "C000",
+      "packed": 5808,
+      "unpacked": 6144,
+      "destination": "6000"
+    },
+    {
+      "name": "hires",
+      "bank": 7,
+      "address": "E000",
+      "packed": 4837,
+      "unpacked": 6144,
+      "destination": "4000"
+    },
+    {
+      "name": "hires_attrs",
+      "bank": 5,
+      "address": "B613",
+      "packed": 2191,
+      "unpacked": 6144,
+      "destination": "6000"
+    }
+  ],
+  "bank_used": {
+    "2": 8084,
+    "1": 7936,
+    "3": 7964,
+    "4": 7059,
+    "5": 7842,
+    "6": 5808,
+    "7": 4837
+  },
+  "source_sha256": {
+    "src/diagnostic.asm": "76ee01a95a5e28f3ebe583ed8e1af222f0ad35ed5218d581c9a1fefa0c877172",
+    "src/modules.asm": "12646add69a9288b3511822efe14ca874de8eaf2998d88a1d1a71bb997b1905e",
+    "src/crc.asm": "4c8194514c584aa4dcc760d8cae0bb0e893f8706d24340be8ae35b147ef9d9eb",
+    "src/cpu.asm": "3150056d2eb80c13de61edca2d2983d9696c8633a6c54744e38c2119c91de589",
+    "src/boot.asm": "a7c2c3f477ba4272f5f4dbcd5b9f416518560e128219b51e07aa9a2e271c18df",
+    "src/joystick.asm": "f4f1d18c7319ffbba3861b4caf0be2499da3f076565b1604362bc42cf3f37c12"
+  },
+  "font_rom_sha256": "6338f94b2ee5000b81a64a4f055b8f1d2db6e669e52cafc11233ff63896fae13",
+  "limitations": [
+    "Passive HOME initialization dependency",
+    "Physical validation pending",
+    "Optional high-ROM/HOME-gateway/IRQ execution exposures"
+  ],
+  "picorom": {
+    "file": "diagnostic-v02-picorom.bin",
+    "bytes": 65536,
+    "sha256": "fcaa11612b0c4c07a85924864730fa5c621675c5cb6d4504848126a60e6df730",
+    "profile": "PicoROM-P28 / 27C512-style full64K cartridge decode",
+    "upload_size": "512KBit",
+    "layout": "A0-A15, chunks0-7 ascending; no DCK header; no byte swap",
+    "physical_validation": "pending"
+  },
+  "ay_playback": {
+    "table_address": "4400",
+    "step_count": 24,
+    "stride": 16,
+    "steps": [
+      {
+        "name": "A LOW",
+        "registers": [
+          232,
+          3,
+          232,
+          3,
+          232,
+          3,
+          0,
+          62,
+          15,
+          0,
+          0,
+          0,
+          8,
+          9
+        ],
+        "highlight_row": 0,
+        "highlight_column": 0
+      },
+      {
+        "name": "A MID",
+        "registers": [
+          244,
+          1,
+          244,
+          1,
+          244,
+          1,
+          0,
+          62,
+          15,
+          0,
+          0,
+          0,
+          8,
+          9
+        ],
+        "highlight_row": 0,
+        "highlight_column": 8
+      },
+      {
+        "name": "A HIGH",
+        "registers": [
+          250,
+          0,
+          250,
+          0,
+          250,
+          0,
+          0,
+          62,
+          15,
+          0,
+          0,
+          0,
+          8,
+          9
+        ],
+        "highlight_row": 0,
+        "highlight_column": 16
+      },
+      {
+        "name": "A TOP",
+        "registers": [
+          125,
+          0,
+          125,
+          0,
+          125,
+          0,
+          0,
+          62,
+          15,
+          0,
+          0,
+          0,
+          8,
+          9
+        ],
+        "highlight_row": 0,
+        "highlight_column": 24
+      },
+      {
+        "name": "B LOW",
+        "registers": [
+          232,
+          3,
+          232,
+          3,
+          232,
+          3,
+          0,
+          61,
+          0,
+          15,
+          0,
+          0,
+          8,
+          9
+        ],
+        "highlight_row": 2,
+        "highlight_column": 0
+      },
+      {
+        "name": "B MID",
+        "registers": [
+          244,
+          1,
+          244,
+          1,
+          244,
+          1,
+          0,
+          61,
+          0,
+          15,
+          0,
+          0,
+          8,
+          9
+        ],
+        "highlight_row": 2,
+        "highlight_column": 8
+      },
+      {
+        "name": "B HIGH",
+        "registers": [
+          250,
+          0,
+          250,
+          0,
+          250,
+          0,
+          0,
+          61,
+          0,
+          15,
+          0,
+          0,
+          8,
+          9
+        ],
+        "highlight_row": 2,
+        "highlight_column": 16
+      },
+      {
+        "name": "B TOP",
+        "registers": [
+          125,
+          0,
+          125,
+          0,
+          125,
+          0,
+          0,
+          61,
+          0,
+          15,
+          0,
+          0,
+          8,
+          9
+        ],
+        "highlight_row": 2,
+        "highlight_column": 24
+      },
+      {
+        "name": "C LOW",
+        "registers": [
+          232,
+          3,
+          232,
+          3,
+          232,
+          3,
+          0,
+          59,
+          0,
+          0,
+          15,
+          0,
+          8,
+          9
+        ],
+        "highlight_row": 4,
+        "highlight_column": 0
+      },
+      {
+        "name": "C MID",
+        "registers": [
+          244,
+          1,
+          244,
+          1,
+          244,
+          1,
+          0,
+          59,
+          0,
+          0,
+          15,
+          0,
+          8,
+          9
+        ],
+        "highlight_row": 4,
+        "highlight_column": 8
+      },
+      {
+        "name": "C HIGH",
+        "registers": [
+          250,
+          0,
+          250,
+          0,
+          250,
+          0,
+          0,
+          59,
+          0,
+          0,
+          15,
+          0,
+          8,
+          9
+        ],
+        "highlight_row": 4,
+        "highlight_column": 16
+      },
+      {
+        "name": "C TOP",
+        "registers": [
+          125,
+          0,
+          125,
+          0,
+          125,
+          0,
+          0,
+          59,
+          0,
+          0,
+          15,
+          0,
+          8,
+          9
+        ],
+        "highlight_row": 4,
+        "highlight_column": 24
+      },
+      {
+        "name": "VOLUME LOW",
+        "registers": [
+          250,
+          0,
+          250,
+          0,
+          250,
+          0,
+          0,
+          62,
+          3,
+          0,
+          0,
+          0,
+          8,
+          9
+        ],
+        "highlight_row": 6,
+        "highlight_column": 8
+      },
+      {
+        "name": "VOLUME MID",
+        "registers": [
+          250,
+          0,
+          250,
+          0,
+          250,
+          0,
+          0,
+          62,
+          8,
+          0,
+          0,
+          0,
+          8,
+          9
+        ],
+        "highlight_row": 6,
+        "highlight_column": 16
+      },
+      {
+        "name": "VOLUME MAX",
+        "registers": [
+          250,
+          0,
+          250,
+          0,
+          250,
+          0,
+          0,
+          62,
+          15,
+          0,
+          0,
+          0,
+          8,
+          9
+        ],
+        "highlight_row": 6,
+        "highlight_column": 24
+      },
+      {
+        "name": "NOISE LOW",
+        "registers": [
+          250,
+          0,
+          250,
+          0,
+          250,
+          0,
+          31,
+          55,
+          15,
+          0,
+          0,
+          0,
+          8,
+          9
+        ],
+        "highlight_row": 8,
+        "highlight_column": 8
+      },
+      {
+        "name": "NOISE MID",
+        "registers": [
+          250,
+          0,
+          250,
+          0,
+          250,
+          0,
+          8,
+          55,
+          15,
+          0,
+          0,
+          0,
+          8,
+          9
+        ],
+        "highlight_row": 8,
+        "highlight_column": 16
+      },
+      {
+        "name": "NOISE HIGH",
+        "registers": [
+          250,
+          0,
+          250,
+          0,
+          250,
+          0,
+          1,
+          55,
+          15,
+          0,
+          0,
+          0,
+          8,
+          9
+        ],
+        "highlight_row": 8,
+        "highlight_column": 24
+      },
+      {
+        "name": "ENVELOPE DOWN",
+        "registers": [
+          250,
+          0,
+          250,
+          0,
+          250,
+          0,
+          0,
+          62,
+          16,
+          0,
+          0,
+          0,
+          8,
+          9
+        ],
+        "highlight_row": 10,
+        "highlight_column": 0
+      },
+      {
+        "name": "ENVELOPE UP",
+        "registers": [
+          250,
+          0,
+          250,
+          0,
+          250,
+          0,
+          0,
+          62,
+          16,
+          0,
+          0,
+          0,
+          8,
+          13
+        ],
+        "highlight_row": 10,
+        "highlight_column": 8
+      },
+      {
+        "name": "ENVELOPE TRI",
+        "registers": [
+          250,
+          0,
+          250,
+          0,
+          250,
+          0,
+          0,
+          62,
+          16,
+          0,
+          0,
+          0,
+          8,
+          10
+        ],
+        "highlight_row": 10,
+        "highlight_column": 16
+      },
+      {
+        "name": "ENVELOPE SAW",
+        "registers": [
+          250,
+          0,
+          250,
+          0,
+          250,
+          0,
+          0,
+          62,
+          16,
+          0,
+          0,
+          0,
+          8,
+          8
+        ],
+        "highlight_row": 10,
+        "highlight_column": 24
+      },
+      {
+        "name": "CHORD",
+        "registers": [
+          244,
+          1,
+          144,
+          1,
+          77,
+          1,
+          0,
+          56,
+          12,
+          12,
+          12,
+          0,
+          8,
+          9
+        ],
+        "highlight_row": 12,
+        "highlight_column": 0
+      },
+      {
+        "name": "SILENCE",
+        "registers": [
+          250,
+          0,
+          250,
+          0,
+          250,
+          0,
+          0,
+          63,
+          0,
+          0,
+          0,
+          0,
+          8,
+          9
+        ],
+        "highlight_row": 12,
+        "highlight_column": 16
+      }
+    ]
+  },
+  "eprom": {
+    "file": "diagnostic-v02-eprom-27C512.bin",
+    "bytes": 65536,
+    "sha256": "fcaa11612b0c4c07a85924864730fa5c621675c5cb6d4504848126a60e6df730",
+    "profile": "27C512-compatible EPROM / full64K DOCK cartridge",
+    "layout": "Offset0000; ascending A0-A15; all8 chunks; no DCK header",
+    "physical_validation": "pending"
+  },
+  "keyboard_art": {
+    "author": "Josef Jelinek",
+    "source_url": "https://josef-jelinek.github.io/TSRun/keyboard.png",
+    "source_sha256": "bbafcbb28a6acb8ef17b20a7ab47200071630a41f6d60582d3a3099295fd19a6",
+    "dimensions": [
+      533,
+      191
+    ],
+    "published_url_verified_identical": true,
+    "verification_date": "2026-10-12",
+    "keyboard_mapping_source": "Josef Jelinek TSRun keyboard.js local snapshot",
+    "mapping_source_sha256": "a130fb3f9f68a9792262551331fcdfb64eb98c6a24af9386277cc1c7203d296d",
+    "adaptation": "Source key-face contours (largest connected white component; horizontal spans filled to remove tiny legends), deterministic BOX reduction into non-overlapping native attribute rectangles, main labels redrawn using embedded Timex font; original stagger, wide CAPS/ENTER/SPACE and inverse SYMBOL SHIFT retained within native limits",
+    "layout": "keyboard-art-layout.json;42 physical positions,40 contacts plus derived BREAK history"
+  }
+}

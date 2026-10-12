@@ -1,0 +1,491 @@
+{
+  "result": "PASS",
+  "cases": [
+    {
+      "chip": "U6",
+      "forced_nibble": 0,
+      "healthy_mask": 240,
+      "panel_contrast": [
+        true,
+        false
+      ],
+      "healthy_pixels_preserved": true,
+      "attribute_font_contrast": true,
+      "observed_off_on_attributes": [
+        0,
+        48
+      ]
+    },
+    {
+      "chip": "U6",
+      "forced_nibble": 1,
+      "healthy_mask": 240,
+      "panel_contrast": [
+        true,
+        true
+      ],
+      "healthy_pixels_preserved": true,
+      "attribute_font_contrast": true,
+      "observed_off_on_attributes": [
+        1,
+        49
+      ]
+    },
+    {
+      "chip": "U6",
+      "forced_nibble": 2,
+      "healthy_mask": 240,
+      "panel_contrast": [
+        true,
+        true
+      ],
+      "healthy_pixels_preserved": true,
+      "attribute_font_contrast": true,
+      "observed_off_on_attributes": [
+        2,
+        50
+      ]
+    },
+    {
+      "chip": "U6",
+      "forced_nibble": 3,
+      "healthy_mask": 240,
+      "panel_contrast": [
+        true,
+        true
+      ],
+      "healthy_pixels_preserved": true,
+      "attribute_font_contrast": true,
+      "observed_off_on_attributes": [
+        3,
+        51
+      ]
+    },
+    {
+      "chip": "U6",
+      "forced_nibble": 4,
+      "healthy_mask": 240,
+      "panel_contrast": [
+        true,
+        true
+      ],
+      "healthy_pixels_preserved": true,
+      "attribute_font_contrast": true,
+      "observed_off_on_attributes": [
+        4,
+        52
+      ]
+    },
+    {
+      "chip": "U6",
+      "forced_nibble": 5,
+      "healthy_mask": 240,
+      "panel_contrast": [
+        true,
+        true
+      ],
+      "healthy_pixels_preserved": true,
+      "attribute_font_contrast": true,
+      "observed_off_on_attributes": [
+        5,
+        53
+      ]
+    },
+    {
+      "chip": "U6",
+      "forced_nibble": 6,
+      "healthy_mask": 240,
+      "panel_contrast": [
+        false,
+        true
+      ],
+      "healthy_pixels_preserved": true,
+      "attribute_font_contrast": true,
+      "observed_off_on_attributes": [
+        6,
+        54
+      ]
+    },
+    {
+      "chip": "U6",
+      "forced_nibble": 7,
+      "healthy_mask": 240,
+      "panel_contrast": [
+        true,
+        true
+      ],
+      "healthy_pixels_preserved": true,
+      "attribute_font_contrast": true,
+      "observed_off_on_attributes": [
+        7,
+        55
+      ]
+    },
+    {
+      "chip": "U6",
+      "forced_nibble": 8,
+      "healthy_mask": 240,
+      "panel_contrast": [
+        true,
+        true
+      ],
+      "healthy_pixels_preserved": true,
+      "attribute_font_contrast": true,
+      "observed_off_on_attributes": [
+        8,
+        56
+      ]
+    },
+    {
+      "chip": "U6",
+      "forced_nibble": 9,
+      "healthy_mask": 240,
+      "panel_contrast": [
+        true,
+        false
+      ],
+      "healthy_pixels_preserved": true,
+      "attribute_font_contrast": true,
+      "observed_off_on_attributes": [
+        9,
+        57
+      ]
+    },
+    {
+      "chip": "U6",
+      "forced_nibble": 10,
+      "healthy_mask": 240,
+      "panel_contrast": [
+        true,
+        true
+      ],
+      "healthy_pixels_preserved": true,
+      "attribute_font_contrast": true,
+      "observed_off_on_attributes": [
+        10,
+        58
+      ]
+    },
+    {
+      "chip": "U6",
+      "forced_nibble": 11,
+      "healthy_mask": 240,
+      "panel_contrast": [
+        true,
+        true
+      ],
+      "healthy_pixels_preserved": true,
+      "attribute_font_contrast": true,
+      "observed_off_on_attributes": [
+        11,
+        59
+      ]
+    },
+    {
+      "chip": "U6",
+      "forced_nibble": 12,
+      "healthy_mask": 240,
+      "panel_contrast": [
+        true,
+        true
+      ],
+      "healthy_pixels_preserved": true,
+      "attribute_font_contrast": true,
+      "observed_off_on_attributes": [
+        12,
+        60
+      ]
+    },
+    {
+      "chip": "U6",
+      "forced_nibble": 13,
+      "healthy_mask": 240,
+      "panel_contrast": [
+        true,
+        true
+      ],
+      "healthy_pixels_preserved": true,
+      "attribute_font_contrast": true,
+      "observed_off_on_attributes": [
+        13,
+        61
+      ]
+    },
+    {
+      "chip": "U6",
+      "forced_nibble": 14,
+      "healthy_mask": 240,
+      "panel_contrast": [
+        true,
+        true
+      ],
+      "healthy_pixels_preserved": true,
+      "attribute_font_contrast": true,
+      "observed_off_on_attributes": [
+        14,
+        62
+      ]
+    },
+    {
+      "chip": "U6",
+      "forced_nibble": 15,
+      "healthy_mask": 240,
+      "panel_contrast": [
+        false,
+        true
+      ],
+      "healthy_pixels_preserved": true,
+      "attribute_font_contrast": true,
+      "observed_off_on_attributes": [
+        15,
+        63
+      ]
+    },
+    {
+      "chip": "U7",
+      "forced_nibble": 0,
+      "healthy_mask": 15,
+      "panel_contrast": [
+        false,
+        true
+      ],
+      "healthy_pixels_preserved": true,
+      "attribute_font_contrast": true,
+      "observed_off_on_attributes": [
+        0,
+        15
+      ]
+    },
+    {
+      "chip": "U7",
+      "forced_nibble": 1,
+      "healthy_mask": 15,
+      "panel_contrast": [
+        true,
+        true
+      ],
+      "healthy_pixels_preserved": true,
+      "attribute_font_contrast": true,
+      "observed_off_on_attributes": [
+        16,
+        31
+      ]
+    },
+    {
+      "chip": "U7",
+      "forced_nibble": 2,
+      "healthy_mask": 15,
+      "panel_contrast": [
+        true,
+        true
+      ],
+      "healthy_pixels_preserved": true,
+      "attribute_font_contrast": true,
+      "observed_off_on_attributes": [
+        32,
+        47
+      ]
+    },
+    {
+      "chip": "U7",
+      "forced_nibble": 3,
+      "healthy_mask": 15,
+      "panel_contrast": [
+        true,
+        true
+      ],
+      "healthy_pixels_preserved": true,
+      "attribute_font_contrast": true,
+      "observed_off_on_attributes": [
+        48,
+        63
+      ]
+    },
+    {
+      "chip": "U7",
+      "forced_nibble": 4,
+      "healthy_mask": 15,
+      "panel_contrast": [
+        false,
+        true
+      ],
+      "healthy_pixels_preserved": true,
+      "attribute_font_contrast": true,
+      "observed_off_on_attributes": [
+        64,
+        79
+      ]
+    },
+    {
+      "chip": "U7",
+      "forced_nibble": 5,
+      "healthy_mask": 15,
+      "panel_contrast": [
+        true,
+        true
+      ],
+      "healthy_pixels_preserved": true,
+      "attribute_font_contrast": true,
+      "observed_off_on_attributes": [
+        80,
+        95
+      ]
+    },
+    {
+      "chip": "U7",
+      "forced_nibble": 6,
+      "healthy_mask": 15,
+      "panel_contrast": [
+        true,
+        true
+      ],
+      "healthy_pixels_preserved": true,
+      "attribute_font_contrast": true,
+      "observed_off_on_attributes": [
+        96,
+        111
+      ]
+    },
+    {
+      "chip": "U7",
+      "forced_nibble": 7,
+      "healthy_mask": 15,
+      "panel_contrast": [
+        true,
+        true
+      ],
+      "healthy_pixels_preserved": true,
+      "attribute_font_contrast": true,
+      "observed_off_on_attributes": [
+        112,
+        127
+      ]
+    },
+    {
+      "chip": "U7",
+      "forced_nibble": 8,
+      "healthy_mask": 15,
+      "panel_contrast": [
+        false,
+        true
+      ],
+      "healthy_pixels_preserved": true,
+      "attribute_font_contrast": true,
+      "observed_off_on_attributes": [
+        128,
+        143
+      ]
+    },
+    {
+      "chip": "U7",
+      "forced_nibble": 9,
+      "healthy_mask": 15,
+      "panel_contrast": [
+        true,
+        true
+      ],
+      "healthy_pixels_preserved": true,
+      "attribute_font_contrast": true,
+      "observed_off_on_attributes": [
+        144,
+        159
+      ]
+    },
+    {
+      "chip": "U7",
+      "forced_nibble": 10,
+      "healthy_mask": 15,
+      "panel_contrast": [
+        true,
+        true
+      ],
+      "healthy_pixels_preserved": true,
+      "attribute_font_contrast": true,
+      "observed_off_on_attributes": [
+        160,
+        175
+      ]
+    },
+    {
+      "chip": "U7",
+      "forced_nibble": 11,
+      "healthy_mask": 15,
+      "panel_contrast": [
+        true,
+        true
+      ],
+      "healthy_pixels_preserved": true,
+      "attribute_font_contrast": true,
+      "observed_off_on_attributes": [
+        176,
+        191
+      ]
+    },
+    {
+      "chip": "U7",
+      "forced_nibble": 12,
+      "healthy_mask": 15,
+      "panel_contrast": [
+        false,
+        true
+      ],
+      "healthy_pixels_preserved": true,
+      "attribute_font_contrast": true,
+      "observed_off_on_attributes": [
+        192,
+        207
+      ]
+    },
+    {
+      "chip": "U7",
+      "forced_nibble": 13,
+      "healthy_mask": 15,
+      "panel_contrast": [
+        true,
+        true
+      ],
+      "healthy_pixels_preserved": true,
+      "attribute_font_contrast": true,
+      "observed_off_on_attributes": [
+        208,
+        223
+      ]
+    },
+    {
+      "chip": "U7",
+      "forced_nibble": 14,
+      "healthy_mask": 15,
+      "panel_contrast": [
+        true,
+        true
+      ],
+      "healthy_pixels_preserved": true,
+      "attribute_font_contrast": true,
+      "observed_off_on_attributes": [
+        224,
+        239
+      ]
+    },
+    {
+      "chip": "U7",
+      "forced_nibble": 15,
+      "healthy_mask": 15,
+      "panel_contrast": [
+        true,
+        true
+      ],
+      "healthy_pixels_preserved": true,
+      "attribute_font_contrast": true,
+      "observed_off_on_attributes": [
+        240,
+        255
+      ]
+    }
+  ],
+  "scope": "Host constant-nibble fault model only; no target renderer implemented",
+  "limitations": [
+    "Arbitrary intermittent faults can corrupt presumed healthy bits",
+    "CPU readback does not prove SCLD display fetch/output",
+    "Glyph readability needs physical/user verification"
+  ]
+}

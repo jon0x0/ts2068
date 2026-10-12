@@ -1,0 +1,406 @@
+{
+  "image_sha256": "e09e53177d654dca3fcfa2ce67b4976f7c33b54eaf9daa203919660e33a9e936",
+  "result": "PASS",
+  "cases": [
+    {
+      "player": 1,
+      "combo": 0,
+      "raw": 255,
+      "result": "PASS"
+    },
+    {
+      "player": 1,
+      "combo": 1,
+      "raw": 254,
+      "result": "PASS"
+    },
+    {
+      "player": 1,
+      "combo": 2,
+      "raw": 253,
+      "result": "PASS"
+    },
+    {
+      "player": 1,
+      "combo": 3,
+      "raw": 252,
+      "result": "PASS"
+    },
+    {
+      "player": 1,
+      "combo": 4,
+      "raw": 251,
+      "result": "PASS"
+    },
+    {
+      "player": 1,
+      "combo": 5,
+      "raw": 250,
+      "result": "PASS"
+    },
+    {
+      "player": 1,
+      "combo": 6,
+      "raw": 249,
+      "result": "PASS"
+    },
+    {
+      "player": 1,
+      "combo": 7,
+      "raw": 248,
+      "result": "PASS"
+    },
+    {
+      "player": 1,
+      "combo": 8,
+      "raw": 247,
+      "result": "PASS"
+    },
+    {
+      "player": 1,
+      "combo": 9,
+      "raw": 246,
+      "result": "PASS"
+    },
+    {
+      "player": 1,
+      "combo": 10,
+      "raw": 245,
+      "result": "PASS"
+    },
+    {
+      "player": 1,
+      "combo": 11,
+      "raw": 244,
+      "result": "PASS"
+    },
+    {
+      "player": 1,
+      "combo": 12,
+      "raw": 243,
+      "result": "PASS"
+    },
+    {
+      "player": 1,
+      "combo": 13,
+      "raw": 242,
+      "result": "PASS"
+    },
+    {
+      "player": 1,
+      "combo": 14,
+      "raw": 241,
+      "result": "PASS"
+    },
+    {
+      "player": 1,
+      "combo": 15,
+      "raw": 240,
+      "result": "PASS"
+    },
+    {
+      "player": 1,
+      "combo": 16,
+      "raw": 127,
+      "result": "PASS"
+    },
+    {
+      "player": 1,
+      "combo": 17,
+      "raw": 126,
+      "result": "PASS"
+    },
+    {
+      "player": 1,
+      "combo": 18,
+      "raw": 125,
+      "result": "PASS"
+    },
+    {
+      "player": 1,
+      "combo": 19,
+      "raw": 124,
+      "result": "PASS"
+    },
+    {
+      "player": 1,
+      "combo": 20,
+      "raw": 123,
+      "result": "PASS"
+    },
+    {
+      "player": 1,
+      "combo": 21,
+      "raw": 122,
+      "result": "PASS"
+    },
+    {
+      "player": 1,
+      "combo": 22,
+      "raw": 121,
+      "result": "PASS"
+    },
+    {
+      "player": 1,
+      "combo": 23,
+      "raw": 120,
+      "result": "PASS"
+    },
+    {
+      "player": 1,
+      "combo": 24,
+      "raw": 119,
+      "result": "PASS"
+    },
+    {
+      "player": 1,
+      "combo": 25,
+      "raw": 118,
+      "result": "PASS"
+    },
+    {
+      "player": 1,
+      "combo": 26,
+      "raw": 117,
+      "result": "PASS"
+    },
+    {
+      "player": 1,
+      "combo": 27,
+      "raw": 116,
+      "result": "PASS"
+    },
+    {
+      "player": 1,
+      "combo": 28,
+      "raw": 115,
+      "result": "PASS"
+    },
+    {
+      "player": 1,
+      "combo": 29,
+      "raw": 114,
+      "result": "PASS"
+    },
+    {
+      "player": 1,
+      "combo": 30,
+      "raw": 113,
+      "result": "PASS"
+    },
+    {
+      "player": 1,
+      "combo": 31,
+      "raw": 112,
+      "result": "PASS"
+    },
+    {
+      "player": 2,
+      "combo": 0,
+      "raw": 255,
+      "result": "PASS"
+    },
+    {
+      "player": 2,
+      "combo": 1,
+      "raw": 254,
+      "result": "PASS"
+    },
+    {
+      "player": 2,
+      "combo": 2,
+      "raw": 253,
+      "result": "PASS"
+    },
+    {
+      "player": 2,
+      "combo": 3,
+      "raw": 252,
+      "result": "PASS"
+    },
+    {
+      "player": 2,
+      "combo": 4,
+      "raw": 251,
+      "result": "PASS"
+    },
+    {
+      "player": 2,
+      "combo": 5,
+      "raw": 250,
+      "result": "PASS"
+    },
+    {
+      "player": 2,
+      "combo": 6,
+      "raw": 249,
+      "result": "PASS"
+    },
+    {
+      "player": 2,
+      "combo": 7,
+      "raw": 248,
+      "result": "PASS"
+    },
+    {
+      "player": 2,
+      "combo": 8,
+      "raw": 247,
+      "result": "PASS"
+    },
+    {
+      "player": 2,
+      "combo": 9,
+      "raw": 246,
+      "result": "PASS"
+    },
+    {
+      "player": 2,
+      "combo": 10,
+      "raw": 245,
+      "result": "PASS"
+    },
+    {
+      "player": 2,
+      "combo": 11,
+      "raw": 244,
+      "result": "PASS"
+    },
+    {
+      "player": 2,
+      "combo": 12,
+      "raw": 243,
+      "result": "PASS"
+    },
+    {
+      "player": 2,
+      "combo": 13,
+      "raw": 242,
+      "result": "PASS"
+    },
+    {
+      "player": 2,
+      "combo": 14,
+      "raw": 241,
+      "result": "PASS"
+    },
+    {
+      "player": 2,
+      "combo": 15,
+      "raw": 240,
+      "result": "PASS"
+    },
+    {
+      "player": 2,
+      "combo": 16,
+      "raw": 127,
+      "result": "PASS"
+    },
+    {
+      "player": 2,
+      "combo": 17,
+      "raw": 126,
+      "result": "PASS"
+    },
+    {
+      "player": 2,
+      "combo": 18,
+      "raw": 125,
+      "result": "PASS"
+    },
+    {
+      "player": 2,
+      "combo": 19,
+      "raw": 124,
+      "result": "PASS"
+    },
+    {
+      "player": 2,
+      "combo": 20,
+      "raw": 123,
+      "result": "PASS"
+    },
+    {
+      "player": 2,
+      "combo": 21,
+      "raw": 122,
+      "result": "PASS"
+    },
+    {
+      "player": 2,
+      "combo": 22,
+      "raw": 121,
+      "result": "PASS"
+    },
+    {
+      "player": 2,
+      "combo": 23,
+      "raw": 120,
+      "result": "PASS"
+    },
+    {
+      "player": 2,
+      "combo": 24,
+      "raw": 119,
+      "result": "PASS"
+    },
+    {
+      "player": 2,
+      "combo": 25,
+      "raw": 118,
+      "result": "PASS"
+    },
+    {
+      "player": 2,
+      "combo": 26,
+      "raw": 117,
+      "result": "PASS"
+    },
+    {
+      "player": 2,
+      "combo": 27,
+      "raw": 116,
+      "result": "PASS"
+    },
+    {
+      "player": 2,
+      "combo": 28,
+      "raw": 115,
+      "result": "PASS"
+    },
+    {
+      "player": 2,
+      "combo": 29,
+      "raw": 114,
+      "result": "PASS"
+    },
+    {
+      "player": 2,
+      "combo": 30,
+      "raw": 113,
+      "result": "PASS"
+    },
+    {
+      "player": 2,
+      "combo": 31,
+      "raw": 112,
+      "result": "PASS"
+    },
+    {
+      "name": "corrupt helper 3f00 prevents code transfer",
+      "result": "PASS"
+    },
+    {
+      "name": "corrupt helper 3f01 prevents code transfer",
+      "result": "PASS"
+    },
+    {
+      "name": "corrupt helper 3f60 prevents code transfer",
+      "result": "PASS"
+    }
+  ],
+  "configuration": "TSRun active-low AY portA: all32 combinations per port; exact six-cell highlights, release, cancellation, stack/mapping and port isolation",
+  "limitations": [
+    "No automatic joystick presence/contact certification; physical wiring and user movement require observation"
+  ]
+}

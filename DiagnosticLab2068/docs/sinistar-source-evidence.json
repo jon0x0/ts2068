@@ -1,0 +1,113 @@
+[
+  {
+    "path": "D:\\T7_Recover\\Jon\\Personal\\Timex\\cartridgeconversion\\sinistar\\MEMORY_MAP.md",
+    "sha256": "e3e12c7a2b6e1b0d5f4bad202729c110e0179b6ad399cff90f773efff037e419",
+    "bank_write_lines": []
+  },
+  {
+    "path": "D:\\T7_Recover\\Jon\\Personal\\Timex\\cartridgeconversion\\sinistar\\port\\build\\mining-scene-manifest.json",
+    "sha256": "7908d43dbb7be7b3e44588585f27364b5067e8c195dd81b9471a4cdab01ed09f",
+    "bank_write_lines": []
+  },
+  {
+    "path": "D:\\T7_Recover\\Jon\\Personal\\Timex\\cartridgeconversion\\sinistar\\port\\build\\speech-source.asm",
+    "sha256": "8bbd7837e10bef81a6fdfa399bfd70b52cc5634a8e800e170556071e9ba9f3df",
+    "bank_write_lines": []
+  },
+  {
+    "path": "D:\\T7_Recover\\Jon\\Personal\\Timex\\cartridgeconversion\\sinistar\\port\\src\\boot.asm",
+    "sha256": "426ca21d1427271ab4203ff3a0562382e20668b6b2b85839d39990f99f829cd4",
+    "bank_write_lines": [
+      7,
+      9,
+      50,
+      57
+    ]
+  },
+  {
+    "path": "D:\\T7_Recover\\Jon\\Personal\\Timex\\cartridgeconversion\\sinistar\\port\\src\\mining-scene.asm",
+    "sha256": "6570a20767bbcc446059aad1ac42f5706735ac0244a5bb78ef8e70b50ce162e9",
+    "bank_write_lines": [
+      37,
+      39,
+      48,
+      52,
+      57,
+      109,
+      121,
+      418,
+      421
+    ]
+  },
+  {
+    "path": "D:\\T7_Recover\\Jon\\Personal\\Timex\\cartridgeconversion\\sinistar\\port\\src\\mining-render.asm",
+    "sha256": "3db64b4b92bbbb75b7ffdf94b1f8371a81f8c04f63ddde7035650da8e3d763e0",
+    "bank_write_lines": [
+      329,
+      338,
+      686,
+      706,
+      720,
+      730,
+      923,
+      927,
+      1051,
+      1128
+    ]
+  },
+  {
+    "path": "D:\\T7_Recover\\Jon\\Personal\\Timex\\cartridgeconversion\\sinistar\\port\\src\\speech.asm",
+    "sha256": "ac6d1f63177549ded3ac7437d174cd6bf1508d4a4a939f922d26e5a52128399c",
+    "bank_write_lines": [
+      57,
+      63
+    ]
+  },
+  {
+    "path": "D:\\T7_Recover\\Jon\\Personal\\Timex\\cartridgeconversion\\sinistar\\port\\src\\frontend.asm",
+    "sha256": "4431165ddb3fe44f23735269fb47c691ccc44377846c0c1507bbd4dbda723a4d",
+    "bank_write_lines": [
+      211,
+      215,
+      464,
+      468,
+      589,
+      615,
+      670,
+      680
+    ]
+  },
+  {
+    "path": "D:\\T7_Recover\\Jon\\Personal\\Timex\\cartridgeconversion\\sinistar\\port\\src\\assembly-cache-call.asm",
+    "sha256": "c4a9e7a1765adec9f166dfcf88b1fe57fa464caa9ff02c26faefd85375c2a065",
+    "bank_write_lines": [
+      7,
+      12
+    ]
+  },
+  {
+    "path": "D:\\T7_Recover\\Jon\\Personal\\Timex\\cartridgeconversion\\sinistar\\port\\src\\title.asm",
+    "sha256": "f7523f5f362e7bc1260bb43dccd3df7d2da74968338c8c5dd6ac131f2cdf59a8",
+    "bank_write_lines": [
+      51
+    ]
+  },
+  {
+    "url": "https://jon0x0.github.io/ts2068/arcade-ports/sinistar/play/assets/sinistar.dck",
+    "local_copy": "D:\\T7_Recover\\Jon\\Personal\\Timex\\DiagnosticCart2068\\tmp\\research\\published-sinistar.dck",
+    "bytes": 65545,
+    "sha256": "e16a68ead32e6aeed388f1ceb33f62061c45cff4680a89437df12c38e2500617",
+    "descriptors": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "entry": "8008",
+    "matches_local_player": true
+  }
+]

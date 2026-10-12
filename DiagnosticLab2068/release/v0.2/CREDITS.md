@@ -1,0 +1,45 @@
+# Sources and third party credits
+
+Release v0.2 | October 12, 2026
+
+This records source provenance, including conceptual references, data embedded in the cartridge and tools used for validation. The original authors retain credit. Archiving a program does not make the archive host its author. Keep this file, per-test source references and a future firmware help/credits page current as modules are implemented.
+
+## Programs and diagnostic precedents
+
+- **Mark Miller — 128 Colors.** [TimexSinclair.com program record](https://www.timexsinclair.com/computer_media/128-colors/index.html), listed on CATS Library Tape11, date198x. Basis for the checkerboard/all-attribute diagnostic concept. The new overview grid/generator is independently written; no original BASIC code is included in target firmware. TimexSinclair.com, maintained by David Anderson, is credited for preserving and describing the program.
+- **Carl A. Miles — TS2068 Diagnostics Cartridge ART1.0 (1985).** Supplied operation manual in Carl2_06242021.pdf and DiagnosticCartRefInfo.txt informs native diagnostic coverage and prerequisite design. The v0.1 assembly is independently written rather than a copy of Miles' firmware.
+- **Dylan Smith and Brendan Alford — ZX Spectrum Diagnostics.** [Project](https://github.com/brendanalford/zx-diagnostics) and [firmware manual](https://github.com/brendanalford/zx-diagnostics/wiki/Firmware) inform RAM-independent startup and degraded fault-output comparisons. Supplied binary/screenshots and comparative assembly extracts remain reference material. No ZX diagnostic assembly has been copied into the current target kernel. Preserve source license notices if future code reuse occurs.
+- **Sinistar TS2068 project, jon0x0.** The [published player](https://jon0x0.github.io/ts2068/arcade-ports/sinistar/play/) and local port source provide a real workload for the planned startup/banking stress profile. Exact inspected image/source hashes are in docs/sinistar-source-evidence.json. No gameplay or speech payload is embedded in the diagnostic.
+
+## Hardware references and embedded data
+
+- **Jeff Burrell and PicoVideo contributors, with TS-Pico team support — PicoVideo.** [Project](https://github.com/timex-sinclair-projects/PicoVideo) and its user manual provide the optional external-video interface profile. The manual credits V. Hunter Adams' RP2040 PIO VGA driver and identifies ULAplus as a ZX Design and Media format. The diagnostic specification credits those sources; no PicoVideo firmware/listing is incorporated into v0.1.
+
+- **Timex Computer Corporation — TS2068 technical reference material and schematic.** Supplied Timex2068TechnicalManual PDF and FEB84 schematic drawing335-B70500 establish chip mapping, SCLD functions, ports and video layout. The original source files remain in the project root.
+- **Timex stock HOME ROM U16 character data.** The v0.1/v0.2 UI generators extract768 character bytes from the supplied verified stock ROM's3D00-3FFF table. ROM provenance/hashes are recorded in docs/rom-identities.json and build/manifest.json. This is embedded data provenance, distinct from independently written menu/test code.
+- **David Anderson and the timex-sinclair-projects contributors — TS2068 Reference Library.** [Library](https://github.com/timex-sinclair-projects/TS2068-Ref-Library) supplies companion references, preserved ROM images and derived/manual navigation material. Original scans/schematics govern conflicts with derived summaries.
+- **Zilog — Z80 CPU User Manual.** [Manual](https://www.zilog.com/docs/z80/z80cpu_um.pdf) informs CPU instruction, interrupt and refresh constraints.
+- **MAME contributors.** [Timex machine source](https://github.com/mamedev/mame/blob/master/src/mame/sinclair/timex.cpp) corroborates stock ROM CRC/SHA identities; MAME source is not incorporated into the diagnostic firmware.
+- **TS2068 cartridge-development AI skill and its maintainers.** Local AISkill_TS2068 cartridge-development skill/references/utilities inform chunk maps, headers, packing and validation. The supplied inspector is used as a development tool; the target kernel/build algorithm is authored here.
+
+## Development and validation tools
+
+- **Josef Jelinek — TSRun.** [Project](https://github.com/josef-jelinek/TSRun) provides the emulator/Z80 engine used through sibling-module imports and the physical keyboard/display-layout cross-check. Engine hashes are retained with execution evidence. No emulator code is bundled into the target cartridge.
+  The diagnostic now directly adapts Josef's [keyboard artwork](https://josef-jelinek.github.io/TSRun/keyboard.png). The original533x191 PNG is preserved in assets/keyboard/TSRun-keyboard.png; SHA256 bbafcbb28a6acb8ef17b20a7ab47200071630a41f6d60582d3a3099295fd19a6 was verified against that published URL. Its key-face contours/layout are reduced to attribute-aligned native graphics; tiny BASIC legends are removed and main labels redrawn with the embedded Timex font. Shared CAPS and BREAK highlighting are original diagnostic control code. Josef/TSRun credit appears on screen and in the manual. Source/coordinate snapshots and modifications are recorded in assets/keyboard/provenance.json and docs/KEYBOARD_ART.md.
+- **Philip Kendall and Fuse contributors — Fuse.** [Project](https://fuse-emulator.sourceforge.net/) provides the independent native stock-ROM checkpoint. Tool version/configuration and output are saved with evidence.
+- **SjASMPlus contributors.** [Project](https://github.com/z00m128/sjasmplus), version1.20.3, assembles the current firmware using the executable supplied by the sibling project. The assembler is not part of the cartridge image.
+- **Pillow contributors.** [Project](https://python-pillow.github.io/) provides host image decoding/previews; target planes are ordinary generated bytes, and Pillow is not included in firmware.
+
+Future borrowed code/data must keep its original notices and record the specific version, source path/hash, modifications and affected test IDs. Credits alone do not establish a license for copied material. Current implementation notes distinguish original code, embedded Timex font data, conceptual references and external tooling.
+
+## Future helper hardware references
+
+- **Martin Donlon / wickerwaka and PicoROM contributors** — [PicoROM](https://github.com/wickerwaka/PicoROM), local README inspected for ROM emulation and reset control. The [official releases](https://github.com/wickerwaka/PicoROM/releases) and [installation guide](https://github.com/wickerwaka/PicoROM/blob/main/INSTALL.md), checked12 October2026, provide executable download and controller/firmware compatibility instructions. Local controller help confirms upload/readback syntax; the controller is not bundled here.
+- **PicoCartridge2068 project contributors** — local revision-1 interface/architecture/electrical documentation used to distinguish exposed bus signals from MCU-connected ones.
+- **TS-Pico team and Timex Sinclair Team Projects** — local Altium interface export and [project overview](https://github.com/timex-sinclair-projects) inform future SRAM/Flash and NMI-button investigation; installed firmware behavior remains unverified.
+
+- **Frankie Sierra — Sierra Filter Lite diffusion kernel.** Description preserved in [DHALF.TXT](https://raw.githubusercontent.com/SixLabors/ImageSharp/main/src/ImageSharp/Processing/Processors/Dithering/DHALF.TXT), by Lee Daniel Crocker with Mike Morra and other contributors. [Tanner Helland’s diagrams](https://tannerhelland.com/2012/12/28/dithering-eleven-algorithms-source-code.html) were also consulted. The ECM gradient/disc, legal-pair selection, Python implementation and packing are original project work; no external implementation code was copied.
+
+- **TS Pico development team — v1.1 source snapshot and manual.** Local TS-Pico-1_1.20260717/src/TS/tspico.py, config and supplied12-03-23 manual inform GETINFO/MEMDOCK/DCK and coexistence notes. Image-format validation executes only the isolated DCK_IMAGE conversion with in-memory files. No external hardware code is incorporated in the target ROM. **TS2068 cartridge skill contributors** provide the independent dck_to_picorom.py conversion check; only its generated image is included, not the tool itself. PicoROM attribution above applies to raw-image loading and the P28 board contract.
+
+- **General Instrument — AY-3-8910/8912 data manual.** [Original datasheet scan](https://map.grauw.nl/resources/sound/generalinstrument_ay-3-8910.pdf) and the [manual transcription](https://cpctech.cpcwiki.de/docs/ay38912/psgspec.htm) inform mixer, port direction, meaningful register bits and envelope shapes. The24-step playback guide/table is original project code.

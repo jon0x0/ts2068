@@ -1,0 +1,2410 @@
+{
+  "schema_version": 1,
+  "scope": "ROM-only stock TS2068 v0.2 executable suite; advanced modules remain partial/specified; physical validation pending",
+  "capabilities": {
+    "native_launch": "OS initializes enough to discover LROS and enter cartridge; this is not independently guaranteed by a passive ROM.",
+    "rom_execution": "CPU and cartridge fetch path usable; appropriate low/high ROM anchor selected.",
+    "home_mapping": "ROM execution plus HOME RAM target exposed; memory contents are not presumed correct.",
+    "qualified_workspace": "One or more explicitly tested HOME blocks with safe mapping, guarded stack and state; display not automatically qualified.",
+    "qualified_gateway": "Tested HOME opcode block and verified copy of bounded gateway/checker; its chunk remains HOME.",
+    "usable_display": "Qualified workspace plus verified relevant HOME bitmap/attribute ranges; output requires visual judgement.",
+    "qualified_interrupts": "Tested stack/vector/ROM ISR and bounded interrupt checks passed; safe shadow protocol.",
+    "external_instrument": "Technician probe/logic analyzer fixture; any firmware-specific prerequisites still apply.",
+    "ay_registers_qualified": "AUD-02 passed meaningful masked reads; does not establish analog audio operation.",
+    "cassette_setup": "User selected cassette test and configured suitable recorder/coupling adapter; appropriate display/workspace gated separately.",
+    "joystick_setup": "User selected attached joystick and AY port A is configured as input.",
+    "picovideo_profile": "Explicitly selected PicoVideo board/firmware with verified port/mode capabilities, qualified display ranges and operator viewing external output; no blind probing.",
+    "tspico_sram_profile": "Operator-selected, verified TSPico board/firmware; SRAM selector/stride/reserved ranges and physical cartridge arbitration established; stable independent opcode anchor, sacrificial range and recovery mapping. Development builds permitted; reported version strings are informational only and never authorize probes.",
+    "home_reset_rom": "CPU/reset/HOME ROM fetch path and SCLD HOME decode usable; correct16KiB diagnostic installed at U16 with verified electrical adapter. No stockOS, DOCK, EXROM contents or RAM initialization assumed."
+  },
+  "recovery_profiles": {
+    "rom_only": "Keep DI/no stack, emit bounded border/beeper report and direct-jump to the next safe ROM phase.",
+    "abandon_stack": "Retain compact first-fault data in registers; direct-jump to ROM recovery, DI; never RET through suspect RAM; rebuild only qualified state.",
+    "mapping_restore": "Finish bounded batch if safe, DI, restore known software-shadow mapping with active ROM anchor, report first mismatch.",
+    "gateway_restore": "Stay in qualified HOME gateway, clear HSR, select DOCK in DECR, select anchor and JP to fixed ROM entry; no ROM return until visible.",
+    "interrupt_restore": "DI, inhibit DECR interrupts, restore known ROM mapping through fixed checkpoints and discard unsafe return state; qualify any optional stack before later use.",
+    "video_restore": "Leave target memory before redraw; restore documented mode0,anchor mapping and DI/inhibit; border report then rebuild qualified display.",
+    "audio_restore": "Mute AY amplitudes, preserve/input-safe R7, lower FE speaker/tape bits, restore mapping; report with remaining qualified outputs.",
+    "soak_recovery": "Latch first fault and partial-phase status; pause/stop at safe boundary; no BASIC return; fall back through fixed ROM JP if state/stack fails.",
+    "picovideo_restore": "ROM-bounded profile-specific palette disable/known recovery palette as needed; restore native mode0 and intended mapping/DI; never wait for external video to resume."
+  },
+  "result_states": [
+    "PASS",
+    "FAIL",
+    "UNRECOGNIZED",
+    "NOT_RUN",
+    "NEEDS_OBSERVATION",
+    "CANCELLED"
+  ],
+  "firmware_status_values": [
+    "specified",
+    "partial",
+    "implemented",
+    "retired"
+  ],
+  "tests": [
+    {
+      "id": "BOOT-01",
+      "name": "Native entry and resource baseline",
+      "area": "bootstrap",
+      "firmware_status": "partial",
+      "algorithm": "Native LROS stackless entry, DI/known ports and cartridge integrity before RAM; passive OS handoff remains required. Power-on then selects quick00/FF full48K coverage only (phase2 stop); extended RAM is manual. New key after release cancels safely; menu explicitly marks startup limited. Held R/F explicitly chooses complete RAM/normal Full after narrow keyboard checks; finite highlighted status page, no dependency on release, broad all-low matrix rejects extended selection. Every boot choice now runs a separate minimal ROM0 register/arithmetic/shift consistency check before any HOME writes; mismatches repeat8/stage1-3 without display or keyboard. Default quick00/FF success adds qualified55/AA opposing HOME address pairs. Passive launch dependency remains.",
+      "prerequisites": [
+        "native_launch"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "An absent marker cannot uniquely identify CPU, ROM, RAM or SCLD failure.",
+      "recovery_profile": "rom_only",
+      "specification": "TS2068_DIAGNOSTIC_DESIGN.md#startup-and-resource-promotion",
+      "firmware_locations": [
+        {
+          "path": "src/diagnostic.asm",
+          "symbol": "entry"
+        },
+        {
+          "path": "src/boot.asm",
+          "symbol": "boot_cpu_start"
+        }
+      ],
+      "host_support": [],
+      "validation_evidence": [
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun stock TS2068, module/full-suite execution and fault injections; see exact cases and limitations. Physical validation pending."
+        },
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/fuse-v02-ram-result.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "checkpoint_completed",
+          "configuration": "Fuse1.7.0 stock TS2068, mapped-cartridge quick00/FF completed phase2 checkpoint; not electrical validation."
+        },
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-ram-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun:28 quick-startup and6 explicit complete-sweep all-HOME scenarios;24 quick stuck-bit region faults plus representative complete faults, transient reads and write loss; unchanged SP and ROM-only opcodes."
+        },
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/boot-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun post-entry CPU-result, HOME address-pair/data fault injection; exact scope/limits in record; physical validation pending"
+        }
+      ],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Passive LROS launch depends on OS initialization before entry; no firmware error report is possible if entry never occurs. Boot still assumes activeROM0 opcode/operand reads and usable comparisons/branches/registers; FE border/beeper share SCLD. Localized HOME injections do not prove global CPU pin-fault survival.",
+      "execution_policy": "run_only_when_declared_prerequisites_hold",
+      "implementation_notes": "tests/V02_DIAGNOSTIC_SUITE.md"
+    },
+    {
+      "id": "BOOT-02",
+      "name": "Cartridge integrity and chunk identity",
+      "area": "bootstrap",
+      "firmware_status": "partial",
+      "algorithm": "Additive16 over first8144 bytes per chunk, excluded checksum/marker tails;8-chunk comparison before RAM; bank signature checks are separate. CRC32 of every cartridge chunk remains future.",
+      "prerequisites": [
+        "rom_execution"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "Mismatch implicates cartridge/address/data/fetch path; checker corruption can defeat detection.",
+      "recovery_profile": "rom_only",
+      "specification": "TS2068_DIAGNOSTIC_DESIGN.md#startup-and-resource-promotion",
+      "firmware_locations": [
+        {
+          "path": "src/modules.asm",
+          "symbol": "cartridge_check"
+        }
+      ],
+      "host_support": [],
+      "validation_evidence": [
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun stock TS2068, module/full-suite execution and fault injections; see exact cases and limitations. Physical validation pending."
+        }
+      ],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Default critical control and minimal reporting must remain in stackless ROM. CPU clock and active ROM fetch must remain usable; optional rich RAM state is not a recovery dependency.",
+      "execution_policy": "run_only_when_declared_prerequisites_hold",
+      "implementation_notes": "tests/V02_DIAGNOSTIC_SUITE.md"
+    },
+    {
+      "id": "CPU-01",
+      "name": "Register and instruction consistency",
+      "area": "cpu",
+      "firmware_status": "partial",
+      "algorithm": "Executable five-stage ROM2 subset: complementary general-register values; arithmetic/carry/zero/sign/overflow examples and logic; shifts/bit ops; EXX and AF exchange; IX/IY byte/inc/dec (includes original NMOS undocumented index-byte operations). Checkpoint8/stage, mismatch8/stage, no RAM/stack control. Not exhaustive instruction/flags certification. Additional always-selected ROM0 boot subset checks general-register constants, arithmetic/carry/zero/sign/overflow/AND/XOR and rotate/shift/carry. No optional ROM2 transfer at boot. Detected boot faults repeat8/stage1-3 until reset.",
+      "prerequisites": [
+        "rom_execution"
+      ],
+      "observables": "Pre-stage8/stage border/beeper checkpoints; detected failure repeats8/stage1-5; matched result on completion. No full register dump. Cartridge guide explains each checkpoint and limits before CPU execution.",
+      "failure_interpretation": "Failure identifies exercised instruction/path; passing does not certify all Z80 behavior.",
+      "recovery_profile": "rom_only",
+      "specification": "TS2068_DIAGNOSTIC_DESIGN.md#startup-and-resource-promotion",
+      "firmware_locations": [
+        {
+          "path": "src/cpu.asm",
+          "symbol": "cpu_start"
+        },
+        {
+          "path": "src/boot.asm",
+          "symbol": "boot_register_check"
+        }
+      ],
+      "host_support": [],
+      "validation_evidence": [
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun stock TS2068, module/full-suite execution and fault injections; see exact cases and limitations. Physical validation pending."
+        },
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/boot-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun post-entry CPU-result, HOME address-pair/data fault injection; exact scope/limits in record; physical validation pending"
+        }
+      ],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Optional ROM2 opcode execution and CPU checker/reporter instruction/register dependencies can defeat recovery. Default startup/Full do not run it. Boot still assumes activeROM0 opcode/operand reads and usable comparisons/branches/registers; FE border/beeper share SCLD. Localized HOME injections do not prove global CPU pin-fault survival.",
+      "execution_policy": "separately_selectable_with_fresh_qualification",
+      "implementation_notes": "tests/V02_DIAGNOSTIC_SUITE.md"
+    },
+    {
+      "id": "CPU-03",
+      "name": "Localized HOME address-pair consistency",
+      "area": "cpu_bus",
+      "firmware_status": "implemented",
+      "algorithm": "For A0-A15 probe HOME pairs differing in one address bit,55/AA and reversedAA/55; first mismatch repeats9 then bit+1. ROM2 calls a fixed low-ROM bridge to expose all HOME RAM without RAM control or a stack. Default boot additionally qualifies each endpoint55/AA, then reads opposing55/AA and reversedAA/55 writes across16 pairs. Qualifier mismatches preserve normal RAM chip/address/expected/observed reporting; pair mismatches repeat9/index1-16 fromROM0 until reset. Only after a successful quick sweep.",
+      "prerequisites": [
+        "rom_execution"
+      ],
+      "observables": "Detected mismatch repeats9/bit-index1-16 (A0-A15); first failing pair stops, no screen/RAM state dependency for pulse control.",
+      "failure_interpretation": "Suspect address/data/mux/decoder/storage path, not proof of a Z80 pin or uniquely failed component; only16 selected pairs, complemented by full48K address patterns.",
+      "recovery_profile": "rom_only",
+      "specification": "TS2068_DIAGNOSTIC_DESIGN.md#startup-and-resource-promotion",
+      "firmware_locations": [
+        {
+          "path": "src/cpu.asm",
+          "symbol": "alias_start"
+        },
+        {
+          "path": "src/modules.asm",
+          "symbol": "alias_probe"
+        },
+        {
+          "path": "src/boot.asm",
+          "symbol": "boot_alias_start"
+        }
+      ],
+      "host_support": [],
+      "validation_evidence": [
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun stock TS2068, module/full-suite execution and fault injections; see exact cases and limitations. Physical validation pending."
+        },
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/boot-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun post-entry CPU-result, HOME address-pair/data fault injection; exact scope/limits in record; physical validation pending"
+        }
+      ],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Optional ROM2 opcode execution and CPU checker/reporter instruction/register dependencies can defeat recovery. Default startup/Full do not run it. Boot still assumes activeROM0 opcode/operand reads and usable comparisons/branches/registers; FE border/beeper share SCLD. Localized HOME injections do not prove global CPU pin-fault survival.",
+      "execution_policy": "separately_selectable_with_fresh_qualification",
+      "implementation_notes": "tests/V02_DIAGNOSTIC_SUITE.md"
+    },
+    {
+      "id": "CPU-02",
+      "name": "Qualified stack operations",
+      "area": "cpu",
+      "firmware_status": "specified",
+      "algorithm": "Exercise CALL/RET and PUSH/POP against known values and stack guards only after qualifying writable HOME blocks.",
+      "prerequisites": [
+        "qualified_workspace"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "Stack failure may be RAM/mapping/data path rather than CPU alone.",
+      "recovery_profile": "abandon_stack",
+      "specification": "TS2068_DIAGNOSTIC_DESIGN.md#startup-and-resource-promotion",
+      "firmware_locations": [],
+      "host_support": [],
+      "validation_evidence": [],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "RAM stack operations are directly exercised; use fixed ROM continuations rather than RET through the test stack. Advanced return checks are separately selected.",
+      "execution_policy": "separately_selectable_with_fresh_qualification"
+    },
+    {
+      "id": "RAM-01",
+      "name": "Data bus walking patterns",
+      "area": "ram",
+      "firmware_status": "implemented",
+      "algorithm": "At separated HOME addresses write/read 00 FF 55 AA, walking one and walking zero; accumulate expected XOR observed.",
+      "prerequisites": [
+        "home_mapping"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "Map bit masks to region/nibble chip paths; shared errors can originate outside DRAM.",
+      "recovery_profile": "rom_only",
+      "specification": "TS2068_DIAGNOSTIC_DESIGN.md#ram-tests",
+      "firmware_locations": [
+        {
+          "path": "src/diagnostic.asm",
+          "symbol": "ram_start"
+        }
+      ],
+      "host_support": [],
+      "validation_evidence": [
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun stock TS2068, module/full-suite execution and fault injections; see exact cases and limitations. Physical validation pending."
+        },
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/fuse-v02-ram-result.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "checkpoint_completed",
+          "configuration": "Fuse1.7.0 stock TS2068, mapped-cartridge quick00/FF completed phase2 checkpoint; not electrical validation."
+        },
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-ram-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun:28 quick-startup and6 explicit complete-sweep all-HOME scenarios;24 quick stuck-bit region faults plus representative complete faults, transient reads and write loss; unchanged SP and ROM-only opcodes."
+        }
+      ],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Default critical control and minimal reporting must remain in stackless ROM. CPU clock and active ROM fetch must remain usable; optional rich RAM state is not a recovery dependency.",
+      "execution_policy": "run_only_when_declared_prerequisites_hold",
+      "implementation_notes": "tests/V02_DIAGNOSTIC_SUITE.md"
+    },
+    {
+      "id": "RAM-02",
+      "name": "Address and region aliases",
+      "area": "ram",
+      "firmware_status": "implemented",
+      "algorithm": "Full48K hash fill/read plus separate low/high address-byte fill/read planes; combined address bytes uniquely distinguish all logical addresses and expose aliases.",
+      "prerequisites": [
+        "home_mapping"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "Aliasing suggests address/mux/select path; not a unique bad-chip verdict.",
+      "recovery_profile": "rom_only",
+      "specification": "TS2068_DIAGNOSTIC_DESIGN.md#ram-tests",
+      "firmware_locations": [
+        {
+          "path": "src/modules.asm",
+          "symbol": "address_start"
+        }
+      ],
+      "host_support": [],
+      "validation_evidence": [
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun stock TS2068, module/full-suite execution and fault injections; see exact cases and limitations. Physical validation pending."
+        },
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-ram-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun:28 quick-startup and6 explicit complete-sweep all-HOME scenarios;24 quick stuck-bit region faults plus representative complete faults, transient reads and write loss; unchanged SP and ROM-only opcodes."
+        }
+      ],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Default critical control and minimal reporting must remain in stackless ROM. CPU clock and active ROM fetch must remain usable; optional rich RAM state is not a recovery dependency.",
+      "execution_policy": "run_only_when_declared_prerequisites_hold",
+      "implementation_notes": "tests/V02_DIAGNOSTIC_SUITE.md"
+    },
+    {
+      "id": "RAM-03",
+      "name": "Complete complementary pattern sweeps",
+      "area": "ram",
+      "firmware_status": "implemented",
+      "algorithm": "Eight whole48K complementary pattern fills/ascending reads; direction-sensitive coverage is provided by the separate March test.",
+      "prerequisites": [
+        "home_mapping"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "Unlike immediate comparisons this observes stored data over a complete sweep.",
+      "recovery_profile": "rom_only",
+      "specification": "TS2068_DIAGNOSTIC_DESIGN.md#ram-tests",
+      "firmware_locations": [
+        {
+          "path": "src/diagnostic.asm",
+          "symbol": "ram_start"
+        }
+      ],
+      "host_support": [],
+      "validation_evidence": [
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun stock TS2068, module/full-suite execution and fault injections; see exact cases and limitations. Physical validation pending."
+        },
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/fuse-v02-ram-result.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "checkpoint_completed",
+          "configuration": "Fuse1.7.0 stock TS2068, mapped-cartridge quick00/FF completed phase2 checkpoint; not electrical validation."
+        },
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-ram-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun:28 quick-startup and6 explicit complete-sweep all-HOME scenarios;24 quick stuck-bit region faults plus representative complete faults, transient reads and write loss; unchanged SP and ROM-only opcodes."
+        }
+      ],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Default critical control and minimal reporting must remain in stackless ROM. CPU clock and active ROM fetch must remain usable; optional rich RAM state is not a recovery dependency.",
+      "execution_policy": "run_only_when_declared_prerequisites_hold",
+      "implementation_notes": "tests/V02_DIAGNOSTIC_SUITE.md"
+    },
+    {
+      "id": "RAM-04",
+      "name": "March C minus",
+      "area": "ram",
+      "firmware_status": "implemented",
+      "algorithm": "Entire target: bidirectional w0; up r0/w1; up r1/w0; down r0/w1; down r1/w0; bidirectional r0, using 00/FF bytes.",
+      "prerequisites": [
+        "home_mapping"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "Detects selected stuck/transition/coupling faults; not exhaustive intra-word coverage.",
+      "recovery_profile": "rom_only",
+      "specification": "TS2068_DIAGNOSTIC_DESIGN.md#ram-tests",
+      "firmware_locations": [
+        {
+          "path": "src/diagnostic.asm",
+          "symbol": "ram_start"
+        }
+      ],
+      "host_support": [],
+      "validation_evidence": [
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun stock TS2068, module/full-suite execution and fault injections; see exact cases and limitations. Physical validation pending."
+        },
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/fuse-v02-ram-result.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "checkpoint_completed",
+          "configuration": "Fuse1.7.0 stock TS2068, mapped-cartridge quick00/FF completed phase2 checkpoint; not electrical validation."
+        },
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-ram-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun:28 quick-startup and6 explicit complete-sweep all-HOME scenarios;24 quick stuck-bit region faults plus representative complete faults, transient reads and write loss; unchanged SP and ROM-only opcodes."
+        }
+      ],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Default critical control and minimal reporting must remain in stackless ROM. CPU clock and active ROM fetch must remain usable; optional rich RAM state is not a recovery dependency.",
+      "execution_policy": "run_only_when_declared_prerequisites_hold",
+      "implementation_notes": "tests/V02_DIAGNOSTIC_SUITE.md"
+    },
+    {
+      "id": "RAM-05",
+      "name": "Nibble and intra-word coupling patterns",
+      "area": "ram",
+      "firmware_status": "partial",
+      "algorithm": "Full-byte sweeps with 0F/F0,33/CC,55/AA and walking aggressor bits while comparing other bits.",
+      "prerequisites": [
+        "home_mapping"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "Complements March byte patterns; report exact failing bit and affected package.",
+      "recovery_profile": "rom_only",
+      "specification": "TS2068_DIAGNOSTIC_DESIGN.md#ram-tests",
+      "firmware_locations": [
+        {
+          "path": "src/diagnostic.asm",
+          "symbol": "ram_start"
+        }
+      ],
+      "host_support": [],
+      "validation_evidence": [
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun stock TS2068, module/full-suite execution and fault injections; see exact cases and limitations. Physical validation pending."
+        },
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-ram-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun:28 quick-startup and6 explicit complete-sweep all-HOME scenarios;24 quick stuck-bit region faults plus representative complete faults, transient reads and write loss; unchanged SP and ROM-only opcodes."
+        }
+      ],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Default critical control and minimal reporting must remain in stackless ROM. CPU clock and active ROM fetch must remain usable; optional rich RAM state is not a recovery dependency.",
+      "execution_policy": "run_only_when_declared_prerequisites_hold",
+      "implementation_notes": "tests/V02_DIAGNOSTIC_SUITE.md"
+    },
+    {
+      "id": "RAM-06",
+      "name": "Deterministic random comparisons",
+      "area": "ram",
+      "firmware_status": "partial",
+      "algorithm": "16-bit right-shift LFSR seedACE1/polyB400, high byte written across48K, seed restarted for compare; first new random mismatch stops before scratch corruption can cascade. Seed/direction variation remains future.",
+      "prerequisites": [
+        "home_mapping"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "Record seed/phase so intermittent failures can be reproduced; expected data never stored in target.",
+      "recovery_profile": "rom_only",
+      "specification": "TS2068_DIAGNOSTIC_DESIGN.md#ram-tests",
+      "firmware_locations": [
+        {
+          "path": "src/modules.asm",
+          "symbol": "random_start"
+        }
+      ],
+      "host_support": [],
+      "validation_evidence": [
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun stock TS2068, module/full-suite execution and fault injections; see exact cases and limitations. Physical validation pending."
+        },
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-ram-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun:28 quick-startup and6 explicit complete-sweep all-HOME scenarios;24 quick stuck-bit region faults plus representative complete faults, transient reads and write loss; unchanged SP and ROM-only opcodes."
+        }
+      ],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Default critical control and minimal reporting must remain in stackless ROM. CPU clock and active ROM fetch must remain usable; optional rich RAM state is not a recovery dependency.",
+      "execution_policy": "run_only_when_declared_prerequisites_hold",
+      "implementation_notes": "tests/V02_DIAGNOSTIC_SUITE.md"
+    },
+    {
+      "id": "RAM-07",
+      "name": "Write hold read under normal refresh",
+      "area": "ram",
+      "firmware_status": "partial",
+      "algorithm": "55 then AA whole48K fill, finite500x3000 instruction-timed hold with normal refresh and cancellation, then compare. Configurable dwell intervals remain future.",
+      "prerequisites": [
+        "home_mapping"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "Retention/refresh evidence only; DI and HALT do not turn refresh off; temperature unknown.",
+      "recovery_profile": "rom_only",
+      "specification": "TS2068_DIAGNOSTIC_DESIGN.md#ram-tests",
+      "firmware_locations": [
+        {
+          "path": "src/modules.asm",
+          "symbol": "retention_start"
+        }
+      ],
+      "host_support": [],
+      "validation_evidence": [
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun stock TS2068, module/full-suite execution and fault injections; see exact cases and limitations. Physical validation pending."
+        },
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-ram-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun:28 quick-startup and6 explicit complete-sweep all-HOME scenarios;24 quick stuck-bit region faults plus representative complete faults, transient reads and write loss; unchanged SP and ROM-only opcodes."
+        }
+      ],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Default critical control and minimal reporting must remain in stackless ROM. CPU clock and active ROM fetch must remain usable; optional rich RAM state is not a recovery dependency.",
+      "execution_policy": "run_only_when_declared_prerequisites_hold",
+      "implementation_notes": "tests/V02_DIAGNOSTIC_SUITE.md"
+    },
+    {
+      "id": "RAM-08",
+      "name": "Firmware workspace and guard retest",
+      "area": "ram",
+      "firmware_status": "implemented",
+      "algorithm": "Every complete sweep tests all48K including UI buffers6400-69FF, keyboard flags5B00-5B28 and both display files; no stack/workspace RAM is exempt and no default RAM stack exists.",
+      "prerequisites": [
+        "rom_execution"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "No permanent excluded HOME block; abandon corrupted state without RET.",
+      "recovery_profile": "abandon_stack",
+      "specification": "TS2068_DIAGNOSTIC_DESIGN.md#testing-the-workspace-itself",
+      "firmware_locations": [
+        {
+          "path": "src/diagnostic.asm",
+          "symbol": "ram_start"
+        }
+      ],
+      "host_support": [],
+      "validation_evidence": [
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun stock TS2068, module/full-suite execution and fault injections; see exact cases and limitations. Physical validation pending."
+        },
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-ram-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun:28 quick-startup and6 explicit complete-sweep all-HOME scenarios;24 quick stuck-bit region faults plus representative complete faults, transient reads and write loss; unchanged SP and ROM-only opcodes."
+        }
+      ],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Default critical control and minimal reporting must remain in stackless ROM. CPU clock and active ROM fetch must remain usable; optional rich RAM state is not a recovery dependency.",
+      "execution_policy": "run_only_when_declared_prerequisites_hold",
+      "implementation_notes": "tests/V02_DIAGNOSTIC_SUITE.md"
+    },
+    {
+      "id": "BANK-01",
+      "name": "HSR latch and readback",
+      "area": "banking",
+      "firmware_status": "specified",
+      "algorithm": "Write legal masks preserving active ROM/SP/vector, compare F4 readback, restore software shadow.",
+      "prerequisites": [
+        "rom_execution"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "Readback success does not prove physical memory selection.",
+      "recovery_profile": "mapping_restore",
+      "specification": "TS2068_DIAGNOSTIC_DESIGN.md#scld-tests-by-function",
+      "firmware_locations": [],
+      "host_support": [],
+      "validation_evidence": [],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Default critical control and minimal reporting must remain in stackless ROM. CPU clock and active ROM fetch must remain usable; optional rich RAM state is not a recovery dependency.",
+      "execution_policy": "run_only_when_declared_prerequisites_hold"
+    },
+    {
+      "id": "BANK-02",
+      "name": "Static DOCK selection and full chunk reads",
+      "area": "banking",
+      "firmware_status": "partial",
+      "algorithm": "Selected chunks1-7 have A5 XOR chunk signatures at their end; boot integrity reads8144 bytes per chunk. Full chunk CRC/timing/scattered comparisons remain future.",
+      "prerequisites": [
+        "rom_execution"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "Classify unstable external reads separately from selection failures.",
+      "recovery_profile": "mapping_restore",
+      "specification": "BANKING_AND_OVERNIGHT_TESTS.md#static-external-rom-qualification",
+      "firmware_locations": [
+        {
+          "path": "src/modules.asm",
+          "symbol": "bank_probe"
+        }
+      ],
+      "host_support": [],
+      "validation_evidence": [
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun stock TS2068, module/full-suite execution and fault injections; see exact cases and limitations. Physical validation pending."
+        }
+      ],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Default critical control and minimal reporting must remain in stackless ROM. CPU clock and active ROM fetch must remain usable; optional rich RAM state is not a recovery dependency.",
+      "execution_policy": "run_only_when_declared_prerequisites_hold",
+      "implementation_notes": "tests/V02_DIAGNOSTIC_SUITE.md"
+    },
+    {
+      "id": "BANK-03",
+      "name": "ROM overlay write isolation",
+      "area": "banking",
+      "firmware_status": "implemented",
+      "algorithm": "HOME sentinels at5FF0/7FF0/9FF0/BFF0/DFF0/FFF0, selected-ROM attempted writes and readback, then unmap and verify sentinels. ROM0 remains resident.",
+      "prerequisites": [
+        "qualified_workspace"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "Unexpected hidden-HOME writes implicate selection/write-isolation path.",
+      "recovery_profile": "mapping_restore",
+      "specification": "TS2068_DIAGNOSTIC_DESIGN.md#scld-tests-by-function",
+      "firmware_locations": [
+        {
+          "path": "src/modules.asm",
+          "symbol": "bank_home_verify"
+        }
+      ],
+      "host_support": [],
+      "validation_evidence": [
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun stock TS2068, module/full-suite execution and fault injections; see exact cases and limitations. Physical validation pending."
+        }
+      ],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Default critical control and minimal reporting must remain in stackless ROM. CPU clock and active ROM fetch must remain usable; optional rich RAM state is not a recovery dependency.",
+      "execution_policy": "run_only_when_declared_prerequisites_hold",
+      "implementation_notes": "tests/V02_DIAGNOSTIC_SUITE.md"
+    },
+    {
+      "id": "BANK-04",
+      "name": "Rapid HOME DOCK alternation",
+      "area": "banking",
+      "firmware_status": "partial",
+      "algorithm": "Continuous bounded batches of single/multiple/combined HSR masks, signature reads and ROM/HOME write isolation; active bit0 stays selected. High-anchor rapid alternation remains future.",
+      "prerequisites": [
+        "home_mapping"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "Detect stale/aliased selections and corruption; all masks require separate mapping contracts.",
+      "recovery_profile": "mapping_restore",
+      "specification": "BANKING_AND_OVERNIGHT_TESTS.md#rapid-home-and-dock-alternation",
+      "firmware_locations": [
+        {
+          "path": "src/modules.asm",
+          "symbol": "bank_pattern"
+        }
+      ],
+      "host_support": [],
+      "validation_evidence": [
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun stock TS2068, module/full-suite execution and fault injections; see exact cases and limitations. Physical validation pending."
+        }
+      ],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Default critical control and minimal reporting must remain in stackless ROM. CPU clock and active ROM fetch must remain usable; optional rich RAM state is not a recovery dependency.",
+      "execution_policy": "run_only_when_declared_prerequisites_hold",
+      "implementation_notes": "tests/V02_DIAGNOSTIC_SUITE.md"
+    },
+    {
+      "id": "BANK-05",
+      "name": "External response timing sweep",
+      "area": "banking",
+      "firmware_status": "partial",
+      "algorithm": "Immediate OUT(F4),A then signature reads and ROM-write readback exercise short response paths. Calibrated delay sweep, OUT(C),A comparison and full block reads remain future.",
+      "prerequisites": [
+        "home_mapping"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "Delay-sensitive failures suggest response/selection/loading; cannot uniquely blame TSPico or SCLD.",
+      "recovery_profile": "mapping_restore",
+      "specification": "BANKING_AND_OVERNIGHT_TESTS.md#response-timing-sweep",
+      "firmware_locations": [
+        {
+          "path": "src/modules.asm",
+          "symbol": "bank_probe"
+        }
+      ],
+      "host_support": [],
+      "validation_evidence": [
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun stock TS2068, module/full-suite execution and fault injections; see exact cases and limitations. Physical validation pending."
+        }
+      ],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Default critical control and minimal reporting must remain in stackless ROM. CPU clock and active ROM fetch must remain usable; optional rich RAM state is not a recovery dependency.",
+      "execution_policy": "run_only_when_declared_prerequisites_hold",
+      "implementation_notes": "tests/V02_DIAGNOSTIC_SUITE.md"
+    },
+    {
+      "id": "BANK-06",
+      "name": "Global HOME DOCK EXROM selection",
+      "area": "banking",
+      "firmware_status": "partial",
+      "algorithm": "Explicit optional verified HOME C000 gateway selects DECRC0/HSR01 for EXROM CRC, restores DECR40 and fixed-jumps to low DOCK; not a complete selection matrix.",
+      "prerequisites": [
+        "qualified_gateway"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "DOCK code disappears under EXROM; skip if no tested gateway block exists.",
+      "recovery_profile": "gateway_restore",
+      "specification": "TS2068_DIAGNOSTIC_DESIGN.md#scld-tests-by-function",
+      "firmware_locations": [
+        {
+          "path": "src/modules.asm",
+          "symbol": "exrom_copy_gateway"
+        }
+      ],
+      "host_support": [],
+      "validation_evidence": [
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun stock TS2068, module/full-suite execution and fault injections; see exact cases and limitations. Physical validation pending."
+        }
+      ],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Verified HOME gateway opcodes participate in execution; corruption during that window can prevent software recovery.",
+      "execution_policy": "separately_selectable_with_fresh_qualification",
+      "implementation_notes": "tests/V02_DIAGNOSTIC_SUITE.md"
+    },
+    {
+      "id": "BANK-07",
+      "name": "Sinistar startup data profile",
+      "area": "banking",
+      "firmware_status": "specified",
+      "algorithm": "Reproduce 10->18->98, mode2, no IRQ; bounded ROM3 decode to A000, verify, transpose to 4000, verify, inspect ROM7.",
+      "prerequisites": [
+        "qualified_workspace"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "Stage markers separate external selection, U12/U13 temporary RAM and U6/U7 display paths.",
+      "recovery_profile": "mapping_restore",
+      "specification": "BANKING_AND_OVERNIGHT_TESTS.md#sinistar-startup-reproduction",
+      "firmware_locations": [],
+      "host_support": [],
+      "validation_evidence": [],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Default critical control and minimal reporting must remain in stackless ROM. CPU clock and active ROM fetch must remain usable; optional rich RAM state is not a recovery dependency.",
+      "execution_policy": "run_only_when_declared_prerequisites_hold"
+    },
+    {
+      "id": "BANK-08",
+      "name": "Verified cartridge execution transfers",
+      "area": "banking",
+      "firmware_status": "partial",
+      "algorithm": "Compare512 high-ROM bytes against separate ROM1 shadow before optional HOME CRC execution transfer at8020; separate ROM3/ROM7 transfer stubs remain future.",
+      "prerequisites": [
+        "qualified_workspace"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "Instruction-fetch errors can crash despite data-only success; no software recovery guarantee.",
+      "recovery_profile": "mapping_restore",
+      "specification": "BANKING_AND_OVERNIGHT_TESTS.md#sinistar-startup-reproduction",
+      "firmware_locations": [
+        {
+          "path": "src/modules.asm",
+          "symbol": "crc_qualify"
+        }
+      ],
+      "host_support": [],
+      "validation_evidence": [
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun stock TS2068, module/full-suite execution and fault injections; see exact cases and limitations. Physical validation pending."
+        }
+      ],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Selected external ROM supplies executing opcodes; a failed fetch or disappearance of that anchor can prevent recovery.",
+      "execution_policy": "separately_selectable_with_fresh_qualification",
+      "implementation_notes": "tests/V02_DIAGNOSTIC_SUITE.md"
+    },
+    {
+      "id": "BANK-09",
+      "name": "Interrupt and mixed-load banking",
+      "area": "banking",
+      "firmware_status": "specified",
+      "algorithm": "Combine qualified foreground transitions with owned ISR temporary selection/restoration, tested stacks, video modes and optional AY I/O.",
+      "prerequisites": [
+        "qualified_interrupts"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "Test shadow protocol separately; failures may be software races, RAM, IRQ or external timing.",
+      "recovery_profile": "interrupt_restore",
+      "specification": "BANKING_AND_OVERNIGHT_TESTS.md#interrupt-and-mixed-load-stress",
+      "firmware_locations": [],
+      "host_support": [],
+      "validation_evidence": [],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Advanced ISR restoration, vectors and stack paths may depend on RAM and selected ROM during control-flow transitions.",
+      "execution_policy": "separately_selectable_with_fresh_qualification"
+    },
+    {
+      "id": "SCLD-01",
+      "name": "Display DMA addressing and serialization",
+      "area": "scld",
+      "firmware_status": "partial",
+      "algorithm": "Executable normal/second/ECM/hires bit-lane/address/geometry cards with exact host/emulator plane comparisons and user-visible output. Internal DMA/serialization correctness still needs observation/instruments.",
+      "prerequisites": [
+        "usable_display"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "Clean CPU readback with wrong video implicates fetch/serialization/output; not automatically DRAM.",
+      "recovery_profile": "video_restore",
+      "specification": "TS2068_DIAGNOSTIC_DESIGN.md#scld-tests-by-function",
+      "firmware_locations": [
+        {
+          "path": "src/modules.asm",
+          "symbol": "video_standard_ready"
+        }
+      ],
+      "host_support": [],
+      "validation_evidence": [
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun stock TS2068, module/full-suite execution and fault injections; see exact cases and limitations. Physical validation pending."
+        }
+      ],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Default critical control and minimal reporting must remain in stackless ROM. CPU clock and active ROM fetch must remain usable; optional rich RAM state is not a recovery dependency.",
+      "execution_policy": "run_only_when_declared_prerequisites_hold",
+      "implementation_notes": "tests/V02_DIAGNOSTIC_SUITE.md"
+    },
+    {
+      "id": "SCLD-02",
+      "name": "Display arbitration and clock gating",
+      "area": "scld",
+      "firmware_status": "specified",
+      "algorithm": "Compare ROM/upper-RAM versus display-RAM access workloads against qualified interrupts and stress simultaneous writes/fetch.",
+      "prerequisites": [
+        "qualified_interrupts"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "Relative timing only; stopped CPU clock defeats software timeout; bench confirmation needed.",
+      "recovery_profile": "interrupt_restore",
+      "specification": "TS2068_DIAGNOSTIC_DESIGN.md#scld-tests-by-function",
+      "firmware_locations": [],
+      "host_support": [],
+      "validation_evidence": [],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Default critical control and minimal reporting must remain in stackless ROM. CPU clock and active ROM fetch must remain usable; optional rich RAM state is not a recovery dependency.",
+      "execution_policy": "run_only_when_declared_prerequisites_hold"
+    },
+    {
+      "id": "SCLD-03",
+      "name": "Bounded interrupt generation",
+      "area": "scld",
+      "firmware_status": "implemented",
+      "algorithm": "Explicit optional IM1/fixed ROM vector, SP=BFFF sacrificial write sink and finite60000-iteration arrival budget; handler discards saved PC and jumps to fixed checkpoint. RAM contents need not work; CPU bus writes must complete. Green border acknowledges arrival.",
+      "prerequisites": [
+        "rom_execution",
+        "home_mapping"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "Absent or inconsistent count identifies IRQ path; common crystal prevents absolute frequency proof.",
+      "recovery_profile": "interrupt_restore",
+      "specification": "TS2068_DIAGNOSTIC_DESIGN.md#scld-tests-by-function",
+      "firmware_locations": [
+        {
+          "path": "src/modules.asm",
+          "symbol": "irq_start"
+        }
+      ],
+      "host_support": [],
+      "validation_evidence": [
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun stock TS2068, module/full-suite execution and fault injections; see exact cases and limitations. Physical validation pending."
+        }
+      ],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Default critical control and minimal reporting must remain in stackless ROM. CPU clock and active ROM fetch must remain usable; optional rich RAM state is not a recovery dependency.",
+      "execution_policy": "run_only_when_declared_prerequisites_hold",
+      "implementation_notes": "tests/V02_DIAGNOSTIC_SUITE.md"
+    },
+    {
+      "id": "SCLD-04",
+      "name": "Interrupt inhibit control",
+      "area": "scld",
+      "firmware_status": "implemented",
+      "algorithm": "Explicit optional inhibited IRQ phase followed by enabled arrival phase; unexpected inhibited arrival or missing enabled IRQ fails; finite budgets and DI/DECR40 recovery.",
+      "prerequisites": [
+        "rom_execution",
+        "home_mapping"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "Separate inhibit mismatch from absent interrupt generator.",
+      "recovery_profile": "interrupt_restore",
+      "specification": "TS2068_DIAGNOSTIC_DESIGN.md#scld-tests-by-function",
+      "firmware_locations": [
+        {
+          "path": "src/modules.asm",
+          "symbol": "irq_start"
+        }
+      ],
+      "host_support": [],
+      "validation_evidence": [
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun stock TS2068, module/full-suite execution and fault injections; see exact cases and limitations. Physical validation pending."
+        }
+      ],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Default critical control and minimal reporting must remain in stackless ROM. CPU clock and active ROM fetch must remain usable; optional rich RAM state is not a recovery dependency.",
+      "execution_policy": "run_only_when_declared_prerequisites_hold",
+      "implementation_notes": "tests/V02_DIAGNOSTIC_SUITE.md"
+    },
+    {
+      "id": "SCLD-05",
+      "name": "Technician signal and solder probe mode",
+      "area": "scld",
+      "firmware_status": "specified",
+      "algorithm": "Repeated single-purpose accesses plus expected-waveform/pin crosswalk; compare SCLD lead with downstream connection using instruments.",
+      "prerequisites": [
+        "external_instrument"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "ROM tests identify suspect paths; open solder versus internal failure needs electrical evidence. Exact pin matrix pending.",
+      "recovery_profile": "rom_only",
+      "specification": "PROJECT_STATE.md#work-remaining",
+      "firmware_locations": [],
+      "host_support": [],
+      "validation_evidence": [],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Default critical control and minimal reporting must remain in stackless ROM. CPU clock and active ROM fetch must remain usable; optional rich RAM state is not a recovery dependency.",
+      "execution_policy": "run_only_when_declared_prerequisites_hold"
+    },
+    {
+      "id": "ROM-01",
+      "name": "HOME identity and repeated checksum",
+      "area": "rom",
+      "firmware_status": "partial",
+      "algorithm": "Explicit high-ROM shadow qualification then HOME0000-3FFF CRC32 from DOCK4 at8020; display measured and stock CRC. Repeat manually; automatic stability cycle remains future.",
+      "prerequisites": [
+        "rom_execution"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "Unknown stable ROM is unrecognized, not automatically faulty; unstable reads implicate ROM path.",
+      "recovery_profile": "mapping_restore",
+      "specification": "TS2068_DIAGNOSTIC_DESIGN.md#rom-identity-and-integrity",
+      "firmware_locations": [
+        {
+          "path": "src/modules.asm",
+          "symbol": "home_crc_select"
+        }
+      ],
+      "host_support": [],
+      "validation_evidence": [
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun stock TS2068, module/full-suite execution and fault injections; see exact cases and limitations. Physical validation pending."
+        }
+      ],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Default critical control and minimal reporting must remain in stackless ROM. CPU clock and active ROM fetch must remain usable; optional rich RAM state is not a recovery dependency.",
+      "execution_policy": "run_only_when_declared_prerequisites_hold",
+      "implementation_notes": "tests/V02_DIAGNOSTIC_SUITE.md"
+    },
+    {
+      "id": "ROM-02",
+      "name": "EXROM identity and repeated checksum",
+      "area": "rom",
+      "firmware_status": "partial",
+      "algorithm": "Explicit high-code qualification plus copied/readback256-byte HOME C000 gateway; EXROM0000-1FFF CRC32, DOCK recovery and measured/stock display. Repeat manually.",
+      "prerequisites": [
+        "qualified_gateway"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "Do not assume higher chunks contain extra stock ROM; skip without gateway.",
+      "recovery_profile": "gateway_restore",
+      "specification": "TS2068_DIAGNOSTIC_DESIGN.md#rom-identity-and-integrity",
+      "firmware_locations": [
+        {
+          "path": "src/modules.asm",
+          "symbol": "exrom_crc_select"
+        }
+      ],
+      "host_support": [],
+      "validation_evidence": [
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun stock TS2068, module/full-suite execution and fault injections; see exact cases and limitations. Physical validation pending."
+        }
+      ],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Verified HOME checker/gateway opcodes participate in execution; corruption during that window can prevent software recovery.",
+      "execution_policy": "separately_selectable_with_fresh_qualification",
+      "implementation_notes": "tests/V02_DIAGNOSTIC_SUITE.md"
+    },
+    {
+      "id": "VID-01",
+      "name": "Standard colors bright and flash",
+      "area": "video",
+      "firmware_status": "implemented",
+      "algorithm": "Mode0 bitmap4000/attributes5800; first offer solid eight-color PAPER bars, normal top96 lines and BRIGHT bottom96 lines, corresponding attributes differing only by bit6 and FLASH off; separate existing ink/paper and flash cards. Each half starts with a16-pixel monochrome label band rendered in the actual bitmap: NORMAL BRIGHT=0 and BRIGHT BRIGHT=1; remaining80 lines are solid bars. Labels remain legible when output ignores BRIGHT.",
+      "prerequisites": [
+        "usable_display"
+      ],
+      "observables": "Eight aligned bars in order black, blue, red, magenta, green, cyan, yellow, white; lower half brighter for seven nonblack colors; both black bars identical. Planned BRIGHT toggle keeps other attribute bits unchanged; user judges physical output.",
+      "failure_interpretation": "A missing BRIGHT difference can involve attribute D6 (U7), SCLD decode or video output; it is not a component verdict. Black is unchanged by BRIGHT. Preview RGB is illustrative; target integration and physical validation pending. Some video systems intentionally omit extra brightness; record no visible BRIGHT difference without declaring a TS2068 fault. Compare native and external outputs where available.",
+      "recovery_profile": "video_restore",
+      "specification": "TS2068_DIAGNOSTIC_DESIGN.md#video-tests",
+      "firmware_locations": [
+        {
+          "path": "src/modules.asm",
+          "symbol": "video_bars_ready"
+        }
+      ],
+      "host_support": [
+        "scripts/generate_design_assets.py::standard_card",
+        "scripts/generate_design_assets.py::standard_render",
+        "assets/video/standard-pixels.bin",
+        "assets/video/standard-attributes.bin",
+        "scripts/generate_design_assets.py::colorbar_card",
+        "assets/video/colorbar-pixels.bin",
+        "assets/video/colorbar-attributes.bin"
+      ],
+      "validation_evidence": [
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun stock TS2068, module/full-suite execution and fault injections; see exact cases and limitations. Physical validation pending."
+        }
+      ],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Default critical control and minimal reporting must remain in stackless ROM. CPU clock and active ROM fetch must remain usable; optional rich RAM state is not a recovery dependency.",
+      "execution_policy": "run_only_when_declared_prerequisites_hold",
+      "implementation_notes": "tests/V02_DIAGNOSTIC_SUITE.md"
+    },
+    {
+      "id": "VID-02",
+      "name": "Second display selection",
+      "area": "video",
+      "firmware_status": "partial",
+      "algorithm": "Mode1 asymmetric secondary card at6000/7800; switch by menu or Full sequence. One-key live primary/secondary alternation remains future.",
+      "prerequisites": [
+        "usable_display"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "Both files share U6/U7; cannot avoid a failed chip by switching.",
+      "recovery_profile": "video_restore",
+      "specification": "TS2068_DIAGNOSTIC_DESIGN.md#video-tests",
+      "firmware_locations": [
+        {
+          "path": "src/modules.asm",
+          "symbol": "video_secondary_ready"
+        }
+      ],
+      "host_support": [
+        "scripts/generate_design_assets.py::standard_card",
+        "assets/video/secondary-pixels.bin",
+        "assets/video/secondary-attributes.bin"
+      ],
+      "validation_evidence": [
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun stock TS2068, module/full-suite execution and fault injections; see exact cases and limitations. Physical validation pending."
+        }
+      ],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Default critical control and minimal reporting must remain in stackless ROM. CPU clock and active ROM fetch must remain usable; optional rich RAM state is not a recovery dependency.",
+      "execution_policy": "run_only_when_declared_prerequisites_hold",
+      "implementation_notes": "tests/V02_DIAGNOSTIC_SUITE.md"
+    },
+    {
+      "id": "VID-03",
+      "name": "ECM dither and per-line attributes",
+      "area": "video",
+      "firmware_status": "implemented",
+      "algorithm": "Executable native ECM diagonal hue/value gradient and hue/saturation disc, host Sierra Lite RGB error diffusion with legal shared-BRIGHT8x1 pairs; palette swatches and exact packed plane comparisons.",
+      "prerequisites": [
+        "usable_display"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "15 distinct base colors plus perceived mixtures; preview RGB is not NTSC measurement.",
+      "recovery_profile": "video_restore",
+      "specification": "TS2068_DIAGNOSTIC_DESIGN.md#video-tests",
+      "firmware_locations": [
+        {
+          "path": "src/modules.asm",
+          "symbol": "video_ecm_ready"
+        }
+      ],
+      "host_support": [
+        "scripts/generate_design_assets.py::ecm_card",
+        "assets/video/ecm-pixels.bin",
+        "assets/video/ecm-attributes.bin"
+      ],
+      "validation_evidence": [
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun stock TS2068, module/full-suite execution and fault injections; see exact cases and limitations. Physical validation pending."
+        }
+      ],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Default critical control and minimal reporting must remain in stackless ROM. CPU clock and active ROM fetch must remain usable; optional rich RAM state is not a recovery dependency.",
+      "execution_policy": "run_only_when_declared_prerequisites_hold",
+      "implementation_notes": "tests/V02_DIAGNOSTIC_SUITE.md"
+    },
+    {
+      "id": "VID-04",
+      "name": "Hires geometry and plane ordering",
+      "area": "video",
+      "firmware_status": "partial",
+      "algorithm": "Mode6 packed interleaved primary/secondary calibration with grid/circle/gratings; fixed black/white pair. Cycling8 color pairs remains future.",
+      "prerequisites": [
+        "usable_display"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "Fine gratings may blur on composite; restore mode0 for FE border fault codes.",
+      "recovery_profile": "video_restore",
+      "specification": "TS2068_DIAGNOSTIC_DESIGN.md#video-tests",
+      "firmware_locations": [
+        {
+          "path": "src/modules.asm",
+          "symbol": "video_hires_ready"
+        }
+      ],
+      "host_support": [
+        "scripts/generate_design_assets.py::hires_card",
+        "assets/video/hires-primary.bin",
+        "assets/video/hires-secondary.bin"
+      ],
+      "validation_evidence": [
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun stock TS2068, module/full-suite execution and fault injections; see exact cases and limitations. Physical validation pending."
+        }
+      ],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Default critical control and minimal reporting must remain in stackless ROM. CPU clock and active ROM fetch must remain usable; optional rich RAM state is not a recovery dependency.",
+      "execution_policy": "run_only_when_declared_prerequisites_hold",
+      "implementation_notes": "tests/V02_DIAGNOSTIC_SUITE.md"
+    },
+    {
+      "id": "VID-05",
+      "name": "128 INK PAPER BRIGHT combinations",
+      "area": "video",
+      "firmware_status": "partial",
+      "algorithm": "Mode0 checkerboard overview includes all128 attributes00-7F with Mark Miller credit; bounded viewer/cancel; full-screen128-step cycle remains future.",
+      "prerequisites": [
+        "usable_display"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "128 attribute combinations are not128 unique palette colors; visual blending is not a digital pass criterion. Credit Mark Miller and TimexSinclair.com.",
+      "recovery_profile": "video_restore",
+      "specification": "VIDEO_128_ATTRIBUTES.md#diagnostic-adaptation",
+      "firmware_locations": [
+        {
+          "path": "src/modules.asm",
+          "symbol": "video_mix128_ready"
+        }
+      ],
+      "host_support": [
+        "scripts/generate_design_assets.py::attribute_128_card",
+        "assets/video/attribute-128-pixels.bin",
+        "assets/video/attribute-128-attributes.bin"
+      ],
+      "validation_evidence": [
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun stock TS2068, module/full-suite execution and fault injections; see exact cases and limitations. Physical validation pending."
+        }
+      ],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Default critical control and minimal reporting must remain in stackless ROM. CPU clock and active ROM fetch must remain usable; optional rich RAM state is not a recovery dependency.",
+      "execution_policy": "run_only_when_declared_prerequisites_hold",
+      "source_credits": [
+        {
+          "author": "Mark Miller",
+          "title": "128 Colors",
+          "archive": "TimexSinclair.com",
+          "url": "https://www.timexsinclair.com/computer_media/128-colors/index.html",
+          "usage": "Conceptual basis; independent grid/generator, no BASIC listing copied"
+        }
+      ],
+      "implementation_notes": "tests/V02_DIAGNOSTIC_SUITE.md"
+    },
+    {
+      "id": "KEY-01",
+      "name": "Free keyboard press and release display",
+      "area": "keyboard",
+      "firmware_status": "partial",
+      "algorithm": "Poll all8 half-rows, live green held/cyan released/unseen white; optional bounded historical RAM flags, duplicated CAPS and BREAK chord. Dedicated debounce/release history remains future. Graphic adaptation of Josef Jelinek TSRun keyboard.png, with fixed non-overlapping two-row attribute rectangles. Palette PAPER78 unseen,60 held,68 released; both CAPS share history; derived CAPS+SPACE BREAK adds byte5B28 and is distinct from ENTER+SPACE exit. Tiny legends removed; primary embedded Timex glyph labels retained. Painter preserves D/E/IX/alternate AF selector and uses no RAM control data. Detailed conversion/source/exit contracts in KEYBOARD_ART.md; original PNG/provenance hashes preserved.",
+      "prerequisites": [
+        "qualified_workspace"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "Unpressed keys are untested; shared CAPS position cannot identify physical key.",
+      "recovery_profile": "mapping_restore",
+      "specification": "TS2068_DIAGNOSTIC_DESIGN.md#keyboard-and-input",
+      "firmware_locations": [
+        {
+          "path": "src/modules.asm",
+          "symbol": "keyboard_scan"
+        },
+        {
+          "path": "src/modules.asm",
+          "symbol": "keyboard_paint"
+        }
+      ],
+      "host_support": [
+        "scripts/keyboard_art.py::draw_keyboard"
+      ],
+      "validation_evidence": [
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun stock TS2068, module/full-suite execution and fault injections; see exact cases and limitations. Physical validation pending."
+        },
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/keyboard-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun:44 cases covering all40 contacts, exact non-overlapping whole-key attributes, shared CAPS/derived BREAK, ENTER+SPACE distinction, corrupt history and all HOME writes lost; no physical acceptance."
+        }
+      ],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Default critical control and minimal reporting must remain in stackless ROM. CPU clock and active ROM fetch must remain usable; optional rich RAM state is not a recovery dependency.",
+      "execution_policy": "run_only_when_declared_prerequisites_hold",
+      "implementation_notes": "KEYBOARD_ART.md"
+    },
+    {
+      "id": "KEY-02",
+      "name": "Guided 42 physical key test",
+      "area": "keyboard",
+      "firmware_status": "specified",
+      "algorithm": "Prompt physical layout order, left/right CAPS separately, BREAK as CAPS+SPACE, then shifted combinations; require release.",
+      "prerequisites": [
+        "qualified_workspace"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "42 physical keys map to40 positions; cancelled test is not failure.",
+      "recovery_profile": "mapping_restore",
+      "specification": "TS2068_DIAGNOSTIC_DESIGN.md#keyboard-and-input",
+      "firmware_locations": [],
+      "host_support": [],
+      "validation_evidence": [],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Default critical control and minimal reporting must remain in stackless ROM. CPU clock and active ROM fetch must remain usable; optional rich RAM state is not a recovery dependency.",
+      "execution_policy": "run_only_when_declared_prerequisites_hold"
+    },
+    {
+      "id": "KEY-03",
+      "name": "Keyboard row column isolation",
+      "area": "keyboard",
+      "firmware_status": "partial",
+      "algorithm": "Live row/column display provides technician isolation evidence; no-row/multiple-row automated comparison and verdicts remain future.",
+      "prerequisites": [
+        "rom_execution"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "Fault may be contact/diode/connector/common trace/SCLD; no unique solder diagnosis.",
+      "recovery_profile": "rom_only",
+      "specification": "TS2068_DIAGNOSTIC_DESIGN.md#keyboard-and-input",
+      "firmware_locations": [
+        {
+          "path": "src/modules.asm",
+          "symbol": "keyboard_scan"
+        }
+      ],
+      "host_support": [],
+      "validation_evidence": [
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun stock TS2068, module/full-suite execution and fault injections; see exact cases and limitations. Physical validation pending."
+        },
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/keyboard-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun:44 cases covering all40 contacts, exact non-overlapping whole-key attributes, shared CAPS/derived BREAK, ENTER+SPACE distinction, corrupt history and all HOME writes lost; no physical acceptance."
+        }
+      ],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Default critical control and minimal reporting must remain in stackless ROM. CPU clock and active ROM fetch must remain usable; optional rich RAM state is not a recovery dependency.",
+      "execution_policy": "run_only_when_declared_prerequisites_hold",
+      "implementation_notes": "tests/V02_DIAGNOSTIC_SUITE.md"
+    },
+    {
+      "id": "AUD-01",
+      "name": "Beeper output and alarm path",
+      "area": "audio",
+      "firmware_status": "partial",
+      "algorithm": "Bounded700-cycle low/mid/high FE-D4 tones with steady red/magenta/green borders on both waveform halves; screen lists the corresponding colors. Release/new-key cancellation and final silence. No physical audio loopback; sweep and observation recording remain future.",
+      "prerequisites": [
+        "rom_execution"
+      ],
+      "observables": "Listen for low/mid/high, watch red/magenta/green change once per tone; each border stays steady within a tone. Digital writes do not certify physical audio/video outputs.",
+      "failure_interpretation": "No automatic speaker readback; beeper unavailable if output/amplifier/speaker fails.",
+      "recovery_profile": "audio_restore",
+      "specification": "TS2068_DIAGNOSTIC_DESIGN.md#beeper-ay-cassette-and-joysticks",
+      "firmware_locations": [
+        {
+          "path": "src/modules.asm",
+          "symbol": "beeper_ready"
+        }
+      ],
+      "host_support": [],
+      "validation_evidence": [
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun stock TS2068, module/full-suite execution and fault injections; see exact cases and limitations. Physical validation pending."
+        }
+      ],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Default critical control and minimal reporting must remain in stackless ROM. CPU clock and active ROM fetch must remain usable; optional rich RAM state is not a recovery dependency.",
+      "execution_policy": "run_only_when_declared_prerequisites_hold",
+      "implementation_notes": "tests/V02_DIAGNOSTIC_SUITE.md"
+    },
+    {
+      "id": "AUD-02",
+      "name": "AY register and address decode",
+      "area": "audio",
+      "firmware_status": "partial",
+      "algorithm": "Input-safe R7, differing index-derived masked write/read R0-R13 values to expose storage/address mismatches; R14/R15 excluded; failure mutes. Walking patterns remain future.",
+      "prerequisites": [
+        "rom_execution"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "Register comparison does not verify clock,DAC or speaker; never blindly drive joystick port.",
+      "recovery_profile": "audio_restore",
+      "specification": "TS2068_DIAGNOSTIC_DESIGN.md#beeper-ay-cassette-and-joysticks",
+      "firmware_locations": [
+        {
+          "path": "src/modules.asm",
+          "symbol": "ay_test"
+        }
+      ],
+      "host_support": [],
+      "validation_evidence": [
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun stock TS2068, module/full-suite execution and fault injections; see exact cases and limitations. Physical validation pending."
+        }
+      ],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Default critical control and minimal reporting must remain in stackless ROM. CPU clock and active ROM fetch must remain usable; optional rich RAM state is not a recovery dependency.",
+      "execution_policy": "run_only_when_declared_prerequisites_hold",
+      "implementation_notes": "tests/V02_DIAGNOSTIC_SUITE.md"
+    },
+    {
+      "id": "AUD-03",
+      "name": "AY tone noise mixer amplitude envelope",
+      "area": "audio",
+      "firmware_status": "partial",
+      "algorithm": "Executable guided24-step AY sequence:four periods per A/B/C,volume3/8/15,noise31/8/1,envelopes9/13/10/8,chord,silence; yellow active labels and green progress; fixed bounded ROM table with masked14-register writes and mute/cancel. Analog output requires user observation.",
+      "prerequisites": [
+        "ay_registers_qualified"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "Audible output is user observation; separate AYclock/control and downstream analog possibilities.",
+      "recovery_profile": "audio_restore",
+      "specification": "TS2068_DIAGNOSTIC_DESIGN.md#beeper-ay-cassette-and-joysticks",
+      "firmware_locations": [
+        {
+          "path": "src/modules.asm",
+          "symbol": "aylisten_ready"
+        },
+        {
+          "path": "src/modules.asm",
+          "symbol": "ay_step"
+        }
+      ],
+      "host_support": [],
+      "validation_evidence": [
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun stock TS2068, module/full-suite execution and fault injections; see exact cases and limitations. Physical validation pending."
+        },
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/ay-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun actual24 step registers/highlight bytes,8 cancellation points,corrupt table and lost HOME writes; analog/physical validation pending."
+        }
+      ],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Default critical control and minimal reporting must remain in stackless ROM. CPU clock and active ROM fetch must remain usable; optional rich RAM state is not a recovery dependency.",
+      "execution_policy": "run_only_when_declared_prerequisites_hold",
+      "implementation_notes": "tests/V02_DIAGNOSTIC_SUITE.md"
+    },
+    {
+      "id": "IO-01",
+      "name": "Cassette output input and record verify",
+      "area": "io",
+      "firmware_status": "partial",
+      "algorithm": "Opt-in EAR00/40 raw observation with fixed polling budget and M cancellation. MIC pilot, edge counting and complete record/verify remain future.",
+      "prerequisites": [
+        "cassette_setup"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "Separate output/input/full path; direct MIC-to-EAR wire is not a calibrated fixture.",
+      "recovery_profile": "audio_restore",
+      "specification": "TS2068_DIAGNOSTIC_DESIGN.md#beeper-ay-cassette-and-joysticks",
+      "firmware_locations": [
+        {
+          "path": "src/modules.asm",
+          "symbol": "input_scan"
+        }
+      ],
+      "host_support": [],
+      "validation_evidence": [
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun stock TS2068, module/full-suite execution and fault injections; see exact cases and limitations. Physical validation pending."
+        }
+      ],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Default critical control and minimal reporting must remain in stackless ROM. CPU clock and active ROM fetch must remain usable; optional rich RAM state is not a recovery dependency.",
+      "execution_policy": "run_only_when_declared_prerequisites_hold",
+      "implementation_notes": "tests/V02_DIAGNOSTIC_SUITE.md"
+    },
+    {
+      "id": "IO-02",
+      "name": "Built-in joystick input and isolation",
+      "area": "io",
+      "firmware_status": "partial",
+      "algorithm": "Input-safe R7=3F, AY R14 reads via01F6/02F6. MainJ opens two live spatial pads; five active-low contacts (bits0/1/2/3/7) independently paint six-cell Up/Down/Left/Right/Fire indicators green while active, cyan after observed activation/release, or white if unseen. History is optional display-only attribute data; repeated momentary transitions remain live. Shows all combinations and raw bytes/EAR. Immutable bounded ROM1 helper at3F00 is first-opcode/full96-byte additive qualified before execution; return to ROM0 before restoringHSR. HOME edition uses HOME0/1,HSR00. Finite scan budget and guarded new-key exit; held mainJ quarantined.",
+      "prerequisites": [
+        "joystick_setup"
+      ],
+      "observables": "Live independent directions/Fire plus per-contact tested history, both ports, diagonals/fire/opposites, rawFF idle or absent, EAR00/40; user observation required, no automatic contact certification.",
+      "failure_interpretation": "Unconnected device is NOT RUN; do not drive pins or assume usable connector logic ground.",
+      "recovery_profile": "audio_restore",
+      "specification": "TS2068_DIAGNOSTIC_DESIGN.md#beeper-ay-cassette-and-joysticks",
+      "firmware_locations": [
+        {
+          "path": "src/modules.asm",
+          "symbol": "input_joy1"
+        },
+        {
+          "path": "src/joystick.asm",
+          "symbol": "joystick_paint"
+        }
+      ],
+      "host_support": [
+        "scripts/verify_joystick.mjs",
+        "docs/JOYSTICK_TEST.md"
+      ],
+      "validation_evidence": [
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun stock TS2068, module/full-suite execution and fault injections; see exact cases and limitations. Physical validation pending."
+        },
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/joystick-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun64 contact combinations per port-pair edition; exact highlights/release/isolation/cancellation and3 corrupt-helper guards; physical observation pending."
+        },
+        {
+          "kind": "emulator",
+          "path": "docs/validation/home-e09e53177d65/joystick-verification.json",
+          "image_sha256": "e09e53177d654dca3fcfa2ce67b4976f7c33b54eaf9daa203919660e33a9e936",
+          "result": "PASS",
+          "configuration": "HOME edition same64 contact combinations plus helper corruption guards; physical observation pending."
+        }
+      ],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Guarded optional ROM1 code transfer requires active cartridge bank1 mapping/opcode path; first-opcode/additive qualification detects ordinary corruption, not collisions or late/M1-only faults. Default minimal RAM reporter staysROM0. ROM-fixed rectangles/counts and no HOME stack; failed display writes affect appearance only.",
+      "execution_policy": "run_only_when_declared_prerequisites_hold",
+      "implementation_notes": "tests/V02_DIAGNOSTIC_SUITE.md"
+    },
+    {
+      "id": "SOAK-01",
+      "name": "Overnight RAM only",
+      "area": "soak",
+      "firmware_status": "partial",
+      "algorithm": "Continuous complete48K sweeps including address/random/retention and workspace; register-only16-bit completed-pass count wraps at65536. Any new key stops at a safe boundary. Recorded error masks enter the chip/bit reporter; otherwise soakstop displays No failures during the test with the hexadecimal count, then requires a fresh key to return. No incomplete label for this infinite run. Seed/dwell/direction profiles, scheduled hours and pause/resume remain future.",
+      "prerequisites": [
+        "qualified_workspace"
+      ],
+      "observables": "Phase border colors, completed-pass count and stopped/no-failures summary; RAM failures attempt chip-designator/bit identification with adaptive text and repeating border/beeper codes.",
+      "failure_interpretation": "First failure latched; time dependence does not confirm overheating; no persistent ROM-only log.",
+      "recovery_profile": "soak_recovery",
+      "specification": "BANKING_AND_OVERNIGHT_TESTS.md#overnight-ram-and-combined-soak",
+      "firmware_locations": [
+        {
+          "path": "src/modules.asm",
+          "symbol": "soak_ready"
+        },
+        {
+          "path": "src/diagnostic.asm",
+          "symbol": "ram_cancel"
+        },
+        {
+          "path": "src/modules.asm",
+          "symbol": "soak_count_done"
+        }
+      ],
+      "host_support": [
+        "scripts/verify_soak.mjs"
+      ],
+      "validation_evidence": [
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun stock TS2068, module/full-suite execution and fault injections; see exact cases and limitations. Physical validation pending."
+        },
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-ram-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun:28 quick-startup and6 explicit complete-sweep all-HOME scenarios;24 quick stuck-bit region faults plus representative complete faults, transient reads and write loss; unchanged SP and ROM-only opcodes."
+        },
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/soak-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun; stop summaries, register counts, fault priority, held-key/new-key behavior and lost display writes. Physical validation pending."
+        },
+        {
+          "kind": "emulator",
+          "path": "docs/validation/home-e09e53177d65/soak-verification.json",
+          "image_sha256": "e09e53177d654dca3fcfa2ce67b4976f7c33b54eaf9daa203919660e33a9e936",
+          "result": "PASS",
+          "configuration": "TSRun; stop summaries, register counts, fault priority, held-key/new-key behavior and lost display writes. Physical validation pending."
+        }
+      ],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Default critical control and minimal reporting must remain in stackless ROM. CPU clock and active ROM fetch must remain usable; optional rich RAM state is not a recovery dependency.",
+      "execution_policy": "run_only_when_declared_prerequisites_hold",
+      "implementation_notes": "tests/V02_DIAGNOSTIC_SUITE.md"
+    },
+    {
+      "id": "SOAK-02",
+      "name": "Overnight banking only",
+      "area": "soak",
+      "firmware_status": "partial",
+      "algorithm": "Continuous signature/write-isolation HSR batches with16-bit completed-pass count, M stop and first mismatch page. Timing/mapping-family rotation remains future.",
+      "prerequisites": [
+        "qualified_workspace"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "Do not mix thermal diagnosis with unqualified ROM reads; preserve first transition mismatch.",
+      "recovery_profile": "soak_recovery",
+      "specification": "BANKING_AND_OVERNIGHT_TESTS.md#overnight-ram-and-combined-soak",
+      "firmware_locations": [
+        {
+          "path": "src/modules.asm",
+          "symbol": "bank_ready"
+        }
+      ],
+      "host_support": [],
+      "validation_evidence": [
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun stock TS2068, module/full-suite execution and fault injections; see exact cases and limitations. Physical validation pending."
+        }
+      ],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Default critical control and minimal reporting must remain in stackless ROM. CPU clock and active ROM fetch must remain usable; optional rich RAM state is not a recovery dependency.",
+      "execution_policy": "run_only_when_declared_prerequisites_hold",
+      "implementation_notes": "tests/V02_DIAGNOSTIC_SUITE.md"
+    },
+    {
+      "id": "SOAK-03",
+      "name": "Combined overnight mixed load",
+      "area": "soak",
+      "firmware_status": "specified",
+      "algorithm": "Only after isolated tests pass, combine banking,RAM,qualified interrupts,video and safe AY traffic; rotate mapping families.",
+      "prerequisites": [
+        "qualified_interrupts"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "Combined failures require isolated reruns; no deliberate hidden PC/SP/vector.",
+      "recovery_profile": "soak_recovery",
+      "specification": "BANKING_AND_OVERNIGHT_TESTS.md#overnight-ram-and-combined-soak",
+      "firmware_locations": [],
+      "host_support": [],
+      "validation_evidence": [],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Only separately selected advanced IRQ/execution profiles introduce their disclosed RAM/control-flow exposure.",
+      "execution_policy": "separately_selectable_with_fresh_qualification"
+    },
+    {
+      "id": "UI-01",
+      "name": "Resource permissions and fallback reporting",
+      "area": "ui",
+      "firmware_status": "partial",
+      "algorithm": "Stackless menus/control with bounded press-edge quarantine for held numeric and optional keys; RAM error unions select degraded display, M acknowledges faults for independent modules; optional CRC qualifies code/gateway; IRQ uses a write-only saved-PC sink. Active tests use all-key release plus any-key stop; result screens accept any key; keyboard holds CAPS+SPACE or ENTER+SPACE. A stuck initial contact can prevent the broad stop channel arming. Startup selection/progress legends; steady RAM phase border colors without mid-sweep display writes; reporter R retry also requires release/new press. Embedded cartridge font, no live HOME font reads. Help C provides explicit TRAINING: finite synthetic sync/2/6/2 RAM, bank4 and CPU8/3 examples using shared stackless ROM pulse routines; M returns to Help. No fault state or optional CPU test is entered. ROM0 boot fault pulses require neither display nor keyboard. Font bytes now reside inDOCK ROM1 at2200-24FF; ROM0 rich renderers selectHSR03 briefly and restore01. Minimal pulses and attribute-coded degraded glyphs do not depend on font data. Mixed-case menus/instructions use existing embedded96-character TS2068 font; host-only asset case conversion preserves hardware/key identifiers and original author spelling. No additional font storage or live HOME font lookup. Menu1 Full coverage overview uses bounded selection quarantine; new1 starts, M returns, startupF remains direct. Keyboard end on selector7 presents fullsummary: automatic RAM/bank/AY matches, user-observation requirements and exclusions. Held exit chord is captured/excluded until a new input edge. Cancellation and faults do not show completion; keyboard timeout is not key certification. Fixed ROM screen assets show nominal-clock duration estimates: RAM options84/41/8/8/3/24sec; Full4min to keyboard/8min including timeout; startupR1.5min, F4/8min; keyboard4min timeout; beeper15sec, AY22sec; overnight1.5min/pass until stopped. These are model-derived hints, not timers or completion evidence; no control budgets changed. Fault pulse pacing now uses sync-following silence0.89s, intra-group silence0.41s and inter-group silence1.30s at nominal3.528MHz; longsync1.18s/153Hz and counting0.595s/429Hz, with approximately2.8:1 pitch separation. Shared code/train waits remain bounded in ROM, no RAM or interrupts. Selector0 Complete RAM success now loads rampass with All6 RAM chips PASS and all six designators, then reuses Full summary new-key quarantine. Error masks are checked before this dispatch. Quick/partial/full/soak/IRQ selectors remain separate and cancellations cannot show it. RAM menu states chip-identification capability. Individual RAM successes show Selected checks PASS; complete RAM shows All 6 RAM chips PASS. Shared pass_ready/fullsummary_ready input guard requires a fresh key. Cancellation does not claim success and mismatches enter the chip/bit reporter.",
+      "prerequisites": [
+        "rom_execution"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "Do not equate limited automatic success with whole-machine PASS; best-effort text is secondary.",
+      "recovery_profile": "rom_only",
+      "specification": "TS2068_DIAGNOSTIC_DESIGN.md#reporting-when-video-ram-fails",
+      "firmware_locations": [
+        {
+          "path": "src/diagnostic.asm",
+          "symbol": "menu_draw"
+        },
+        {
+          "path": "src/diagnostic.asm",
+          "symbol": "soundguide_ready"
+        },
+        {
+          "path": "src/boot.asm",
+          "symbol": "boot_fault_group"
+        },
+        {
+          "path": "src/modules.asm",
+          "symbol": "fullinfo_ready"
+        },
+        {
+          "path": "src/modules.asm",
+          "symbol": "fullsummary_ready"
+        },
+        {
+          "path": "src/modules.asm",
+          "symbol": "rampass_ready"
+        }
+      ],
+      "host_support": [
+        "scripts/measure_test_durations.mjs",
+        "scripts/verify_duration_ui.mjs",
+        "docs/TEST_DURATIONS.md",
+        "scripts/verify_fault_timing.mjs"
+      ],
+      "validation_evidence": [
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun stock TS2068, module/full-suite execution and fault injections; see exact cases and limitations. Physical validation pending."
+        },
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-ram-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun:28 quick-startup and6 explicit complete-sweep all-HOME scenarios;24 quick stuck-bit region faults plus representative complete faults, transient reads and write loss; unchanged SP and ROM-only opcodes."
+        },
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/boot-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun post-entry CPU-result, HOME address-pair/data fault injection; exact scope/limits in record; physical validation pending"
+        },
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/keyboard-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun:44 cases covering all40 contacts, exact non-overlapping whole-key attributes, shared CAPS/derived BREAK, ENTER+SPACE distinction, corrupt history and all HOME writes lost; no physical acceptance."
+        },
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/duration-ui-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun: seven packed ROM screen loaders, all6912 display bytes compared, unchanged SP; model timing estimates in test-duration-estimates.json, physical timings pending."
+        },
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/fault-timing-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun exact FE timestamps for2/6/2:11 tone envelopes, pitch and sync/intra/inter-group gap assertions; unchanged SP, physical timings pending."
+        }
+      ],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Default critical control and minimal reporting must remain in stackless ROM. CPU clock and active ROM fetch must remain usable; optional rich RAM state is not a recovery dependency. Boot still assumes activeROM0 opcode/operand reads and usable comparisons/branches/registers; FE border/beeper share SCLD. Localized HOME injections do not prove global CPU pin-fault survival.",
+      "execution_policy": "run_only_when_declared_prerequisites_hold",
+      "implementation_notes": "tests/V02_DIAGNOSTIC_SUITE.md"
+    },
+    {
+      "id": "UI-02",
+      "name": "Soak dashboard cancellation and first fault",
+      "area": "ui",
+      "firmware_status": "partial",
+      "algorithm": "Stable pass-count dashboard between destructive sweeps, M stop at safe boundaries and register-held first failure; no elapsed-time/temperature or resumable pause state.",
+      "prerequisites": [
+        "qualified_workspace"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "Latch first fault,mark partial passes,abandon corrupted stack; notification shares CPU/SCLD dependencies.",
+      "recovery_profile": "soak_recovery",
+      "specification": "BANKING_AND_OVERNIGHT_TESTS.md#status-screen-and-interruption",
+      "firmware_locations": [
+        {
+          "path": "src/modules.asm",
+          "symbol": "soak_ready"
+        }
+      ],
+      "host_support": [],
+      "validation_evidence": [
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun stock TS2068, module/full-suite execution and fault injections; see exact cases and limitations. Physical validation pending."
+        }
+      ],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Default critical control and minimal reporting must remain in stackless ROM. CPU clock and active ROM fetch must remain usable; optional rich RAM state is not a recovery dependency.",
+      "execution_policy": "run_only_when_declared_prerequisites_hold",
+      "implementation_notes": "tests/V02_DIAGNOSTIC_SUITE.md"
+    },
+    {
+      "id": "PV-01",
+      "name": "PicoVideo palette register path",
+      "area": "external_video",
+      "firmware_status": "specified",
+      "algorithm": "Distinct supported palette values and masked walking patterns; compare supported readback and check index aliases.",
+      "prerequisites": [
+        "picovideo_profile"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "External board/capture/output result does not certify native SCLD; optional extensions need installed-revision evidence.",
+      "recovery_profile": "picovideo_restore",
+      "specification": "PICOVIDEO_TEST_PROFILE.md#test-modules",
+      "firmware_locations": [],
+      "host_support": [],
+      "validation_evidence": [],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Default critical control and minimal reporting must remain in stackless ROM. CPU clock and active ROM fetch must remain usable; optional rich RAM state is not a recovery dependency.",
+      "execution_policy": "explicit_external_profile_only",
+      "source_credits": [
+        {
+          "author": "Jeff Burrell and PicoVideo contributors",
+          "title": "PicoVideo user manual and project",
+          "archive": "timex-sinclair-projects",
+          "url": "https://github.com/timex-sinclair-projects/PicoVideo",
+          "usage": "Documented optional interface profile; no firmware source copied"
+        }
+      ]
+    },
+    {
+      "id": "PV-02",
+      "name": "PicoVideo color channels and ramps",
+      "area": "external_video",
+      "firmware_status": "specified",
+      "algorithm": "Profile-correct pure channels, intensity/grayscale ramps and swatches; separate readback from visual judgement.",
+      "prerequisites": [
+        "picovideo_profile"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "External board/capture/output result does not certify native SCLD; optional extensions need installed-revision evidence.",
+      "recovery_profile": "picovideo_restore",
+      "specification": "PICOVIDEO_TEST_PROFILE.md#test-modules",
+      "firmware_locations": [],
+      "host_support": [],
+      "validation_evidence": [],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Default critical control and minimal reporting must remain in stackless ROM. CPU clock and active ROM fetch must remain usable; optional rich RAM state is not a recovery dependency.",
+      "execution_policy": "explicit_external_profile_only",
+      "source_credits": [
+        {
+          "author": "Jeff Burrell and PicoVideo contributors",
+          "title": "PicoVideo user manual and project",
+          "archive": "timex-sinclair-projects",
+          "url": "https://github.com/timex-sinclair-projects/PicoVideo",
+          "usage": "Documented optional interface profile; no firmware source copied"
+        }
+      ]
+    },
+    {
+      "id": "PV-03",
+      "name": "PicoVideo attribute CLUT mapping",
+      "area": "external_video",
+      "firmware_status": "specified",
+      "algorithm": "Four distinguishable palettes; all ink/paper indices and supported attribute selector combinations.",
+      "prerequisites": [
+        "picovideo_profile"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "External board/capture/output result does not certify native SCLD; optional extensions need installed-revision evidence.",
+      "recovery_profile": "picovideo_restore",
+      "specification": "PICOVIDEO_TEST_PROFILE.md#test-modules",
+      "firmware_locations": [],
+      "host_support": [],
+      "validation_evidence": [],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Default critical control and minimal reporting must remain in stackless ROM. CPU clock and active ROM fetch must remain usable; optional rich RAM state is not a recovery dependency.",
+      "execution_policy": "explicit_external_profile_only",
+      "source_credits": [
+        {
+          "author": "Jeff Burrell and PicoVideo contributors",
+          "title": "PicoVideo user manual and project",
+          "archive": "timex-sinclair-projects",
+          "url": "https://github.com/timex-sinclair-projects/PicoVideo",
+          "usage": "Documented optional interface profile; no firmware source copied"
+        }
+      ]
+    },
+    {
+      "id": "PV-04",
+      "name": "PicoVideo native mode reproduction",
+      "area": "external_video",
+      "firmware_status": "specified",
+      "algorithm": "Compare0/1/2/6 patterns on native and external output; classify deliberate ULA+ palette differences.",
+      "prerequisites": [
+        "picovideo_profile"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "External board/capture/output result does not certify native SCLD; optional extensions need installed-revision evidence.",
+      "recovery_profile": "picovideo_restore",
+      "specification": "PICOVIDEO_TEST_PROFILE.md#test-modules",
+      "firmware_locations": [],
+      "host_support": [],
+      "validation_evidence": [],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Default critical control and minimal reporting must remain in stackless ROM. CPU clock and active ROM fetch must remain usable; optional rich RAM state is not a recovery dependency.",
+      "execution_policy": "explicit_external_profile_only",
+      "source_credits": [
+        {
+          "author": "Jeff Burrell and PicoVideo contributors",
+          "title": "PicoVideo user manual and project",
+          "archive": "timex-sinclair-projects",
+          "url": "https://github.com/timex-sinclair-projects/PicoVideo",
+          "usage": "Documented optional interface profile; no firmware source copied"
+        }
+      ]
+    },
+    {
+      "id": "PV-05",
+      "name": "PicoVideo display write capture stress",
+      "area": "external_video",
+      "firmware_status": "specified",
+      "algorithm": "Verify HOME data after sequential/scattered/burst writes while observing external capture; separately add qualified banking and profile-confirmed ROM overlay behavior.",
+      "prerequisites": [
+        "picovideo_profile"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "External board/capture/output result does not certify native SCLD; optional extensions need installed-revision evidence.",
+      "recovery_profile": "picovideo_restore",
+      "specification": "PICOVIDEO_TEST_PROFILE.md#test-modules",
+      "firmware_locations": [],
+      "host_support": [],
+      "validation_evidence": [],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Default critical control and minimal reporting must remain in stackless ROM. CPU clock and active ROM fetch must remain usable; optional rich RAM state is not a recovery dependency.",
+      "execution_policy": "explicit_external_profile_only",
+      "source_credits": [
+        {
+          "author": "Jeff Burrell and PicoVideo contributors",
+          "title": "PicoVideo user manual and project",
+          "archive": "timex-sinclair-projects",
+          "url": "https://github.com/timex-sinclair-projects/PicoVideo",
+          "usage": "Documented optional interface profile; no firmware source copied"
+        }
+      ]
+    },
+    {
+      "id": "PV-06",
+      "name": "PicoVideo cancel and mode recovery",
+      "area": "external_video",
+      "firmware_status": "specified",
+      "algorithm": "Bounded supported mode changes and palette disable; cancel at safe phase boundaries; recover without readback/output dependency.",
+      "prerequisites": [
+        "picovideo_profile"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "External board/capture/output result does not certify native SCLD; optional extensions need installed-revision evidence.",
+      "recovery_profile": "picovideo_restore",
+      "specification": "PICOVIDEO_TEST_PROFILE.md#test-modules",
+      "firmware_locations": [],
+      "host_support": [],
+      "validation_evidence": [],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Default critical control and minimal reporting must remain in stackless ROM. CPU clock and active ROM fetch must remain usable; optional rich RAM state is not a recovery dependency.",
+      "execution_policy": "explicit_external_profile_only",
+      "source_credits": [
+        {
+          "author": "Jeff Burrell and PicoVideo contributors",
+          "title": "PicoVideo user manual and project",
+          "archive": "timex-sinclair-projects",
+          "url": "https://github.com/timex-sinclair-projects/PicoVideo",
+          "usage": "Documented optional interface profile; no firmware source copied"
+        }
+      ]
+    },
+    {
+      "id": "UI-03",
+      "name": "Schematic aware degraded fault text",
+      "area": "ui",
+      "firmware_status": "implemented",
+      "algorithm": "Large attribute-coded chip-path pages select surviving PAPER/INK/pixel lanes from RAM error unions; adapt upper-chip pages too; both-nibble failures skip text while register-preserving pulse reports continue.",
+      "prerequisites": [
+        "rom_execution"
+      ],
+      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "failure_interpretation": "Stable-nibble host contrast checks do not guarantee arbitrary-fault readability, healthy-lane stability or SCLD display correctness; both files share U6/U7.",
+      "recovery_profile": "rom_only",
+      "specification": "DEGRADED_DISPLAY.md#prototype-and-remaining-target-work",
+      "firmware_locations": [
+        {
+          "path": "src/modules.asm",
+          "symbol": "fault_draw"
+        }
+      ],
+      "host_support": [
+        "scripts/prototype_degraded_display.py::page",
+        "scripts/prototype_degraded_display.py::attribute_page",
+        "assets/degraded-display/host-validation.json"
+      ],
+      "validation_evidence": [
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun stock TS2068, module/full-suite execution and fault injections; see exact cases and limitations. Physical validation pending."
+        },
+        {
+          "kind": "emulator",
+          "path": "docs/validation/v02-301339832d6f/suite-ram-verification.json",
+          "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+          "result": "PASS",
+          "configuration": "TSRun:28 quick-startup and6 explicit complete-sweep all-HOME scenarios;24 quick stuck-bit region faults plus representative complete faults, transient reads and write loss; unchanged SP and ROM-only opcodes."
+        }
+      ],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Default critical control and minimal reporting must remain in stackless ROM. CPU clock and active ROM fetch must remain usable; optional rich RAM state is not a recovery dependency.",
+      "execution_policy": "run_only_when_declared_prerequisites_hold",
+      "implementation_notes": "tests/V02_DIAGNOSTIC_SUITE.md"
+    },
+    {
+      "id": "EXT-01",
+      "name": "TSPico external SRAM and slot isolation",
+      "area": "external_memory",
+      "firmware_status": "specified",
+      "algorithm": "Opt-in exact-profile SRAM patterns/walking/March/address/random/soak; establish slot overlap with unique signatures, protect diagnostic image and runtime areas, keep immutable execution anchor, bounded mapping and recovery. No external SRAM code or probes implemented. Use verified capability profiles independent of displayed version, supporting developmental firmware; unsupported capabilities skip without speculative writes.",
+      "prerequisites": [
+        "tspico_sram_profile"
+      ],
+      "observables": "Planned physical slot/verified offset, logical address, expected/observed, XOR mask and first-fault pulses; not currently executable.",
+      "failure_interpretation": "TSPico SRAM U13 (board prefix required), selector, bus/decoder/interface path; not a HOME DRAM chip verdict. Slot overlap must be established before claiming capacity coverage.",
+      "recovery_profile": "rom_only",
+      "specification": "TSPICO_DIAGNOSTIC_PROFILE.md#proposed-opt-in-sram-test",
+      "firmware_locations": [],
+      "host_support": [],
+      "validation_evidence": [],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "Entire DOCK-slot changes can replace running code. Requires separately decoded immutable anchor or explicitly qualified HOME gateway; physical cartridge/TSPico overlapping decode must be excluded.",
+      "execution_policy": "future_opt_in_verified_hardware_profile",
+      "implementation_notes": "TSPICO_DIAGNOSTIC_PROFILE.md"
+    },
+    {
+      "id": "BOOT-03",
+      "name": "U16 HOME-ROM reset diagnostic bootstrap",
+      "area": "boot",
+      "firmware_status": "implemented",
+      "algorithm": "16KiB U16 image beginsJP entry at0000; DI/known DECR40 andHSR00, early register/math/shift checks, full-image additive16-bit integrity beforeRAM, boundedR/F selector, quick48K00/FF plus qualified55/AA alias pairs. CompleteRAM/HOME Full/audio/keyboard/joystick/IRQ subset; no stockOS/DOCK/EXROM contents. Native HOME control remains stackless; minimal faults are border/beeper, no large degraded glyph renderer.",
+      "prerequisites": [
+        "home_reset_rom"
+      ],
+      "observables": "Reset status/menu, audible RAM chip/bit codes, CPU8/stage, address9/index, integrity3, explicit completeRAM result. HOME Full coverage differs from cartridge Full.",
+      "failure_interpretation": "Bypasses OS RAM/ROM/cartridge-launch failures; still requires HOME decode, CPU clock/reset/fetch and shared buses. Silent/frozen machine cannot identify a component. OriginalU16 removed, cannot checksum it in this profile.",
+      "recovery_profile": "rom_only",
+      "specification": "HOME_ROM_EDITION.md#implementation-and-validation",
+      "firmware_locations": [
+        {
+          "path": "build/home/home.asm",
+          "symbol": "entry"
+        },
+        {
+          "path": "build/home/home.asm",
+          "symbol": "home_integrity"
+        }
+      ],
+      "host_support": [
+        "scripts/build_home_rom.py",
+        "scripts/verify_home_rom.mjs",
+        "scripts/check_home_fuse.py",
+        "docs/HOME_ROM_EDITION.md"
+      ],
+      "validation_evidence": [
+        {
+          "kind": "emulator",
+          "path": "docs/validation/home-e09e53177d65/verification.json",
+          "image_sha256": "e09e53177d654dca3fcfa2ce67b4976f7c33b54eaf9daa203919660e33a9e936",
+          "result": "PASS",
+          "configuration": "TSRun PC0, absentDOCK/EXROM, dirtyRAM; quick/completeRAM,12 nibble-fault cases, all writes lost, self-integrity, screen copies, HOME Full andIRQ."
+        },
+        {
+          "kind": "emulator",
+          "path": "docs/validation/home-e09e53177d65/fuse-verification.json",
+          "image_sha256": "e09e53177d654dca3fcfa2ce67b4976f7c33b54eaf9daa203919660e33a9e936",
+          "result": "checkpoint_completed",
+          "configuration": "Fuse native reset with customU16,noDOCK andallFF EXROM; physical timing pending."
+        }
+      ],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "TS2068 emulator execution and relevant fault injection",
+        "Physical target/cartridge validation for supported behavior",
+        "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
+      ],
+      "control_flow_exposure": "HOME ROM0000-3FFF/reset fetch path and CPU instructions must work. HSR00 throughout supported tests. IRQ hardware savesPC to sacrificialsink but firmware never reads/returns through it; NMI is unsupported restart, not qualified cancellation.",
+      "execution_policy": "run_only_when_declared_prerequisites_hold",
+      "implementation_notes": "HOME_ROM_EDITION.md"
+    }
+  ],
+  "fault_containment_contract": "FAULT_CONTAINMENT.md"
+}

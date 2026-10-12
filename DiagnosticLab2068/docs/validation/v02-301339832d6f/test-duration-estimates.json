@@ -1,0 +1,109 @@
+{
+  "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+  "engine_sha256": "0779183741d082a14464d6a6ae0aeed8aa471d80705faf3d113cc68e7386ba24",
+  "cpu_sha256": "c11b6deba8b2e20af6f8e4c21b059b87a70a084d7c210df767ae179f8b3ca44b",
+  "result": "PASS",
+  "configuration": "TSRun model; direct menu selection; healthy RAM; no keys; 58688 T-states/frame at 3528000Hz; also reported at nominal60Hz",
+  "limitations": [
+    "Model estimates, not measured physical durations",
+    "Full includes finite keyboard timeout; user exit can shorten it",
+    "Faults and cancellation change duration; emulator host speed is irrelevant"
+  ],
+  "cases": [
+    {
+      "entry": "select_all",
+      "frames": 5032,
+      "seconds_at_60_hz": 83.86666666666666,
+      "seconds_at_model_clock": 83.70692063492064,
+      "checkpoints_frames": {
+        "ram_start": 0,
+        "tests_done": 5020,
+        "rampass_ready": 5031,
+        "fullsummary_ready": 5031,
+        "pass_ready": 5031
+      }
+    },
+    {
+      "entry": "select_patterns",
+      "frames": 2432,
+      "seconds_at_60_hz": 40.53333333333333,
+      "seconds_at_model_clock": 40.45612698412698,
+      "checkpoints_frames": {
+        "ram_start": 0,
+        "tests_done": 2420,
+        "fullsummary_ready": 2431,
+        "pass_ready": 2431
+      }
+    },
+    {
+      "entry": "select_march",
+      "frames": 507,
+      "seconds_at_60_hz": 8.45,
+      "seconds_at_model_clock": 8.433904761904762,
+      "checkpoints_frames": {
+        "ram_start": 0,
+        "tests_done": 495,
+        "fullsummary_ready": 506,
+        "pass_ready": 506
+      }
+    },
+    {
+      "entry": "select_address",
+      "frames": 488,
+      "seconds_at_60_hz": 8.133333333333333,
+      "seconds_at_model_clock": 8.11784126984127,
+      "checkpoints_frames": {
+        "ram_start": 0,
+        "tests_done": 476,
+        "fullsummary_ready": 487,
+        "pass_ready": 487
+      }
+    },
+    {
+      "entry": "select_random",
+      "frames": 192,
+      "seconds_at_60_hz": 3.2,
+      "seconds_at_model_clock": 3.193904761904762,
+      "checkpoints_frames": {
+        "ram_start": 0,
+        "tests_done": 180,
+        "fullsummary_ready": 191,
+        "pass_ready": 191
+      }
+    },
+    {
+      "entry": "select_retention",
+      "frames": 1459,
+      "seconds_at_60_hz": 24.316666666666666,
+      "seconds_at_model_clock": 24.270349206349206,
+      "checkpoints_frames": {
+        "ram_start": 0,
+        "tests_done": 1447,
+        "fullsummary_ready": 1458,
+        "pass_ready": 1458
+      }
+    },
+    {
+      "entry": "select_full",
+      "frames": 27775,
+      "seconds_at_60_hz": 462.9166666666667,
+      "seconds_at_model_clock": 462.03492063492064,
+      "checkpoints_frames": {
+        "ram_start": 0,
+        "tests_done": 5020,
+        "bank_pass": 5031,
+        "beeper_ready": 5077,
+        "aylisten_ready": 6000,
+        "video_bars_ready": 7289,
+        "video_standard_ready": 8363,
+        "video_secondary_ready": 9436,
+        "video_ecm_ready": 10519,
+        "video_hires_ready": 11604,
+        "video_mix128_ready": 12675,
+        "keyboard_ready": 13748,
+        "fullsummary_ready": 27774,
+        "pass_ready": 27774
+      }
+    }
+  ]
+}

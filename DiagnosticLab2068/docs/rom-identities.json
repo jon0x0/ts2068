@@ -1,0 +1,38 @@
+[
+  {
+    "file": "D:\\T7_Recover\\Jon\\Personal\\Timex\\David Anderson\\TS2068-Ref-Library\\2068 ROMS\\TS2068_U16.BIN",
+    "role": "HOME",
+    "stock": true,
+    "bytes": 16384,
+    "crc32": "BF44EC3F",
+    "sha1": "1446cb2780a9dedf640404a639fa3ae518b2d8aa",
+    "sha256": "6338f94b2ee5000b81a64a4f055b8f1d2db6e669e52cafc11233ff63896fae13"
+  },
+  {
+    "file": "D:\\T7_Recover\\Jon\\Personal\\Timex\\David Anderson\\TS2068-Ref-Library\\2068 ROMS\\TS2068_U20.BIN",
+    "role": "EXROM",
+    "stock": true,
+    "bytes": 8192,
+    "crc32": "AE16233A",
+    "sha1": "7e265a2c1f621ed365ea23bdcafdedbc79c1299c",
+    "sha256": "e52e861bd30c144f174a596233c6f3e5804cff170fdc50d44ba61a1683b8174c"
+  },
+  {
+    "file": "D:\\T7_Recover\\Jon\\Personal\\Timex\\David Anderson\\TS2068-Ref-Library\\2068 ROMS\\2068Home.BIN",
+    "role": "HOME",
+    "stock": false,
+    "bytes": 16384,
+    "crc32": "7D411FE9",
+    "sha1": "ca5201b56d5f587326a577f39041b41015084d7f",
+    "sha256": "1426f665e676a2a1f9edcf211b97f4888879938e0be30673dd1181c370532a1d"
+  },
+  {
+    "file": "D:\\T7_Recover\\Jon\\Personal\\Timex\\David Anderson\\TS2068-Ref-Library\\2068 ROMS\\2068Exrom.BIN",
+    "role": "EXROM",
+    "stock": false,
+    "bytes": 8192,
+    "crc32": "526F5676",
+    "sha1": "387d3d74189d0771b88c03d772a332e74c72f96a",
+    "sha256": "4ad104af52f188c74e946b0b9ad0c6e36d935b4a5c4fc910e55edfc27121cdce"
+  }
+]

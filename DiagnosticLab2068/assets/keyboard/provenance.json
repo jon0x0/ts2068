@@ -1,0 +1,14 @@
+{
+  "author": "Josef Jelinek",
+  "source_url": "https://josef-jelinek.github.io/TSRun/keyboard.png",
+  "source_sha256": "bbafcbb28a6acb8ef17b20a7ab47200071630a41f6d60582d3a3099295fd19a6",
+  "dimensions": [
+    533,
+    191
+  ],
+  "published_url_verified_identical": true,
+  "verification_date": "2026-10-12",
+  "keyboard_mapping_source": "Josef Jelinek TSRun keyboard.js local snapshot",
+  "mapping_source_sha256": "a130fb3f9f68a9792262551331fcdfb64eb98c6a24af9386277cc1c7203d296d",
+  "adaptation": "Source key-face contours (largest connected white component; horizontal spans filled to remove tiny legends), deterministic BOX reduction into non-overlapping native attribute rectangles, main labels redrawn using embedded Timex font; original stagger, wide CAPS/ENTER/SPACE and inverse SYMBOL SHIFT retained within native limits"
+}

@@ -11,6 +11,7 @@ groups = {
         ('Berzerk', 'The arcade port with virtual D-pad and touch controls.', [('Play', 'https://jon0x0.github.io/berzerk_ts2068/'), ('Project', GITHUB+'berzerk_ts2068')]),
     ],
     'Development tools': [
+        ('TS2068 Diagnostic Lab', 'ROM-based hardware diagnostics and RAM chip/bit reporting; cartridge and simplified HOME ROM editions.', [('Project', 'DiagnosticLab2068/'), ('Download v0.2', 'DiagnosticLab2068/release/TS2068DiagnosticLab-v0.2.zip'), ('Manual', 'DiagnosticLab2068/docs/manual/')]),
         ('AI skill', 'Reusable skills, tools, examples and technical references for TS2068 development.', [('Project', GITHUB+'AISkill_TS2068')]),
         ('TSRun', 'Josef Jelinek’s TS2068 browser emulator.', [('Emulator', 'https://josef-jelinek.github.io/TSRun/'), ('Project', 'https://github.com/josef-jelinek/TSRun')]),
     ],

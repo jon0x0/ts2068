@@ -1,0 +1,8 @@
+{
+  "url": "https://raw.githubusercontent.com/timex-sinclair-projects/PicoVideo/main/PicoVideo%20manual.pdf",
+  "author": "Jeff Burrell",
+  "pages": 25,
+  "sha256": "42ccadcd8ef349d3d39fedd52799b0d37d6336c0540bfc0171ed185f5a801253",
+  "retrieved_date": "2026-10-11",
+  "limitation": "Generic optional format extensions must be checked against installed firmware"
+}

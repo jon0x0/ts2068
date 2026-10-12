@@ -1,0 +1,175 @@
+{
+  "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+  "result": "PASS",
+  "configuration": "TSRun ROM reporter entry with seeded register fault state; no HOME RAM prerequisite",
+  "cases": [
+    {
+      "region": 0,
+      "bit": 0,
+      "chip_code": 1,
+      "detail": 1,
+      "sync_output": true
+    },
+    {
+      "region": 0,
+      "bit": 1,
+      "chip_code": 1,
+      "detail": 2,
+      "sync_output": true
+    },
+    {
+      "region": 0,
+      "bit": 2,
+      "chip_code": 1,
+      "detail": 3,
+      "sync_output": true
+    },
+    {
+      "region": 0,
+      "bit": 3,
+      "chip_code": 1,
+      "detail": 4,
+      "sync_output": true
+    },
+    {
+      "region": 0,
+      "bit": 4,
+      "chip_code": 2,
+      "detail": 1,
+      "sync_output": true
+    },
+    {
+      "region": 0,
+      "bit": 5,
+      "chip_code": 2,
+      "detail": 2,
+      "sync_output": true
+    },
+    {
+      "region": 0,
+      "bit": 6,
+      "chip_code": 2,
+      "detail": 3,
+      "sync_output": true
+    },
+    {
+      "region": 0,
+      "bit": 7,
+      "chip_code": 2,
+      "detail": 4,
+      "sync_output": true
+    },
+    {
+      "region": 1,
+      "bit": 0,
+      "chip_code": 3,
+      "detail": 1,
+      "sync_output": true
+    },
+    {
+      "region": 1,
+      "bit": 1,
+      "chip_code": 3,
+      "detail": 2,
+      "sync_output": true
+    },
+    {
+      "region": 1,
+      "bit": 2,
+      "chip_code": 3,
+      "detail": 3,
+      "sync_output": true
+    },
+    {
+      "region": 1,
+      "bit": 3,
+      "chip_code": 3,
+      "detail": 4,
+      "sync_output": true
+    },
+    {
+      "region": 1,
+      "bit": 4,
+      "chip_code": 4,
+      "detail": 1,
+      "sync_output": true
+    },
+    {
+      "region": 1,
+      "bit": 5,
+      "chip_code": 4,
+      "detail": 2,
+      "sync_output": true
+    },
+    {
+      "region": 1,
+      "bit": 6,
+      "chip_code": 4,
+      "detail": 3,
+      "sync_output": true
+    },
+    {
+      "region": 1,
+      "bit": 7,
+      "chip_code": 4,
+      "detail": 4,
+      "sync_output": true
+    },
+    {
+      "region": 2,
+      "bit": 0,
+      "chip_code": 5,
+      "detail": 1,
+      "sync_output": true
+    },
+    {
+      "region": 2,
+      "bit": 1,
+      "chip_code": 5,
+      "detail": 2,
+      "sync_output": true
+    },
+    {
+      "region": 2,
+      "bit": 2,
+      "chip_code": 5,
+      "detail": 3,
+      "sync_output": true
+    },
+    {
+      "region": 2,
+      "bit": 3,
+      "chip_code": 5,
+      "detail": 4,
+      "sync_output": true
+    },
+    {
+      "region": 2,
+      "bit": 4,
+      "chip_code": 6,
+      "detail": 1,
+      "sync_output": true
+    },
+    {
+      "region": 2,
+      "bit": 5,
+      "chip_code": 6,
+      "detail": 2,
+      "sync_output": true
+    },
+    {
+      "region": 2,
+      "bit": 6,
+      "chip_code": 6,
+      "detail": 3,
+      "sync_output": true
+    },
+    {
+      "region": 2,
+      "bit": 7,
+      "chip_code": 6,
+      "detail": 4,
+      "sync_output": true
+    }
+  ]
+}

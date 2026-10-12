@@ -1,0 +1,38 @@
+{
+  "image_sha256": "e09e53177d654dca3fcfa2ce67b4976f7c33b54eaf9daa203919660e33a9e936",
+  "result": "PASS",
+  "cases": [
+    {
+      "name": "stopped count 0000 / held-key quarantine / new-key return",
+      "result": "PASS"
+    },
+    {
+      "name": "stopped count 0001 / held-key quarantine / new-key return",
+      "result": "PASS"
+    },
+    {
+      "name": "stopped count 1234 / held-key quarantine / new-key return",
+      "result": "PASS"
+    },
+    {
+      "name": "stopped count FFFF / held-key quarantine / new-key return",
+      "result": "PASS"
+    },
+    {
+      "name": "actual first-pass interruption before any completed pass",
+      "result": "PASS"
+    },
+    {
+      "name": "recorded RAM mismatch wins over stopped/no-failures message",
+      "result": "PASS"
+    },
+    {
+      "name": "lost display writes cannot prevent stop acknowledgement",
+      "result": "PASS"
+    }
+  ],
+  "limitations": [
+    "Model execution and display-memory checks; physical validation pending",
+    "16-bit completed-pass count wraps at65536; stopped run has no finite completion endpoint"
+  ]
+}
