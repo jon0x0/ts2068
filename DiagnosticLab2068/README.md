@@ -4,6 +4,46 @@ Release v0.2 | October 12, 2026
 
 **[Download the complete release](release/TS2068DiagnosticLab-v0.2.zip)** · **[Web manual](https://jon0x0.github.io/ts2068/DiagnosticLab2068/docs/manual/)** · **[PDF manual](output/pdf/TS2068-Diagnostic-Lab-Cartridge-Manual.pdf)**
 
+## Introduction
+
+Diagnostic Lab TS2068 is a new Codex-generated diagnostic tool for checking a Timex Sinclair 2068 and helping track down hardware problems. It offers a guided Full test and a menu of individual tests, so you can check a working machine, investigate a particular symptom, or leave RAM and bank-switching tests running to look for intermittent problems. A simplified diagnostic is also supplied as a replacement HOME ROM image for replacement testing. This version can bypass the original HOME firmware and cartridge-startup dependencies, although it has fewer tests. Pending confirmation that the HOME ROM version may need a remapping to match a TS2068 addressing bug.
+
+A major design goal is to keep testing and reporting when RAM is unreliable. The diagnostic code runs from ROM without relying on a RAM stack. It tests all 48K of internal RAM and can attempt to identify the suspect RAM chip or chips by their motherboard reference designators. The cartridge adapts its fault display where possible when display RAM is failing, and also gives chip/bit codes through beeps and border flashes. The simplified HOME ROM edition uses the sound and border codes for RAM faults. These identify suspect hardware paths; faulty wiring or control signals can sometimes look like a bad RAM chip.
+
+Other tests cover cartridge bank switching, optional HOME ROM and EXROM checksums, selected Z80 and address-line checks, SCLD interrupt behavior, the beeper, and AY sound registers and playback. Video screens include Normal/Bright color bars, FLASH, the second display file, an extended-color gradient and color disc, high-resolution calibration patterns, and 128 attribute combinations. Interactive keyboard and joystick screens show current inputs. Joystick directions and Fire also retain a tested indication while continuing to show live press/release changes. Stopping the RAM soak gives a no-failures message if no errors were recorded, together with the completed-pass count; a detected failure goes to the chip/bit report.
+
+## Usage
+
+Normally, powerup startup runs a short baseline check:
+
+- **Selected Z80 checks:** register, arithmetic and shift comparisons.
+- **Cartridge integrity:** checks all eight ROM chunks.
+- **Quick RAM check:** writes and reads `00` and `FF` throughout all 48K.
+- **Address checks:** exercises 16 address-line pairs with opposing `55`/`AA` patterns.
+
+It then opens the menu—about **9 seconds from normal cartridge launch** in the emulator. This can catch many basic faults, but skips the longer RAM patterns and retention tests.
+
+Hold these keys while booting:
+
+| Key | What runs |
+| --- | --- |
+| **R** | Complete RAM test: eight patterns, walking bits, March C−, address-derived data, seeded random data and `55`/`AA` write/hold/read. About **84 seconds**, followed by **“All 6 RAM chips PASS”** if successful. |
+| **F** | Full sequence: Complete RAM, 100 bank-switching cycles, beeper, AY register checks and sound demonstration, six video screens, then keyboard testing. About **4 minutes to the keyboard**, or **8 minutes unattended**. |
+| **Neither** | The short baseline above, then the menu. |
+
+The startup CPU and integrity checks still precede the R/F choices. Release the held selection key, then press a new key to stop at a safe boundary. Failures enter the relevant report.
+
+**F does not include every menu option:** ROM checksums, extended CPU/address tests, SCLD interrupt checks, joysticks and continuous soak remain separately selectable. Sound, video and keyboard results require your observation.
+
+The simplified **HOME ROM edition** supports the same R/F choices, but substitutes its own image-integrity check and omits cartridge banking and video tests from Full.
+
+The release ZIP contains the .dck cartridge image, raw images for EPROM and PicoROM use, the simplified replacement HOME ROM image for testing with a socketed ROM, programming and installation instructions, and an illustrated manual in PDF and offline web formats. The software has passed emulator checks, but physical hardware validation is still needed (it has been tested with PicoROM), so beta testers are needed. A passive cartridge requires enough of the original machine startup circuitry and firmware to work before it can take control.
+
+Special thanks to Carl Miles, whose TS2068 Diagnostics Cartridge documentation helped inspire the coverage and approach, and Dylan Smith and Brendan Alford, whose ZX Spectrum Diagnostics ROM provided valuable inspiration for testing with unreliable RAM and reporting failures. Thanks also to David Anderson and the TS2068 Reference Library contributors, Josef Jelinek for TSRun, Mark Miller for 128 Colors, and the Fuse contributors. Full source and inspiration credits are included in the release.
+
+
+## Additional documentation and development
+
 Runnable ROM-only **v0.2 diagnostic suite** for the stock TS2068. It tests hardware with minimal RAM assumptions, identifies suspect RAM chip/bit paths, and retains stackless ROM control and border/beeper reports when the screen is damaged. Physical TS2068/cartridge validation is pending; advanced research modules remain explicitly distinguished in the catalog.
 
 **Attempt to identify which RAM chip(s) are failing:** tests report suspect U6, U7, U12, U13, U17 or U18 paths and implicated data bits. When the display is unreadable, long sync followed by2 /chip /bit can identify them by sound; multiple suspect chips are reported in turn. See the [sound-code lookup table](docs/RAM_SOUND_CODES.md). Shared wiring/decode can mimic a failed IC, so chip identification is a troubleshooting lead rather than proof. CPU/cartridge execution and beeper output must still work.
