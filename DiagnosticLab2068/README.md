@@ -23,7 +23,7 @@ Normally, powerup startup runs a short baseline check:
 
 It then opens the menu—about **9 seconds from normal cartridge launch** in the emulator. This can catch many basic faults, but skips the longer RAM patterns and retention tests.
 
-Hold these keys while booting:
+Optionally hold these keys while booting:
 
 | Key | What runs |
 | --- | --- |
