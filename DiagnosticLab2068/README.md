@@ -2,6 +2,8 @@
 
 Release v0.2 | October 12, 2026
 
+**[Download the complete release](release/TS2068DiagnosticLab-v0.2.zip)** · **[Web manual](https://jon0x0.github.io/ts2068/DiagnosticLab2068/docs/manual/)** · **[PDF manual](output/pdf/TS2068-Diagnostic-Lab-Cartridge-Manual.pdf)**
+
 Runnable ROM-only **v0.2 diagnostic suite** for the stock TS2068. It tests hardware with minimal RAM assumptions, identifies suspect RAM chip/bit paths, and retains stackless ROM control and border/beeper reports when the screen is damaged. Physical TS2068/cartridge validation is pending; advanced research modules remain explicitly distinguished in the catalog.
 
 **Attempt to identify which RAM chip(s) are failing:** tests report suspect U6, U7, U12, U13, U17 or U18 paths and implicated data bits. When the display is unreadable, long sync followed by2 /chip /bit can identify them by sound; multiple suspect chips are reported in turn. See the [sound-code lookup table](docs/RAM_SOUND_CODES.md). Shared wiring/decode can mimic a failed IC, so chip identification is a troubleshooting lead rather than proof. CPU/cartridge execution and beeper output must still work.
