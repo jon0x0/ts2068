@@ -17,6 +17,10 @@ a TSVideoCodec-based eight-frame Extended Colour Mode startup animation,
 and a custom Z80 random dungeon initialization routine. Startup takes about
 five seconds in emulation. No level cassette or replacement system ROM is needed.
 
+**All three original levels are incorporated into the cartridge. Find the keys!**
+No level tape is needed to continue the adventure. To use a key, press
+**U** (Use), then **K** (Key); carrying a key alone does not unlock a door.
+
 ## Controls
 
 Player 1 joystick works through the real TS2068 AY register 14 input at
