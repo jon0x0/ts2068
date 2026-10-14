@@ -1,0 +1,155 @@
+{
+  "status": "Scripted Crown cartridge gameplay",
+  "redrawChecks": {
+    "repeatedPlayerMoves": 20,
+    "creatureTurns": 8,
+    "playerGlyphAndContrast": true,
+    "oldPlayerBitmapCleared": true,
+    "oldCreatureBitmapAndPaperCleared": true
+  },
+  "snapshots": [
+    {
+      "LV": 1,
+      "RM": 1,
+      "MX": 16,
+      "MY": 16,
+      "HP": 20,
+      "DF": 1,
+      "stage": "level1",
+      "screen": "LIFE PTS LEFT 20 Entry room\n        ???????   ?\n                  ?????????\n                  ?       ?\n                  ?       ?\n        ???????   ?   ?   ?\n              ?   ?       ?\n              ?   ?       ?\n              ?   ?????   ?\n              ?           ?\n              ?           ?\n              ?           ?\n              ?   ?????   ?\n              ?   ?   ?   ?\n              ?   ?   ?   ?\n              ?   ?   ?   ?\n              ?   ?   ?   ?\n              ?   ?   ?   ?\n              ?? ??   ?????",
+      "free": 3974
+    },
+    {
+      "LV": 1,
+      "RM": 1,
+      "MX": 16,
+      "MY": 15,
+      "HP": 20,
+      "DF": 1,
+      "stage": "move",
+      "screen": "LIFE PTS LEFT 20 Entry room\n        ???????   ?\n                  ?????????\n                  ?       ?\n                  ?       ?\n        ???????   ?   ?   ?\n              ?   ?       ?\n              ?   ?       ?\n              ?   ?????   ?\n              ?           ?\n              ?           ?\n              ?           ?\n              ?   ?????   ?\n              ?   ?   ?   ?\n              ?   ?   ?   ?\n              ? ? ?   ?   ?\n              ?   ?   ?   ?\n              ?   ?   ?   ?\n              ?? ??   ?????",
+      "free": 3974
+    },
+    {
+      "LV": 1,
+      "RM": 1,
+      "MX": 16,
+      "MY": 15,
+      "HP": 20,
+      "DF": 1,
+      "stage": "help",
+      "screen": "            Help Menu\n            ?????????\nMovement:   Use   O  q-Up  o-Lft\n         Joystick  R z-Dwn p-Rgt\n\nCombat: a-Attack with sword\n        f-Fire arrow\n\nUsing items: u & another letter\n                 k-Key\n                 j-Jumping/ring\n                 f-Flame/scroll\n                 t-Teleport/gem\n\nMisc: g-Grab treasure\n      d-Drink potion\n      i-Take inventory\n      w-Make game wait\n      s-search for secret door\n      h-Display help menu\n\n                 HIT ANY KEY",
+      "free": 3974
+    },
+    {
+      "LV": 1,
+      "RM": 1,
+      "MX": 16,
+      "MY": 15,
+      "HP": 20,
+      "DF": 1,
+      "stage": "inventory",
+      "screen": "            INVENTORY\n            ?????????\nMax life pts 20  Sword\nLife points  20  Shield\nLevel 1          Helmet\nScore 0          Armor\n\n\n\n\n\n                 20 arrows\n                 5  potions\n\n\n\n\n\n\n\n\n                 HIT ANY KEY",
+      "free": 3974
+    },
+    {
+      "LV": 1,
+      "RM": 1,
+      "MX": 16,
+      "MY": 15,
+      "HP": 20,
+      "DF": 1,
+      "stage": "potion",
+      "screen": "LIFE PTS LEFT 20 Entry room\n        ???????   ?\n                  ?????????\n                  ?       ?\n                  ?       ?\n        ???????   ?   ?   ?\n              ?   ?       ?\n              ?   ?       ?\n              ?   ?????   ?\n              ?           ?\n              ?           ?\n              ?           ?\n              ?   ?????   ?\n              ?   ?   ?   ?\n              ?   ?   ?   ?\n              ? ? ?   ?   ?\n              ?   ?   ?   ?\n              ?   ?   ?   ?\n              ?? ??   ?????\n\n\nFeels good",
+      "free": 3974
+    },
+    {
+      "LV": 1,
+      "RM": 1,
+      "MX": 16,
+      "MY": 17,
+      "HP": 998,
+      "DF": 1,
+      "stage": "creature-redraw",
+      "screen": "LIFE PTS LEFT 998 ntry room\n        ???????   ?\n                  ?????????\n                  ?       ?\n                  ?       ?\n        ???????   ?   ?   ?\n              ?   ?       ?\n              ?   ?       ?\n              ?   ?????   ?\n              ?           ?\n              ?           ?\n              ?           ?\n              ?   ?????   ?\n              ?   ?   ?   ?\n              ?   ?   ?   ?\n              ?   ?   ?   ?\n              ? ? ?   ?   ?\n              ? ? ?   ?   ?\n              ?? ??   ?????\n\n\nHe hit you",
+      "free": 3974
+    },
+    {
+      "LV": 2,
+      "RM": 1,
+      "MX": 15,
+      "MY": 9,
+      "HP": 20,
+      "DF": 1,
+      "stage": "level2",
+      "screen": "LIFE PTS LEFT 20 Stairway\n\n             ?????\n             ?   ?\n             ?? ??\n             ?   ?\n             ?   ?\n             ??  ?\n             ?   ?\n             ?????\n            ??? ?\n                ?\n            ??? ?",
+      "free": 3974
+    },
+    {
+      "LV": 3,
+      "RM": 1,
+      "MX": 9,
+      "MY": 17,
+      "HP": 20,
+      "DF": 1,
+      "stage": "level3",
+      "screen": "LIFE PTS LEFT 20 Stairway\n\n\n\n\n\n\n\n\n\n\n\n\n\n   ?????????\n   ?  ?    ???\n   ?\n   ?  ?  ? ?????\n   ?????????",
+      "free": 3974
+    },
+    {
+      "LV": 1,
+      "RM": 1,
+      "MX": 16,
+      "MY": 16,
+      "HP": 20,
+      "DF": 1,
+      "stage": "warm-new-game",
+      "screen": "LIFE PTS LEFT 20 Entry room\n        ???????   ?\n                  ?????????\n                  ?       ?\n                  ?       ?\n        ???????   ?   ?   ?\n              ?   ?       ?\n              ?   ?       ?\n              ?   ?????   ?\n              ?           ?\n              ?           ?\n              ?           ?\n              ?   ?????   ?\n              ?   ?   ?   ?\n              ?   ?   ?   ?\n              ?   ?   ?   ?\n              ? ? ?   ?   ?\n              ?   ?   ?   ?\n              ?? ??   ?????",
+      "free": 3974
+    }
+  ],
+  "warmIntro": {
+    "physicalNKey": true,
+    "animationReady": true,
+    "returnMs": 910.906746031746,
+    "fullInitializationRepeated": false,
+    "freshLevel": 1,
+    "freshHP": 20,
+    "level1CharsetRestored": true,
+    "snapshotBytes": 3390,
+    "replayYRandomizesDungeon": true
+  },
+  "writesToRom": 0,
+  "bytecodeReads": 11837,
+  "vmError": 0,
+  "lockChecks": [
+    {
+      "level": 1,
+      "requiredInventoryItem": 11,
+      "noKeyBlocked": true,
+      "wrongKeyBlocked": true,
+      "explicitUseRequired": true,
+      "correctKeyUnlocks": true,
+      "unlockedDoorTraversable": true
+    },
+    {
+      "level": 2,
+      "requiredInventoryItem": 12,
+      "noKeyBlocked": true,
+      "wrongKeyBlocked": true,
+      "explicitUseRequired": true,
+      "correctKeyUnlocks": true,
+      "unlockedDoorTraversable": true
+    },
+    {
+      "level": 3,
+      "requiredInventoryItem": 13,
+      "noKeyBlocked": true,
+      "wrongKeyBlocked": true,
+      "explicitUseRequired": true,
+      "correctKeyUnlocks": true,
+      "unlockedDoorTraversable": true
+    }
+  ],
+  "combatTurnMs": 901.4467120181406
+}

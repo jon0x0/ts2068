@@ -9,6 +9,7 @@ the projects are updated. File paths were checked on October 7, 2026.
 
 | Cartridge | Download | Project |
 | --- | --- | --- |
+| The Crown remastered | [TheCrown.dck](remastered/TheCrown/TheCrown.dck) | [Release](remastered/TheCrown/) · [Play with virtual DPad](remastered/TheCrown/play/) |
 | Berzerk | [berzerk.dck](https://raw.githubusercontent.com/jon0x0/berzerk_ts2068/main/personalizations/berzerk/assets/berzerk.dck) | [Project](https://github.com/jon0x0/berzerk_ts2068) · [Play](https://jon0x0.github.io/berzerk_ts2068/) |
 | Sinistar v58 | [sinistar.dck](../arcade-ports/sinistar/play/assets/sinistar.dck?raw=true) | [Browser player and setup](../arcade-ports/sinistar/play/) · [Source](../arcade-ports/sinistar/) |
 

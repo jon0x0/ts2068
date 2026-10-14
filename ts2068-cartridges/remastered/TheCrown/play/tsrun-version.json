@@ -1,0 +1,23 @@
+{
+  "repository": "https://github.com/jon0x0/berzerk_ts2068",
+  "commit": "78ddfb6308a8844cd219c9e7beb5e9f54e479c7d",
+  "description": "Unmodified TSRun snapshot already bundled in this hub for Sinistar; Crown adapter is separate.",
+  "files": {
+    "ay.js": "0991fa826f4d430b37900aac09081d7f147e389fe680eb6adebf732ba914895f",
+    "dock.js": "f9af8105d8e7e44c900387dd62aa46b8fbc44dbd8e25884d35f3211da0767483",
+    "joystick.js": "6cc96c9b5e3671dffd8349868f54737dc8cf1879b934a3aa03f7a39ff4a47586",
+    "keyboard.js": "a130fb3f9f68a9792262551331fcdfb64eb98c6a24af9386277cc1c7203d296d",
+    "keyboard.png": "bbafcbb28a6acb8ef17b20a7ab47200071630a41f6d60582d3a3099295fd19a6",
+    "machine.js": "0779183741d082a14464d6a6ae0aeed8aa471d80705faf3d113cc68e7386ba24",
+    "screen.frag.glsl": "933e263f662a7c5688b68b06e0c49025aabe5d10515d859f94b2ac81f695794e",
+    "screen.js": "f2c24cd86fa880a5bdfcefb689d421e05a90480d908c4cd21d6a101ea04d3de3",
+    "screen.vert.glsl": "7106a8f56a6656fa8035e63e5770332aa87a18dcb9c01649096f00634f39d7e7",
+    "sound.js": "1d289cae205302fd8ea81d707583a409103ebc38f17ce18ce3d622a7c78655a1",
+    "sound.worklet.js": "91b32cd8a215a976821d221f6994e861b8c760cd2b52cbd053804a26a9bd7134",
+    "tape.js": "69bc5501055c4b4a32357414ba6e6828577317e9d60f1915e1bbc1a7c31d296f",
+    "z80.js": "c11b6deba8b2e20af6f8e4c21b059b87a70a084d7c210df767ae179f8b3ca44b",
+    "roms/README.md": "47bedc1dfcf5216a653b591d03f7a380067f56b594229e7df356f72923cd51cb",
+    "roms/ts2068-0.rom": "6338f94b2ee5000b81a64a4f055b8f1d2db6e669e52cafc11233ff63896fae13",
+    "roms/ts2068-1.rom": "e52e861bd30c144f174a596233c6f3e5804cff170fdc50d44ba61a1683b8174c"
+  }
+}

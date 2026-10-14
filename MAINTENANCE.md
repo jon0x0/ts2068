@@ -56,3 +56,22 @@ The public repository is `jon0x0/ts2068`. GitHub Pages serves the main branch
 root at https://jon0x0.github.io/ts2068/. Run `python scripts/build_site.py`
 after updating the hub or cartridge catalog, then commit and push to publish.
 The D-pad and newer TSRun demos keep separate emulator snapshots.
+
+## The Crown release preparation
+
+The release is staged under `ts2068-cartridges/remastered/TheCrown/`, with
+`TheCrown.dck`, the physical `TheCrown.bin`, checksums, provenance, emulator
+reports, title/cassette images, the complete recovery post and a custom
+static TSRun player. Hub entries are maintained in `scripts/build_site.py`
+and the cartridge catalog README. Run the generator before publication.
+
+The player uses an unmodified copy of the hub's existing DPad TSRun
+snapshot; revision and file hashes are recorded in `play/tsrun-version.json`.
+The Crown adapter and controls are separate files. They drive actual player 1
+joystick contacts and keyboard commands; the cartridge itself reads the AY
+port and supports diagonal movement. Physical hardware testing is pending.
+
+The expected DCK SHA-256 is
+`481a5ada28700ce312b5b8388008195701a523da671f7a0fefe7f835a31540cd`.
+Publication is a normal reviewed commit and push of this prepared tree to
+main; GitHub Pages then serves the new release and player paths.

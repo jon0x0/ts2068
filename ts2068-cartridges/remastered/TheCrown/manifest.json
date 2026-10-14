@@ -1,0 +1,619 @@
+{
+  "format": "TS2068 DOCK/AROS",
+  "physical_bytes": 65536,
+  "used_bytes": 64808,
+  "free_bytes": 728,
+  "leap_release": "v2.0.2-emu.1",
+  "leap_revision": "77f1baaf30424f2cec8cf31cae90513faa9c45c5",
+  "runtime_variant": "combined-runtime",
+  "bytecode_base": 32768,
+  "code_bytes": 13154,
+  "packed_asset_bytes": 20677,
+  "compression": {
+    "code_raw": 13154,
+    "code_zx0": 5236,
+    "assets_raw": 20677,
+    "assets_zx0": 10043,
+    "animation_bytes": 33787,
+    "resource_bytes": 50421
+  },
+  "stock_home_exrom": true,
+  "startup_intro": {
+    "frames": 8,
+    "mode": "ECM",
+    "display_size": [
+      256,
+      192
+    ],
+    "ready_address": 64195,
+    "refresh_address": 64198,
+    "active_address": 64192,
+    "ready_prompt": "PRESS\nANY KEY",
+    "prompt_position": [
+      216,
+      179
+    ],
+    "prompt_font": "3x5, centered on two lines beside Brian Walker",
+    "background_init": "cooperative USR ticks",
+    "ready_prompt_colour": "red ink (2) on black paper",
+    "black_attribute_staging": true,
+    "update_format": "12 paired 512-byte bitmap/attribute blocks; no whole-plane colour delay",
+    "maximum_pair_ms": 15.982142857142858,
+    "target_fps": 5,
+    "decode_ms_by_phase": {
+      "0": 25.83,
+      "1": 44.46,
+      "2": 47.84,
+      "3": 50.24,
+      "4": 222.1,
+      "5": 93.39,
+      "6": 79.69,
+      "7": 89.74
+    },
+    "cadence_note": "Nominal 12-interrupt spacing. One substantial delta uses buffered reads; measured decoder times are recorded by phase. Cooperative callbacks can add delay during game initialization."
+  },
+  "rom_resources": [
+    {
+      "name": "frame-7",
+      "address": 32896,
+      "bytes": 5159
+    },
+    {
+      "name": "frame-2",
+      "address": 38055,
+      "bytes": 2738
+    },
+    {
+      "name": "frame-5",
+      "address": 40960,
+      "bytes": 5522
+    },
+    {
+      "name": "frame-1",
+      "address": 46482,
+      "bytes": 2622
+    },
+    {
+      "name": "frame-6",
+      "address": 49152,
+      "bytes": 4575
+    },
+    {
+      "name": "frame-3",
+      "address": 53727,
+      "bytes": 2961
+    },
+    {
+      "name": "key-bitmap",
+      "address": 16384,
+      "bytes": 4628
+    },
+    {
+      "name": "key-attributes",
+      "address": 21012,
+      "bytes": 2699
+    },
+    {
+      "name": "frame-4",
+      "address": 23711,
+      "bytes": 2739
+    },
+    {
+      "name": "game-code",
+      "address": 26450,
+      "bytes": 5236
+    },
+    {
+      "name": "data-28",
+      "address": 9705,
+      "bytes": 520
+    },
+    {
+      "name": "data-14",
+      "address": 56688,
+      "bytes": 519
+    },
+    {
+      "name": "data-00",
+      "address": 31686,
+      "bytes": 509
+    },
+    {
+      "name": "data-01",
+      "address": 32195,
+      "bytes": 504
+    },
+    {
+      "name": "data-27",
+      "address": 14790,
+      "bytes": 424
+    },
+    {
+      "name": "data-13",
+      "address": 15214,
+      "bytes": 391
+    },
+    {
+      "name": "data-15",
+      "address": 15605,
+      "bytes": 300
+    },
+    {
+      "name": "data-03",
+      "address": 15905,
+      "bytes": 263
+    },
+    {
+      "name": "data-07",
+      "address": 57344,
+      "bytes": 253
+    },
+    {
+      "name": "data-06",
+      "address": 57597,
+      "bytes": 251
+    },
+    {
+      "name": "init-level-3",
+      "address": 57848,
+      "bytes": 246
+    },
+    {
+      "name": "data-32",
+      "address": 58094,
+      "bytes": 245
+    },
+    {
+      "name": "data-17",
+      "address": 58339,
+      "bytes": 243
+    },
+    {
+      "name": "data-18",
+      "address": 58582,
+      "bytes": 243
+    },
+    {
+      "name": "data-05",
+      "address": 58825,
+      "bytes": 242
+    },
+    {
+      "name": "data-04",
+      "address": 59067,
+      "bytes": 241
+    },
+    {
+      "name": "data-21",
+      "address": 59308,
+      "bytes": 241
+    },
+    {
+      "name": "data-08",
+      "address": 59549,
+      "bytes": 240
+    },
+    {
+      "name": "data-10",
+      "address": 59789,
+      "bytes": 239
+    },
+    {
+      "name": "data-36",
+      "address": 60028,
+      "bytes": 239
+    },
+    {
+      "name": "init-level-2",
+      "address": 60267,
+      "bytes": 234
+    },
+    {
+      "name": "data-35",
+      "address": 60501,
+      "bytes": 233
+    },
+    {
+      "name": "data-33",
+      "address": 60734,
+      "bytes": 232
+    },
+    {
+      "name": "data-29",
+      "address": 60966,
+      "bytes": 230
+    },
+    {
+      "name": "data-20",
+      "address": 61196,
+      "bytes": 229
+    },
+    {
+      "name": "data-11",
+      "address": 61425,
+      "bytes": 228
+    },
+    {
+      "name": "init-items",
+      "address": 61653,
+      "bytes": 227
+    },
+    {
+      "name": "data-31",
+      "address": 61880,
+      "bytes": 226
+    },
+    {
+      "name": "data-37",
+      "address": 62106,
+      "bytes": 225
+    },
+    {
+      "name": "init-level-1",
+      "address": 62331,
+      "bytes": 221
+    },
+    {
+      "name": "data-16",
+      "address": 62552,
+      "bytes": 220
+    },
+    {
+      "name": "data-34",
+      "address": 62772,
+      "bytes": 213
+    },
+    {
+      "name": "data-22",
+      "address": 62985,
+      "bytes": 211
+    },
+    {
+      "name": "data-30",
+      "address": 63196,
+      "bytes": 211
+    },
+    {
+      "name": "data-19",
+      "address": 63407,
+      "bytes": 202
+    },
+    {
+      "name": "data-23",
+      "address": 16168,
+      "bytes": 200
+    },
+    {
+      "name": "data-38",
+      "address": 63609,
+      "bytes": 193
+    },
+    {
+      "name": "data-24",
+      "address": 63802,
+      "bytes": 190
+    },
+    {
+      "name": "data-02",
+      "address": 63992,
+      "bytes": 170
+    },
+    {
+      "name": "data-09",
+      "address": 40793,
+      "bytes": 161
+    },
+    {
+      "name": "data-40",
+      "address": 64162,
+      "bytes": 148
+    },
+    {
+      "name": "data-25",
+      "address": 64310,
+      "bytes": 146
+    },
+    {
+      "name": "init-glyph-3",
+      "address": 64456,
+      "bytes": 145
+    },
+    {
+      "name": "init-glyph-2",
+      "address": 64601,
+      "bytes": 144
+    },
+    {
+      "name": "frame-0",
+      "address": 64745,
+      "bytes": 144
+    },
+    {
+      "name": "init-glyph-1",
+      "address": 64889,
+      "bytes": 138
+    },
+    {
+      "name": "data-26",
+      "address": 32699,
+      "bytes": 56
+    },
+    {
+      "name": "data-12",
+      "address": 40954,
+      "bytes": 6
+    },
+    {
+      "name": "data-39",
+      "address": 32755,
+      "bytes": 6
+    }
+  ],
+  "sha256": "481a5ada28700ce312b5b8388008195701a523da671f7a0fefe7f835a31540cd",
+  "status": "TSRun and Fuse verified combined cartridge",
+  "zx0_revision": "ecde3a2ae05061fe06469ed46df81a33b7de7d86",
+  "animation_sequence": "D:\\T7_Recover\\Jon\\Personal\\Timex\\TheCrown_Leap\\build\\intro-eight-clean\\sequence",
+  "animation_stability": {
+    "method": "source-supported motion, small-island suppression and temporal state locking",
+    "source_difference_threshold": 28,
+    "source_pixels_required": 2,
+    "minimum_source_component_cells": 4,
+    "motion_edge_padding_cells": 1,
+    "frames": [
+      {
+        "frame": 0,
+        "changed_cells_before": 0,
+        "changed_cells_after": 0,
+        "reset_cells": 0,
+        "remaining_islands_removed": 0,
+        "small_components_before": 0,
+        "small_components_after": 0,
+        "glint_cells_preserved": true,
+        "stabilized_cell_instances": 0
+      },
+      {
+        "frame": 1,
+        "changed_cells_before": 1174,
+        "changed_cells_after": 1071,
+        "reset_cells": 93,
+        "remaining_islands_removed": 0,
+        "small_components_before": 4,
+        "small_components_after": 2,
+        "glint_cells_preserved": true,
+        "stabilized_cell_instances": 104
+      },
+      {
+        "frame": 2,
+        "changed_cells_before": 1296,
+        "changed_cells_after": 1205,
+        "reset_cells": 79,
+        "remaining_islands_removed": 0,
+        "small_components_before": 1,
+        "small_components_after": 0,
+        "glint_cells_preserved": true,
+        "stabilized_cell_instances": 113
+      },
+      {
+        "frame": 3,
+        "changed_cells_before": 1118,
+        "changed_cells_after": 1018,
+        "reset_cells": 93,
+        "remaining_islands_removed": 0,
+        "small_components_before": 7,
+        "small_components_after": 1,
+        "glint_cells_preserved": true,
+        "stabilized_cell_instances": 106
+      },
+      {
+        "frame": 4,
+        "changed_cells_before": 1067,
+        "changed_cells_after": 952,
+        "reset_cells": 116,
+        "remaining_islands_removed": 0,
+        "small_components_before": 4,
+        "small_components_after": 0,
+        "glint_cells_preserved": true,
+        "stabilized_cell_instances": 145
+      },
+      {
+        "frame": 5,
+        "changed_cells_before": 2487,
+        "changed_cells_after": 2302,
+        "reset_cells": 167,
+        "remaining_islands_removed": 0,
+        "small_components_before": 7,
+        "small_components_after": 0,
+        "glint_cells_preserved": true,
+        "stabilized_cell_instances": 222
+      },
+      {
+        "frame": 6,
+        "changed_cells_before": 2450,
+        "changed_cells_after": 2240,
+        "reset_cells": 195,
+        "remaining_islands_removed": 0,
+        "small_components_before": 4,
+        "small_components_after": 0,
+        "glint_cells_preserved": true,
+        "stabilized_cell_instances": 314
+      },
+      {
+        "frame": 7,
+        "changed_cells_before": 0,
+        "changed_cells_after": 0,
+        "reset_cells": 0,
+        "remaining_islands_removed": 0,
+        "small_components_before": 0,
+        "small_components_after": 0,
+        "glint_cells_preserved": true,
+        "stabilized_cell_instances": 0
+      }
+    ],
+    "reset_cell_instances": 743,
+    "temporal_corrections": 262,
+    "stabilized_cell_instances": 1004,
+    "full_resolution": true,
+    "key_pose_unchanged": true,
+    "exact_loop_seam": true,
+    "glints_preserved": true,
+    "title_finish": {
+      "credits": "Exact native red glyphs extracted from thecrown.tap",
+      "credit_rows": [
+        169,
+        191
+      ],
+      "credits_sha256": "20d4eea472192f9e01f482233a5843ba7f42279fa70733874aa4d84d0d80fa6d",
+      "credits_static": true,
+      "reflection": "bright-gold halo and white specular sweep across CROWN",
+      "glint_corner": [
+        241,
+        129
+      ],
+      "reflection_frames": [
+        {
+          "frame": 0,
+          "reflection_center_x": null,
+          "highlighted_cells": 0,
+          "terminal_glint": false,
+          "scene_lighting": {
+            "eye_glow": false,
+            "chest_cells": 14,
+            "chin_shadow_cells": 0
+          }
+        },
+        {
+          "frame": 1,
+          "reflection_center_x": 128,
+          "highlighted_cells": 14,
+          "terminal_glint": false,
+          "scene_lighting": {
+            "eye_glow": true,
+            "chest_cells": 0,
+            "chin_shadow_cells": 0,
+            "eye_pixel": [
+              153,
+              27
+            ]
+          }
+        },
+        {
+          "frame": 2,
+          "reflection_center_x": 153,
+          "highlighted_cells": 26,
+          "terminal_glint": false,
+          "scene_lighting": {
+            "eye_glow": true,
+            "chest_cells": 7,
+            "chin_shadow_cells": 0,
+            "eye_pixel": [
+              153,
+              27
+            ]
+          }
+        },
+        {
+          "frame": 3,
+          "reflection_center_x": 179,
+          "highlighted_cells": 22,
+          "terminal_glint": false,
+          "scene_lighting": {
+            "eye_glow": false,
+            "chest_cells": 0,
+            "chin_shadow_cells": 2
+          }
+        },
+        {
+          "frame": 4,
+          "reflection_center_x": 204,
+          "highlighted_cells": 34,
+          "terminal_glint": false,
+          "scene_lighting": {
+            "eye_glow": false,
+            "chest_cells": 0,
+            "chin_shadow_cells": 0
+          }
+        },
+        {
+          "frame": 5,
+          "reflection_center_x": 230,
+          "highlighted_cells": 24,
+          "terminal_glint": false,
+          "scene_lighting": {
+            "eye_glow": false,
+            "chest_cells": 0,
+            "chin_shadow_cells": 0
+          }
+        },
+        {
+          "frame": 6,
+          "reflection_center_x": null,
+          "highlighted_cells": 8,
+          "terminal_glint": true,
+          "scene_lighting": {
+            "eye_glow": false,
+            "chest_cells": 0,
+            "chin_shadow_cells": 0
+          }
+        },
+        {
+          "frame": 7,
+          "reflection_center_x": null,
+          "highlighted_cells": 0,
+          "terminal_glint": false,
+          "scene_lighting": {
+            "eye_glow": false,
+            "chest_cells": 14,
+            "chin_shadow_cells": 0
+          }
+        }
+      ],
+      "loop_seam_preserved": true
+    }
+  },
+  "ram_layout": {
+    "display": "4000-57FF and 6000-77FF",
+    "system": "5B00-5D59",
+    "bytecode": "8000-BFFF (ends below BE00)",
+    "data_cache": "BE00-BFFF",
+    "vm_workspace": "C000-C9FF",
+    "arena": "CA00-F0FF",
+    "udg": "F180",
+    "stream_buffer": "F900-F9FF",
+    "intro_state": "FAC0-FAED",
+    "stack": "below FF00"
+  },
+  "play_again_no": "Return to full intro immediately using a saved fresh-game snapshot; no full initialization",
+  "verification": "Stock-ROM boot, exact decoded frames and DATA, cooperative initialization, fresh/held-key gate, ECM prompt, normal-mode handoff and three-level gameplay passed; Fuse independently verified ECM samples, prompt and player redraws. Physical hardware untested. Warm return from replay N and small two-line prompt also passed in both emulators.",
+  "initialization_ms": 4992.180272108843,
+  "native_initializer": {
+    "implementation": "Z80 array clearing, fixed DATA tables, randomized loot/creatures and character-set loading",
+    "previous_startup_ms": 30900.412981859412,
+    "startup_ms": 4992.180272108843,
+    "randomization": "Live Leap LFSR, integer ranges; no saved fixed dungeon",
+    "checks": {
+      "seed": null,
+      "dungeonHash": "68dd656de561947187e8512ed8d253d868d7a96bb19b99e6fcef507aa397d78a",
+      "fixedTables": true,
+      "itemRanges": true,
+      "guaranteedKeys": true
+    },
+    "scratch": "FAEE-FAF4",
+    "verification_report": "native-randomization.json"
+  },
+  "warm_return_ms": 910.906746031746,
+  "fresh_game_snapshot_bytes": 3390,
+  "animation_cpu_fraction_during_initialization": 0.01862493337085233,
+  "intro_preview": "intro-preview.gif",
+  "release_file": "TheCrown.dck",
+  "release_date": "2026-10-14",
+  "joystick": {
+    "player": 1,
+    "ay_register": 14,
+    "port": "0x01F6",
+    "fire": "sword attack",
+    "diagonal_moves": true,
+    "verification": "verification/joystick-verification.json",
+    "physical_hardware_tested": false
+  },
+  "startup_inputs": "Any keyboard key or player-1 joystick direction/fire; release before and after the fresh press"
+}

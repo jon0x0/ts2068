@@ -12,6 +12,12 @@ here does not require moving it or changing links shared elsewhere.
 **[Project hub](https://jon0x0.github.io/ts2068/)** · **[Cartridge downloads](https://jon0x0.github.io/ts2068/ts2068-cartridges/)** â€” a catalog of `.dck` files for
 games, applications, audio and demos, linking to their owning projects.
 
+## Remastered games
+
+| Project | Description | Links |
+| --- | --- | --- |
+| The Crown | All three recovered dungeon levels, Leap v2 bytecode/runtime, TSVideoCodec startup animation and a native random dungeon initializer; keyboard and eight-direction player 1 joystick support | [Release](ts2068-cartridges/remastered/TheCrown/) · [Play with virtual DPad](ts2068-cartridges/remastered/TheCrown/play/) · [TheCrown.dck](ts2068-cartridges/remastered/TheCrown/TheCrown.dck) |
+
 ## Development tools
 
 | Project | Description | Links |

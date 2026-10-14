@@ -1,0 +1,12 @@
+{
+  "emulator": "Fuse",
+  "decline_replay_returns_to_ready_intro": true,
+  "full_initialization_repeated": false,
+  "fresh_game": {
+    "level": 1,
+    "room": 1,
+    "hp": 20
+  },
+  "vm_error": 0,
+  "keyboard_gate": "Debugger key injection; physical key matrix separately tested in TSRun"
+}

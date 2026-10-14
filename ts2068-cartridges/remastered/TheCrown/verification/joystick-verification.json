@@ -1,0 +1,18 @@
+{
+  "port": "0x01F6",
+  "ayRegister": 14,
+  "directions": [
+    1,
+    2,
+    4,
+    8,
+    5,
+    9,
+    6,
+    10
+  ],
+  "diagonals": true,
+  "cornerCollision": true,
+  "fire": "sword attack",
+  "physicalHardwareTested": false
+}

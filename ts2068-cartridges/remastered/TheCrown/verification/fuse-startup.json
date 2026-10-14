@@ -1,0 +1,12 @@
+{
+  "emulator": "Fuse",
+  "stock_rom_boot": true,
+  "full_screen_ecm": true,
+  "phase": 3,
+  "bitmap_and_attribute_samples": 396,
+  "prompt_bytes": 50,
+  "ready_prompt_exact": true,
+  "ready_prompt_red": true,
+  "vm_error": 0,
+  "refreshes_at_ready": 3
+}

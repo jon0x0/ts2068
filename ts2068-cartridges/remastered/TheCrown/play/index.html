@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Play The Crown · TSRun</title><link rel="stylesheet" href="style.css"></head>
+<body><main id="player" tabindex="-1">
+<header><a href="../">← The Crown</a><span>TSRun · TS2068</span><button id="reset">Reset</button><button id="fullscreen">Fullscreen</button><button id="touch-toggle" aria-pressed="true" aria-controls="pad keyboard-guide">Touch controls: On</button><button id="audio" aria-pressed="true">Audio on</button></header>
+<section class="game" aria-label="The Crown game and controls">
+<div class="replay" aria-label="Start, continue and play again"><button id="start" data-key="Space">Start / Continue</button><span>Play again?</span><button data-key="KeyY">Y · Yes</button><button data-key="KeyN">N · No</button></div>
+<div class="picture"><div class="screen-slot"><canvas id="screen" width="640" height="480" aria-label="TS2068 screen"></canvas></div><p id="status" role="status">Loading cartridge…</p></div>
+<div class="movement"><div id="pad" role="group" aria-label="Player 1 joystick, drag for eight directions"><span class="arrows">↖ ↑ ↗<br>← · →<br>↙ ↓ ↘</span><span id="knob"></span></div><p>Drag the DPad to move.<br>Eight directions · player 1 joystick</p></div>
+<div class="actions" aria-label="Game commands">
+<button data-contact="128" class="attack">Attack <small>A · sword / joystick fire</small></button><button data-key="KeyF">Fire <small>F · arrow</small></button>
+<button data-key="KeyU">Use <small>U · then an item below</small></button><button data-key="KeyK">Key <small>K · after Use</small></button>
+<button data-key="KeyJ">Jump / Ring <small>J · after Use</small></button><button data-key="KeyF">Flame <small>F · after Use</small></button>
+<button data-key="KeyT">Teleport / Gem <small>T · after Use</small></button><button data-key="KeyI">Inventory <small>I</small></button>
+<button data-key="KeyS">Search <small>S</small></button><button data-key="KeyG">Grab <small>G</small></button>
+<button data-key="KeyD">Drink <small>D</small></button><button data-key="KeyW">Wait <small>W</small></button>
+<button data-key="KeyH">Help <small>H</small></button>
+</div></section>
+<section id="keyboard-guide" class="keyboard-guide" aria-label="Keyboard controls" hidden>
+<h2>Keyboard controls</h2>
+<dl><dt>Move</dt><dd><kbd>Q</kbd> up · <kbd>Z</kbd> down · <kbd>O</kbd> left · <kbd>P</kbd> right</dd>
+<dt>Combat</dt><dd><kbd>A</kbd> sword attack · <kbd>F</kbd> fire arrow</dd>
+<dt>Use an item</dt><dd><kbd>U</kbd>, then <kbd>K</kbd> key · <kbd>J</kbd> jump/ring · <kbd>F</kbd> flame/scroll · <kbd>T</kbd> teleport/gem</dd>
+<dt>Other commands</dt><dd><kbd>I</kbd> inventory · <kbd>S</kbd> search · <kbd>G</kbd> grab · <kbd>D</kbd> drink · <kbd>W</kbd> wait · <kbd>H</kbd> help</dd>
+<dt>Start / Continue</dt><dd>Any key starts the game, including <kbd>Enter</kbd>. <kbd>Space</kbd> or <kbd>Enter</kbd> closes menus.</dd>
+<dt>Play again</dt><dd><kbd>Y</kbd> new dungeon · <kbd>N</kbd> return to title</dd></dl>
+<p>A connected player 1 gamepad still works when touch controls are off.</p>
+</section>
+<p class="guide">Find the stolen Crown through three dungeon levels. Keyboard: Q/Z/O/P move; A attacks with a sword, F fires arrows. Tap Use, release it, then tap Key, Jump/Ring, Flame, or Teleport/Gem. Y regenerates the dungeon; N returns to the title. A connected gamepad uses the same player 1 joystick. On phones, landscape gives the controls more room.</p>
+<div id="keyboard" hidden></div>
+</main><script type="module" src="adapter.js"></script><script type="module" src="controls.js"></script></body></html>

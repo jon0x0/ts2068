@@ -1,0 +1,105 @@
+{
+  "seeds": [
+    {
+      "ms": 4975.4900793650795,
+      "seed": 1,
+      "dungeonHash": "07110f73c684be0f5a3aa6800adb73fb5c78770db9df3f8ca338bff7c372a30d",
+      "fixedTables": true,
+      "itemRanges": true,
+      "guaranteedKeys": true
+    },
+    {
+      "ms": 5091.9767573696145,
+      "seed": 2,
+      "dungeonHash": "3c767269df54d5ee0b7ff8b7cc1b995659f1b97edfbddcffbfa06a6f1e72cb42",
+      "fixedTables": true,
+      "itemRanges": true,
+      "guaranteedKeys": true
+    },
+    {
+      "ms": 4975.493480725623,
+      "seed": 3,
+      "dungeonHash": "a5ede791975aa3aa062e4a006db5c6d1a2c2c8f5112ce23238f38aa8a0ce4cad",
+      "fixedTables": true,
+      "itemRanges": true,
+      "guaranteedKeys": true
+    },
+    {
+      "ms": 4975.508786848072,
+      "seed": 7,
+      "dungeonHash": "1621cd928370aa165a708fc1d3e18757d27eb46d81a890ced846fb6c60ae272b",
+      "fixedTables": true,
+      "itemRanges": true,
+      "guaranteedKeys": true
+    },
+    {
+      "ms": 4975.524943310657,
+      "seed": 42,
+      "dungeonHash": "242eec1d4de3bef18055618ea85308d2a2324255f5ca639e51e4d56e0e9dc23c",
+      "fixedTables": true,
+      "itemRanges": true,
+      "guaranteedKeys": true
+    },
+    {
+      "ms": 4975.507653061224,
+      "seed": 255,
+      "dungeonHash": "b2fc8709fc5b802854e2076863f68506eb715fe01102397e722165ba20c22104",
+      "fixedTables": true,
+      "itemRanges": true,
+      "guaranteedKeys": true
+    },
+    {
+      "ms": 5058.692176870748,
+      "seed": 256,
+      "dungeonHash": "43857796484607d41851a35359b22730db157be30ba902b9607325386ebe86fb",
+      "fixedTables": true,
+      "itemRanges": true,
+      "guaranteedKeys": true
+    },
+    {
+      "ms": 4992.148526077098,
+      "seed": 1024,
+      "dungeonHash": "32526839cae8554d4d9f4bdcc520f1e362f88f208bcb1c3ac8e45e2fd643429c",
+      "fixedTables": true,
+      "itemRanges": true,
+      "guaranteedKeys": true
+    },
+    {
+      "ms": 4975.4824263038545,
+      "seed": 4096,
+      "dungeonHash": "de04aaefa0a08aa08cdb73aac33f05e855626122436ff6d0a8da367a93a92d76",
+      "fixedTables": true,
+      "itemRanges": true,
+      "guaranteedKeys": true
+    },
+    {
+      "ms": 5075.350340136054,
+      "seed": 12345,
+      "dungeonHash": "3222c0a83d8f0ebce8a81511cad64ac2944c7e341df102a3cdf480dfe9a80927",
+      "fixedTables": true,
+      "itemRanges": true,
+      "guaranteedKeys": true
+    },
+    {
+      "ms": 5091.9872448979595,
+      "seed": 32767,
+      "dungeonHash": "a134b36db4e83e05f92e2423dfa7fe51915548d9fa5d4d11d44d3ad66f29c8e0",
+      "fixedTables": true,
+      "itemRanges": true,
+      "guaranteedKeys": true
+    },
+    {
+      "ms": 5008.781462585034,
+      "seed": 65535,
+      "dungeonHash": "f2a219125919aeb705b6e049fdfb6142fea1594eec65476c43c741813d2d1727",
+      "fixedTables": true,
+      "itemRanges": true,
+      "guaranteedKeys": true
+    }
+  ],
+  "unique_dungeons": 12,
+  "repeat_seed_reproduces_dungeon": true,
+  "minimum_ms": 4975.4824263038545,
+  "maximum_ms": 5091.9872448979595,
+  "average_ms": 5014.328656462586
+}

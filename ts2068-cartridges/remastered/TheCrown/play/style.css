@@ -1,0 +1,57 @@
+*{box-sizing:border-box}html{color-scheme:dark}body{margin:0;background:#10151c;color:#e9e5d8;font:15px/1.5 system-ui,sans-serif}main{max-width:1440px;margin:auto;padding:16px}a{color:#eed185}header{display:flex;align-items:center;gap:12px;flex-wrap:wrap;border-bottom:1px solid #45505b;padding-bottom:18px;margin-bottom:24px}header span{flex:1;color:#a6b3c3}button{font:inherit;color:inherit;background:#24313e;border:1px solid #586675;border-radius:9px;min-height:46px;padding:9px 14px;cursor:pointer;touch-action:none;user-select:none}button:disabled{opacity:.5;cursor:wait}button:focus-visible{outline:3px solid #eed185;outline-offset:3px}button.pressed,button:active{background:#735723}small{display:block;font-size:11px;color:#bac4cd}.game{display:grid;grid-template-columns:200px minmax(200px,1fr) 280px;grid-template-areas:". picture replay" "movement picture actions";gap:20px;align-items:start}.picture{grid-area:picture;align-self:center;text-align:center;min-width:0}canvas{display:block;margin:auto;background:#000;image-rendering:pixelated}.replay{grid-area:replay;display:flex;gap:6px;align-items:center;justify-content:flex-end;font-size:12px}.replay button{padding:8px 10px}.movement{grid-area:movement;align-self:end;text-align:center}.movement p{font-size:12px;color:#b0bdc9}#pad{width:180px;height:180px;position:relative;border:2px solid #708294;border-radius:50%;background:radial-gradient(#344454,#18212a);touch-action:none;user-select:none;display:grid;place-items:center}.arrows{font-size:28px;line-height:1.7;white-space:pre;opacity:.6;word-spacing:12px}#knob{position:absolute;left:65px;top:65px;width:46px;height:46px;border-radius:50%;background:#c9af73aa;pointer-events:none}.actions{grid-area:actions;display:grid;grid-template-columns:1fr 1fr;gap:8px;align-self:end}.actions button{padding:10px 5px;min-height:56px;font-size:14px}.attack{border-color:#d5ad58;background:#4a3822}.guide{max-width:900px;margin:28px auto;color:#adbbc8}#status{font-size:12px;color:#d9c28a}main:fullscreen{max-width:none;background:#10151c;overflow:auto;padding:max(12px,env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) max(12px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left))}main:fullscreen .guide{display:none}@media(max-width:1000px){.game{grid-template-columns:150px minmax(150px,1fr) 240px;gap:10px}#pad{width:145px;height:145px}#knob{left:49px;top:49px}.arrows{font-size:22px}.actions button{min-height:48px;font-size:12px;padding:5px 3px}.replay{flex-wrap:wrap}.replay span{width:100%;text-align:right}}@media(max-width:650px){main{padding:10px}header{gap:8px;margin-bottom:18px}header span{display:none}header button{font-size:12px;padding:8px}.game{grid-template-columns:140px 1fr;grid-template-areas:"picture picture" "movement replay" "movement actions";gap:14px}.replay{flex-wrap:nowrap}.replay span{width:auto}.actions{gap:6px}.actions button{min-height:52px}.screen-slot{max-height:48dvh}.movement{align-self:start;margin-top:40px}#pad{width:136px;height:136px}#knob{left:44px;top:44px}.guide{font-size:13px}}@media(max-height:500px) and (min-width:651px){header{margin-bottom:12px;padding-bottom:10px}.game{gap:8px;grid-template-columns:140px minmax(120px,1fr) 260px}.actions{gap:4px}.actions button{min-height:38px;font-size:12px;padding:3px}small{font-size:9px}.screen-slot{max-height:calc(100dvh - 175px)}.replay{flex-wrap:nowrap;align-items:center}.replay span{width:auto;font-size:10px}.replay button{min-height:32px;padding:4px 8px}.actions button{min-height:32px}.guide{font-size:12px;margin-top:14px}}
+
+.screen-slot{width:100%;aspect-ratio:4/3;max-height:70dvh;overflow:hidden}@media(max-width:650px){.screen-slot{max-height:48dvh}}@media(max-height:500px) and (min-width:651px){.screen-slot{max-height:calc(100dvh - 175px)}}
+/* Thumb controls and phone fullscreen layout. */
+.replay{flex-wrap:wrap}.replay #start{flex-basis:100%}.replay span{width:auto}
+.movement{align-self:center;justify-self:start;margin-top:0}
+.actions .attack{grid-column:1/-1;min-height:76px;border:2px solid #ff8b7d;border-radius:40px;background:linear-gradient(#ec433b,#ae171d);box-shadow:0 4px 0 #690e15;font-size:22px;font-weight:750;margin:0 6px 8px;touch-action:none}
+.actions .attack small{font-size:11px;color:#ffe7e3;font-weight:400}
+.actions .attack:active,.actions .attack.pressed{background:#ff6557;box-shadow:0 1px 0 #690e15;transform:translateY(3px)}
+main:fullscreen{position:relative;width:100%;height:100dvh;padding:0;overflow:hidden}
+main:fullscreen header{position:absolute;left:max(6px,env(safe-area-inset-left));top:max(6px,env(safe-area-inset-top));z-index:2;width:126px;gap:4px;margin:0;padding:0;border:0;justify-content:center}
+main:fullscreen header a,main:fullscreen header span{display:none}
+main:fullscreen header button{min-height:30px;font-size:11px;padding:5px 7px}
+main:fullscreen .game{height:100%;grid-template-columns:140px minmax(0,1fr) 224px;grid-template-rows:76px minmax(0,1fr);grid-template-areas:"movement picture replay" "movement picture actions";gap:6px;padding:max(4px,env(safe-area-inset-top)) max(4px,env(safe-area-inset-right)) max(4px,env(safe-area-inset-bottom)) max(4px,env(safe-area-inset-left))}
+main:fullscreen .picture{height:100%;width:100%;align-self:stretch;display:grid;place-items:center}
+main:fullscreen .screen-slot{width:100%;height:100%;max-height:none;aspect-ratio:auto;display:grid;place-items:center}
+main:fullscreen #status,main:fullscreen .movement p{display:none}
+main:fullscreen .movement{align-self:center;justify-self:start;margin:0}
+main:fullscreen .replay{align-self:start;gap:3px;justify-content:flex-end}
+main:fullscreen .replay button{min-height:30px;padding:4px 8px;font-size:11px}
+main:fullscreen .replay span{font-size:10px}
+main:fullscreen .actions{align-self:end;gap:4px;width:100%}
+main:fullscreen .actions button{min-height:32px;padding:3px;font-size:11px}
+main:fullscreen .actions small{font-size:9px}
+main:fullscreen .actions .attack{min-height:68px;font-size:22px;margin-bottom:6px}
+main:fullscreen .actions .attack small{font-size:10px}
+@media(max-width:650px){.movement{position:sticky;top:calc(50dvh - 68px);align-self:start}.replay #start{font-size:12px}.actions .attack{min-height:80px}}
+@media(orientation:portrait){main:fullscreen .game{grid-template-columns:140px minmax(0,1fr);grid-template-rows:48px minmax(0,1fr) auto;grid-template-areas:"replay replay" "picture picture" "movement actions";gap:6px}main:fullscreen header{width:110px}main:fullscreen header #audio{display:none}main:fullscreen .replay{justify-content:flex-end;padding-left:112px;flex-wrap:nowrap}main:fullscreen .replay #start{flex-basis:auto}main:fullscreen .replay span{display:none}main:fullscreen .replay button{font-size:10px;padding:4px}main:fullscreen .movement{position:fixed;left:max(4px,env(safe-area-inset-left));top:50%;transform:translateY(-50%)}main:fullscreen .actions{grid-template-columns:repeat(3,1fr)}main:fullscreen .actions .attack{grid-column:1/-1}main:fullscreen .actions button{min-height:36px}main:fullscreen .actions small{display:none}}
+@media(max-width:1000px){.movement{position:fixed;left:max(4px,env(safe-area-inset-left));top:50%;transform:translateY(-50%);z-index:1}}
+@media(orientation:portrait){main:fullscreen .picture{height:auto;align-self:start}main:fullscreen .screen-slot{height:auto;aspect-ratio:4/3;max-height:calc(50dvh - 120px)}}
+/* Original Berzerk eight-sector joystick artwork, with a smaller footprint. */
+#pad{width:128px;height:128px;border:3px solid #555;background:repeating-conic-gradient(from 22.5deg,#333 0deg 43deg,#555 43deg 45deg);box-shadow:inset 0 3px 10px #000,0 2px 0 #666;-webkit-user-select:none}
+#pad::before{content:"";position:absolute;inset:27.5%;border:2px solid #aaa8;border-radius:50%;background:#2228;pointer-events:none}
+#pad .arrows{display:none}
+#knob{inset:26%;width:auto;height:auto;border-radius:50%;background:radial-gradient(circle at 35% 25%,#999,#444 65%,#222);box-shadow:0 4px 8px #000;pointer-events:none}
+@media(max-width:1000px){#pad{width:112px;height:112px}}
+@media(orientation:portrait){.movement{position:relative;top:auto;left:auto;transform:none;align-self:center;margin:0}main:fullscreen .movement{position:fixed;left:max(4px,env(safe-area-inset-left));top:50%;transform:translateY(-50%)}main:fullscreen .screen-slot{max-height:calc(50dvh - 108px)}}
+/* Lift Attack away from the smaller command keys. */
+.actions .attack{position:relative;top:-12px}
+@media(orientation:landscape){main:fullscreen .replay{flex-wrap:nowrap}main:fullscreen .replay #start{flex-basis:auto;flex:1}main:fullscreen .replay span{display:none}}
+/* Keyboard/gamepad mode returns the control lanes to the display. */
+#player:focus{outline:none}
+.keyboard-guide{max-width:960px;margin:24px auto;padding:18px 22px;border:1px solid #586675;border-radius:10px;background:#1b2733}
+.keyboard-guide h2{margin:0 0 12px;font-size:20px;color:#eed185}
+.keyboard-guide dl{display:grid;grid-template-columns:140px 1fr;gap:10px 18px;margin:0}
+.keyboard-guide dt{font-weight:650}.keyboard-guide dd{margin:0;color:#c4ced7}
+kbd{display:inline-block;min-width:23px;padding:0 5px;border:1px solid #708294;border-radius:4px;background:#10151c;text-align:center;font:600 13px/1.6 ui-monospace,monospace}
+.touch-off .movement,.touch-off .actions,.touch-off .replay{display:none}
+main.touch-off .game{grid-template-columns:minmax(0,1fr);grid-template-rows:auto;grid-template-areas:"picture"}
+main.touch-off .picture{width:100%}
+main:fullscreen .keyboard-guide{display:none}
+main.touch-off:fullscreen .game{display:block;width:100%;height:100%;padding:0}
+main.touch-off:fullscreen .picture{width:100%;height:100%;align-self:stretch}
+main.touch-off:fullscreen .screen-slot{width:100%;height:100%;max-height:none;aspect-ratio:auto}
+main.touch-off:fullscreen header{width:auto;left:auto;right:max(6px,env(safe-area-inset-right));padding:4px;background:#10151caa;border-radius:8px}
+main.touch-off:fullscreen header #audio{display:block}
+@media(max-width:650px){.keyboard-guide{padding:14px}.keyboard-guide dl{grid-template-columns:1fr;gap:4px}.keyboard-guide dd{margin-bottom:10px}}

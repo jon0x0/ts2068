@@ -1,0 +1,44 @@
+{
+  "browser": "Codex in-app browser",
+  "local_http_preview": true,
+  "portrait_and_landscape_layouts_checked": true,
+  "touch_start_handoff": true,
+  "touch_help_menu": true,
+  "virtual_joystick_diagonal_player_movement_observed": true,
+  "game_commands_separate_from_reset_and_fullscreen": true,
+  "all_six_release_images_loaded": true,
+  "physical_phone_tested": false,
+  "physical_ts2068_tested": false,
+  "attack_thumb_button_height_px": 68,
+  "landscape_viewport": [
+    844,
+    390
+  ],
+  "landscape_canvas": [
+    460,
+    345
+  ],
+  "dpad_center_y": 195.2,
+  "start_continue_upper_right": true,
+  "fullscreen_controls_fit": true,
+  "dpad_artwork": "Original Berzerk eight-sector CSS artwork",
+  "phone_dpad_width_px": 112,
+  "dpad_screen_overlap": false,
+  "landscape_fullscreen_clearance_px": 34,
+  "portrait_fullscreen_clearance_px": 21.35,
+  "touch_controls_toggle": true,
+  "keyboard_guide_when_touch_disabled": true,
+  "keyboard_guide_hidden_in_fullscreen": true,
+  "controls_off_fullscreen_slot": [
+    844,
+    390
+  ],
+  "controls_off_fullscreen_canvas": [
+    520,
+    390
+  ],
+  "touch_controls_restore": true,
+  "enter_starts_with_touch_off_after_fullscreen": true,
+  "startup_key_capture_precedes_focused_controls": true,
+  "gameplay_uses_complete_tsrun_keyboard_map": true
+}
