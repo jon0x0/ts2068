@@ -603,7 +603,6 @@
   "warm_return_ms": 910.906746031746,
   "fresh_game_snapshot_bytes": 3390,
   "animation_cpu_fraction_during_initialization": 0.01862493337085233,
-  "intro_preview": "intro-preview.gif",
   "release_file": "TheCrown.dck",
   "release_date": "2026-10-14",
   "joystick": {
