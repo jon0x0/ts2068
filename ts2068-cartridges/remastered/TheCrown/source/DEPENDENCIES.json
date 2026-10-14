@@ -1,0 +1,29 @@
+{
+  "Leap": {
+    "url": "https://github.com/nchiker/2068-Leap",
+    "revision": "77f1baaf30424f2cec8cf31cae90513faa9c45c5",
+    "license": "references/2068-Leap/LICENSE"
+  },
+  "TSVideoCodec": {
+    "url": "https://github.com/jon0x0/TSVideoCodec",
+    "revision": "54524b93644f938eb34e9e48f9af9cf3cd05fb58"
+  },
+  "TSRun": {
+    "url": "https://github.com/jon0x0/TSRun",
+    "note": "Exact compiler-test module snapshot; file hashes in SHA256SUMS"
+  },
+  "ZX0": {
+    "url": "https://github.com/einar-saukas/ZX0",
+    "revision": "ecde3a2ae05061fe06469ed46df81a33b7de7d86",
+    "license": "tools/ZX0/LICENSE"
+  },
+  "SjASMPlus": {
+    "url": "https://github.com/z00m128/sjasmplus",
+    "revision": "46aae3fa784cae903345b87bd6b9db16a77c4bea",
+    "license": "tools/sjasmplus/LICENSE.md"
+  },
+  "DCK helper": {
+    "url": "https://github.com/jon0x0/AISkill_TS2068",
+    "file": "scripts/dck_format.py"
+  }
+}

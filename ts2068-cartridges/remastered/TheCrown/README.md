@@ -92,3 +92,7 @@ https://github.com/jon0x0/TSVideoCodec. ZX0's BSD license is retained in
 Original title and cassette photographs are from Timex/Sinclair Computers,
 with source attribution under the site's CC BY-SA 4.0 terms. Original game
 credits and rights are retained; this is not a blanket relicensing of the game.
+
+## Cartridge source
+
+[Download the source package](TheCrown-source.zip) or [read the build instructions](source/README.md). Includes [original recovered BASIC](source/original/TheCrown.bas), [final Leap BASIC](source/leap/TheCrown.leap.bas), all three levels, native Z80 routines, and pinned build dependencies.

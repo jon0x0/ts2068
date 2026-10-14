@@ -1,0 +1,40 @@
+{
+  "title": "The Crown three level keyboard cartridge",
+  "level_files": [
+    {"listing":"assets/crown/LEVEL1.bas","charset":"assets/crown/charset-2.bin"},
+    {"listing":"assets/crown/LEVEL2.bas","charset":"assets/crown/charset-3.bin"},
+    {"listing":"assets/crown/LEVEL3.bas","charset":"assets/crown/charset-4.bin"}
+  ],
+  "segment": 1,
+  "data_backend": "packed",
+  "stream_source": true,
+  "hoist_dims": true,
+  "udg_escapes": true,
+  "overrides": {
+    "1": "GO TO 3500",
+    "1417": "LET joy=255",
+    "2750": "IF N(40*(lv-1)+RM,1) THEN PRINT AT Y(RM),X(RM);INK 6;CHR$ 160",
+    "2905": "READ R$: PRINT AT 0,17;INK 4;R$",
+    "2960": "RESTORE 5050+RM*100: FOR I=1 TO INT (RND*4+1): READ CX,CY: NEXT I: IF NOT POINT (cx*8+3,(21-cy)*8+4) THEN LET CHP=0: FOR I=1 TO H(M(RM)): LET CHP=CHP+INT (RND*8+1): NEXT I: PRINT AT CY,CX;INK 2;CHR$ (147+M(RM)): PRINT AT 21,17;C$(M(RM)): GO TO 2999",
+    "3030": "IF i$=\"n\" THEN STOP",
+    "3100": "LET LV=INT(RM/100): LET RM=RM-LV*100: CALL QZLEVEL(LV): GO SUB 3190: RETURN",
+    "3105": "REM Level data is in cartridge ROM",
+    "3110": "CALL QZLEVEL(LV): GO SUB 3190: RETURN",
+    "3120": "REM Level 1 only",
+    "3125": "REM Level 1 already resident",
+    "3130": "REM Original level 2 asset required",
+    "3140": "REM Original level 3 asset required",
+    "3150": "REM Original level 4 asset required",
+    "3160": "REM Original level 5 asset required",
+    "3172": "REM Character set installed by cartridge bootstrap"
+  },
+  "remove_statements": {
+    "3500": ["POKE VAL \"23562\",VAL \"10\""]
+  },
+  "notes": [
+    "Stock ON ERR is replaced by explicit converted control flow; VM errors remain visible.",
+    "Keyboard controls are retained; stock joystick port polling is disabled for this first build.",
+    "All three levels and their original UDG images are loaded from cartridge assets.",
+    "No files for levels 4 or 5 exist in the supplied TAP; the original main listing contains unused load clauses for them."
+  ]
+}

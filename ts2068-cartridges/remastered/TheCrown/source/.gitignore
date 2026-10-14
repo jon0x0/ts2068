@@ -1,0 +1,8 @@
+build/
+build-source.log
+__pycache__/
+*.pyc
+tools/sjasmplus/build/
+tools/sjasmplus/sjasmplus
+tools/ZX0/zx0
+tools/ZX0/dzx0

@@ -1,0 +1,88 @@
+{
+  "source": "original/TheCrown.tap",
+  "files": [
+    {
+      "name": "The Crown",
+      "type": 0,
+      "length": 70,
+      "address": 5,
+      "sha256": "eeed827a5e03e0c161b2c9a5ec96c1614c4b80bf1e6ae963de2c5ad4efc721f8"
+    },
+    {
+      "name": "The Crown",
+      "type": 3,
+      "length": 6912,
+      "address": 16384,
+      "sha256": "f7d08efcae7a8644a5ac47794e65a847df0554219a35b14b3bb4ca33150ffca6"
+    },
+    {
+      "name": "The Crown",
+      "type": 3,
+      "length": 168,
+      "address": 65368,
+      "sha256": "59379c0c03068def0a743877e924cef54a9b93f132dac700d2359c823127265a",
+      "charset": "original/TheCrown.tap"
+    },
+    {
+      "name": "The Crown",
+      "type": 0,
+      "length": 34970,
+      "address": 1,
+      "sha256": "cdddec0c0c5d52d25dd4d581c904482b501ca7c420a9aa3c00ab9a675e7c511f"
+    },
+    {
+      "name": "LEVEL1",
+      "type": 3,
+      "length": 19360,
+      "address": 30000,
+      "sha256": "683a4c1e417ea495c79b2420ebf25fbdacd65aaf0bed8bfbcc0761b9c2f86c19",
+      "lines": 244,
+      "decoded_bytes": 19360,
+      "listing": "original/TheCrown.tap"
+    },
+    {
+      "name": "CHAR SET",
+      "type": 3,
+      "length": 168,
+      "address": 65368,
+      "sha256": "782294f245a492a1c87baa737f7fe30bc210d6ef61bc94e04dc27ef39f35c61c",
+      "charset": "original/TheCrown.tap"
+    },
+    {
+      "name": "LEVEL2",
+      "type": 3,
+      "length": 19360,
+      "address": 30000,
+      "sha256": "7510025112011567930a25add48e04c32dfe55f4e9c27fd8f8e83f21020a3f1d",
+      "lines": 242,
+      "decoded_bytes": 19230,
+      "listing": "original/TheCrown.tap"
+    },
+    {
+      "name": "CHAR SET",
+      "type": 3,
+      "length": 168,
+      "address": 65368,
+      "sha256": "c327531526435ea88c8ab77c59ecc0fda84baffd6692b77893198715684ead74",
+      "charset": "original/TheCrown.tap"
+    },
+    {
+      "name": "LEVEL3",
+      "type": 3,
+      "length": 19360,
+      "address": 30000,
+      "sha256": "9af82f7fab2d5450fda258ed419b89a83c794854c6a80c52b9f50581b44507b1",
+      "lines": 243,
+      "decoded_bytes": 19181,
+      "listing": "original/TheCrown.tap"
+    },
+    {
+      "name": "CHAR SET",
+      "type": 3,
+      "length": 168,
+      "address": 65368,
+      "sha256": "9c7a88a55e8b1b7e06645c2f27e7d511bf4b43f721d9eaf57897fe3b47f77199",
+      "charset": "original/TheCrown.tap"
+    }
+  ]
+}

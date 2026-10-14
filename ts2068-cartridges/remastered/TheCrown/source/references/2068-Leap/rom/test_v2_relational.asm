@@ -1,0 +1,162 @@
+; ============================================================================
+; rom/test_v2_relational.asm — Architecture B, R8.5 Group 3 smoke test
+;
+; Standalone ROM image exercising rom/exrom_v2_compiler.asm's new full
+; relop set (<=, >, >=, <>, alongside the pre-existing < and =) and
+; AND/OR/NOT boolean grammar (COMPILE_EXPR/COMPILE_BOOL_AND/COMPILE_
+; BOOL_NOT/COMPILE_RELATIONAL), plus rom/exrom_v2_vm_core.asm's new
+; OP_CMP_LE/GT/GE/NE/AND/OR/NOT opcodes. NOT wired into the production
+; BASIC dispatch or the shipping EXROM build. Built on the shared
+; production-shaped test harness (rom/test_v2_harness_home_head.inc/
+; _tail.inc + rom/test_v2_harness_exrom.asm) -- see that harness's own
+; header for why (post-semantic-milestone test-infrastructure fix,
+; docs/POST_R9_TEST_INFRASTRUCTURE.md).
+;
+; Source program compiled and executed (A=5, B=3 throughout):
+;
+;   A=5:B=3
+;   PRINT A>B          -- 5>3, true=1
+;   PRINT A<B          -- 5<3, false=0
+;   PRINT A>=5         -- 5>=5, true=1
+;   PRINT A<=3         -- 5<=3, false=0
+;   PRINT A<>B         -- 5<>3, true=1
+;   PRINT A=5          -- 5=5, true=1
+;   PRINT (A>B) AND (B<A)   -- true AND true = true=1
+;   PRINT (A<B) OR (A>B)    -- false OR true = true=1
+;   PRINT NOT (A<B)         -- NOT false = true=1
+;
+; Every result is 1 (true) except the two deliberately-false comparisons
+; (A<B, A<=3), which must print 0 -- proves each relop's own direction
+; is correct, not just that SOME opcode ran (a relop bug that always
+; returns "true" or always "false" would otherwise pass a test that
+; only checked truthy results).
+; ============================================================================
+
+    DEFINE TEST_V2_NEEDS_DECOMPILE
+    DEFINE TEST_V2_CHECK_DECOMPILED_TEXT
+    INCLUDE "rom/test_v2_harness_home_head.inc"
+
+SOURCE_TEXT:
+    db "A=5:B=3:"
+    db "PRINT A>B:PRINT A<B:PRINT A>=5:PRINT A<=3:PRINT A<>B:PRINT A=5:"
+    db "PRINT (A>B) AND (B<A):PRINT (A<B) OR (A>B):PRINT NOT (A<B)", 0
+
+; TEST_CHECK_RESULT — VM_OUTPUT_ROW must be 9 -- one line per PRINT
+; (0-8); A=5/B=3 themselves don't print.
+TEST_CHECK_RESULT:
+    ld   a, (VM_OUTPUT_ROW)
+    cp   9
+    jr   nz, .fail
+    ret
+.fail:
+    scf
+    ret
+
+; ============================================================================
+; TEST_CHECK_DECOMPILED — byte-for-byte against a real captured-then-
+; verified rendering, independently cross-checked against a direct read
+; of each PRINT's own real screen text (1,0,1,0,1,1,1,1,1 -- see this
+; file's own header) before being captured, so this confirms both the
+; decompiled SHAPE and the real computed VALUES were correct, not just
+; that some opcode ran. "V0"/"V1" are the compiler's real generated
+; names for A/B.
+; ============================================================================
+TEST_CHECK_DECOMPILED:
+    ld   hl, (DECOMP_OUT_PTR)
+    ld   de, DECOMP_OUT_BUF
+    or   a
+    sbc  hl, de
+    ld   de, EXPECTED_TEXT_LEN
+    or   a
+    sbc  hl, de
+    jr   nz, .fail
+    ld   hl, DECOMP_OUT_BUF
+    ld   de, EXPECTED_TEXT
+    ld   bc, EXPECTED_TEXT_LEN
+.cmp:
+    ld   a, (de)
+    cp   (hl)
+    jr   nz, .fail
+    inc  hl
+    inc  de
+    dec  bc
+    ld   a, b
+    or   c
+    jr   nz, .cmp
+    ret
+.fail:
+    scf
+    ret
+
+EXPECTED_TEXT:
+    db "V0 = 5", 13
+    db "V1 = 3", 13
+    db "PRINT (V0>V1)", 13
+    db "PRINT (V0<V1)", 13
+    db "PRINT (V0>=5)", 13
+    db "PRINT (V0<=3)", 13
+    db "PRINT (V0<>V1)", 13
+    db "PRINT (V0=5)", 13
+    db "PRINT ((V0>V1) AND (V1<V0))", 13
+    db "PRINT ((V0<V1) OR (V0>V1))", 13
+    db "PRINT (NOT (V0<V1))", 13
+EXPECTED_TEXT_LEN: equ $-EXPECTED_TEXT
+
+; Test-only stubs: this file's own test program never exercises LPRINT/
+; BEEP/SOUND/PAUSE, and never registers or calls a loadable extension.
+BASIC_STMT_LPRINT_EXROM:
+    ret
+SOUND_BEEP:
+    ret
+SOUND_EXROM:
+    or a
+    ret
+IO_READ_KEY:
+    xor a
+    ret
+INT_GET_FRAMES:
+    ld hl,0
+    ret
+EXT2_LOOKUP:
+    scf
+    ret
+EXT2_SLOT_ADDR:
+    ret
+EXT_CALL_ARG0: equ $8B00
+EXT_CALL_ARG4: equ $8B00
+EXT2_TABLE:    equ $8B00
+
+GFX_CLS:
+    ret
+GFX_PAINT_ATTR:
+    ret
+GFX_SET_BORDER:
+    ret
+GFX_WRITE_PIXEL:
+    ret
+GFX_LINE:
+    ret
+GFX_PRINT_STRING_ATTR:
+    ret
+GFX_SCROLL_OUTPUT_UP:
+    ret
+GFX_SET_MODE:
+    ret
+GFX_SPRITE_CAPTURE:
+    or a
+    ret
+GFX_SPRITE_DRAW:
+    or a
+    ret
+GFX_READ_PIXEL:
+    xor a
+    ret
+GFX_CELL_ATTR_ADDR:
+    scf
+    ret
+    INCLUDE "rom/exrom_format.asm"
+IO_READ_KEY_NONBLOCK:
+        xor a
+        ret
+
+    INCLUDE "rom/test_v2_harness_home_tail.inc"

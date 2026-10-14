@@ -1,3 +1,6 @@
 # Preserve the exact bytes recorded in play/tsrun-version.json.
 play/tsrun/** -text
 play/sound.worklet.js -text
+
+# Preserve exact source snapshot bytes and its integrity manifest.
+source/** -text

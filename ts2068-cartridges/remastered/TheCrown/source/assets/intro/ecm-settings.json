@@ -1,0 +1,14 @@
+{
+  "dither_mode": "sierra-lite",
+  "brightness": -0.01,
+  "contrast": 1.0,
+  "saturation": 1.8,
+  "sierra_gamma": 2.6,
+  "geometry": "fit",
+  "reference_tap": "Historical ECM calibration reference; extracted credits-bitmap.bin is included",
+  "reference_sha256": "95c9ecc51ccf3a43f30c0a328660837ee62cac572340a0a8f6980fbc007630a3",
+  "calibration_source": "inputs/intro-locked/source/reference-plate.png",
+  "calibration_report": "build/intro-reference/calibration.json",
+  "brightness_units": "native encoder linear-light offset; not a percentage slider",
+  "comparison": "Low-frequency RGB comparison against decoded reference ECM planes; approximate visual match, not identical bytes"
+}

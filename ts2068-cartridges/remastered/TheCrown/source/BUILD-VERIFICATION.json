@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-14",
+  "toolchain": "Windows Python + Node.js + WSL GCC/G++/Make + Fuse",
+  "assembler_and_compressor_built_from_included_source": true,
+  "compiler_runtime_prepared_from_included_Leap_source": true,
+  "original_BASIC_reconverted_and_compiled": true,
+  "final_Leap_BASIC_matches_release_listing": true,
+  "cartridge_matches_published_release": true,
+  "sha256": "481a5ada28700ce312b5b8388008195701a523da671f7a0fefe7f835a31540cd",
+  "emulator_reports": {
+    "startup-execution": {
+      "report_produced": true,
+      "vmError": 0,
+      "gameEntered": true,
+      "heldKeyTest": false
+    },
+    "startup-held-key": {
+      "report_produced": true,
+      "vmError": 0,
+      "gameEntered": true,
+      "heldKeyTest": true
+    },
+    "gameplay": {
+      "report_produced": true,
+      "vmError": 0,
+      "status": "Scripted Crown cartridge gameplay"
+    },
+    "fuse-startup": {
+      "report_produced": true
+    },
+    "fuse-gameplay": {
+      "report_produced": true
+    },
+    "fuse-warm-intro": {
+      "report_produced": true
+    }
+  },
+  "physical_hardware_tested": false
+}
