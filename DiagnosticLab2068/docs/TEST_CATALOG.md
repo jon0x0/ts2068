@@ -2,7 +2,7 @@
 
 Generated from [test-registry.json](test-registry.json) by [build_test_catalog.py](../scripts/build_test_catalog.py). Edit the registry, then regenerate this file.
 
-The registry contains 56 tests and diagnostic UI modules. Firmware status counts: specified 15, partial 28, implemented 13, retired 0. 11 entries reference existing host support; host support is not a target implementation.
+The registry contains 58 tests and diagnostic UI modules. Firmware status counts: specified 14, partial 28, implemented 16, retired 0. 14 entries reference existing host support; host support is not a target implementation.
 
 The algorithm below describes the intended implementation unless firmware locations are populated. Empty validation evidence means no per-test emulator or physical acceptance evidence has been recorded. Implementation and validation are separate: code can exist while target validation remains pending.
 
@@ -56,7 +56,7 @@ Every entry must obey [FAULT_CONTAINMENT.md](FAULT_CONTAINMENT.md). Declared con
 | [IO-02](#io-02-built-in-joystick-input-and-isolation) | Built-in joystick input and isolation | partial | 2 references |
 | [SOAK-01](#soak-01-overnight-ram-only) | Overnight RAM only | partial | 1 references |
 | [SOAK-02](#soak-02-overnight-banking-only) | Overnight banking only | partial | None |
-| [SOAK-03](#soak-03-combined-overnight-mixed-load) | Combined overnight mixed load | specified | None |
+| [SOAK-03](#soak-03-combined-overnight-mixed-load) | Combined overnight mixed load | implemented | 1 references |
 | [UI-01](#ui-01-resource-permissions-and-fallback-reporting) | Resource permissions and fallback reporting | partial | 4 references |
 | [UI-02](#ui-02-soak-dashboard-cancellation-and-first-fault) | Soak dashboard cancellation and first fault | partial | None |
 | [PV-01](#pv-01-picovideo-palette-register-path) | PicoVideo palette register path | specified | None |
@@ -68,6 +68,8 @@ Every entry must obey [FAULT_CONTAINMENT.md](FAULT_CONTAINMENT.md). Declared con
 | [UI-03](#ui-03-schematic-aware-degraded-fault-text) | Schematic aware degraded fault text | implemented | 3 references |
 | [EXT-01](#ext-01-tspico-external-sram-and-slot-isolation) | TSPico external SRAM and slot isolation | specified | None |
 | [BOOT-03](#boot-03-u16-home-rom-reset-diagnostic-bootstrap) | U16 HOME-ROM reset diagnostic bootstrap | implemented | 4 references |
+| [LOAD-01](#load-01-sinistar-stack-data-load-reproduction) | Sinistar stack-data load reproduction | implemented | 1 references |
+| [LOAD-02](#load-02-opt-in-sinistar-interrupt-return-load-reproduction) | Opt-in Sinistar interrupt-return load reproduction | implemented | 1 references |
 
 ## Prerequisites
 
@@ -1146,7 +1148,7 @@ Every entry must obey [FAULT_CONTAINMENT.md](FAULT_CONTAINMENT.md). Declared con
 
 **Firmware status:** partial. **Prerequisites:** qualified_workspace.
 
-**Implementation method:** Poll all8 half-rows, live green held/cyan released/unseen white; optional bounded historical RAM flags, duplicated CAPS and BREAK chord. Dedicated debounce/release history remains future. Graphic adaptation of Josef Jelinek TSRun keyboard.png, with fixed non-overlapping two-row attribute rectangles. Palette PAPER78 unseen,60 held,68 released; both CAPS share history; derived CAPS+SPACE BREAK adds byte5B28 and is distinct from ENTER+SPACE exit. Tiny legends removed; primary embedded Timex glyph labels retained. Painter preserves D/E/IX/alternate AF selector and uses no RAM control data. Detailed conversion/source/exit contracts in KEYBOARD_ART.md; original PNG/provenance hashes preserved.
+**Implementation method:** Poll all8 half-rows, live green held/cyan released/unseen white; optional bounded historical RAM flags, duplicated CAPS and BREAK chord. Dedicated debounce/release history remains future. Graphic adaptation of Josef Jelinek TSRun keyboard.png, with fixed non-overlapping two-row attribute rectangles. Palette PAPER78 unseen,60 held,68 released; both CAPS share history; derived CAPS+SPACE BREAK adds byte5B28 and is distinct from ENTER+SPACE exit. Tiny legends removed; primary embedded Timex glyph labels retained. Painter preserves D/E/IX/alternate AF selector and uses no RAM control data. Detailed conversion/source/exit contracts in KEYBOARD_ART.md; original PNG/provenance hashes preserved. Cartridge fixed keyboard scanning now executes in ROM7 E000-E599 with ROM0 paint/exit bridges; HSR81 during scan,01 at exit; D/E/IX/AF alternate contracts unchanged. HOME keeps its scanner in HOME ROM.
 
 **Observables:** Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.
 
@@ -1166,6 +1168,7 @@ Every entry must obey [FAULT_CONTAINMENT.md](FAULT_CONTAINMENT.md). Declared con
 
 - [src/modules.asm](../src/modules.asm) — entry `keyboard_scan`.
 - [src/modules.asm](../src/modules.asm) — entry `keyboard_paint`.
+- [build/keyboard-rom.asm](../build/keyboard-rom.asm) — entry `keyboard_rom_scan`.
 
 **Existing host support:**
 
@@ -1175,6 +1178,9 @@ Every entry must obey [FAULT_CONTAINMENT.md](FAULT_CONTAINMENT.md). Declared con
 
 - [emulator PASS](../docs/validation/v02-301339832d6f/suite-verification.json) — TSRun stock TS2068, module/full-suite execution and fault injections; see exact cases and limitations. Physical validation pending..
 - [emulator PASS](../docs/validation/v02-301339832d6f/keyboard-verification.json) — TSRun:44 cases covering all40 contacts, exact non-overlapping whole-key attributes, shared CAPS/derived BREAK, ENTER+SPACE distinction, corrupt history and all HOME writes lost; no physical acceptance..
+- [emulator PASS](../docs/validation/load-a09b3406d3f1/keyboard-verification.json) — TSRun; all40 matrix contacts, exact rectangles, shared CAPS/BREAK, lost writes/history and exits with unchanged SP and audited ROM0/ROM7 fetches. Physical validation pending..
+- [emulator PASS](../docs/validation/load-9db1d0ac08eb/keyboard-verification.json) — TSRun; all40 matrix contacts, exact rectangles, shared CAPS/BREAK, lost writes/history and exits with unchanged SP and audited ROM0/ROM7 fetches. Physical validation pending..
+- [emulator PASS](../docs/validation/load-bc5eb2df44c3/keyboard-verification.json) — TSRun; all40 matrix contacts, exact rectangles, shared CAPS/BREAK, lost writes/history and exits with unchanged SP and audited ROM0/ROM7 fetches. Physical validation pending..
 
 **Required acceptance work:** Static mapping/register/stack audit; TS2068 emulator execution and relevant fault injection; Physical target/cartridge validation for supported behavior; Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution.
 
@@ -1206,7 +1212,7 @@ Every entry must obey [FAULT_CONTAINMENT.md](FAULT_CONTAINMENT.md). Declared con
 
 **Firmware status:** partial. **Prerequisites:** rom_execution.
 
-**Implementation method:** Live row/column display provides technician isolation evidence; no-row/multiple-row automated comparison and verdicts remain future.
+**Implementation method:** Live row/column display provides technician isolation evidence; no-row/multiple-row automated comparison and verdicts remain future. Cartridge fixed keyboard scanning now executes in ROM7 E000-E599 with ROM0 paint/exit bridges; HSR81 during scan,01 at exit; D/E/IX/AF alternate contracts unchanged. HOME keeps its scanner in HOME ROM.
 
 **Observables:** Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.
 
@@ -1225,11 +1231,15 @@ Every entry must obey [FAULT_CONTAINMENT.md](FAULT_CONTAINMENT.md). Declared con
 **Firmware locations:**
 
 - [src/modules.asm](../src/modules.asm) — entry `keyboard_scan`.
+- [build/keyboard-rom.asm](../build/keyboard-rom.asm) — entry `keyboard_rom_scan`.
 
 **Validation evidence:**
 
 - [emulator PASS](../docs/validation/v02-301339832d6f/suite-verification.json) — TSRun stock TS2068, module/full-suite execution and fault injections; see exact cases and limitations. Physical validation pending..
 - [emulator PASS](../docs/validation/v02-301339832d6f/keyboard-verification.json) — TSRun:44 cases covering all40 contacts, exact non-overlapping whole-key attributes, shared CAPS/derived BREAK, ENTER+SPACE distinction, corrupt history and all HOME writes lost; no physical acceptance..
+- [emulator PASS](../docs/validation/load-a09b3406d3f1/keyboard-verification.json) — TSRun; all40 matrix contacts, exact rectangles, shared CAPS/BREAK, lost writes/history and exits with unchanged SP and audited ROM0/ROM7 fetches. Physical validation pending..
+- [emulator PASS](../docs/validation/load-9db1d0ac08eb/keyboard-verification.json) — TSRun; all40 matrix contacts, exact rectangles, shared CAPS/BREAK, lost writes/history and exits with unchanged SP and audited ROM0/ROM7 fetches. Physical validation pending..
+- [emulator PASS](../docs/validation/load-bc5eb2df44c3/keyboard-verification.json) — TSRun; all40 matrix contacts, exact rectangles, shared CAPS/BREAK, lost writes/history and exits with unchanged SP and audited ROM0/ROM7 fetches. Physical validation pending..
 
 **Required acceptance work:** Static mapping/register/stack audit; TS2068 emulator execution and relevant fault injection; Physical target/cartridge validation for supported behavior; Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution.
 
@@ -1397,7 +1407,7 @@ Every entry must obey [FAULT_CONTAINMENT.md](FAULT_CONTAINMENT.md). Declared con
 
 **Firmware status:** partial. **Prerequisites:** qualified_workspace.
 
-**Implementation method:** Continuous complete48K sweeps including address/random/retention and workspace; register-only16-bit completed-pass count wraps at65536. Any new key stops at a safe boundary. Recorded error masks enter the chip/bit reporter; otherwise soakstop displays No failures during the test with the hexadecimal count, then requires a fresh key to return. No incomplete label for this infinite run. Seed/dwell/direction profiles, scheduled hours and pause/resume remain future.
+**Implementation method:** Continuous complete48K sweeps including address/random/retention and workspace; register-only16-bit completed-pass count wraps at65536. Any new key stops at a safe boundary. Recorded error masks enter the chip/bit reporter; otherwise soakstop displays No failures during the test with the hexadecimal count, then requires a fresh key to return. No incomplete label for this infinite run. Seed/dwell/direction profiles, scheduled hours and pause/resume remain future. Between passes the readable status/count page holds for six nominal seconds at3.528MHz, with all-key-release/new-key cancellation still active; no mid-sweep status redraw.
 
 **Observables:** Phase border colors, completed-pass count and stopped/no-failures summary; RAM failures attempt chip-designator/bit identification with adaptive text and repeating border/beeper codes.
 
@@ -1429,6 +1439,11 @@ Every entry must obey [FAULT_CONTAINMENT.md](FAULT_CONTAINMENT.md). Declared con
 - [emulator PASS](../docs/validation/v02-301339832d6f/suite-ram-verification.json) — TSRun:28 quick-startup and6 explicit complete-sweep all-HOME scenarios;24 quick stuck-bit region faults plus representative complete faults, transient reads and write loss; unchanged SP and ROM-only opcodes..
 - [emulator PASS](../docs/validation/v02-301339832d6f/soak-verification.json) — TSRun; stop summaries, register counts, fault priority, held-key/new-key behavior and lost display writes. Physical validation pending..
 - [emulator PASS](../docs/validation/home-e09e53177d65/soak-verification.json) — TSRun; stop summaries, register counts, fault priority, held-key/new-key behavior and lost display writes. Physical validation pending..
+- [emulator PASS](../docs/validation/soak-aae9743a6c6e/cartridge.json) — TSRun; measured six-second status dwell, stack unchanged, immediate cancellation, stop-count/fault priority; physical clock/timing pending..
+- [emulator PASS](../docs/validation/soak-aae9743a6c6e/home.json) — TSRun U16 HOME edition; six-second dwell, cancellation and stop summaries; physical timing pending..
+- [emulator PASS](../docs/validation/load-a09b3406d3f1/soak-verification.json) — TSRun cartridge; six-second status dwell, guarded stop, first-fault/count/acknowledgement checks. Physical timing pending..
+- [emulator PASS](../docs/validation/load-9db1d0ac08eb/soak-verification.json) — TSRun cartridge; six-second status dwell, guarded stop, first-fault/count/acknowledgement checks. Physical timing pending..
+- [emulator PASS](../docs/validation/load-bc5eb2df44c3/soak-verification.json) — TSRun cartridge; six-second status dwell, guarded stop, first-fault/count/acknowledgement checks. Physical timing pending..
 
 **Required acceptance work:** Static mapping/register/stack audit; TS2068 emulator execution and relevant fault injection; Physical target/cartridge validation for supported behavior; Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution.
 
@@ -1464,11 +1479,11 @@ Every entry must obey [FAULT_CONTAINMENT.md](FAULT_CONTAINMENT.md). Declared con
 
 ### SOAK-03 Combined overnight mixed load
 
-**Firmware status:** specified. **Prerequisites:** qualified_interrupts.
+**Firmware status:** implemented. **Prerequisites:** rom_execution, home_mapping.
 
-**Implementation method:** Only after isolated tests pass, combine banking,RAM,qualified interrupts,video and safe AY traffic; rotate mapping families.
+**Implementation method:** Configurable ROM-only mixed-load batches: all48K address-hash/March and data-only PUSH/POP, ECM fetch, fixed DOCK signature/isolation traffic, normal-refresh spacing, bounded IM1 entry and frequent synthetic Speech2AY-style R0-R12 writes/readbacks. Eight independent toggles, baseline/all presets, one-batch/continuous, six-second status/count and guarded new-key stop. IRQ sink BFFD/BFFE receives deferred DI-only00/FF tests. Advanced real-return bursts are separately confirmed, not destructive-March resumption. Menu groups N/C as configurable duration before Begin test with S/R; the selected complete duration phrase is green. Option4 explicitly names60Hz screen interrupts; S uses bounded checkpoints and R confirms actual IRQ returns. Option6 now cycles quiet/busy slices, adds checked00/FF/55/AA traffic after hash comparisons, rotates0/2/6 video when option3 is enabled, and strengthens AY to14 writes with maximum/envelope amplitudes plus bounded beeper when option7 is enabled. P selects all power loads; quiet phases inhibit IRQ and use bounded ROM waits. RAM phase ordering and fixed-ROM recovery remain separate from auxiliary loads. Running notice explicitly announces TEST STARTED and six-second preparation.
 
-**Observables:** Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.
+**Observables:** First RAM address/expected/observed/XOR region mask/phase and chip/bit pulses; auxiliary4/5/7 class/address-or-index/expected/observed/phase. No-fault stopped batch count wraps65536. Fault fields replace batch count; no persistent log. Analog output needs observation.
 
 **Interpretation limits:** Combined failures require isolated reruns; no deliberate hidden PC/SP/vector.
 
@@ -1476,13 +1491,23 @@ Every entry must obey [FAULT_CONTAINMENT.md](FAULT_CONTAINMENT.md). Declared con
 
 **Execution policy:** separately_selectable_with_fresh_qualification.
 
-**Control-flow exposure:** Only separately selected advanced IRQ/execution profiles introduce their disclosed RAM/control-flow exposure.
+**Control-flow exposure:** Register-only ROM0/ROM4 scheduler, bounded option-independent loops and mapping; optional data PUSH/POP never RETs. Basic IRQ saved PC is write-only. CPU/ROM opcode, shared bus/clock/power failures remain unavoidable.
 
-**Specification:** [Detailed design](BANKING_AND_OVERNIGHT_TESTS.md#overnight-ram-and-combined-soak).
+**Specification:** [Detailed design](SINISTAR_LOAD_TEST.md#current-implementation-and-operator-controls).
 
-**Firmware locations:** None yet.
+**Actual implementation and remaining scope:** [Implementation record](SINISTAR_LOAD_TEST.md).
 
-**Validation evidence:** None recorded for the target test.
+**Firmware locations:**
+
+- [src/load.asm](../src/load.asm) — entry `load_batch_start`.
+
+**Existing host support:**
+
+- [scripts/verify_load.mjs](../scripts/verify_load.mjs).
+
+**Validation evidence:**
+
+- [emulator PASS](../docs/validation/load-bc5eb2df44c3/load-verification.json) — TSRun mapped64K DOCK; all256 safe slice masks, representative batches, D1 POP data loss, missing IRQ/bank/AY faults, UI cancellation and real IM1/IM2 return profiles. Physical timing/supply/thermal replication pending..
 
 **Required acceptance work:** Static mapping/register/stack audit; TS2068 emulator execution and relevant fault injection; Physical target/cartridge validation for supported behavior; Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution.
 
@@ -1832,6 +1857,74 @@ Every entry must obey [FAULT_CONTAINMENT.md](FAULT_CONTAINMENT.md). Declared con
 - [emulator checkpoint_completed](../docs/validation/home-e09e53177d65/fuse-verification.json) — Fuse native reset with customU16,noDOCK andallFF EXROM; physical timing pending..
 
 **Required acceptance work:** Static mapping/register/stack audit; TS2068 emulator execution and relevant fault injection; Physical target/cartridge validation for supported behavior; Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution.
+
+### LOAD-01 Sinistar stack-data load reproduction
+
+**Firmware status:** implemented. **Prerequisites:** rom_execution, home_mapping.
+
+**Implementation method:** Real PUSH DE/POP BC data-only pairs sweep every byte4000-FFFF using address-derived complementary bytes; D1-rich data and5ED0/BFFF vicinity included. DI pairs; enabled loads interleave every256 bytes. Popped data never chooses PC/SP/continuation; fixed SP reset and ROM JP recovery. Recovery latches the original observed POP/read byte through compare_observed, avoiding a second RAM read that could erase transient faults. Exact XOR masks for D0-D7 and multibit26h are verified in each RAM region.
+
+**Observables:** First RAM address/expected/observed/XOR region mask/phase and chip/bit pulses; auxiliary4/5/7 class/address-or-index/expected/observed/phase. No-fault stopped batch count wraps65536. Fault fields replace batch count; no persistent log. Analog output needs observation.
+
+**Interpretation limits:** Low-nibble RAM/shared data/write/read/timing/supply paths; no unique component verdict. Isolated reruns required for combined failures.
+
+**Recovery:** soak_recovery.
+
+**Execution policy:** separately_selectable_with_fresh_qualification.
+
+**Control-flow exposure:** Register-only ROM0/ROM4 scheduler, bounded option-independent loops and mapping; optional data PUSH/POP never RETs. Basic IRQ saved PC is write-only. CPU/ROM opcode, shared bus/clock/power failures remain unavoidable.
+
+**Specification:** [Detailed design](SINISTAR_LOAD_TEST.md#current-implementation-and-operator-controls).
+
+**Actual implementation and remaining scope:** [Implementation record](SINISTAR_LOAD_TEST.md).
+
+**Firmware locations:**
+
+- [src/load_low.asm](../src/load_low.asm) — entry `load_stack_begin`.
+
+**Existing host support:**
+
+- [scripts/verify_load.mjs](../scripts/verify_load.mjs).
+
+**Validation evidence:**
+
+- [emulator PASS](../docs/validation/load-bc5eb2df44c3/load-verification.json) — TSRun mapped64K DOCK; all256 safe slice masks, representative batches, D1 POP data loss, missing IRQ/bank/AY faults, UI cancellation and real IM1/IM2 return profiles. Physical timing/supply/thermal replication pending..
+
+**Required acceptance work:** Static mapping/register/stack audit; Image-bound emulator option combinations and D1/lost-write/IRQ/mapping/AY injections; Cancellation after all-key release; mute and first-fault recovery; Physical cold/warm mixed-load reproduction; optional return-corruption exposure documented.
+
+### LOAD-02 Opt-in Sinistar interrupt-return load reproduction
+
+**Firmware status:** implemented. **Prerequisites:** qualified_workspace, qualified_interrupts.
+
+**Implementation method:** Explicit R warning/release/new-R opt-in, IM1 or freshly readback-qualified257-byte IM2 table7A00 and JP7B7B; qualify5E70-5ED0/BFE0-BFFF, then bounded5F00 foreground accesses with real saved-register/audio-stack frame IRQ returns,5E70 saved-SP comparison/fixed restore,78DF mapping shadow, AY R0-R12 traffic and safe D1/51 banking. At batch end only; excluded from concurrent destructive March and default Full/soak. Late saved-PC/table/opcode corruption can defeat recovery.
+
+**Observables:** First RAM address/expected/observed/XOR region mask/phase and chip/bit pulses; auxiliary4/5/7 class/address-or-index/expected/observed/phase. No-fault stopped batch count wraps65536. Fault fields replace batch count; no persistent log. Analog output needs observation.
+
+**Interpretation limits:** Low-nibble RAM/shared data/write/read/timing/supply paths; no unique component verdict. Isolated reruns required for combined failures.
+
+**Recovery:** soak_recovery.
+
+**Execution policy:** separately_selectable_with_fresh_qualification.
+
+**Control-flow exposure:** Fresh qualification reduces risk but saved PC/stack or IM2/trampoline corruption can derail execution before checker/recovery. This separately confirmed real-return profile is excluded from startup/Full/default soak. No guarantee of survival of arbitrary return corruption.
+
+**Specification:** [Detailed design](SINISTAR_LOAD_TEST.md#current-implementation-and-operator-controls).
+
+**Actual implementation and remaining scope:** [Implementation record](SINISTAR_LOAD_TEST.md).
+
+**Firmware locations:**
+
+- [src/load.asm](../src/load.asm) — entry `load_return_start`.
+
+**Existing host support:**
+
+- [scripts/verify_load.mjs](../scripts/verify_load.mjs).
+
+**Validation evidence:**
+
+- [emulator PASS](../docs/validation/load-bc5eb2df44c3/load-verification.json) — TSRun mapped64K DOCK; all256 safe slice masks, representative batches, D1 POP data loss, missing IRQ/bank/AY faults, UI cancellation and real IM1/IM2 return profiles. Physical timing/supply/thermal replication pending..
+
+**Required acceptance work:** Static mapping/register/stack audit; Image-bound emulator option combinations and D1/lost-write/IRQ/mapping/AY injections; Cancellation after all-key release; mute and first-fault recovery; Physical cold/warm mixed-load reproduction; optional return-corruption exposure documented.
 
 ## Updating a test
 

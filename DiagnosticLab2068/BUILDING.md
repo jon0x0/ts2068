@@ -1,6 +1,6 @@
 # Building and validation
 
-Release v0.2 | October 12, 2026
+Release v0.3 | October 13, 2026
 
 The supplied release images are the tested outputs. Firmware source, asset
 generators, test scripts and current image-bound emulator evidence are included.

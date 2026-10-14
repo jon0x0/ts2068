@@ -1,0 +1,23 @@
+Release v0.3 | October 13, 2026
+
+TS2068 Diagnostic Lab cartridge v0.3 - October 13, 2026
+
+This release adds configurable mixed-load and quiet/busy power-cycle tests:
+RAM/March, normal/ECM/hires video, 60 Hz IRQ, banking, stronger AY/envelope/beeper
+activity and stack-data comparisons. Main L/P selects combined loads; choose
+N one batch or C continuous, then S. Genuine IM1/IM2 returns use separate R
+confirmation and fresh prerequisites. The running screen explains the6-second
+notice. Soak notices remain readable for6 seconds.
+
+Transient read/POP reports now retain the original observed byte, with checked
+D0-D7 and multi-bit masks in all RAM regions. The motivating Sinistar D1-loss
+incident is a supplied report, not a physically reproduced result.
+
+The updated PDF/offline manual and POWER_LOAD_TROUBLESHOOTING.md explain why
+load transitions matter, how to inspect the5 V rail with an oscilloscope and
+how to separate supply hypotheses from RAM/refresh/timing faults.
+
+Images and checksums are emulator validated. Physical supply/current/thermal
+validation remains pending. HOME U16 retains reduced coverage without L.
+Internal diagnostic-v02 filenames are retained for build/tool compatibility;
+the public release archives and manifests identify v0.3.

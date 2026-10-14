@@ -1,0 +1,391 @@
+{
+  "image_sha256": "bc5eb2df44c390573b4058d614ba37ab1a95c8065c81bb7d15eb922c4d68e030",
+  "configuration": "TSRun stock TS2068; direct module entry plus explicit fault injections; separate native/RAM suite evidence",
+  "result": "PASS",
+  "cases": [
+    {
+      "name": "main J opens joystick/EAR observation with AY port input-safe",
+      "result": "PASS"
+    },
+    {
+      "name": "held J quarantined; release/repress opens joystick entry",
+      "result": "PASS"
+    },
+    {
+      "name": "complete RAM all-six-chip result and held-key quarantine/new-key return",
+      "result": "PASS"
+    },
+    {
+      "name": "RAM mismatch never displays all-chip pass",
+      "result": "PASS"
+    },
+    {
+      "name": "Z80 five stages and all16 address-bit probes pass without stack",
+      "result": "PASS"
+    },
+    {
+      "name": "Z80 stage1 injected fault reports and returns without stack",
+      "result": "PASS"
+    },
+    {
+      "name": "Z80 stage2 injected fault reports and returns without stack",
+      "result": "PASS"
+    },
+    {
+      "name": "Z80 stage3 injected fault reports and returns without stack",
+      "result": "PASS"
+    },
+    {
+      "name": "Z80 stage4 injected fault reports and returns without stack",
+      "result": "PASS"
+    },
+    {
+      "name": "Z80 stage5 injected fault reports and returns without stack",
+      "result": "PASS"
+    },
+    {
+      "name": "address A0 alias localized with ROM recovery",
+      "result": "PASS"
+    },
+    {
+      "name": "address A1 alias localized with ROM recovery",
+      "result": "PASS"
+    },
+    {
+      "name": "address A2 alias localized with ROM recovery",
+      "result": "PASS"
+    },
+    {
+      "name": "address A3 alias localized with ROM recovery",
+      "result": "PASS"
+    },
+    {
+      "name": "address A4 alias localized with ROM recovery",
+      "result": "PASS"
+    },
+    {
+      "name": "address A5 alias localized with ROM recovery",
+      "result": "PASS"
+    },
+    {
+      "name": "address A6 alias localized with ROM recovery",
+      "result": "PASS"
+    },
+    {
+      "name": "address A7 alias localized with ROM recovery",
+      "result": "PASS"
+    },
+    {
+      "name": "address A8 alias localized with ROM recovery",
+      "result": "PASS"
+    },
+    {
+      "name": "address A9 alias localized with ROM recovery",
+      "result": "PASS"
+    },
+    {
+      "name": "address A10 alias localized with ROM recovery",
+      "result": "PASS"
+    },
+    {
+      "name": "address A11 alias localized with ROM recovery",
+      "result": "PASS"
+    },
+    {
+      "name": "address A12 alias localized with ROM recovery",
+      "result": "PASS"
+    },
+    {
+      "name": "address A13 alias localized with ROM recovery",
+      "result": "PASS"
+    },
+    {
+      "name": "address A14 alias localized with ROM recovery",
+      "result": "PASS"
+    },
+    {
+      "name": "address A15 alias localized with ROM recovery",
+      "result": "PASS"
+    },
+    {
+      "name": "video bars exact planes + stop",
+      "result": "PASS"
+    },
+    {
+      "name": "video standard exact planes + stop",
+      "result": "PASS"
+    },
+    {
+      "name": "video secondary exact planes + stop",
+      "result": "PASS"
+    },
+    {
+      "name": "video ecm exact planes + stop",
+      "result": "PASS"
+    },
+    {
+      "name": "video hires exact planes + stop",
+      "result": "PASS"
+    },
+    {
+      "name": "video mix128 exact planes + stop",
+      "result": "PASS"
+    },
+    {
+      "name": "menu navigation and release gate",
+      "result": "PASS"
+    },
+    {
+      "name": "keyboard W press/release + BREAK exit",
+      "result": "PASS"
+    },
+    {
+      "name": "bank combinations / ROM write isolation / stop",
+      "result": "PASS"
+    },
+    {
+      "name": "bank signature fault restores anchor, pulses class and stops",
+      "result": "PASS"
+    },
+    {
+      "name": "overlay leaking write detected",
+      "result": "PASS"
+    },
+    {
+      "name": "AY masked readback and A/B/C playback exit",
+      "result": "PASS"
+    },
+    {
+      "name": "missing AY produces bounded failure",
+      "result": "PASS"
+    },
+    {
+      "name": "three beeper tones with red/magenta/green borders, matched high/low colors and silence",
+      "result": "PASS"
+    },
+    {
+      "name": "home_crc_select stock CRC + mapping recovery",
+      "result": "PASS",
+      "crc32": "bf44ec3f"
+    },
+    {
+      "name": "exrom_crc_select stock CRC + mapping recovery",
+      "result": "PASS",
+      "crc32": "ae16233a"
+    },
+    {
+      "name": "modified HOME identity detected",
+      "result": "PASS"
+    },
+    {
+      "name": "EXROM gateway mismatch prevents execution",
+      "result": "PASS"
+    },
+    {
+      "name": "high ROM code mismatch prevents execution",
+      "result": "PASS"
+    },
+    {
+      "name": "SCLD IRQ inhibit / arrival fixed checkpoint",
+      "result": "PASS"
+    },
+    {
+      "name": "missing IRQ times out",
+      "result": "PASS"
+    },
+    {
+      "name": "failed inhibit produces bounded failure",
+      "result": "PASS"
+    },
+    {
+      "name": "select_all cancellation",
+      "result": "PASS"
+    },
+    {
+      "name": "select_patterns cancellation",
+      "result": "PASS"
+    },
+    {
+      "name": "select_march cancellation",
+      "result": "PASS"
+    },
+    {
+      "name": "select_address cancellation",
+      "result": "PASS"
+    },
+    {
+      "name": "select_random cancellation",
+      "result": "PASS"
+    },
+    {
+      "name": "select_retention cancellation",
+      "result": "PASS"
+    },
+    {
+      "name": "RAM soak pass counted, stopped summary and new-key return",
+      "result": "PASS"
+    },
+    {
+      "name": "RAM soak failure latches and reports",
+      "result": "PASS"
+    },
+    {
+      "name": "corrupt optional UI packet stays bounded",
+      "result": "PASS"
+    },
+    {
+      "name": "full digital and guided sequence reaches keyboard",
+      "result": "PASS"
+    },
+    {
+      "name": "address alias identified without stack use",
+      "result": "PASS"
+    },
+    {
+      "name": "cartridge payload integrity fails before HOME testing",
+      "result": "PASS"
+    },
+    {
+      "name": "degraded target renderer all32 stuck-nibble values",
+      "result": "PASS",
+      "cases": 32
+    },
+    {
+      "name": "16-bit random first mismatch stops without state cascade",
+      "result": "PASS"
+    },
+    {
+      "name": "upper-chip report adapts to simultaneous U6 display fault",
+      "result": "PASS"
+    },
+    {
+      "name": "EAR/joystick observation forces input-safe AY direction and stops",
+      "result": "PASS"
+    },
+    {
+      "name": "stuck numeric key quarantined; another menu choice works",
+      "result": "PASS"
+    },
+    {
+      "name": "stuck optional-test key does not trigger execution",
+      "result": "PASS"
+    },
+    {
+      "name": "IRQ checkpoint survives all HOME writes lost; green border confirms arrival",
+      "result": "PASS"
+    },
+    {
+      "name": "RAM fault acknowledged with M; independent menu remains available",
+      "result": "PASS"
+    },
+    {
+      "name": "all keyboard inputs stuck low cannot cancel the automatic quick baseline",
+      "result": "PASS"
+    },
+    {
+      "name": "bank mask corruption cannot remove anchor or extend table count",
+      "result": "PASS"
+    },
+    {
+      "name": "initially stuck M cannot cancel full digital and guided sequence",
+      "result": "PASS"
+    },
+    {
+      "name": "silent beeper still yields visible sync / class2 / chip1 / bit1 border envelopes",
+      "result": "PASS"
+    },
+    {
+      "name": "Q cancels RAM even when M input cannot close",
+      "result": "PASS"
+    },
+    {
+      "name": "A cancels video through guarded any-key poll",
+      "result": "PASS"
+    },
+    {
+      "name": "keyboard exits with ENTER + SPACE, no BREAK key needed",
+      "result": "PASS"
+    },
+    {
+      "name": "result screen accepts Q rather than requiring M",
+      "result": "PASS"
+    },
+    {
+      "name": "new Q interrupts quick power-on RAM at a safe boundary",
+      "result": "PASS"
+    },
+    {
+      "name": "power-on quick check excludes walking March random and retention",
+      "result": "PASS"
+    },
+    {
+      "name": "held R selects extensive startup and held selection cannot cancel it",
+      "result": "PASS"
+    },
+    {
+      "name": "release R then A interrupts extensive startup safely",
+      "result": "PASS"
+    },
+    {
+      "name": "R with another held column is not a valid extensive startup request",
+      "result": "PASS"
+    },
+    {
+      "name": "held startup R does not retrigger RAM fault retries",
+      "result": "PASS"
+    },
+    {
+      "name": "complete RAM progress emits pattern walking March address random retention colors",
+      "result": "PASS"
+    },
+    {
+      "name": "held F runs Full digital and guided startup, without cancelling on held F",
+      "result": "PASS"
+    },
+    {
+      "name": "F startup highlighted and release then Q cancels",
+      "result": "PASS"
+    },
+    {
+      "name": "R startup highlights RAM-only selection",
+      "result": "PASS"
+    },
+    {
+      "name": "post-entry menu/font independent of all HOME ROM bytes; passive boot not implied",
+      "result": "PASS"
+    },
+    {
+      "name": "sounddemo_ram bounded training groups with all HOME writes lost",
+      "result": "PASS"
+    },
+    {
+      "name": "sounddemo_bank bounded training groups with all HOME writes lost",
+      "result": "PASS"
+    },
+    {
+      "name": "sounddemo_cpu bounded training groups with all HOME writes lost",
+      "result": "PASS"
+    },
+    {
+      "name": "Help C training / 1 RAM example / M Help operator path",
+      "result": "PASS"
+    },
+    {
+      "name": "Full overview guarded start, all stages, honest summary and held keyboard-chord quarantine",
+      "result": "PASS"
+    },
+    {
+      "name": "Full overview M returns without running tests",
+      "result": "PASS"
+    },
+    {
+      "name": "cancelled Full does not show digital-matched completion",
+      "result": "PASS"
+    }
+  ],
+  "limitations": [
+    "No physical electrical/analog/timing validation",
+    "Direct entry does not validate every operator sequence",
+    "Passive startup fault limits remain"
+  ]
+}

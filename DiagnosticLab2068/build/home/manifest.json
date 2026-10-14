@@ -1,7 +1,7 @@
 {
   "edition": "HOME U16 reset ROM",
   "bytes": 16384,
-  "sha256": "e09e53177d654dca3fcfa2ce67b4976f7c33b54eaf9daa203919660e33a9e936",
+  "sha256": "3e5ee04d604e9c2fa0b22724c75f7090baaa7a8c9f8f75d0e17803fad958e096",
   "entry": "0000 JP0100",
   "assets": [
     {
@@ -42,82 +42,82 @@
     {
       "name": "soak",
       "address": 11348,
-      "packed": 241
+      "packed": 246
     },
     {
       "name": "soakstop",
-      "address": 11589,
+      "address": 11594,
       "packed": 233
     },
     {
       "name": "soundmenu",
-      "address": 11822,
+      "address": 11827,
       "packed": 194
     },
     {
       "name": "beeper",
-      "address": 12016,
+      "address": 12021,
       "packed": 221
     },
     {
       "name": "help",
-      "address": 12237,
+      "address": 12242,
       "packed": 280
     },
     {
       "name": "soundguide",
-      "address": 12517,
+      "address": 12522,
       "packed": 258
     },
     {
       "name": "pass",
-      "address": 12775,
+      "address": 12780,
       "packed": 207
     },
     {
       "name": "fail",
-      "address": 12982,
+      "address": 12987,
       "packed": 215
     },
     {
       "name": "inputs",
-      "address": 13197,
+      "address": 13202,
       "packed": 347
     },
     {
       "name": "irqmenu",
-      "address": 13544,
+      "address": 13549,
       "packed": 229
     },
     {
       "name": "unavailable",
-      "address": 13773,
+      "address": 13778,
       "packed": 206
     },
     {
       "name": "aylisten",
-      "address": 13979,
+      "address": 13984,
       "packed": 419
     },
     {
       "name": "keyboard",
-      "address": 14398,
+      "address": 14403,
       "packed": 611
     }
   ],
-  "asset_bytes": 6817,
-  "asset_sha256": "321f7f59827060e9082c4d037497fe907d513144763f694862b892fa70d15baa",
-  "helper_sha256": "a7a91f10914185d9409832aa5e23fb048fc570681ec81657c29c2513a87c12d3",
+  "asset_bytes": 6822,
+  "asset_sha256": "d09227570030cc12f16a45d5f645a61aca6be3e155604a870c4b07b7b6273090",
+  "helper_sha256": "dca4740764fddd156d7eb8b1e12e078d4e5b535d337a71961a00137be7a39225",
   "font_rom_sha256": "6338f94b2ee5000b81a64a4f055b8f1d2db6e669e52cafc11233ff63896fae13",
-  "generated_source_sha256": "fab7f96688a752ea482f9a7e1b4bd0a6bea6c2ca4e5ebdaee68910634eb922ae",
-  "parent_cartridge_sha256": "fcaa11612b0c4c07a85924864730fa5c621675c5cb6d4504848126a60e6df730",
+  "generated_source_sha256": "7884a72ffdaa92b8c83eec04215180e89aad87e93dd424ba3075541aed5bfdc8",
+  "parent_cartridge_sha256": "ec7e2fd71278b164c89f603eb36bf117382a68e366a04b07ce9d318575ff4619",
   "source_sha256": {
-    "src/diagnostic.asm": "76ee01a95a5e28f3ebe583ed8e1af222f0ad35ed5218d581c9a1fefa0c877172",
-    "src/modules.asm": "12646add69a9288b3511822efe14ca874de8eaf2998d88a1d1a71bb997b1905e",
+    "src/diagnostic.asm": "80ef824473ee76cc4b174b62d0a2a0d3ddfa788955b2fb89347612bd03f29549",
+    "src/modules.asm": "d9b92b4a8de19c1fffc6f511d8135e144072af1a85d15b3ff7e39b37d8a7242d",
     "src/boot.asm": "a7c2c3f477ba4272f5f4dbcd5b9f416518560e128219b51e07aa9a2e271c18df",
     "src/joystick.asm": "f4f1d18c7319ffbba3861b4caf0be2499da3f076565b1604362bc42cf3f37c12",
-    "scripts/build_home_rom.py": "933f19fdaf6db9a6498a073aced8090f2c6a723b9547841fdd4d70635d594987",
-    "scripts/suite_assets.py": "45596253d7cc0d2a580c6dfc6ca41381a65bb2036ab9d2f2ebb5a3ed2a142e1c"
+    "scripts/build_home_rom.py": "4c9d451cbda9083e8faa34d05699ba754cab72b38c32847da60c2bb83ee7b7fe",
+    "scripts/suite_assets.py": "4aeb4600f335193a976f6b5adf0f48660e45058623344e62ad2880d757c7ffa0"
   },
   "limitations": [
     "Physical U16/adapter validation pending",

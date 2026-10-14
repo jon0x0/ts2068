@@ -1,0 +1,7 @@
+{
+  "product": "TS2068 Diagnostic Lab cartridge",
+  "version": "v0.3",
+  "release_date": "2026-10-13",
+  "cartridge_sha256": "bc5eb2df44c390573b4058d614ba37ab1a95c8065c81bb7d15eb922c4d68e030",
+  "home_rom_sha256": "3e5ee04d604e9c2fa0b22724c75f7090baaa7a8c9f8f75d0e17803fad958e096"
+}

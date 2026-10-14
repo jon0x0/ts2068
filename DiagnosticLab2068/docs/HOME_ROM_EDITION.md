@@ -37,6 +37,8 @@ A PicoROM can be useful here only with a separately verified U16 electrical adap
 
 ## Tests and feedback
 
+The cartridge's new L mixed-load module is unavailable in HOME. HOME retains its original reduced test menu and fixed HOME mapping; its soak notice now says Press any key to stop test and holds for six nominal seconds. The generated keyboard scanner remains in HOME ROM rather than the cartridge's new ROM7 location.
+
 Reset runs minimal CPU register/math/shift checks, HOME-image additive16-bit integrity, quick00/FF over all48K RAM and qualified55/AA address-pair checks. Hold R for Complete RAM; hold F for **HOME Full**, whose coverage differs from cartridge Full. Startup selection never waits indefinitely for key release. Complete RAM includes all patterns/walking, March, address data, seeded random and normal-refresh hold/read, with an all-six-chip result only on completion. Main7 repeats complete passes overnight.
 
 HOME Full runs Complete RAM, three beeper tones, AY register/readback and24 guided sound steps, then the simpler keyboard diagram. MainJ opens joystick/EAR raw observation directly;5 is Sound,9/I is SCLD inhibit/arrival,0/C teaches fault codes. Output sounds, keys and joystick movements need user judgement. Unsupported cartridge-only selections show an unavailable notice instead of transferring into RAM/external ROM. Extended U CPU tests are unavailable; early CPU checks still run at every reset.

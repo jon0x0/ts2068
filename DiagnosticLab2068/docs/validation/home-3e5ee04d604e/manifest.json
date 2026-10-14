@@ -1,0 +1,128 @@
+{
+  "edition": "HOME U16 reset ROM",
+  "bytes": 16384,
+  "sha256": "3e5ee04d604e9c2fa0b22724c75f7090baaa7a8c9f8f75d0e17803fad958e096",
+  "entry": "0000 JP0100",
+  "assets": [
+    {
+      "name": "menu",
+      "address": 9344,
+      "packed": 370
+    },
+    {
+      "name": "fullinfo",
+      "address": 9714,
+      "packed": 276
+    },
+    {
+      "name": "fullsummary",
+      "address": 9990,
+      "packed": 266
+    },
+    {
+      "name": "startupquick",
+      "address": 10256,
+      "packed": 285
+    },
+    {
+      "name": "startupfull",
+      "address": 10541,
+      "packed": 259
+    },
+    {
+      "name": "rammenu",
+      "address": 10800,
+      "packed": 289
+    },
+    {
+      "name": "rampass",
+      "address": 11089,
+      "packed": 259
+    },
+    {
+      "name": "soak",
+      "address": 11348,
+      "packed": 246
+    },
+    {
+      "name": "soakstop",
+      "address": 11594,
+      "packed": 233
+    },
+    {
+      "name": "soundmenu",
+      "address": 11827,
+      "packed": 194
+    },
+    {
+      "name": "beeper",
+      "address": 12021,
+      "packed": 221
+    },
+    {
+      "name": "help",
+      "address": 12242,
+      "packed": 280
+    },
+    {
+      "name": "soundguide",
+      "address": 12522,
+      "packed": 258
+    },
+    {
+      "name": "pass",
+      "address": 12780,
+      "packed": 207
+    },
+    {
+      "name": "fail",
+      "address": 12987,
+      "packed": 215
+    },
+    {
+      "name": "inputs",
+      "address": 13202,
+      "packed": 347
+    },
+    {
+      "name": "irqmenu",
+      "address": 13549,
+      "packed": 229
+    },
+    {
+      "name": "unavailable",
+      "address": 13778,
+      "packed": 206
+    },
+    {
+      "name": "aylisten",
+      "address": 13984,
+      "packed": 419
+    },
+    {
+      "name": "keyboard",
+      "address": 14403,
+      "packed": 611
+    }
+  ],
+  "asset_bytes": 6822,
+  "asset_sha256": "d09227570030cc12f16a45d5f645a61aca6be3e155604a870c4b07b7b6273090",
+  "helper_sha256": "dca4740764fddd156d7eb8b1e12e078d4e5b535d337a71961a00137be7a39225",
+  "font_rom_sha256": "6338f94b2ee5000b81a64a4f055b8f1d2db6e669e52cafc11233ff63896fae13",
+  "generated_source_sha256": "7884a72ffdaa92b8c83eec04215180e89aad87e93dd424ba3075541aed5bfdc8",
+  "parent_cartridge_sha256": "ec7e2fd71278b164c89f603eb36bf117382a68e366a04b07ce9d318575ff4619",
+  "source_sha256": {
+    "src/diagnostic.asm": "80ef824473ee76cc4b174b62d0a2a0d3ddfa788955b2fb89347612bd03f29549",
+    "src/modules.asm": "d9b92b4a8de19c1fffc6f511d8135e144072af1a85d15b3ff7e39b37d8a7242d",
+    "src/boot.asm": "a7c2c3f477ba4272f5f4dbcd5b9f416518560e128219b51e07aa9a2e271c18df",
+    "src/joystick.asm": "f4f1d18c7319ffbba3861b4caf0be2499da3f076565b1604362bc42cf3f37c12",
+    "scripts/build_home_rom.py": "4c9d451cbda9083e8faa34d05699ba754cab72b38c32847da60c2bb83ee7b7fe",
+    "scripts/suite_assets.py": "4aeb4600f335193a976f6b5adf0f48660e45058623344e62ad2880d757c7ffa0"
+  },
+  "limitations": [
+    "Physical U16/adapter validation pending",
+    "Fault display uses border/beeper; no large degraded chip renderer",
+    "No DOCK banking, HOME/EXROM CRC, optional high-ROM CPU or video cards",
+    "SCLD HOME/reset/opcode/bus paths must work"
+  ]
+}

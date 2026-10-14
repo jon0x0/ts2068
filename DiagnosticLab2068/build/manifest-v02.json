@@ -1,5 +1,5 @@
 {
-  "version": "0.2",
+  "version": "0.3",
   "entry": "0100",
   "descriptors": [
     2,
@@ -11,8 +11,8 @@
     2,
     2
   ],
-  "dck_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
-  "bin_sha256": "fcaa11612b0c4c07a85924864730fa5c621675c5cb6d4504848126a60e6df730",
+  "dck_sha256": "bc5eb2df44c390573b4058d614ba37ab1a95c8065c81bb7d15eb922c4d68e030",
+  "bin_sha256": "ec7e2fd71278b164c89f603eb36bf117382a68e366a04b07ce9d318575ff4619",
   "phases": [
     {
       "phase": 1,
@@ -167,9 +167,41 @@
   ],
   "assets": [
     {
-      "name": "fullinfo",
+      "name": "loadcfg",
       "bank": 2,
       "address": "4800",
+      "packed": 616,
+      "unpacked": 1536,
+      "destination": "6400"
+    },
+    {
+      "name": "loadwarning",
+      "bank": 2,
+      "address": "4A68",
+      "packed": 372,
+      "unpacked": 1536,
+      "destination": "6400"
+    },
+    {
+      "name": "loadrun",
+      "bank": 2,
+      "address": "4BDC",
+      "packed": 407,
+      "unpacked": 1536,
+      "destination": "6400"
+    },
+    {
+      "name": "loadstop",
+      "bank": 2,
+      "address": "4D73",
+      "packed": 257,
+      "unpacked": 1536,
+      "destination": "6400"
+    },
+    {
+      "name": "fullinfo",
+      "bank": 2,
+      "address": "4E74",
       "packed": 515,
       "unpacked": 1536,
       "destination": "6400"
@@ -177,7 +209,7 @@
     {
       "name": "fullsummary",
       "bank": 2,
-      "address": "4A03",
+      "address": "5077",
       "packed": 525,
       "unpacked": 1536,
       "destination": "6400"
@@ -185,7 +217,7 @@
     {
       "name": "cpuinfo",
       "bank": 2,
-      "address": "4C10",
+      "address": "5284",
       "packed": 546,
       "unpacked": 1536,
       "destination": "6400"
@@ -193,7 +225,7 @@
     {
       "name": "startupquick",
       "bank": 2,
-      "address": "4E32",
+      "address": "54A6",
       "packed": 438,
       "unpacked": 1536,
       "destination": "6400"
@@ -201,7 +233,7 @@
     {
       "name": "startupfull",
       "bank": 2,
-      "address": "4FE8",
+      "address": "565C",
       "packed": 434,
       "unpacked": 1536,
       "destination": "6400"
@@ -209,15 +241,15 @@
     {
       "name": "menu",
       "bank": 2,
-      "address": "519A",
-      "packed": 561,
+      "address": "580E",
+      "packed": 562,
       "unpacked": 1536,
       "destination": "6400"
     },
     {
       "name": "rammenu",
       "bank": 2,
-      "address": "53CB",
+      "address": "5A40",
       "packed": 383,
       "unpacked": 1536,
       "destination": "6400"
@@ -225,7 +257,7 @@
     {
       "name": "videomenu",
       "bank": 2,
-      "address": "554A",
+      "address": "5BBF",
       "packed": 401,
       "unpacked": 1536,
       "destination": "6400"
@@ -233,47 +265,47 @@
     {
       "name": "soundmenu",
       "bank": 2,
-      "address": "56DB",
+      "address": "5D50",
       "packed": 299,
       "unpacked": 1536,
       "destination": "6400"
     },
     {
       "name": "rommenu",
-      "bank": 2,
-      "address": "5806",
+      "bank": 1,
+      "address": "3700",
       "packed": 370,
       "unpacked": 1536,
       "destination": "6400"
     },
     {
       "name": "irqmenu",
-      "bank": 2,
-      "address": "5978",
+      "bank": 1,
+      "address": "3872",
       "packed": 384,
       "unpacked": 1536,
       "destination": "6400"
     },
     {
       "name": "soak",
-      "bank": 2,
-      "address": "5AF8",
-      "packed": 377,
+      "bank": 1,
+      "address": "39F2",
+      "packed": 382,
       "unpacked": 1536,
       "destination": "6400"
     },
     {
       "name": "soakstop",
       "bank": 2,
-      "address": "5C71",
+      "address": "5E7B",
       "packed": 262,
       "unpacked": 1536,
       "destination": "6400"
     },
     {
       "name": "bank",
-      "bank": 2,
-      "address": "5D77",
+      "bank": 1,
+      "address": "3B70",
       "packed": 308,
       "unpacked": 1536,
       "destination": "6400"
@@ -281,47 +313,47 @@
     {
       "name": "rampass",
       "bank": 1,
-      "address": "3700",
+      "address": "3CA4",
       "packed": 351,
       "unpacked": 1536,
       "destination": "6400"
     },
     {
       "name": "pass",
-      "bank": 2,
-      "address": "5EAB",
+      "bank": 1,
+      "address": "3E03",
       "packed": 233,
       "unpacked": 1536,
       "destination": "6400"
     },
     {
       "name": "fail",
-      "bank": 1,
-      "address": "385F",
+      "bank": 4,
+      "address": "8E00",
       "packed": 299,
       "unpacked": 1536,
       "destination": "6400"
     },
     {
       "name": "romresult",
-      "bank": 1,
-      "address": "398A",
+      "bank": 4,
+      "address": "8F2B",
       "packed": 245,
       "unpacked": 1536,
       "destination": "6400"
     },
     {
       "name": "beeper",
-      "bank": 1,
-      "address": "3A7F",
+      "bank": 4,
+      "address": "9020",
       "packed": 291,
       "unpacked": 1536,
       "destination": "6400"
     },
     {
       "name": "aylisten",
-      "bank": 1,
-      "address": "3BA2",
+      "bank": 4,
+      "address": "9143",
       "packed": 419,
       "unpacked": 1536,
       "destination": "6400"
@@ -329,7 +361,7 @@
     {
       "name": "help",
       "bank": 4,
-      "address": "8400",
+      "address": "92E6",
       "packed": 492,
       "unpacked": 1536,
       "destination": "6400"
@@ -337,15 +369,15 @@
     {
       "name": "soundguide",
       "bank": 4,
-      "address": "85EC",
+      "address": "94D2",
       "packed": 510,
       "unpacked": 1536,
       "destination": "6400"
     },
     {
       "name": "inputs",
-      "bank": 1,
-      "address": "3D45",
+      "bank": 4,
+      "address": "96D0",
       "packed": 347,
       "unpacked": 1536,
       "destination": "6400"
@@ -393,15 +425,15 @@
     {
       "name": "standard_attrs",
       "bank": 4,
-      "address": "87EA",
+      "address": "982B",
       "packed": 384,
       "unpacked": 768,
       "destination": "5800"
     },
     {
       "name": "secondary",
-      "bank": 4,
-      "address": "896A",
+      "bank": 5,
+      "address": "A000",
       "packed": 3491,
       "unpacked": 6144,
       "destination": "6000"
@@ -409,15 +441,15 @@
     {
       "name": "secondary_attrs",
       "bank": 4,
-      "address": "970D",
+      "address": "99AB",
       "packed": 384,
       "unpacked": 768,
       "destination": "7800"
     },
     {
       "name": "mix128",
-      "bank": 1,
-      "address": "3EA0",
+      "bank": 3,
+      "address": "7F1C",
       "packed": 96,
       "unpacked": 6144,
       "destination": "4000"
@@ -425,60 +457,86 @@
     {
       "name": "mix128_attrs",
       "bank": 4,
-      "address": "988D",
+      "address": "9B2B",
       "packed": 774,
       "unpacked": 768,
       "destination": "5800"
     },
     {
       "name": "ecm",
-      "bank": 5,
-      "address": "A000",
+      "bank": 6,
+      "address": "C000",
       "packed": 5651,
       "unpacked": 6144,
       "destination": "4000"
     },
     {
       "name": "ecm_attrs",
-      "bank": 6,
-      "address": "C000",
+      "bank": 7,
+      "address": "E600",
       "packed": 5808,
       "unpacked": 6144,
       "destination": "6000"
     },
     {
+      "name": "hires_tail_4c00",
+      "bank": 5,
+      "address": "ADA3",
+      "packed": 2187,
+      "unpacked": 3072,
+      "destination": "4C00"
+    },
+    {
+      "name": "hires_tail_4600",
+      "bank": 5,
+      "address": "B62E",
+      "packed": 1386,
+      "unpacked": 1536,
+      "destination": "4600"
+    },
+    {
       "name": "hires",
-      "bank": 7,
-      "address": "E000",
-      "packed": 4837,
-      "unpacked": 6144,
+      "bank": 6,
+      "address": "D613",
+      "packed": 1264,
+      "unpacked": 1536,
       "destination": "4000"
+    },
+    {
+      "name": "hires_attrs_tail_6c00",
+      "bank": 6,
+      "address": "DB03",
+      "packed": 1150,
+      "unpacked": 3072,
+      "destination": "6C00"
     },
     {
       "name": "hires_attrs",
       "bank": 5,
-      "address": "B613",
-      "packed": 2191,
-      "unpacked": 6144,
+      "address": "BB98",
+      "packed": 1041,
+      "unpacked": 3072,
       "destination": "6000"
     }
   ],
   "bank_used": {
-    "2": 8084,
-    "1": 7936,
-    "3": 7964,
-    "4": 7059,
-    "5": 7842,
-    "6": 5808,
-    "7": 4837
+    "2": 8065,
+    "1": 7916,
+    "3": 8060,
+    "4": 7729,
+    "5": 8105,
+    "6": 8065,
+    "7": 7344
   },
   "source_sha256": {
-    "src/diagnostic.asm": "76ee01a95a5e28f3ebe583ed8e1af222f0ad35ed5218d581c9a1fefa0c877172",
-    "src/modules.asm": "12646add69a9288b3511822efe14ca874de8eaf2998d88a1d1a71bb997b1905e",
+    "src/diagnostic.asm": "80ef824473ee76cc4b174b62d0a2a0d3ddfa788955b2fb89347612bd03f29549",
+    "src/modules.asm": "d9b92b4a8de19c1fffc6f511d8135e144072af1a85d15b3ff7e39b37d8a7242d",
     "src/crc.asm": "4c8194514c584aa4dcc760d8cae0bb0e893f8706d24340be8ae35b147ef9d9eb",
     "src/cpu.asm": "3150056d2eb80c13de61edca2d2983d9696c8633a6c54744e38c2119c91de589",
     "src/boot.asm": "a7c2c3f477ba4272f5f4dbcd5b9f416518560e128219b51e07aa9a2e271c18df",
-    "src/joystick.asm": "f4f1d18c7319ffbba3861b4caf0be2499da3f076565b1604362bc42cf3f37c12"
+    "src/joystick.asm": "f4f1d18c7319ffbba3861b4caf0be2499da3f076565b1604362bc42cf3f37c12",
+    "src/load.asm": "0bf2acb841d9113826935de01000399b1b3276c8cef4c5609f035043fe8484a8",
+    "src/load_low.asm": "43e75250a0fc1050fb8a064cab18bb9929bd0aae4e374ce3ca562ed2547ab9c0"
   },
   "font_rom_sha256": "6338f94b2ee5000b81a64a4f055b8f1d2db6e669e52cafc11233ff63896fae13",
   "limitations": [
@@ -489,7 +547,7 @@
   "picorom": {
     "file": "diagnostic-v02-picorom.bin",
     "bytes": 65536,
-    "sha256": "fcaa11612b0c4c07a85924864730fa5c621675c5cb6d4504848126a60e6df730",
+    "sha256": "ec7e2fd71278b164c89f603eb36bf117382a68e366a04b07ce9d318575ff4619",
     "profile": "PicoROM-P28 / 27C512-style full64K cartridge decode",
     "upload_size": "512KBit",
     "layout": "A0-A15, chunks0-7 ascending; no DCK header; no byte swap",
@@ -1006,10 +1064,35 @@
       }
     ]
   },
+  "mixed_load": {
+    "menu_key": "L",
+    "code_address": "8400",
+    "code_limit": "8E00",
+    "code_bytes": 1904,
+    "options": [
+      "RAM address data",
+      "March C-",
+      "ECM",
+      "frame IRQ",
+      "DOCK banking",
+      "quiet/busy power cycling and video rotation",
+      "AY Speech2AY traffic",
+      "PUSH/POP data"
+    ],
+    "default_mask": "83",
+    "combined_mask": "FF",
+    "ay_frames": 16,
+    "ay_registers": "R0-R12",
+    "irq_sink": "BFFD-BFFE, deferred DI-only00/FF comparisons",
+    "return_profiles": "separate R confirmation; qualified IM1/IM2",
+    "physical_validation": "pending",
+    "keyboard_scanner_address": "E000",
+    "keyboard_scanner_bytes": 1434
+  },
   "eprom": {
     "file": "diagnostic-v02-eprom-27C512.bin",
     "bytes": 65536,
-    "sha256": "fcaa11612b0c4c07a85924864730fa5c621675c5cb6d4504848126a60e6df730",
+    "sha256": "ec7e2fd71278b164c89f603eb36bf117382a68e366a04b07ce9d318575ff4619",
     "profile": "27C512-compatible EPROM / full64K DOCK cartridge",
     "layout": "Offset0000; ascending A0-A15; all8 chunks; no DCK header",
     "physical_validation": "pending"

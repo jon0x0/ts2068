@@ -7,7 +7,7 @@ const layout=JSON.parse(fs.readFileSync('build/keyboard-art-layout.json','utf8')
 const matrix=[['CS','Z','X','C','V'],[...'ASDFG'],[...'QWERT'],[...'12345'],[...'09876'],[...'POIUY'],['EN','L','K','J','H'],['SPACE','SY','M','N','B']];
 function machine(lost=false,history=false){
  const keys=new Uint8Array(8).fill(31),m=api.createMachine(keys,new Uint8Array(2).fill(255));m.homeRom.set(fs.readFileSync(path.join(up,'roms/ts2068-0.rom')));m.exRom.set(fs.readFileSync(path.join(up,'roms/ts2068-1.rom')));assert.equal(api.insertDock(m,cart),null);api.resetMachine(m);m.portF4=1;m.portFF=64;m.cpu.pc=sym.load_keyboard;m.cpu.sp=0xbeef;
- const r=m.bus.read,w=m.bus.write,seen=new Set();m.bus.read=a=>{if(a===m.cpu.pc){assert.ok(a<0x2000,'keyboard must execute only ROM0');assert.equal(m.cpu.sp,0xbeef);seen.add(a);}return history&&a>=0x5b00&&a<=0x5b28?255:r(a);};
+ const r=m.bus.read,w=m.bus.write,seen=new Set();m.bus.read=a=>{if(a===m.cpu.pc){assert.ok(a<0x2000||(a>=0xe000&&a<0xe600&&(m.portF4&128)),'keyboard opcode outside fixed ROM anchors');assert.equal(m.cpu.sp,0xbeef);seen.add(a);}return history&&a>=0x5b00&&a<=0x5b28?255:r(a);};
  m.bus.write=(a,v)=>{assert.ok(a>=0x4000&&a<0x8000,'write escaped HOME display/data');assert.equal(m.portF4&(1<<(a>>13)),0,'DOCK source overlays destination');if(!lost)w(a,v);};return {m,keys,seen};
 }
 function frames(t,n){for(let i=0;i<n;i++)api.runFrame(t.m);}

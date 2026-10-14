@@ -146,3 +146,8 @@ Help (0) then C opens FAULT CODES / TRAINING.1 emits the real long RAM sync foll
 The colorbar labels are NORMAL and BRIGHT, with no bit-value suffix. Corresponding attribute pairs still differ only by bit6.
 
 Builds also emit diagnostic-v02-eprom-27C512.bin: exactly65536 header-free bytes, identical to BIN/PicoROM. EPROM_LOADING.md specifies ascending address layout, full eight-chunk cartridge decode and programming/readback checks. No physical programming is performed by the build.
+# Soak status dwell and configurable mixed load
+
+Implementation update: cartridge mainL now runs the [configurable load suite](../SINISTAR_LOAD_TEST.md#current-implementation-and-operator-controls). Its exact ranges, register ownership, deferred sink comparison, controls, failure fields, optional IRQ-return exposures and limits are documented there. Default startup/Full/overnight do not enter it. The earlier design-only sentence below is superseded; HOME retains its reduced suite.
+
+The between-pass RAM soak status/count page holds for six nominal seconds at3.528MHz in both editions and says Press any key to stop test. New-key cancellation remains active after all-key release; no status writes occur during RAM comparisons. The stopped/no-failures page still waits for acknowledgement. See [SINISTAR_LOAD_TEST.md](../SINISTAR_LOAD_TEST.md) for the executable cartridge scheduler and LOAD-01/02 modules, with exact coverage and separate exposed-return controls.

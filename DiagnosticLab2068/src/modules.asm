@@ -505,7 +505,11 @@ soak_count_done:
  jp z,fullsummary_ready
  jp soak_pause
 soak_pause:
- ld hl,30000
+ ; Four register-only batches: 197832 * 107T ~= 6s at 3.528MHz.
+ ; Released-key poll path is timed; a new key still cancels immediately.
+ ld b,4
+soak_pause_batch:
+ ld hl,49458
 soak_pause_loop:
  ld iy,soak_pause_continue
  jp ram_key_poll
@@ -514,6 +518,7 @@ soak_pause_continue:
  ld a,h
  or l
  jp nz,soak_pause_loop
+ djnz soak_pause_batch
  jp ram_start
 
 ; One byte -> two hexadecimal glyphs, DE=bitmap row0 position.
@@ -670,7 +675,12 @@ keyboard_clear:
  ld ix,$ffff
  ld d,64
 keyboard_scan:
- INCLUDE "../build/keyboard-scan.asm"
+ ld a,$81
+ out ($f4),a
+ jp $e000
+keyboard_scan_done:
+ ld a,1
+ out ($f4),a
  ; Both physical CAPS highlighted; BREAK follows CAPS+SPACE.
  ld bc,$fefe
  in a,(c)
@@ -1430,6 +1440,8 @@ irq_baseline:
  jp irq_start
 irq_start:
  di
+ xor a
+ ld i,a
  im 1
  ld sp,$bfff
  ld a,$40

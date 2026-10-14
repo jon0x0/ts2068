@@ -1,0 +1,247 @@
+{
+  "image_sha256": "bc5eb2df44c390573b4058d614ba37ab1a95c8065c81bb7d15eb922c4d68e030",
+  "result": "PASS",
+  "cases": [
+    {
+      "name": "main L entry, all eight toggles and finite/continuous controls",
+      "result": "PASS"
+    },
+    {
+      "name": "return-profile warning requires release/new R; T selects IM2",
+      "result": "PASS"
+    },
+    {
+      "name": "six-second mixed-load notice remains register-only",
+      "result": "PASS",
+      "seconds": 6.000681689342404
+    },
+    {
+      "name": "one-batch preset completes and displays stopped count",
+      "result": "PASS"
+    },
+    {
+      "name": "all256 option masks: bounded slice, preserved registers and disabled-load absence",
+      "result": "PASS"
+    },
+    {
+      "name": "power cycles quiet/busy, all three video modes, envelope/audio/beeper and preserved RAM pointer",
+      "result": "PASS"
+    },
+    {
+      "name": "exact bit-mask 1 at 4040",
+      "result": "PASS"
+    },
+    {
+      "name": "exact bit-mask 2 at 4040",
+      "result": "PASS"
+    },
+    {
+      "name": "exact bit-mask 4 at 4040",
+      "result": "PASS"
+    },
+    {
+      "name": "exact bit-mask 8 at 4040",
+      "result": "PASS"
+    },
+    {
+      "name": "exact bit-mask 10 at 4040",
+      "result": "PASS"
+    },
+    {
+      "name": "exact bit-mask 20 at 4040",
+      "result": "PASS"
+    },
+    {
+      "name": "exact bit-mask 40 at 4040",
+      "result": "PASS"
+    },
+    {
+      "name": "exact bit-mask 80 at 4040",
+      "result": "PASS"
+    },
+    {
+      "name": "exact bit-mask 26 at 4040",
+      "result": "PASS"
+    },
+    {
+      "name": "exact bit-mask 1 at 8040",
+      "result": "PASS"
+    },
+    {
+      "name": "exact bit-mask 2 at 8040",
+      "result": "PASS"
+    },
+    {
+      "name": "exact bit-mask 4 at 8040",
+      "result": "PASS"
+    },
+    {
+      "name": "exact bit-mask 8 at 8040",
+      "result": "PASS"
+    },
+    {
+      "name": "exact bit-mask 10 at 8040",
+      "result": "PASS"
+    },
+    {
+      "name": "exact bit-mask 20 at 8040",
+      "result": "PASS"
+    },
+    {
+      "name": "exact bit-mask 40 at 8040",
+      "result": "PASS"
+    },
+    {
+      "name": "exact bit-mask 80 at 8040",
+      "result": "PASS"
+    },
+    {
+      "name": "exact bit-mask 26 at 8040",
+      "result": "PASS"
+    },
+    {
+      "name": "exact bit-mask 1 at c040",
+      "result": "PASS"
+    },
+    {
+      "name": "exact bit-mask 2 at c040",
+      "result": "PASS"
+    },
+    {
+      "name": "exact bit-mask 4 at c040",
+      "result": "PASS"
+    },
+    {
+      "name": "exact bit-mask 8 at c040",
+      "result": "PASS"
+    },
+    {
+      "name": "exact bit-mask 10 at c040",
+      "result": "PASS"
+    },
+    {
+      "name": "exact bit-mask 20 at c040",
+      "result": "PASS"
+    },
+    {
+      "name": "exact bit-mask 40 at c040",
+      "result": "PASS"
+    },
+    {
+      "name": "exact bit-mask 80 at c040",
+      "result": "PASS"
+    },
+    {
+      "name": "exact bit-mask 26 at c040",
+      "result": "PASS"
+    },
+    {
+      "name": "AY traffic cycles all16 distinct bounded Speech2AY-style frames",
+      "result": "PASS"
+    },
+    {
+      "name": "complete healthy batch mask 0",
+      "result": "PASS"
+    },
+    {
+      "name": "complete healthy batch mask 1",
+      "result": "PASS"
+    },
+    {
+      "name": "complete healthy batch mask 2",
+      "result": "PASS"
+    },
+    {
+      "name": "complete healthy batch mask 80",
+      "result": "PASS"
+    },
+    {
+      "name": "complete healthy batch mask 83",
+      "result": "PASS"
+    },
+    {
+      "name": "complete healthy batch mask ff",
+      "result": "PASS"
+    },
+    {
+      "name": "D1 stack-data loss at 4001 reaches ROM reporter",
+      "result": "PASS"
+    },
+    {
+      "name": "D1 stack-data loss at 5ecf reaches ROM reporter",
+      "result": "PASS"
+    },
+    {
+      "name": "D1 stack-data loss at 8122 reaches ROM reporter",
+      "result": "PASS"
+    },
+    {
+      "name": "D1 stack-data loss at bfff reaches ROM reporter",
+      "result": "PASS"
+    },
+    {
+      "name": "D1 stack-data loss at c122 reaches ROM reporter",
+      "result": "PASS"
+    },
+    {
+      "name": "missing frame IRQ bounded timeout",
+      "result": "PASS"
+    },
+    {
+      "name": "failed IRQ inhibit becomes bounded IRQ failure",
+      "result": "PASS"
+    },
+    {
+      "name": "fresh IRQ qualification failure gates genuine return profile",
+      "result": "PASS"
+    },
+    {
+      "name": "bad bank signature bounded failure",
+      "result": "PASS"
+    },
+    {
+      "name": "absent AY masked readback becomes bounded audio failure",
+      "result": "PASS"
+    },
+    {
+      "name": "corrupt AY frame cannot change I/O direction or fixed13-write bound",
+      "result": "PASS"
+    },
+    {
+      "name": "new key cancels load slice",
+      "result": "PASS"
+    },
+    {
+      "name": "IM1 fresh qualification, real stack/audio IRQ returns and bounded completion",
+      "result": "PASS"
+    },
+    {
+      "name": "IM2 fresh qualification, real stack/audio IRQ returns and bounded completion",
+      "result": "PASS"
+    },
+    {
+      "name": "all-load one-batch IM1 profile preserves RAM comparisons and returns count",
+      "result": "PASS"
+    },
+    {
+      "name": "all-load one-batch IM2 profile preserves RAM comparisons and returns count",
+      "result": "PASS"
+    },
+    {
+      "name": "IM2 table qualification mismatch prevents exposed transfer",
+      "result": "PASS"
+    },
+    {
+      "name": "lost RAM writes detected before healthy batch completion",
+      "result": "PASS"
+    },
+    {
+      "name": "lost UI writes cannot prevent cancellation/acknowledgement",
+      "result": "PASS"
+    }
+  ],
+  "limitations": [
+    "TSRun software/mapping models; physical supply, contention, refresh timing and thermal validation pending",
+    "Genuine interrupt returns/IM2 table faults can defeat software recovery; no claim of arbitrary saved-PC corruption survival"
+  ]
+}

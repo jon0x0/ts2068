@@ -1,8 +1,8 @@
 {
   "product_name": "TS2068 Diagnostic Lab cartridge",
-  "version": "v0.2",
-  "release_date": "2026-10-12",
-  "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
+  "version": "v0.3",
+  "release_date": "2026-10-13",
+  "image_sha256": "bc5eb2df44c390573b4058d614ba37ab1a95c8065c81bb7d15eb922c4d68e030",
   "chapters": [
     [
       "Introduction: purpose, fault reporting and limits",
@@ -360,7 +360,7 @@
       [
         [
           "Use these as guidance",
-          "Timings come from the exact v0.2 firmware in the TSRun model at 3.528MHz with healthy RAM. They are simulated machine time, not the host computer’s execution speed or physical acceptance measurements. Emulator speed controls, clock/contention differences, user actions and detected faults change elapsed time. The summary or fault report marks completion; elapsed time alone is not a pass."
+          "Timings come from the exact v0.3 firmware in the TSRun model at 3.528MHz with healthy RAM. They are simulated machine time, not the host computer’s execution speed or physical acceptance measurements. Emulator speed controls, clock/contention differences, user actions and detected faults change elapsed time. The summary or fault report marks completion; elapsed time alone is not a pass."
         ],
         [
           "RAM options",
@@ -731,6 +731,48 @@
         [
           "Primary links",
           "https://github.com/timex-sinclair-projects/TS2068-Ref-Library ; https://www.timexsinclair.com/computer_media/128-colors/index.html ; https://www.zilog.com/docs/z80/z80cpu_um.pdf ; https://github.com/wickerwaka/PicoROM ; https://github.com/timex-sinclair-projects/TS-Pico ; https://josef-jelinek.github.io/TSRun/keyboard.png"
+        ]
+      ]
+    ],
+    [
+      "Combined load and power cycling",
+      [
+        [
+          "Why this exists",
+          "A supplied Sinistar report describes a stack byte losing D1 despite 37 interrupt-disabled ECM March passes over 5F00-FFFF and passing bus tests. The game combines frame IRQ stack saves/returns, an audio stack near 5ED0, banking, display fetches and frequent Speech2AY updates. Supply disturbances, RAM paths and refresh/timing are hypotheses; this project has not physically reproduced the incident."
+        ],
+        [
+          "Configure, then start",
+          "Main L opens eight load toggles. P selects combined power loads; B selects RAM baseline. Choose N one batch or C continuous before S start. Option3 enables video; option 4 names 60 Hz screen interrupts; option 6 cycles quiet/busy activity and video modes; option 7 adds AY and beeper. Green choices are enabled. R opens a separate genuine-return warning; release R and press R again to confirm, with T selecting IM1/IM2. HOME does not include this module."
+        ],
+        [
+          "What happens",
+          "TEST STARTED / RUNNING appears immediately after starting. The notice says the next RAM batch starts in 6 seconds. RAM then overwrites the screen; yellow border denotes activity and blue a quieter slice. Enabled power loads rotate normal/ECM/hires, add dense checked 00/FF/55/AA traffic, and use stronger three-channel AY/envelope output plus bounded beeper. Quiet slices mute sound and inhibit IRQ. Release all keys, then a new key stops; stuck contacts prevent arming, but N remains finite."
+        ],
+        [
+          "Results and limits",
+          "Expected XOR observed identifies D0-D7 or multiple bits; transient read/POP faults retain the original observed byte without rereading. The IRQ sink receives deferred DI-only comparisons; genuine IRQ returns run separately from destructive March after fresh prerequisites. Late saved-PC/table corruption can prevent recovery in that exposed profile. Passing comparisons do not prove electrical margins or increased current draw. Record image, options, first address/data/mask and cold/warm configuration."
+        ]
+      ]
+    ],
+    [
+      "Checking the 5 V rail under load",
+      [
+        [
+          "Locate and connect",
+          "Use the original schematic and actual board revision to identify logic +5 V and GND. Power off to secure probes. A conventional earth-referenced scope ground connects only to verified board GND; verify ground paths through other equipment. Never ground a supply rail, defeat protective earth or open/probe the mains adapter for this procedure. This is a board-rail investigation."
+        ],
+        [
+          "Measure DC and local ripple",
+          "Start with a compensated 10x probe, DC coupling and a short local ground spring/lead. Measure the regulator output, then nearby AY/DRAM decoupling points. The Technical Manual section 2.1.2 specifies 4.75-5.25 V regulation; this is a rail reference, not proof that every brief transient above 4.75 V is harmless. Device timing/limits still matter. A DMM can miss short dips."
+        ],
+        [
+          "Capture load transitions",
+          "Compare baseline, the 6-second notice and quiet/busy/audio/video transitions. Trigger a falling edge just below the measured baseline, using persistence or single-shot acquisition. Inspect both sub-millisecond and tens-of-milliseconds timescales, cold and warmed. Look for dips, ripple, ringing and slow recovery correlated with load or first RAM error. Compare 20 MHz bandwidth-limited ripple with wider-band captures; confirm apparent spikes with the short ground connection. AC coupling helps inspect ripple but hides absolute voltage."
+        ],
+        [
+          "Interpret and follow up",
+          "A regulator-side dip suggests supply/regulation investigation; a local-only departure suggests distribution, connections or decoupling. These are leads, not component verdicts. Compare AY/video/IRQ/banking separately using the same supply/accessories as the failure. Preserve scope setup and probe location with image hash and fault data. A clean trace does not exclude faster/local disturbances or DRAM refresh/timing faults. Do not raise voltage or add arbitrary dummy loads. Detailed procedure: POWER_LOAD_TROUBLESHOOTING.md; physical electrical validation remains pending."
         ]
       ]
     ]

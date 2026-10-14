@@ -1,0 +1,723 @@
+{
+  "image_sha256": "bc5eb2df44c390573b4058d614ba37ab1a95c8065c81bb7d15eb922c4d68e030",
+  "configuration": "TSRun sibling D:\\T7_Recover\\Jon\\Personal\\Timex\\TSRun; stock TS2068 HOME/EXROM; injected after entry",
+  "result": "PASS",
+  "cases": [
+    {
+      "name": "healthy native LROS",
+      "entry_observed": true,
+      "frames": 529,
+      "error_masks": [
+        "00",
+        "00",
+        "00"
+      ],
+      "coverage": "startup00/FF sweep",
+      "completed_phases": [
+        2
+      ],
+      "fault_exit_phase": null,
+      "first_address": "13ff",
+      "stack_unchanged": true,
+      "rom_opcode_only": true,
+      "covered_all_home": true,
+      "kind": null
+    },
+    {
+      "name": "healthy direct entry",
+      "entry_observed": true,
+      "frames": 426,
+      "error_masks": [
+        "00",
+        "00",
+        "00"
+      ],
+      "coverage": "startup00/FF sweep",
+      "completed_phases": [
+        2
+      ],
+      "fault_exit_phase": null,
+      "first_address": "13ff",
+      "stack_unchanged": true,
+      "rom_opcode_only": true,
+      "covered_all_home": true,
+      "kind": null
+    },
+    {
+      "name": "stuck-low 4000 D0",
+      "entry_observed": true,
+      "frames": 439,
+      "error_masks": [
+        "01",
+        "00",
+        "00"
+      ],
+      "coverage": "startup00/FF sweep",
+      "completed_phases": [
+        2
+      ],
+      "fault_exit_phase": 2,
+      "first_address": "4000",
+      "stack_unchanged": true,
+      "rom_opcode_only": true,
+      "covered_all_home": true,
+      "kind": "stuck-low"
+    },
+    {
+      "name": "stuck-low 4000 D1",
+      "entry_observed": true,
+      "frames": 439,
+      "error_masks": [
+        "02",
+        "00",
+        "00"
+      ],
+      "coverage": "startup00/FF sweep",
+      "completed_phases": [
+        2
+      ],
+      "fault_exit_phase": 2,
+      "first_address": "4000",
+      "stack_unchanged": true,
+      "rom_opcode_only": true,
+      "covered_all_home": true,
+      "kind": "stuck-low"
+    },
+    {
+      "name": "stuck-low 4000 D2",
+      "entry_observed": true,
+      "frames": 439,
+      "error_masks": [
+        "04",
+        "00",
+        "00"
+      ],
+      "coverage": "startup00/FF sweep",
+      "completed_phases": [
+        2
+      ],
+      "fault_exit_phase": 2,
+      "first_address": "4000",
+      "stack_unchanged": true,
+      "rom_opcode_only": true,
+      "covered_all_home": true,
+      "kind": "stuck-low"
+    },
+    {
+      "name": "stuck-low 4000 D3",
+      "entry_observed": true,
+      "frames": 439,
+      "error_masks": [
+        "08",
+        "00",
+        "00"
+      ],
+      "coverage": "startup00/FF sweep",
+      "completed_phases": [
+        2
+      ],
+      "fault_exit_phase": 2,
+      "first_address": "4000",
+      "stack_unchanged": true,
+      "rom_opcode_only": true,
+      "covered_all_home": true,
+      "kind": "stuck-low"
+    },
+    {
+      "name": "stuck-low 4000 D4",
+      "entry_observed": true,
+      "frames": 439,
+      "error_masks": [
+        "10",
+        "00",
+        "00"
+      ],
+      "coverage": "startup00/FF sweep",
+      "completed_phases": [
+        2
+      ],
+      "fault_exit_phase": 2,
+      "first_address": "4000",
+      "stack_unchanged": true,
+      "rom_opcode_only": true,
+      "covered_all_home": true,
+      "kind": "stuck-low"
+    },
+    {
+      "name": "stuck-low 4000 D5",
+      "entry_observed": true,
+      "frames": 439,
+      "error_masks": [
+        "20",
+        "00",
+        "00"
+      ],
+      "coverage": "startup00/FF sweep",
+      "completed_phases": [
+        2
+      ],
+      "fault_exit_phase": 2,
+      "first_address": "4000",
+      "stack_unchanged": true,
+      "rom_opcode_only": true,
+      "covered_all_home": true,
+      "kind": "stuck-low"
+    },
+    {
+      "name": "stuck-low 4000 D6",
+      "entry_observed": true,
+      "frames": 439,
+      "error_masks": [
+        "40",
+        "00",
+        "00"
+      ],
+      "coverage": "startup00/FF sweep",
+      "completed_phases": [
+        2
+      ],
+      "fault_exit_phase": 2,
+      "first_address": "4000",
+      "stack_unchanged": true,
+      "rom_opcode_only": true,
+      "covered_all_home": true,
+      "kind": "stuck-low"
+    },
+    {
+      "name": "stuck-low 4000 D7",
+      "entry_observed": true,
+      "frames": 439,
+      "error_masks": [
+        "80",
+        "00",
+        "00"
+      ],
+      "coverage": "startup00/FF sweep",
+      "completed_phases": [
+        2
+      ],
+      "fault_exit_phase": 2,
+      "first_address": "4000",
+      "stack_unchanged": true,
+      "rom_opcode_only": true,
+      "covered_all_home": true,
+      "kind": "stuck-low"
+    },
+    {
+      "name": "stuck-low 8000 D0",
+      "entry_observed": true,
+      "frames": 441,
+      "error_masks": [
+        "00",
+        "01",
+        "00"
+      ],
+      "coverage": "startup00/FF sweep",
+      "completed_phases": [
+        2
+      ],
+      "fault_exit_phase": 2,
+      "first_address": "8000",
+      "stack_unchanged": true,
+      "rom_opcode_only": true,
+      "covered_all_home": true,
+      "kind": "stuck-low"
+    },
+    {
+      "name": "stuck-low 8000 D1",
+      "entry_observed": true,
+      "frames": 441,
+      "error_masks": [
+        "00",
+        "02",
+        "00"
+      ],
+      "coverage": "startup00/FF sweep",
+      "completed_phases": [
+        2
+      ],
+      "fault_exit_phase": 2,
+      "first_address": "8000",
+      "stack_unchanged": true,
+      "rom_opcode_only": true,
+      "covered_all_home": true,
+      "kind": "stuck-low"
+    },
+    {
+      "name": "stuck-low 8000 D2",
+      "entry_observed": true,
+      "frames": 441,
+      "error_masks": [
+        "00",
+        "04",
+        "00"
+      ],
+      "coverage": "startup00/FF sweep",
+      "completed_phases": [
+        2
+      ],
+      "fault_exit_phase": 2,
+      "first_address": "8000",
+      "stack_unchanged": true,
+      "rom_opcode_only": true,
+      "covered_all_home": true,
+      "kind": "stuck-low"
+    },
+    {
+      "name": "stuck-low 8000 D3",
+      "entry_observed": true,
+      "frames": 441,
+      "error_masks": [
+        "00",
+        "08",
+        "00"
+      ],
+      "coverage": "startup00/FF sweep",
+      "completed_phases": [
+        2
+      ],
+      "fault_exit_phase": 2,
+      "first_address": "8000",
+      "stack_unchanged": true,
+      "rom_opcode_only": true,
+      "covered_all_home": true,
+      "kind": "stuck-low"
+    },
+    {
+      "name": "stuck-low 8000 D4",
+      "entry_observed": true,
+      "frames": 441,
+      "error_masks": [
+        "00",
+        "10",
+        "00"
+      ],
+      "coverage": "startup00/FF sweep",
+      "completed_phases": [
+        2
+      ],
+      "fault_exit_phase": 2,
+      "first_address": "8000",
+      "stack_unchanged": true,
+      "rom_opcode_only": true,
+      "covered_all_home": true,
+      "kind": "stuck-low"
+    },
+    {
+      "name": "stuck-low 8000 D5",
+      "entry_observed": true,
+      "frames": 441,
+      "error_masks": [
+        "00",
+        "20",
+        "00"
+      ],
+      "coverage": "startup00/FF sweep",
+      "completed_phases": [
+        2
+      ],
+      "fault_exit_phase": 2,
+      "first_address": "8000",
+      "stack_unchanged": true,
+      "rom_opcode_only": true,
+      "covered_all_home": true,
+      "kind": "stuck-low"
+    },
+    {
+      "name": "stuck-low 8000 D6",
+      "entry_observed": true,
+      "frames": 441,
+      "error_masks": [
+        "00",
+        "40",
+        "00"
+      ],
+      "coverage": "startup00/FF sweep",
+      "completed_phases": [
+        2
+      ],
+      "fault_exit_phase": 2,
+      "first_address": "8000",
+      "stack_unchanged": true,
+      "rom_opcode_only": true,
+      "covered_all_home": true,
+      "kind": "stuck-low"
+    },
+    {
+      "name": "stuck-low 8000 D7",
+      "entry_observed": true,
+      "frames": 441,
+      "error_masks": [
+        "00",
+        "80",
+        "00"
+      ],
+      "coverage": "startup00/FF sweep",
+      "completed_phases": [
+        2
+      ],
+      "fault_exit_phase": 2,
+      "first_address": "8000",
+      "stack_unchanged": true,
+      "rom_opcode_only": true,
+      "covered_all_home": true,
+      "kind": "stuck-low"
+    },
+    {
+      "name": "stuck-low c000 D0",
+      "entry_observed": true,
+      "frames": 444,
+      "error_masks": [
+        "00",
+        "00",
+        "01"
+      ],
+      "coverage": "startup00/FF sweep",
+      "completed_phases": [
+        2
+      ],
+      "fault_exit_phase": 2,
+      "first_address": "c000",
+      "stack_unchanged": true,
+      "rom_opcode_only": true,
+      "covered_all_home": true,
+      "kind": "stuck-low"
+    },
+    {
+      "name": "stuck-low c000 D1",
+      "entry_observed": true,
+      "frames": 444,
+      "error_masks": [
+        "00",
+        "00",
+        "02"
+      ],
+      "coverage": "startup00/FF sweep",
+      "completed_phases": [
+        2
+      ],
+      "fault_exit_phase": 2,
+      "first_address": "c000",
+      "stack_unchanged": true,
+      "rom_opcode_only": true,
+      "covered_all_home": true,
+      "kind": "stuck-low"
+    },
+    {
+      "name": "stuck-low c000 D2",
+      "entry_observed": true,
+      "frames": 444,
+      "error_masks": [
+        "00",
+        "00",
+        "04"
+      ],
+      "coverage": "startup00/FF sweep",
+      "completed_phases": [
+        2
+      ],
+      "fault_exit_phase": 2,
+      "first_address": "c000",
+      "stack_unchanged": true,
+      "rom_opcode_only": true,
+      "covered_all_home": true,
+      "kind": "stuck-low"
+    },
+    {
+      "name": "stuck-low c000 D3",
+      "entry_observed": true,
+      "frames": 444,
+      "error_masks": [
+        "00",
+        "00",
+        "08"
+      ],
+      "coverage": "startup00/FF sweep",
+      "completed_phases": [
+        2
+      ],
+      "fault_exit_phase": 2,
+      "first_address": "c000",
+      "stack_unchanged": true,
+      "rom_opcode_only": true,
+      "covered_all_home": true,
+      "kind": "stuck-low"
+    },
+    {
+      "name": "stuck-low c000 D4",
+      "entry_observed": true,
+      "frames": 444,
+      "error_masks": [
+        "00",
+        "00",
+        "10"
+      ],
+      "coverage": "startup00/FF sweep",
+      "completed_phases": [
+        2
+      ],
+      "fault_exit_phase": 2,
+      "first_address": "c000",
+      "stack_unchanged": true,
+      "rom_opcode_only": true,
+      "covered_all_home": true,
+      "kind": "stuck-low"
+    },
+    {
+      "name": "stuck-low c000 D5",
+      "entry_observed": true,
+      "frames": 444,
+      "error_masks": [
+        "00",
+        "00",
+        "20"
+      ],
+      "coverage": "startup00/FF sweep",
+      "completed_phases": [
+        2
+      ],
+      "fault_exit_phase": 2,
+      "first_address": "c000",
+      "stack_unchanged": true,
+      "rom_opcode_only": true,
+      "covered_all_home": true,
+      "kind": "stuck-low"
+    },
+    {
+      "name": "stuck-low c000 D6",
+      "entry_observed": true,
+      "frames": 444,
+      "error_masks": [
+        "00",
+        "00",
+        "40"
+      ],
+      "coverage": "startup00/FF sweep",
+      "completed_phases": [
+        2
+      ],
+      "fault_exit_phase": 2,
+      "first_address": "c000",
+      "stack_unchanged": true,
+      "rom_opcode_only": true,
+      "covered_all_home": true,
+      "kind": "stuck-low"
+    },
+    {
+      "name": "stuck-low c000 D7",
+      "entry_observed": true,
+      "frames": 444,
+      "error_masks": [
+        "00",
+        "00",
+        "80"
+      ],
+      "coverage": "startup00/FF sweep",
+      "completed_phases": [
+        2
+      ],
+      "fault_exit_phase": 2,
+      "first_address": "c000",
+      "stack_unchanged": true,
+      "rom_opcode_only": true,
+      "covered_all_home": true,
+      "kind": "stuck-low"
+    },
+    {
+      "name": "single transient C123 D5",
+      "entry_observed": true,
+      "frames": 414,
+      "error_masks": [
+        "00",
+        "00",
+        "20"
+      ],
+      "coverage": "startup00/FF sweep",
+      "completed_phases": [
+        2
+      ],
+      "fault_exit_phase": 2,
+      "first_address": "c123",
+      "stack_unchanged": true,
+      "rom_opcode_only": true,
+      "covered_all_home": true,
+      "kind": "transient"
+    },
+    {
+      "name": "write loss 8123 D2",
+      "entry_observed": true,
+      "frames": 414,
+      "error_masks": [
+        "00",
+        "04",
+        "00"
+      ],
+      "coverage": "startup00/FF sweep",
+      "completed_phases": [
+        2
+      ],
+      "fault_exit_phase": 2,
+      "first_address": "8123",
+      "stack_unchanged": true,
+      "rom_opcode_only": true,
+      "covered_all_home": true,
+      "kind": "write-loss"
+    },
+    {
+      "name": "complete suite direct entry",
+      "entry_observed": true,
+      "frames": 5032,
+      "error_masks": [
+        "00",
+        "00",
+        "00"
+      ],
+      "coverage": "complete suite",
+      "completed_phases": [
+        34
+      ],
+      "fault_exit_phase": null,
+      "first_address": "6700",
+      "stack_unchanged": true,
+      "rom_opcode_only": true,
+      "covered_all_home": true,
+      "kind": null
+    },
+    {
+      "name": "complete stuck-low 4000",
+      "entry_observed": true,
+      "frames": 3833,
+      "error_masks": [
+        "08",
+        "00",
+        "00"
+      ],
+      "coverage": "complete suite",
+      "completed_phases": [],
+      "fault_exit_phase": 32,
+      "first_address": "4000",
+      "stack_unchanged": true,
+      "rom_opcode_only": true,
+      "covered_all_home": true,
+      "kind": "stuck-low"
+    },
+    {
+      "name": "complete stuck-low 8000",
+      "entry_observed": true,
+      "frames": 3905,
+      "error_masks": [
+        "00",
+        "08",
+        "00"
+      ],
+      "coverage": "complete suite",
+      "completed_phases": [],
+      "fault_exit_phase": 32,
+      "first_address": "8000",
+      "stack_unchanged": true,
+      "rom_opcode_only": true,
+      "covered_all_home": true,
+      "kind": "stuck-low"
+    },
+    {
+      "name": "complete stuck-low c000",
+      "entry_observed": true,
+      "frames": 3990,
+      "error_masks": [
+        "00",
+        "00",
+        "08"
+      ],
+      "coverage": "complete suite",
+      "completed_phases": [],
+      "fault_exit_phase": 32,
+      "first_address": "c000",
+      "stack_unchanged": true,
+      "rom_opcode_only": true,
+      "covered_all_home": true,
+      "kind": "stuck-low"
+    },
+    {
+      "name": "complete transient C123 D5",
+      "entry_observed": true,
+      "frames": 5021,
+      "error_masks": [
+        "00",
+        "00",
+        "20"
+      ],
+      "coverage": "complete suite",
+      "completed_phases": [
+        34
+      ],
+      "fault_exit_phase": 34,
+      "first_address": "c123",
+      "stack_unchanged": true,
+      "rom_opcode_only": true,
+      "covered_all_home": true,
+      "kind": "transient"
+    },
+    {
+      "name": "complete write loss 8123 D2",
+      "entry_observed": true,
+      "frames": 5021,
+      "error_masks": [
+        "00",
+        "04",
+        "00"
+      ],
+      "coverage": "complete suite",
+      "completed_phases": [
+        34
+      ],
+      "fault_exit_phase": 34,
+      "first_address": "8123",
+      "stack_unchanged": true,
+      "rom_opcode_only": true,
+      "covered_all_home": true,
+      "kind": "write-loss"
+    },
+    {
+      "name": "select_patterns explicit PASS and new-key return",
+      "result_page": "Selected checks PASS",
+      "completed": true,
+      "stack_unchanged": true,
+      "rom_opcode_only": true
+    },
+    {
+      "name": "select_march explicit PASS and new-key return",
+      "result_page": "Selected checks PASS",
+      "completed": true,
+      "stack_unchanged": true,
+      "rom_opcode_only": true
+    },
+    {
+      "name": "select_address explicit PASS and new-key return",
+      "result_page": "Selected checks PASS",
+      "completed": true,
+      "stack_unchanged": true,
+      "rom_opcode_only": true
+    },
+    {
+      "name": "select_random explicit PASS and new-key return",
+      "result_page": "Selected checks PASS",
+      "completed": true,
+      "stack_unchanged": true,
+      "rom_opcode_only": true
+    },
+    {
+      "name": "select_retention explicit PASS and new-key return",
+      "result_page": "Selected checks PASS",
+      "completed": true,
+      "stack_unchanged": true,
+      "rom_opcode_only": true
+    }
+  ],
+  "limitations": [
+    "Post-entry injected faults; bad RAM during OS launch not covered",
+    "No physical electrical/timing/refresh validation",
+    "Interactive modules have separate evidence"
+  ],
+  "engine_sha256": "0779183741d082a14464d6a6ae0aeed8aa471d80705faf3d113cc68e7386ba24",
+  "cpu_sha256": "c11b6deba8b2e20af6f8e4c21b059b87a70a084d7c210df767ae179f8b3ca44b"
+}

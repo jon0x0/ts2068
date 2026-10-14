@@ -1,6 +1,7 @@
 ; TS2068 diagnostic v0.2: stackless native LROS kernel.
 ; HSR=01 during destructive tests; DECR=40; DI except optional IRQ module.
-; No CALL/RET/PUSH/POP/RST/HALT or ROM calls. Optional UI state is bounded data.
+; Default control has no CALL/RET/PUSH/POP/RST/HALT or ROM calls.
+; Explicit L data PUSH/POP and confirmed IRQ-return bridges are isolated.
 ;
 ; Main HL=target, D=expected, B=observed, E=error scratch.
 ; I=current phase; IY=fixed ROM comparison continuation; IX=first address.
@@ -36,7 +37,7 @@ soundguide_poll:
  jp soundguide_poll
  ASSERT $ <= $38
  DS $38-$,255
- jp irq_arrived
+ jp irq_dispatch
 sounddemo_ram:
  ld d,6
  ld e,2
@@ -262,6 +263,8 @@ menu_poll:
  ld h,a
  cpl
  and ixl
+ bit 1,a
+ jp nz,load_select
  bit 3,a
  ld a,h
  ld ixl,a
@@ -324,6 +327,7 @@ ram_cancel:
 ; Comparison never returns through RAM. All caller continuations are ROM labels.
 compare_byte:
  ld b,(hl)
+compare_observed:
  ld a,b
  cp d
  jp z,compare_exit
@@ -568,6 +572,7 @@ group_gap:
  djnz group_gap_pass ; plus pulse_gap: approximately1.3 seconds between groups.
  jp (iy)
  INCLUDE "modules.asm"
+ INCLUDE "load_low.asm"
  INCLUDE "../build/suite-assets.asm"
 kernel_end:
  ASSERT kernel_end < $1fd0

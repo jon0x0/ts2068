@@ -43,7 +43,7 @@ def build():
       'startupfull':page('startupfull','Reset / selected tests',[(6,'R Complete RAM ~84 seconds'),(8,'F HOME Full RAM/sound/keys'),(11,'Release; new key cancels'),(14,'Screen RAM is being tested')]),
       'rammenu':page('rammenu','RAM / choose coverage',[(6,'1 Complete ~84 sec'),(8,'2 Patterns/bits ~41 sec'),(10,'3 March ~8 sec / 4 Addr ~8 sec'),(12,'5 Random ~3 sec / 6 Hold ~24s'),(16,'Can identify failing RAM chips')]),
       'rampass':page('rampass','All 6 RAM chips PASS',[(6,'All 48K comparisons matched'),(8,'U6 U7 U12 U13 U17 U18'),(12,'Only covered tests passed'),(15,'No intermittent-fault guarantee')]),
-      'soak':page('soak','Overnight RAM',[(7,'Complete48K repeated passes'),(11,'~1.5 min/pass'),(14,'PASS COUNT:'),(17,'First mismatch stops'),(20,'Press any key to stop')]),
+      'soak':page('soak','Overnight RAM',[(7,'Complete48K repeated passes'),(11,'~1.5 min/pass'),(14,'PASS COUNT:'),(17,'First mismatch stops'),(20,'Press any key to stop test')]),
       'soakstop':page('soakstop','RAM soak / stopped',[(7,'No failures during the test'),(10,'Completed passes (hex):'),(14,'Count:'),(19,'Covered comparisons only')]),
       'soundmenu':page('soundmenu','Sound / choose',[(7,'1 Beeper / 15 seconds'),(10,'2 AY / 24 steps / 22 seconds')]),
       'beeper':page('beeper','Beeper / three tones',[(8,'Low red / mid magenta'),(12,'High green / about15 seconds'),(16,'Listen for all three')]),
@@ -95,6 +95,8 @@ def build():
     omit('home_crc_select:\n','irqmenu_ready:\n','home_crc_select:\nexrom_crc_select:\nromresult_ready:\n jp load_unavailable')
     omit('cartridge_check:\n','cartridge_alarm:\n','cartridge_check:\n jp home_integrity')
     modules=modules[:modules.index('cpu_select:\n')]+'cpu_select:\ncpuinfo_ready:\n jp load_unavailable\n'
+    modules += 'load_select:\n jp load_unavailable\nirq_dispatch:\n jp irq_arrived\n'
+    modules=modules.replace(' ld a,$81\n out ($f4),a\n jp $e000\nkeyboard_scan_done:\n ld a,1\n out ($f4),a', ' INCLUDE "../build/keyboard-scan.asm"')
     modules=modules.replace('ld de,$4400',f'ld de,${ay_addr:04x}')
     modules=re.sub(r'^(\s*)out \(\$f4\),a',r'\1xor a\n\1out ($f4),a',modules,flags=re.M)
     main=(ROOT/'src/diagnostic.asm').read_text()

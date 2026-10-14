@@ -1,5 +1,11 @@
 # Project state / v0.2 handoff
 
+Power-load update: L/P combined preset and option6 quiet/busy cycling add checked dense00/FF/55/AA RAM traffic, optional normal/ECM/hires rotation, optional louder/envelope AY plus beeper, and quiet mute intervals. TEST STARTED / RUNNING makes the six-second pre-batch notice explicit. ROM4 load allocation ends8E00h. Transient load faults now latch the observed POP/read byte without rereading; exact D0-D7 and multibit masks are checked in all RAM regions. Physical power measurements and Sinistar replication remain pending; HOME coverage is unchanged.
+
+Implementation update: cartridge mainL now executes the configurable mixed-load suite (src/load.asm and src/load_low.asm). Keys1–8 select RAM/March/ECM/IRQ/banking/normal-refresh spacing/AY/data PUSH-POP; A/B presets, N one batch/C continuous, S safe start, separately confirmed R IM1/IM2 return profile. Fresh IRQ inhibit/arrival qualification gates the real-return burst. AY uses16 changing synthetic Speech2AY-style R0–R12 frames with readback. ROM0 remains resident, ROM4 owns optional scheduling, low bridges expose every HOME RAM byte; basic IRQ sink gets deferred DI-only comparisons. Keyboard scan moved to asserted ROM7 code while HOME retains its own scanner. Earlier design-only/unknown-symptom statements below are superseded. Physical Sinistar replication remains pending; HOME has no mixed-load module.
+
+RAM soak's between-pass status/count notice holds for six nominal seconds in cartridge and HOME editions and says Press any key to stop test; TSRun timing and cancellation checks pass. The supplied Sinistar report describes a stack-data byte losing D1 under runtime load despite37 IRQ-off ECM March passes over5F00h–FFFFh and passing bus tests. See SINISTAR_LOAD_TEST.md for inspected-source evidence and the implemented LOAD-01/02 workloads. Physical replication, root cause and the affected image/configuration remain unknown.
+
 The current UI uses mixed-case TS2068 text. ASCII32-127, including lowercase, was already present in the embedded768-byte font; no extra font allocation was needed. Physical key labels, technical abbreviations and coarse fault glyphs stay uppercase. Case conversion is host asset generation in scripts/suite_assets.py, not a runtime dependency.
 
 The project now builds a runnable ROM-only stock-machine diagnostic suite, not just the earlier RAM-kernel milestone. Read tests/V02_DIAGNOSTIC_SUITE.md for the actual algorithms, memory contracts, controls, fault codes, optional exposures and unfinished advanced modules. The canonical registry distinguishes implemented, partial and specified scope.
@@ -13,7 +19,7 @@ The project now builds a runnable ROM-only stock-machine diagnostic suite, not j
 - Continuous banking combinations with signature/ROM-write/HOME-sentinel comparisons and a pass counter.
 - Optional HOME/EXROM CRC32, high-code shadow/gateway validation and bounded fixed-checkpoint SCLD IRQ inhibit/arrival tests. J opens graphical joystick/EAR observation directly, with independent simultaneous contacts on both ports.
 
-All default control remains stackless in low ROM. Optional HOME checksum executes from high ROM; EXROM executes a verified HOME gateway; IRQ entry writes to a sacrificial initialized HOME sink but never reads or returns through it; it remains testable when RAM writes are lost. These explicit exposures are excluded from Full test and RAM overnight mode. NMI/helper/PicoVideo support remains future work.
+Default scheduling, RAM/banking/soak and minimal reporting remain stackless in low ROM. The generated keyboard scanner executes from fixed ROM7 with low-ROM painting/exit helpers. Optional HOME checksum executes from high ROM; EXROM executes a verified HOME gateway; basic IRQ entry writes to a sacrificial initialized HOME sink but never reads or returns through it; it remains testable when RAM writes are lost. New L load scheduling executes from ROM4 with low-ROM RAM bridges; exposed IRQ-return bursts require separate confirmation. These explicit exposures are excluded from Full test and RAM overnight mode. NMI/helper/PicoVideo support remains future work.
 
 ## Evidence and limits
 
@@ -21,7 +27,7 @@ TSRun and Fuse stock-ROM validation records are image-bound and copied under doc
 
 Initial cartridge integrity checks are additive16 over8144 bytes per chunk, not collision-resistant CRC. RAM random uses seedACE1/polyB400, with immediate first-mismatch exit to prevent LFSR scratch corruption from causing cascaded false reports. Soak counters wrap at65536; no elapsed-time or temperature measurement, persistent logging or arbitrary pause/resume. Keyboard history is optional RAM data and never control flow.
 
-Some registry modules remain broader than their present implementation: varying seeds/dwell profiles, complete timing/whole-chunk banking comparisons, exact Sinistar runtime/interrupt reproduction, combined mixed-load soak, guided physical-key certification, calibrated SCLD contention/pin probing, full tape record/verify and external hardware profiles. Do not describe these as finished or tested.
+Some registry modules remain broader than their present implementation: varying seeds/dwell profiles, complete timing/whole-chunk banking comparisons, exact Sinistar game/audio replay, guided physical-key certification, calibrated SCLD contention/pin probing, full tape record/verify and external hardware profiles. The new combined load suite has the narrower executable coverage documented in SINISTAR_LOAD_TEST.md. Do not describe future coverage as finished or tested.
 
 ## Hardware facts and prerequisites
 
@@ -33,7 +39,7 @@ Passive LROS can only report after OS handoff. CPU clock, active opcode fetch an
 
 The next release gate is physical testing: cold/reset launch, actual programmed image hash, cartridge decode, faulty DRAM/report readability, real keyboard/audio/video modes, stock ROM identities, cancellation and an overnight warm run. Record exact hardware/ROM/interface/firmware revisions and observations without upgrading emulator evidence to physical evidence. Continue advanced modules only with their explicit contracts.
 
-Read AGENTS.md before editing. Maintain stable test IDs, implementation locations and honest status/evidence, regenerate TEST_CATALOG.md and retain source credits. Preserve user manuals/schematic and sibling projects. The Sinistar incident remains an unproven hypothesis; its exact failure symptom/interface settings are still unknown.
+Read AGENTS.md before editing. Maintain stable test IDs, implementation locations and honest status/evidence, regenerate TEST_CATALOG.md and retain source credits. Preserve user manuals/schematic and sibling projects. The supplied Sinistar D1-loss symptom is recorded; its root cause and exact image/interface settings remain unknown.
 
 Current menus use bounded release/press-edge handling: stuck numeric keys do not prevent other keys working, and held H/E/I cannot silently enter optional execution tests. M acknowledges RAM failures to access independent modules; non-RAM mismatch pages retain repeating audible family counts.
 
@@ -85,3 +91,5 @@ Complete RAM selector0, including startupR, now has an All6 RAM chips PASS page 
 Individual RAM tests now show Selected checks PASS and Complete RAM shows All 6 RAM chips PASS; both require a new key. Failures retain chip/bit reporting and cancellation never claims success. The separate U16 HOME reset ROM bypasses OS/DOCK startup but has reduced coverage; see HOME_ROM_EDITION.md. Graphical joystick painting uses a qualified 96-byte ROM helper at3F00; reserve cartridge ROM1 3F00-3FCF. Packed cartridge loaders share ROM-only bank setup gateways to leave space for the soak stop summary; check kernel_end against1FD0 before adding code. Physical cartridge, U16 adapter and device validation remain pending. Current image hashes are recorded in build/manifest-v02.json and build/home/manifest.json.
 
 Stopping soak with no recorded RAM errors shows No failures during the test and the hexadecimal completed-pass count; a new key returns to the menu. Recorded errors take priority. Both editions preserve register-only state. Fault sync/count pitches are approximately153/429Hz with original durations and gaps. scripts/verify_soak.mjs checks result counts, fault priority, acknowledgement and lost display writes. docs/RELEASE_POST.txt is ready-to-use human release copy and describes the simplified U16 replacement image.
+
+Public release v0.3 (October 13, 2026) includes combined-load and 5 V rail troubleshooting guidance. Current cartridge SHA-256: bc5eb2df44c390573b4058d614ba37ab1a95c8065c81bb7d15eb922c4d68e030. Emulator evidence is image-bound; physical validation remains pending.

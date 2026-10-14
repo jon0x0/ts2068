@@ -1,6 +1,7 @@
 ; TS2068 diagnostic v0.2: stackless native LROS kernel.
 ; HSR=01 during destructive tests; DECR=40; DI except optional IRQ module.
-; No CALL/RET/PUSH/POP/RST/HALT or ROM calls. Optional UI state is bounded data.
+; Default control has no CALL/RET/PUSH/POP/RST/HALT or ROM calls.
+; Explicit L data PUSH/POP and confirmed IRQ-return bridges are isolated.
 ;
 ; Main HL=target, D=expected, B=observed, E=error scratch.
 ; I=current phase; IY=fixed ROM comparison continuation; IX=first address.
@@ -35,7 +36,7 @@ soundguide_poll:
  jp soundguide_poll
  ASSERT $ <= $38
  DS $38-$,255
- jp irq_arrived
+ jp irq_dispatch
 sounddemo_ram:
  ld d,6
  ld e,2
@@ -1175,6 +1176,8 @@ menu_poll:
  ld h,a
  cpl
  and ixl
+ bit 1,a
+ jp nz,load_select
  bit 3,a
  ld a,h
  ld ixl,a
@@ -1237,6 +1240,7 @@ ram_cancel:
 ; Comparison never returns through RAM. All caller continuations are ROM labels.
 compare_byte:
  ld b,(hl)
+compare_observed:
  ld a,b
  cp d
  jp z,compare_exit
@@ -1989,7 +1993,11 @@ soak_count_done:
  jp z,fullsummary_ready
  jp soak_pause
 soak_pause:
- ld hl,30000
+ ; Four register-only batches: 197832 * 107T ~= 6s at 3.528MHz.
+ ; Released-key poll path is timed; a new key still cancels immediately.
+ ld b,4
+soak_pause_batch:
+ ld hl,49458
 soak_pause_loop:
  ld iy,soak_pause_continue
  jp ram_key_poll
@@ -1998,6 +2006,7 @@ soak_pause_continue:
  ld a,h
  or l
  jp nz,soak_pause_loop
+ djnz soak_pause_batch
  jp ram_start
 
 ; One byte -> two hexadecimal glyphs, DE=bitmap row0 position.
@@ -3285,6 +3294,8 @@ irq_baseline:
  jp irq_start
 irq_start:
  di
+ xor a
+ ld i,a
  im 1
  ld sp,$bfff
  ld a,$40
@@ -3583,6 +3594,10 @@ menu_stop_released:
 cpu_select:
 cpuinfo_ready:
  jp load_unavailable
+load_select:
+ jp load_unavailable
+irq_dispatch:
+ jp irq_arrived
 home_integrity:
  ld hl,0
  ld de,0
@@ -3697,7 +3712,7 @@ render_soak:
  ld iy,soak_ready
  jp render_tiles
 load_soakstop:
- ld hl,$2d45
+ ld hl,$2d4a
  ld de,$6400
  ld bc,1536
  ld a,$40
@@ -3708,7 +3723,7 @@ render_soakstop:
  ld iy,soakstop_ready
  jp render_tiles
 load_soundmenu:
- ld hl,$2e2e
+ ld hl,$2e33
  ld de,$6400
  ld bc,1536
  ld a,$40
@@ -3719,7 +3734,7 @@ render_soundmenu:
  ld iy,soundmenu_ready
  jp render_tiles
 load_beeper:
- ld hl,$2ef0
+ ld hl,$2ef5
  ld de,$6400
  ld bc,1536
  ld a,$40
@@ -3730,7 +3745,7 @@ render_beeper:
  ld iy,beeper_ready
  jp render_tiles
 load_help:
- ld hl,$2fcd
+ ld hl,$2fd2
  ld de,$6400
  ld bc,1536
  ld a,$40
@@ -3741,7 +3756,7 @@ render_help:
  ld iy,help_ready
  jp render_tiles
 load_soundguide:
- ld hl,$30e5
+ ld hl,$30ea
  ld de,$6400
  ld bc,1536
  ld a,$40
@@ -3752,7 +3767,7 @@ render_soundguide:
  ld iy,soundguide_ready
  jp render_tiles
 load_pass:
- ld hl,$31e7
+ ld hl,$31ec
  ld de,$6400
  ld bc,1536
  ld a,$40
@@ -3763,7 +3778,7 @@ render_pass:
  ld iy,pass_ready
  jp render_tiles
 load_fail:
- ld hl,$32b6
+ ld hl,$32bb
  ld de,$6400
  ld bc,1536
  ld a,$40
@@ -3774,7 +3789,7 @@ render_fail:
  ld iy,fail_ready
  jp render_tiles
 load_inputs:
- ld hl,$338d
+ ld hl,$3392
  ld de,$6400
  ld bc,1536
  ld a,$40
@@ -3785,7 +3800,7 @@ render_inputs:
  ld iy,inputs_ready
  jp render_tiles
 load_irqmenu:
- ld hl,$34e8
+ ld hl,$34ed
  ld de,$6400
  ld bc,1536
  ld a,$40
@@ -3796,7 +3811,7 @@ render_irqmenu:
  ld iy,irqmenu_ready
  jp render_tiles
 load_unavailable:
- ld hl,$35cd
+ ld hl,$35d2
  ld de,$6400
  ld bc,1536
  ld a,$40
@@ -3807,7 +3822,7 @@ render_unavailable:
  ld iy,unavailable_ready
  jp render_tiles
 load_aylisten:
- ld hl,$369b
+ ld hl,$36a0
  ld de,$6400
  ld bc,1536
  ld a,$40
@@ -3818,7 +3833,7 @@ render_aylisten:
  ld iy,aylisten_ready
  jp render_tiles
 load_keyboard:
- ld hl,$383e
+ ld hl,$3843
  ld de,$6400
  ld bc,1536
  ld a,$40

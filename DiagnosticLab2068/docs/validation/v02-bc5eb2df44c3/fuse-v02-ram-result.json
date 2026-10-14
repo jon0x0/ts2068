@@ -1,0 +1,26 @@
+{
+  "status": "checkpoint_completed",
+  "command": [
+    "C:\\Program Files (x86)\\Fuse\\fuse.exe",
+    "--machine",
+    "ts2068",
+    "--speed",
+    "5000",
+    "--rom-ts2068-0",
+    "D:\\T7_Recover\\Jon\\Personal\\Timex\\TSRun\\roms\\ts2068-0.rom",
+    "--rom-ts2068-1",
+    "D:\\T7_Recover\\Jon\\Personal\\Timex\\TSRun\\roms\\ts2068-1.rom",
+    "--no-sound",
+    "--no-loading-sound",
+    "--no-confirm-actions",
+    "--debugger-command",
+    "breakpoint 0x6ac if [0x100] == 243 && [0x102] == 64\ncommands 1\nprint z80:pc\nprint z80:sp\nprint z80:af\nprint z80:i\nprint spectrum:frames\nexit 0\nend",
+    "--dock",
+    "D:\\T7_Recover\\Jon\\Personal\\Timex\\DiagnosticCart2068\\build\\diagnostic-v02.dck"
+  ],
+  "checkpoint": "0x6ac",
+  "expected_phase": 2,
+  "coverage": "startup00/FF sweep",
+  "image_sha256": "bc5eb2df44c390573b4058d614ba37ab1a95c8065c81bb7d15eb922c4d68e030",
+  "limitation": "A timeout or empty output is not evidence of a successful checkpoint."
+}

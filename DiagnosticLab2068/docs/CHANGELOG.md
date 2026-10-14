@@ -1,5 +1,10 @@
 # Diagnostic design change log
 
+## v0.3 — October 13, 2026
+
+Released configurable combined-load diagnostics, quiet/busy power cycling, explicit running/status prompts and six-second soak status pages. Original observed RAM/stack bytes now drive D0–D7 and multi-bit fault reporting without a second read masking transient errors. Added power-supply troubleshooting and oscilloscope guidance for the 5 V rail, grounded in the reported Sinistar D1 stack corruption. This report does not establish a power-supply or DRAM root cause. Emulator checks passed; physical validation remains pending. Previous v0.2 archives and historical evidence hashes are retained.
+
+
 ## Soak stop summary and clearer fault pitches
 
 Stopping RAM soak with no recorded errors now shows **No failures during the test**, preserves the hexadecimal completed-pass count, and waits for a fresh key. Existing errors take priority and enter the chip/bit reporter. The infinite run is not labelled incomplete. Both editions implement the summary; tests cover zero/multiple/wrapped counts, held-key quarantine, fault priority and lost display writes. Cartridge packed loaders now share bounded ROM bank setup routines, freeing ROM0 space without using RAM control or a stack.
@@ -127,3 +132,24 @@ Added R/F startup holds with quick default, broad-keyboard-fault rejection, fini
 - Shared-content operator PDF/offline HTML with procedures, expected observations, interpretation, actual U6/U7 injected-fault images and complete development inventory.
 - Address-fault replicated-recovery feasibility documented as future work; quick startup stays00/FF and does not claim to detect pure aliases.55/AA/address data remain complete-RAM coverage.
 
+# October13,2026 — soak notice and Sinistar load-test design
+
+- Hold the RAM soak between-pass status/count screen for six nominal seconds in both cartridge and HOME editions; retain prompt all-key-release cancellation and stackless control. TSRun timing/cancellation verification passes; physical timing remains pending.
+- Record the supplied runtime D1 stack-data loss and current local Sinistar source hashes. Specify configurable RAM/March, ECM, IRQ, banking, refresh/access-spacing, AY and stack-data loads, plus a separate genuine interrupt-return profile. SOAK-03 and new LOAD-01/02 are specified, not executable mixed-load firmware. No fault-code changes.
+
+# October13,2026 — configurable mixed-load implementation
+
+- Cartridge L adds eight independent RAM/March/ECM/IRQ/banking/refresh-spacing/AY/stack-data options, A combined/B baseline, N one-batch/C continuous, S safe start and separately confirmed R IM1/IM2 real-return bursts. The outer scheduler remains register-only; basic IRQ sink bytes are compared separately under DI. R freshly qualifies IRQ, state, stacks and optional IM2 before exposed returns.
+- AY performs deterministic16-frame synthetic Speech2AY-style R0–R12 updates/readback, with input-safe R7 and fixed mute exits. Both soak pages say Press any key to stop test and retain six-second dwell. HOME does not acquire the cartridge load menu.
+- Optional load code/data reserves ROM4 8400–8BFF; generated keyboard scanning reserves ROM7 E000–E5FF to free low-ROM bridge space, preserving its existing register/input/paint contracts. All firmware bounds are asserted. New load faults reuse families4/5/7 and RAM chip/bit reports.
+- Image-bound TSRun load/keyboard/soak and existing-suite checks cover controls, all256 safe slice masks, representative complete batches, D1 POP loss, IRQ/bank/AY faults, qualification gates and real IM1/IM2 returns. Electrical refresh/power/timing and physical replication remain pending.
+
+# Load-menu controls clarified
+
+- Move N/C into a Duration row before Begin test with: S/R; highlight the whole selected duration phrase. Label S as safe IRQ checkpoints and R as real IRQ returns. Label option4 IRQ: 60 Hz screen interrupts. This changes display wording/highlighting only; selection and execution policies are unchanged.
+
+# Power cycling and transient-bit reporting
+
+- Expand load option6 from access spacing into quiet/busy power cycling; P selects combined loads. Optional video rotates normal/ECM/hires; optional sound adds three-channel maximum/envelope AY R0–R13 traffic and bounded beeper output, with quiet mute intervals. Address-hash reads add checked00/FF/55/AA traffic, restoring expected data. No measured power increase or physical fault reproduction is claimed. Optional ROM4 code/data now reserves8400–8DFF; asset boundary and code size are asserted.
+- The start page explicitly announces TEST STARTED / RUNNING and the six-second notice before the next RAM batch, with yellow activity/blue quiet border explanations.
+- Fix transient POP/read reporting: preserve the original observed byte instead of rereading RAM. Previous tests reached the fault entry without checking the retained bit mask; new injections check D0–D7 and multiple bits in all three regions. Fault-code assignments are unchanged.

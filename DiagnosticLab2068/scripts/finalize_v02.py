@@ -8,7 +8,7 @@ b = ROOT / 'build'
 manifest = json.loads((b/'manifest-v02.json').read_text(encoding='utf-8-sig'))
 sha = manifest['dck_sha256']
 names = ['suite-ram-verification.json','suite-verification.json','suite-reporter-verification.json',
-         'fuse-v02-result.json','fuse-v02-ram-result.json','image-format-verification.json','ay-verification.json','boot-verification.json','keyboard-verification.json','test-duration-estimates.json','duration-ui-verification.json','fault-timing-verification.json','joystick-verification.json','soak-verification.json']
+         'fuse-v02-result.json','fuse-v02-ram-result.json','image-format-verification.json','ay-verification.json','boot-verification.json','keyboard-verification.json','test-duration-estimates.json','duration-ui-verification.json','fault-timing-verification.json','joystick-verification.json','soak-verification.json','load-verification.json']
 for name in names:
     record = json.loads((b/name).read_text())
     assert record['image_sha256'] == sha, (name, 'stale image')
@@ -56,8 +56,8 @@ def refresh(value):
         import re
         value=re.sub(r'validation/v02-[0-9a-f]+/', 'validation/v02-'+sha[:12]+'/', value)
     return value
-registry.write_text(json.dumps(refresh(data),indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
-release=ROOT/'release/v0.2'; release.mkdir(parents=True,exist_ok=True)
+registry.write_text(json.dumps(data,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
+release=ROOT/'release'/VERSION; release.mkdir(parents=True,exist_ok=True)
 for name in ['diagnostic-v02.dck','diagnostic-v02.bin','diagnostic-v02-picorom.bin','diagnostic-v02-eprom-27C512.bin']:
     shutil.copy2(b/name,release/name)
 shutil.copy2(b/'manifest-v02.json',release/'manifest.json')
@@ -73,6 +73,10 @@ shutil.copy2(ROOT/'docs/TEST_DURATIONS.md',release/'TEST_DURATIONS.md')
 shutil.copy2(ROOT/'docs/RAM_SOUND_CODES.md',release/'RAM_SOUND_CODES.md')
 shutil.copy2(ROOT/'docs/JOYSTICK_TEST.md',release/'JOYSTICK_TEST.md')
 shutil.copy2(ROOT/'docs/HOME_ROM_EDITION.md',release/'HOME_ROM_EDITION.md')
+shutil.copy2(ROOT/'docs/SINISTAR_LOAD_TEST.md',release/'SINISTAR_LOAD_TEST.md')
+shutil.copy2(ROOT/'docs/POWER_LOAD_TROUBLESHOOTING.md',release/'POWER_LOAD_TROUBLESHOOTING.md')
+for source_name in ['src/load.asm','src/load_low.asm','scripts/verify_load.mjs','docs/SINISTAR_LOAD_TEST.md','docs/POWER_LOAD_TROUBLESHOOTING.md']:
+    target=dest/'source'/source_name; target.parent.mkdir(parents=True,exist_ok=True); shutil.copy2(ROOT/source_name,target)
 shutil.copy2(b/'joystick-active.screen',dest/'joystick-active.screen')
 home=b/'home'
 home_manifest=json.loads((home/'manifest.json').read_text())
@@ -119,6 +123,6 @@ with zipfile.ZipFile(ROOT/'release'/ARCHIVE_NAME,'w',zipfile.ZIP_DEFLATED) as z:
 with zipfile.ZipFile(ROOT/'release'/HOME_ARCHIVE_NAME,'w',zipfile.ZIP_DEFLATED) as z:
     for name in ['diagnostic-home-u16.bin','home-manifest.json','HOME_ROM_EDITION.md','JOYSTICK_TEST.md','RAM_SOUND_CODES.md','CREDITS.md','TS2068-Diagnostic-Lab-Cartridge-Manual.pdf']:
         z.write(release/name,name)
-shutil.copy2(ROOT/'release'/ARCHIVE_NAME,ROOT/'release/diagnostic-v02.zip')
-shutil.copy2(ROOT/'release'/HOME_ARCHIVE_NAME,ROOT/'release/diagnostic-home-u16.zip')
+shutil.copy2(ROOT/'release'/ARCHIVE_NAME,ROOT/'release/diagnostic-current.zip')
+shutil.copy2(ROOT/'release'/HOME_ARCHIVE_NAME,ROOT/'release/diagnostic-home-current.zip')
 print('Frozen validated image',sha,'at',dest)

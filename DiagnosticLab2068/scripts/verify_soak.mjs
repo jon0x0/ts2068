@@ -15,6 +15,18 @@ for(const home of [false,true]){
   return {m,keys,seen};
  }
  function run(t,label,n=1000){for(let i=0;i<n&&!t.seen.has(sym[label]);i++)api.runFrame(t.m);assert.ok(t.seen.has(sym[label]),label);}
+ {const t=machine();t.m.cpu.pc=sym.soak_pause;t.m.cpu.a2=128;
+  const read=t.m.bus.read,stop={};let elapsed;
+  t.m.bus.read=a=>{if(a===t.m.cpu.pc&&a===sym.ram_start){elapsed=t.m.tstates;throw stop;}return read(a);};
+  try{for(let i=0;i<400;i++)api.runFrame(t.m);}catch(e){if(e!==stop)throw e;}
+  assert.ok(elapsed!==undefined,'status pause finishes');
+  const seconds=elapsed/3528000;assert.ok(seconds>=6&&seconds<6.01,`six-second notice: ${seconds}`);
+  cases.push({name:'six-second stackless status dwell',result:'PASS',seconds});
+ }
+ {const t=machine();t.m.cpu.pc=sym.soak_pause;t.m.cpu.a2=128;api.runFrame(t.m);t.keys[2]=30;
+  run(t,'fullsummary_poll');assert.ok(t.m.tstates<3528000,'new key cancels status dwell promptly');
+  cases.push({name:'status dwell remains cancellable after all-key release',result:'PASS'});
+ }
  for(const count of [0,1,0x1234,0xffff]){
   const t=machine();t.m.cpu.pc=sym.ram_cancel;t.m.cpu.a2=0x80;t.m.cpu.h2=t.m.cpu.l2=t.m.cpu.d2=0;t.m.cpu.b2=count>>8;t.m.cpu.c2=count&255;t.keys[1]=30;
   run(t,'fullsummary_poll');assert.ok(t.seen.has(sym.soakstop_ready));assert.ok(!t.seen.has(sym.menu_draw));

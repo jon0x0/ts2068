@@ -1453,7 +1453,7 @@
       "name": "Free keyboard press and release display",
       "area": "keyboard",
       "firmware_status": "partial",
-      "algorithm": "Poll all8 half-rows, live green held/cyan released/unseen white; optional bounded historical RAM flags, duplicated CAPS and BREAK chord. Dedicated debounce/release history remains future. Graphic adaptation of Josef Jelinek TSRun keyboard.png, with fixed non-overlapping two-row attribute rectangles. Palette PAPER78 unseen,60 held,68 released; both CAPS share history; derived CAPS+SPACE BREAK adds byte5B28 and is distinct from ENTER+SPACE exit. Tiny legends removed; primary embedded Timex glyph labels retained. Painter preserves D/E/IX/alternate AF selector and uses no RAM control data. Detailed conversion/source/exit contracts in KEYBOARD_ART.md; original PNG/provenance hashes preserved.",
+      "algorithm": "Poll all8 half-rows, live green held/cyan released/unseen white; optional bounded historical RAM flags, duplicated CAPS and BREAK chord. Dedicated debounce/release history remains future. Graphic adaptation of Josef Jelinek TSRun keyboard.png, with fixed non-overlapping two-row attribute rectangles. Palette PAPER78 unseen,60 held,68 released; both CAPS share history; derived CAPS+SPACE BREAK adds byte5B28 and is distinct from ENTER+SPACE exit. Tiny legends removed; primary embedded Timex glyph labels retained. Painter preserves D/E/IX/alternate AF selector and uses no RAM control data. Detailed conversion/source/exit contracts in KEYBOARD_ART.md; original PNG/provenance hashes preserved. Cartridge fixed keyboard scanning now executes in ROM7 E000-E599 with ROM0 paint/exit bridges; HSR81 during scan,01 at exit; D/E/IX/AF alternate contracts unchanged. HOME keeps its scanner in HOME ROM.",
       "prerequisites": [
         "qualified_workspace"
       ],
@@ -1469,6 +1469,10 @@
         {
           "path": "src/modules.asm",
           "symbol": "keyboard_paint"
+        },
+        {
+          "path": "build/keyboard-rom.asm",
+          "symbol": "keyboard_rom_scan"
         }
       ],
       "host_support": [
@@ -1488,6 +1492,27 @@
           "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
           "result": "PASS",
           "configuration": "TSRun:44 cases covering all40 contacts, exact non-overlapping whole-key attributes, shared CAPS/derived BREAK, ENTER+SPACE distinction, corrupt history and all HOME writes lost; no physical acceptance."
+        },
+        {
+          "kind": "emulator",
+          "path": "docs/validation/load-a09b3406d3f1/keyboard-verification.json",
+          "image_sha256": "a09b3406d3f1c2d075acd9d03aab976c6a7797782b853bd2515afcd4dc4a00e9",
+          "result": "PASS",
+          "configuration": "TSRun; all40 matrix contacts, exact rectangles, shared CAPS/BREAK, lost writes/history and exits with unchanged SP and audited ROM0/ROM7 fetches. Physical validation pending."
+        },
+        {
+          "kind": "emulator",
+          "path": "docs/validation/load-9db1d0ac08eb/keyboard-verification.json",
+          "image_sha256": "9db1d0ac08eb2c3694acd2df7d12bf6badaa5a5405b2b9d4e82cfdbd5750bbea",
+          "result": "PASS",
+          "configuration": "TSRun; all40 matrix contacts, exact rectangles, shared CAPS/BREAK, lost writes/history and exits with unchanged SP and audited ROM0/ROM7 fetches. Physical validation pending."
+        },
+        {
+          "kind": "emulator",
+          "path": "docs/validation/load-bc5eb2df44c3/keyboard-verification.json",
+          "image_sha256": "bc5eb2df44c390573b4058d614ba37ab1a95c8065c81bb7d15eb922c4d68e030",
+          "result": "PASS",
+          "configuration": "TSRun; all40 matrix contacts, exact rectangles, shared CAPS/BREAK, lost writes/history and exits with unchanged SP and audited ROM0/ROM7 fetches. Physical validation pending."
         }
       ],
       "required_validation": [
@@ -1530,7 +1555,7 @@
       "name": "Keyboard row column isolation",
       "area": "keyboard",
       "firmware_status": "partial",
-      "algorithm": "Live row/column display provides technician isolation evidence; no-row/multiple-row automated comparison and verdicts remain future.",
+      "algorithm": "Live row/column display provides technician isolation evidence; no-row/multiple-row automated comparison and verdicts remain future. Cartridge fixed keyboard scanning now executes in ROM7 E000-E599 with ROM0 paint/exit bridges; HSR81 during scan,01 at exit; D/E/IX/AF alternate contracts unchanged. HOME keeps its scanner in HOME ROM.",
       "prerequisites": [
         "rom_execution"
       ],
@@ -1542,6 +1567,10 @@
         {
           "path": "src/modules.asm",
           "symbol": "keyboard_scan"
+        },
+        {
+          "path": "build/keyboard-rom.asm",
+          "symbol": "keyboard_rom_scan"
         }
       ],
       "host_support": [],
@@ -1559,6 +1588,27 @@
           "image_sha256": "301339832d6fb13692ac8c8f7f3bf1e071dc496b04fdc66423cbb5be3a518aff",
           "result": "PASS",
           "configuration": "TSRun:44 cases covering all40 contacts, exact non-overlapping whole-key attributes, shared CAPS/derived BREAK, ENTER+SPACE distinction, corrupt history and all HOME writes lost; no physical acceptance."
+        },
+        {
+          "kind": "emulator",
+          "path": "docs/validation/load-a09b3406d3f1/keyboard-verification.json",
+          "image_sha256": "a09b3406d3f1c2d075acd9d03aab976c6a7797782b853bd2515afcd4dc4a00e9",
+          "result": "PASS",
+          "configuration": "TSRun; all40 matrix contacts, exact rectangles, shared CAPS/BREAK, lost writes/history and exits with unchanged SP and audited ROM0/ROM7 fetches. Physical validation pending."
+        },
+        {
+          "kind": "emulator",
+          "path": "docs/validation/load-9db1d0ac08eb/keyboard-verification.json",
+          "image_sha256": "9db1d0ac08eb2c3694acd2df7d12bf6badaa5a5405b2b9d4e82cfdbd5750bbea",
+          "result": "PASS",
+          "configuration": "TSRun; all40 matrix contacts, exact rectangles, shared CAPS/BREAK, lost writes/history and exits with unchanged SP and audited ROM0/ROM7 fetches. Physical validation pending."
+        },
+        {
+          "kind": "emulator",
+          "path": "docs/validation/load-bc5eb2df44c3/keyboard-verification.json",
+          "image_sha256": "bc5eb2df44c390573b4058d614ba37ab1a95c8065c81bb7d15eb922c4d68e030",
+          "result": "PASS",
+          "configuration": "TSRun; all40 matrix contacts, exact rectangles, shared CAPS/BREAK, lost writes/history and exits with unchanged SP and audited ROM0/ROM7 fetches. Physical validation pending."
         }
       ],
       "required_validation": [
@@ -1803,7 +1853,7 @@
       "name": "Overnight RAM only",
       "area": "soak",
       "firmware_status": "partial",
-      "algorithm": "Continuous complete48K sweeps including address/random/retention and workspace; register-only16-bit completed-pass count wraps at65536. Any new key stops at a safe boundary. Recorded error masks enter the chip/bit reporter; otherwise soakstop displays No failures during the test with the hexadecimal count, then requires a fresh key to return. No incomplete label for this infinite run. Seed/dwell/direction profiles, scheduled hours and pause/resume remain future.",
+      "algorithm": "Continuous complete48K sweeps including address/random/retention and workspace; register-only16-bit completed-pass count wraps at65536. Any new key stops at a safe boundary. Recorded error masks enter the chip/bit reporter; otherwise soakstop displays No failures during the test with the hexadecimal count, then requires a fresh key to return. No incomplete label for this infinite run. Seed/dwell/direction profiles, scheduled hours and pause/resume remain future. Between passes the readable status/count page holds for six nominal seconds at3.528MHz, with all-key-release/new-key cancellation still active; no mid-sweep status redraw.",
       "prerequisites": [
         "qualified_workspace"
       ],
@@ -1856,6 +1906,41 @@
           "image_sha256": "e09e53177d654dca3fcfa2ce67b4976f7c33b54eaf9daa203919660e33a9e936",
           "result": "PASS",
           "configuration": "TSRun; stop summaries, register counts, fault priority, held-key/new-key behavior and lost display writes. Physical validation pending."
+        },
+        {
+          "kind": "emulator",
+          "path": "docs/validation/soak-aae9743a6c6e/cartridge.json",
+          "image_sha256": "aae9743a6c6e327789c4e2fc60f0f7f704b0081ae436ce0c78db178cae1746ab",
+          "result": "PASS",
+          "configuration": "TSRun; measured six-second status dwell, stack unchanged, immediate cancellation, stop-count/fault priority; physical clock/timing pending."
+        },
+        {
+          "kind": "emulator",
+          "path": "docs/validation/soak-aae9743a6c6e/home.json",
+          "image_sha256": "6d60b06666adc80035b78e5077e9590951615638e7312808d15036c3d185b0be",
+          "result": "PASS",
+          "configuration": "TSRun U16 HOME edition; six-second dwell, cancellation and stop summaries; physical timing pending."
+        },
+        {
+          "kind": "emulator",
+          "path": "docs/validation/load-a09b3406d3f1/soak-verification.json",
+          "image_sha256": "a09b3406d3f1c2d075acd9d03aab976c6a7797782b853bd2515afcd4dc4a00e9",
+          "result": "PASS",
+          "configuration": "TSRun cartridge; six-second status dwell, guarded stop, first-fault/count/acknowledgement checks. Physical timing pending."
+        },
+        {
+          "kind": "emulator",
+          "path": "docs/validation/load-9db1d0ac08eb/soak-verification.json",
+          "image_sha256": "9db1d0ac08eb2c3694acd2df7d12bf6badaa5a5405b2b9d4e82cfdbd5750bbea",
+          "result": "PASS",
+          "configuration": "TSRun cartridge; six-second status dwell, guarded stop, first-fault/count/acknowledgement checks. Physical timing pending."
+        },
+        {
+          "kind": "emulator",
+          "path": "docs/validation/load-bc5eb2df44c3/soak-verification.json",
+          "image_sha256": "bc5eb2df44c390573b4058d614ba37ab1a95c8065c81bb7d15eb922c4d68e030",
+          "result": "PASS",
+          "configuration": "TSRun cartridge; six-second status dwell, guarded stop, first-fault/count/acknowledgement checks. Physical timing pending."
         }
       ],
       "required_validation": [
@@ -1911,26 +1996,43 @@
       "id": "SOAK-03",
       "name": "Combined overnight mixed load",
       "area": "soak",
-      "firmware_status": "specified",
-      "algorithm": "Only after isolated tests pass, combine banking,RAM,qualified interrupts,video and safe AY traffic; rotate mapping families.",
+      "firmware_status": "implemented",
+      "algorithm": "Configurable ROM-only mixed-load batches: all48K address-hash/March and data-only PUSH/POP, ECM fetch, fixed DOCK signature/isolation traffic, normal-refresh spacing, bounded IM1 entry and frequent synthetic Speech2AY-style R0-R12 writes/readbacks. Eight independent toggles, baseline/all presets, one-batch/continuous, six-second status/count and guarded new-key stop. IRQ sink BFFD/BFFE receives deferred DI-only00/FF tests. Advanced real-return bursts are separately confirmed, not destructive-March resumption. Menu groups N/C as configurable duration before Begin test with S/R; the selected complete duration phrase is green. Option4 explicitly names60Hz screen interrupts; S uses bounded checkpoints and R confirms actual IRQ returns. Option6 now cycles quiet/busy slices, adds checked00/FF/55/AA traffic after hash comparisons, rotates0/2/6 video when option3 is enabled, and strengthens AY to14 writes with maximum/envelope amplitudes plus bounded beeper when option7 is enabled. P selects all power loads; quiet phases inhibit IRQ and use bounded ROM waits. RAM phase ordering and fixed-ROM recovery remain separate from auxiliary loads. Running notice explicitly announces TEST STARTED and six-second preparation.",
       "prerequisites": [
-        "qualified_interrupts"
+        "rom_execution",
+        "home_mapping"
       ],
-      "observables": "Expected/observed comparisons where applicable; first failure and affected bit/path; user judgement separate for physical sound/video.",
+      "observables": "First RAM address/expected/observed/XOR region mask/phase and chip/bit pulses; auxiliary4/5/7 class/address-or-index/expected/observed/phase. No-fault stopped batch count wraps65536. Fault fields replace batch count; no persistent log. Analog output needs observation.",
       "failure_interpretation": "Combined failures require isolated reruns; no deliberate hidden PC/SP/vector.",
       "recovery_profile": "soak_recovery",
-      "specification": "BANKING_AND_OVERNIGHT_TESTS.md#overnight-ram-and-combined-soak",
-      "firmware_locations": [],
-      "host_support": [],
-      "validation_evidence": [],
+      "specification": "SINISTAR_LOAD_TEST.md#current-implementation-and-operator-controls",
+      "firmware_locations": [
+        {
+          "path": "src/load.asm",
+          "symbol": "load_batch_start"
+        }
+      ],
+      "host_support": [
+        "scripts/verify_load.mjs"
+      ],
+      "validation_evidence": [
+        {
+          "kind": "emulator",
+          "path": "docs/validation/load-bc5eb2df44c3/load-verification.json",
+          "image_sha256": "bc5eb2df44c390573b4058d614ba37ab1a95c8065c81bb7d15eb922c4d68e030",
+          "result": "PASS",
+          "configuration": "TSRun mapped64K DOCK; all256 safe slice masks, representative batches, D1 POP data loss, missing IRQ/bank/AY faults, UI cancellation and real IM1/IM2 return profiles. Physical timing/supply/thermal replication pending."
+        }
+      ],
       "required_validation": [
         "Static mapping/register/stack audit",
         "TS2068 emulator execution and relevant fault injection",
         "Physical target/cartridge validation for supported behavior",
         "Recoverable-fault injection reaches bounded ROM recovery/reporting without uncontrolled execution"
       ],
-      "control_flow_exposure": "Only separately selected advanced IRQ/execution profiles introduce their disclosed RAM/control-flow exposure.",
-      "execution_policy": "separately_selectable_with_fresh_qualification"
+      "control_flow_exposure": "Register-only ROM0/ROM4 scheduler, bounded option-independent loops and mapping; optional data PUSH/POP never RETs. Basic IRQ saved PC is write-only. CPU/ROM opcode, shared bus/clock/power failures remain unavoidable.",
+      "execution_policy": "separately_selectable_with_fresh_qualification",
+      "implementation_notes": "SINISTAR_LOAD_TEST.md"
     },
     {
       "id": "UI-01",
@@ -2404,6 +2506,102 @@
       "control_flow_exposure": "HOME ROM0000-3FFF/reset fetch path and CPU instructions must work. HSR00 throughout supported tests. IRQ hardware savesPC to sacrificialsink but firmware never reads/returns through it; NMI is unsupported restart, not qualified cancellation.",
       "execution_policy": "run_only_when_declared_prerequisites_hold",
       "implementation_notes": "HOME_ROM_EDITION.md"
+    },
+    {
+      "id": "LOAD-01",
+      "name": "Sinistar stack-data load reproduction",
+      "area": "soak",
+      "firmware_status": "implemented",
+      "algorithm": "Real PUSH DE/POP BC data-only pairs sweep every byte4000-FFFF using address-derived complementary bytes; D1-rich data and5ED0/BFFF vicinity included. DI pairs; enabled loads interleave every256 bytes. Popped data never chooses PC/SP/continuation; fixed SP reset and ROM JP recovery. Recovery latches the original observed POP/read byte through compare_observed, avoiding a second RAM read that could erase transient faults. Exact XOR masks for D0-D7 and multibit26h are verified in each RAM region.",
+      "prerequisites": [
+        "rom_execution",
+        "home_mapping"
+      ],
+      "observables": "First RAM address/expected/observed/XOR region mask/phase and chip/bit pulses; auxiliary4/5/7 class/address-or-index/expected/observed/phase. No-fault stopped batch count wraps65536. Fault fields replace batch count; no persistent log. Analog output needs observation.",
+      "failure_interpretation": "Low-nibble RAM/shared data/write/read/timing/supply paths; no unique component verdict. Isolated reruns required for combined failures.",
+      "recovery_profile": "soak_recovery",
+      "specification": "SINISTAR_LOAD_TEST.md#current-implementation-and-operator-controls",
+      "implementation_notes": "SINISTAR_LOAD_TEST.md",
+      "firmware_locations": [
+        {
+          "path": "src/load_low.asm",
+          "symbol": "load_stack_begin"
+        }
+      ],
+      "host_support": [
+        "scripts/verify_load.mjs"
+      ],
+      "validation_evidence": [
+        {
+          "kind": "emulator",
+          "path": "docs/validation/load-bc5eb2df44c3/load-verification.json",
+          "image_sha256": "bc5eb2df44c390573b4058d614ba37ab1a95c8065c81bb7d15eb922c4d68e030",
+          "result": "PASS",
+          "configuration": "TSRun mapped64K DOCK; all256 safe slice masks, representative batches, D1 POP data loss, missing IRQ/bank/AY faults, UI cancellation and real IM1/IM2 return profiles. Physical timing/supply/thermal replication pending."
+        }
+      ],
+      "control_flow_exposure": "Register-only ROM0/ROM4 scheduler, bounded option-independent loops and mapping; optional data PUSH/POP never RETs. Basic IRQ saved PC is write-only. CPU/ROM opcode, shared bus/clock/power failures remain unavoidable.",
+      "execution_policy": "separately_selectable_with_fresh_qualification",
+      "source_references": [
+        "SINISTAR_LOAD_TEST.md",
+        "sinistar-load-source-evidence.json",
+        "FAULT_CONTAINMENT.md",
+        "THIRD_PARTY_CREDITS.md"
+      ],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "Image-bound emulator option combinations and D1/lost-write/IRQ/mapping/AY injections",
+        "Cancellation after all-key release; mute and first-fault recovery",
+        "Physical cold/warm mixed-load reproduction; optional return-corruption exposure documented"
+      ]
+    },
+    {
+      "id": "LOAD-02",
+      "name": "Opt-in Sinistar interrupt-return load reproduction",
+      "area": "soak",
+      "firmware_status": "implemented",
+      "algorithm": "Explicit R warning/release/new-R opt-in, IM1 or freshly readback-qualified257-byte IM2 table7A00 and JP7B7B; qualify5E70-5ED0/BFE0-BFFF, then bounded5F00 foreground accesses with real saved-register/audio-stack frame IRQ returns,5E70 saved-SP comparison/fixed restore,78DF mapping shadow, AY R0-R12 traffic and safe D1/51 banking. At batch end only; excluded from concurrent destructive March and default Full/soak. Late saved-PC/table/opcode corruption can defeat recovery.",
+      "prerequisites": [
+        "qualified_workspace",
+        "qualified_interrupts"
+      ],
+      "observables": "First RAM address/expected/observed/XOR region mask/phase and chip/bit pulses; auxiliary4/5/7 class/address-or-index/expected/observed/phase. No-fault stopped batch count wraps65536. Fault fields replace batch count; no persistent log. Analog output needs observation.",
+      "failure_interpretation": "Low-nibble RAM/shared data/write/read/timing/supply paths; no unique component verdict. Isolated reruns required for combined failures.",
+      "recovery_profile": "soak_recovery",
+      "specification": "SINISTAR_LOAD_TEST.md#current-implementation-and-operator-controls",
+      "implementation_notes": "SINISTAR_LOAD_TEST.md",
+      "firmware_locations": [
+        {
+          "path": "src/load.asm",
+          "symbol": "load_return_start"
+        }
+      ],
+      "host_support": [
+        "scripts/verify_load.mjs"
+      ],
+      "validation_evidence": [
+        {
+          "kind": "emulator",
+          "path": "docs/validation/load-bc5eb2df44c3/load-verification.json",
+          "image_sha256": "bc5eb2df44c390573b4058d614ba37ab1a95c8065c81bb7d15eb922c4d68e030",
+          "result": "PASS",
+          "configuration": "TSRun mapped64K DOCK; all256 safe slice masks, representative batches, D1 POP data loss, missing IRQ/bank/AY faults, UI cancellation and real IM1/IM2 return profiles. Physical timing/supply/thermal replication pending."
+        }
+      ],
+      "control_flow_exposure": "Fresh qualification reduces risk but saved PC/stack or IM2/trampoline corruption can derail execution before checker/recovery. This separately confirmed real-return profile is excluded from startup/Full/default soak. No guarantee of survival of arbitrary return corruption.",
+      "execution_policy": "separately_selectable_with_fresh_qualification",
+      "source_references": [
+        "SINISTAR_LOAD_TEST.md",
+        "sinistar-load-source-evidence.json",
+        "FAULT_CONTAINMENT.md",
+        "THIRD_PARTY_CREDITS.md"
+      ],
+      "required_validation": [
+        "Static mapping/register/stack audit",
+        "Image-bound emulator option combinations and D1/lost-write/IRQ/mapping/AY injections",
+        "Cancellation after all-key release; mute and first-fault recovery",
+        "Physical cold/warm mixed-load reproduction; optional return-corruption exposure documented"
+      ]
     }
   ],
   "fault_containment_contract": "FAULT_CONTAINMENT.md"

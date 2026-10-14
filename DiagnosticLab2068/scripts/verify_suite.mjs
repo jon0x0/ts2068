@@ -10,7 +10,7 @@ function machine({irq=false,readFault=null,writeFault=null,ioFault=null}={}){
  m.homeRom.set(fs.readFileSync(path.join(up,'roms/ts2068-0.rom')));m.exRom.set(fs.readFileSync(path.join(up,'roms/ts2068-1.rom')));
  assert.equal(api.insertDock(m,cart),null);api.resetMachine(m);m.portF4=1;m.portFF=0x40;m.cpu.pc=sym.menu_draw;m.cpu.sp=0xbeef;m.cpu.iff1=false;m.ram.fill(0);
  const seen=new Set(),ports=[],r=m.bus.read,w=m.bus.write,io=m.bus.ioWrite,ir=m.bus.ioRead;
- m.bus.read=a=>{if(a===m.cpu.pc){seen.add(a);assert.ok(a<0x2000 || (a>=0x3f00&&a<0x3fd0&&(m.portF4&2)) || (a>=0x4000&&a<0x5fd0&&(m.portF4&4)) || (a>=0x8000&&a<0x8200) || (a>=0xc000&&a<0xc100),'opcode outside declared anchors');if(!irq)assert.equal(m.cpu.sp,0xbeef);}
+ m.bus.read=a=>{if(a===m.cpu.pc){seen.add(a);assert.ok(a<0x2000 || (a>=0xe000&&a<0xe600&&(m.portF4&128)) || (a>=0x3f00&&a<0x3fd0&&(m.portF4&2)) || (a>=0x4000&&a<0x5fd0&&(m.portF4&4)) || (a>=0x8000&&a<0x8200) || (a>=0xc000&&a<0xc100),'opcode outside declared anchors');if(!irq)assert.equal(m.cpu.sp,0xbeef);}
  let v=r(a);return readFault?readFault(m,a,v):v;};
  m.bus.write=(a,v)=>{assert.ok(a>=0x4000 || (a>=0x2000 && (m.portF4&2)),`unexpected low-memory write ${a.toString(16)} pc ${m.cpu.pc.toString(16)}`);w(a,writeFault?writeFault(m,a,v):v);};
  m.bus.ioWrite=(p,v)=>{ports.push([p,v]);io(p,v);};m.bus.ioRead=p=>ioFault?ioFault(m,p,ir(p)):ir(p);

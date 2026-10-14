@@ -1,11 +1,21 @@
-TS2068 Diagnostic Lab v0.2 — October 12, 2026
+TS2068 Diagnostic Lab cartridge v0.3 - October 13, 2026
 
-Introducing the TS2068 Diagnostic Lab cartridge, a new diagnostic tool for checking a Timex Sinclair 2068 and helping track down hardware problems. It offers a guided Full test and a menu of individual tests, so you can check a working machine, investigate a particular symptom, or leave RAM and bank-switching tests running to look for intermittent problems. A simplified diagnostic is also supplied as a replacement HOME ROM image for replacement testing. This version can bypass the original HOME firmware and cartridge-startup dependencies, although it has fewer tests and requires the U16 installation adapter described in the manual.
+This release adds configurable mixed-load and quiet/busy power-cycle tests:
+RAM/March, normal/ECM/hires video, 60 Hz IRQ, banking, stronger AY/envelope/beeper
+activity and stack-data comparisons. Main L/P selects combined loads; choose
+N one batch or C continuous, then S. Genuine IM1/IM2 returns use separate R
+confirmation and fresh prerequisites. The running screen explains the6-second
+notice. Soak notices remain readable for6 seconds.
 
-A major design goal is to keep testing and reporting when RAM is unreliable. The diagnostic code runs from ROM without relying on a RAM stack. It tests all 48K of internal RAM and can attempt to identify the suspect RAM chip or chips by their motherboard reference designators. The cartridge adapts its fault display where possible when display RAM is failing, and also gives chip/bit codes through beeps and border flashes. The simplified HOME ROM edition uses the sound and border codes for RAM faults. These identify suspect hardware paths; faulty wiring or control signals can sometimes look like a bad RAM chip.
+Transient read/POP reports now retain the original observed byte, with checked
+D0-D7 and multi-bit masks in all RAM regions. The motivating Sinistar D1-loss
+incident is a supplied report, not a physically reproduced result.
 
-Other tests cover cartridge bank switching, optional HOME ROM and EXROM checksums, selected Z80 and address-line checks, SCLD interrupt behavior, the beeper, and AY sound registers and playback. Video screens include Normal/Bright color bars, FLASH, the second display file, an extended-color gradient and color disc, high-resolution calibration patterns, and 128 attribute combinations. Interactive keyboard and joystick screens show current inputs. Joystick directions and Fire also retain a tested indication while continuing to show live press/release changes. Stopping the RAM soak gives a no-failures message if no errors were recorded, together with the completed-pass count; a detected failure goes to the chip/bit report.
+The updated PDF/offline manual and POWER_LOAD_TROUBLESHOOTING.md explain why
+load transitions matter, how to inspect the5 V rail with an oscilloscope and
+how to separate supply hypotheses from RAM/refresh/timing faults.
 
-The attached ZIP contains the .dck cartridge image, raw images for EPROM and PicoROM use, the simplified replacement HOME ROM image, programming and installation instructions, and an illustrated manual in PDF and offline web formats. The software has passed emulator checks, but physical hardware validation is still needed. A passive cartridge requires enough of the original machine startup circuitry and firmware to work before it can take control.
-
-Special thanks to Carl A. Miles, whose TS2068 Diagnostics Cartridge helped inspire the coverage and approach, and Dylan Smith and Brendan Alford, whose ZX Spectrum Diagnostics ROM provided valuable inspiration for testing with unreliable RAM and reporting failures. Thanks also to David Anderson and the TS2068 Reference Library contributors, Josef Jelinek for TSRun, Mark Miller for 128 Colors, and the Fuse contributors. Full source and inspiration credits are included in the release.
+Images and checksums are emulator validated. Physical supply/current/thermal
+validation remains pending. HOME U16 retains reduced coverage without L.
+Internal diagnostic-v02 filenames are retained for build/tool compatibility;
+the public release archives and manifests identify v0.3.

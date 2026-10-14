@@ -1,0 +1,47 @@
+{
+  "image_sha256": "3e5ee04d604e9c2fa0b22724c75f7090baaa7a8c9f8f75d0e17803fad958e096",
+  "result": "PASS",
+  "cases": [
+    {
+      "name": "six-second stackless status dwell",
+      "result": "PASS",
+      "seconds": 6.000036281179138
+    },
+    {
+      "name": "status dwell remains cancellable after all-key release",
+      "result": "PASS"
+    },
+    {
+      "name": "stopped count 0000 / held-key quarantine / new-key return",
+      "result": "PASS"
+    },
+    {
+      "name": "stopped count 0001 / held-key quarantine / new-key return",
+      "result": "PASS"
+    },
+    {
+      "name": "stopped count 1234 / held-key quarantine / new-key return",
+      "result": "PASS"
+    },
+    {
+      "name": "stopped count FFFF / held-key quarantine / new-key return",
+      "result": "PASS"
+    },
+    {
+      "name": "actual first-pass interruption before any completed pass",
+      "result": "PASS"
+    },
+    {
+      "name": "recorded RAM mismatch wins over stopped/no-failures message",
+      "result": "PASS"
+    },
+    {
+      "name": "lost display writes cannot prevent stop acknowledgement",
+      "result": "PASS"
+    }
+  ],
+  "limitations": [
+    "Model execution and display-memory checks; physical validation pending",
+    "16-bit completed-pass count wraps at65536; stopped run has no finite completion endpoint"
+  ]
+}

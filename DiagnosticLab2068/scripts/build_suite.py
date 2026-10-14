@@ -6,6 +6,7 @@ from build_v01 import ram_source as baseline_ram
 from generate_design_assets import standard_render
 from prototype_degraded_display import attribute_page,FONT
 from suite_assets import pack,pages
+from release_info import VERSION
 FONT={**FONT,'4':['101','101','111','001','001'],'5':['111','100','110','001','110']}
 ROOT=Path(__file__).resolve().parents[1];BUILD=ROOT/'build'
 DEFAULT_ASSEMBLER=ROOT.parent/'cartridgeconversion/sinistar/tools/sjasmplus/sjasmplus-1.20.3.win/sjasmplus.exe'
@@ -37,7 +38,7 @@ def main():
     font=rom[0x3d00:0x4000];screens,coords=pages(font)
     for name,data in screens.items(): (BUILD/('suite-'+name+'.bin')).write_bytes(data)
     flat=bytearray([255]*65536);flat[0x2200:0x2500]=font
-    cursors={2:0x4800,1:0x2500,3:0x6000,4:0x8400,5:0xa000,6:0xc000,7:0xe000};lines=[];assets=[]
+    cursors={2:0x4800,1:0x2500,3:0x6000,4:0x8e00,5:0xa000,6:0xc000,7:0xe600};lines=[];assets=[]
     ay_steps=[]
     def ay_step(name,period=250,mixer=0x3e,volumes=(15,0,0),noise=0,shape=9,envelope=0x0800,row=0,col=0,periods=None):
         periods=periods or (period,period,period)
@@ -121,14 +122,37 @@ def main():
     cy,cx,width=coords['BREAK'][0]
     kl.extend([f' ld hl,${0x5800+cy*32+cx:04x}',f' ld b,{width}',' ld iy,keyboard_break_done',' jp keyboard_paint','keyboard_break_done:'])
     (BUILD/'keyboard-scan.asm').write_text('\n'.join(kl)+'\n')
+    speech_frames=[]
+    for frame in range(16):
+        periods=[(97+frame*53+channel*181)&4095 for channel in range(3)]
+        values=[v for p in periods for v in (p&255,p>>8)]
+        values += [frame*2,0x38 if frame&1 else 0x30,
+                   15-(frame%8),8+(frame%8),15,0,8,0,0,0]
+        assert len(values)==16 and values[7]&0xc0==0
+        speech_frames.append(' DB '+','.join(str(v) for v in values))
+    (BUILD/'load-ay.asm').write_text('\n'.join(speech_frames)+'\n')
     lines.append('font_data EQU $2200');(BUILD/'font.bin').write_bytes(font)
     (BUILD/'suite-assets.asm').write_text('\n'.join(lines)+'\n')
     generated,phases=extended_ram();(BUILD/'ram-tests.asm').write_text(generated)
     paths=['src/diagnostic.asm','src/modules.asm','src/crc.asm','src/cpu.asm','src/boot.asm','src/joystick.asm'];source='\n'.join((ROOT/p).read_text() for p in paths)
     code='\n'.join(x.split(';')[0] for x in (source+generated+'\n'.join(lines)+'\n'.join(kl)).splitlines())
     assert not re.search(r'^\s*(call|ret|reti|retn|push|pop|rst|halt)\b',code,re.M|re.I)
+    optional_low=(ROOT/'src/load_low.asm').read_text()
+    # Only an explicitly gated AF save and data-only PUSH/POP pairs may use SP.
+    audited=optional_low.replace(' push af ; Only genuine return profile reads this saved AF, never default tests.','').replace(' push de','').replace(' pop bc','')
+    assert not re.search(r'^\s*(call|ret|reti|retn|push|pop|rst|halt)\b', '\n'.join(l.split(';')[0] for l in audited.splitlines()),re.M|re.I)
+    optional_high=(ROOT/'src/load.asm').read_text().split('load_return_start:')[0]
+    assert not re.search(r'^\s*(call|ret|reti|retn|push|pop|rst|halt)\b', '\n'.join(l.split(';')[0] for l in optional_high.splitlines()),re.M|re.I)
+    paths += ['src/load.asm','src/load_low.asm']
     subprocess.run([str(args.assembler),'--nologo','--raw='+str(BUILD/'low.bin'),'--sym='+str(BUILD/'symbols.txt'),str(ROOT/'src/diagnostic.asm')],cwd=ROOT,check=True)
     low=(BUILD/'low.bin').read_bytes();assert len(low)==8192;flat[:8192]=low
+    (BUILD/'load-low.asm').write_text((BUILD/'symbols.txt').read_text())
+    subprocess.run([str(args.assembler),'--nologo','--raw='+str(BUILD/'load.bin'),'--sym='+str(BUILD/'load-symbols.txt'),str(ROOT/'src/load.asm')],cwd=ROOT,check=True)
+    load=(BUILD/'load.bin').read_bytes();assert len(load)<=0xa00
+    flat[0x8400:0x8400+len(load)]=load
+    (BUILD/'keyboard-rom.asm').write_text(' ORG $e000\n INCLUDE "symbols.txt"\nkeyboard_rom_scan:\n INCLUDE "keyboard-scan.asm"\n jp keyboard_scan_done\n ASSERT $ <= $e600\n')
+    subprocess.run([str(args.assembler),'--nologo','--raw=keyboard-rom.bin','keyboard-rom.asm'],cwd=BUILD,check=True)
+    scanner=(BUILD/'keyboard-rom.bin').read_bytes();flat[0xe000:0xe000+len(scanner)]=scanner
     (BUILD/'joystick-wrapper.asm').write_text(' INCLUDE "symbols.txt"\n INCLUDE "../src/joystick.asm"\n')
     subprocess.run([str(args.assembler),'--nologo','--raw=joystick.bin','joystick-wrapper.asm'],cwd=BUILD,check=True)
     joystick=(BUILD/'joystick.bin').read_bytes();assert len(joystick)==96
@@ -146,13 +170,18 @@ def main():
     # PicoROM uploads take raw ROM bytes, never the nine-byte DCK header.
     (BUILD/'diagnostic-v02-picorom.bin').write_bytes(flat)
     (BUILD/'diagnostic-v02-eprom-27C512.bin').write_bytes(flat)
-    manifest=dict(version='0.2',entry='0100',descriptors=[2]*8,dck_sha256=hashlib.sha256(dck).hexdigest(),bin_sha256=hashlib.sha256(flat).hexdigest(),phases=phases,assets=assets,bank_used={str(b):c-b*8192 for b,c in cursors.items()},source_sha256={p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in paths},font_rom_sha256=hashlib.sha256(rom).hexdigest(),limitations=['Passive HOME initialization dependency','Physical validation pending','Optional high-ROM/HOME-gateway/IRQ execution exposures'])
+    manifest=dict(version=VERSION.lstrip('v'),entry='0100',descriptors=[2]*8,dck_sha256=hashlib.sha256(dck).hexdigest(),bin_sha256=hashlib.sha256(flat).hexdigest(),phases=phases,assets=assets,bank_used={str(b):c-b*8192 for b,c in cursors.items()},source_sha256={p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in paths},font_rom_sha256=hashlib.sha256(rom).hexdigest(),limitations=['Passive HOME initialization dependency','Physical validation pending','Optional high-ROM/HOME-gateway/IRQ execution exposures'])
     (BUILD/'manifest-v02.json').write_text(json.dumps(manifest,indent=2)+'\n')
     manifest['picorom']={'file':'diagnostic-v02-picorom.bin','bytes':65536,'sha256':manifest['bin_sha256'],
                         'profile':'PicoROM-P28 / 27C512-style full64K cartridge decode',
                         'upload_size':'512KBit','layout':'A0-A15, chunks0-7 ascending; no DCK header; no byte swap',
                         'physical_validation':'pending'}
     manifest['ay_playback']={'table_address':'4400','step_count':24,'stride':16,'steps':ay_steps}
+    manifest['mixed_load']={'menu_key':'L','code_address':'8400','code_limit':'8E00','code_bytes':len(load),
+        'options':['RAM address data','March C-','ECM','frame IRQ','DOCK banking','quiet/busy power cycling and video rotation','AY Speech2AY traffic','PUSH/POP data'],
+        'default_mask':'83','combined_mask':'FF','ay_frames':16,'ay_registers':'R0-R12',
+        'irq_sink':'BFFD-BFFE, deferred DI-only00/FF comparisons','return_profiles':'separate R confirmation; qualified IM1/IM2',
+        'physical_validation':'pending','keyboard_scanner_address':'E000','keyboard_scanner_bytes':len(scanner)}
     manifest['eprom']={'file':'diagnostic-v02-eprom-27C512.bin','bytes':65536,'sha256':manifest['bin_sha256'],
                       'profile':'27C512-compatible EPROM / full64K DOCK cartridge',
                       'layout':'Offset0000; ascending A0-A15; all8 chunks; no DCK header',

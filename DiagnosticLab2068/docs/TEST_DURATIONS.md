@@ -15,6 +15,8 @@ These are healthy-run **emulator-model estimates**, not physical stopwatch measu
 
 Main7 Overnight repeats complete passes until cancellation or a detected mismatch. Allow roughly1.5 minutes per pass. It has no programmed overnight endpoint, elapsed-time clock or temperature measurement.
 
+Between RAM soak passes, the status/count screen holds for **6 seconds** at the nominal3.528MHz clock (TSRun measured6.000036 seconds in both editions); a new key after all-key release can cancel promptly. This adds six seconds to each repeated pass, without writing status into an active RAM comparison. Physical clock/timing remains pending.
+
 Stopping soak with no recorded errors shows **No failures during the test**, with the hexadecimal completed-pass count, and waits for a new key. A recorded RAM mismatch instead enters the chip/bit report. The infinite run is not labelled incomplete.
 
 These durations end at the result screen. Individual RAM options show **Selected checks PASS**; Complete shows **All 6 RAM chips PASS**. Results wait until a new key is pressed. Mismatches enter the chip/bit reporter; cancelling a test does not produce a pass result.

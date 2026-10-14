@@ -1,0 +1,24 @@
+{
+  "status": "checkpoint_completed",
+  "image_sha256": "3e5ee04d604e9c2fa0b22724c75f7090baaa7a8c9f8f75d0e17803fad958e096",
+  "command": [
+    "C:\\Program Files (x86)\\Fuse\\fuse.exe",
+    "--machine",
+    "ts2068",
+    "--speed",
+    "5000",
+    "--rom-ts2068-0",
+    "D:\\T7_Recover\\Jon\\Personal\\Timex\\DiagnosticCart2068\\build\\home\\diagnostic-home-u16.bin",
+    "--rom-ts2068-1",
+    "D:\\T7_Recover\\Jon\\Personal\\Timex\\DiagnosticCart2068\\build\\home\\absent-exrom.bin",
+    "--no-sound",
+    "--no-loading-sound",
+    "--no-confirm-actions",
+    "--debugger-command",
+    "breakpoint 0x828 if [0] == 195 && [0x100] == 243\ncommands 1\nprint z80:pc\nprint z80:sp\nprint spectrum:frames\nexit 0\nend"
+  ],
+  "checkpoint": "0x828",
+  "limitations": [
+    "Native emulator reset with absent EXROM and no DOCK; physical socket/EPROM timing not validated"
+  ]
+}

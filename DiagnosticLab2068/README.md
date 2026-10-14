@@ -1,8 +1,8 @@
 # TS2068 Diagnostic Lab cartridge
 
-Release v0.2 | October 12, 2026
+Release v0.3 | October 13, 2026
 
-**[Download the complete release](release/TS2068DiagnosticLab-v0.2.zip)** · **[Web manual](https://jon0x0.github.io/ts2068/DiagnosticLab2068/docs/manual/)** · **[PDF manual](output/pdf/TS2068-Diagnostic-Lab-Cartridge-Manual.pdf)**
+**[Download the complete release](release/TS2068DiagnosticLab-v0.3.zip)** · **[Web manual](https://jon0x0.github.io/ts2068/DiagnosticLab2068/docs/manual/)** · **[PDF manual](output/pdf/TS2068-Diagnostic-Lab-Cartridge-Manual.pdf)**
 
 ## Introduction
 
@@ -44,13 +44,17 @@ Special thanks to Carl Miles, whose TS2068 Diagnostics Cartridge documentation h
 
 ## Additional documentation and development
 
+For combined activity, open **L**, choose **P Power cycle**, choose N one batch or C continuous, then S. Option6 alternates quiet/busy loads; enabled video rotates normal/ECM/hires, and enabled sound adds stronger AY/envelope traffic plus beeper. The start page explicitly announces TEST STARTED / RUNNING before its six-second notice. RAM reports retain original transient read/POP data and identify D0–D7 or multiple corrupted bits. Physical current draw and supply behavior still require measurement.
+
+RAM soak leaves its between-pass status/count screen readable for six nominal seconds and says **Press any key to stop test**. Cartridge main-menu **L** opens the implemented [configurable load suite](docs/SINISTAR_LOAD_TEST.md): eight independent RAM/March/ECM/IRQ/banking/spacing/AY/stack-data toggles, one-batch or continuous operation, RAM baseline and combined presets. S starts the safe profile; R opens a separate genuine IRQ-return confirmation with optional IM2. AY generates frequent changing Speech2AY-style register traffic. These are emulator-validated workloads; physical replication of the supplied Sinistar D1-loss report remains pending. HOME retains its reduced suite and does not implement L.
+
 Runnable ROM-only **v0.2 diagnostic suite** for the stock TS2068. It tests hardware with minimal RAM assumptions, identifies suspect RAM chip/bit paths, and retains stackless ROM control and border/beeper reports when the screen is damaged. Physical TS2068/cartridge validation is pending; advanced research modules remain explicitly distinguished in the catalog.
 
 **Attempt to identify which RAM chip(s) are failing:** tests report suspect U6, U7, U12, U13, U17 or U18 paths and implicated data bits. When the display is unreadable, long sync followed by2 /chip /bit can identify them by sound; multiple suspect chips are reported in turn. See the [sound-code lookup table](docs/RAM_SOUND_CODES.md). Shared wiring/decode can mimic a failed IC, so chip identification is a troubleshooting lead rather than proof. CPU/cartridge execution and beeper output must still work.
 
-[Download the packaged v0.2 candidate](release/TS2068DiagnosticLab-v0.2.zip), including both images, operator notes, credits, manifest and checksums.
+[Download the packaged v0.2 candidate](release/TS2068DiagnosticLab-v0.3.zip), including both images, operator notes, credits, manifest and checksums.
 
-The separate [16K HOME-ROM edition](release/TS2068DiagnosticLab-v0.2-HOME-ROM.zip) replaces **U16** and starts at reset without the original operating system or cartridge launch. Read [U16 installation and pinout instructions](docs/HOME_ROM_EDITION.md): a27128 EPROM requires a verified adapter; it is not a direct plug-in replacement. HOME supports the core RAM/audio/keyboard/joystick/IRQ subset; the cartridge retains the broader video/banking/CRC suite. Physical ROM/adapter validation remains pending.
+The separate [16K HOME-ROM edition](release/TS2068DiagnosticLab-v0.3-HOME-ROM.zip) replaces **U16** and starts at reset without the original operating system or cartridge launch. Read [U16 installation and pinout instructions](docs/HOME_ROM_EDITION.md): a27128 EPROM requires a verified adapter; it is not a direct plug-in replacement. HOME supports the core RAM/audio/keyboard/joystick/IRQ subset; the cartridge retains the broader video/banking/CRC suite. Physical ROM/adapter validation remains pending.
 
 **J Joysticks / EAR inputs** is a direct main-menu entry in both editions. Its [live graphical pads](docs/JOYSTICK_TEST.md) highlight Up, Down, Left, Right and Fire independently, including combinations on both ports.
 

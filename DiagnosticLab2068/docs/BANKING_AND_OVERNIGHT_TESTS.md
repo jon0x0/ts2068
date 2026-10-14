@@ -1,8 +1,12 @@
 # TS2068 banking and overnight diagnostics
 
+Current mixed-load implementation and its exact coverage are in [SINISTAR_LOAD_TEST.md](SINISTAR_LOAD_TEST.md#current-implementation-and-operator-controls). MainL supports independent loads and a separate confirmed IRQ-return profile. The broader research proposals below include future mapping/timing/replay work; they are not all executable.
+
 This extends the ROM-only diagnostic design with independent banking stress, a Sinistar startup reproduction, and an interruptible overnight RAM test. These are firmware requirements and diagnostic procedures; they have not yet been implemented or validated on physical hardware.
 
 ## What Sinistar exercises
+
+Update October13,2026: the user now reports a runtime stack-data byte losing D1 despite37 interrupt-disabled ECM March passes over5F00h–FFFFh and passing bus tests. The earlier pre-title hypothesis below is historical, not the current symptom. Current source inspection and the configurable suite design are in [SINISTAR_LOAD_TEST.md](SINISTAR_LOAD_TEST.md); snapshot hashes are separate from the older evidence. Combined firmware remains specified.
 
 The reported incident used the latest published Sinistar on TSPico, working on one TS2068 and failing on another. The precise symptom is not yet available; failure before the initial screen is a working hypothesis. The public player cartridge was fetched and matched the local playable image byte-for-byte: 65,545 bytes, SHA256 `e16a68ead32e6aeed388f1ceb33f62061c45cff4680a89437df12c38e2500617`. The local project identifies this playable build as v58. This establishes the public player identity, not the bytes on the affected user's TSPico.
 

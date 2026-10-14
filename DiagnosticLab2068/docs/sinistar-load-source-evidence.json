@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-13",
+  "limitations": "Current local source only; affected machine revision unknown; no physical reproduction.",
+  "files": [
+    {
+      "path": "D:\\T7_Recover\\Jon\\Personal\\Timex\\cartridgeconversion\\sinistar\\port\\src\\mining-scene.asm",
+      "sha256": "6570a20767bbcc446059aad1ac42f5706735ac0244a5bb78ef8e70b50ce162e9"
+    },
+    {
+      "path": "D:\\T7_Recover\\Jon\\Personal\\Timex\\cartridgeconversion\\sinistar\\port\\src\\mining-render.asm",
+      "sha256": "3db64b4b92bbbb75b7ffdf94b1f8371a81f8c04f63ddde7035650da8e3d763e0"
+    },
+    {
+      "path": "D:\\T7_Recover\\Jon\\Personal\\Timex\\cartridgeconversion\\sinistar\\port\\src\\speech.asm",
+      "sha256": "ac6d1f63177549ded3ac7437d174cd6bf1508d4a4a939f922d26e5a52128399c"
+    },
+    {
+      "path": "D:\\T7_Recover\\Jon\\Personal\\Timex\\cartridgeconversion\\sinistar\\port\\src\\sfx.asm",
+      "sha256": "3bf8656e9f20ae1e72f455978afc15420bde252e5164215bae5efcabd77fa083"
+    },
+    {
+      "path": "D:\\T7_Recover\\Jon\\Personal\\Timex\\cartridgeconversion\\sinistar\\port\\build\\speech-source.asm",
+      "sha256": "8bbd7837e10bef81a6fdfa399bfd70b52cc5634a8e800e170556071e9ba9f3df"
+    }
+  ]
+}

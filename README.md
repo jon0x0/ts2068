@@ -16,7 +16,7 @@ games, applications, audio and demos, linking to their owning projects.
 
 | Project | Description | Links |
 | --- | --- | --- |
-| TS2068 Diagnostic Lab | ROM-based hardware diagnostics, RAM chip/bit reporting and simplified replacement HOME ROM; v0.2 | [Project](DiagnosticLab2068/) · [Release](DiagnosticLab2068/release/TS2068DiagnosticLab-v0.2.zip) · [Web manual](https://jon0x0.github.io/ts2068/DiagnosticLab2068/docs/manual/) · [PDF manual](DiagnosticLab2068/output/pdf/TS2068-Diagnostic-Lab-Cartridge-Manual.pdf) |
+| TS2068 Diagnostic Lab | ROM-based hardware diagnostics, RAM chip/bit reporting and simplified replacement HOME ROM; v0.3 | [Project](DiagnosticLab2068/) · [Release](DiagnosticLab2068/release/TS2068DiagnosticLab-v0.3.zip) · [Manual](https://jon0x0.github.io/ts2068/DiagnosticLab2068/docs/manual/) |
 | AI skill | Reusable AI skills, tools, examples and technical references for TS2068 development | [Repository](https://github.com/jon0x0/AISkill_TS2068) |
 | TSRun | Browser emulator used by the playable ports and demos; upstream project by Josef Jelinek | [Repository](https://github.com/josef-jelinek/TSRun) Â· [Emulator](https://josef-jelinek.github.io/TSRun/) |
 
