@@ -9,7 +9,9 @@ separate third-party material; see the release's Infocom notice.
 
 | Target | Download | Persistence |
 |---|---|---|
-| Physical TSPico, including unmodified 1.00 | `cpm22-tspico-dual.zip` | RAMDisk: TPSAVE before power-off |
+| Physical TSPico v1.00, unmodified | `cpm22-tspico-dual.zip` | Disk image loaded into RAMDisk; run TPSAVE before power-off |
+| Physical TSPico v2.x: RAMDisk | `cpm22-tspico-dual.zip` | Disk image loaded into RAMDisk; run TPSAVE before power-off |
+| Physical TSPico v2.x: native SD files | `cpm22-tspico-dual.zip` + optional CP/M service | Uses the SD filesystem in `/TAP/CPM/FILES`; writes persist directly to SD |
 | JLO/Oliger-enabled Fuse | `cpm22-oliger.zip` | Save/Save As the emulated disk |
 | Browser TSRun | Open the project's Run CP/M link | Download DSK, TAP or 1.00 TAP set |
 
@@ -54,7 +56,7 @@ TPSAVE
 ```
 
 Confirm TPSAVE with Y and wait for its success message. Original 1.00 writes
-CPMSTATE.TAP plus CPM00.TAP–CPM39.TAP (twenty chunks on a 160KB disk).
+CPMSTATE.TAP plus CPM00.TAPâ€“CPM39.TAP (twenty chunks on a 160KB disk).
 They reload directly next time. The save is disk contents, not running CPU
 state. Game SAVE is not a substitute for TPSAVE. On an export failure retain
 the live machine and resolve it before powering off.
