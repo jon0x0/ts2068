@@ -20,6 +20,12 @@ games, applications, audio and demos, linking to their owning projects.
 
 ## Development tools
 
+**[CP/M 2.2 for TS2068](CPM_2068/)** ·
+[Run in browser](https://jon0x0.github.io/ts2068/CPM_2068/play/) ·
+[Quickstart](https://jon0x0.github.io/ts2068/CPM_2068/docs/quickstart.html).
+TSPico banked RAMDisk, 160/320KB Oliger/Fuse images, 64/80-column console,
+Python disk tools, utilities, assembly examples and the Planetfall/Zork I disk.
+
 | Project | Description | Links |
 | --- | --- | --- |
 | TS2068 Diagnostic Lab | ROM-based hardware diagnostics, RAM chip/bit reporting and simplified replacement HOME ROM; v0.3 | [Project](DiagnosticLab2068/) · [Release](DiagnosticLab2068/release/TS2068DiagnosticLab-v0.3.zip) · [Manual](https://jon0x0.github.io/ts2068/DiagnosticLab2068/docs/manual/) |

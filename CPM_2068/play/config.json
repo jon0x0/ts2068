@@ -1,0 +1,18 @@
+{
+  "rom0": "../../arcade-ports/sinistar/play/tsrun/roms/ts2068-0.rom",
+  "rom1": "../../arcade-ports/sinistar/play/tsrun/roms/ts2068-1.rom",
+  "media": {
+    "160": {
+      "disk": "CP/M 2.2 160KB utilities",
+      "diskUrl": "./media/cpm160.dsk",
+      "cartridgeUrl": "./media/cpm160.dck",
+      "games": false
+    },
+    "320": {
+      "disk": "CP/M 2.2 320KB Planetfall + Zork I",
+      "diskUrl": "./media/cpm320.dsk",
+      "cartridgeUrl": "./media/cpm320.dck",
+      "games": true
+    }
+  }
+}

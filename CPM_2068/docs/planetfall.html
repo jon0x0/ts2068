@@ -1,0 +1,64 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>planetfall · TS2068 CP/M 2.2</title><style>*{box-sizing:border-box}html{color-scheme:dark}body{margin:0;background:#111820;color:#e4ecf1;font:17px/1.65 system-ui,sans-serif}main{max-width:1060px;margin:auto;padding:32px 24px 70px}a{color:#8ddceb;text-underline-offset:3px}h1{font-size:clamp(30px,5vw,51px);line-height:1.15}h2{margin-top:36px}h3{margin-top:28px}p,li{max-width:86ch}nav{display:flex;gap:18px;flex-wrap:wrap;font-size:14px;border-bottom:1px solid #3c5260;padding-bottom:18px}.lead{font-size:21px;color:#bdd5de}.buttons{display:flex;flex-wrap:wrap;gap:12px;margin:25px 0}.button{background:#244455;border:1px solid #78b7c4;border-radius:6px;padding:10px 15px;font-weight:650}pre{overflow:auto;background:#0b1118;border:1px solid #344c59;padding:16px;border-radius:6px;line-height:1.5}code{font-size:.9em}table{border-collapse:collapse;display:block;overflow:auto;font-size:15px}th,td{border:1px solid #3c5260;padding:9px 12px;text-align:left;vertical-align:top}th{background:#203540}footer{margin-top:40px;border-top:1px solid #3c5260;padding-top:16px;font-size:14px;color:#b3c7cf}.note{border-left:4px solid #8ddceb;padding:6px 18px;background:#1b2d37}img{max-width:100%}</style></head><body><main><nav><a href="../index.html">Project</a><a href="../docs/quickstart.html">Quickstart</a><a href="../play/">Run CP/M</a><a href="../index.html#downloads">Downloads</a><a href="https://github.com/jon0x0/ts2068/tree/main/CPM_2068">Source</a></nav><h1 id="planetfall-on-ts2068-cpm-oliger">Planetfall on TS2068 CP/M / Oliger</h1>
+<p>This is a <strong>320KB double-sided 40-track disk</strong>, with the matching updated
+64-column CP/M 2.2 cartridge. Use these two files together:</p>
+<ul>
+<li><code>build/planetfall-cpm.dck</code></li>
+<li><code>build/planetfall-cpm.dsk</code></li>
+</ul>
+<p>The earlier 160KB cartridge has different filesystem geometry and must not be
+used with this disk. Its other disks remain available separately.</p>
+<h2 id="windows-gui">Windows GUI</h2>
+<pre><code class="language-powershell">.\tools\run_planetfall.ps1
+</code></pre>
+<p>The launcher uses the installed JLO-enabled Fuse and selects <strong>Double-sided
+40 track</strong>. On the older August GUI, use <strong>Media &gt; Disk &gt; JLO &gt; Drive A: &gt;
+Insert...</strong>, select <code>planetfall-cpm.dsk</code>, then press Enter at the cartridge's
+insert-disk prompt. Newer versions name that drive <strong>Drive 0:</strong>.</p>
+<p>At the CP/M <code>A&gt;</code> prompt type:</p>
+<pre><code class="language-text">PLANET
+</code></pre>
+<p><code>LOOK</code> repeats the room description. <code>SAVE</code> and <code>RESTORE</code> prompt for a filename;
+Enter accepts <code>PLANET.SAV</code>. At the subsequent disk prompt, leave this same disk
+inserted and press Enter. Use different 8.3 save filenames for multiple games.
+Use <code>QUIT</code> to leave the game, confirming when asked.</p>
+<p>To preserve a saved game across emulator sessions, also use Fuse's JLO drive
+<strong>Save/Save As...</strong> to write the virtual medium to the host DSK file. CP/M's
+SAVE alone changes the virtual medium in Fuse's memory. Host save/reopen has not
+been independently automated here.</p>
+<h2 id="files-and-free-space">Files and free space</h2>
+<p>The disk includes Planetfall's <code>PLANET.COM</code> interpreter and <code>PLANET.DAT</code>, plus
+all earlier tools: STAT, PIP, ED, ASM, LOAD, SUBMIT, DUMP, DDT, XSUB, HELLO,
+MEMTEST and TPLOAD, the HI.ASM/DEMO.SUB example, and README.TXT.
+There are <strong>142KB free</strong> initially. This is the full utility set, rather than
+the reduced game-only 160KB prototype.</p>
+<p>Geometry: 40 cylinders x 2 sides x 16 sectors x 256 bytes, MFM, sector IDs 1–16.
+CP/M uses 160 logical tracks of 16 x 128-byte records, 2KB allocation blocks,
+128 directory entries and no reserved tracks. DPB:
+SPT=16, BSH=4, BLM=15, EXM=1, DSM=159, DRM=127, AL0=C0, AL1=0, CKS=0, OFF=0.</p>
+<h2 id="provenance-and-reproduction">Provenance and reproduction</h2>
+<p>The user supplied <a href="https://eblong.com/infocom/#planetfall">Andrew Plotkin's Infocom catalog</a>.
+The disk uses the PC Masterpieces story release 37 / serial 851003, version 3,
+and the original CP/M ZIP80 interpreter source from that site's <code>cpm80.zip</code>.
+The story and interpreter remain their owners' copyrighted works; preparing this
+personal test disk does not change their licensing.</p>
+<p>The interpreter is assembled with sjasmplus, configured with file prefix
+<code>PLANET</code>, a 63-character text margin on the 64-column console, no inverse video,
+and a clear-screen reset string. The cartridge now handles the ADM-3A cursor
+sequences used by the interpreter and preserves the status row while scrolling.
+No game story bytes were patched. Source URLs and hashes are recorded in
+<code>build/planetfall-cpm.manifest.json</code>.</p>
+<p>With the downloaded story and interpreter source under <code>build/planetfall</code>:</p>
+<pre><code class="language-powershell">python tools\build.py --profile oliger --oliger-kb 320 --rom ..\..\TSRun\roms\ts2068-0.rom
+python tools\build_planetfall.py
+</code></pre>
+<p>For another 320KB utility disk, <code>tools/create_oliger_disk.py --size 320</code> uses the
+same geometry. Keep its matching 320KB cartridge.</p>
+<h2 id="verification">Verification</h2>
+<p>Actual source-built Fuse/JLO/WD1770 tests passed Planetfall startup, LOOK, SAVE,
+RESTORE and return to game input. The 64-column screen was captured and visually
+checked. Z80 backend tests cover all 2560 logical records, both sides, cylinder
+boundaries, preservation of the adjacent half-sector, and error paths. Host tests
+cover both DSK sides and CP/M 2KB allocation blocks with 32KB physical extents.</p>
+<p>This establishes startup and these operations, not completion of the entire game.
+The installed Windows GUI is provided for the owner's manual play test; the
+automated integration tests used a newer headless build of the same JLO branch.</p><footer>Jon Becker · CP/M 2.2 · cpm22-v0.1.0 · <a href="../docs/release.html">Build, attribution and validation</a> · <a href="../docs/infocom-notice.html">Infocom notice</a></footer></main></body></html>

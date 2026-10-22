@@ -1,0 +1,107 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>quickstart · TS2068 CP/M 2.2</title><style>*{box-sizing:border-box}html{color-scheme:dark}body{margin:0;background:#111820;color:#e4ecf1;font:17px/1.65 system-ui,sans-serif}main{max-width:1060px;margin:auto;padding:32px 24px 70px}a{color:#8ddceb;text-underline-offset:3px}h1{font-size:clamp(30px,5vw,51px);line-height:1.15}h2{margin-top:36px}h3{margin-top:28px}p,li{max-width:86ch}nav{display:flex;gap:18px;flex-wrap:wrap;font-size:14px;border-bottom:1px solid #3c5260;padding-bottom:18px}.lead{font-size:21px;color:#bdd5de}.buttons{display:flex;flex-wrap:wrap;gap:12px;margin:25px 0}.button{background:#244455;border:1px solid #78b7c4;border-radius:6px;padding:10px 15px;font-weight:650}pre{overflow:auto;background:#0b1118;border:1px solid #344c59;padding:16px;border-radius:6px;line-height:1.5}code{font-size:.9em}table{border-collapse:collapse;display:block;overflow:auto;font-size:15px}th,td{border:1px solid #3c5260;padding:9px 12px;text-align:left;vertical-align:top}th{background:#203540}footer{margin-top:40px;border-top:1px solid #3c5260;padding-top:16px;font-size:14px;color:#b3c7cf}.note{border-left:4px solid #8ddceb;padding:6px 18px;background:#1b2d37}img{max-width:100%}</style></head><body><main><nav><a href="../index.html">Project</a><a href="../docs/quickstart.html">Quickstart</a><a href="../play/">Run CP/M</a><a href="../index.html#downloads">Downloads</a><a href="https://github.com/jon0x0/ts2068/tree/main/CPM_2068">Source</a></nav><h1 id="cpm-22-on-the-ts2068-quickstart">CP/M 2.2 on the TS2068: quickstart</h1>
+<p>This is the CP/M <strong>2.2</strong> port, release <strong>cpm22-v0.1.0</strong>. A future CP/M 3.x
+port will have its own release identity. Choose the utilities disk or the
+Planetfall/Zork I collection. Game stories and the historical interpreter are
+separate third-party material; see the release's Infocom notice.</p>
+<h2 id="choose-a-target">Choose a target</h2>
+<table>
+<thead>
+<tr>
+<th>Target</th>
+<th>Download</th>
+<th>Persistence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Physical TSPico, including unmodified 1.00</td>
+<td><code>cpm22-tspico-dual.zip</code></td>
+<td>RAMDisk: TPSAVE before power-off</td>
+</tr>
+<tr>
+<td>JLO/Oliger-enabled Fuse</td>
+<td><code>cpm22-oliger.zip</code></td>
+<td>Save/Save As the emulated disk</td>
+</tr>
+<tr>
+<td>Browser TSRun</td>
+<td>Open the project's Run CP/M link</td>
+<td>Download DSK, TAP or 1.00 TAP set</td>
+</tr>
+</tbody>
+</table>
+<p>Public builds use a public-domain 8x8 font. Normal TS2068 and browser displays
+are 64 columns. Supported PicoVideo 4.2 selects 80 columns by default;
+<code>COLUMNS 64</code> and <code>COLUMNS 80</code> choose the mode. See <a href="picovideo.html">video setup</a>.</p>
+<h2 id="tspico-original-firmware-100">TSPico: original firmware 1.00</h2>
+<p>Extract the TSPico ZIP and merge TAP onto the card. Retain all existing SAVE
+files separately before replacing a disk. The files include:</p>
+<pre><code class="language-text">/TAP/CPM/CPM.DCK
+/TAP/CPM/CPM32000.TAP ... CPM32007.TAP
+/TAP/CPM/SAVE/
+</code></pre>
+<p>This reserves SRAM slots 4/5 for CP/M and pairs 0/1, 2/3, 6/7, 8/9, 10/11,
+12/13 for disk data. Their existing SRAM contents will be overwritten. Do not
+choose another cartridge slot. From TSPico BASIC:</p>
+<pre><code class="language-basic">SAVE &quot;tpi:cd /&quot;
+SAVE &quot;tpi:cd CPM&quot;
+LOAD &quot;tpi:CPM.DCK&quot;
+LOAD &quot;&quot;
+</code></pre>
+<p>In the loader choose SRAM, slot 4, then DOCK selection/restart; leave BOOT
+unchanged. Wait through <code>Loading disk image to RAMDisk</code> and the block counter.
+At A&gt; try:</p>
+<pre><code class="language-text">DIR
+STAT
+COLOR
+COLOR 7
+SUBMIT DEMO
+HI
+TPSAVE
+</code></pre>
+<p>Confirm TPSAVE with Y and wait for its success message. Original 1.00 writes
+CPMSTATE.TAP plus CPM00.TAP–CPM39.TAP (twenty chunks on a 160KB disk).
+They reload directly next time. The save is disk contents, not running CPU
+state. Game SAVE is not a substitute for TPSAVE. On an export failure retain
+the live machine and resolve it before powering off.</p>
+<p>Compatible modern protocol builds use the same cartridge; TPSAVE normally
+writes one CPMRAM.TAP. Direct SD images/native files additionally require the
+optional CP/M service, not just a newer firmware number. Read the
+<a href="tspico-firmware.html">firmware matrix</a> and <a href="tspico-session.html">complete sample session</a>.</p>
+<h2 id="fuse-with-oligerjlo-emulation">Fuse with Oliger/JLO emulation</h2>
+<p>Use the community JLO-enabled Fuse, not ordinary Fuse. Background and the
+author's distribution are linked in the <a href="https://ts2068.groups.io/g/main/topic/120833431?msg=9694#msg9694">community discussion</a>.
+Fuse and its SAFE/JLO ROM are not included in this release.</p>
+<p>The Oliger ZIP provides <code>160/cpm22.dck</code> + <code>160/cpm22.dsk</code> and equivalent
+<code>320/</code> files. Match both sizes and choose single-sided or double-sided
+40-track drive geometry accordingly. Start the TS2068 with the selected DOCK
+cartridge, enable JLO and its supplied ROM, then insert the DSK in JLO drive 0
+(sometimes labelled A). Press Enter if CP/M asks for a disk.</p>
+<p>On Windows the included launcher accepts explicit paths:</p>
+<pre><code class="language-powershell">.\tools\run_oliger.ps1 -Fuse C:\path\to\fuse.exe -Cartridge .\320\cpm22.dck -Disk .\320\cpm22.dsk
+</code></pre>
+<p>Try DIR, SUBMIT DEMO and HI. Before exiting, use the JLO drive menu's
+Save/Save As. TPSAVE applies to TSPico RAMDisk, not Fuse.</p>
+<h2 id="tsrun-in-the-browser">TSRun in the browser</h2>
+<p>Open the Run CP/M page. It boots the 320KB Planetfall/Zork I disk automatically.
+The 160KB link selects its matching cartridge and disk. Click the display
+to type, or use the command box. Try DIR and Build HI example.</p>
+<p>Open disk accepts matching-size DSK, complete CP/M TAP, or all files of a
+saved TAP chunk set selected together. Changing geometry requires selecting
+the other startup size. Download changes before closing/reloading; Reset
+retains disk bytes in the current page. Download DSK for Fuse, TAP for modern
+transport, or 1.00 TAP set for original TSPico. Browser memory is not persistent
+SD storage. The hosted player reuses the hub's pinned TSRun runtime and ROMs.</p>
+<h2 id="next-steps-and-limits">Next steps and limits</h2>
+<ul>
+<li><a href="using-cpm.html">Utility reference, COLOR and HI</a></li>
+<li><a href="software-install.html">Add another Infocom game or CP/M application</a></li>
+<li><a href="ramdisk-implementation.html">RAMDisk internals and Oliger compatibility</a></li>
+<li><a href="disk-tools.html">Python disk tools</a></li>
+<li><a href="release.html">Build and release provenance</a></li>
+</ul>
+<p>Currently A only. No simultaneous B mount, generic Oliger-ROM filesystem
+support, physical WD1770 emulation on TSPico, or automatic RAMDisk writeback.
+Physical original-1.00 boot and game operation have been reported; modern SD
+service and many failure cases are validated through models. PicoVideo 4.2
+support is source/model-tested; physical-board results should be reported.</p><footer>Jon Becker · CP/M 2.2 · cpm22-v0.1.0 · <a href="../docs/release.html">Build, attribution and validation</a> · <a href="../docs/infocom-notice.html">Infocom notice</a></footer></main></body></html>

@@ -1,0 +1,15 @@
+* text=auto
+*.md text eol=lf
+*.py text eol=lf
+*.js text eol=lf
+*.mjs text eol=lf
+*.asm text eol=lf
+*.html text eol=lf
+*.json text eol=lf
+*.dck binary
+*.dsk binary
+*.tap binary
+*.TAP binary
+*.COM binary
+*.zip binary
+*.bin binary

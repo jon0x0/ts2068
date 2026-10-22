@@ -1,0 +1,61 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>software-install · TS2068 CP/M 2.2</title><style>*{box-sizing:border-box}html{color-scheme:dark}body{margin:0;background:#111820;color:#e4ecf1;font:17px/1.65 system-ui,sans-serif}main{max-width:1060px;margin:auto;padding:32px 24px 70px}a{color:#8ddceb;text-underline-offset:3px}h1{font-size:clamp(30px,5vw,51px);line-height:1.15}h2{margin-top:36px}h3{margin-top:28px}p,li{max-width:86ch}nav{display:flex;gap:18px;flex-wrap:wrap;font-size:14px;border-bottom:1px solid #3c5260;padding-bottom:18px}.lead{font-size:21px;color:#bdd5de}.buttons{display:flex;flex-wrap:wrap;gap:12px;margin:25px 0}.button{background:#244455;border:1px solid #78b7c4;border-radius:6px;padding:10px 15px;font-weight:650}pre{overflow:auto;background:#0b1118;border:1px solid #344c59;padding:16px;border-radius:6px;line-height:1.5}code{font-size:.9em}table{border-collapse:collapse;display:block;overflow:auto;font-size:15px}th,td{border:1px solid #3c5260;padding:9px 12px;text-align:left;vertical-align:top}th{background:#203540}footer{margin-top:40px;border-top:1px solid #3c5260;padding-top:16px;font-size:14px;color:#b3c7cf}.note{border-left:4px solid #8ddceb;padding:6px 18px;background:#1b2d37}img{max-width:100%}</style></head><body><main><nav><a href="../index.html">Project</a><a href="../docs/quickstart.html">Quickstart</a><a href="../play/">Run CP/M</a><a href="../index.html#downloads">Downloads</a><a href="https://github.com/jon0x0/ts2068/tree/main/CPM_2068">Source</a></nav><h1 id="add-cpm-software-one-disk-workflow-on-all-targets">Add CP/M software: one disk workflow on all targets</h1>
+<p>Choose a CP/M-80 executable for an 8080/Z80, not a DOS or CP/M-86 COM file.
+Obtain the application and companion files from a source you are entitled to
+use. WordStar, dBASE II and SuperCalc often need overlays, installers and
+terminal configuration as well as their main COM; check the complete release's
+memory/disk requirements. This console implements the ADM-3A subset used by
+the supplied interpreter, not every historical terminal.</p>
+<p>The workflow is always: collect compatible files, create/copy a supported disk,
+put files into it, mount/load it on the target, run the basename, preserve changes.</p>
+<h2 id="worked-example-zork-ii-version-3-story">Worked example: Zork II (version-3 story)</h2>
+<p>The public collection contains Planetfall and Zork I, while the utility-only
+images contain no games. The <a href="https://eblong.com/infocom/#zork2">Infocom catalog</a> supplies
+historical downloads; availability is not a blanket redistribution grant.
+Keep your own downloaded inputs and working disks separate from release files.</p>
+<p>From this source checkout on the PC, with Python and sjasmplus installed:</p>
+<pre><code class="language-powershell">python tools/fetch_infocom.py
+python tools/build.py --profile oliger --oliger-kb 320 --assembler sjasmplus
+python tools/build_planetfall.py --collection --assembler sjasmplus --output build/infocom-cpm.dsk
+python tools/prepare_infocom.py --story build/planetfall/zork2-r48-s840904.z3 --name ZORK2 --template build/infocom-cpm.dsk --output build/zork2-files
+python tools/cpm_disk.py create build/zork2.dsk --size 320
+python tools/cpm_disk.py put build/zork2.dsk build/zork2-files/ZORK2.COM build/zork2-files/ZORK2.DAT
+python tools/cpm_disk.py put build/zork2.dsk build/profiles/oliger320/files/HELLO.COM build/profiles/oliger320/files/COLOR.COM build/profiles/oliger320/files/COLUMNS.COM
+python tools/cpm_disk.py list build/zork2.dsk
+</code></pre>
+<p>The fetch helper downloads the original CP/M interpreter source plus the three
+named version-3 stories to build/planetfall. Existing files are retained.
+build_planetfall configures and assembles the interpreter for this console;
+prepare_infocom checks that exact build and changes its internal data filename.
+Renaming a COM alone does not retarget it. <code>.z3</code> is story data, not an executable;
+later <code>.z5</code>/<code>.z8</code> stories cannot be converted merely by changing the extension.</p>
+<p>The same create/put/list steps apply to other applications; substitute their
+actual file set. <code>put</code> refuses existing names unless --replace is explicit.
+Keep your original disk separately and never edit an image mounted in an emulator.</p>
+<h3 id="fuse-browser">Fuse / browser</h3>
+<p>In JLO-enabled Fuse select the matching 320KB Oliger cartridge and insert
+build/zork2.dsk. In the hosted TSRun 320KB page choose Open disk. At A&gt; type
+<code>ZORK2</code>. SAVE inside the game creates a file in the disk; then save/download
+that disk through Fuse or the browser before leaving.</p>
+<h3 id="original-tspico-100-ramdisk">Original TSPico 1.00 RAMDisk</h3>
+<p>Add the persistence utility from a TSPico build before loading the disk:</p>
+<pre><code class="language-powershell">python tools/build_dual.py --assembler sjasmplus
+python tools/cpm_disk.py put build/zork2.dsk build/profiles/tspico-ram/files/TPSAVE.COM
+python tools/tspico_ram_image.py --dsk build/zork2.dsk --output build/zork2.tap --volumes build/zork2-preload
+</code></pre>
+<p>Back up the existing physical /TAP/CPM/SAVE directory as a complete set to a
+different PC folder. Keep /TAP/CPM/SAVE present but empty when you intentionally
+want the new factory preload; otherwise the saved disk takes precedence.
+Replace only the factory CPM32000.TAP–CPM32007.TAP files with the generated
+matching set. Start CPM.DCK in slot 4 as usual. Type ZORK2. After the game's
+SAVE and QUIT, run TPSAVE and wait for success. Do not delete an existing save
+as a way to bypass an unexplained loader error.</p>
+<p>Alternatively, the browser's Download 1.00 TAP set creates a complete reloadable
+save set for the currently open image. After preserving the old set, place all
+new files together in /TAP/CPM/SAVE; no PC repacking is necessary to reload it.</p>
+<h3 id="modern-tspico">Modern TSPico</h3>
+<p>With the optional service, CPMDISK MOUNT ZORK2.DSK selects a persistent image
+copied to /TAP/CPM; keep CPMDISK.COM on it if you need to switch back. With
+native FILES mode, copy the COM/DAT pair into /TAP/CPM/FILES and refresh/restart.
+For RAMDisk snapshots include TPSAVE.COM, choose R at startup and explicitly
+export before power-off. Refer to the <a href="tspico-firmware.html">firmware matrix</a>:
+newer protocol support by itself does not provide the CP/M SD service.</p><footer>Jon Becker · CP/M 2.2 · cpm22-v0.1.0 · <a href="../docs/release.html">Build, attribution and validation</a> · <a href="../docs/infocom-notice.html">Infocom notice</a></footer></main></body></html>

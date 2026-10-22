@@ -1,0 +1,156 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>infocom-disk · TS2068 CP/M 2.2</title><style>*{box-sizing:border-box}html{color-scheme:dark}body{margin:0;background:#111820;color:#e4ecf1;font:17px/1.65 system-ui,sans-serif}main{max-width:1060px;margin:auto;padding:32px 24px 70px}a{color:#8ddceb;text-underline-offset:3px}h1{font-size:clamp(30px,5vw,51px);line-height:1.15}h2{margin-top:36px}h3{margin-top:28px}p,li{max-width:86ch}nav{display:flex;gap:18px;flex-wrap:wrap;font-size:14px;border-bottom:1px solid #3c5260;padding-bottom:18px}.lead{font-size:21px;color:#bdd5de}.buttons{display:flex;flex-wrap:wrap;gap:12px;margin:25px 0}.button{background:#244455;border:1px solid #78b7c4;border-radius:6px;padding:10px 15px;font-weight:650}pre{overflow:auto;background:#0b1118;border:1px solid #344c59;padding:16px;border-radius:6px;line-height:1.5}code{font-size:.9em}table{border-collapse:collapse;display:block;overflow:auto;font-size:15px}th,td{border:1px solid #3c5260;padding:9px 12px;text-align:left;vertical-align:top}th{background:#203540}footer{margin-top:40px;border-top:1px solid #3c5260;padding-top:16px;font-size:14px;color:#b3c7cf}.note{border-left:4px solid #8ddceb;padding:6px 18px;background:#1b2d37}img{max-width:100%}</style></head><body><main><nav><a href="../index.html">Project</a><a href="../docs/quickstart.html">Quickstart</a><a href="../play/">Run CP/M</a><a href="../index.html#downloads">Downloads</a><a href="https://github.com/jon0x0/ts2068/tree/main/CPM_2068">Source</a></nav><h1 id="planetfall-and-zork-i-on-ts2068-cpm">Planetfall and Zork I on TS2068 CP/M</h1>
+<p>For the shared COLOR/HI commands and adding another game, see
+<a href="using-cpm.html">using CP/M, with a worked Zork II example</a>.</p>
+<p>Use the matching <code>build/infocom-cpm.dck</code> cartridge and <code>build/infocom-cpm.dsk</code>
+disk. This is a 320KB double-sided 40-track Oliger/JLO disk and a 64-column
+CP/M 2.2 cartridge. The cartridge includes the keyboard scan consistency fix
+for Backspace arriving between the modifier and character reads.</p>
+<p>Run <code>tools/run_infocom.ps1</code> to start the installed JLO-enabled Fuse GUI.
+On the older GUI, insert the disk using Media &gt; Disk &gt; JLO &gt; Drive A: &gt; Insert,
+then press Enter at the cartridge's insert-disk prompt. Select Double-sided
+40 track. Use this updated cartridge, including when trying the keyboard fix.</p>
+<p>At <code>A&gt;</code>, type <code>PLANET</code> or <code>ZORK1</code>. SAVE and RESTORE default to PLANET.SAV and
+ZORK1.SAV respectively. Accept both prompts with Enter while leaving this disk
+inserted. Also use Fuse's JLO Save/Save As menu before exiting to retain changes
+on the host. Host save/reopen has not been independently automated.</p>
+<p>The disk contains README.TXT, ASM.COM, LOAD.COM, SUBMIT.COM, DEMO.SUB, HI.ASM,
+HI.COM, MEMTEST.COM, ED.COM, STAT.COM, HELLO.COM, COLOR.COM, and both games' COM/DAT pairs.
+The current package has approximately 54KB free (consult STAT/the manifest).
+<code>HI</code> runs the preassembled example. <code>SUBMIT DEMO</code>
+assembles HI.ASM, converts HI.HEX to HI.COM with LOAD, then runs HI.
+<code>TYPE README.TXT</code> shows the on-disk instructions. Backspace maps to Caps Shift+0;
+plain 0 remains a digit. A physical PC Delete key depends on Fuse's key mapping.</p>
+<p>Game files come from https://eblong.com/infocom/ : Planetfall release 37,
+serial 851003; Zork I release 88, serial 840726. Each uses its own configured
+copy of the original CP/M version 3 interpreter. The manifest records hashes.</p>
+<p>Rebuild after building the 320KB Oliger cartridge:</p>
+<pre><code class="language-text">python tools/build_planetfall.py --collection --output build/infocom-cpm.dsk
+</code></pre>
+<p>Verification: native BIOS keyboard tests cover ordinary zero, Caps+0, a Caps+0
+event arriving during matrix scanning, held-key suppression, and Ctrl-C. Both
+games boot in the actual Fuse JLO controller; game input and SAVE/RESTORE are
+checked separately. The physical Windows GUI keyboard remains a manual check.</p>
+<h2 id="display-performance">Display performance</h2>
+<p>The updated cartridge copies contiguous raster strips when scrolling, uses
+unrolled LDI transfers, unrolls glyph drawing, and skips empty keyboard rows
+quickly. Scrolling polls the keyboard once per raster in each display plane;
+the longest copy between polls is approximately 14,000 CPU cycles. The top
+status row remains fixed when the game has enabled cursor positioning.</p>
+<p>Native Z80 cycle counts from <code>tools/test_console.mjs</code>, before / after:</p>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th style="text-align: right;">Before</th>
+<th style="text-align: right;">After</th>
+<th style="text-align: right;">Fewer cycles</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Full-screen scroll</td>
+<td style="text-align: right;">397864</td>
+<td style="text-align: right;">223819</td>
+<td style="text-align: right;">43.7%</td>
+</tr>
+<tr>
+<td>Scroll preserving status row</td>
+<td style="text-align: right;">381326</td>
+<td style="text-align: right;">215659</td>
+<td style="text-align: right;">43.4%</td>
+</tr>
+<tr>
+<td>Ordinary printable character</td>
+<td style="text-align: right;">3437</td>
+<td style="text-align: right;">2421</td>
+<td style="text-align: right;">29.6%</td>
+</tr>
+<tr>
+<td>Clear screen</td>
+<td style="text-align: right;">274320</td>
+<td style="text-align: right;">213282</td>
+<td style="text-align: right;">22.2%</td>
+</tr>
+</tbody>
+</table>
+<p>These are controlled emulator CPU measurements, not wall-clock measurements
+or hardware contention measurements. Character timing includes BIOS keyboard
+polling and transcript logging, with no key pressed. Scroll timing includes
+a held A key to verify typeahead. Display tests compare every bitmap byte,
+both planes and all third boundaries, and check that attribute memory is
+preserved. Planetfall LOOK and Zork I SAVE/RESTORE also pass in actual Fuse.</p>
+<p>The RAM-disk build shares the new scroll and keyboard scanning paths. It
+retains compact glyph and clear loops to fit its more constrained low BIOS
+layout. The faster glyph and clear paths above apply to the Oliger build.</p>
+<h2 id="disk-read-optimization">Disk read optimization</h2>
+<p>The cartridge reuses the second 128-byte CP/M record already fetched by a
+256-byte Oliger sector read. Sequential paired reads need half as many physical
+READ commands. Random access and game computation determine the overall gain.
+Writes remain synchronous read/modify/write. The pending partner is discarded
+on intervening sectors, initialization, HOME, warm boot, console input or errors.
+Both 160KB and 320KB controller-model tests check exact command counts and data;
+the two-game image is also tested against the actual Fuse JLO controller.
+Use the updated DCK with an existing matching 320KB disk to retain saved games.</p>
+<h2 id="high-resolution-colors">High-resolution colors</h2>
+<p>Type <code>COLOR</code> to list the eight schemes. <code>COLOR n</code> selects one for the whole
+screen, including existing text and the games' status line:</p>
+<table>
+<thead>
+<tr>
+<th>n</th>
+<th>Text</th>
+<th>Background</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Black</td>
+<td>White</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Blue</td>
+<td>Yellow</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Red</td>
+<td>Cyan</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Magenta</td>
+<td>Green</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Green</td>
+<td>Magenta</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Cyan</td>
+<td>Red</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Yellow</td>
+<td>Blue</td>
+</tr>
+<tr>
+<td>7</td>
+<td>White</td>
+<td>Black</td>
+</tr>
+</tbody>
+</table>
+<p><code>COLOR 7</code> restores the default. Invalid arguments show help without changing
+the setting. Disk access, scrolling, screen clearing and CP/M warm boots retain
+it; a cold cartridge restart restores the default. The eight pairs are fixed
+by the TS2068 hardware; foreground/background cannot be chosen independently.
+See the TS2068 Technical Manual, SCLD Port FF register and section 5.2.3:
+https://device.report/m/1dc234a90e0a0a4909414d23f9dbfa619954ecb352b23266185180d4a7e167b5.pdf</p>
+<p><code>src/color.asm</code> changes only port FF bits 3-5, preserving video mode and banking.
+<code>build/COLOR.COM</code> is also provided separately for existing disk images. Older
+RAM-disk cartridges need the updated BIOS to retain colors across disk reads.</p><footer>Jon Becker · CP/M 2.2 · cpm22-v0.1.0 · <a href="../docs/release.html">Build, attribution and validation</a> · <a href="../docs/infocom-notice.html">Infocom notice</a></footer></main></body></html>

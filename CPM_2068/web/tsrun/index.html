@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CP/M · TSRun</title>
+<style>
+body{margin:0;background:#111820;color:#dce7ee;font:16px system-ui,sans-serif}a{color:#8ddceb;text-underline-offset:3px}main{max-width:1000px;margin:32px auto;padding:0 20px}h1{font-size:25px;margin-bottom:6px}p{color:#b0c1cb;line-height:1.5}button,input{font:inherit;border:1px solid #516477;border-radius:5px;padding:9px 12px;background:#243442;color:#fff}button{cursor:pointer}button:disabled{opacity:.45;cursor:wait}.bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:16px 0}canvas{display:block;width:100%;aspect-ratio:4/3;background:#000;image-rendering:pixelated;outline:1px solid #415466}canvas:focus{outline:2px solid #7fc5ef}#command{flex:1;min-width:180px}#status{color:#a7dcba}small{color:#b0c1cb}#disk-file{max-width:260px}
+</style>
+<main><h1>CP/M on TSRun</h1><p>TS2068 · 64 columns · Oliger disk · CP/M 2.2</p>
+<div id="status" role="status">Loading ROMs, cartridge and disk…</div>
+<div class="bar"><button id="save" disabled>Download DSK</button><button id="save-tap" disabled>Download TAP</button><button id="save-chunks" disabled>Download 1.00 TAP set</button><button id="reset" disabled>Reset CP/M</button><label>Open disk <input id="disk-file" type="file" accept=".dsk,.tap" multiple disabled></label></div>
+<canvas id="screen" width="640" height="240" tabindex="0" aria-label="TS2068 CP/M screen. Click here to type."></canvas>
+<form id="commands" class="bar"><input id="command" aria-label="CP/M command" placeholder="DIR, SUBMIT DEMO, PLANET, ZORK1…" autocomplete="off" spellcheck="false"><button id="send" disabled>Run command</button></form>
+<div class="bar"><button data-command="DIR" disabled>DIR</button><button data-command="SUBMIT DEMO" disabled>Build HI example</button><button data-command="PLANET" disabled>Planetfall</button><button data-command="ZORK1" disabled>Zork I</button></div>
+<p>Click the screen to type directly. Backspace/Delete erase a character; Shift+C gives CP/M Ctrl-C. Plain 0 types zero. Download the disk as DSK or TAP before closing this page. A reset retains the current disk; opening another disk restarts CP/M.</p>
+<small>Functional disk adapter for this CP/M port. Disk changes are in browser memory until downloaded; DSKs open in Fuse/Oliger; complete CP/M TAPs open with the modern TSPico protocol. Select all TAPs together to open a saved chunk set or preload volumes.</small>
+<div id="keyboard" hidden></div></main><script type="module" src="./app.mjs"></script></html>

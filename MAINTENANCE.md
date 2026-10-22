@@ -1,5 +1,16 @@
 # Maintaining the TS2068 hub
 
+## CP/M 2.2 release
+
+Imported under `CPM_2068/` with tag `cpm22-v0.1.0`. The project Pages entry
+and browser player live there. Source development remains in the original
+CPM_2068 workspace; `tools/publish_site.py --hub PATH_TO_HUB` stages subsequent
+source/docs/download updates. Install Markdown==3.9 for the site generator.
+The hub's scripts/build_site.py owns its Applications entry; regenerate the hub
+after changes. Do not replace the shared Sinistar TSRun snapshot: the CP/M player
+references that existing runtime and ROMs, tested for CP/M's banking/sector I/O.
+The release tag includes CP/M 2.2 explicitly to leave room for 3.x releases.
+
 ## Existing projects and URLs
 
 Keep Berzerk, TSWriter, the AI skill, the existing demos, speech2ay and

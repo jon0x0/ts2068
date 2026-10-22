@@ -1,0 +1,18 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>stock-1.00 · TS2068 CP/M 2.2</title><style>*{box-sizing:border-box}html{color-scheme:dark}body{margin:0;background:#111820;color:#e4ecf1;font:17px/1.65 system-ui,sans-serif}main{max-width:1060px;margin:auto;padding:32px 24px 70px}a{color:#8ddceb;text-underline-offset:3px}h1{font-size:clamp(30px,5vw,51px);line-height:1.15}h2{margin-top:36px}h3{margin-top:28px}p,li{max-width:86ch}nav{display:flex;gap:18px;flex-wrap:wrap;font-size:14px;border-bottom:1px solid #3c5260;padding-bottom:18px}.lead{font-size:21px;color:#bdd5de}.buttons{display:flex;flex-wrap:wrap;gap:12px;margin:25px 0}.button{background:#244455;border:1px solid #78b7c4;border-radius:6px;padding:10px 15px;font-weight:650}pre{overflow:auto;background:#0b1118;border:1px solid #344c59;padding:16px;border-radius:6px;line-height:1.5}code{font-size:.9em}table{border-collapse:collapse;display:block;overflow:auto;font-size:15px}th,td{border:1px solid #3c5260;padding:9px 12px;text-align:left;vertical-align:top}th{background:#203540}footer{margin-top:40px;border-top:1px solid #3c5260;padding-top:16px;font-size:14px;color:#b3c7cf}.note{border-left:4px solid #8ddceb;padding:6px 18px;background:#1b2d37}img{max-width:100%}</style></head><body><main><nav><a href="../index.html">Project</a><a href="../docs/quickstart.html">Quickstart</a><a href="../play/">Run CP/M</a><a href="../index.html#downloads">Downloads</a><a href="https://github.com/jon0x0/ts2068/tree/main/CPM_2068">Source</a></nav><h1 id="stock-tspico-100-status">Stock TSPico 1.00 status</h1>
+<p>The new <a href="tspico-ram.html">320KB SRAM-disk build</a> implements TAP preload and legacy
+MEMDOCK bank switching without a firmware extension. It passes native Z80 and
+functional wire/memory-model tests. Physical 1.00 operation, SRAM writes and
+FIFO/slot-selection timing still need a board test. It is a hardware-test
+candidate, not a claim that a physical device has booted CP/M.</p>
+<p>The earlier TPLOAD importer remains available in other profiles. It imports a
+single bounded TAP CODE file into an already writable CP/M drive.</p>
+<p>Stock 1.00 has no established arbitrary in-place SD-sector write command.
+The SRAM design avoids needing one. TPSAVE exports complete TAP chunks that
+the cartridge reloads directly; host conversion is optional for Fuse/archive.
+Direct inspection of the original frozen SAVE_TS confirms that every SAVE
+truncates/creates its destination, writes a header, then appends only that SAVE's
+data block and closes it. Successive SAVEs cannot accumulate in one TAP through
+that handler. The audit and original flash addresses are recorded in
+<a href="firmware-1.00-storage-audit.html">firmware-1.00-storage-audit.md</a>.</p>
+<p>The separate <a href="tspico-sd320.html">modern SD build</a> requires a newer compatible
+protocol and optional binary-safe CP/M service. It is not stock-1.00 support.</p><footer>Jon Becker · CP/M 2.2 · cpm22-v0.1.0 · <a href="../docs/release.html">Build, attribution and validation</a> · <a href="../docs/infocom-notice.html">Infocom notice</a></footer></main></body></html>

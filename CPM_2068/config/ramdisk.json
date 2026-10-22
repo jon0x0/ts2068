@@ -1,0 +1,8 @@
+{
+  "backend": "ramdisk",
+  "exrom_pages": [1, 2, 3, 4, 5, 6],
+  "sector_bytes": 128,
+  "sectors_per_track": 16,
+  "block_bytes": 1024,
+  "directory_entries": 64
+}

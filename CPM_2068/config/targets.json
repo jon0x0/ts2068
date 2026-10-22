@@ -1,0 +1,8 @@
+{
+  "default_profile": "emulator",
+  "physical_tspico_firmware": "1.00",
+  "firmware_changes_allowed": false,
+  "stock_tspico_file_backend": "legacy TAP CODE",
+  "raw_directory_drive_available_on_stock_1_00": false,
+  "combined_profile": "experimental modern firmware extension prototype; not the stock 1.00 target"
+}

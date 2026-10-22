@@ -1,0 +1,393 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>using-cpm · TS2068 CP/M 2.2</title><style>*{box-sizing:border-box}html{color-scheme:dark}body{margin:0;background:#111820;color:#e4ecf1;font:17px/1.65 system-ui,sans-serif}main{max-width:1060px;margin:auto;padding:32px 24px 70px}a{color:#8ddceb;text-underline-offset:3px}h1{font-size:clamp(30px,5vw,51px);line-height:1.15}h2{margin-top:36px}h3{margin-top:28px}p,li{max-width:86ch}nav{display:flex;gap:18px;flex-wrap:wrap;font-size:14px;border-bottom:1px solid #3c5260;padding-bottom:18px}.lead{font-size:21px;color:#bdd5de}.buttons{display:flex;flex-wrap:wrap;gap:12px;margin:25px 0}.button{background:#244455;border:1px solid #78b7c4;border-radius:6px;padding:10px 15px;font-weight:650}pre{overflow:auto;background:#0b1118;border:1px solid #344c59;padding:16px;border-radius:6px;line-height:1.5}code{font-size:.9em}table{border-collapse:collapse;display:block;overflow:auto;font-size:15px}th,td{border:1px solid #3c5260;padding:9px 12px;text-align:left;vertical-align:top}th{background:#203540}footer{margin-top:40px;border-top:1px solid #3c5260;padding-top:16px;font-size:14px;color:#b3c7cf}.note{border-left:4px solid #8ddceb;padding:6px 18px;background:#1b2d37}img{max-width:100%}</style></head><body><main><nav><a href="../index.html">Project</a><a href="../docs/quickstart.html">Quickstart</a><a href="../play/">Run CP/M</a><a href="../index.html#downloads">Downloads</a><a href="https://github.com/jon0x0/ts2068/tree/main/CPM_2068">Source</a></nav><h1 id="using-cpm-colors-the-hi-example-and-new-software">Using CP/M: colors, the HI example, and new software</h1>
+<p>For the published CP/M 2.2 release, start with the <a href="quickstart.html">quickstart</a>.
+The <a href="software-install.html">current software-install guide</a> explains how to obtain
+the optional inputs and create a new disk; older examples below assume an
+existing locally built Infocom template disk.</p>
+<p>These CP/M commands are the same in TSPico RAMDisk, modern TSPico SD mode,
+Fuse/Oliger and the TSRun launcher. First reach the <code>A&gt;</code> prompt using the
+<a href="startup.html">startup guide</a>. For hardware, check the
+<a href="tspico-firmware.html">TSPico firmware/feature table</a> before choosing a mode.</p>
+<h2 id="included-utilities-reference">Included utilities reference</h2>
+<p>Type commands without <code>.COM</code>. This lists the full TSPico development/game
+disk; smaller images may contain a subset. Use <code>DIR</code> to check your disk.</p>
+<table>
+<thead>
+<tr>
+<th>Utility</th>
+<th>Purpose / example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>STAT</td>
+<td>Disk free space, file sizes, device assignments. <code>STAT</code> or <code>STAT *.*</code>.</td>
+</tr>
+<tr>
+<td>PIP</td>
+<td>File/device copying. <code>PIP COPY.TXT=README.TXT</code> copies a file. The current TSPico BIOS exposes A only.</td>
+</tr>
+<tr>
+<td>ED</td>
+<td>Command-driven text editor. <code>ED NOTES.TXT</code>; this is not a full-screen editor.</td>
+</tr>
+<tr>
+<td>ASM</td>
+<td>Intel 8080-syntax assembler. <code>ASM HI</code> produces HI.HEX and HI.PRN from HI.ASM; full Z80 syntax is not supported.</td>
+</tr>
+<tr>
+<td>LOAD</td>
+<td>Converts Intel HEX to COM. <code>LOAD HI</code> creates HI.COM.</td>
+</tr>
+<tr>
+<td>SUBMIT</td>
+<td>Runs a SUB batch file. <code>SUBMIT DEMO</code> builds and runs HI.</td>
+</tr>
+<tr>
+<td>XSUB</td>
+<td>Lets SUBMIT scripts supply buffered console input to programs as well as commands to CP/M. DEMO.SUB does not need it.</td>
+</tr>
+<tr>
+<td>DDT</td>
+<td>Dynamic Debugging Tool: inspect/change memory, disassemble, step programs, set breakpoints. <code>DDT HI.COM</code> loads HI; <code>G0</code> returns to CP/M. Uses 8080 mnemonics.</td>
+</tr>
+<tr>
+<td>DUMP</td>
+<td>Displays file bytes in hexadecimal. <code>DUMP HI.COM</code>.</td>
+</tr>
+<tr>
+<td>COLOR</td>
+<td>Lists/selects text/background schemes and optional border color. <code>COLOR 7 2</code> selects white on black with a red border.</td>
+</tr>
+<tr>
+<td>COLUMNS</td>
+<td>Reports/selects 64 or 80 columns. <code>COLUMNS 80</code> requires the supported PicoVideo 4.2 renderer.</td>
+</tr>
+<tr>
+<td>VIDEO</td>
+<td>Read-only PicoVideo register/capability report for diagnosing display modes and firmware.</td>
+</tr>
+<tr>
+<td>MEMTEST</td>
+<td>Small smoke test of CP/M RAM at CPU addresses 4000/6000 plus sample character output. Not a full memory/RAMDisk test. Older PicoVideo can visibly capture these banked writes.</td>
+</tr>
+<tr>
+<td>FORMAT</td>
+<td>Initializes the current filesystem using its existing geometry. <code>FORMAT A:</code> erases files after confirmation; it does not change disk capacity. RAMDisk retains TPSAVE.COM.</td>
+</tr>
+<tr>
+<td>TPSAVE</td>
+<td>Exports the live TSPico RAMDisk to SD. Run before power-off to preserve changes. RAMDisk profiles only.</td>
+</tr>
+<tr>
+<td>TPLOAD</td>
+<td>Imports a prepared single-file CODE TAP into CP/M. <code>TPLOAD VIDEOCOM.TAP VIDEO.COM</code>; refuses an existing destination. Does not mount disk images.</td>
+</tr>
+<tr>
+<td>CPMDISK</td>
+<td>Modern SD-service profiles: select native FILES/image sources and save snapshots. Does not manage a second drive; refuses SD switching in RAMDisk mode.</td>
+</tr>
+<tr>
+<td>TPIMPORT</td>
+<td>Alternate modern raw-file importer in the experimental combined profile; normal TSPico packages use TPLOAD.</td>
+</tr>
+<tr>
+<td>HELLO</td>
+<td>Tiny startup/smoke-test program. Factory-style startup invokes it.</td>
+</tr>
+<tr>
+<td>HI.ASM / DEMO.SUB</td>
+<td>Example source and build/run script. HI.COM is generated by ASM/LOAD; some game disks include it prebuilt.</td>
+</tr>
+<tr>
+<td>PLANET / ZORK1</td>
+<td>Games. Each needs its matching COM interpreter and DAT story file.</td>
+</tr>
+<tr>
+<td>README.TXT</td>
+<td>Short disk instructions: <code>TYPE README.TXT</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><code>DIR</code>, <code>TYPE</code>, <code>REN</code>, <code>ERA</code>, <code>USER</code> and <code>SAVE</code> are command-processor built-ins,
+not separate utility files. CP/M <code>SAVE</code> saves memory to a file; it does <strong>not</strong>
+persist the RAMDisk. Use TPSAVE for that.
+See Digital Research's <a href="https://deramp.com/downloads/altair/software/manuals/CPM%202.2%20Manual.pdf">CP/M 2.2 manual</a>
+for the standard utilities.</p>
+<h3 id="keeping-diagnostics-versus-trimming-a-personal-disk">Keeping diagnostics versus trimming a personal disk</h3>
+<p>Keep boot failure diagnostics, detected-protocol information, block progress
+and the RAMDisk save reminder. These live in the cartridge/BIOS and remain
+available even if disk utility files are removed.</p>
+<p>Keep VIDEO on the normal disk: the current binary is 385 bytes, occupying one
+2KiB allocation block. DDT, DUMP and MEMTEST are optional for playing games;
+together they occupy 10KiB on the current 320KB disk. XSUB adds another 2KiB
+and is optional unless a script uses it. Retain copies in the package's FILES
+directory before trimming a personal disk. Keeping these files does not consume
+TPA program memory or slow the fixed-size RAMDisk preload. The default
+development package retains them all.</p>
+<h2 id="color-change-the-high-resolution-colors">COLOR: change the high-resolution colors</h2>
+<p>At CP/M's <code>A&gt;</code> prompt:</p>
+<pre><code class="language-text">COLOR
+COLOR 6
+COLOR 7
+</code></pre>
+<p><code>COLOR</code> alone prints the choices. <code>COLOR 6</code> selects yellow text on blue;
+<code>COLOR 7</code> restores the default white on black.</p>
+<table>
+<thead>
+<tr>
+<th>Number</th>
+<th>Text</th>
+<th>Background</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Black</td>
+<td>White</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Blue</td>
+<td>Yellow</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Red</td>
+<td>Cyan</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Magenta</td>
+<td>Green</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Green</td>
+<td>Magenta</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Cyan</td>
+<td>Red</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Yellow</td>
+<td>Blue</td>
+</tr>
+<tr>
+<td>7</td>
+<td>White</td>
+<td>Black</td>
+</tr>
+</tbody>
+</table>
+<p>The change affects the whole console, including text already displayed and an
+Infocom status line. It does not change the disk files or permanently configure
+the machine. On detected PicoVideo 80-column mode, the utility updates the text
+palette as well. The normal console is 64 columns; a TSPico upgrade alone does
+not make it 80 columns. Keep COLOR.COM on a new disk if you want this command.</p>
+<h2 id="run-or-rebuild-hi">Run or rebuild HI</h2>
+<p>The game disk includes a preassembled HI.COM. At <code>A&gt;</code>:</p>
+<pre><code class="language-text">HI
+</code></pre>
+<p>It prints <code>Assembled on the TS2068!</code>. Other profiles may include only the source
+and build tools; build it once if <code>HI</code> is not found. Required files are
+HI.ASM, ASM.COM and LOAD.COM. SUBMIT.COM and DEMO.SUB provide the shortcut:</p>
+<pre><code class="language-text">TYPE HI.ASM
+SUBMIT DEMO
+</code></pre>
+<p>DEMO.SUB runs these same three commands, which can also be entered manually:</p>
+<pre><code class="language-text">ASM HI
+LOAD HI
+HI
+</code></pre>
+<p>ASM creates HI.HEX and HI.PRN; LOAD converts HI.HEX into HI.COM; HI executes it.
+The assembler's normal <code>000H USE FACTOR</code>/<code>END OF ASSEMBLY</code> output is not an
+error. This is assembling on the emulated/physical Z80, not on the PC. Preserve
+the resulting disk with TPSAVE, Fuse Save/Save As, or TSRun download as appropriate.</p>
+<h2 id="the-common-software-installation-procedure">The common software-installation procedure</h2>
+<ol>
+<li>Obtain the <strong>CP/M-80 / 8080 / Z80</strong> version and extract it on the PC. A DOS or
+   CP/M-86 COM file does not run on this Z80 just because it has a COM extension.</li>
+<li>Collect its COM program <strong>and all required companion files</strong>. Programs may
+   need overlays, help files, libraries or data. Give them CP/M 8.3 filenames.</li>
+<li>Create a new 320KB work disk, or use an unmounted copy of an existing disk.
+   A fresh disk avoids filling the existing two-game collection.</li>
+<li>Use <code>python tools/cpm_disk.py put DISK FILE...</code> to copy the files into DSK,
+   TAP or raw images. The command is the same for every application. It refuses
+   duplicate names unless <code>--replace</code> is supplied, and checks disk capacity.</li>
+<li>Mount/open that disk, then type the program's basename at <code>A&gt;</code> (omit <code>.COM</code>).</li>
+<li>Save the disk through the platform's normal persistence path.</li>
+</ol>
+<p>Run Python/PowerShell commands below <strong>on the PC from this project's directory</strong>.
+Run commands labelled <code>A&gt;</code> <strong>inside CP/M</strong>. Do not type Python commands at A&gt;.
+Do not edit the same disk file from Python while an emulator has it mounted.</p>
+<h2 id="worked-example-add-zork-ii">Worked example: add Zork II</h2>
+<h3 id="1-obtain-a-version-3-story">1. Obtain a version-3 story</h3>
+<p>Use the <a href="https://eblong.com/infocom/#zork2">Infocom catalog's Zork II section</a>.
+Choose the compiled <strong>game file</strong>, not the ZIL source ZIP:
+<a href="https://eblong.com/infocom/gamefiles/zork2-r48-s840904.z3">zork2-r48-s840904.z3</a>
+(version-3 story, release 48 / serial 840904). Save it as
+<code>build/software-example/zork2-r48-s840904.z3</code>, creating that PC folder if needed.
+This exact file is the tested example (89,912 bytes; SHA256
+<code>39e3a8bda879e9296ac05c8bdcdae12a1a6fb447a1ef531838e82cfa2db210ac</code>).</p>
+<p>A <code>.z3</code> story is <strong>data</strong>, not a CP/M executable. It needs an interpreter.
+This project already supplies configured PLANET.COM/ZORK1.COM interpreters,
+derived from the catalog's <a href="https://eblong.com/infocom/interpreters/cpm80.zip">CP/M interpreter source</a>.
+Simply renaming PLANET.COM to ZORK2.COM would leave its internal data filename
+pointing at PLANET.DAT. The preparation tool below changes that field in the
+fingerprinted project interpreter and produces a correctly matched pair.</p>
+<h3 id="2-prepare-the-comdat-pair">2. Prepare the COM/DAT pair</h3>
+<p>On the PC:</p>
+<pre><code class="language-powershell">python tools/prepare_infocom.py --story build/software-example/zork2-r48-s840904.z3 --name ZORK2 --template build/infocom-cpm.dsk --output build/newsoftware
+</code></pre>
+<p>The template is the supplied two-game disk, not a second downloaded game.
+Prerequisite: have the project's game build, or extract the Infocom/TSRun
+package containing <code>build/infocom-cpm.dsk</code>. A utilities-only disk does not
+contain an Infocom interpreter.
+The tool extracts its configured interpreter and creates ZORK2.COM plus
+ZORK2.DAT. It needs no assembler or new interpreter download. An individual
+project PLANET.COM/ZORK1.COM or a project TAP disk can also be the template.
+In an extracted TSPico package, for example, the equivalent template path is
+<code>TAP/CPM/COMPAT.TAP</code>. Use a new output folder if the pair already exists.</p>
+<p>This helper supports <strong>version 3 only</strong>, up to 128KB, and the exact configured
+project interpreter. It rejects unrelated COM files and later Z-machine
+formats such as <code>.z5</code>/<code>.z8</code>. Changing a later story's extension will not convert it.</p>
+<h3 id="3-create-and-populate-a-disk">3. Create and populate a disk</h3>
+<p>On the PC, create a fresh disk and add the program/data pair:</p>
+<pre><code class="language-powershell">python tools/cpm_disk.py create build/zork2.dsk --size 320
+python tools/cpm_disk.py put build/zork2.dsk build/newsoftware/ZORK2.COM build/newsoftware/ZORK2.DAT
+python tools/cpm_disk.py list build/zork2.dsk
+</code></pre>
+<p>To make this disk convenient on all our targets, also add the optional console
+tools and the required RAMDisk save tool from the retained builds:</p>
+<pre><code class="language-powershell">python tools/cpm_disk.py put build/zork2.dsk build/profiles/oliger320/files/HELLO.COM build/profiles/oliger320/files/COLOR.COM build/profiles/tspico-ram/files/TPSAVE.COM
+</code></pre>
+<p>HELLO avoids the cartridge's automatic startup command being absent; it is not
+required by Zork II. COLOR supplies the color command. <strong>TPSAVE.COM is needed
+to export a TSPico RAMDisk</strong>; it is not needed for Fuse or persistent SD mode.
+For an extracted package, use the same filenames from that package's FILES
+directory instead of these project build paths. To use CPMDISK from within a
+modern SD image, also put CPMDISK.COM on it before mounting it.</p>
+<p>For a TAP copy of that same disk:</p>
+<pre><code class="language-powershell">python tools/tspico_ram_image.py --dsk build/zork2.dsk --output build/zork2.tap
+</code></pre>
+<p>Alternatively create <code>build/zork2.tap</code> with <code>cpm_disk.py create</code> and use exactly
+the same <code>put</code> commands with that filename; the tool detects the container
+from its extension. This common create/put/list procedure also applies to
+ordinary CP/M application COM files and their companions.</p>
+<h3 id="4-open-it-on-your-target">4. Open it on your target</h3>
+<table>
+<thead>
+<tr>
+<th>Target</th>
+<th>Load the new disk</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TSRun launcher</td>
+<td>Open disk, select zork2.dsk or zork2.tap. Both are 320KB, matching the supplied game cartridge.</td>
+</tr>
+<tr>
+<td>Fuse/JLO</td>
+<td>Launch with <code>tools/run_oliger.ps1 -Cartridge build/infocom-cpm.dck -Disk build/zork2.dsk</code>; insert the printed DSK manually if the GUI requires it.</td>
+</tr>
+<tr>
+<td>Modern TSPico, optional SD service, image mode</td>
+<td>Copy zork2.tap to physical <code>/TAP/CPM/ZORK2.TAP</code>. At A&gt;, <code>CPMDISK MOUNT ZORK2.TAP</code>. Keep CPMDISK.COM on the disk if you need to switch away later.</td>
+</tr>
+<tr>
+<td>Modern TSPico, native-files mode</td>
+<td>Copy ZORK2.COM and ZORK2.DAT into physical <code>/TAP/CPM/FILES</code>, then reboot or remount with <code>CPMDISK DIR</code>. No disk container is required.</td>
+</tr>
+<tr>
+<td>Modern TSPico, TAP/RAMDisk mode without SD service</td>
+<td>Copy zork2.tap as physical <code>/TAP/CPM/SAVE/CPMRAM.TAP</code>, preserving the old save. Restart; choose T for the TAP if an older chunk set also exists. With a service present, choose L first to reload a saved RAMDisk.</td>
+</tr>
+<tr>
+<td>Original 1.00 RAMDisk</td>
+<td>Open the new disk in TSRun, choose Download 1.00 TAP set, and extract the chunk TAPs and CPMSTATE.TAP into <code>/TAP/CPM/SAVE/</code>, preserving the previous set separately. Restart the dual cartridge; it loads the set directly.</td>
+</tr>
+</tbody>
+</table>
+<p>For a fresh 1.00 factory preload rather than a saved set, <code>tspico_ram_image.py</code>
+can generate the small boot volumes with <code>--volumes</code>; see <a href="disk-tools.html">disk tools</a>.
+Do not put a single large TAP on 1.00 and assume it replaces the chunk/preload
+loading procedure. Firmware capability limits are in the <a href="tspico-firmware.html">matrix</a>.</p>
+<h3 id="5-run-and-save">5. Run and save</h3>
+<p>At CP/M's <code>A&gt;</code>:</p>
+<pre><code class="language-text">ZORK2
+</code></pre>
+<p>Expect <code>ZORK II: The Wizard of Frobozz</code>, <code>Version 48 / Serial number 840904</code>,
+and the starting room <code>Inside the Barrow</code>. At the game's <code>&gt;</code> prompt, <code>LOOK</code>
+repeats the room description. <code>SAVE</code> defaults to ZORK2.SAV: keep this disk
+mounted and press Enter at each of the two disk/filename prompts. <code>RESTORE</code>
+uses the saved file. <code>QUIT</code>, then Y, returns to CP/M.</p>
+<p>Game SAVE creates a file <strong>inside</strong> the CP/M disk. Also preserve the outer
+disk: TPSAVE in RAMDisk, JLO Save/Save As in Fuse, Download DSK/TAP in TSRun.
+Modern persistent SD mode already writes to its SD volume. The example was
+verified in native Z80 emulation from both DSK and TAP, including LOOK, SAVE
+and returning to A&gt;. No claim is made here that every Infocom game works.</p>
+<h2 id="wordstar-dbase-ii-supercalc-and-other-applications">WordStar, dBASE II, SuperCalc and other applications</h2>
+<p>Use the same create/put/list/mount/run sequence. Extract individual CP/M-80
+files from their distribution first; an Apple, Kaypro or Osborne disk image
+is not automatically one of our Oliger DSKs. Our tool reads this project's
+160KB/320KB layouts, not arbitrary CP/M disk formats.</p>
+<table>
+<thead>
+<tr>
+<th>Application</th>
+<th>What to check before copying/running</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WordStar</td>
+<td>CP/M-80 edition; keep its matching overlay/install files, not just WS.COM. Configure its terminal for compatible ADM-3A behavior and the available column width.</td>
+</tr>
+<tr>
+<td>dBASE II</td>
+<td>CP/M-80 edition; retain its matching companion files and room for databases. CP/M-86/DOS editions will not run.</td>
+</tr>
+<tr>
+<td>SuperCalc</td>
+<td>CP/M-80 edition; retain its support files and configure the terminal/screen size. An 80-column installation is not automatically suitable for the normal 64-column console.</td>
+</tr>
+<tr>
+<td>Another Infocom game</td>
+<td>Choose an actual version-3 story; use prepare_infocom with a new basename, then copy that COM/DAT pair using the same disk commands.</td>
+</tr>
+</tbody>
+</table>
+<p>The <a href="https://www.retroarchive.org/cpm/">Retroarchive CP/M collection</a> is an
+archive lead for commercial-era CP/M software; availability varies. Consult
+the application's own install instructions for its required files and terminal
+patching. Those three applications have <strong>not</strong> been validated in this port.
+Our TPA is 52,992 bytes (about 51.75KiB), independent of the larger RAMDisk;
+software needing more usable program memory, a different CPU, multiple drives,
+or terminal features beyond this console may need further work. Start with a
+separate disk and a compatible release rather than treating a successful copy
+as proof the application will run.</p>
+<h2 id="choosing-64-or-80-columns">Choosing 64 or 80 columns</h2>
+<p>Run <code>COLUMNS</code> to see the current width, <code>COLUMNS 64</code> to select the normal
+TS2068 console, or <code>COLUMNS 80</code> for the supported PicoVideo renderer. Boot defaults
+to 80 when that renderer is detected, otherwise 64. This works independently of
+the TSPico firmware version. The screen clears; files and colors are preserved.
+Exit and restart applications after changing width. A warm boot keeps the choice;
+a cold boot selects the default again. A normal TS2068 reduced-width 80-column
+font is a future option. See <a href="picovideo.html">display details</a>.</p>
+<p>COLOR also makes the border match the background. <code>VIDEO</code> prints PicoVideo
+register diagnostics; use it if <code>COLUMNS 80</code> reports unavailable. Some PicoVideo
+64-column firmware has a documented ink-calculation issue that can make COLOR 0
+appear blue on white; see <a href="picovideo.html">PicoVideo troubleshooting</a>.</p>
+<h3 id="optional-border-color">Optional border color</h3>
+<p><code>COLOR scheme</code> matches the border to the background. <code>COLOR scheme border</code>
+sets it independently, for example <code>COLOR 7 2</code> gives white text on black with
+a red border. Both arguments are single digits 0–7. Border numbers are:
+0 black, 1 blue, 2 red, 3 magenta, 4 green, 5 cyan, 6 yellow, 7 white.
+<code>COLOR 7</code> restores a matching black border. Invalid arguments leave colors
+unchanged. A width change selects a matching border again; rerun COLOR with
+both arguments to restore a custom border after switching widths.</p><footer>Jon Becker · CP/M 2.2 · cpm22-v0.1.0 · <a href="../docs/release.html">Build, attribution and validation</a> · <a href="../docs/infocom-notice.html">Infocom notice</a></footer></main></body></html>

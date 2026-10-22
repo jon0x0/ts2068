@@ -1,0 +1,138 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>tspico-firmware · TS2068 CP/M 2.2</title><style>*{box-sizing:border-box}html{color-scheme:dark}body{margin:0;background:#111820;color:#e4ecf1;font:17px/1.65 system-ui,sans-serif}main{max-width:1060px;margin:auto;padding:32px 24px 70px}a{color:#8ddceb;text-underline-offset:3px}h1{font-size:clamp(30px,5vw,51px);line-height:1.15}h2{margin-top:36px}h3{margin-top:28px}p,li{max-width:86ch}nav{display:flex;gap:18px;flex-wrap:wrap;font-size:14px;border-bottom:1px solid #3c5260;padding-bottom:18px}.lead{font-size:21px;color:#bdd5de}.buttons{display:flex;flex-wrap:wrap;gap:12px;margin:25px 0}.button{background:#244455;border:1px solid #78b7c4;border-radius:6px;padding:10px 15px;font-weight:650}pre{overflow:auto;background:#0b1118;border:1px solid #344c59;padding:16px;border-radius:6px;line-height:1.5}code{font-size:.9em}table{border-collapse:collapse;display:block;overflow:auto;font-size:15px}th,td{border:1px solid #3c5260;padding:9px 12px;text-align:left;vertical-align:top}th{background:#203540}footer{margin-top:40px;border-top:1px solid #3c5260;padding-top:16px;font-size:14px;color:#b3c7cf}.note{border-left:4px solid #8ddceb;padding:6px 18px;background:#1b2d37}img{max-width:100%}</style></head><body><main><nav><a href="../index.html">Project</a><a href="../docs/quickstart.html">Quickstart</a><a href="../play/">Run CP/M</a><a href="../index.html#downloads">Downloads</a><a href="https://github.com/jon0x0/ts2068/tree/main/CPM_2068">Source</a></nav><h1 id="tspico-firmware-and-cpm-features">TSPico firmware and CP/M features</h1>
+<p>Use this table before following the startup instructions. <strong>Firmware 1.00,
+1.1 beta, and the modern 2.3 protocol are different targets.</strong> A newer firmware
+number alone does not supply our CP/M SD filesystem service.</p>
+<p>The combined cartridge is <code>CPM.DCK</code> from the dual package. It detects a protocol
+handshake, not the exact installed firmware version. A startup message saying
+"1.00 compatible" identifies the legacy protocol path; it is not a version query.</p>
+<h2 id="feature-matrix">Feature matrix</h2>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Original firmware 1.00, unchanged</th>
+<th>Inspected firmware 2.3.1 / ROM 2.3, without CP/M service</th>
+<th>Same modern interfaces, with optional CP/M service</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cartridge</td>
+<td>dual <code>CPM.DCK</code>, SRAM slot pair 4/5</td>
+<td>same dual cartridge</td>
+<td>same dual cartridge; separate CPMDIR/CPMSD builds also available</td>
+</tr>
+<tr>
+<td>160KB / 320KB banked RAMDisk</td>
+<td>Yes: load preload TAPs or saved chunks</td>
+<td>Yes: load preload TAPs or saved TAP/chunks</td>
+<td>Yes: preload, reload, or snapshot the SD service volume</td>
+</tr>
+<tr>
+<td>Read/write files while working in RAMDisk</td>
+<td>Yes; changes are in SRAM</td>
+<td>Yes; changes are in SRAM</td>
+<td>Yes; changes are in SRAM, separate from the source SD volume</td>
+</tr>
+<tr>
+<td>TPSAVE output</td>
+<td>CPM00..19/39.TAP plus CPMSTATE.TAP</td>
+<td>one CPMRAM.TAP containing all CODE blocks</td>
+<td>same when working in RAMDisk</td>
+</tr>
+<tr>
+<td>TPSAVE SPLIT</td>
+<td>same legacy chunk set</td>
+<td>legacy-compatible chunk set</td>
+<td>legacy-compatible chunk set</td>
+</tr>
+<tr>
+<td>Resume a saved RAMDisk without PC repacking</td>
+<td>Yes, directly from the saved chunk set</td>
+<td>Yes, complete TAP or chunk set</td>
+<td>Yes, choose L to reload</td>
+</tr>
+<tr>
+<td>Operate directly on a DSK/TAP stored on SD</td>
+<td>No</td>
+<td>No CP/M sector backend provided by the bare firmware</td>
+<td>Yes, through CPMDISK and the service</td>
+</tr>
+<tr>
+<td>Expose ordinary /CPM/FILES as drive A:</td>
+<td>No</td>
+<td>No</td>
+<td>Yes, through the directory service</td>
+</tr>
+<tr>
+<td>Snapshot SD disk/native files into RAMDisk</td>
+<td>No SD service source</td>
+<td>No SD service source</td>
+<td>R at startup</td>
+</tr>
+<tr>
+<td>Save changes before power off</td>
+<td>TPSAVE required</td>
+<td>TPSAVE required in RAMDisk</td>
+<td>TPSAVE for RAMDisk; persistent SD writes go to the service's volume</td>
+</tr>
+</tbody>
+</table>
+<p>"Yes" describes implemented code verified with native Z80/protocol models and,
+for SD storage, actual Python service/filesystem tests. <strong>Physical TSPico board
+operation and timing are not yet verified.</strong> Existing 1.00 owners can use the
+RAMDisk candidate without upgrading or installing Pico-side Python modules.</p>
+<h2 id="what-about-11-11c-and-other-23x-builds">What about 1.1, 1.1c, and other 2.3.x builds?</h2>
+<ul>
+<li><strong>1.1 / 1.1c beta:</strong> later source introduces appending SAVEs to a mounted TAP.
+  That does not establish compatibility with this cartridge's modern handshake,
+  SRAM commands or extension API. These intermediate releases are <strong>not a
+  validated CP/M target</strong>. Do not infer single-TAP TPSAVE or native-files support
+  from their append feature. We have not tested an intermediate-firmware path.</li>
+<li><strong>2.3.1 firmware / ROM 2.3:</strong> these are the version labels in the inspected
+  <code>tspico-firmware-build</code> source and manual. Our modern path targets that
+  status-register protocol and the inspected extension interfaces. This is a
+  source/protocol compatibility target, not physical-board certification.</li>
+<li><strong>Other 2.3.x builds:</strong> not automatically validated. They must preserve the
+  inspected handshake, TAP/APPEND, MEMDOCK and extension interfaces used here.
+  Later version numbers should not be read as an unconditional compatibility
+  promise. Firmware and the TS2068 ROM/EXROM version are separate components.</li>
+</ul>
+<p>On the inspected modern firmware, normal BASIC <code>SAVE "tpi:info"</code> reports the
+firmware and ROM versions. Use that information and your installation records;
+do not identify a firmware release from the CP/M legacy/modern banner alone.</p>
+<h2 id="optional-cpm-sd-service">Optional CP/M SD service</h2>
+<p>For direct SD images or native <code>/CPM/FILES</code>, the modern firmware must have the
+compatible EXT_SA_FUNCT extension hook, CH_CALL and packet/DMA helpers. Install
+the package's four modules (<code>cpm_service.py</code>, <code>cpm_directory.py</code>, <code>cpm_tap.py</code>,
+<code>cpm_dsk.py</code>), merge their handlers into the existing <code>dev_extcmd.py</code>, and choose
+the backend in <code>cpm_config.py</code>. See <a href="tspico-directory.html">service setup</a>.
+These modules are not a replacement UF2 and are not installed by copying game
+files to the SD card. They are not for original 1.00. No project build or ZIP
+updates the firmware, ROM, BOOT setting or device automatically.</p>
+<p>After successful detection, the dual cartridge offers <strong>Enter = persistent SD</strong>,
+<strong>R = copy the service volume to RAMDisk</strong>, <strong>L = reload a saved RAMDisk</strong>.
+Without the service it uses the TAP/RAMDisk path. In SD mode <code>CPMDISK</code> handles
+mount/export; in RAMDisk mode <code>TPSAVE</code> handles export.</p>
+<h2 id="files-exchanged-with-tsrun-and-fuse">Files exchanged with TSRun and Fuse</h2>
+<ul>
+<li>TSRun's <strong>Download TAP</strong> creates one complete disk TAP for the modern path.
+  Original 1.00 cannot use its SAVE handler to build that large single file.</li>
+<li>TSRun's <strong>Download 1.00 TAP set</strong> creates a ZIP of chunk TAPs and CPMSTATE.TAP.
+  Extract those files into <code>/TAP/CPM/SAVE/</code>, preserving the old save separately.
+  The cartridge loads them directly; do not mount the ZIP itself.</li>
+<li>Fuse/JLO uses the DSK container. TSRun accepts DSK, complete CP/M TAP, saved
+  chunk sets and preload volumes. Neither emulator requires TSPico firmware.</li>
+</ul>
+<p>COLOR, the HI example, COM programs and 64-column display operate above the
+disk backend and are available in each build. PicoVideo 80-column detection is
+a separate video feature; it is not enabled merely by a TSPico firmware upgrade.</p>
+<h2 id="evidence">Evidence</h2>
+<p>Original 1.00 SAVE behavior and the exact UF2 hash are recorded in the
+<a href="firmware-1.00-storage-audit.html">binary audit</a>. The modern source inspected is
+the owner's local <code>references/tspico-firmware-build</code>, whose <code>src/TS/tspico.py</code>
+declares FW_VERSION 2.3.1 and ROM_VERSION 2.3. Its upstream is
+<a href="https://github.com/timex-sinclair-projects/tspico-firmware-build">tspico-firmware-build</a>.
+The original distribution is <a href="https://github.com/timex-sinclair-projects/TS-Pico">TS-Pico</a>.
+This document records our compatibility boundary, not an assertion that every
+build currently published upstream has been tested here.</p><footer>Jon Becker · CP/M 2.2 · cpm22-v0.1.0 · <a href="../docs/release.html">Build, attribution and validation</a> · <a href="../docs/infocom-notice.html">Infocom notice</a></footer></main></body></html>
