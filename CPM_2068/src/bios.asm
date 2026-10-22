@@ -156,7 +156,13 @@ warm:
     ld bc,6
     ldir
 start_ccp:
+    IF BUILD_OLIGER
+    ld a,(4)
+    and 15
+    ld c,a
+    ELSE
     ld c,0
+    ENDIF
     jp $d000
 dummy:
     ret
@@ -183,10 +189,24 @@ setdma:
 seldsk:
     ld hl,0
     ld a,c
+    IF BUILD_OLIGER
+    cp 2
+    ret nc
+    inc a
+    ld (ol_drive),a
+    call ol_invalidate
+    ld hl,dph
+    ld a,c
+    or a
+    ret z
+    ld hl,dph_b
+    ret
+    ELSE
     or a
     ret nz
     ld hl,dph
     ret
+    ENDIF
 sectran:
     ld h,b
     ld l,c
@@ -288,6 +308,11 @@ block_write:
     ENDIF
 dph:
     dw 0,0,0,0,dirbuf,dpb,0,alv
+    IF BUILD_OLIGER
+dph_b:
+    dw 0,0,0,0,dirbuf,dpb,0,alv_b
+alv_b: ds 32
+    ENDIF
 dpb:
     dw 16
     db DISK_BSH,DISK_BLM,DISK_EXM

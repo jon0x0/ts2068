@@ -293,3 +293,16 @@ Oliger/TSRun page and TSPico packages use the larger disk arrangements above.
 
 Physical TSPico timing and any proposed PicoCartridge/PicoROM modification still
 need hardware verification; emulator/protocol-model results do not establish that.
+
+### Two disks in the browser
+
+The 320KB browser session mounts the primary game disk on A: and the utility
+disk on B:. Type `A:` or `B:` at the CP/M prompt to switch drives. The disk
+controls selector chooses which disk to open or download; it does not change
+CP/M's current drive. Both disks must use the same geometry as the cartridge.
+Download each changed disk separately before closing the page.
+
+For the local two-drive cartridge, run `python tools/build_tsrun_dual.py`, then
+start `tools/run_tsrun.py` with `--disk`, `--disk-b`, and
+`--cartridge build/tsrun-dual/CPM320.DCK`. The standard 160KB browser profile
+continues to boot its single utility disk. TSPico remains a single-drive target.

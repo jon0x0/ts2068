@@ -56,4 +56,5 @@ certification for every firmware or physical board.
 When reporting a problem, include release/tag, target/emulator, firmware GETINFO,
 VIDEO output, image size, cartridge filename/slot, full diagnostic screen and
 whether a saved disk existed. Preserve that disk rather than erasing it to
-make the loader fall back. No B drive or CP/M 3.x support is claimed.
+make the loader fall back. The 320KB browser/Oliger BIOS supports A: and B: with matching disk geometry;
+physical two-drive hardware remains unverified. No CP/M 3.x support is claimed.

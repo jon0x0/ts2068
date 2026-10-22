@@ -13,13 +13,14 @@ class Handler(SimpleHTTPRequestHandler):
     extensions_map={**SimpleHTTPRequestHandler.extensions_map,'.mjs':'text/javascript','.js':'text/javascript'}
     def do_GET(self):
         if urlsplit(self.path).path=='/config.json':
-            data=json.dumps({'disk':self.server.disk.name,'cartridge':self.server.cartridge.name}).encode()
+            data=json.dumps({'disk':self.server.disk.name,'diskB':self.server.disk_b.name if self.server.disk_b else None,'cartridge':self.server.cartridge.name}).encode()
             self.send_response(200);self.send_header('Content-Type','application/json');self.send_header('Content-Length',str(len(data)));self.end_headers();self.wfile.write(data);return
         super().do_GET()
 
     def translate_path(self,path):
         path=unquote(urlsplit(path).path)
         fixed={'/media/disk.dsk':self.server.disk,'/media/cpm.dck':self.server.cartridge}
+        if self.server.disk_b:fixed['/media/disk-b.dsk']=self.server.disk_b
         if path in fixed:return str(fixed[path])
         if path.startswith('/tsrun/'):
             base=self.server.tsrun;relative=path[len('/tsrun/'):]
@@ -43,13 +44,16 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--tsrun',type=Path,default=ROOT/'../../TSRun')
     parser.add_argument('--disk',type=Path,default=ROOT/'build/infocom-cpm.dsk')
+    parser.add_argument('--disk-b',type=Path,help='Optional second disk, matching the cartridge size')
     parser.add_argument('--cartridge',type=Path,default=ROOT/'build/infocom-cpm.dck')
     parser.add_argument('--port',type=int,default=8770)
     args=parser.parse_args()
+    if args.disk_b and not args.disk_b.is_file():parser.error('missing '+str(args.disk_b))
     for path in (args.disk,args.cartridge,args.tsrun/'machine.js',args.tsrun/'roms/ts2068-0.rom',args.tsrun/'roms/ts2068-1.rom'):
         if not path.is_file():parser.error('missing '+str(path))
     with ThreadingHTTPServer(('127.0.0.1',args.port),partial(Handler,directory=str(ROOT/'web/tsrun'))) as server:
         server.tsrun=args.tsrun.resolve();server.disk=args.disk.resolve();server.cartridge=args.cartridge.resolve()
+        server.disk_b=args.disk_b.resolve() if args.disk_b else None
         print(f'CP/M on TSRun: http://127.0.0.1:{args.port}/',flush=True)
         print('Disk edits stay in the browser. Download DSK or TAP before closing; source files are read-only.',flush=True)
         try:server.serve_forever()

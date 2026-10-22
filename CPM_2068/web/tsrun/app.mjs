@@ -7,7 +7,9 @@ const keyboard=initKeyboard($('keyboard'),keys),screen=$('screen'),ctx=screen.ge
 let device,config,busy=false,clock=0,pendingFrames;
 const matrix=['\0ZXCV','ASDFG','QWERT','12345','09876','POIUY','\rLKJH',' \0MNB'];
 function paint(){for(let i=0;i<machine.pixels.length;i++){const c=machine.pixels[i],bright=c&8?51:0,at=i*4;frame.data[at]=(c&2?204:0)+bright;frame.data[at+1]=(c&4?204:0)+bright;frame.data[at+2]=(c&1?204:0)+bright;frame.data[at+3]=255;}ctx.putImageData(frame,0,0);}
-function status(){if(device)$('status').textContent=`A: ${config.disk} · ${device.raw.length/1024}KB · ${device.dirty?'unsaved changes — download DSK':'disk loaded'}`;}
+function status(){if(device)$('status').textContent=device.drives.map((d,i)=>`${'AB'[i]}: ${d?(i?config.diskB:config.disk)+' / '+d.raw.length/1024+'KB / '+(d.dirty?'unsaved changes':'disk loaded'):'empty'}`).join(' | ');}
+const selectedDrive=()=>device.drives[Number($('drive').value)];
+
 function tick(now){if(!clock)clock=now;if(now-clock>100)clock=now-100;const count=Math.min(6,Math.floor((now-clock)/16.64));if(count){clock+=count*16.64;for(let i=0;i<count;i++){api.runFrame(machine);if(pendingFrames&&!--pendingFrames.left){const resolve=pendingFrames.resolve;pendingFrames=null;resolve();}}paint();status();}requestAnimationFrame(tick);}
 function reset(){handleBlur(keyboard);device.reset();api.resetMachine(machine);clock=0;screen.focus({preventScroll:true});}
 screen.addEventListener('keydown',e=>{if(!busy)handleKeyDown(keyboard,e);});
@@ -24,14 +26,14 @@ async function command(text){
  finally{keys.fill(255);busy=false;$('send').disabled=false;screen.focus({preventScroll:true});}
 }
 $('commands').addEventListener('submit',e=>{e.preventDefault();command($('command').value).catch(error=>alert(error.message));});
-for(const button of document.querySelectorAll('[data-command]'))button.onclick=()=>command(button.dataset.command).catch(error=>alert(error.message));
+for(const button of document.querySelectorAll('[data-command]'))button.onclick=async()=>{try{if(busy)return;if(config.diskB&&['PLANET','ZORK1'].includes(button.dataset.command)){await command('A:');await emulatedFrames(30);}await command(button.dataset.command);}catch(error){alert(error.message);}};
 $('reset').onclick=()=>{if(!busy)reset();};
-function download(format){const data=format==='zip'?storedZip(encodeTapSet(device.raw)):format==='tap'?device.exportTap():device.exportDsk(),blob=new Blob([data],{type:'application/octet-stream'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=config.disk.replace(/\.(dsk|tap)$/i,'')+'-saved.'+format;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
+function download(format){const disk=selectedDrive();if(!disk){alert('No disk in this drive.');return;}const data=format==='zip'?storedZip(encodeTapSet(disk.raw)):format==='tap'?disk.exportTap():disk.exportDsk(),blob=new Blob([data],{type:'application/octet-stream'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=(Number($('drive').value)?config.diskB:config.disk).replace(/\.(dsk|tap)$/i,'')+'-saved.'+format;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 $('save').onclick=()=>download('dsk');
 $('save-tap').onclick=()=>download('tap');
 $('save-chunks').onclick=()=>download('zip');
-$('disk-file').onchange=async()=>{const files=[...$('disk-file').files];if(!files.length)return;try{if(busy)throw Error('Wait for the command to finish.');const inputs=await Promise.all(files.map(async file=>({name:file.name,data:await file.arrayBuffer()}))),media=inputs.length===1?decodeMedia(inputs[0].data):decodeTapSet(inputs);if(media.sides!==device.sides)throw Error('Disk size must match this cartridge. Restart the launcher with its matching cartridge to change size.');if(device.dirty&&!confirm('The current disk has unsaved changes. Open another disk anyway?'))return;device.detach();device=attachOliger(machine,media);config.disk=inputs.length===1?files[0].name:'CPMRAM.TAP';reset();status();}catch(error){alert(error.message);}finally{$('disk-file').value='';}};
-window.addEventListener('beforeunload',e=>{if(device?.dirty){e.preventDefault();e.returnValue='';}});
+$('disk-file').onchange=async()=>{const files=[...$('disk-file').files];if(!files.length)return;try{if(busy)throw Error('Wait for the command to finish.');const inputs=await Promise.all(files.map(async file=>({name:file.name,data:await file.arrayBuffer()}))),media=inputs.length===1?decodeMedia(inputs[0].data):decodeTapSet(inputs),slot=Number($('drive').value),old=device.drives[slot];if(media.sides!==device.sides)throw Error('Disk size must match this cartridge.');if(old?.dirty&&!confirm('This drive has unsaved changes. Replace its disk anyway?'))return;const disks=[...device.drives];disks[slot]=media;device.detach();device=attachOliger(machine,disks[0],disks[1]);config[slot?'diskB':'disk']=inputs.length===1?files[0].name:'CPMRAM.TAP';reset();status();}catch(error){alert(error.message);}finally{$('disk-file').value='';}};
+window.addEventListener('beforeunload',e=>{if(device?.drives.some(d=>d?.dirty)){e.preventDefault();e.returnValue='';}});
 try{
  const fetchBytes=async url=>{const response=await fetch(url);if(!response.ok)throw Error(`Cannot load ${url}: ${response.status}`);return new Uint8Array(await response.arrayBuffer());};
  const response=await fetch('./config.json');if(!response.ok)throw Error('Cannot load emulator configuration.');
@@ -39,7 +41,9 @@ try{
  if(config.media){const size=new URLSearchParams(location.search).get('size')||'320';if(!config.media[size])throw Error('Choose size=160 or size=320.');Object.assign(config,config.media[size]);}
  const [home,ex,disk,cartridge]=await Promise.all([config.rom0||'./tsrun/roms/ts2068-0.rom',config.rom1||'./tsrun/roms/ts2068-1.rom',config.diskUrl||'./media/disk.dsk',config.cartridgeUrl||'./media/cpm.dck'].map(fetchBytes));
  for(const error of [api.setHomeRom(machine,home),api.setExRom(machine,ex),api.insertDock(machine,cartridge)])if(error)throw Error(error);
- device=attachOliger(machine,disk);
+ const diskB=config.diskB?await fetchBytes(config.diskBUrl||'./media/disk-b.dsk'):null;
+ if(diskB&&decodeMedia(diskB).sides!==decodeMedia(disk).sides)throw Error('Both disks must match the cartridge geometry.');
+ device=attachOliger(machine,disk,diskB);
  for(const button of document.querySelectorAll('button,input[type=file]'))button.disabled=false;
  if(config.games===false)for(const button of document.querySelectorAll('[data-command="PLANET"],[data-command="ZORK1"]'))button.hidden=true;
  status();reset();requestAnimationFrame(tick);

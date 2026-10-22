@@ -1,0 +1,11 @@
+import fs from 'node:fs';import path from 'node:path';import {pathToFileURL} from 'node:url';import assert from 'node:assert/strict';
+const root=process.cwd();const {attachOliger}=await import(pathToFileURL(root+'/web/tsrun/oliger.mjs'));const api=await import(pathToFileURL(path.resolve('../../TSRun/machine.js')));
+const keys=new Uint8Array(8).fill(255),m=api.createMachine(keys,new Uint8Array(2).fill(255));api.setHomeRom(m,fs.readFileSync('../../TSRun/roms/ts2068-0.rom'));api.setExRom(m,fs.readFileSync('../../TSRun/roms/ts2068-1.rom'));assert.equal(api.insertDock(m,fs.readFileSync('build/tsrun-dual/CPM320.DCK')),null);const device=attachOliger(m,fs.readFileSync('build/infocom-cpm.dsk'),fs.readFileSync('build/profiles/oliger320/oliger-cpm.dsk'));let log='';const write=m.bus.write;m.bus.write=(a,v)=>{if(a>=0xf800&&a<0xfe00)log+=String.fromCharCode(v);write(a,v);};const matrix=['\0ZXCV','ASDFG','QWERT','12345','09876','POIUY','\rLKJH',' \0MNB'];
+function frames(n){for(let i=0;i<n;i++)api.runFrame(m);}
+function type(s){for(let c of s){keys.fill(255);if('.=:'.includes(c)){keys[7]&=~2;c={'.':'M','=':'L',':':'Z'}[c];}for(let r=0;r<8;r++){let bit=matrix[r].indexOf(c);if(bit>=0){keys[r]&=~(1<<bit);break;}}frames(4);keys.fill(255);frames(4);}}
+function check(s){assert(log.includes(s),'Missing '+s);}
+
+function send(text,expected){const pos=log.length;type(text+'\r');for(let i=0;i<6000;i+=20){frames(20);if(log.slice(pos).includes(expected)){frames(10);return;}}throw new Error('Waiting for '+expected+' after '+text);}
+
+frames(300);check('A>');send('DIR','A>');check('PLANET');check('ZORK1');send('B:','B>');send('DIR','B>');send('PIP ACOPY.COM=A:HELLO.COM','B>');send('ACOPY','B>');check('HELLO from a .COM');assert(device.drives[1].dirty);assert(!device.drives[0].dirty);send('A:','A>');send('PIP BCOPY.COM=B:HELLO.COM','A>');send('BCOPY','A>');assert(device.drives[0].dirty);send('A:','A>');send('PLANET','>');frames(1200);check('PLANETFALL');send('QUIT','?');send('Y','A>');send('ZORK1','>');frames(1200);check('ZORK I');send('QUIT','?');send('Y','A>');
+assert(device.drives[0].exportDsk().length>0);assert(device.drives[1].exportDsk().length>0);console.log('Two-drive CP/M boot, switching, cross-drive copies, games and independent writes PASS');

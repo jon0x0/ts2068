@@ -4,6 +4,7 @@
 oliger_init:
     call ol_invalidate
     ld a,1
+    ld (ol_drive),a
     out ($b7),a
     xor a
     call ol_command
@@ -58,9 +59,11 @@ ol_cache_miss:
     and 32
     rlca
     rlca
-    or 1
+    ld b,a
+    ld a,(ol_drive)
+    or b
     ELSE
-    ld a,1
+    ld a,(ol_drive)
     ENDIF
     ld (ol_select),a
     ld a,l
@@ -234,4 +237,5 @@ ol_half: db 0
 ol_sector: db 0
 ol_track: db 0
 ol_select: db 1
+ol_drive: db 1
 ol_cache: ds 256

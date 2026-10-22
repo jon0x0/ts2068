@@ -12,7 +12,9 @@
       "disk": "CP/M 2.2 320KB Planetfall + Zork I",
       "diskUrl": "./media/cpm320.dsk",
       "cartridgeUrl": "./media/cpm320.dck",
-      "games": true
+      "games": true,
+      "diskB": "320KB utilities",
+      "diskBUrl": "./media/utilities320.dsk"
     }
   }
 }

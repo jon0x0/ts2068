@@ -254,4 +254,14 @@ file. It needs no Oliger adapter but has much less space. That EXROM RAM is an
 emulator-provided expansion, not RAM present in a stock TS2068. The current
 Oliger/TSRun page and TSPico packages use the larger disk arrangements above.</p>
 <p>Physical TSPico timing and any proposed PicoCartridge/PicoROM modification still
-need hardware verification; emulator/protocol-model results do not establish that.</p><footer>Jon Becker · CP/M 2.2 · cpm22-v0.1.0 · <a href="../docs/release.html">Build, attribution and validation</a> · <a href="../docs/infocom-notice.html">Infocom notice</a></footer></main></body></html>
+need hardware verification; emulator/protocol-model results do not establish that.</p>
+<h3 id="two-disks-in-the-browser">Two disks in the browser</h3>
+<p>The 320KB browser session mounts the primary game disk on A: and the utility
+disk on B:. Type <code>A:</code> or <code>B:</code> at the CP/M prompt to switch drives. The disk
+controls selector chooses which disk to open or download; it does not change
+CP/M's current drive. Both disks must use the same geometry as the cartridge.
+Download each changed disk separately before closing the page.</p>
+<p>For the local two-drive cartridge, run <code>python tools/build_tsrun_dual.py</code>, then
+start <code>tools/run_tsrun.py</code> with <code>--disk</code>, <code>--disk-b</code>, and
+<code>--cartridge build/tsrun-dual/CPM320.DCK</code>. The standard 160KB browser profile
+continues to boot its single utility disk. TSPico remains a single-drive target.</p><footer>Jon Becker · CP/M 2.2 · cpm22-v0.1.0 · <a href="../docs/release.html">Build, attribution and validation</a> · <a href="../docs/infocom-notice.html">Infocom notice</a></footer></main></body></html>

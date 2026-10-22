@@ -122,15 +122,19 @@ export function decodeDsk(input){
  return {raw,sides,container:data.slice(),format:'dsk'};
 }
 
-export function attachOliger(machine,input){
- const media=input?.raw?input:decodeMedia(input),read=machine.bus.ioRead,write=machine.bus.ioWrite;
- let head=0,status=0,track=0,sector=1,index=0,offset=0,writing=false,selected=true;
- const device={...media,dirty:false,writeProtected:false,reads:0,writes:0,
-  reset(){head=0;status=0;track=0;sector=1;index=0;writing=false;selected=true;},
+export function attachOliger(machine,input,secondary=null){
+ const read=machine.bus.ioRead,write=machine.bus.ioWrite;
+ const makeDrive=input=>{if(!input)return null;const media=input?.raw?input:decodeMedia(input);return {...media,dirty:!!media.dirty,writeProtected:!!media.writeProtected,reads:media.reads||0,writes:media.writes||0,
   exportDsk(){if(!media.container)return encodeDsk(media.raw);const output=media.container.slice();for(let t=0;t<40*media.sides;t++)output.set(media.raw.subarray(t*4096,(t+1)*4096),512+t*4352);return output;},
-  exportTap(){return encodeTap(media.raw);},
+  exportTap(){return encodeTap(media.raw);}};};
+ const drives=[makeDrive(input),makeDrive(secondary)];let media=drives[0];
+ let head=0,status=0,track=0,sector=1,index=0,offset=0,writing=false,selected=true;
+ const device=drives[0];
+ Object.assign(device,{drives,
+  reset(){head=0;status=0;track=0;sector=1;index=0;writing=false;selected=true;media=drives[0];},
+  mount(drive,input){if(![0,1].includes(drive))throw Error('Invalid drive.');const replacement=makeDrive(input);if(!replacement||replacement.sides!==drives[0].sides)throw Error('Both disks must match the cartridge geometry.');if(drive===0)throw Error('Replace drive A by reattaching the controller.');drives[drive]=replacement;this.reset();},
   detach(){machine.bus.ioRead=read;machine.bus.ioWrite=write;}
- };
+ });
  machine.bus.ioRead=p=>{
   switch(p&255){
    case 0x8f:return status;
@@ -142,11 +146,11 @@ export function attachOliger(machine,input){
  };
  machine.bus.ioWrite=(p,v)=>{
   switch(p&255){
-   case 0xb7:selected=(v&3)===1;head=(v>>7)&1;break;
+   case 0xb7:media=drives[(v&3)===1?0:(v&3)===2?1:2];selected=!!media;head=(v>>7)&1;status=0;writing=false;index=0;break;
    case 0x9f:track=v;break;
    case 0xaf:sector=v;break;
    case 0xbf:
-    if(writing&&(status&3)===3){media.raw[offset+index++]=v;device.dirty=true;if(index===256){status=0;writing=false;}}
+    if(writing&&(status&3)===3){media.raw[offset+index++]=v;media.dirty=true;if(index===256){status=0;writing=false;}}
     else index=v;
     break;
    case 0x8f:
@@ -157,8 +161,8 @@ export function attachOliger(machine,input){
      index=0;writing=v===0xa0;
      if(!selected||track>=40||head>=media.sides||sector<1||sector>16){status=16;writing=false;break;}
      offset=((track*media.sides+head)*16+sector-1)*256;
-     if(writing&&device.writeProtected){status=64;writing=false;break;}
-     status=3;if(writing)device.writes++;else device.reads++;
+     if(writing&&media.writeProtected){status=64;writing=false;break;}
+     status=3;if(writing)media.writes++;else media.reads++;
     }else{status=16;writing=false;}
     break;
    default:write(p,v);
