@@ -5,7 +5,7 @@ paths: the TSPico cartridge needs Pico hardware; the Oliger cartridge needs a
 disk controller and a matching DSK. Do not interchange their cartridges.
 The OS lives in the cartridge, so disks need no CP/M system tracks.</p>
 <p><strong>TSPico owners:</strong> first read the <a href="tspico-firmware.html">firmware/feature matrix</a>.
-Original 1.00 uses RAMDisk and chunk saves; the inspected modern target is
+Original 1.00 uses RAMDisk and chunk saves; the inspected TSPico v2.x target is
 firmware 2.3.1 / ROM 2.3. Direct SD/native files additionally require our optional
 CP/M service. Intermediate 1.1 releases are not a validated target.</p>
 <p>Once at A&gt;, see <a href="using-cpm.html">COLOR, HI and installing new software</a> for the
@@ -38,19 +38,19 @@ Expect a protocol/RAMDisk notice, HELLO's greeting, then <code>A&gt;</code>. Run
 before power off, confirm with Y and wait for completion. Saved chunks reload
 directly on the next start; no PC repacking is needed. Missing/incomplete
 saved sets stop boot instead of being silently discarded.</p>
-<p>With the inspected <strong>modern 2.3.1 / ROM 2.3 interfaces</strong>, a configured optional CP/M service offers
+<p>With the inspected <strong>TSPico v2.x (inspected 2.3.1) / ROM 2.3 interfaces</strong>, a configured optional CP/M service offers
 <strong>Enter</strong> for persistent SD, <strong>R</strong> for a RAMDisk snapshot, or <strong>L</strong> to reload a
 saved RAMDisk. Without that service, it uses TAP-backed preload/saves through
 the newer transport. The optional service is required for native <code>/CPM/FILES</code>
 or direct DSK/TAP disk access; the package does not install it automatically.
-Modern RAMDisk TPSAVE writes one <code>/CPM/SAVE/CPMRAM.TAP</code>; legacy mode writes a
+TSPico v2.x RAMDisk TPSAVE writes one <code>/CPM/SAVE/CPMRAM.TAP</code>; legacy mode writes a
 reloadable chunk set. Both RAMDisk modes require explicit saving.</p>
 <p>The display stays at 64 columns unless the supported PicoVideo extension is
 detected. Physical original-1.00 boot and game operation have been reported;
-modern interfaces and failure cases are primarily checked with native Z80
+TSPico v2.x interfaces and failure cases are primarily checked with native Z80
 and protocol/memory models. See
 <a href="tspico-dual.html">TSPico modes and saves</a>, <a href="tspico-ram.html">SRAM reservations</a>, and
-<a href="tspico-directory.html">modern service setup</a>.</p>
+<a href="tspico-directory.html">TSPico v2.x service setup</a>.</p>
 <h2 id="fuse-gui-with-oligerjlo">Fuse GUI with Oliger/JLO</h2>
 <p>Use Eduardo Fuentes's <strong>JLO-enabled Fuse</strong>, installed here at:</p>
 <pre><code class="language-text">C:\apps\emulation\Fuse-JLODiskEmulation\fuse-1.9.1-win32\fuse.exe
@@ -105,7 +105,7 @@ factory preload volumes. New saved sets use their descriptor's geometry and
 Fletcher checksums; old descriptor-free sets require selecting exactly the
 correct twenty/forty pages. Program TAPs and incomplete/mixed sets are refused.</p>
 <p><strong>Reset CP/M</strong> retains the current disk. <strong>Download DSK</strong> saves a copy for Fuse,
-and <strong>Download TAP</strong> saves one multi-CODE TAP for the modern TSPico protocol.
+and <strong>Download TAP</strong> saves one multi-CODE TAP for the TSPico v2.x protocol.
 <strong>Download 1.00 TAP set</strong> saves a ZIP containing the chunk TAPs and completed
 descriptor: extract its contents into the card's <code>/TAP/CPM/SAVE/</code> directory,
 preserving the previous save separately. That set reloads directly in the
@@ -125,7 +125,7 @@ cartridge can run there without an adapter, but cannot mount these DSKs.</p>
 python tools/cpm_disk.py put work.dsk ED.COM ASM.COM README.TXT
 python tools/cpm_disk.py list work.dsk
 </code></pre>
-<p>Use <code>.tap</code> for a TSPico disk container. For native modern TSPico storage, copy
+<p>Use <code>.tap</code> for a TSPico disk container. For native TSPico v2.x storage, copy
 CP/M files directly into <code>/TAP/CPM/FILES</code> instead. <code>FORMAT A:</code> initializes an
 already mounted disk after confirmation; it does not create an SD container.
 See <a href="disk-tools.html">disk creation, copying and FORMAT</a>.</p>
@@ -194,7 +194,7 @@ Exact wiring, timing and firmware changes require checking the specific board;
 this project does not yet provide a validated PicoCartridge/PicoROM modification.
 The current TSPico implementation supplies the writable memory through its SRAM.</p>
 <p>A disk backend is a separate requirement. Oliger uses its disk interface; TSPico
-can use a RAMDisk or the documented modern SD service. A standalone modified
+can use a RAMDisk or the documented TSPico v2.x SD service. A standalone modified
 cartridge could instead preload extra RAM with a disk image. Its bank controls
 would need a matching BIOS driver; TSPico MEMDOCK support is not automatically
 provided by adding RAM to another cartridge. PicoVideo is optional; the normal
@@ -220,10 +220,10 @@ reads/writes. After preload, this does not reread a TAP file from SD for every
 sector. TAP headers and checksums are transport packaging; the working SRAM holds
 the disk's sector data.</p>
 <p>Changes remain in SRAM until exported. <strong>Run TPSAVE before ending a RAMDisk
-session</strong>, including on modern firmware. Original 1.00 exports a reloadable set
-of chunk TAPs plus a descriptor; the modern transport can export one multi-record
+session</strong>, including on TSPico v2.x firmware. Original 1.00 exports a reloadable set
+of chunk TAPs plus a descriptor; the TSPico v2.x storage protocol can export one multi-record
 TAP, or a compatible split set. Both reload directly with this loader. With the
-optional modern SD service, a mounted SD image can also be copied into RAMDisk
+optional TSPico v2.x SD service, a mounted SD image can also be copied into RAMDisk
 for speed; editing that snapshot does not automatically update its source image.
 Native files and direct SD images use the other documented service paths instead.
 See the <a href="tspico-firmware.html">firmware matrix</a> for exact availability and

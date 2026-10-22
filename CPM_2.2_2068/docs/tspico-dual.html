@@ -1,28 +1,28 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>tspico-dual · TS2068 CP/M 2.2</title><style>*{box-sizing:border-box}html{color-scheme:dark}body{margin:0;background:#111820;color:#e4ecf1;font:17px/1.65 system-ui,sans-serif}main{max-width:1060px;margin:auto;padding:32px 24px 70px}a{color:#8ddceb;text-underline-offset:3px}h1{font-size:clamp(30px,5vw,51px);line-height:1.15}h2{margin-top:36px}h3{margin-top:28px}p,li{max-width:86ch}nav{display:flex;gap:18px;flex-wrap:wrap;font-size:14px;border-bottom:1px solid #3c5260;padding-bottom:18px}.lead{font-size:21px;color:#bdd5de}.buttons{display:flex;flex-wrap:wrap;gap:12px;margin:25px 0}.button{background:#244455;border:1px solid #78b7c4;border-radius:6px;padding:10px 15px;font-weight:650}pre{overflow:auto;background:#0b1118;border:1px solid #344c59;padding:16px;border-radius:6px;line-height:1.5}code{font-size:.9em}table{border-collapse:collapse;display:block;overflow:auto;font-size:15px}th,td{border:1px solid #3c5260;padding:9px 12px;text-align:left;vertical-align:top}th{background:#203540}footer{margin-top:40px;border-top:1px solid #3c5260;padding-top:16px;font-size:14px;color:#b3c7cf}.note{border-left:4px solid #8ddceb;padding:6px 18px;background:#1b2d37}img{max-width:100%}</style></head><body><main><nav><a href="../index.html">Project</a><a href="../docs/quickstart.html">Quickstart</a><a href="../play/">Run CP/M</a><a href="../index.html#downloads">Downloads</a><a href="https://github.com/jon0x0/ts2068/tree/main/CPM_2.2_2068">Source</a></nav><h1 id="cpm-cartridge-automatic-legacymodern-protocol-selection">CP/M cartridge: automatic legacy/modern protocol selection</h1>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>tspico-dual · TS2068 CP/M 2.2</title><style>*{box-sizing:border-box}html{color-scheme:dark}body{margin:0;background:#111820;color:#e4ecf1;font:17px/1.65 system-ui,sans-serif}main{max-width:1060px;margin:auto;padding:32px 24px 70px}a{color:#8ddceb;text-underline-offset:3px}h1{font-size:clamp(30px,5vw,51px);line-height:1.15}h2{margin-top:36px}h3{margin-top:28px}p,li{max-width:86ch}nav{display:flex;gap:18px;flex-wrap:wrap;font-size:14px;border-bottom:1px solid #3c5260;padding-bottom:18px}.lead{font-size:21px;color:#bdd5de}.buttons{display:flex;flex-wrap:wrap;gap:12px;margin:25px 0}.button{background:#244455;border:1px solid #78b7c4;border-radius:6px;padding:10px 15px;font-weight:650}pre{overflow:auto;background:#0b1118;border:1px solid #344c59;padding:16px;border-radius:6px;line-height:1.5}code{font-size:.9em}table{border-collapse:collapse;display:block;overflow:auto;font-size:15px}th,td{border:1px solid #3c5260;padding:9px 12px;text-align:left;vertical-align:top}th{background:#203540}footer{margin-top:40px;border-top:1px solid #3c5260;padding-top:16px;font-size:14px;color:#b3c7cf}.note{border-left:4px solid #8ddceb;padding:6px 18px;background:#1b2d37}img{max-width:100%}</style></head><body><main><nav><a href="../index.html">Project</a><a href="../docs/quickstart.html">Quickstart</a><a href="../play/">Run CP/M</a><a href="../index.html#downloads">Downloads</a><a href="https://github.com/jon0x0/ts2068/tree/main/CPM_2.2_2068">Source</a></nav><h1 id="cpm-cartridge-automatic-tspico-v100v2x-protocol-selection">CP/M cartridge: automatic TSPico v1.00/v2.x protocol selection</h1>
 <p>For the BASIC launch commands, SD layout and loader choices, start with the
 <a href="startup.html#physical-ts2068-with-tspico">TSPico startup steps</a>.
 For exact version boundaries, read the <a href="tspico-firmware.html">firmware/feature matrix</a>.
-Original 1.00 is the legacy target; the inspected modern interfaces are firmware
+Original 1.00 is the legacy target; the inspected TSPico v2.x interfaces are firmware
 2.3.1 / ROM 2.3. Intermediate 1.1 releases are not a validated CP/M target.
 The optional CP/M service, not the firmware version alone, supplies native
 files/direct SD disks. <a href="using-cpm.html">COLOR, HI and new software</a> use the same
 CP/M commands on either supported storage path.</p>
 <p>Load <code>CPM.DCK</code> into TSPico SRAM slot pair 4/5. This single cartridge supports
 the legacy shared FIFO protocol (including the unmodified 1.00 target) and the
-modern status-register protocol. It validates a handshake, not a version string.
-Unknown responses stop with a load error; no modern SYNC is sent until the
-modern ACK and MID status are verified. No firmware is installed by this package.</p>
+TSPico v2.x status-register protocol. It validates a handshake, not a version string.
+Unknown responses stop with a load error; no TSPico v2.x SYNC is sent until the
+TSPico v2.x ACK and MID status are verified. No firmware is installed by this package.</p>
 <p>The startup screen reports 64 columns or detected PicoVideo 80 columns; see
 <a href="picovideo.html">PicoVideo setup and limits</a>. It also names the protocol and
 storage mode:</p>
 <ul>
 <li>Legacy: reload a saved chunk set directly, or use the supplied preload when
   no save exists. No host conversion is required to resume a session.</li>
-<li>Modern, with the optional CP/M service: press <strong>Enter</strong> for persistent SD,
+<li>TSPico v2.x, with the optional CP/M service: press <strong>Enter</strong> for persistent SD,
   <strong>R</strong> to copy the current service volume into <strong>RAMDisk</strong>, or <strong>L</strong> to reload
   a saved RAMDisk from <code>/CPM/SAVE</code>.</li>
-<li>Modern, without a usable service: reload a saved RAMDisk or use preload TAPs,
-  using the modern transport for TAP and memory-selection operations.</li>
+<li>TSPico v2.x, without a usable service: reload a saved RAMDisk or use preload TAPs,
+  using the TSPico v2.x storage protocol for TAP and memory-selection operations.</li>
 </ul>
 <p>RAMDisk uses TSPico's banked SRAM. It accepts a 160KB single-sided or 320KB
 double-sided volume. The default supplied preload is 320KB. Loading the whole
@@ -30,12 +30,12 @@ volume takes time, but subsequent disk data transfers stay in SRAM; bank
 selection still uses the Pico link. This is not a measured hardware speed claim.</p>
 <p><strong>RAMDisk changes are temporary in either protocol. Run TPSAVE before power
 off.</strong> Startup explicitly displays this reminder. TPSAVE confirms before saving
-under <code>/CPM/SAVE</code>. On the modern protocol it writes <strong>one <code>CPMRAM.TAP</code></strong>, with
+under <code>/CPM/SAVE</code>. On the TSPico v2.x storage protocol it writes <strong>one <code>CPMRAM.TAP</code></strong>, with
 a metadata CODE record and twenty/forty 8KB CODE records appended inside it.
 On the legacy protocol it writes <code>CPM00..19/39.TAP</code> plus <code>CPMSTATE.TAP</code>.
 <code>TPSAVE SPLIT</code> selects that legacy-compatible set on either protocol.
 The original SD image/native
-directory is unchanged when a modern service volume is copied into RAMDisk.
+directory is unchanged when a TSPico v2.x service volume is copied into RAMDisk.
 Export is explicit; it is not an automatic writeback or an atomic disk save.</p>
 <p>The loader reads either save format directly. New chunk sets carry geometry,
 a completion marker and Fletcher-16 page checksums. The marker is invalidated
@@ -43,7 +43,7 @@ before replacing any page and completed only after all writes succeed. Missing,
 incomplete or mismatched pages stop boot instead of silently loading the factory
 disk. Existing older exports without a descriptor also load directly: choose
 1=160KB or 2=320KB on the TS2068. If both a saved TAP and a chunk set exist on
-modern firmware, the loader asks T=TAP or C=chunks so it does not guess which
+TSPico v2.x firmware, the loader asks T=TAP or C=chunks so it does not guess which
 save you intended. Preserve previous saves separately before replacing them.</p>
 <p>The cartridge currently exposes <strong>A:</strong> only. Additional drive letters and
 multiple simultaneous SD/RAMDisk volumes are future work.</p>
@@ -62,7 +62,7 @@ them. See <a href="disk-tools.html">disk tools</a> for commands and limits.</p>
 </code></pre>
 <p>Fixed preload names are retained for both sizes: a 160KB preload uses only
 CPM32000.TAP through CPM32003.TAP. Geometry comes from metadata.</p>
-<p>For modern persistent SD access, install/merge the optional four CP/M service
+<p>For TSPico v2.x persistent SD access, install/merge the optional four CP/M service
 modules and command table on an already compatible newer firmware, as described
 in <a href="tspico-directory.html">directory setup</a>. The included config defaults to native
 <code>/CPM/FILES</code>. Alternatively configure a 160KB/320KB DSK or TAP as the service's
@@ -78,7 +78,7 @@ to switch back without restarting.</p>
 TPSAVE is a RAMDisk utility, not an SD-drive export command.</p>
 <h2 id="convert-a-disk-or-recover-a-ramdisk-export">Convert a disk or recover a RAMDisk export</h2>
 <p>Conversion is optional for archival or Fuse use, <strong>not a reload prerequisite</strong>.
-With the optional modern service, conversion of a saved single TAP to DSK can
+With the optional TSPico v2.x service, conversion of a saved single TAP to DSK can
 also run on the TS2068 in persistent SD mode:</p>
 <pre><code class="language-text">CPMDISK MOUNT SAVE/CPMRAM.TAP
 CPMDISK SAVE SAVE/CPMRAM.DSK
@@ -105,7 +105,7 @@ node tools/test_saved_ramdisk.mjs
 node tools/test_saved_ramdisk.mjs --single
 python tools/package_dual.py
 </code></pre>
-<p>Tests execute native Z80 code against functional legacy and modern models.
+<p>Tests execute native Z80 code against functional TSPico v1.00 and v2.x models.
 They do not execute the frozen 1.00 firmware or establish physical FIFO timing.
 The two separate, smaller cartridges remain available for users who want an
 explicit transport/storage choice.</p><footer>Jon Becker · CP/M 2.2 · cpm22-v0.1.0 · <a href="../docs/release.html">Build, attribution and validation</a> · <a href="../docs/infocom-notice.html">Infocom notice</a></footer></main></body></html>

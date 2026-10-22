@@ -1,7 +1,7 @@
 # TSPico firmware and CP/M features
 
 Use this table before following the startup instructions. **Firmware 1.00,
-1.1 beta, and the modern 2.3 protocol are different targets.** A newer firmware
+1.1 beta, and the TSPico v2.x protocol (inspected 2.3) are different targets.** A newer firmware
 number alone does not supply our CP/M SD filesystem service.
 
 The combined cartridge is `CPM.DCK` from the dual package. It detects a protocol
@@ -10,7 +10,7 @@ handshake, not the exact installed firmware version. A startup message saying
 
 ## Feature matrix
 
-| Feature | Original firmware 1.00, unchanged | Inspected firmware 2.3.1 / ROM 2.3, without CP/M service | Same modern interfaces, with optional CP/M service |
+| Feature | Original firmware 1.00, unchanged | Inspected firmware 2.3.1 / ROM 2.3, without CP/M service | Same TSPico v2.x interfaces, with optional CP/M service |
 |---|---|---|---|
 | Cartridge | dual `CPM.DCK`, SRAM slot pair 4/5 | same dual cartridge | same dual cartridge; separate CPMDIR/CPMSD builds also available |
 | 160KB / 320KB banked RAMDisk | Yes: load preload TAPs or saved chunks | Yes: load preload TAPs or saved TAP/chunks | Yes: preload, reload, or snapshot the SD service volume |
@@ -31,12 +31,12 @@ RAMDisk candidate without upgrading or installing Pico-side Python modules.
 ## What about 1.1, 1.1c, and other 2.3.x builds?
 
 - **1.1 / 1.1c beta:** later source introduces appending SAVEs to a mounted TAP.
-  That does not establish compatibility with this cartridge's modern handshake,
+  That does not establish compatibility with this cartridge's TSPico v2.x handshake,
   SRAM commands or extension API. These intermediate releases are **not a
   validated CP/M target**. Do not infer single-TAP TPSAVE or native-files support
   from their append feature. We have not tested an intermediate-firmware path.
 - **2.3.1 firmware / ROM 2.3:** these are the version labels in the inspected
-  `tspico-firmware-build` source and manual. Our modern path targets that
+  `tspico-firmware-build` source and manual. Our TSPico v2.x path targets that
   status-register protocol and the inspected extension interfaces. This is a
   source/protocol compatibility target, not physical-board certification.
 - **Other 2.3.x builds:** not automatically validated. They must preserve the
@@ -44,13 +44,13 @@ RAMDisk candidate without upgrading or installing Pico-side Python modules.
   Later version numbers should not be read as an unconditional compatibility
   promise. Firmware and the TS2068 ROM/EXROM version are separate components.
 
-On the inspected modern firmware, normal BASIC `SAVE "tpi:info"` reports the
+On the inspected TSPico v2.x firmware, normal BASIC `SAVE "tpi:info"` reports the
 firmware and ROM versions. Use that information and your installation records;
-do not identify a firmware release from the CP/M legacy/modern banner alone.
+do not identify a firmware release from the CP/M TSPico v1.00/v2.x banner alone.
 
 ## Optional CP/M SD service
 
-For direct SD images or native `/CPM/FILES`, the modern firmware must have the
+For direct SD images or native `/CPM/FILES`, the TSPico v2.x firmware must have the
 compatible EXT_SA_FUNCT extension hook, CH_CALL and packet/DMA helpers. Install
 the package's four modules (`cpm_service.py`, `cpm_directory.py`, `cpm_tap.py`,
 `cpm_dsk.py`), merge their handlers into the existing `dev_extcmd.py`, and choose
@@ -66,7 +66,7 @@ mount/export; in RAMDisk mode `TPSAVE` handles export.
 
 ## Files exchanged with TSRun and Fuse
 
-- TSRun's **Download TAP** creates one complete disk TAP for the modern path.
+- TSRun's **Download TAP** creates one complete disk TAP for the TSPico v2.x path.
   Original 1.00 cannot use its SAVE handler to build that large single file.
 - TSRun's **Download 1.00 TAP set** creates a ZIP of chunk TAPs and CPMSTATE.TAP.
   Extract those files into `/TAP/CPM/SAVE/`, preserving the old save separately.
@@ -81,7 +81,7 @@ a separate video feature; it is not enabled merely by a TSPico firmware upgrade.
 ## Evidence
 
 Original 1.00 SAVE behavior and the exact UF2 hash are recorded in the
-[binary audit](firmware-1.00-storage-audit.md). The modern source inspected is
+[binary audit](firmware-1.00-storage-audit.md). The TSPico v2.x source inspected is
 the owner's local `references/tspico-firmware-build`, whose `src/TS/tspico.py`
 declares FW_VERSION 2.3.1 and ROM_VERSION 2.3. Its upstream is
 [tspico-firmware-build](https://github.com/timex-sinclair-projects/tspico-firmware-build).

@@ -70,7 +70,7 @@ Alternatively, the browser's Download 1.00 TAP set creates a complete reloadable
 save set for the currently open image. After preserving the old set, place all
 new files together in /TAP/CPM/SAVE; no PC repacking is necessary to reload it.
 
-### Modern TSPico
+### TSPico v2.x
 
 With the optional service, CPMDISK MOUNT ZORK2.DSK selects a persistent image
 copied to /TAP/CPM; keep CPMDISK.COM on it if you need to switch back. With

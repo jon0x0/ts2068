@@ -1,9 +1,9 @@
-# CP/M with TSPico RAMDisk — legacy or modern protocol
+# CP/M with TSPico RAMDisk — legacy or TSPico v2.x storage protocol
 
 ## Version and everyday use
 
 See the [firmware/feature matrix](tspico-firmware.md) before choosing a firmware
-path. Original 1.00 uses chunk saves; modern single-TAP saves target the inspected
+path. Original 1.00 uses chunk saves; TSPico v2.x single-TAP saves target the inspected
 2.3.1 / ROM 2.3 interfaces, not unvalidated intermediate 1.1 firmware.
 See [using CP/M](using-cpm.md) for COLOR, HI and the shared software-install steps.
 
@@ -23,7 +23,7 @@ random SD writes, a whole disk in TS2068 HOME RAM, or an EXROM RAM bank.
 **Status: physical firmware 1.00 boot and game operation have been reported in
 64 columns, alongside native Z80/protocol model tests.** The older PicoVideo V4
 display-capture problem and required 4.2 upgrade are documented separately.
-Modern interfaces and failure cases are primarily model-tested; the frozen
+TSPico v2.x interfaces and failure cases are primarily model-tested; the frozen
 1.00 handler has not itself been executed here. This package does not install
 firmware or automatically communicate with a device.
 
@@ -58,7 +58,7 @@ files first, especially any saved exports or edited boot volumes:
 
 The original firmware's public file root corresponds to the card's TAP folder.
 The loader uses CD /, CD CPM, and bare filenames; it does not assume that stock
-1.00 supports modern absolute SD paths.
+1.00 supports TSPico v2.x absolute SD paths.
 
 From normal TSPico BASIC:
 
@@ -84,7 +84,7 @@ Why eight files: the original distribution sets BUF_SIZE to 51,200 bytes. Each
 boot volume is 41,238 bytes, under 45KB, avoiding reliance on mounting a 320KB
 TAP. All volumes carry matching disk-identity metadata and numbered CODE chunks.
 Those small volumes are the factory preload. Saved chunks reload directly on
-the cartridge. Modern protocol saves may also reload from one large TAP.
+the cartridge. TSPico v2.x storage protocol saves may also reload from one large TAP.
 No Pico configuration change is required for the legacy path.
 
 At A>, try DIR, STAT, COLOR, MEMTEST, and SUBMIT DEMO. With the game package,
@@ -101,7 +101,7 @@ set directly on the next cold boot. A failed export remains incomplete; retain
 the live RAMDisk and retry before shutting down. It is not an atomic snapshot.
 The Pico's current directory becomes CPM/SAVE after export.
 
-Modern mode writes one CPMRAM.TAP containing all the metadata/page CODE records.
+TSPico v2.x mode writes one CPMRAM.TAP containing all the metadata/page CODE records.
 It uses the firmware's APPEND command after creating and mounting that TAP;
 it does not depend on the optional CP/M SD service. `TPSAVE SPLIT` produces
 legacy-compatible chunks on either protocol. No PC repacking is required for
@@ -137,7 +137,7 @@ both disk sizes. Metadata selects 160KB/1KB blocks or 320KB/2KB blocks; no
 cartridge rebuild is needed. Only the declared volumes are loaded. The disk
 is writable in SRAM; original firmware still cannot write the DSK directly.
 Legacy TPSAVE exports twenty chunks for a single-sided disk, forty for double-sided,
-plus the descriptor. Modern TPSAVE defaults to one complete TAP of either size.
+plus the descriptor. TSPico v2.x TPSAVE defaults to one complete TAP of either size.
 To return a single-sided export to Fuse:
 
 ```text
@@ -172,7 +172,7 @@ Slot selection commands are relatively expensive; no speed claim is made for
 physical hardware. A faster slot-selection interface would be a later feature.
 
 The newer SD-image build is separate: see tspico-sd320.md. Keep the legacy DCK
-on firmware 1.00; it never writes the modern SYNC/status port.
+on firmware 1.00; it never writes the TSPico v2.x SYNC/status port.
 
 ## Diagnosing a hardware boot failure
 
@@ -181,7 +181,7 @@ communication with the Pico. The generic `RAMDisk load/verify failed` message
 covers protocol detection, path/file errors, TAP reads and SRAM verification.
 Updated cartridges print a preceding diagnostic line with hexadecimal fields:
 
-- `protocol`: 00 undetected, 01 original/legacy, 02 modern.
+- `protocol`: 00 undetected, 01 original/legacy, 02 TSPico v2.x.
 - `stage`: 01 detection, 02 CD /, 03 CD CPM, 04 saved-disk discovery,
   05 volume mounting/validation, 06 page/chunk setup, 07 TAP header/data handling,
   08 installing/verifying an SRAM page. Nested reads can leave stage 07 active.
@@ -222,7 +222,7 @@ command table in the pinned original 1.00 payload inspected here.
 
 ## Intermediate firmware: use capabilities rather than version labels
 
-Startup detects the FIFO versus status-register transport, then uses the modern
+Startup detects the FIFO versus status-register transport, then uses the TSPico v2.x
 read-only CP/M capability query when available. A reported FW/ROM revision is
 information, not authorization to assume every command is supported. Unsupported
 commands retain a bounded failure path; save/append capabilities are not tested

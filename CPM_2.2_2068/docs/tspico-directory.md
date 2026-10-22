@@ -52,7 +52,7 @@ EXT_SA_FUNCT.update(CPM_COMMANDS)
 
 The extension needs the matching EXT_SA_FUNCT, CH_CALL, packet and DMA interfaces
 listed in the firmware matrix. Arbitrary 2.3.x firmware is not automatically confirmed
-compatible. The bare modern file channel interface is not this directory bridge.
+compatible. The bare TSPico v2.x file channel interface is not this directory bridge.
 
 Load CPMDIR.DCK with the normal DCK loader into an unused **SRAM even slot pair**.
 Leave BOOT unchanged. This build does not reserve the other SRAM disk pairs used
@@ -124,7 +124,7 @@ python tools/tspico_ram_image.py --tap disk160.tap --output archived160.tap --ds
 This is a CP/M disk TAP format, not an arbitrary game or BASIC TAP. Boot volume
 sets must first be assembled into a single TAP for mounting here. Hardware-bound
 utilities remain build-specific: do not run the original SRAM TPSAVE.COM on the
-modern SD cartridge. Keep CPMDISK.COM inside a mounted disk if you want to switch back
+TSPico v2.x SD cartridge. Keep CPMDISK.COM inside a mounted disk if you want to switch back
 without restarting; a cartridge restart also returns to the native directory.
 
 ## Rebuild and tests

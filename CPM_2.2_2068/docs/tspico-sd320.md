@@ -1,13 +1,13 @@
-# CP/M with a modern TSPico 320KB SD image
+# CP/M with a TSPico v2.x 320KB SD image
 
 ## Firmware requirement
 
-This is the inspected modern 2.3.1 / ROM 2.3 protocol path **with the optional
+This is the inspected TSPico v2.x (inspected 2.3.1) / ROM 2.3 protocol path **with the optional
 CP/M service**, not original 1.00 or validated 1.1 support. See the
 [firmware/feature matrix](tspico-firmware.md) and [using CP/M](using-cpm.md).
 
 For ordinary files copied into `/CPM/FILES`, use the recommended
-[directory build](tspico-directory.md). Both modern builds include `CPMDISK`
+[directory build](tspico-directory.md). Both TSPico v2.x builds include `CPMDISK`
 for mounting 160KB/320KB DSK or TAP disk files and saving snapshots.
 
 This is a separate experimental build for a compatible newer TSPico protocol
@@ -17,10 +17,10 @@ unmodified firmware 1.00**. Use the SRAM build on the original firmware.
 The CP/M cartridge runs from writable DOCK SRAM. Drive A is a CP/M filesystem
 inside /CPM/DRIVE320.IMG on the SD card, rather than a native view of the FAT
 directory. Both images use the same 320KB CP/M geometry as our Oliger build.
-Ordinary modern file channels alone do not provide this writable drive: their
+Ordinary TSPico v2.x file channels alone do not provide this writable drive: their
 control-byte semantics and 16-bit seek path are insufficient for this profile.
 
-The code probes the modern framed protocol and requires the CP/M service's
+The code probes the TSPico v2.x framed protocol and requires the CP/M service's
 exact signature, 128-byte sectors and 2,560-sector geometry. Absent, legacy,
 busy, incompatible, corrupt and stock-without-service responses stop with
 "No usable disk". It never silently treats an incompatible image as a drive.
@@ -83,5 +83,5 @@ The native Z80/wire-model tests cover boot, incompatible/missing service,
 all 2,560 sectors, binary-safe high-LBA writes and SUBMIT/ASM/LOAD. Host tests
 also execute the actual Python service handlers against a 320KB temporary file.
 Planetfall and Zork I also pass boot, LOOK, SAVE/RESTORE and return to CP/M
-through the modern wire model.
+through the TSPico v2.x wire model.
 Physical FIFO and device behavior remain hardware validation work.

@@ -13,13 +13,13 @@ See [release/build notes](docs/release.md) and the current
 
 CP/M 2.2 on the TS2068, initially **64 columns x 24 rows**, with utilities,
 Planetfall and Zork I. Supported storage paths are the TSPico RAMDisk/optional
-modern SD service and the Oliger/JLO disk interface. The supported PicoVideo
+TSPico v2.x SD service and the Oliger/JLO disk interface. The supported PicoVideo
 extension can select 80 columns; ordinary TSRun/Fuse use 64 columns.
 
 **Start here: [TSPico, Fuse/Oliger and TSRun startup guide](docs/startup.md).**
 
 Read the [TSPico firmware/feature matrix](docs/tspico-firmware.md): original
-1.00 supports the RAMDisk path; the inspected modern target is firmware 2.3.1 /
+1.00 supports the RAMDisk path; the inspected TSPico v2.x target is firmware 2.3.1 /
 ROM 2.3, and direct SD/native-files operation also requires the optional CP/M
 service. Intermediate 1.1 releases are not a validated CP/M target.
 See [RAM requirements and how disks work](docs/startup.md#hardware-requirements-and-why-extra-ram-is-needed)
@@ -33,7 +33,7 @@ TPSAVE, power-off and reload example.
 | Target | Cartridge / disk | Start | Preserve changes |
 |---|---|---|---|
 | TSPico 1.00 | dual package CPM.DCK + preload TAPs | BASIC DCK loader, SRAM slot 4/5 | TPSAVE before power off; chunks reload directly |
-| Inspected modern TSPico 2.3.1 / ROM 2.3 | same CPM.DCK; SD/native files need optional CP/M service | With service: Enter for SD, R for RAMDisk snapshot, L for saved RAMDisk | SD persists; RAMDisk requires TPSAVE |
+| Inspected TSPico v2.x (inspected 2.3.1) / ROM 2.3 | same CPM.DCK; SD/native files need optional CP/M service | With service: Enter for SD, R for RAMDisk snapshot, L for saved RAMDisk | SD persists; RAMDisk requires TPSAVE |
 | Fuse/JLO GUI | Oliger cartridge + matching 160KB/320KB DSK | tools/run_oliger.ps1 or tools/run_infocom.ps1 | JLO drive Save/Save As |
 | TSRun CP/M page | Oliger cartridge + DSK or CP/M TAP | python tools/run_tsrun.py | Download DSK, TAP or 1.00 TAP set before closing/reloading |
 

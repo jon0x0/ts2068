@@ -92,15 +92,15 @@ you want subsequent RAMDisk changes to survive another cold start/power-off.
 
 ## Newer protocol differences
 
-With the inspected modern firmware interfaces and optional CP/M SD service,
+With the inspected TSPico v2.x firmware interfaces and optional CP/M SD service,
 choose R at startup to copy the service volume to RAMDisk, or L to reload a
 saved RAMDisk. Enter selects persistent SD instead. Without the service the
-cartridge still supports TAP-backed RAMDisk through the modern transport.
+cartridge still supports TAP-backed RAMDisk through the TSPico v2.x storage protocol.
 
-In modern RAMDisk mode, TPSAVE normally writes one CPMRAM.TAP containing all
+In TSPico v2.x RAMDisk mode, TPSAVE normally writes one CPMRAM.TAP containing all
 records, and reports `Saved one disk TAP: /CPM/SAVE/CPMRAM.TAP`. TPSAVE SPLIT
 selects the legacy-compatible chunk set on either protocol. If both formats
-exist, the modern loader asks which to reload. Both RAMDisk modes need explicit
+exist, the TSPico v2.x loader asks which to reload. Both RAMDisk modes need explicit
 TPSAVE; the original source image is not automatically updated.
 
 ## Use the saved disk with Fuse/Oliger

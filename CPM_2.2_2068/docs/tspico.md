@@ -7,7 +7,7 @@
 # Combined emulator / TSPico cartridge
 
 Explicit `--profile combined` produces one `build/ts2068-cpm.dck`. It contains
-both the existing emulator RAM disk and the resident modern TSPico adapter.
+both the existing emulator RAM disk and the resident TSPico v2.x adapter.
 The copy at `build/sdcard/CPM/CPMBOOT.DCK` is byte-identical. The inspected
 TSPico DCK loader consumes its first DOCK block and ignores the later EXROM
 block; the latter remains available to emulators.
@@ -15,7 +15,7 @@ block; the latter remains available to emulators.
 The same program now has three disk choices, in priority order:
 
 1. Validated optional TSPico CP/M service: drive A is a writable SD image.
-2. Stock modern channel interface and a readable supplied image: drive A is
+2. Stock TSPico v2.x channel interface and a readable supplied image: drive A is
    read-only. Writes fail rather than corrupt binary data containing 17h.
 3. No usable TSPico image: use the preloaded emulator EXROM RAM disk, after
    checking its directory signature. If neither disk exists, stop with a clear
@@ -45,14 +45,14 @@ combine it with a separately driving physical cartridge without an appropriate
 hardware profile. TSPico's exact SRAM mapping/write qualification remains to be
 confirmed on the board; startup tests the lower 16KB before entering CP/M.
 
-Modern firmware with ordinary file channels can run the image read-only without
+TSPico v2.x firmware with ordinary file channels can run the image read-only without
 installing the extension. The screen states READ ONLY. `HELLO`, `STAT`, `DIR`
 and reading files work; assembler output, SUBMIT scratch files and other writes
 require the extension. The 48KB image format is identical on both backends.
 
 ## Optional binary-safe writable service
 
-`firmware/cpm_service.py` adds four commands through the modern firmware's
+`firmware/cpm_service.py` adds four commands through the TSPico v2.x firmware's
 documented `EXT_SA_FUNCT` hook. It does not replace the ROM or channel parser.
 Keep that file as `cpm_service.py` on the Pico flash root, and **merge** its
 handlers into your existing `dev_extcmd.py`, preserving existing handlers:
@@ -84,7 +84,7 @@ they are not a journal and are not guaranteed atomic across power loss.
 
 ## Import individual existing SD files
 
-With the modern channel service available:
+With the TSPico v2.x channel service available:
 
 ```text
 TPIMPORT /CPM/NEW.COM NEW.COM
@@ -102,8 +102,8 @@ exposed as a virtual CP/M drive; this command imports files explicitly.
 
 ## Detection and build separation
 
-The probe checks modern idle, sends a bounded preheader, validates ACK=1 and
-modern MID=F7, and only then uses modern SYNC. A legacy/busy response is declined;
+The probe checks TSPico v2.x idle, sends a bounded preheader, validates ACK=1 and
+TSPico v2.x MID=F7, and only then uses TSPico v2.x SYNC. A legacy/busy response is declined;
 floating FF and stale ACK with idle status do not identify hardware. Device use
 must be serialized and probing must start with no transaction in progress.
 Legacy reads consume FIFO tokens, so automatic selection is deliberately not a

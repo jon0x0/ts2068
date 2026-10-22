@@ -3,7 +3,7 @@
 The <a href="software-install.html">current software-install guide</a> explains how to obtain
 the optional inputs and create a new disk; older examples below assume an
 existing locally built Infocom template disk.</p>
-<p>These CP/M commands are the same in TSPico RAMDisk, modern TSPico SD mode,
+<p>These CP/M commands are the same in TSPico RAMDisk, TSPico v2.x SD mode,
 Fuse/Oliger and the TSRun launcher. First reach the <code>A&gt;</code> prompt using the
 <a href="startup.html">startup guide</a>. For hardware, check the
 <a href="tspico-firmware.html">TSPico firmware/feature table</a> before choosing a mode.</p>
@@ -84,11 +84,11 @@ disk; smaller images may contain a subset. Use <code>DIR</code> to check your di
 </tr>
 <tr>
 <td>CPMDISK</td>
-<td>Modern SD-service profiles: select native FILES/image sources and save snapshots. Does not manage a second drive; refuses SD switching in RAMDisk mode.</td>
+<td>TSPico v2.x SD-service profiles: select native FILES/image sources and save snapshots. Does not manage a second drive; refuses SD switching in RAMDisk mode.</td>
 </tr>
 <tr>
 <td>TPIMPORT</td>
-<td>Alternate modern raw-file importer in the experimental combined profile; normal TSPico packages use TPLOAD.</td>
+<td>Alternate TSPico v2.x raw-file importer in the experimental combined profile; normal TSPico packages use TPLOAD.</td>
 </tr>
 <tr>
 <td>HELLO</td>
@@ -270,7 +270,7 @@ required by Zork II. COLOR supplies the color command. <strong>TPSAVE.COM is nee
 to export a TSPico RAMDisk</strong>; it is not needed for Fuse or persistent SD mode.
 For an extracted package, use the same filenames from that package's FILES
 directory instead of these project build paths. To use CPMDISK from within a
-modern SD image, also put CPMDISK.COM on it before mounting it.</p>
+TSPico v2.x SD image, also put CPMDISK.COM on it before mounting it.</p>
 <p>For a TAP copy of that same disk:</p>
 <pre><code class="language-powershell">python tools/tspico_ram_image.py --dsk build/zork2.dsk --output build/zork2.tap
 </code></pre>
@@ -296,15 +296,15 @@ ordinary CP/M application COM files and their companions.</p>
 <td>Launch with <code>tools/run_oliger.ps1 -Cartridge build/infocom-cpm.dck -Disk build/zork2.dsk</code>; insert the printed DSK manually if the GUI requires it.</td>
 </tr>
 <tr>
-<td>Modern TSPico, optional SD service, image mode</td>
+<td>TSPico v2.x, optional SD service, image mode</td>
 <td>Copy zork2.tap to physical <code>/TAP/CPM/ZORK2.TAP</code>. At A&gt;, <code>CPMDISK MOUNT ZORK2.TAP</code>. Keep CPMDISK.COM on the disk if you need to switch away later.</td>
 </tr>
 <tr>
-<td>Modern TSPico, native-files mode</td>
+<td>TSPico v2.x, native-files mode</td>
 <td>Copy ZORK2.COM and ZORK2.DAT into physical <code>/TAP/CPM/FILES</code>, then reboot or remount with <code>CPMDISK DIR</code>. No disk container is required.</td>
 </tr>
 <tr>
-<td>Modern TSPico, TAP/RAMDisk mode without SD service</td>
+<td>TSPico v2.x, TAP/RAMDisk mode without SD service</td>
 <td>Copy zork2.tap as physical <code>/TAP/CPM/SAVE/CPMRAM.TAP</code>, preserving the old save. Restart; choose T for the TAP if an older chunk set also exists. With a service present, choose L first to reload a saved RAMDisk.</td>
 </tr>
 <tr>
@@ -328,7 +328,7 @@ mounted and press Enter at each of the two disk/filename prompts. <code>RESTORE<
 uses the saved file. <code>QUIT</code>, then Y, returns to CP/M.</p>
 <p>Game SAVE creates a file <strong>inside</strong> the CP/M disk. Also preserve the outer
 disk: TPSAVE in RAMDisk, JLO Save/Save As in Fuse, Download DSK/TAP in TSRun.
-Modern persistent SD mode already writes to its SD volume. The example was
+TSPico v2.x persistent SD mode already writes to its SD volume. The example was
 verified in native Z80 emulation from both DSK and TAP, including LOOK, SAVE
 and returning to A&gt;. No claim is made here that every Infocom game works.</p>
 <h2 id="wordstar-dbase-ii-supercalc-and-other-applications">WordStar, dBASE II, SuperCalc and other applications</h2>

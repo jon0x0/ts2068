@@ -129,7 +129,7 @@ before the SD card does. Hundreds of tiny files are not performance-neutral.
 Prepare a small uniquely patterned multi-block TAP and prove FFW/REW selects
 the expected sectors using the original FIFO protocol. Separately save, replace,
 close, remount and reload one small TAP and verify every byte. Only after these
-pass should a CP/M BIOS backend be built around the operations. Keep modern
+pass should a CP/M BIOS backend be built around the operations. Keep TSPico v2.x
 firmware models out of these tests. No timing or throughput claim is made here.
 
 ## Saved-disk discovery: original wire status and command dispatch

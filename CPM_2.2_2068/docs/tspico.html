@@ -7,14 +7,14 @@ describe that prototype; current service configuration is in
 </blockquote>
 <h1 id="combined-emulator-tspico-cartridge">Combined emulator / TSPico cartridge</h1>
 <p>Explicit <code>--profile combined</code> produces one <code>build/ts2068-cpm.dck</code>. It contains
-both the existing emulator RAM disk and the resident modern TSPico adapter.
+both the existing emulator RAM disk and the resident TSPico v2.x adapter.
 The copy at <code>build/sdcard/CPM/CPMBOOT.DCK</code> is byte-identical. The inspected
 TSPico DCK loader consumes its first DOCK block and ignores the later EXROM
 block; the latter remains available to emulators.</p>
 <p>The same program now has three disk choices, in priority order:</p>
 <ol>
 <li>Validated optional TSPico CP/M service: drive A is a writable SD image.</li>
-<li>Stock modern channel interface and a readable supplied image: drive A is
+<li>Stock TSPico v2.x channel interface and a readable supplied image: drive A is
    read-only. Writes fail rather than corrupt binary data containing 17h.</li>
 <li>No usable TSPico image: use the preloaded emulator EXROM RAM disk, after
    checking its directory signature. If neither disk exists, stop with a clear
@@ -39,12 +39,12 @@ The owner's earlier virtual-DOCK instructions describe this workflow. Do not
 combine it with a separately driving physical cartridge without an appropriate
 hardware profile. TSPico's exact SRAM mapping/write qualification remains to be
 confirmed on the board; startup tests the lower 16KB before entering CP/M.</p>
-<p>Modern firmware with ordinary file channels can run the image read-only without
+<p>TSPico v2.x firmware with ordinary file channels can run the image read-only without
 installing the extension. The screen states READ ONLY. <code>HELLO</code>, <code>STAT</code>, <code>DIR</code>
 and reading files work; assembler output, SUBMIT scratch files and other writes
 require the extension. The 48KB image format is identical on both backends.</p>
 <h2 id="optional-binary-safe-writable-service">Optional binary-safe writable service</h2>
-<p><code>firmware/cpm_service.py</code> adds four commands through the modern firmware's
+<p><code>firmware/cpm_service.py</code> adds four commands through the TSPico v2.x firmware's
 documented <code>EXT_SA_FUNCT</code> hook. It does not replace the ROM or channel parser.
 Keep that file as <code>cpm_service.py</code> on the Pico flash root, and <strong>merge</strong> its
 handlers into your existing <code>dev_extcmd.py</code>, preserving existing handlers:</p>
@@ -88,7 +88,7 @@ halves fails. Reads/capability requests cancel an incomplete staged write. Data
 can contain every byte value, including 17h. CP/M sector writes are synchronous;
 they are not a journal and are not guaranteed atomic across power loss.</p>
 <h2 id="import-individual-existing-sd-files">Import individual existing SD files</h2>
-<p>With the modern channel service available:</p>
+<p>With the TSPico v2.x channel service available:</p>
 <pre><code class="language-text">TPIMPORT /CPM/NEW.COM NEW.COM
 NEW
 </code></pre>
@@ -101,8 +101,8 @@ are binary-safe without the extension. A read-only drive cannot receive imports;
 use emulator RAM or the writable SD backend. A normal SD directory is not yet
 exposed as a virtual CP/M drive; this command imports files explicitly.</p>
 <h2 id="detection-and-build-separation">Detection and build separation</h2>
-<p>The probe checks modern idle, sends a bounded preheader, validates ACK=1 and
-modern MID=F7, and only then uses modern SYNC. A legacy/busy response is declined;
+<p>The probe checks TSPico v2.x idle, sends a bounded preheader, validates ACK=1 and
+TSPico v2.x MID=F7, and only then uses TSPico v2.x SYNC. A legacy/busy response is declined;
 floating FF and stale ACK with idle status do not identify hardware. Device use
 must be serialized and probing must start with no transaction in progress.
 Legacy reads consume FIFO tokens, so automatic selection is deliberately not a

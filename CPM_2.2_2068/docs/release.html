@@ -28,16 +28,16 @@ test scripts default to the historical ../../TSRun layout; the browser adapter
 test also accepts TSRUN_PATH.</p>
 <h2 id="validation-and-remaining-hardware-checks">Validation and remaining hardware checks</h2>
 <p>Publication checks for this release passed 61 Python tests, native SRAM screen
-preservation/failed-readback checks, legacy and modern saved-disk round trips,
+preservation/failed-readback checks, TSPico v1.00 and v2.x saved-disk round trips,
 160/320KB browser-adapter boot/copy/execute/export/reload, console palette and
-64/80-column register contracts, modern SD/game LOOK smoke tests, and static
+64/80-column register contracts, TSPico v2.x SD/game LOOK smoke tests, and static
 documentation/download checksum checks. The actual Pages-style browser preview
 booted CP/M and Planetfall using the hub's runtime.</p>
 <p>Native Z80 tests cover bank safety, saved-disk reload, malformed/incomplete saves,
 both transport families, geometry, screen preservation and console mode behavior.
 The browser adapter tests boot/copy/run/export/reload 160/320KB media. Original
 1.00 hardware has booted and run the games in 64 columns. Its observed PicoVideo
-V4 display corruption is explained in the video notes. Modern service and
+V4 display corruption is explained in the video notes. TSPico v2.x service and
 PicoVideo 4.2 test results are primarily source/model evidence, not blanket
 certification for every firmware or physical board.</p>
 <p>When reporting a problem, include release/tag, target/emulator, firmware GETINFO,

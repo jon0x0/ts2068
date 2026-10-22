@@ -1,5 +1,5 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>directory-drive · TS2068 CP/M 2.2</title><style>*{box-sizing:border-box}html{color-scheme:dark}body{margin:0;background:#111820;color:#e4ecf1;font:17px/1.65 system-ui,sans-serif}main{max-width:1060px;margin:auto;padding:32px 24px 70px}a{color:#8ddceb;text-underline-offset:3px}h1{font-size:clamp(30px,5vw,51px);line-height:1.15}h2{margin-top:36px}h3{margin-top:28px}p,li{max-width:86ch}nav{display:flex;gap:18px;flex-wrap:wrap;font-size:14px;border-bottom:1px solid #3c5260;padding-bottom:18px}.lead{font-size:21px;color:#bdd5de}.buttons{display:flex;flex-wrap:wrap;gap:12px;margin:25px 0}.button{background:#244455;border:1px solid #78b7c4;border-radius:6px;padding:10px 15px;font-weight:650}pre{overflow:auto;background:#0b1118;border:1px solid #344c59;padding:16px;border-radius:6px;line-height:1.5}code{font-size:.9em}table{border-collapse:collapse;display:block;overflow:auto;font-size:15px}th,td{border:1px solid #3c5260;padding:9px 12px;text-align:left;vertical-align:top}th{background:#203540}footer{margin-top:40px;border-top:1px solid #3c5260;padding-top:16px;font-size:14px;color:#b3c7cf}.note{border-left:4px solid #8ddceb;padding:6px 18px;background:#1b2d37}img{max-width:100%}</style></head><body><main><nav><a href="../index.html">Project</a><a href="../docs/quickstart.html">Quickstart</a><a href="../play/">Run CP/M</a><a href="../index.html#downloads">Downloads</a><a href="https://github.com/jon0x0/ts2068/tree/main/CPM_2.2_2068">Source</a></nav><blockquote>
-<p>Experimental modern-firmware prototype. Incompatible with the required unmodified TSPico firmware 1.00. Excluded from the default package. See <a href="stock-1.00.html">stock 1.00 status</a>.</p>
+<p>Experimental TSPico v2.x firmware prototype. Incompatible with the required unmodified TSPico firmware 1.00. Excluded from the default package. See <a href="stock-1.00.html">stock 1.00 status</a>.</p>
 </blockquote>
 <h1 id="ordinary-sd-directory-as-cpm-drive-a">Ordinary SD directory as CP/M drive A</h1>
 <p>The combined cartridge supports a <strong>256KB logical CP/M drive backed by individual
@@ -34,7 +34,7 @@ It keeps metadata in Pico RAM, not a complete 256KB disk image. The private
 <p><code>python
    from cpm_service import EXT_SA_FUNCT as CPM_COMMANDS
    EXT_SA_FUNCT.update(CPM_COMMANDS)</code></p>
-<p>This requires the compatible modern firmware extension hook and SD/channel
+<p>This requires the compatible TSPico v2.x firmware extension hook and SD/channel
    helpers described in tspico.md. It does not support the legacy 1.00 protocol.
 4. Load <code>CPM/CPMBOOT.DCK</code> into an unused <strong>SRAM</strong> slot pair with TSPico's DCK
    loader, retaining the normal BOOT selection. Start that DOCK cartridge. The

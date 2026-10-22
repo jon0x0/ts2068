@@ -40,7 +40,7 @@ it. No persistence is implied by an emulator reset.
 
 ## TSPico implementation
 
-The combined cartridge now implements a model-tested modern TSPico image path,
+The combined cartridge now implements a model-tested TSPico v2.x image path,
 with stock-channel read-only fallback and an optional binary-safe firmware
 extension. See tspico.md for its exact interfaces and hardware limitations.
 TPIMPORT reads individual ordinary SD files. The owner's preferred directory

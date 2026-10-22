@@ -59,7 +59,7 @@ They reload directly next time. The save is disk contents, not running CPU
 state. Game SAVE is not a substitute for TPSAVE. On an export failure retain
 the live machine and resolve it before powering off.
 
-Compatible modern protocol builds use the same cartridge; TPSAVE normally
+Compatible TSPico v2.x storage protocol builds use the same cartridge; TPSAVE normally
 writes one CPMRAM.TAP. Direct SD images/native files additionally require the
 optional CP/M service, not just a newer firmware number. Read the
 [firmware matrix](tspico-firmware.md) and [complete sample session](tspico-session.md).
@@ -94,7 +94,7 @@ to type, or use the command box. Try DIR and Build HI example.
 Open disk accepts matching-size DSK, complete CP/M TAP, or all files of a
 saved TAP chunk set selected together. Changing geometry requires selecting
 the other startup size. Download changes before closing/reloading; Reset
-retains disk bytes in the current page. Download DSK for Fuse, TAP for modern
+retains disk bytes in the current page. Download DSK for Fuse, TAP for TSPico v2.x
 transport, or 1.00 TAP set for original TSPico. Browser memory is not persistent
 SD storage. The hosted player reuses the hub's pinned TSRun runtime and ROMs.
 
@@ -108,6 +108,6 @@ SD storage. The hosted player reuses the hub's pinned TSRun runtime and ROMs.
 
 Currently A only. No simultaneous B mount, generic Oliger-ROM filesystem
 support, physical WD1770 emulation on TSPico, or automatic RAMDisk writeback.
-Physical original-1.00 boot and game operation have been reported; modern SD
+Physical original-1.00 boot and game operation have been reported; TSPico v2.x SD
 service and many failure cases are validated through models. PicoVideo 4.2
 support is source/model-tested; physical-board results should be reported.

@@ -7,7 +7,7 @@ disk controller and a matching DSK. Do not interchange their cartridges.
 The OS lives in the cartridge, so disks need no CP/M system tracks.
 
 **TSPico owners:** first read the [firmware/feature matrix](tspico-firmware.md).
-Original 1.00 uses RAMDisk and chunk saves; the inspected modern target is
+Original 1.00 uses RAMDisk and chunk saves; the inspected TSPico v2.x target is
 firmware 2.3.1 / ROM 2.3. Direct SD/native files additionally require our optional
 CP/M service. Intermediate 1.1 releases are not a validated target.
 
@@ -51,20 +51,20 @@ before power off, confirm with Y and wait for completion. Saved chunks reload
 directly on the next start; no PC repacking is needed. Missing/incomplete
 saved sets stop boot instead of being silently discarded.
 
-With the inspected **modern 2.3.1 / ROM 2.3 interfaces**, a configured optional CP/M service offers
+With the inspected **TSPico v2.x (inspected 2.3.1) / ROM 2.3 interfaces**, a configured optional CP/M service offers
 **Enter** for persistent SD, **R** for a RAMDisk snapshot, or **L** to reload a
 saved RAMDisk. Without that service, it uses TAP-backed preload/saves through
 the newer transport. The optional service is required for native `/CPM/FILES`
 or direct DSK/TAP disk access; the package does not install it automatically.
-Modern RAMDisk TPSAVE writes one `/CPM/SAVE/CPMRAM.TAP`; legacy mode writes a
+TSPico v2.x RAMDisk TPSAVE writes one `/CPM/SAVE/CPMRAM.TAP`; legacy mode writes a
 reloadable chunk set. Both RAMDisk modes require explicit saving.
 
 The display stays at 64 columns unless the supported PicoVideo extension is
 detected. Physical original-1.00 boot and game operation have been reported;
-modern interfaces and failure cases are primarily checked with native Z80
+TSPico v2.x interfaces and failure cases are primarily checked with native Z80
 and protocol/memory models. See
 [TSPico modes and saves](tspico-dual.md), [SRAM reservations](tspico-ram.md), and
-[modern service setup](tspico-directory.md).
+[TSPico v2.x service setup](tspico-directory.md).
 
 ## Fuse GUI with Oliger/JLO
 
@@ -142,7 +142,7 @@ Fletcher checksums; old descriptor-free sets require selecting exactly the
 correct twenty/forty pages. Program TAPs and incomplete/mixed sets are refused.
 
 **Reset CP/M** retains the current disk. **Download DSK** saves a copy for Fuse,
-and **Download TAP** saves one multi-CODE TAP for the modern TSPico protocol.
+and **Download TAP** saves one multi-CODE TAP for the TSPico v2.x protocol.
 **Download 1.00 TAP set** saves a ZIP containing the chunk TAPs and completed
 descriptor: extract its contents into the card's `/TAP/CPM/SAVE/` directory,
 preserving the previous save separately. That set reloads directly in the
@@ -168,7 +168,7 @@ python tools/cpm_disk.py put work.dsk ED.COM ASM.COM README.TXT
 python tools/cpm_disk.py list work.dsk
 ```
 
-Use `.tap` for a TSPico disk container. For native modern TSPico storage, copy
+Use `.tap` for a TSPico disk container. For native TSPico v2.x storage, copy
 CP/M files directly into `/TAP/CPM/FILES` instead. `FORMAT A:` initializes an
 already mounted disk after confirmation; it does not create an SD container.
 See [disk creation, copying and FORMAT](disk-tools.md).
@@ -219,7 +219,7 @@ this project does not yet provide a validated PicoCartridge/PicoROM modification
 The current TSPico implementation supplies the writable memory through its SRAM.
 
 A disk backend is a separate requirement. Oliger uses its disk interface; TSPico
-can use a RAMDisk or the documented modern SD service. A standalone modified
+can use a RAMDisk or the documented TSPico v2.x SD service. A standalone modified
 cartridge could instead preload extra RAM with a disk image. Its bank controls
 would need a matching BIOS driver; TSPico MEMDOCK support is not automatically
 provided by adding RAM to another cartridge. PicoVideo is optional; the normal
@@ -251,10 +251,10 @@ sector. TAP headers and checksums are transport packaging; the working SRAM hold
 the disk's sector data.
 
 Changes remain in SRAM until exported. **Run TPSAVE before ending a RAMDisk
-session**, including on modern firmware. Original 1.00 exports a reloadable set
-of chunk TAPs plus a descriptor; the modern transport can export one multi-record
+session**, including on TSPico v2.x firmware. Original 1.00 exports a reloadable set
+of chunk TAPs plus a descriptor; the TSPico v2.x storage protocol can export one multi-record
 TAP, or a compatible split set. Both reload directly with this loader. With the
-optional modern SD service, a mounted SD image can also be copied into RAMDisk
+optional TSPico v2.x SD service, a mounted SD image can also be copied into RAMDisk
 for speed; editing that snapshot does not automatically update its source image.
 Native files and direct SD images use the other documented service paths instead.
 See the [firmware matrix](tspico-firmware.md) for exact availability and

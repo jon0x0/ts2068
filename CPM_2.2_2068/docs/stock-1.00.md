@@ -18,5 +18,5 @@ data block and closes it. Successive SAVEs cannot accumulate in one TAP through
 that handler. The audit and original flash addresses are recorded in
 [firmware-1.00-storage-audit.md](firmware-1.00-storage-audit.md).
 
-The separate [modern SD build](tspico-sd320.md) requires a newer compatible
+The separate [TSPico v2.x SD build](tspico-sd320.md) requires a newer compatible
 protocol and optional binary-safe CP/M service. It is not stock-1.00 support.

@@ -1,10 +1,10 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>tspico-sd320 · TS2068 CP/M 2.2</title><style>*{box-sizing:border-box}html{color-scheme:dark}body{margin:0;background:#111820;color:#e4ecf1;font:17px/1.65 system-ui,sans-serif}main{max-width:1060px;margin:auto;padding:32px 24px 70px}a{color:#8ddceb;text-underline-offset:3px}h1{font-size:clamp(30px,5vw,51px);line-height:1.15}h2{margin-top:36px}h3{margin-top:28px}p,li{max-width:86ch}nav{display:flex;gap:18px;flex-wrap:wrap;font-size:14px;border-bottom:1px solid #3c5260;padding-bottom:18px}.lead{font-size:21px;color:#bdd5de}.buttons{display:flex;flex-wrap:wrap;gap:12px;margin:25px 0}.button{background:#244455;border:1px solid #78b7c4;border-radius:6px;padding:10px 15px;font-weight:650}pre{overflow:auto;background:#0b1118;border:1px solid #344c59;padding:16px;border-radius:6px;line-height:1.5}code{font-size:.9em}table{border-collapse:collapse;display:block;overflow:auto;font-size:15px}th,td{border:1px solid #3c5260;padding:9px 12px;text-align:left;vertical-align:top}th{background:#203540}footer{margin-top:40px;border-top:1px solid #3c5260;padding-top:16px;font-size:14px;color:#b3c7cf}.note{border-left:4px solid #8ddceb;padding:6px 18px;background:#1b2d37}img{max-width:100%}</style></head><body><main><nav><a href="../index.html">Project</a><a href="../docs/quickstart.html">Quickstart</a><a href="../play/">Run CP/M</a><a href="../index.html#downloads">Downloads</a><a href="https://github.com/jon0x0/ts2068/tree/main/CPM_2.2_2068">Source</a></nav><h1 id="cpm-with-a-modern-tspico-320kb-sd-image">CP/M with a modern TSPico 320KB SD image</h1>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>tspico-sd320 · TS2068 CP/M 2.2</title><style>*{box-sizing:border-box}html{color-scheme:dark}body{margin:0;background:#111820;color:#e4ecf1;font:17px/1.65 system-ui,sans-serif}main{max-width:1060px;margin:auto;padding:32px 24px 70px}a{color:#8ddceb;text-underline-offset:3px}h1{font-size:clamp(30px,5vw,51px);line-height:1.15}h2{margin-top:36px}h3{margin-top:28px}p,li{max-width:86ch}nav{display:flex;gap:18px;flex-wrap:wrap;font-size:14px;border-bottom:1px solid #3c5260;padding-bottom:18px}.lead{font-size:21px;color:#bdd5de}.buttons{display:flex;flex-wrap:wrap;gap:12px;margin:25px 0}.button{background:#244455;border:1px solid #78b7c4;border-radius:6px;padding:10px 15px;font-weight:650}pre{overflow:auto;background:#0b1118;border:1px solid #344c59;padding:16px;border-radius:6px;line-height:1.5}code{font-size:.9em}table{border-collapse:collapse;display:block;overflow:auto;font-size:15px}th,td{border:1px solid #3c5260;padding:9px 12px;text-align:left;vertical-align:top}th{background:#203540}footer{margin-top:40px;border-top:1px solid #3c5260;padding-top:16px;font-size:14px;color:#b3c7cf}.note{border-left:4px solid #8ddceb;padding:6px 18px;background:#1b2d37}img{max-width:100%}</style></head><body><main><nav><a href="../index.html">Project</a><a href="../docs/quickstart.html">Quickstart</a><a href="../play/">Run CP/M</a><a href="../index.html#downloads">Downloads</a><a href="https://github.com/jon0x0/ts2068/tree/main/CPM_2.2_2068">Source</a></nav><h1 id="cpm-with-a-tspico-v2x-320kb-sd-image">CP/M with a TSPico v2.x 320KB SD image</h1>
 <h2 id="firmware-requirement">Firmware requirement</h2>
-<p>This is the inspected modern 2.3.1 / ROM 2.3 protocol path <strong>with the optional
+<p>This is the inspected TSPico v2.x (inspected 2.3.1) / ROM 2.3 protocol path <strong>with the optional
 CP/M service</strong>, not original 1.00 or validated 1.1 support. See the
 <a href="tspico-firmware.html">firmware/feature matrix</a> and <a href="using-cpm.html">using CP/M</a>.</p>
 <p>For ordinary files copied into <code>/CPM/FILES</code>, use the recommended
-<a href="tspico-directory.html">directory build</a>. Both modern builds include <code>CPMDISK</code>
+<a href="tspico-directory.html">directory build</a>. Both TSPico v2.x builds include <code>CPMDISK</code>
 for mounting 160KB/320KB DSK or TAP disk files and saving snapshots.</p>
 <p>This is a separate experimental build for a compatible newer TSPico protocol
 and the optional binary-safe CP/M image service. It is <strong>not compatible with
@@ -12,9 +12,9 @@ unmodified firmware 1.00</strong>. Use the SRAM build on the original firmware.<
 <p>The CP/M cartridge runs from writable DOCK SRAM. Drive A is a CP/M filesystem
 inside /CPM/DRIVE320.IMG on the SD card, rather than a native view of the FAT
 directory. Both images use the same 320KB CP/M geometry as our Oliger build.
-Ordinary modern file channels alone do not provide this writable drive: their
+Ordinary TSPico v2.x file channels alone do not provide this writable drive: their
 control-byte semantics and 16-bit seek path are insufficient for this profile.</p>
-<p>The code probes the modern framed protocol and requires the CP/M service's
+<p>The code probes the TSPico v2.x framed protocol and requires the CP/M service's
 exact signature, 128-byte sectors and 2,560-sector geometry. Absent, legacy,
 busy, incompatible, corrupt and stock-without-service responses stop with
 "No usable disk". It never silently treats an incompatible image as a drive.
@@ -62,5 +62,5 @@ python tools/package_tspico.py --profile tspico-sd
 all 2,560 sectors, binary-safe high-LBA writes and SUBMIT/ASM/LOAD. Host tests
 also execute the actual Python service handlers against a 320KB temporary file.
 Planetfall and Zork I also pass boot, LOOK, SAVE/RESTORE and return to CP/M
-through the modern wire model.
+through the TSPico v2.x wire model.
 Physical FIFO and device behavior remain hardware validation work.</p><footer>Jon Becker · CP/M 2.2 · cpm22-v0.1.0 · <a href="../docs/release.html">Build, attribution and validation</a> · <a href="../docs/infocom-notice.html">Infocom notice</a></footer></main></body></html>

@@ -30,13 +30,13 @@ disk/program bytes even while HOME screen RAM is intact. PicoVideo 4.2 tracks
 F4 and ignores out-of-bank captures; it also implements the supported 80-column
 renderer. See <a href="picovideo.html">PicoVideo</a>.</p>
 <h2 id="loader-save-and-failure-behavior">Loader, save and failure behavior</h2>
-<p><code>src/sram_loader.asm</code> validates the legacy/modern handshake and loads geometry,
+<p><code>src/sram_loader.asm</code> validates the TSPico v1.00/v2.x handshake and loads geometry,
 checksummed data and any saved-state descriptor. Original firmware mounts small
 factory TAP volumes because its tape buffer is limited. Saved exports reload
 directly without a PC conversion. Directory discovery precedes optional legacy
 LOAD probes, so an ambiguous error 05 cannot silently discard an existing disk.</p>
 <p><code>src/tpsave.asm</code> exports legacy chunks plus a completion/checksum descriptor, or
-one multi-record TAP using modern APPEND. The original media remains a snapshot
+one multi-record TAP using TSPico v2.x APPEND. The original media remains a snapshot
 until TPSAVE is explicitly run. Completion markers detect interrupted saves;
 they do not provide atomic replacement or a second historical backup.</p>
 <p>Failures retain protocol, stage, phase, token, page, command and reply diagnostics.
@@ -97,7 +97,7 @@ Oliger/DOS filesystems are not accepted implicitly.</p>
 <td>src/sram_loader.asm, src/tpsave.asm</td>
 </tr>
 <tr>
-<td>Legacy/modern cartridge transport</td>
+<td>TSPico v1.00/v2.x cartridge transport</td>
 <td>third_party/tspico-filelib, tools/dual_transport.py</td>
 </tr>
 <tr>
@@ -105,7 +105,7 @@ Oliger/DOS filesystems are not accepted implicitly.</p>
 <td>tools/oliger_image.py, tools/tspico_ram_image.py, tools/cpm_disk.py</td>
 </tr>
 <tr>
-<td>Optional modern persistent service</td>
+<td>Optional TSPico v2.x persistent service</td>
 <td>firmware/cpm_service.py, cpm_dsk.py, cpm_tap.py, cpm_directory.py</td>
 </tr>
 <tr>

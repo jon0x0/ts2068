@@ -39,14 +39,14 @@ renderer. See [PicoVideo](picovideo.md).
 
 ## Loader, save and failure behavior
 
-`src/sram_loader.asm` validates the legacy/modern handshake and loads geometry,
+`src/sram_loader.asm` validates the TSPico v1.00/v2.x handshake and loads geometry,
 checksummed data and any saved-state descriptor. Original firmware mounts small
 factory TAP volumes because its tape buffer is limited. Saved exports reload
 directly without a PC conversion. Directory discovery precedes optional legacy
 LOAD probes, so an ambiguous error 05 cannot silently discard an existing disk.
 
 `src/tpsave.asm` exports legacy chunks plus a completion/checksum descriptor, or
-one multi-record TAP using modern APPEND. The original media remains a snapshot
+one multi-record TAP using TSPico v2.x APPEND. The original media remains a snapshot
 until TPSAVE is explicitly run. Completion markers detect interrupted saves;
 they do not provide atomic replacement or a second historical backup.
 
@@ -81,9 +81,9 @@ Oliger/DOS filesystems are not accepted implicitly.
 |---|---|
 | SRAM block I/O and bank safety | src/sram_disk.asm, src/disk_geometry.asm |
 | Loader and explicit snapshot | src/sram_loader.asm, src/tpsave.asm |
-| Legacy/modern cartridge transport | third_party/tspico-filelib, tools/dual_transport.py |
+| TSPico v1.00/v2.x cartridge transport | third_party/tspico-filelib, tools/dual_transport.py |
 | Python image/container access | tools/oliger_image.py, tools/tspico_ram_image.py, tools/cpm_disk.py |
-| Optional modern persistent service | firmware/cpm_service.py, cpm_dsk.py, cpm_tap.py, cpm_directory.py |
+| Optional TSPico v2.x persistent service | firmware/cpm_service.py, cpm_dsk.py, cpm_tap.py, cpm_directory.py |
 | Emulator sector adapter | web/tsrun/oliger.mjs |
 
 A general TSPico RAMDisk utility can reuse these mechanisms, but must supply

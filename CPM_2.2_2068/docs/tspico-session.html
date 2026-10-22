@@ -65,14 +65,14 @@ A&gt;HI
 game and use its RESTORE command to load its saved game. Repeat TPSAVE whenever
 you want subsequent RAMDisk changes to survive another cold start/power-off.</p>
 <h2 id="newer-protocol-differences">Newer protocol differences</h2>
-<p>With the inspected modern firmware interfaces and optional CP/M SD service,
+<p>With the inspected TSPico v2.x firmware interfaces and optional CP/M SD service,
 choose R at startup to copy the service volume to RAMDisk, or L to reload a
 saved RAMDisk. Enter selects persistent SD instead. Without the service the
-cartridge still supports TAP-backed RAMDisk through the modern transport.</p>
-<p>In modern RAMDisk mode, TPSAVE normally writes one CPMRAM.TAP containing all
+cartridge still supports TAP-backed RAMDisk through the TSPico v2.x storage protocol.</p>
+<p>In TSPico v2.x RAMDisk mode, TPSAVE normally writes one CPMRAM.TAP containing all
 records, and reports <code>Saved one disk TAP: /CPM/SAVE/CPMRAM.TAP</code>. TPSAVE SPLIT
 selects the legacy-compatible chunk set on either protocol. If both formats
-exist, the modern loader asks which to reload. Both RAMDisk modes need explicit
+exist, the TSPico v2.x loader asks which to reload. Both RAMDisk modes need explicit
 TPSAVE; the original source image is not automatically updated.</p>
 <h2 id="use-the-saved-disk-with-fuseoliger">Use the saved disk with Fuse/Oliger</h2>
 <p>Copy the complete SAVE directory to a new PC folder. From this project on the PC:</p>

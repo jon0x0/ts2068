@@ -1,4 +1,4 @@
-> Experimental modern-firmware prototype. Incompatible with the required unmodified TSPico firmware 1.00. Excluded from the default package. See [stock 1.00 status](stock-1.00.md).
+> Experimental TSPico v2.x firmware prototype. Incompatible with the required unmodified TSPico firmware 1.00. Excluded from the default package. See [stock 1.00 status](stock-1.00.md).
 
 # Ordinary SD directory as CP/M drive A
 
@@ -42,7 +42,7 @@ The build/package does not install anything or modify an attached device.
    EXT_SA_FUNCT.update(CPM_COMMANDS)
    ```
 
-   This requires the compatible modern firmware extension hook and SD/channel
+   This requires the compatible TSPico v2.x firmware extension hook and SD/channel
    helpers described in tspico.md. It does not support the legacy 1.00 protocol.
 4. Load `CPM/CPMBOOT.DCK` into an unused **SRAM** slot pair with TSPico's DCK
    loader, retaining the normal BOOT selection. Start that DOCK cartridge. The
