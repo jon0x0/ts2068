@@ -1,0 +1,119 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>architecture · TS2068 CP/M 2.2</title><style>*{box-sizing:border-box}html{color-scheme:dark}body{margin:0;background:#111820;color:#e4ecf1;font:17px/1.65 system-ui,sans-serif}main{max-width:1060px;margin:auto;padding:32px 24px 70px}a{color:#8ddceb;text-underline-offset:3px}h1{font-size:clamp(30px,5vw,51px);line-height:1.15}h2{margin-top:36px}h3{margin-top:28px}p,li{max-width:86ch}nav{display:flex;gap:18px;flex-wrap:wrap;font-size:14px;border-bottom:1px solid #3c5260;padding-bottom:18px}.lead{font-size:21px;color:#bdd5de}.buttons{display:flex;flex-wrap:wrap;gap:12px;margin:25px 0}.button{background:#244455;border:1px solid #78b7c4;border-radius:6px;padding:10px 15px;font-weight:650}pre{overflow:auto;background:#0b1118;border:1px solid #344c59;padding:16px;border-radius:6px;line-height:1.5}code{font-size:.9em}table{border-collapse:collapse;display:block;overflow:auto;font-size:15px}th,td{border:1px solid #3c5260;padding:9px 12px;text-align:left;vertical-align:top}th{background:#203540}footer{margin-top:40px;border-top:1px solid #3c5260;padding-top:16px;font-size:14px;color:#b3c7cf}.note{border-left:4px solid #8ddceb;padding:6px 18px;background:#1b2d37}img{max-width:100%}</style></head><body><main><nav><a href="../index.html">Project</a><a href="../docs/quickstart.html">Quickstart</a><a href="../play/">Run CP/M</a><a href="../index.html#downloads">Downloads</a><a href="https://github.com/jon0x0/ts2068/tree/main/CPM_2.2_2068">Source</a></nav><h1 id="memory-and-boot-architecture">Memory and boot architecture</h1>
+<p>The Z80 runs CP/M directly. No host-side BDOS calls or second emulated CPU are
+used. Interrupts stay disabled; keyboard polling does not need the TS ROM.</p>
+<table>
+<thead>
+<tr>
+<th>Address</th>
+<th>CP/M mapping</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0000–00FF</td>
+<td>DOCK RAM</td>
+<td>Warm boot/BDOS vectors, IOBYTE, FCBs and default DMA</td>
+</tr>
+<tr>
+<td>0100–3FFF</td>
+<td>DOCK RAM</td>
+<td>Transient programs</td>
+</tr>
+<tr>
+<td>4000–7FFF</td>
+<td>DOCK RAM</td>
+<td>Transient programs, shadowing both HOME screen planes</td>
+</tr>
+<tr>
+<td>8000–CFFF</td>
+<td>HOME RAM</td>
+<td>Transient programs</td>
+</tr>
+<tr>
+<td>D000–D7FF</td>
+<td>HOME RAM</td>
+<td>CCP (may be overwritten by suitable transients)</td>
+</tr>
+<tr>
+<td>D800–E5FF</td>
+<td>HOME RAM</td>
+<td>Digital Research BDOS and workspace</td>
+</tr>
+<tr>
+<td>E600–EFef</td>
+<td>HOME RAM</td>
+<td>BIOS, font, disk buffer and directory workspace</td>
+</tr>
+<tr>
+<td>EFF0–EFFF</td>
+<td>HOME RAM</td>
+<td>Boot diagnostic/autostart state</td>
+</tr>
+<tr>
+<td>F000–F5FF</td>
+<td>HOME RAM</td>
+<td>Combined-build TSPico service code</td>
+</tr>
+<tr>
+<td>F600–F7FF</td>
+<td>HOME RAM</td>
+<td>TSPico common workspace</td>
+</tr>
+<tr>
+<td>F800–FDFF</td>
+<td>HOME RAM</td>
+<td>Diagnostic transcript ring</td>
+</tr>
+<tr>
+<td>FE00–FFFF</td>
+<td>HOME RAM</td>
+<td>System stack; cold/warm initial SP=FF00</td>
+</tr>
+</tbody>
+</table>
+<p>The ordinary TPA below the CCP is 53,248 minus 256 = <strong>52,992 bytes</strong>. Programs
+using the BDOS vector as their upper limit can reclaim the CCP; warm boot
+restores CCP and BDOS from immutable cartridge pages. This is a custom 64 KB
+address-space layout rather than an unmodified standard 64K CP/M BIOS location.</p>
+<p>Normal F4=$0F maps DOCK chunks 0–3. FF=$3E selects white-on-black high resolution
+mode 6 with DOCK as the alternate bank. Physical HOME display RAM remains at
+$4000–$57FF and $6000–$77FF. Each character is 8 pixels wide; alternating columns
+use the first and second plane. Drawing temporarily uses F4=$03, then restores
+$0F. BIOS code, font, stack and buffers stay above $E600 throughout.</p>
+<p>The AROS descriptor is in DOCK chunk 4, at $8000, entry $8008. It copies a loader
+to HOME $5B00. The loader maps source chunk 5 to copy $A000–$BFFF into HOME
+$D000–$EFFF, then maps source chunk 6 to copy $C000–$CFFF into HOME $F000–$FFFF.
+Source and destination chunks are deliberately different. It writes and verifies
+an address-derived pattern across $0000–$3FFF. Failure halts with a red border
+and saves the address at $EFF2. It enters BIOS at $E600 with F4=$03, so its own
+instructions remain mapped until the jump. BIOS then enables both screen shadows.</p>
+<p>The first warm entry installs JP $E603 at 0, JP $D806 at 5, selects DMA $0080,
+and executes a seeded CCP command <code>HELLO</code>. Subsequent warm boots do not rerun
+the automatic command and preserve disk RAM.</p>
+<h2 id="ram-disk-and-bios">RAM disk and BIOS</h2>
+<p>The BIOS contains the conventional <strong>17 CP/M 2.2 jump entries</strong>. READ/WRITE
+validate geometry and move 128-byte logical sectors through a common buffer.
+Storage-specific code is isolated in <code>src/blockdev_ramdisk.asm</code>. Drive A uses
+six writable EXROM pages (1-6), providing 48 KB without reducing the TPA.
+Page 0 remains ROM-owned for cartridge startup; page 7 retains BIOS and stack.
+See <a href="storage-backends.html">storage-backends.md</a> for the complete sector API,
+geometry and future TSPico/Oliger contracts.</p>
+<p>DPB: SPT=16, BSH=3, BLM=7, EXM=0, DSM=47, DRM=63, AL0=$C0, AL1=0, CKS=0,
+OFF=0. Twenty-four tracks, 16 zero-based sectors/track, 1 KB allocation blocks,
+64 directory entries, two directory blocks, 46 data blocks. Identity translation.
+Invalid drive/track/sector returns an error. Writes remain volatile.</p>
+<p>DCK blocks: bank 0 types <code>[3,3,3,3,2,2,2,0]</code>, then bank 254 types
+<code>[0,3,3,3,3,3,3,0]</code>. Seven DOCK payload pages plus six EXROM payload pages and
+two nine-byte headers make <strong>106,514 bytes</strong>. Types 2/3 carry 8 KB; type 1 does
+not carry data. This supersedes the original diagnostic and 8 KB disk layouts.</p>
+<p>CONST polls into a 31-character FIFO; CONIN consumes its oldest character.
+Output and each scrolling character row also poll the keyboard. Changed keys
+are accepted without requiring an observed all-released interval; repeated
+identical keys require release. Input is still polled, so a transient program
+that runs without BIOS calls can miss brief presses. Interrupt-driven scanning
+and full multi-key rollover remain future work.
+The console implements printable ASCII, CR, LF, BS, FF, wrapping and scrolling.
+Editing across a wrapped line, tab expansion, terminal escape sequences and
+key repeat are not yet complete. Display is 64 columns, but the stock 2.2 CCP
+directory formatter still has its original formatting conventions.</p><footer>Jon Becker · CP/M 2.2 · cpm22-v0.1.0 · <a href="../docs/release.html">Build, attribution and validation</a> · <a href="../docs/infocom-notice.html">Infocom notice</a></footer></main></body></html>

@@ -20,9 +20,9 @@ games, applications, audio and demos, linking to their owning projects.
 
 ## Development tools
 
-**[CP/M 2.2 for TS2068](CPM_2068/)** ·
-[Run in browser](https://jon0x0.github.io/ts2068/CPM_2068/play/) ·
-[Quickstart](https://jon0x0.github.io/ts2068/CPM_2068/docs/quickstart.html).
+**[CP/M 2.2 for TS2068](CPM_2.2_2068/)** ·
+[Run in browser](https://jon0x0.github.io/ts2068/CPM_2.2_2068/play/) ·
+[Quickstart](https://jon0x0.github.io/ts2068/CPM_2.2_2068/docs/quickstart.html).
 TSPico banked RAMDisk, 160/320KB Oliger/Fuse images, 64/80-column console,
 Python disk tools, utilities, assembly examples and the Planetfall/Zork I disk.
 

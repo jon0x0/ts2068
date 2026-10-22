@@ -1,0 +1,47 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>release · TS2068 CP/M 2.2</title><style>*{box-sizing:border-box}html{color-scheme:dark}body{margin:0;background:#111820;color:#e4ecf1;font:17px/1.65 system-ui,sans-serif}main{max-width:1060px;margin:auto;padding:32px 24px 70px}a{color:#8ddceb;text-underline-offset:3px}h1{font-size:clamp(30px,5vw,51px);line-height:1.15}h2{margin-top:36px}h3{margin-top:28px}p,li{max-width:86ch}nav{display:flex;gap:18px;flex-wrap:wrap;font-size:14px;border-bottom:1px solid #3c5260;padding-bottom:18px}.lead{font-size:21px;color:#bdd5de}.buttons{display:flex;flex-wrap:wrap;gap:12px;margin:25px 0}.button{background:#244455;border:1px solid #78b7c4;border-radius:6px;padding:10px 15px;font-weight:650}pre{overflow:auto;background:#0b1118;border:1px solid #344c59;padding:16px;border-radius:6px;line-height:1.5}code{font-size:.9em}table{border-collapse:collapse;display:block;overflow:auto;font-size:15px}th,td{border:1px solid #3c5260;padding:9px 12px;text-align:left;vertical-align:top}th{background:#203540}footer{margin-top:40px;border-top:1px solid #3c5260;padding-top:16px;font-size:14px;color:#b3c7cf}.note{border-left:4px solid #8ddceb;padding:6px 18px;background:#1b2d37}img{max-width:100%}</style></head><body><main><nav><a href="../index.html">Project</a><a href="../docs/quickstart.html">Quickstart</a><a href="../play/">Run CP/M</a><a href="../index.html#downloads">Downloads</a><a href="https://github.com/jon0x0/ts2068/tree/main/CPM_2.2_2068">Source</a></nav><h1 id="cpm-22-release-and-build-notes">CP/M 2.2 release and build notes</h1>
+<p>Release: <strong>cpm22-v0.1.0</strong>. Repository path: <code>jon0x0/ts2068/CPM_2.2_2068</code>.
+Pages entry: <a href="https://jon0x0.github.io/ts2068/CPM_2.2_2068/">https://jon0x0.github.io/ts2068/CPM_2.2_2068/</a>.</p>
+<p>This is a CP/M 2.2 release, not CP/M 3.x. Source is MIT except attributed
+third-party material with its own notices. Digital Research's clarified CP/M
+grant is in third_party/cpm22/LICENSE.txt. Public cartridges use font8x8's
+public-domain basic Latin font. The requested Infocom collection is distributed
+as a separate attributed disk image; game stories/interpreters are not covered
+by the project's MIT license. TS2068 ROMs are not included in the downloads.</p>
+<p>The hosted player references the hub's already-published, pinned TSRun snapshot
+and ROMs; it does not introduce a second emulator fork. TSRun is Josef Jelinek's
+project, credited in the page. Its upstream source remains independently owned.</p>
+<h2 id="rebuild">Rebuild</h2>
+<p>Install Python 3.10+ and sjasmplus 1.20.3 or a compatible release. With sjasmplus
+on PATH, run from CPM_2.2_2068:</p>
+<pre><code class="language-text">python tools/build.py --profile oliger --oliger-kb 160 --assembler sjasmplus
+python tools/build.py --profile oliger --oliger-kb 320 --assembler sjasmplus
+python tools/build_dual.py --assembler sjasmplus
+</code></pre>
+<p>Without --rom these use the public font. An optional private --rom path retains
+the original ROM-font build workflow. The public bundle excludes those private
+ROM-derived outputs. <code>build/</code> is generated; do not rebuild over a working disk.</p>
+<p>Downloadable images were assembled from the included CCP/BDOS/BIOS source,
+generic pinned Digital Research utility binaries and local examples. SHA256SUMS
+identifies the public artifacts. The source includes the Python preparation and
+disk conversion tools; tests use Node and an appropriate TSRun checkout. Existing
+test scripts default to the historical ../../TSRun layout; the browser adapter
+test also accepts TSRUN_PATH.</p>
+<h2 id="validation-and-remaining-hardware-checks">Validation and remaining hardware checks</h2>
+<p>Publication checks for this release passed 61 Python tests, native SRAM screen
+preservation/failed-readback checks, legacy and modern saved-disk round trips,
+160/320KB browser-adapter boot/copy/execute/export/reload, console palette and
+64/80-column register contracts, modern SD/game LOOK smoke tests, and static
+documentation/download checksum checks. The actual Pages-style browser preview
+booted CP/M and Planetfall using the hub's runtime.</p>
+<p>Native Z80 tests cover bank safety, saved-disk reload, malformed/incomplete saves,
+both transport families, geometry, screen preservation and console mode behavior.
+The browser adapter tests boot/copy/run/export/reload 160/320KB media. Original
+1.00 hardware has booted and run the games in 64 columns. Its observed PicoVideo
+V4 display corruption is explained in the video notes. Modern service and
+PicoVideo 4.2 test results are primarily source/model evidence, not blanket
+certification for every firmware or physical board.</p>
+<p>When reporting a problem, include release/tag, target/emulator, firmware GETINFO,
+VIDEO output, image size, cartridge filename/slot, full diagnostic screen and
+whether a saved disk existed. Preserve that disk rather than erasing it to
+make the loader fall back. The 320KB browser/Oliger BIOS supports A: and B: with matching disk geometry;
+physical two-drive hardware remains unverified. No CP/M 3.x support is claimed.</p><footer>Jon Becker · CP/M 2.2 · cpm22-v0.1.0 · <a href="../docs/release.html">Build, attribution and validation</a> · <a href="../docs/infocom-notice.html">Infocom notice</a></footer></main></body></html>

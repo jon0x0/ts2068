@@ -1,0 +1,105 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>oliger · TS2068 CP/M 2.2</title><style>*{box-sizing:border-box}html{color-scheme:dark}body{margin:0;background:#111820;color:#e4ecf1;font:17px/1.65 system-ui,sans-serif}main{max-width:1060px;margin:auto;padding:32px 24px 70px}a{color:#8ddceb;text-underline-offset:3px}h1{font-size:clamp(30px,5vw,51px);line-height:1.15}h2{margin-top:36px}h3{margin-top:28px}p,li{max-width:86ch}nav{display:flex;gap:18px;flex-wrap:wrap;font-size:14px;border-bottom:1px solid #3c5260;padding-bottom:18px}.lead{font-size:21px;color:#bdd5de}.buttons{display:flex;flex-wrap:wrap;gap:12px;margin:25px 0}.button{background:#244455;border:1px solid #78b7c4;border-radius:6px;padding:10px 15px;font-weight:650}pre{overflow:auto;background:#0b1118;border:1px solid #344c59;padding:16px;border-radius:6px;line-height:1.5}code{font-size:.9em}table{border-collapse:collapse;display:block;overflow:auto;font-size:15px}th,td{border:1px solid #3c5260;padding:9px 12px;text-align:left;vertical-align:top}th{background:#203540}footer{margin-top:40px;border-top:1px solid #3c5260;padding-top:16px;font-size:14px;color:#b3c7cf}.note{border-left:4px solid #8ddceb;padding:6px 18px;background:#1b2d37}img{max-width:100%}</style></head><body><main><nav><a href="../index.html">Project</a><a href="../docs/quickstart.html">Quickstart</a><a href="../play/">Run CP/M</a><a href="../index.html#downloads">Downloads</a><a href="https://github.com/jon0x0/ts2068/tree/main/CPM_2.2_2068">Source</a></nav><h1 id="cpm-on-the-oligerjlo-interface-in-fuse">CP/M on the Oliger/JLO interface in Fuse</h1>
+<p>For the current matched 160KB/320KB cartridges and GUI launch sequence, see
+<a href="startup.html#fuse-gui-with-oligerjlo">Fuse startup</a>. The project-local
+<a href="startup.html#tsrun-browser-emulator-with-the-same-oliger-disks">TSRun page</a>
+can now use these DSKs too.
+See <a href="using-cpm.html">using CP/M</a> for COLOR, HI and installing new software with
+the same commands used on TSPico and TSRun.</p>
+<p>The <code>oliger</code> build uses JLO's WD1770 ports directly. It boots the OS from a
+DOCK cartridge and reads drive A: from the floppy image. No TSPico is required.
+The display remains 64 columns by 24 rows. This is still CP/M 2.2.</p>
+<h2 id="build-the-cartridge-and-initial-disk">Build the cartridge and initial disk</h2>
+<pre><code class="language-powershell">python tools\build.py --profile oliger --rom ..\..\TSRun\roms\ts2068-0.rom
+</code></pre>
+<p>Outputs:</p>
+<ul>
+<li><code>build/profiles/oliger/ts2068-cpm.dck</code>: cartridge (no EXROM RAM disk).</li>
+<li><code>build/profiles/oliger/oliger-cpm.dsk</code>: initial floppy.</li>
+<li><code>build/oliger-cpm.dsk</code>: working copy of the same initial floppy.</li>
+</ul>
+<p>The image contains HELLO, MEMTEST, README, STAT, PIP, ED, ASM, LOAD, SUBMIT,
+DUMP, DDT, XSUB, TPLOAD and the HI.ASM/DEMO.SUB example. Approximately 109KB
+remains free. TPLOAD is an unrelated optional legacy TSPico import transient;
+it is not part of the Oliger disk driver.</p>
+<p>Rebuilding replaces the initial images. Save working disks under another name.</p>
+<h2 id="windows-gui">Windows GUI</h2>
+<p>Use Eduardo Fuentes's JLO-enabled Fuse, already installed here:
+<code>C:\apps\emulation\Fuse-JLODiskEmulation\fuse-1.9.1-win32\fuse.exe</code>.
+Ordinary upstream Fuse is not interchangeable with this test build.</p>
+<pre><code class="language-powershell">.\tools\run_oliger.ps1
+</code></pre>
+<p>The launcher enables JLO, selects its SAFE ROM and a single-sided 40-track drive,
+and inserts the CP/M cartridge. It leaves existing emulator installations intact.
+The August 19 Windows build lacks <code>--jlo0disk</code>, so insert the floppy manually:</p>
+<ol>
+<li>Open <strong>Media &gt; Disk &gt; JLO &gt; Drive A: &gt; Insert...</strong> (newer builds call it
+   <strong>Drive 0:</strong>).</li>
+<li>Select <code>build/oliger-cpm.dsk</code>.</li>
+<li>Press <strong>Enter</strong> in the emulated screen at the insert-disk prompt to retry boot.</li>
+<li>Expect <code>A: Oliger 160K disk</code>, HELLO's greeting and the <code>A&gt;</code> prompt.</li>
+</ol>
+<p>Before a disk is inserted, the cartridge asks for a CP/M disk and waits for a key.
+No BASIC disk format command is needed.</p>
+<p>Try <code>DIR</code>, <code>STAT</code>, <code>PIP COPY.COM=HELLO.COM</code>, <code>COPY</code>, <code>ERA COPY.COM</code>, and
+<code>SUBMIT DEMO</code>. The last command assembles, loads and executes HI.COM.</p>
+<p><strong>Save the virtual disk:</strong> use the JLO drive's <strong>Save As...</strong> to create a working
+DSK, or <strong>Save</strong> to update its existing file. CP/M's completed writes update
+Fuse's virtual medium; retaining that medium on the host is a separate Fuse
+operation. Reopen the saved image to check that files survive an emulator restart.</p>
+<p>The launcher also accepts <code>-Fuse PATH -Disk PATH -Cartridge PATH</code>. If a newer
+JLO build contains the startup option, it inserts the disk automatically.</p>
+<h2 id="create-a-disk-from-files">Create a disk from files</h2>
+<p>After building, make another preloaded disk from the manifest's utilities:</p>
+<pre><code class="language-powershell">python tools\create_oliger_disk.py --output build\my-cpm.dsk --add C:\CPM\MYPROG.COM
+</code></pre>
+<p>Or supply a directory containing only the desired CP/M 8.3 files:</p>
+<pre><code class="language-powershell">python tools\create_oliger_disk.py --directory C:\CPM\FILES --output build\my-cpm.dsk
+</code></pre>
+<p>The utility validates names/capacity, allocates CP/M directory entries/extents,
+and writes both the DSK and a JSON manifest. Existing output requires <code>--force</code>.
+This creates a CP/M filesystem, not a SAFE filesystem; SAFE CAT is not expected
+to list its files. The cartridge supplies the OS, so the floppy needs no boot
+tracks or system image.</p>
+<h2 id="layout-and-implementation">Layout and implementation</h2>
+<p>40 cylinders, one side, 16 physical sectors per track, 256 bytes per sector,
+MFM recording. Sector IDs are 1–16. A standard CPC DSK container holds the media.
+CP/M sees 80 logical tracks of 16 records each, 128-byte records, 1KB allocation
+blocks, 128 directory entries, and no reserved tracks. DPB:
+SPT=16, BSH=3, BLM=7, EXM=0, DSM=159, DRM=127, AL0=F0, AL1=0, CKS=0, OFF=0.</p>
+<p>The backend maps LBA to cylinder=LBA/32, sector=(LBA/2)%16+1, half=LBA%2.
+Each write reads the physical sector, replaces one half and writes it immediately.
+No dirty cache persists across BIOS calls. It uses single-sector commands,
+bounded polling and checks completion/errors and exact byte counts.</p>
+<p>JLO port map: 8F command/status, 9F track, AF sector, BF data, B7 drive/side.
+Drive 0 is B7=01, side 0. Board B's low-memory overlay is released with a data
+read at address 0008 before cartridge RAM testing. No SAFE DOS routines run
+inside CP/M.</p>
+<h2 id="source-and-verification">Source and verification</h2>
+<p>Eduardo's <a href="https://ts2068.groups.io/g/main/topic/120833431">announcement</a>
+led to <a href="https://sourceforge.net/p/fuse-emulator/fuse/merge-requests/53/">Fuse merge request #53</a>.
+The inspected <code>jlo-disk</code> source revision is
+<code>86199eabac8577c53ac73a37ca950f786fda8270</code> from
+<code>https://git.code.sf.net/u/efuentes67/fuse-emulator</code>.
+The installed August executable predates that revision.</p>
+<p>Host tests validate DSK descriptors, full-image round trips and malformed media.
+<code>tools/test_oliger_backend.mjs</code> executes actual Z80 BIOS calls against a functional
+register model: all 1280 records, partial-sector preservation, cylinder boundaries,
+invalid requests, missing sectors, short transfers and write protection. This
+model does not establish WD1770 timing. <code>tools/test_oliger_fuse.py</code> is the separate
+integration test for a newer Fuse with <code>--jlo0disk</code>.</p>
+<p>The source-built headless Fuse at that revision passed cold cartridge startup,
+directory listing, HELLO execution, STAT reporting 109KB free, and the complete
+SUBMIT/ASM/LOAD/HI workflow through the real WD1770 implementation. Starting
+without a disk also reached the insert-disk/key-retry prompt. Transcripts are
+<code>build/oliger-{boot,hello,stat,submit,no-disk}.txt</code>. The existing RAM-disk build
+also passed its TSRun boot, keyboard, all-sector and utility regression tests.
+The WiAny ndows GUI mounting/saving workflow is provided for the owner's manual
+test; it was not automated in this session. Host-file save/reopen persistence
+has not yet been independently tested.</p>
+<p>Physical Oliger hardware, multiple drives/sides, media changes, and SAFE filesystem
+compatibility are outside this initial driver. Never use the new filesystem on
+a valuable existing disk.</p>
+<h2 id="disk-creation-and-file-copying">Disk creation and file copying</h2>
+<p>Use <code>python tools/cpm_disk.py create newdisk.dsk --size 160</code> (or <code>--size 320</code>),
+then <code>python tools/cpm_disk.py put newdisk.dsk FILE.COM README.TXT</code>.
+<code>FORMAT A:</code> initializes an already mounted disk. See <a href="disk-tools.html">disk tools</a>.</p><footer>Jon Becker · CP/M 2.2 · cpm22-v0.1.0 · <a href="../docs/release.html">Build, attribution and validation</a> · <a href="../docs/infocom-notice.html">Infocom notice</a></footer></main></body></html>

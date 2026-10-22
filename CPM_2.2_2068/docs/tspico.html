@@ -1,0 +1,120 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>tspico · TS2068 CP/M 2.2</title><style>*{box-sizing:border-box}html{color-scheme:dark}body{margin:0;background:#111820;color:#e4ecf1;font:17px/1.65 system-ui,sans-serif}main{max-width:1060px;margin:auto;padding:32px 24px 70px}a{color:#8ddceb;text-underline-offset:3px}h1{font-size:clamp(30px,5vw,51px);line-height:1.15}h2{margin-top:36px}h3{margin-top:28px}p,li{max-width:86ch}nav{display:flex;gap:18px;flex-wrap:wrap;font-size:14px;border-bottom:1px solid #3c5260;padding-bottom:18px}.lead{font-size:21px;color:#bdd5de}.buttons{display:flex;flex-wrap:wrap;gap:12px;margin:25px 0}.button{background:#244455;border:1px solid #78b7c4;border-radius:6px;padding:10px 15px;font-weight:650}pre{overflow:auto;background:#0b1118;border:1px solid #344c59;padding:16px;border-radius:6px;line-height:1.5}code{font-size:.9em}table{border-collapse:collapse;display:block;overflow:auto;font-size:15px}th,td{border:1px solid #3c5260;padding:9px 12px;text-align:left;vertical-align:top}th{background:#203540}footer{margin-top:40px;border-top:1px solid #3c5260;padding-top:16px;font-size:14px;color:#b3c7cf}.note{border-left:4px solid #8ddceb;padding:6px 18px;background:#1b2d37}img{max-width:100%}</style></head><body><main><nav><a href="../index.html">Project</a><a href="../docs/quickstart.html">Quickstart</a><a href="../play/">Run CP/M</a><a href="../index.html#downloads">Downloads</a><a href="https://github.com/jon0x0/ts2068/tree/main/CPM_2.2_2068">Source</a></nav><blockquote>
+<p>Historical 48KB <code>combined</code> prototype design, not the current setup guide.
+Use the <a href="tspico-firmware.html">firmware/feature matrix</a> and
+<a href="startup.html">current startup guide</a>. Its old fixed-size paths/commands below
+describe that prototype; current service configuration is in
+<a href="tspico-directory.html">tspico-directory.md</a>. Original 1.00 uses RAMDisk instead.</p>
+</blockquote>
+<h1 id="combined-emulator-tspico-cartridge">Combined emulator / TSPico cartridge</h1>
+<p>Explicit <code>--profile combined</code> produces one <code>build/ts2068-cpm.dck</code>. It contains
+both the existing emulator RAM disk and the resident modern TSPico adapter.
+The copy at <code>build/sdcard/CPM/CPMBOOT.DCK</code> is byte-identical. The inspected
+TSPico DCK loader consumes its first DOCK block and ignores the later EXROM
+block; the latter remains available to emulators.</p>
+<p>The same program now has three disk choices, in priority order:</p>
+<ol>
+<li>Validated optional TSPico CP/M service: drive A is a writable SD image.</li>
+<li>Stock modern channel interface and a readable supplied image: drive A is
+   read-only. Writes fail rather than corrupt binary data containing 17h.</li>
+<li>No usable TSPico image: use the preloaded emulator EXROM RAM disk, after
+   checking its directory signature. If neither disk exists, stop with a clear
+   message. Legacy 1.00 is not a raw-file backend.</li>
+</ol>
+<p>This selection happens once at cold boot. Warm boots keep the selected image.
+The code never changes TSPico BOOT/DOCK slot configuration. It uses SRAM that
+has already been assigned to the cartridge, rather than searching and replacing
+possibly occupied slots. It still requires writable DOCK pages 0-3, including
+the two display shadows. A Flash-loaded or ROM-only cartridge is insufficient.</p>
+<p><strong>Status: hardware-test candidate.</strong> The actual Z80 code passes a functional
+TPI model and a simulated first-block-only SRAM cartridge mapping. This is not
+a physical FIFO timing, SRAM write-cycle or electrical compatibility result.</p>
+<h2 id="sd-card-and-sram-setup">SD card and SRAM setup</h2>
+<p>The build stages files under <code>build/sdcard/CPM/</code>. Copy the directory to the public
+SD root only after reviewing it. In particular, preserve an existing
+<code>/CPM/DRIVEA.IMG</code>: replacing it resets the CP/M filesystem and loses its files.
+The project does not copy anything to a device automatically.</p>
+<p>Use the TSPico normal DCK loader for <code>/CPM/CPMBOOT.DCK</code>. Choose SRAM and an unused
+even slot pair, keep the existing BOOT selection, and start that DOCK cartridge.
+The owner's earlier virtual-DOCK instructions describe this workflow. Do not
+combine it with a separately driving physical cartridge without an appropriate
+hardware profile. TSPico's exact SRAM mapping/write qualification remains to be
+confirmed on the board; startup tests the lower 16KB before entering CP/M.</p>
+<p>Modern firmware with ordinary file channels can run the image read-only without
+installing the extension. The screen states READ ONLY. <code>HELLO</code>, <code>STAT</code>, <code>DIR</code>
+and reading files work; assembler output, SUBMIT scratch files and other writes
+require the extension. The 48KB image format is identical on both backends.</p>
+<h2 id="optional-binary-safe-writable-service">Optional binary-safe writable service</h2>
+<p><code>firmware/cpm_service.py</code> adds four commands through the modern firmware's
+documented <code>EXT_SA_FUNCT</code> hook. It does not replace the ROM or channel parser.
+Keep that file as <code>cpm_service.py</code> on the Pico flash root, and <strong>merge</strong> its
+handlers into your existing <code>dev_extcmd.py</code>, preserving existing handlers:</p>
+<pre><code class="language-python">from cpm_service import EXT_SA_FUNCT as CPM_COMMANDS
+EXT_SA_FUNCT.update(CPM_COMMANDS)
+</code></pre>
+<p>The firmware must provide the inspected 2.3 extension hook, <code>CH_CALL</code>, channel
+packet/DMA helpers, and compatible SD management. These interfaces were checked
+in the owner's local <code>references/tspico-firmware-build</code> source. The supplied
+extension has not been deployed or physically tested. It is opt-in; installation
+instructions do not constitute a claim that it supports old firmware 1.00.</p>
+<p>Commands are fixed to <code>/CPM/DRIVEA.IMG</code>, exactly 49,152 bytes:</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Parameters / answer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tpi:.cpmcap</code></td>
+<td>Validates image size and read/write open, returns signature/geometry</td>
+</tr>
+<tr>
+<td><code>tpi:.cpmrd</code></td>
+<td>PMR1=LBA 0-383; returns 128 bytes plus XOR</td>
+</tr>
+<tr>
+<td><code>tpi:.cpmw0 &lt;128 hex digits&gt;</code></td>
+<td>Stages the first 64 bytes for PMR1=LBA</td>
+</tr>
+<tr>
+<td><code>tpi:.cpmw1 &lt;128 hex digits&gt;</code></td>
+<td>Checks matching LBA, commits all 128 bytes, flushes/closes</td>
+</tr>
+</tbody>
+</table>
+<p>No write occurs after just the first half. Bad hex, range, length or mismatched
+halves fails. Reads/capability requests cancel an incomplete staged write. Data
+can contain every byte value, including 17h. CP/M sector writes are synchronous;
+they are not a journal and are not guaranteed atomic across power loss.</p>
+<h2 id="import-individual-existing-sd-files">Import individual existing SD files</h2>
+<p>With the modern channel service available:</p>
+<pre><code class="language-text">TPIMPORT /CPM/NEW.COM NEW.COM
+NEW
+</code></pre>
+<p>This reads a raw SD file (up to 32KB) and creates a file in the current CP/M
+drive. It refuses to overwrite an existing local file, rejects malformed 8.3
+names, and deletes a partial destination on a reported write failure. Source
+paths must match the SD filename's case; the current CCP/input uses uppercase.
+The destination supports letters/digits and a required extension. SD reads
+are binary-safe without the extension. A read-only drive cannot receive imports;
+use emulator RAM or the writable SD backend. A normal SD directory is not yet
+exposed as a virtual CP/M drive; this command imports files explicitly.</p>
+<h2 id="detection-and-build-separation">Detection and build separation</h2>
+<p>The probe checks modern idle, sends a bounded preheader, validates ACK=1 and
+modern MID=F7, and only then uses modern SYNC. A legacy/busy response is declined;
+floating FF and stale ACK with idle status do not identify hardware. Device use
+must be serialized and probing must start with no transaction in progress.
+Legacy reads consume FIFO tokens, so automatic selection is deliberately not a
+legacy negotiation or recovery routine. Exact firmware version is not inferred.
+The writable capability response must match all eight signature/geometry bytes.</p>
+<p><code>--profile emulator</code> omits resident probing and the image backend. Both profiles
+still include TPIMPORT as a standalone transient, which probes only when run.
+Profile artifacts are retained under <code>build/profiles/combined/</code> and
+<code>build/profiles/emulator/</code>. The top-level build files represent the most recent
+build. <code>ts2068-cpm-tspico.dck</code> is a DOCK-only container convenience; only the
+combined profile has the required physical image backend.</p>
+<p>Resident service code occupies F000-F5FF; its workspace is F600-F7FF. BIOS and
+stack remain in HOME page 7 during all TSPico transfers. The backend ABI is still
+drive/LBA/128-byte bounce buffer, so future Oliger and other disk implementations
+remain separate from the transport and console.</p><footer>Jon Becker · CP/M 2.2 · cpm22-v0.1.0 · <a href="../docs/release.html">Build, attribution and validation</a> · <a href="../docs/infocom-notice.html">Infocom notice</a></footer></main></body></html>

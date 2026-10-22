@@ -2,9 +2,9 @@
 
 ## CP/M 2.2 release
 
-Imported under `CPM_2068/` with tag `cpm22-v0.1.0`. The project Pages entry
+Imported under `CPM_2.2_2068/` with tag `cpm22-v0.1.0`. The project Pages entry
 and browser player live there. Source development remains in the original
-CPM_2068 workspace; `tools/publish_site.py --hub PATH_TO_HUB` stages subsequent
+CPM_2.2_2068 workspace; `tools/publish_site.py --hub PATH_TO_HUB` stages subsequent
 source/docs/download updates. Install Markdown==3.9 for the site generator.
 The hub's scripts/build_site.py owns its Applications entry; regenerate the hub
 after changes. Do not replace the shared Sinistar TSRun snapshot: the CP/M player
