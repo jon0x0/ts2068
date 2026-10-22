@@ -235,6 +235,11 @@ load_sram_disk_impl:
     ld (volume_digit),a
     ld (page_name+3),a
     ld (page_name+4),a
+    ; Show the first block before SD directory/discovery/mount transactions.
+    ; These can take noticeable time on hardware, before load_page runs.
+    call load_progress
+    xor a
+    out ($f4),a
     ld a,2
     ld (diagnostic_stage),a
     ld hl,root_directory

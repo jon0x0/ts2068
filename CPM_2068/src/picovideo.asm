@@ -153,4 +153,4 @@ video_notice:
 .print:
     jp puts
 video_64_message: db 'TS2068 64 columns',13,10,0
-video_80_message: db 'PicoVideo 80 columns',13,10,0
+video_80_message: db 'PicoVideo 80 column mode enabled',13,10,0
