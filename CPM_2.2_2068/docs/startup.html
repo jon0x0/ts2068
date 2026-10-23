@@ -131,19 +131,13 @@ saved DSK next time with the same-size cartridge and drive geometry.</p>
 If a disk cannot be read, check that the DCK, DSK, side count and 40-track
 drive setting match before changing or formatting anything.</p>
 <h2 id="tsrun-browser-emulator-with-the-same-oliger-disks">TSRun browser emulator with the same Oliger disks</h2>
-<p>The project now supplies a local CP/M page using TSRun's Z80, TS2068 memory,
-video and keyboard code plus a functional Oliger adapter. The neighboring
-TSRun checkout is read only; no upstream TSRun files are patched.</p>
-<p>From this project's directory:</p>
-<pre><code class="language-powershell">python tools/run_tsrun.py
-</code></pre>
-<p>Open <strong>http://127.0.0.1:8770/</strong>. It loads the local TS2068 ROMs, matched
-<code>build/infocom-cpm.dck</code> and <code>build/infocom-cpm.dsk</code>, then boots to <code>A&gt;</code>.
-Click the screen to type, enter a command in the command box, or use the
-DIR/demo/game buttons. The example <code>SUBMIT DEMO</code> assembles and runs HI.COM.</p>
-<p>To choose a utilities disk, another TSRun checkout, or another port:</p>
-<pre><code class="language-powershell">python tools/run_tsrun.py --tsrun ../../TSRun --port 8770 --disk build/profiles/oliger320/oliger-cpm.dsk --cartridge build/profiles/oliger320/ts2068-cpm.dck
-</code></pre>
+<p><strong><a href="https://jon0x0.github.io/ts2068/CPM_2.2_2068/play/">Run CP/M 2.2 live in TSRun</a></strong></p>
+<p>Open that link in your browser. The hosted page loads the TS2068 emulator,
+CP/M cartridge and supplied disk automatically, then boots to <strong>A&gt;</strong>. You do
+not need to install Python, download the source, or run a local server.</p>
+<p>Click the screen to type, use the command box, or select a command button.
+Try <code>DIR</code>, <code>SUBMIT DEMO</code> and <code>HI</code>. The page also offers startup links for the
+160KB utilities disk and the 320KB Planetfall/Zork I disk.</p>
 <p>The page's <strong>Open disk</strong> accepts a standard DSK or a complete CP/M disk TAP,
 matching the current cartridge's 160KB/320KB size, and restarts CP/M. It also
 accepts a complete 1.00 saved set: select all <code>CPMnn.TAP</code> files and
@@ -157,16 +151,30 @@ and <strong>Download TAP</strong> saves one multi-CODE TAP for the TSPico v2.x p
 descriptor: extract its contents into the card's <code>/TAP/CPM/SAVE/</code> directory,
 preserving the previous save separately. That set reloads directly in the
 legacy cartridge; it needs no repacking. The ZIP itself is not a TSPico disk.</p>
-<p>The server never overwrites the source disk. Download before closing/reloading
-the tab. Reopen a downloaded disk with Open disk or the Python tools; Fuse
+<p>The page does not overwrite the supplied startup disk. Download your working
+disk before closing/reloading the tab. Reopen a downloaded disk with Open disk or the Python tools; Fuse
 uses the DSK form. Browser disk memory is not an automatic save to SD or the PC.
-The standalone launcher also accepts <code>--disk PATH_TO_DISK.TAP</code> at startup.
 TSRun still runs the Oliger CP/M cartridge; TAP is another container for its
 sector data, not an emulation of the TSPico FIFO or SRAM hardware.</p>
-<p>Stop the server with Ctrl+C in its terminal. This is a functional single-drive
-adapter for this CP/M BIOS, not a full cycle-accurate JLO/SAFE emulator. The
-ordinary TSRun page still lacks this disk UI. The older 48KB <code>emulator</code>
-cartridge can run there without an adapter, but cannot mount these DSKs.</p>
+<p>This project page adds a functional disk adapter for the CP/M BIOS; it is not
+a full cycle-accurate JLO/SAFE emulator. Use the CP/M-specific live link above
+for its disk controls, rather than the general-purpose upstream TSRun page.</p>
+<h3 id="optional-run-the-cpm-browser-page-locally">Optional: run the CP/M browser page locally</h3>
+<p>This is for users who want to serve their own local files or develop the
+project. It is not required for the live page above.</p>
+<p>You need Python 3, a checkout of this CP/M project, a compatible TSRun checkout
+containing machine.js and its TS2068 ROM files, and a matching CP/M cartridge
+and disk image. Place TSRun at the launcher's default ../../TSRun relative to
+the CP/M directory, or supply --tsrun explicitly. Do not assume a source ZIP
+includes generated build/ images: extract the matched image pair from a release
+or build it first.</p>
+<p>In a terminal opened in the CP/M source directory, run, adjusting the paths:</p>
+<pre><code class="language-powershell">python tools/run_tsrun.py --tsrun C:/path/to/TSRun --cartridge C:/path/to/cpm22.dck --disk C:/path/to/cpm22.dsk
+</code></pre>
+<p>Then open <strong>http://127.0.0.1:8770/</strong>. The --disk argument also accepts a complete
+CP/M disk TAP. The local server only serves the input files; browser changes
+still need Download DSK/TAP before closing. Stop the server with Ctrl+C in its
+terminal. See <code>python tools/run_tsrun.py --help</code> for further local options.</p>
 <h2 id="create-and-populate-another-disk">Create and populate another disk</h2>
 <pre><code class="language-powershell">python tools/cpm_disk.py create work.dsk --size 320
 python tools/cpm_disk.py put work.dsk ED.COM ASM.COM README.TXT

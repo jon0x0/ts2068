@@ -35,7 +35,7 @@ TPSAVE, power-off and reload example.
 | TSPico 1.00 | dual package CPM.DCK + preload TAPs | BASIC DCK loader, SRAM slot 4/5 | TPSAVE before power off; chunks reload directly |
 | Inspected TSPico v2.x (inspected 2.3.1) / ROM 2.3 | same CPM.DCK; SD/native files need optional CP/M service | With service: Enter for SD, R for RAMDisk snapshot, L for saved RAMDisk | SD persists; RAMDisk requires TPSAVE |
 | Fuse/JLO GUI | Oliger cartridge + matching 160KB/320KB DSK | tools/run_oliger.ps1 or tools/run_infocom.ps1 | JLO drive Save/Save As |
-| TSRun CP/M page | Oliger cartridge + DSK or CP/M TAP | python tools/run_tsrun.py | Download DSK, TAP or 1.00 TAP set before closing/reloading |
+| TSRun CP/M page | Oliger cartridge + DSK or CP/M TAP | [Run live](https://jon0x0.github.io/ts2068/CPM_2.2_2068/play/) | Download DSK, TAP or 1.00 TAP set before closing/reloading |
 
 The unified TSPico cartridge is **not** the cartridge to load in Fuse or the
 TSRun Oliger page. The current default build output can change with the last
@@ -43,16 +43,10 @@ build command; use the retained profile paths or the matched game pair below.
 
 ## Run now
 
-From the project directory, start the project-local TSRun page:
-
-```powershell
-python tools/run_tsrun.py
-```
-
-Open **http://127.0.0.1:8770/**. It uses the neighboring ../../TSRun checkout and
-its two TS2068 ROMs, and boots build/infocom-cpm.dck with build/infocom-cpm.dsk.
-The ordinary TSRun application is unchanged. The project supplies the disk
-adapter and browser page. See the startup guide for custom paths and disks.
+**[Run CP/M 2.2 live in your browser](https://jon0x0.github.io/ts2068/CPM_2.2_2068/play/)**. The page loads the emulator,
+cartridge and disk automatically. No installation or local server is required.
+For development or serving your own files, see the separately labelled
+[optional local-running instructions](docs/startup.md#optional-run-the-cpm-browser-page-locally).
 
 For the modified Fuse/JLO GUI, follow the
 [download-and-load instructions](docs/startup.md#fuse-gui-with-oligerjlo).

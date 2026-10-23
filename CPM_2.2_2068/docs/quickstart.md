@@ -13,7 +13,7 @@ separate third-party material; see the release's Infocom notice.
 | Physical TSPico v2.x: RAMDisk | `cpm22-tspico-dual.zip` | Disk image loaded into RAMDisk; run TPSAVE before power-off |
 | Physical TSPico v2.x: native SD files | `cpm22-tspico-dual.zip` + optional CP/M service | Uses the SD filesystem in `/TAP/CPM/FILES`; writes persist directly to SD |
 | JLO/Oliger-enabled Fuse | `cpm22-oliger.zip` | Save/Save As the emulated disk |
-| Browser TSRun | Open the project's Run CP/M link | Download DSK, TAP or 1.00 TAP set |
+| Browser TSRun | [Run CP/M live](https://jon0x0.github.io/ts2068/CPM_2.2_2068/play/) | Download DSK, TAP or 1.00 TAP set |
 
 Public builds use a public-domain 8x8 font. Normal TS2068 and browser displays
 are 64 columns. Supported PicoVideo 4.2 selects 80 columns by default;
@@ -141,7 +141,8 @@ drive setting match before changing or formatting anything.
 
 ## TSRun in the browser
 
-Open the Run CP/M page. It boots the 320KB Planetfall/Zork I disk automatically.
+**[Open the live CP/M 2.2 page](https://jon0x0.github.io/ts2068/CPM_2.2_2068/play/)**. It boots the 320KB
+Planetfall/Zork I disk automatically. No local installation is required.
 The 160KB link selects its matching cartridge and disk. Click the display
 to type, or use the command box. Try DIR and Build HI example.
 

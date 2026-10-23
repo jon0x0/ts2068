@@ -141,26 +141,15 @@ drive setting match before changing or formatting anything.
 
 ## TSRun browser emulator with the same Oliger disks
 
-The project now supplies a local CP/M page using TSRun's Z80, TS2068 memory,
-video and keyboard code plus a functional Oliger adapter. The neighboring
-TSRun checkout is read only; no upstream TSRun files are patched.
+**[Run CP/M 2.2 live in TSRun](https://jon0x0.github.io/ts2068/CPM_2.2_2068/play/)**
 
-From this project's directory:
+Open that link in your browser. The hosted page loads the TS2068 emulator,
+CP/M cartridge and supplied disk automatically, then boots to **A>**. You do
+not need to install Python, download the source, or run a local server.
 
-```powershell
-python tools/run_tsrun.py
-```
-
-Open **http://127.0.0.1:8770/**. It loads the local TS2068 ROMs, matched
-`build/infocom-cpm.dck` and `build/infocom-cpm.dsk`, then boots to `A>`.
-Click the screen to type, enter a command in the command box, or use the
-DIR/demo/game buttons. The example `SUBMIT DEMO` assembles and runs HI.COM.
-
-To choose a utilities disk, another TSRun checkout, or another port:
-
-```powershell
-python tools/run_tsrun.py --tsrun ../../TSRun --port 8770 --disk build/profiles/oliger320/oliger-cpm.dsk --cartridge build/profiles/oliger320/ts2068-cpm.dck
-```
+Click the screen to type, use the command box, or select a command button.
+Try `DIR`, `SUBMIT DEMO` and `HI`. The page also offers startup links for the
+160KB utilities disk and the 320KB Planetfall/Zork I disk.
 
 The page's **Open disk** accepts a standard DSK or a complete CP/M disk TAP,
 matching the current cartridge's 160KB/320KB size, and restarts CP/M. It also
@@ -177,17 +166,38 @@ descriptor: extract its contents into the card's `/TAP/CPM/SAVE/` directory,
 preserving the previous save separately. That set reloads directly in the
 legacy cartridge; it needs no repacking. The ZIP itself is not a TSPico disk.
 
-The server never overwrites the source disk. Download before closing/reloading
-the tab. Reopen a downloaded disk with Open disk or the Python tools; Fuse
+The page does not overwrite the supplied startup disk. Download your working
+disk before closing/reloading the tab. Reopen a downloaded disk with Open disk or the Python tools; Fuse
 uses the DSK form. Browser disk memory is not an automatic save to SD or the PC.
-The standalone launcher also accepts `--disk PATH_TO_DISK.TAP` at startup.
 TSRun still runs the Oliger CP/M cartridge; TAP is another container for its
 sector data, not an emulation of the TSPico FIFO or SRAM hardware.
 
-Stop the server with Ctrl+C in its terminal. This is a functional single-drive
-adapter for this CP/M BIOS, not a full cycle-accurate JLO/SAFE emulator. The
-ordinary TSRun page still lacks this disk UI. The older 48KB `emulator`
-cartridge can run there without an adapter, but cannot mount these DSKs.
+This project page adds a functional disk adapter for the CP/M BIOS; it is not
+a full cycle-accurate JLO/SAFE emulator. Use the CP/M-specific live link above
+for its disk controls, rather than the general-purpose upstream TSRun page.
+
+### Optional: run the CP/M browser page locally
+
+This is for users who want to serve their own local files or develop the
+project. It is not required for the live page above.
+
+You need Python 3, a checkout of this CP/M project, a compatible TSRun checkout
+containing machine.js and its TS2068 ROM files, and a matching CP/M cartridge
+and disk image. Place TSRun at the launcher's default ../../TSRun relative to
+the CP/M directory, or supply --tsrun explicitly. Do not assume a source ZIP
+includes generated build/ images: extract the matched image pair from a release
+or build it first.
+
+In a terminal opened in the CP/M source directory, run, adjusting the paths:
+
+```powershell
+python tools/run_tsrun.py --tsrun C:/path/to/TSRun --cartridge C:/path/to/cpm22.dck --disk C:/path/to/cpm22.dsk
+```
+
+Then open **http://127.0.0.1:8770/**. The --disk argument also accepts a complete
+CP/M disk TAP. The local server only serves the input files; browser changes
+still need Download DSK/TAP before closing. Stop the server with Ctrl+C in its
+terminal. See `python tools/run_tsrun.py --help` for further local options.
 
 ## Create and populate another disk
 
