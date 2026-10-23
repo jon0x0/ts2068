@@ -54,15 +54,10 @@ its two TS2068 ROMs, and boots build/infocom-cpm.dck with build/infocom-cpm.dsk.
 The ordinary TSRun application is unchanged. The project supplies the disk
 adapter and browser page. See the startup guide for custom paths and disks.
 
-For the installed Windows Fuse/JLO GUI:
-
-```powershell
-.\tools\run_infocom.ps1
-```
-
-Insert the printed DSK through **Media > Disk > JLO > Drive A: / Drive 0:** if
-this older GUI cannot insert it automatically, then press Enter at CP/M's
-retry prompt. This uses Eduardo Fuentes's JLO-enabled Fuse, not ordinary Fuse.
+For the modified Fuse/JLO GUI, follow the
+[download-and-load instructions](docs/startup.md#fuse-gui-with-oligerjlo).
+They explain selecting the TS2068, enabling JLO, and inserting the matched CP/M
+cartridge and DSK through the menus. No scripts or source checkout are required.
 
 For physical TSPico, extract build/ts2068-cpm-tspico-dual.zip and follow the
 [startup guide](docs/startup.md#physical-ts2068-with-tspico). The SRAM slot

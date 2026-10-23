@@ -79,19 +79,84 @@ writes one CPMRAM.TAP. Direct SD images/native files additionally require the
 optional CP/M service, not just a newer firmware number. Read the
 <a href="tspico-firmware.html">firmware matrix</a> and <a href="tspico-session.html">complete sample session</a>.</p>
 <h2 id="fuse-with-oligerjlo-emulation">Fuse with Oliger/JLO emulation</h2>
-<p>Use the community JLO-enabled Fuse, not ordinary Fuse. Background and the
-author's distribution are linked in the <a href="https://ts2068.groups.io/g/main/topic/120833431?msg=9694#msg9694">community discussion</a>.
-Fuse and its SAFE/JLO ROM are not included in this release.</p>
-<p>The Oliger ZIP provides <code>160/cpm22.dck</code> + <code>160/cpm22.dsk</code> and equivalent
-<code>320/</code> files. Match both sizes and choose single-sided or double-sided
-40-track drive geometry accordingly. Start the TS2068 with the selected DOCK
-cartridge, enable JLO and its supplied ROM, then insert the DSK in JLO drive 0
-(sometimes labelled A). Press Enter if CP/M asks for a disk.</p>
-<p>On Windows the included launcher accepts explicit paths:</p>
-<pre><code class="language-powershell">.\tools\run_oliger.ps1 -Fuse C:\path\to\fuse.exe -Cartridge .\320\cpm22.dck -Disk .\320\cpm22.dsk
+<p>These steps use <strong>Eduardo Fuentes's modified Fuse with JLO/Oliger disk
+emulation</strong>. Ordinary Fuse does not include this interface. Obtain the modified
+build from the author's links in the
+<a href="https://ts2068.groups.io/g/main/topic/120833431?msg=9694#msg9694">community discussion</a>
+and extract its distribution, including its ROMs folder. No TSPico is involved.</p>
+<h3 id="download-cpm">Download CP/M</h3>
+<p>From the <a href="https://jon0x0.github.io/ts2068/CPM_2.2_2068/#downloads">project download page</a>,
+download and extract <strong>cpm22-oliger.zip</strong>. Start with either matched pair:</p>
+<table>
+<thead>
+<tr>
+<th>Disk</th>
+<th>Cartridge to insert</th>
+<th>Disk image to insert</th>
+<th>JLO drive 0 type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>160KB utilities</td>
+<td><code>160/cpm22.dck</code></td>
+<td><code>160/cpm22.dsk</code></td>
+<td>Single-sided 40 track</td>
+</tr>
+<tr>
+<td>320KB utilities</td>
+<td><code>320/cpm22.dck</code></td>
+<td><code>320/cpm22.dsk</code></td>
+<td>Double-sided 40 track</td>
+</tr>
+</tbody>
+</table>
+<p>To use the optional Planetfall/Zork I collection instead, extract
+<strong>cpm22-infocom-oliger.zip</strong>. Its matching files are <code>build/infocom-cpm.dck</code>
+and <code>build/infocom-cpm.dsk</code>; choose <strong>Double-sided 40 track</strong>. You can also
+download the matching 320KB game DCK and DSK directly from the project page.
+The operating system is CP/M 2.2 whichever disk contents you choose.</p>
+<h3 id="configure-and-load-in-fuse">Configure and load in Fuse</h3>
+<ol>
+<li>Start the modified Fuse executable normally.</li>
+<li>Open <strong>Machine &gt; Select...</strong> and choose <strong>Timex TS2068</strong>.</li>
+<li>Open <strong>Options &gt; Peripherals &gt; Disk...</strong>, enable <strong>JLO Disk System
+   interface</strong>, and accept the dialog.</li>
+<li>Open <strong>Options &gt; Select ROMs &gt; Peripheral ROMs &gt; JLO Disk System...</strong>.
+   Select the modified Fuse distribution's <code>roms/safe265.rom</code> if it is not
+   already configured. The emulator needs this JLO ROM; it is not the CP/M
+   cartridge and is not included in the CP/M download.</li>
+<li>Open <strong>Options &gt; Disk options...</strong>. Set <strong>JLO Drive 0</strong> to the 40-track
+   type in the table above. Do not leave it at an 80-track default.</li>
+<li>Open <strong>Media &gt; Disk &gt; JLO &gt; Drive 0: &gt; Insert...</strong> and select the <code>.dsk</code>
+   from your chosen pair. Some builds label the first drive <strong>Drive A:</strong>.
+   Choose <strong>Insert...</strong>, not <strong>Insert New</strong>; the supplied disk is already formatted.</li>
+<li>Open <strong>Media &gt; Cartridge &gt; Timex Dock &gt; Insert...</strong> and select the
+   matching <code>.dck</code>. This is the <strong>Oliger CP/M cartridge</strong>, not the TSPico CPM.DCK.</li>
+<li>If the cartridge does not start automatically, choose <strong>Machine &gt; Reset...</strong>.
+   If CP/M displays its insert-disk prompt, check the mounted disk and press
+   <strong>Enter</strong> in the emulated screen.</li>
+</ol>
+<p>You should see the CP/M 2.2 startup banner, <code>A: Oliger disk</code>, HELLO's message
+and the <strong>A&gt;</strong> prompt. No PowerShell commands, source checkout, Python or
+compilation are required. Do not use BASIC LOAD to start this cartridge.</p>
+<h3 id="try-cpm-and-save-your-work">Try CP/M and save your work</h3>
+<p>At A&gt;, type:</p>
+<pre><code class="language-text">DIR
+STAT
+SUBMIT DEMO
+HI
 </code></pre>
-<p>Try DIR, SUBMIT DEMO and HI. Before exiting, use the JLO drive menu's
-Save/Save As. TPSAVE applies to TSPico RAMDisk, not Fuse.</p>
+<p><code>SUBMIT DEMO</code> assembles and runs the HI example. On the optional game disk,
+<code>PLANET</code> or <code>ZORK1</code> starts the corresponding application.</p>
+<p>Before closing Fuse, use <strong>Media &gt; Disk &gt; JLO &gt; Drive 0: &gt; Save As...</strong> to
+retain a working disk under a new name, or <strong>Save</strong> to update it. A game's
+SAVE command only writes a file into that emulated disk; still save the disk
+in Fuse afterward. <strong>TPSAVE is for TSPico RAMDisk, not Fuse.</strong> Reinsert your
+saved DSK next time with the same-size cartridge and drive geometry.</p>
+<p>If the JLO menu/checkbox is absent, this is not the required modified Fuse.
+If a disk cannot be read, check that the DCK, DSK, side count and 40-track
+drive setting match before changing or formatting anything.</p>
 <h2 id="tsrun-in-the-browser">TSRun in the browser</h2>
 <p>Open the Run CP/M page. It boots the 320KB Planetfall/Zork I disk automatically.
 The 160KB link selects its matching cartridge and disk. Click the display

@@ -32,37 +32,76 @@ Rebuilding replaces the initial images. Save working disks under another name.
 
 ## Windows GUI
 
-Use Eduardo Fuentes's JLO-enabled Fuse, already installed here:
-`C:\apps\emulation\Fuse-JLODiskEmulation\fuse-1.9.1-win32\fuse.exe`.
-Ordinary upstream Fuse is not interchangeable with this test build.
+These steps use **Eduardo Fuentes's modified Fuse with JLO/Oliger disk
+emulation**. Ordinary Fuse does not include this interface. Obtain the modified
+build from the author's links in the
+[community discussion](https://ts2068.groups.io/g/main/topic/120833431?msg=9694#msg9694)
+and extract its distribution, including its ROMs folder. No TSPico is involved.
 
-```powershell
-.\tools\run_oliger.ps1
+### Download CP/M
+
+From the [project download page](https://jon0x0.github.io/ts2068/CPM_2.2_2068/#downloads),
+download and extract **cpm22-oliger.zip**. Start with either matched pair:
+
+| Disk | Cartridge to insert | Disk image to insert | JLO drive 0 type |
+|---|---|---|---|
+| 160KB utilities | `160/cpm22.dck` | `160/cpm22.dsk` | Single-sided 40 track |
+| 320KB utilities | `320/cpm22.dck` | `320/cpm22.dsk` | Double-sided 40 track |
+
+To use the optional Planetfall/Zork I collection instead, extract
+**cpm22-infocom-oliger.zip**. Its matching files are `build/infocom-cpm.dck`
+and `build/infocom-cpm.dsk`; choose **Double-sided 40 track**. You can also
+download the matching 320KB game DCK and DSK directly from the project page.
+The operating system is CP/M 2.2 whichever disk contents you choose.
+
+### Configure and load in Fuse
+
+1. Start the modified Fuse executable normally.
+2. Open **Machine > Select...** and choose **Timex TS2068**.
+3. Open **Options > Peripherals > Disk...**, enable **JLO Disk System
+   interface**, and accept the dialog.
+4. Open **Options > Select ROMs > Peripheral ROMs > JLO Disk System...**.
+   Select the modified Fuse distribution's `roms/safe265.rom` if it is not
+   already configured. The emulator needs this JLO ROM; it is not the CP/M
+   cartridge and is not included in the CP/M download.
+5. Open **Options > Disk options...**. Set **JLO Drive 0** to the 40-track
+   type in the table above. Do not leave it at an 80-track default.
+6. Open **Media > Disk > JLO > Drive 0: > Insert...** and select the `.dsk`
+   from your chosen pair. Some builds label the first drive **Drive A:**.
+   Choose **Insert...**, not **Insert New**; the supplied disk is already formatted.
+7. Open **Media > Cartridge > Timex Dock > Insert...** and select the
+   matching `.dck`. This is the **Oliger CP/M cartridge**, not the TSPico CPM.DCK.
+8. If the cartridge does not start automatically, choose **Machine > Reset...**.
+   If CP/M displays its insert-disk prompt, check the mounted disk and press
+   **Enter** in the emulated screen.
+
+You should see the CP/M 2.2 startup banner, `A: Oliger disk`, HELLO's message
+and the **A>** prompt. No PowerShell commands, source checkout, Python or
+compilation are required. Do not use BASIC LOAD to start this cartridge.
+
+### Try CP/M and save your work
+
+At A>, type:
+
+```text
+DIR
+STAT
+SUBMIT DEMO
+HI
 ```
 
-The launcher enables JLO, selects its SAFE ROM and a single-sided 40-track drive,
-and inserts the CP/M cartridge. It leaves existing emulator installations intact.
-The August 19 Windows build lacks `--jlo0disk`, so insert the floppy manually:
+`SUBMIT DEMO` assembles and runs the HI example. On the optional game disk,
+`PLANET` or `ZORK1` starts the corresponding application.
 
-1. Open **Media > Disk > JLO > Drive A: > Insert...** (newer builds call it
-   **Drive 0:**).
-2. Select `build/oliger-cpm.dsk`.
-3. Press **Enter** in the emulated screen at the insert-disk prompt to retry boot.
-4. Expect `A: Oliger 160K disk`, HELLO's greeting and the `A>` prompt.
+Before closing Fuse, use **Media > Disk > JLO > Drive 0: > Save As...** to
+retain a working disk under a new name, or **Save** to update it. A game's
+SAVE command only writes a file into that emulated disk; still save the disk
+in Fuse afterward. **TPSAVE is for TSPico RAMDisk, not Fuse.** Reinsert your
+saved DSK next time with the same-size cartridge and drive geometry.
 
-Before a disk is inserted, the cartridge asks for a CP/M disk and waits for a key.
-No BASIC disk format command is needed.
-
-Try `DIR`, `STAT`, `PIP COPY.COM=HELLO.COM`, `COPY`, `ERA COPY.COM`, and
-`SUBMIT DEMO`. The last command assembles, loads and executes HI.COM.
-
-**Save the virtual disk:** use the JLO drive's **Save As...** to create a working
-DSK, or **Save** to update its existing file. CP/M's completed writes update
-Fuse's virtual medium; retaining that medium on the host is a separate Fuse
-operation. Reopen the saved image to check that files survive an emulator restart.
-
-The launcher also accepts `-Fuse PATH -Disk PATH -Cartridge PATH`. If a newer
-JLO build contains the startup option, it inserts the disk automatically.
+If the JLO menu/checkbox is absent, this is not the required modified Fuse.
+If a disk cannot be read, check that the DCK, DSK, side count and 40-track
+drive setting match before changing or formatting anything.
 
 ## Create a disk from files
 
