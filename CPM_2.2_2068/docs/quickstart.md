@@ -9,15 +9,20 @@ separate third-party material; see the release's Infocom notice.
 
 | Target | Download | Persistence |
 |---|---|---|
-| Physical TSPico v1.00, unmodified | `cpm22-tspico-dual.zip` | Disk image loaded into RAMDisk; run TPSAVE before power-off |
-| Physical TSPico v2.x: RAMDisk | `cpm22-tspico-dual.zip` | Disk image loaded into RAMDisk; run TPSAVE before power-off |
-| Physical TSPico v2.x: native SD files | `cpm22-tspico-dual.zip` + optional CP/M service | Uses the SD filesystem in `/TAP/CPM/FILES`; writes persist directly to SD |
-| JLO/Oliger-enabled Fuse | `cpm22-oliger.zip` | Save/Save As the emulated disk |
+| Physical TSPico v1.00, unmodified | [TSPico archive](https://jon0x0.github.io/ts2068/CPM_2.2_2068/downloads/cpm22-tspico-dual.zip) | Disk image loaded into RAMDisk; run TPSAVE before power-off |
+| Physical TSPico v2.x: RAMDisk | [TSPico archive](https://jon0x0.github.io/ts2068/CPM_2.2_2068/downloads/cpm22-tspico-dual.zip) | Disk image loaded into RAMDisk; run TPSAVE before power-off |
+| Physical TSPico v2.x: native SD files | [TSPico archive](https://jon0x0.github.io/ts2068/CPM_2.2_2068/downloads/cpm22-tspico-dual.zip) + optional CP/M service | Uses the SD filesystem in `/TAP/CPM/FILES`; writes persist directly to SD |
+| JLO/Oliger-enabled Fuse | [Fuse/Oliger archive](https://jon0x0.github.io/ts2068/CPM_2.2_2068/downloads/cpm22-oliger.zip) | Save/Save As the emulated disk |
 | Browser TSRun | [Run CP/M live](https://jon0x0.github.io/ts2068/CPM_2.2_2068/play/) | Download DSK, TAP or 1.00 TAP set |
 
 Public builds use a public-domain 8x8 font. Normal TS2068 and browser displays
 are 64 columns. Supported PicoVideo 4.2 selects 80 columns by default;
 `COLUMNS 64` and `COLUMNS 80` choose the mode. See [video setup](picovideo.md).
+
+For the [Infocom archive](https://jon0x0.github.io/ts2068/CPM_2.2_2068/downloads/cpm22-infocom-oliger.zip),
+[individual DSK/DCK images](startup.md#download-the-version-for-your-target),
+or the [local TSRun hub ZIP](https://github.com/jon0x0/ts2068/archive/refs/heads/main.zip), see the
+[download table and local-running steps](startup.md#optional-run-the-downloaded-tsrun-page-locally).
 
 ## TSPico: original firmware 1.00
 

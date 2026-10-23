@@ -10,8 +10,59 @@ firmware 2.3.1 / ROM 2.3. Direct SD/native files additionally require our option
 CP/M service. Intermediate 1.1 releases are not a validated target.</p>
 <p>Once at A&gt;, see <a href="using-cpm.html">COLOR, HI and installing new software</a> for the
 same instructions across TSPico, Fuse and TSRun, including a worked Zork II disk.</p>
+<h2 id="download-the-version-for-your-target">Download the version for your target</h2>
+<table>
+<thead>
+<tr>
+<th>Target</th>
+<th>Download</th>
+<th>Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TSPico v1.00 or compatible v2.x</td>
+<td><a href="https://jon0x0.github.io/ts2068/CPM_2.2_2068/downloads/cpm22-tspico-dual.zip">TSPico archive</a></td>
+<td>CPM.DCK cartridge, preload TAP disk volumes, CP/M files and utilities, compatible image containers, optional v2.x service and instructions</td>
+</tr>
+<tr>
+<td>Modified Fuse with JLO/Oliger</td>
+<td><a href="https://jon0x0.github.io/ts2068/CPM_2.2_2068/downloads/cpm22-oliger.zip">Fuse/Oliger archive</a></td>
+<td>Matched 160KB and 320KB CP/M cartridges and utility disk images</td>
+</tr>
+<tr>
+<td>Fuse/Oliger with Planetfall and Zork I</td>
+<td><a href="https://jon0x0.github.io/ts2068/CPM_2.2_2068/downloads/cpm22-infocom-oliger.zip">Infocom archive</a></td>
+<td>Matched 320KB CP/M cartridge and game disk, tools and instructions</td>
+</tr>
+<tr>
+<td>TSRun locally</td>
+<td><a href="https://github.com/jon0x0/ts2068/archive/refs/heads/main.zip">Complete hub ZIP</a></td>
+<td>The hub's runnable browser application, shared TSRun runtime/ROM assets and CP/M disk/cartridge images; this is the entire hub, not a small standalone player archive</td>
+</tr>
+<tr>
+<td>TSRun online</td>
+<td><a href="https://jon0x0.github.io/ts2068/CPM_2.2_2068/play/">Run CP/M live</a></td>
+<td>Same browser interface, no local installation</td>
+</tr>
+</tbody>
+</table>
+<p>For individual files: <a href="https://jon0x0.github.io/ts2068/CPM_2.2_2068/downloads/cpm22-infocom-320.dsk">320KB game disk DSK</a>
+and <a href="https://jon0x0.github.io/ts2068/CPM_2.2_2068/downloads/cpm22-infocom-320.dck">matching DCK cartridge</a>,
+<a href="https://jon0x0.github.io/ts2068/CPM_2.2_2068/downloads/cpm22-utilities-160.dsk">160KB utility DSK</a>
+and <a href="https://jon0x0.github.io/ts2068/CPM_2.2_2068/downloads/cpm22-utilities-160.dck">matching DCK</a>,
+or <a href="https://jon0x0.github.io/ts2068/CPM_2.2_2068/downloads/cpm22-utilities-320.dsk">320KB utility DSK</a>
+and <a href="https://jon0x0.github.io/ts2068/CPM_2.2_2068/downloads/cpm22-utilities-320.dck">matching DCK</a>.
+<a href="https://jon0x0.github.io/ts2068/CPM_2.2_2068/downloads/SHA256SUMS">SHA-256 checksums</a> cover the published release files;
+the main-branch hub ZIP is a changing source/site snapshot.</p>
+<p>The TSPico ZIP does not include a TSPico firmware upgrade. The Fuse ZIP does
+not include Fuse itself or its JLO ROM. TSRun is executable JavaScript running
+in a browser, not a Windows EXE. Download the complete hub ZIP rather than
+only the CP/M subdirectory: the player references the shared runtime elsewhere
+in that hub. Use the JLO-enabled Fuse distribution linked below for Fuse.</p>
 <h2 id="physical-ts2068-with-tspico">Physical TS2068 with TSPico</h2>
-<p>Use <code>build/ts2068-cpm-tspico-dual.zip</code>. Extract it on the PC and merge its <code>TAP</code>
+<p>Use the <a href="https://jon0x0.github.io/ts2068/CPM_2.2_2068/downloads/cpm22-tspico-dual.zip">TSPico archive</a>.
+Extract it on the PC and merge its <code>TAP</code>
 folder into the SD card's existing <code>TAP</code> folder, preserving your working saves.
 The card should contain:</p>
 <pre><code class="language-text">/TAP/CPM/CPM.DCK
@@ -159,22 +210,42 @@ sector data, not an emulation of the TSPico FIFO or SRAM hardware.</p>
 <p>This project page adds a functional disk adapter for the CP/M BIOS; it is not
 a full cycle-accurate JLO/SAFE emulator. Use the CP/M-specific live link above
 for its disk controls, rather than the general-purpose upstream TSRun page.</p>
-<h3 id="optional-run-the-cpm-browser-page-locally">Optional: run the CP/M browser page locally</h3>
-<p>This is for users who want to serve their own local files or develop the
-project. It is not required for the live page above.</p>
-<p>You need Python 3, a checkout of this CP/M project, a compatible TSRun checkout
-containing machine.js and its TS2068 ROM files, and a matching CP/M cartridge
-and disk image. Place TSRun at the launcher's default ../../TSRun relative to
-the CP/M directory, or supply --tsrun explicitly. Do not assume a source ZIP
-includes generated build/ images: extract the matched image pair from a release
-or build it first.</p>
-<p>In a terminal opened in the CP/M source directory, run, adjusting the paths:</p>
+<h3 id="optional-run-the-downloaded-tsrun-page-locally">Optional: run the downloaded TSRun page locally</h3>
+<p>You can run the same CP/M browser application on your own PC and then load
+disk images manually. No compilation is needed.</p>
+<ol>
+<li>Download the <a href="https://github.com/jon0x0/ts2068/archive/refs/heads/main.zip">complete hub ZIP</a> and extract it, preserving its
+   folder structure. The extracted root is normally named <code>ts2068-main</code>.</li>
+<li>Open a terminal in that root folder, not inside CPM_2.2_2068/play.</li>
+<li>With Python 3 installed, start a local static server:</li>
+</ol>
+<p><code>powershell
+   python -m http.server 8770 --bind 127.0.0.1</code></p>
+<ol>
+<li>Open <strong>http://127.0.0.1:8770/CPM_2.2_2068/play/</strong> in your browser.
+   For the single-sided utility environment use
+   <strong>http://127.0.0.1:8770/CPM_2.2_2068/play/?size=160</strong>.</li>
+<li>Wait for A&gt;. Use <strong>Open disk</strong>, select your local <code>.dsk</code> or complete CP/M
+   disk <code>.tap</code>, and let the page restart CP/M with that disk. If a drive
+   selector is present, select the intended drive first. The 320KB startup
+   needs a 320KB image; choose the 160KB startup for 160KB images.</li>
+<li>Use <strong>Download DSK</strong>, <strong>Download TAP</strong> or <strong>Download 1.00 TAP set</strong> to retain
+   changes before closing/reloading. The server does not update the selected
+   host file automatically. Stop it with Ctrl+C when finished.</li>
+</ol>
+<p>For a saved chunk set, select all matching CPMnn.TAP files and CPMSTATE.TAP
+together. Do not try to load a .dsk through the ordinary upstream TSRun tape
+loader: this workflow uses the project's CP/M/Oliger disk adapter.</p>
+<h3 id="optional-run-from-a-development-checkout">Optional: run from a development checkout</h3>
+<p>The separate Python launcher is useful when supplying a different TSRun
+checkout or initial cartridge/disk. It requires this project's source, Python
+3, the TSRun checkout with its TS2068 ROMs, and matching built/downloaded images.
+From the CP/M source directory, adjust the paths and run:</p>
 <pre><code class="language-powershell">python tools/run_tsrun.py --tsrun C:/path/to/TSRun --cartridge C:/path/to/cpm22.dck --disk C:/path/to/cpm22.dsk
 </code></pre>
-<p>Then open <strong>http://127.0.0.1:8770/</strong>. The --disk argument also accepts a complete
-CP/M disk TAP. The local server only serves the input files; browser changes
-still need Download DSK/TAP before closing. Stop the server with Ctrl+C in its
-terminal. See <code>python tools/run_tsrun.py --help</code> for further local options.</p>
+<p>Open <strong>http://127.0.0.1:8770/</strong>. This launcher starts with the chosen disk;
+Open disk can subsequently replace it with a matching-size image. Use
+<code>python tools/run_tsrun.py --help</code> for further developer options.</p>
 <h2 id="create-and-populate-another-disk">Create and populate another disk</h2>
 <pre><code class="language-powershell">python tools/cpm_disk.py create work.dsk --size 320
 python tools/cpm_disk.py put work.dsk ED.COM ASM.COM README.TXT

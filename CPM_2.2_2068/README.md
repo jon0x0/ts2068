@@ -46,7 +46,7 @@ build command; use the retained profile paths or the matched game pair below.
 **[Run CP/M 2.2 live in your browser](https://jon0x0.github.io/ts2068/CPM_2.2_2068/play/)**. The page loads the emulator,
 cartridge and disk automatically. No installation or local server is required.
 For development or serving your own files, see the separately labelled
-[optional local-running instructions](docs/startup.md#optional-run-the-cpm-browser-page-locally).
+[optional local-running instructions](docs/startup.md#optional-run-the-downloaded-tsrun-page-locally).
 
 For the modified Fuse/JLO GUI, follow the
 [download-and-load instructions](docs/startup.md#fuse-gui-with-oligerjlo).
