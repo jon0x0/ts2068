@@ -117,7 +117,7 @@ def main():
     body+='<p>Direct game files: <a href="downloads/cpm22-infocom-320.dsk">320KB DSK</a> + <a href="downloads/cpm22-infocom-320.dck">matching cartridge</a>. <a href="downloads/SHA256SUMS">SHA-256 checksums</a>. <a href="docs/infocom-notice.html">Infocom attribution and rights</a>.</p><h2>Guides</h2><ul>'
     body+=''.join(f'<li><a href="docs/{name}.html">{label}</a></li>' for name,label in entries)+'</ul>'
     body+=read(ROOT/'web/article.html.inc')
-    body+='<div class="note"><p>Original TSPico 1.00 has booted and run the games on hardware. TSPico v2.x SD services and PicoVideo behavior also have source/model tests; see the build notes for the scope of physical verification.</p></div>'
+    body+='<div class="note"><p>CP/M 2.2 has successfully booted and operated on physical TSPico hardware with original firmware 1.00. TSPico v2.x SD services and PicoVideo behavior also have source/model tests; see the build notes for the scope of physical verification.</p></div>'
     (target/'index.html').write_text(page('Cartridge, RAMDisk and browser',body),encoding='utf-8')
     print('Staged',target)
 

@@ -60,7 +60,7 @@ TSPico v2.x RAMDisk TPSAVE writes one `/CPM/SAVE/CPMRAM.TAP`; legacy mode writes
 reloadable chunk set. Both RAMDisk modes require explicit saving.
 
 The display stays at 64 columns unless the supported PicoVideo extension is
-detected. Physical original-1.00 boot and game operation have been reported;
+detected. CP/M 2.2 has successfully booted and operated on physical TSPico hardware with original firmware 1.00;
 TSPico v2.x interfaces and failure cases are primarily checked with native Z80
 and protocol/memory models. See
 [TSPico modes and saves](tspico-dual.md), [SRAM reservations](tspico-ram.md), and

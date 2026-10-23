@@ -20,7 +20,7 @@ the initial disk from TAP files into external TSPico SRAM, then accesses that
 SRAM through MEMDOCK slot selection. It does not require a firmware extension,
 random SD writes, a whole disk in TS2068 HOME RAM, or an EXROM RAM bank.
 
-**Status: physical firmware 1.00 boot and game operation have been reported in
+**Status: CP/M 2.2 has successfully booted and operated on physical TSPico hardware with original firmware 1.00 in
 64 columns, alongside native Z80/protocol model tests.** The older PicoVideo V4
 display-capture problem and required 4.2 upgrade are documented separately.
 TSPico v2.x interfaces and failure cases are primarily model-tested; the frozen

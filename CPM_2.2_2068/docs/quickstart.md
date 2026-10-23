@@ -110,6 +110,6 @@ SD storage. The hosted player reuses the hub's pinned TSRun runtime and ROMs.
 
 Currently A only. No simultaneous B mount, generic Oliger-ROM filesystem
 support, physical WD1770 emulation on TSPico, or automatic RAMDisk writeback.
-Physical original-1.00 boot and game operation have been reported; TSPico v2.x SD
+CP/M 2.2 has successfully booted and operated on physical TSPico hardware with original firmware 1.00; TSPico v2.x SD
 service and many failure cases are validated through models. PicoVideo 4.2
 support is source/model-tested; physical-board results should be reported.
