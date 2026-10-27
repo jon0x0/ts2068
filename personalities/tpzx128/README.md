@@ -5,6 +5,7 @@ An experimental, temporary Spectrum 128 configuration for a Timex Sinclair
 
 **Current status:** Revision-2 no-reset startup was confirmed working by the user on October 27, 2026. Earlier stock-controller trials also confirmed 128 BASIC PRINT 1+2 and audible PLAY. This does not establish general Spectrum software compatibility.
 
+[Temporary operation command guide](RUN-TEMPORARILY.md) ·
 [Technical description](TECHNICAL.md) · [Source and rebuild instructions](BUILD.md) ·
 [Exact status and hashes](STATUS.json) · [Complete package ZIP](downloads/tpzx128-20261027.zip)
 

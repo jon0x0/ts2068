@@ -5,6 +5,7 @@ An experimental, temporary Spectrum 128 configuration for a Timex Sinclair
 
 **Current status:** The current SD BASIC ROM and no-reset SD handoff still need physical acceptance. The underlying legacy SD gateway previously passed a separate hardware diagnostic. Desktop tests are recorded for these exact artifacts; do not equate the gateway pass with a completed BASIC SAVE/LOAD hardware test.
 
+[Temporary operation command guide](RUN-TEMPORARILY.md) ·
 [Technical description](TECHNICAL.md) · [Source and rebuild instructions](BUILD.md) ·
 [Exact status and hashes](STATUS.json) · [Complete package ZIP](downloads/tpzx128sd-20261027.zip)
 

@@ -2,7 +2,7 @@
   ".gitattributes": "8b9c3028d6467ff3be7c793141927841d70f47f52d0590677438f488ca154992",
   ".gitignore": "8ddbedf3beb4ec42ba4795bfdb9ce0bbbb9b23bf7240709515fa5261c713b195",
   "BUILD.md": "57cb01969baa2cf88d4aac6b07c4772b7dec8a94328d2a1fb84e0b791f8aa2f0",
-  "README.md": "e34331b903ab1aeea3b06b114e35543537c26fcb200f52026b310ec5b1be3448",
+  "README.md": "dae898ea7bb0733df68835ad9ba754bad9dc35c11669271163da152c3b81a3a1",
   "sd/TAP/128/FS128.TAP": "eb2909f7e0e7de7e83f910656dfb5c8f608296fb106cbeeed35b170adcdbfcec",
   "sd/TAP/128/H128SD.TAP": "9d58e13fe93bd1ff8121d4b8854892cfc1a4bef5c06fffa3ff28f3bcd4127692",
   "sd/TAP/128/TPZXSD.ROM": "f3e158da6fa4b1085f5f83f6098c7a9c9421e12d7dddb69b8cf125cc8e5651e8",
@@ -74,5 +74,6 @@
   "source/z80_link.py": "78e15498542ce63861237bbe8ea0824d71177c4cd7f617ea9ea871ede38cda0d",
   "STATUS.json": "eff0e6142815134d11962e2d82d7768c41bf843560752f1ebaa3c9e1da1bbe4e",
   "TECHNICAL.md": "154e6ab37872b472dd221273c05d395ff35ff388e044936143a7baeb6ffb3514",
-  "images/tpzx128sd.png": "d5e3edfc04e6bef6e13b2f2ab9e57311056a3f967d6b3ee49d5c43dc3c68dd04"
+  "images/tpzx128sd.png": "d5e3edfc04e6bef6e13b2f2ab9e57311056a3f967d6b3ee49d5c43dc3c68dd04",
+  "RUN-TEMPORARILY.md": "f5885ac4ab363fc02a8ade7ed774f1d751f4cc6c3b2d1b278077769a1833cace"
 }
