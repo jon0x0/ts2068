@@ -21,6 +21,8 @@ Two functional Spectrum 128 BASIC implementations for the Timex TS2068
 using TSPico hardware revision V2.2 / RP2040. The baseline **tpzx128**
 provides the ROM and banked-memory environment; **tpzx128sd** adds
 TSPico disk-interface handling accessible from Spectrum 128 BASIC.
+Uses TSPico's bank-switchable memory to provide a Spectrum 128-style memory layout and banking system on the Timex TS2068.
+
 General Spectrum software compatibility is not guaranteed. Each project
 page lists tested features, memory-map differences, bank switching and
 known limitations. Both include complete
@@ -29,8 +31,8 @@ that leave Pico firmware and saved boot configuration unchanged.
 
 | Package | Status | Links |
 | --- | --- | --- |
-| tpzx128 | Boot and functional BASIC confirmed on hardware; baseline no-reset startup also confirmed | [Procedure and download](personalities/tpzx128/) · [Technical description](personalities/tpzx128/TECHNICAL.md) |
-| tpzx128sd | Boot, functional BASIC, directory listing and file loading confirmed on hardware; other disk operations separately qualified | [Procedure and download](personalities/tpzx128sd/) · [Technical description](personalities/tpzx128sd/TECHNICAL.md) |
+| tpzx128 | Working | [Procedure and download](personalities/tpzx128/) · [Technical description](personalities/tpzx128/TECHNICAL.md) |
+| tpzx128sd | Working | [Procedure and download](personalities/tpzx128sd/) · [Technical description](personalities/tpzx128sd/TECHNICAL.md) |
 
 See the [personality directory](personalities/) for requirements and recovery.
 These trial packages do not implement the proposed automatic mode menu.

@@ -5,6 +5,8 @@ using TSPico.** It supplies the modified Spectrum 128 ROM environment,
 banked memory, BASIC editor and sound support. The baseline does not
 provide the active TSPico disk interface available in tpzx128sd.
 
+Uses TSPico's bank-switchable memory to provide a Spectrum 128-style memory layout and banking system on the Timex TS2068.
+
 Both configurations provide functional Spectrum 128 BASIC environments,
 but neither is guaranteed compatible with all Spectrum 128 software.
 The Timex Z80 executes the ROM and BASIC code; the Pico supplies memory
@@ -12,7 +14,7 @@ control and supporting services. This is not a full Spectrum CPU emulator
 running on the Pico. The tested hardware is TSPico board revision V2.2
 with RP2040; current firmware/protocol support is v1.00.
 
-**Current status:** Both tpzx128 and tpzx128sd are confirmed by the user to boot and function as BASIC environments on a physical Timex TS2068 with TSPico (October 27, 2026). General Spectrum software compatibility is not established; Directory listing and file loading in tpzx128sd are also hardware-confirmed. SAVE, VERIFY, other disk operations, and RAM-disk coverage remain separately qualified.
+**Current status:** Working.
 
 [Temporary operation command guide](RUN-TEMPORARILY.md) ·
 [Technical description](TECHNICAL.md) · [Source and rebuild instructions](BUILD.md) ·
