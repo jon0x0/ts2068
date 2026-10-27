@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+source/tools/
+source/build/serial-debug/
+source/build/rom/original-*.rom
+
+source/build/**/*.png
+source/build/rom/basic-play.json

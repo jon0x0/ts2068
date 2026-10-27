@@ -1,0 +1,163 @@
+{
+  "scope": "Original local TSPico V2.2 schematic and V2 memory-controller wiring; not a physical-board verification",
+  "sources": [
+    {
+      "path": "D:\\T7_Recover\\Jon\\Personal\\Timex\\TSPico\\tsPico2_2Altium\\Logic-schdoc.sch",
+      "sha256": "0870d6ecf0b4a6a51a66989c9818c0d1cbadff6d3d08f0d3c13809b8dabe6dcb"
+    },
+    {
+      "path": "D:\\T7_Recover\\Jon\\Personal\\Timex\\TSPico\\tsPico2_2Altium\\Memory-SchDoc.sch",
+      "sha256": "4fc1261c1a28112c22fc4b46ff5871c6e677e56afe9b18d2541b87f1c4983067"
+    },
+    {
+      "path": "D:\\T7_Recover\\Jon\\Personal\\Timex\\TSPico\\tsPico2_2Altium\\Pico-SchDoc.sch",
+      "sha256": "d9061a29adcb061d9aa7edacf4ce417df4afcf7a09cbff9b1f8b0d396a104378"
+    },
+    {
+      "path": "D:\\T7_Recover\\Jon\\Personal\\Timex\\TSPico\\tsPico2_2Altium\\ts2068Interface-SchDoc.sch",
+      "sha256": "b88a08cbc1c19b2b24ee17e712bc043ac1640ef8e9d00043904926e53e2c68d5"
+    },
+    {
+      "path": "D:\\T7_Recover\\Jon\\Personal\\Timex\\TSPico\\tsPico2_2Altium\\tsPicoTop-SchDoc.sch",
+      "sha256": "adc1ed1253c1398b8cd7d1dfb9d69587f9a3ad7f0a810628fbdcc5f9e5b85469"
+    }
+  ],
+  "memory_equations": {
+    "dock_roscs_low": "physical = (GPIO18:16 << 16) | (CPU_address & 0xffff); GPIO15 and GPIO22 bypassed by U8",
+    "rom_roscs_high": "physical = (GPIO18:15 << 15) | (GPIO22 << 14) | (CPU_address & 0x3fff)",
+    "gpio1": "/RDROM = A14 OR A15 OR /RD",
+    "gpio13": "/MREQ_G = /MREQ OR NOT(/BE_IN)"
+  },
+  "io_equation": "Normal I/O selected only if A7=A6=A5=0 and JP4-selected A4 polarity passes; A3:A1 and A15:A8 are not decoded. GPIO10 receives A0.",
+  "io_windows": {
+    "00-0F": [
+      "00",
+      "01",
+      "02",
+      "03",
+      "04",
+      "05",
+      "06",
+      "07",
+      "08",
+      "09",
+      "0A",
+      "0B",
+      "0C",
+      "0D",
+      "0E",
+      "0F"
+    ],
+    "10-1F": [
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "1A",
+      "1B",
+      "1C",
+      "1D",
+      "1E",
+      "1F"
+    ]
+  },
+  "spectrum_port_visibility": {
+    "7FFD": {
+      "selected_low_window": false,
+      "selected_high_window": false
+    },
+    "FFFD": {
+      "selected_low_window": false,
+      "selected_high_window": false
+    },
+    "BFFD": {
+      "selected_low_window": false,
+      "selected_high_window": false
+    },
+    "000E": {
+      "selected_low_window": true,
+      "selected_high_window": false
+    },
+    "000F": {
+      "selected_low_window": true,
+      "selected_high_window": false
+    }
+  },
+  "c000_windows": [
+    {
+      "selector_gpio18_16": 0,
+      "sram_start": "0C000",
+      "sram_end": "0FFFF"
+    },
+    {
+      "selector_gpio18_16": 1,
+      "sram_start": "1C000",
+      "sram_end": "1FFFF"
+    },
+    {
+      "selector_gpio18_16": 2,
+      "sram_start": "2C000",
+      "sram_end": "2FFFF"
+    },
+    {
+      "selector_gpio18_16": 3,
+      "sram_start": "3C000",
+      "sram_end": "3FFFF"
+    },
+    {
+      "selector_gpio18_16": 4,
+      "sram_start": "4C000",
+      "sram_end": "4FFFF"
+    },
+    {
+      "selector_gpio18_16": 5,
+      "sram_start": "5C000",
+      "sram_end": "5FFFF"
+    },
+    {
+      "selector_gpio18_16": 6,
+      "sram_start": "6C000",
+      "sram_end": "6FFFF"
+    },
+    {
+      "selector_gpio18_16": 7,
+      "sram_start": "7C000",
+      "sram_end": "7FFFF"
+    }
+  ],
+  "rom_options_with_fixed_gpio18_16": [
+    {
+      "gpio15": 0,
+      "gpio22": 0,
+      "offset": "0000"
+    },
+    {
+      "gpio15": 0,
+      "gpio22": 1,
+      "offset": "4000"
+    },
+    {
+      "gpio15": 1,
+      "gpio22": 0,
+      "offset": "8000"
+    },
+    {
+      "gpio15": 1,
+      "gpio22": 1,
+      "offset": "C000"
+    }
+  ],
+  "limitations": [
+    "PIO currently provides one configured boot-slot field and one dock-slot field, not a $7FFD latch.",
+    "Top-16K DOCK-only selection can identify its window through /ROSCS without raw CPU A14/A15 inputs.",
+    "HOME RAM bank 2 and bank 5 cannot become physical aliases at C000 through this mux.",
+    "No cartridge-side wiring in this trace controls native SCLD display fetch bank.",
+    "Memory images are loaded by the host Z80; Pico DMA-to-PIO is not Z80 system-bus DMA."
+  ]
+}

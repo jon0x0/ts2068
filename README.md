@@ -12,6 +12,20 @@ here does not require moving it or changing links shared elsewhere.
 **[Project hub](https://jon0x0.github.io/ts2068/)** · **[Cartridge downloads](https://jon0x0.github.io/ts2068/ts2068-cartridges/)** â€” a catalog of `.dck` files for
 games, applications, audio and demos, linking to their owning projects.
 
+## TSPico personalities
+
+Temporary Spectrum 128 environments for TSPico V2.2 / RP2040, with complete
+source, current USB helpers, matching ROM/TAP files, and startup procedures
+that leave Pico firmware and saved boot configuration unchanged.
+
+| Package | Status | Links |
+| --- | --- | --- |
+| tpzx128 | Revision-2 no-reset baseline startup confirmed on hardware | [Procedure and download](personalities/tpzx128/) · [Technical description](personalities/tpzx128/TECHNICAL.md) |
+| tpzx128sd | Experimental SD BASIC and no-reset SD handoff; physical acceptance pending | [Procedure and download](personalities/tpzx128sd/) · [Technical description](personalities/tpzx128sd/TECHNICAL.md) |
+
+See the [personality directory](personalities/) for requirements and recovery.
+These trial packages do not implement the proposed automatic mode menu.
+
 ## Remastered games
 
 | Project | Description | Links |

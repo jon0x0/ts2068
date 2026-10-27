@@ -1,0 +1,3822 @@
+[
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U8",
+    "part": "SN74LS157N",
+    "pin": "1",
+    "name": "~A~/B",
+    "nets": [
+      "/ROSCS_L"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U8",
+    "part": "SN74LS157N",
+    "pin": "2",
+    "name": "1A",
+    "nets": [
+      "A14"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U8",
+    "part": "SN74LS157N",
+    "pin": "3",
+    "name": "1B",
+    "nets": [
+      "A14_B"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U8",
+    "part": "SN74LS157N",
+    "pin": "4",
+    "name": "1Y",
+    "nets": [
+      "A14_I"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U8",
+    "part": "SN74LS157N",
+    "pin": "5",
+    "name": "2A",
+    "nets": [
+      "A15"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U8",
+    "part": "SN74LS157N",
+    "pin": "6",
+    "name": "2B",
+    "nets": [
+      "A15_B"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U8",
+    "part": "SN74LS157N",
+    "pin": "7",
+    "name": "2Y",
+    "nets": [
+      "A15_I"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U8",
+    "part": "SN74LS157N",
+    "pin": "8",
+    "name": "GND",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U8",
+    "part": "SN74LS157N",
+    "pin": "9",
+    "name": "3Y",
+    "nets": [
+      "@Logic-schdoc:1850:2600"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U8",
+    "part": "SN74LS157N",
+    "pin": "10",
+    "name": "3B",
+    "nets": [
+      "@Logic-schdoc:1850:2500"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U8",
+    "part": "SN74LS157N",
+    "pin": "11",
+    "name": "3A",
+    "nets": [
+      "@Logic-schdoc:1850:2400"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U8",
+    "part": "SN74LS157N",
+    "pin": "12",
+    "name": "4Y",
+    "nets": [
+      "@Logic-schdoc:1850:2300"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U8",
+    "part": "SN74LS157N",
+    "pin": "13",
+    "name": "4B",
+    "nets": [
+      "@Logic-schdoc:1850:2200"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U8",
+    "part": "SN74LS157N",
+    "pin": "14",
+    "name": "4A",
+    "nets": [
+      "@Logic-schdoc:1850:2100"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U8",
+    "part": "SN74LS157N",
+    "pin": "15",
+    "name": "~G",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U8",
+    "part": "SN74LS157N",
+    "pin": "16",
+    "name": "VCC",
+    "nets": [
+      "++5V"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U4_3",
+    "part": "SN74LS32N_3",
+    "pin": "9",
+    "name": "A",
+    "nets": [
+      "@Logic-schdoc:2800:5650"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U4_3",
+    "part": "SN74LS32N_3",
+    "pin": "10",
+    "name": "B",
+    "nets": [
+      "@Logic-schdoc:3350:6250"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U4_3",
+    "part": "SN74LS32N_3",
+    "pin": "8",
+    "name": "Y",
+    "nets": [
+      "+X"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U4_4",
+    "part": "SN74LS32N_4",
+    "pin": "12",
+    "name": "A",
+    "nets": [
+      "/MREQ"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U4_4",
+    "part": "SN74LS32N_4",
+    "pin": "13",
+    "name": "B",
+    "nets": [
+      "@Logic-schdoc:4500:4700"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U4_4",
+    "part": "SN74LS32N_4",
+    "pin": "11",
+    "name": "Y",
+    "nets": [
+      "/MREQ_G"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U4_5",
+    "part": "SN74LS32N_5",
+    "pin": "7",
+    "name": "GND",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U4_5",
+    "part": "SN74LS32N_5",
+    "pin": "14",
+    "name": "VCC",
+    "nets": [
+      "++5V"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U1",
+    "part": "SN74LS04N_1",
+    "pin": "1",
+    "name": "P",
+    "nets": [
+      "/M1"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U1",
+    "part": "SN74LS04N_1",
+    "pin": "2",
+    "name": "P",
+    "nets": [
+      "@Logic-schdoc:4750:5400"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U1_2",
+    "part": "SN74LS04N_2",
+    "pin": "3",
+    "name": "P",
+    "nets": [
+      "@Logic-schdoc:2150:5650"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U1_2",
+    "part": "SN74LS04N_2",
+    "pin": "4",
+    "name": "P",
+    "nets": [
+      "@Logic-schdoc:2800:5650"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U1_3",
+    "part": "SN74LS04N_3",
+    "pin": "5",
+    "name": "P",
+    "nets": [
+      "@Logic-schdoc:6350:5600"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U1_3",
+    "part": "SN74LS04N_3",
+    "pin": "6",
+    "name": "P",
+    "nets": [
+      "/+RW"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U1_4",
+    "part": "SN74LS04N_4",
+    "pin": "9",
+    "name": "P",
+    "nets": [
+      "@Logic-schdoc:6350:6150"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U1_4",
+    "part": "SN74LS04N_4",
+    "pin": "8",
+    "name": "P",
+    "nets": [
+      "/+W"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U1_5",
+    "part": "SN74LS04N_5",
+    "pin": "11",
+    "name": "P",
+    "nets": [
+      "/BE_IN"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U1_5",
+    "part": "SN74LS04N_5",
+    "pin": "10",
+    "name": "P",
+    "nets": [
+      "@Logic-schdoc:4500:4700"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U1_6",
+    "part": "SN74LS04N_7",
+    "pin": "14",
+    "name": "VCC",
+    "nets": [
+      "++5V"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U1_6",
+    "part": "SN74LS04N_7",
+    "pin": "7",
+    "name": "GND",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U5",
+    "part": "SN74LS27N_1",
+    "pin": "1",
+    "name": "A",
+    "nets": [
+      "A5"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U5",
+    "part": "SN74LS27N_1",
+    "pin": "2",
+    "name": "B",
+    "nets": [
+      "A6"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U5",
+    "part": "SN74LS27N_1",
+    "pin": "13",
+    "name": "C",
+    "nets": [
+      "A7"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U5",
+    "part": "SN74LS27N_1",
+    "pin": "12",
+    "name": "Y",
+    "nets": [
+      "@Logic-schdoc:2150:5650"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "C8",
+    "part": "0.1UF/TH",
+    "pin": "1",
+    "name": "P",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "C8",
+    "part": "0.1UF/TH",
+    "pin": "2",
+    "name": "P",
+    "nets": [
+      "++5V"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U5_2",
+    "part": "SN74LS27N_2",
+    "pin": "3",
+    "name": "A",
+    "nets": [
+      "@Logic-schdoc:4750:5400"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U5_2",
+    "part": "SN74LS27N_2",
+    "pin": "4",
+    "name": "B",
+    "nets": [
+      "/IORQ"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U5_2",
+    "part": "SN74LS27N_2",
+    "pin": "5",
+    "name": "C",
+    "nets": [
+      "+X"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U5_2",
+    "part": "SN74LS27N_2",
+    "pin": "6",
+    "name": "Y",
+    "nets": [
+      "@Logic-schdoc:6350:5600"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U5_3",
+    "part": "SN74LS27N_3",
+    "pin": "9",
+    "name": "A",
+    "nets": [
+      "/RD"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U5_3",
+    "part": "SN74LS27N_3",
+    "pin": "10",
+    "name": "B",
+    "nets": [
+      "/IORQ"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U5_3",
+    "part": "SN74LS27N_3",
+    "pin": "11",
+    "name": "C",
+    "nets": [
+      "+X"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U5_3",
+    "part": "SN74LS27N_3",
+    "pin": "8",
+    "name": "Y",
+    "nets": [
+      "@Logic-schdoc:6350:6150"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U5_4",
+    "part": "SN74LS27N_4",
+    "pin": "7",
+    "name": "GND",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U5_4",
+    "part": "SN74LS27N_4",
+    "pin": "14",
+    "name": "VCC",
+    "nets": [
+      "++5V"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "C1",
+    "part": "0.1UF/TH",
+    "pin": "1",
+    "name": "P",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "C1",
+    "part": "0.1UF/TH",
+    "pin": "2",
+    "name": "P",
+    "nets": [
+      "++5V"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "C4",
+    "part": "0.1UF/TH",
+    "pin": "1",
+    "name": "P",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "C4",
+    "part": "0.1UF/TH",
+    "pin": "2",
+    "name": "P",
+    "nets": [
+      "++5V"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "C5",
+    "part": "0.1UF/TH",
+    "pin": "1",
+    "name": "P",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "C5",
+    "part": "0.1UF/TH",
+    "pin": "2",
+    "name": "P",
+    "nets": [
+      "++5V"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U1_7",
+    "part": "SN74LS04N_6",
+    "pin": "13",
+    "name": "P",
+    "nets": [
+      "A4"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U1_7",
+    "part": "SN74LS04N_6",
+    "pin": "12",
+    "name": "P",
+    "nets": [
+      "/A4"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "JP4",
+    "part": "SIP3",
+    "pin": "1",
+    "name": "P",
+    "nets": [
+      "A4"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "JP4",
+    "part": "SIP3",
+    "pin": "2",
+    "name": "P",
+    "nets": [
+      "@Logic-schdoc:3350:6250"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "JP4",
+    "part": "SIP3",
+    "pin": "3",
+    "name": "P",
+    "nets": [
+      "/A4"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U9",
+    "part": "SN74LS09N_1",
+    "pin": "1",
+    "name": "A",
+    "nets": [
+      "@Logic-schdoc:2150:3300"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U9",
+    "part": "SN74LS09N_1",
+    "pin": "2",
+    "name": "B",
+    "nets": [
+      "/BE_IN"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U9",
+    "part": "SN74LS09N_1",
+    "pin": "3",
+    "name": "Y",
+    "nets": [
+      "/BE_DRV"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U9_2",
+    "part": "SN74LS09N_2",
+    "pin": "4",
+    "name": "A",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U9_2",
+    "part": "SN74LS09N_2",
+    "pin": "5",
+    "name": "B",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U9_2",
+    "part": "SN74LS09N_2",
+    "pin": "6",
+    "name": "Y",
+    "nets": [
+      "@Logic-schdoc:7000:7050"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U6",
+    "part": "SN74LVC245AN",
+    "pin": "1",
+    "name": "DIR",
+    "nets": [
+      "/+W"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U6",
+    "part": "SN74LVC245AN",
+    "pin": "2",
+    "name": "A1",
+    "nets": [
+      "D0"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U6",
+    "part": "SN74LVC245AN",
+    "pin": "3",
+    "name": "A2",
+    "nets": [
+      "D1"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U6",
+    "part": "SN74LVC245AN",
+    "pin": "4",
+    "name": "A3",
+    "nets": [
+      "D2"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U6",
+    "part": "SN74LVC245AN",
+    "pin": "5",
+    "name": "A4",
+    "nets": [
+      "D3"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U6",
+    "part": "SN74LVC245AN",
+    "pin": "6",
+    "name": "A5",
+    "nets": [
+      "D4"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U6",
+    "part": "SN74LVC245AN",
+    "pin": "7",
+    "name": "A6",
+    "nets": [
+      "D5"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U6",
+    "part": "SN74LVC245AN",
+    "pin": "8",
+    "name": "A7",
+    "nets": [
+      "D6"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U6",
+    "part": "SN74LVC245AN",
+    "pin": "9",
+    "name": "A8",
+    "nets": [
+      "D7"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U6",
+    "part": "SN74LVC245AN",
+    "pin": "10",
+    "name": "GND",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U6",
+    "part": "SN74LVC245AN",
+    "pin": "11",
+    "name": "B8",
+    "nets": [
+      "D7_L"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U6",
+    "part": "SN74LVC245AN",
+    "pin": "12",
+    "name": "B7",
+    "nets": [
+      "D6_L"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U6",
+    "part": "SN74LVC245AN",
+    "pin": "13",
+    "name": "B6",
+    "nets": [
+      "D5_L"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U6",
+    "part": "SN74LVC245AN",
+    "pin": "14",
+    "name": "B5",
+    "nets": [
+      "D4_L"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U6",
+    "part": "SN74LVC245AN",
+    "pin": "15",
+    "name": "B4",
+    "nets": [
+      "D3_L"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U6",
+    "part": "SN74LVC245AN",
+    "pin": "16",
+    "name": "B3",
+    "nets": [
+      "D2_L"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U6",
+    "part": "SN74LVC245AN",
+    "pin": "17",
+    "name": "B2",
+    "nets": [
+      "D1_L"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U6",
+    "part": "SN74LVC245AN",
+    "pin": "18",
+    "name": "B1",
+    "nets": [
+      "D0_L"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U6",
+    "part": "SN74LVC245AN",
+    "pin": "19",
+    "name": "~G",
+    "nets": [
+      "/U6_EN"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U6",
+    "part": "SN74LVC245AN",
+    "pin": "20",
+    "name": "VCC",
+    "nets": [
+      "++3V3"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U9_3",
+    "part": "SN74LS09N_3",
+    "pin": "9",
+    "name": "A",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U9_3",
+    "part": "SN74LS09N_3",
+    "pin": "10",
+    "name": "B",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U9_3",
+    "part": "SN74LS09N_3",
+    "pin": "8",
+    "name": "Y",
+    "nets": [
+      "@Logic-schdoc:8200:7050"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U9_4",
+    "part": "SN74LS09N_4",
+    "pin": "12",
+    "name": "A",
+    "nets": [
+      "/BE_IN"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U9_4",
+    "part": "SN74LS09N_4",
+    "pin": "13",
+    "name": "B",
+    "nets": [
+      "/BE_IN"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U9_4",
+    "part": "SN74LS09N_4",
+    "pin": "11",
+    "name": "Y",
+    "nets": [
+      "/BE_STAT"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U9_5",
+    "part": "SN74LS09N_5",
+    "pin": "7",
+    "name": "GND",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U9_5",
+    "part": "SN74LS09N_5",
+    "pin": "14",
+    "name": "VCC",
+    "nets": [
+      "++5V"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "R3",
+    "part": "2K7/5%",
+    "pin": "2",
+    "name": "2",
+    "nets": [
+      "++5V"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "R3",
+    "part": "2K7/5%",
+    "pin": "1",
+    "name": "1",
+    "nets": [
+      "/BE_DRV"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "R7",
+    "part": "4K7/5%",
+    "pin": "2",
+    "name": "2",
+    "nets": [
+      "++3V3"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "R7",
+    "part": "4K7/5%",
+    "pin": "1",
+    "name": "1",
+    "nets": [
+      "@Logic-schdoc:2150:3300"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "R8",
+    "part": "4K7/5%",
+    "pin": "2",
+    "name": "2",
+    "nets": [
+      "++5V"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "R8",
+    "part": "4K7/5%",
+    "pin": "1",
+    "name": "1",
+    "nets": [
+      "/BE_IN"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U7",
+    "part": "SN74LVC245AN",
+    "pin": "1",
+    "name": "DIR",
+    "nets": [
+      "@Logic-schdoc:3450:1900"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U7",
+    "part": "SN74LVC245AN",
+    "pin": "2",
+    "name": "A1",
+    "nets": [
+      "A0"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U7",
+    "part": "SN74LVC245AN",
+    "pin": "3",
+    "name": "A2",
+    "nets": [
+      "/+W"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U7",
+    "part": "SN74LVC245AN",
+    "pin": "4",
+    "name": "A3",
+    "nets": [
+      "/MREQ_G"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U7",
+    "part": "SN74LVC245AN",
+    "pin": "5",
+    "name": "A4",
+    "nets": [
+      "/EXROM"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U7",
+    "part": "SN74LVC245AN",
+    "pin": "6",
+    "name": "A5",
+    "nets": [
+      "/BE_L"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U7",
+    "part": "SN74LVC245AN",
+    "pin": "7",
+    "name": "A6",
+    "nets": [
+      "/RDROM"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U7",
+    "part": "SN74LVC245AN",
+    "pin": "8",
+    "name": "A7",
+    "nets": [
+      "/ROSCS"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U7",
+    "part": "SN74LVC245AN",
+    "pin": "9",
+    "name": "A8",
+    "nets": [
+      "/+RW"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U7",
+    "part": "SN74LVC245AN",
+    "pin": "10",
+    "name": "GND",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U7",
+    "part": "SN74LVC245AN",
+    "pin": "11",
+    "name": "B8",
+    "nets": [
+      "/+RW_L"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U7",
+    "part": "SN74LVC245AN",
+    "pin": "12",
+    "name": "B7",
+    "nets": [
+      "/ROSCS_L"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U7",
+    "part": "SN74LVC245AN",
+    "pin": "13",
+    "name": "B6",
+    "nets": [
+      "/RDROM_L"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U7",
+    "part": "SN74LVC245AN",
+    "pin": "14",
+    "name": "B5",
+    "nets": [
+      "@Logic-schdoc:2150:3300"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U7",
+    "part": "SN74LVC245AN",
+    "pin": "15",
+    "name": "B4",
+    "nets": [
+      "/EXR_L"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U7",
+    "part": "SN74LVC245AN",
+    "pin": "16",
+    "name": "B3",
+    "nets": [
+      "/MREQ_L"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U7",
+    "part": "SN74LVC245AN",
+    "pin": "17",
+    "name": "B2",
+    "nets": [
+      "/+W_L"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U7",
+    "part": "SN74LVC245AN",
+    "pin": "18",
+    "name": "B1",
+    "nets": [
+      "/+R_L"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U7",
+    "part": "SN74LVC245AN",
+    "pin": "19",
+    "name": "~G",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U7",
+    "part": "SN74LVC245AN",
+    "pin": "20",
+    "name": "VCC",
+    "nets": [
+      "++3V3"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "R2",
+    "part": "4K7/5%",
+    "pin": "2",
+    "name": "2",
+    "nets": [
+      "++3V3"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "R2",
+    "part": "4K7/5%",
+    "pin": "1",
+    "name": "1",
+    "nets": [
+      "@Logic-schdoc:3450:1900"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "C6",
+    "part": "0.1UF/TH",
+    "pin": "1",
+    "name": "P",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "C6",
+    "part": "0.1UF/TH",
+    "pin": "2",
+    "name": "P",
+    "nets": [
+      "++3V3"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "C7",
+    "part": "0.1UF/TH",
+    "pin": "1",
+    "name": "P",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "C7",
+    "part": "0.1UF/TH",
+    "pin": "2",
+    "name": "P",
+    "nets": [
+      "++3V3"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U4",
+    "part": "SN74LS32N_1",
+    "pin": "1",
+    "name": "A",
+    "nets": [
+      "A14"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U4",
+    "part": "SN74LS32N_1",
+    "pin": "2",
+    "name": "B",
+    "nets": [
+      "A15"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U4",
+    "part": "SN74LS32N_1",
+    "pin": "3",
+    "name": "Y",
+    "nets": [
+      "@Logic-schdoc:2100:5100"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U4_2",
+    "part": "SN74LS32N_2",
+    "pin": "4",
+    "name": "A",
+    "nets": [
+      "@Logic-schdoc:2100:5100"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U4_2",
+    "part": "SN74LS32N_2",
+    "pin": "5",
+    "name": "B",
+    "nets": [
+      "/RD"
+    ]
+  },
+  {
+    "sheet": "Logic-schdoc",
+    "ref": "U4_2",
+    "part": "SN74LS32N_2",
+    "pin": "6",
+    "name": "Y",
+    "nets": [
+      "/RDROM"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "C3",
+    "part": "0.1UF/TH",
+    "pin": "1",
+    "name": "P",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "C3",
+    "part": "0.1UF/TH",
+    "pin": "2",
+    "name": "P",
+    "nets": [
+      "++3V3"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "C13",
+    "part": "0.1UF/TH",
+    "pin": "1",
+    "name": "P",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "C13",
+    "part": "0.1UF/TH",
+    "pin": "2",
+    "name": "P",
+    "nets": [
+      "++5V"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U13",
+    "part": "AS6C4008-55PCN",
+    "pin": "1",
+    "name": "A18",
+    "nets": [
+      "A18"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U13",
+    "part": "AS6C4008-55PCN",
+    "pin": "2",
+    "name": "A16",
+    "nets": [
+      "A16"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U13",
+    "part": "AS6C4008-55PCN",
+    "pin": "3",
+    "name": "A14",
+    "nets": [
+      "A14_I"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U13",
+    "part": "AS6C4008-55PCN",
+    "pin": "4",
+    "name": "A12",
+    "nets": [
+      "A12"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U13",
+    "part": "AS6C4008-55PCN",
+    "pin": "5",
+    "name": "A7",
+    "nets": [
+      "A7"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U13",
+    "part": "AS6C4008-55PCN",
+    "pin": "6",
+    "name": "A6",
+    "nets": [
+      "A6"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U13",
+    "part": "AS6C4008-55PCN",
+    "pin": "7",
+    "name": "A5",
+    "nets": [
+      "A5"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U13",
+    "part": "AS6C4008-55PCN",
+    "pin": "8",
+    "name": "A4",
+    "nets": [
+      "A4"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U13",
+    "part": "AS6C4008-55PCN",
+    "pin": "9",
+    "name": "A3",
+    "nets": [
+      "A3"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U13",
+    "part": "AS6C4008-55PCN",
+    "pin": "10",
+    "name": "A2",
+    "nets": [
+      "A2"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U13",
+    "part": "AS6C4008-55PCN",
+    "pin": "11",
+    "name": "A1",
+    "nets": [
+      "A1"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U13",
+    "part": "AS6C4008-55PCN",
+    "pin": "12",
+    "name": "A0",
+    "nets": [
+      "A0"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U13",
+    "part": "AS6C4008-55PCN",
+    "pin": "13",
+    "name": "D0",
+    "nets": [
+      "D0"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U13",
+    "part": "AS6C4008-55PCN",
+    "pin": "14",
+    "name": "D1",
+    "nets": [
+      "D1"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U13",
+    "part": "AS6C4008-55PCN",
+    "pin": "15",
+    "name": "D2",
+    "nets": [
+      "D2"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U13",
+    "part": "AS6C4008-55PCN",
+    "pin": "16",
+    "name": "VSS",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U13",
+    "part": "AS6C4008-55PCN",
+    "pin": "17",
+    "name": "D3",
+    "nets": [
+      "D3"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U13",
+    "part": "AS6C4008-55PCN",
+    "pin": "18",
+    "name": "D4",
+    "nets": [
+      "D4"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U13",
+    "part": "AS6C4008-55PCN",
+    "pin": "19",
+    "name": "D5",
+    "nets": [
+      "D5"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U13",
+    "part": "AS6C4008-55PCN",
+    "pin": "20",
+    "name": "D6",
+    "nets": [
+      "D6"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U13",
+    "part": "AS6C4008-55PCN",
+    "pin": "21",
+    "name": "D7",
+    "nets": [
+      "D7"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U13",
+    "part": "AS6C4008-55PCN",
+    "pin": "23",
+    "name": "A10",
+    "nets": [
+      "A10"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U13",
+    "part": "AS6C4008-55PCN",
+    "pin": "22",
+    "name": "nCE",
+    "nets": [
+      "/U13_ENA"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U13",
+    "part": "AS6C4008-55PCN",
+    "pin": "24",
+    "name": "nOE",
+    "nets": [
+      "/RD"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U13",
+    "part": "AS6C4008-55PCN",
+    "pin": "25",
+    "name": "A11",
+    "nets": [
+      "A11"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U13",
+    "part": "AS6C4008-55PCN",
+    "pin": "26",
+    "name": "A9",
+    "nets": [
+      "A9"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U13",
+    "part": "AS6C4008-55PCN",
+    "pin": "27",
+    "name": "A8",
+    "nets": [
+      "A8"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U13",
+    "part": "AS6C4008-55PCN",
+    "pin": "28",
+    "name": "A13",
+    "nets": [
+      "A13"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U13",
+    "part": "AS6C4008-55PCN",
+    "pin": "29",
+    "name": "nWE",
+    "nets": [
+      "/WR"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U13",
+    "part": "AS6C4008-55PCN",
+    "pin": "30",
+    "name": "A17",
+    "nets": [
+      "A17"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U13",
+    "part": "AS6C4008-55PCN",
+    "pin": "31",
+    "name": "A15",
+    "nets": [
+      "A15_I"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U13",
+    "part": "AS6C4008-55PCN",
+    "pin": "32",
+    "name": "VCC",
+    "nets": [
+      "++5V"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "C10",
+    "part": "0.1UF/TH",
+    "pin": "1",
+    "name": "P",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "C10",
+    "part": "0.1UF/TH",
+    "pin": "2",
+    "name": "P",
+    "nets": [
+      "++5V"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "R6",
+    "part": "4K7/5%",
+    "pin": "2",
+    "name": "2",
+    "nets": [
+      "++5V"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "R6",
+    "part": "4K7/5%",
+    "pin": "1",
+    "name": "1",
+    "nets": [
+      "@Memory-SchDoc:3800:2500"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U10",
+    "part": "SST39SF040-70",
+    "pin": "1",
+    "name": "A18",
+    "nets": [
+      "A18"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U10",
+    "part": "SST39SF040-70",
+    "pin": "2",
+    "name": "A16",
+    "nets": [
+      "A16"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U10",
+    "part": "SST39SF040-70",
+    "pin": "3",
+    "name": "A15",
+    "nets": [
+      "A15_I"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U10",
+    "part": "SST39SF040-70",
+    "pin": "4",
+    "name": "A12",
+    "nets": [
+      "A12"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U10",
+    "part": "SST39SF040-70",
+    "pin": "5",
+    "name": "A7",
+    "nets": [
+      "A7"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U10",
+    "part": "SST39SF040-70",
+    "pin": "6",
+    "name": "A6",
+    "nets": [
+      "A6"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U10",
+    "part": "SST39SF040-70",
+    "pin": "7",
+    "name": "A5",
+    "nets": [
+      "A5"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U10",
+    "part": "SST39SF040-70",
+    "pin": "8",
+    "name": "A4",
+    "nets": [
+      "A4"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U10",
+    "part": "SST39SF040-70",
+    "pin": "9",
+    "name": "A3",
+    "nets": [
+      "A3"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U10",
+    "part": "SST39SF040-70",
+    "pin": "10",
+    "name": "A2",
+    "nets": [
+      "A2"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U10",
+    "part": "SST39SF040-70",
+    "pin": "11",
+    "name": "A1",
+    "nets": [
+      "A1"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U10",
+    "part": "SST39SF040-70",
+    "pin": "12",
+    "name": "A0",
+    "nets": [
+      "A0"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U10",
+    "part": "SST39SF040-70",
+    "pin": "13",
+    "name": "D0",
+    "nets": [
+      "D0"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U10",
+    "part": "SST39SF040-70",
+    "pin": "14",
+    "name": "D1",
+    "nets": [
+      "D1"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U10",
+    "part": "SST39SF040-70",
+    "pin": "15",
+    "name": "D2",
+    "nets": [
+      "D2"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U10",
+    "part": "SST39SF040-70",
+    "pin": "16",
+    "name": "VSS",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U10",
+    "part": "SST39SF040-70",
+    "pin": "17",
+    "name": "D3",
+    "nets": [
+      "D3"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U10",
+    "part": "SST39SF040-70",
+    "pin": "18",
+    "name": "D4",
+    "nets": [
+      "D4"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U10",
+    "part": "SST39SF040-70",
+    "pin": "19",
+    "name": "D5",
+    "nets": [
+      "D5"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U10",
+    "part": "SST39SF040-70",
+    "pin": "20",
+    "name": "D6",
+    "nets": [
+      "D6"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U10",
+    "part": "SST39SF040-70",
+    "pin": "21",
+    "name": "D7",
+    "nets": [
+      "D7"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U10",
+    "part": "SST39SF040-70",
+    "pin": "23",
+    "name": "A10",
+    "nets": [
+      "A10"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U10",
+    "part": "SST39SF040-70",
+    "pin": "22",
+    "name": "nCE",
+    "nets": [
+      "/U10_ENA"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U10",
+    "part": "SST39SF040-70",
+    "pin": "24",
+    "name": "nOE",
+    "nets": [
+      "/RD"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U10",
+    "part": "SST39SF040-70",
+    "pin": "25",
+    "name": "A11",
+    "nets": [
+      "A11"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U10",
+    "part": "SST39SF040-70",
+    "pin": "26",
+    "name": "A9",
+    "nets": [
+      "A9"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U10",
+    "part": "SST39SF040-70",
+    "pin": "27",
+    "name": "A8",
+    "nets": [
+      "A8"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U10",
+    "part": "SST39SF040-70",
+    "pin": "28",
+    "name": "A13",
+    "nets": [
+      "A13"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U10",
+    "part": "SST39SF040-70",
+    "pin": "29",
+    "name": "A14",
+    "nets": [
+      "A14_I"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U10",
+    "part": "SST39SF040-70",
+    "pin": "30",
+    "name": "A17",
+    "nets": [
+      "A17"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U10",
+    "part": "SST39SF040-70",
+    "pin": "31",
+    "name": "nWE",
+    "nets": [
+      "@Memory-SchDoc:3800:2500"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U10",
+    "part": "SST39SF040-70",
+    "pin": "32",
+    "name": "VCC",
+    "nets": [
+      "++5V"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "P10",
+    "part": "HDR2",
+    "pin": "1",
+    "name": "P",
+    "nets": [
+      "@Memory-SchDoc:3800:2500"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "P10",
+    "part": "HDR2",
+    "pin": "2",
+    "name": "P",
+    "nets": [
+      "/WR"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U3",
+    "part": "SDCARD_2",
+    "pin": "1",
+    "name": "VDD",
+    "nets": [
+      "++3V3"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U3",
+    "part": "SDCARD_2",
+    "pin": "2",
+    "name": "nCS",
+    "nets": [
+      "U3_CS"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U3",
+    "part": "SDCARD_2",
+    "pin": "3",
+    "name": "MOSI",
+    "nets": [
+      "D1_L"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U3",
+    "part": "SDCARD_2",
+    "pin": "4",
+    "name": "SCLK",
+    "nets": [
+      "D0_L"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U3",
+    "part": "SDCARD_2",
+    "pin": "5",
+    "name": "MISO",
+    "nets": [
+      "D2_L"
+    ]
+  },
+  {
+    "sheet": "Memory-SchDoc",
+    "ref": "U3",
+    "part": "SDCARD_2",
+    "pin": "6",
+    "name": "VSS",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "U2",
+    "part": "RPI_PICO",
+    "pin": "1",
+    "name": "GP0",
+    "nets": [
+      "/EXR_L"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "U2",
+    "part": "RPI_PICO",
+    "pin": "2",
+    "name": "GP1",
+    "nets": [
+      "/RDROM_L"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "U2",
+    "part": "RPI_PICO",
+    "pin": "3",
+    "name": "GND",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "U2",
+    "part": "RPI_PICO",
+    "pin": "4",
+    "name": "GP2",
+    "nets": [
+      "D0_L"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "U2",
+    "part": "RPI_PICO",
+    "pin": "5",
+    "name": "GP3",
+    "nets": [
+      "D1_L"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "U2",
+    "part": "RPI_PICO",
+    "pin": "6",
+    "name": "GP4",
+    "nets": [
+      "D2_L"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "U2",
+    "part": "RPI_PICO",
+    "pin": "7",
+    "name": "GP5",
+    "nets": [
+      "D3_L"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "U2",
+    "part": "RPI_PICO",
+    "pin": "8",
+    "name": "GND",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "U2",
+    "part": "RPI_PICO",
+    "pin": "9",
+    "name": "GP6",
+    "nets": [
+      "D4_L"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "U2",
+    "part": "RPI_PICO",
+    "pin": "10",
+    "name": "GP7",
+    "nets": [
+      "D5_L"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "U2",
+    "part": "RPI_PICO",
+    "pin": "11",
+    "name": "GP8",
+    "nets": [
+      "D6_L"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "U2",
+    "part": "RPI_PICO",
+    "pin": "12",
+    "name": "GP9",
+    "nets": [
+      "D7_L"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "U2",
+    "part": "RPI_PICO",
+    "pin": "13",
+    "name": "GND",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "U2",
+    "part": "RPI_PICO",
+    "pin": "14",
+    "name": "GP10",
+    "nets": [
+      "/+R_L"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "U2",
+    "part": "RPI_PICO",
+    "pin": "15",
+    "name": "GP11",
+    "nets": [
+      "/+W_L"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "U2",
+    "part": "RPI_PICO",
+    "pin": "16",
+    "name": "GP12",
+    "nets": [
+      "/U6_EN"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "U2",
+    "part": "RPI_PICO",
+    "pin": "17",
+    "name": "GP13",
+    "nets": [
+      "/MREQ_L"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "U2",
+    "part": "RPI_PICO",
+    "pin": "18",
+    "name": "GND",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "U2",
+    "part": "RPI_PICO",
+    "pin": "19",
+    "name": "GP14",
+    "nets": [
+      "/+RW_L"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "U2",
+    "part": "RPI_PICO",
+    "pin": "20",
+    "name": "GP15",
+    "nets": [
+      "A15_B"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "U2",
+    "part": "RPI_PICO",
+    "pin": "21",
+    "name": "GP16",
+    "nets": [
+      "A16"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "U2",
+    "part": "RPI_PICO",
+    "pin": "22",
+    "name": "GP17",
+    "nets": [
+      "A17"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "U2",
+    "part": "RPI_PICO",
+    "pin": "23",
+    "name": "GND",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "U2",
+    "part": "RPI_PICO",
+    "pin": "24",
+    "name": "GP18",
+    "nets": [
+      "A18"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "U2",
+    "part": "RPI_PICO",
+    "pin": "25",
+    "name": "GP19",
+    "nets": [
+      "/U10_ENA"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "U2",
+    "part": "RPI_PICO",
+    "pin": "26",
+    "name": "GP20",
+    "nets": [
+      "/U13_ENA"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "U2",
+    "part": "RPI_PICO",
+    "pin": "27",
+    "name": "GP21",
+    "nets": [
+      "/BE_L"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "U2",
+    "part": "RPI_PICO",
+    "pin": "28",
+    "name": "GND",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "U2",
+    "part": "RPI_PICO",
+    "pin": "29",
+    "name": "GP22",
+    "nets": [
+      "A14_B"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "U2",
+    "part": "RPI_PICO",
+    "pin": "30",
+    "name": "RUN",
+    "nets": [
+      "@Pico-SchDoc:4400:3100"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "U2",
+    "part": "RPI_PICO",
+    "pin": "31",
+    "name": "GP26",
+    "nets": [
+      "/ROSCS_L"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "U2",
+    "part": "RPI_PICO",
+    "pin": "32",
+    "name": "GP27",
+    "nets": [
+      "/BE_STAT"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "U2",
+    "part": "RPI_PICO",
+    "pin": "33",
+    "name": "GND",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "U2",
+    "part": "RPI_PICO",
+    "pin": "34",
+    "name": "GP28",
+    "nets": [
+      "U3_CS"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "U2",
+    "part": "RPI_PICO",
+    "pin": "35",
+    "name": "ADC_REF",
+    "nets": [
+      "@Pico-SchDoc:4400:2600"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "U2",
+    "part": "RPI_PICO",
+    "pin": "36",
+    "name": "3V3out",
+    "nets": [
+      "++3V3"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "U2",
+    "part": "RPI_PICO",
+    "pin": "37",
+    "name": "3V3en",
+    "nets": [
+      "@Pico-SchDoc:4400:2400"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "U2",
+    "part": "RPI_PICO",
+    "pin": "38",
+    "name": "GND",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "U2",
+    "part": "RPI_PICO",
+    "pin": "39",
+    "name": "VSYS",
+    "nets": [
+      "@Pico-SchDoc:4400:2200"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "U2",
+    "part": "RPI_PICO",
+    "pin": "40",
+    "name": "VBUS",
+    "nets": [
+      "@Pico-SchDoc:4400:2100"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "D2",
+    "part": "SB260_R2_00001",
+    "pin": "2",
+    "name": "A",
+    "nets": [
+      "++5V"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "D2",
+    "part": "SB260_R2_00001",
+    "pin": "1",
+    "name": "P",
+    "nets": [
+      "@Pico-SchDoc:4400:2200"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "C2",
+    "part": "10UF",
+    "pin": "1",
+    "name": "1",
+    "nets": [
+      "@Pico-SchDoc:4400:2200"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "C2",
+    "part": "10UF",
+    "pin": "2",
+    "name": "2",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "R4",
+    "part": "4K7/5%",
+    "pin": "2",
+    "name": "2",
+    "nets": [
+      "++3V3"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "R4",
+    "part": "4K7/5%",
+    "pin": "1",
+    "name": "1",
+    "nets": [
+      "/BE_STAT"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "R9",
+    "part": "4K7/5%",
+    "pin": "2",
+    "name": "2",
+    "nets": [
+      "++3V3"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "R9",
+    "part": "4K7/5%",
+    "pin": "1",
+    "name": "1",
+    "nets": [
+      "@Pico-SchDoc:4400:3100"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "SW3",
+    "part": "JTP1230A",
+    "pin": "1",
+    "name": "1",
+    "nets": [
+      "@Pico-SchDoc:4400:3100"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "SW3",
+    "part": "JTP1230A",
+    "pin": "2",
+    "name": "2",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "SW3",
+    "part": "JTP1230A",
+    "pin": "3",
+    "name": "P",
+    "nets": [
+      "@Pico-SchDoc:4400:3100"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "SW3",
+    "part": "JTP1230A",
+    "pin": "4",
+    "name": "2",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "JP5",
+    "part": "HDR2",
+    "pin": "1",
+    "name": "P",
+    "nets": [
+      "@Pico-SchDoc:4400:3100"
+    ]
+  },
+  {
+    "sheet": "Pico-SchDoc",
+    "ref": "JP5",
+    "part": "HDR2",
+    "pin": "2",
+    "name": "P",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1",
+    "part": "TS2068_1",
+    "pin": "A1",
+    "name": "GND",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1",
+    "part": "TS2068_1",
+    "pin": "A2",
+    "name": "EAR",
+    "nets": [
+      "U0"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1",
+    "part": "TS2068_1",
+    "pin": "A3",
+    "name": "A7RB",
+    "nets": [
+      "U1"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1",
+    "part": "TS2068_1",
+    "pin": "A4",
+    "name": "D7",
+    "nets": [
+      "D7"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1",
+    "part": "TS2068_1",
+    "pin": "A5",
+    "name": "DZIN",
+    "nets": [
+      "U2"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1",
+    "part": "TS2068_1",
+    "pin": "A6",
+    "name": "SLOT",
+    "nets": [
+      "@ts2068Interface-SchDoc:1750:2900"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1",
+    "part": "TS2068_1",
+    "pin": "A7",
+    "name": "D0",
+    "nets": [
+      "D0"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1",
+    "part": "TS2068_1",
+    "pin": "A8",
+    "name": "D1",
+    "nets": [
+      "D1"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1",
+    "part": "TS2068_1",
+    "pin": "A9",
+    "name": "D2",
+    "nets": [
+      "D2"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1",
+    "part": "TS2068_1",
+    "pin": "A10",
+    "name": "D6",
+    "nets": [
+      "D6"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1",
+    "part": "TS2068_1",
+    "pin": "A11",
+    "name": "D5",
+    "nets": [
+      "D5"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1",
+    "part": "TS2068_1",
+    "pin": "A12",
+    "name": "D3",
+    "nets": [
+      "D3"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1",
+    "part": "TS2068_1",
+    "pin": "A13",
+    "name": "D4",
+    "nets": [
+      "D4"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1",
+    "part": "TS2068_1",
+    "pin": "A14",
+    "name": "nINT",
+    "nets": [
+      "U3"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1",
+    "part": "TS2068_1",
+    "pin": "A15",
+    "name": "nNMI",
+    "nets": [
+      "/NMI"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1",
+    "part": "TS2068_1",
+    "pin": "A16",
+    "name": "nHALT",
+    "nets": [
+      "U4"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1",
+    "part": "TS2068_1",
+    "pin": "A17",
+    "name": "nMRQB",
+    "nets": [
+      "/MREQ"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1",
+    "part": "TS2068_1",
+    "pin": "A18",
+    "name": "nIRQB",
+    "nets": [
+      "/IORQ"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1",
+    "part": "TS2068_1",
+    "pin": "A19",
+    "name": "nRDB",
+    "nets": [
+      "/RD"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1",
+    "part": "TS2068_1",
+    "pin": "A20",
+    "name": "nWRB",
+    "nets": [
+      "/WR"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1",
+    "part": "TS2068_1",
+    "pin": "A21",
+    "name": "nBUSACK",
+    "nets": [
+      "U5"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1",
+    "part": "TS2068_1",
+    "pin": "A22",
+    "name": "nWAIT",
+    "nets": [
+      "U6"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1",
+    "part": "TS2068_1",
+    "pin": "A23",
+    "name": "nBUSRQ",
+    "nets": [
+      "U7"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1",
+    "part": "TS2068_1",
+    "pin": "A24",
+    "name": "nRESET",
+    "nets": [
+      "/RESET"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1",
+    "part": "TS2068_1",
+    "pin": "A25",
+    "name": "nM1",
+    "nets": [
+      "/M1"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1",
+    "part": "TS2068_1",
+    "pin": "A26",
+    "name": "nRFSH",
+    "nets": [
+      "U8"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1",
+    "part": "TS2068_1",
+    "pin": "A27",
+    "name": "nEXROM",
+    "nets": [
+      "/EXROM"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1",
+    "part": "TS2068_1",
+    "pin": "A28",
+    "name": "nROSCS",
+    "nets": [
+      "/ROSCS"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1",
+    "part": "TS2068_1",
+    "pin": "A29",
+    "name": "nBE",
+    "nets": [
+      "/BE_OUT"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1",
+    "part": "TS2068_1",
+    "pin": "A30",
+    "name": "IOA5",
+    "nets": [
+      "U9"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1",
+    "part": "TS2068_1",
+    "pin": "A31",
+    "name": "SOUND",
+    "nets": [
+      "U10"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1",
+    "part": "TS2068_1",
+    "pin": "A32",
+    "name": "GND",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "R5",
+    "part": "220k/5%",
+    "pin": "2",
+    "name": "2",
+    "nets": [
+      "++5V"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "R5",
+    "part": "220k/5%",
+    "pin": "1",
+    "name": "1",
+    "nets": [
+      "@ts2068Interface-SchDoc:7500:4300"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "C11",
+    "part": "0.1UF/TH",
+    "pin": "1",
+    "name": "P",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "C11",
+    "part": "0.1UF/TH",
+    "pin": "2",
+    "name": "P",
+    "nets": [
+      "@ts2068Interface-SchDoc:7500:4500"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "C9",
+    "part": "0.1UF/TH",
+    "pin": "1",
+    "name": "P",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "C9",
+    "part": "0.1UF/TH",
+    "pin": "2",
+    "name": "P",
+    "nets": [
+      "@ts2068Interface-SchDoc:6100:4550"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "Q1",
+    "part": "2N3904",
+    "pin": "2",
+    "name": "BASE",
+    "nets": [
+      "@ts2068Interface-SchDoc:7150:5500"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "Q1",
+    "part": "2N3904",
+    "pin": "1",
+    "name": "EMITTER",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "Q1",
+    "part": "2N3904",
+    "pin": "3",
+    "name": "COLLECTOR",
+    "nets": [
+      "/RESET"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "R10",
+    "part": "4K7/5%",
+    "pin": "2",
+    "name": "2",
+    "nets": [
+      "@ts2068Interface-SchDoc:7150:5500"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "R10",
+    "part": "4K7/5%",
+    "pin": "1",
+    "name": "1",
+    "nets": [
+      "@ts2068Interface-SchDoc:6500:4400"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "R1",
+    "part": "1M/5%",
+    "pin": "2",
+    "name": "2",
+    "nets": [
+      "++5V"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "R1",
+    "part": "1M/5%",
+    "pin": "1",
+    "name": "1",
+    "nets": [
+      "@ts2068Interface-SchDoc:6100:4550"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "R11",
+    "part": "2k2/5%",
+    "pin": "2",
+    "name": "2",
+    "nets": [
+      "@ts2068Interface-SchDoc:7150:5500"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "R11",
+    "part": "2k2/5%",
+    "pin": "1",
+    "name": "1",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "JP2",
+    "part": "HDR2",
+    "pin": "1",
+    "name": "P",
+    "nets": [
+      "/NMI"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "JP2",
+    "part": "HDR2",
+    "pin": "2",
+    "name": "P",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "JP2",
+    "part": "HDR2",
+    "pin": "1",
+    "name": "P",
+    "nets": [
+      "/NMI"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "JP2",
+    "part": "HDR2",
+    "pin": "2",
+    "name": "P",
+    "nets": [
+      "/NMI"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "JP3",
+    "part": "HDR2",
+    "pin": "1",
+    "name": "P",
+    "nets": [
+      "/RESET"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "JP3",
+    "part": "HDR2",
+    "pin": "2",
+    "name": "P",
+    "nets": [
+      "/RESET"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "JP3",
+    "part": "HDR2",
+    "pin": "1",
+    "name": "P",
+    "nets": [
+      "/RESET"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "JP3",
+    "part": "HDR2",
+    "pin": "2",
+    "name": "P",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1_2",
+    "part": "TS2068_2",
+    "pin": "B1",
+    "name": "GND",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1_2",
+    "part": "TS2068_2",
+    "pin": "B2",
+    "name": "SPK/TAP",
+    "nets": [
+      "U11"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1_2",
+    "part": "TS2068_2",
+    "pin": "B3",
+    "name": "+15V",
+    "nets": [
+      "U12"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1_2",
+    "part": "TS2068_2",
+    "pin": "B4",
+    "name": "+5V",
+    "nets": [
+      "++5V"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1_2",
+    "part": "TS2068_2",
+    "pin": "B5",
+    "name": "NC",
+    "nets": [
+      "U20"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1_2",
+    "part": "TS2068_2",
+    "pin": "B6",
+    "name": "SLOT",
+    "nets": [
+      "@ts2068Interface-SchDoc:4550:2900"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1_2",
+    "part": "TS2068_2",
+    "pin": "B7",
+    "name": "PWRGND",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1_2",
+    "part": "TS2068_2",
+    "pin": "B8",
+    "name": "PWRGND",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1_2",
+    "part": "TS2068_2",
+    "pin": "B9",
+    "name": "CLK",
+    "nets": [
+      "U13"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1_2",
+    "part": "TS2068_2",
+    "pin": "B10",
+    "name": "A0",
+    "nets": [
+      "A0"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1_2",
+    "part": "TS2068_2",
+    "pin": "B11",
+    "name": "A1",
+    "nets": [
+      "A1"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1_2",
+    "part": "TS2068_2",
+    "pin": "B12",
+    "name": "A2",
+    "nets": [
+      "A2"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1_2",
+    "part": "TS2068_2",
+    "pin": "B13",
+    "name": "A3",
+    "nets": [
+      "A3"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1_2",
+    "part": "TS2068_2",
+    "pin": "B14",
+    "name": "A15B",
+    "nets": [
+      "A15"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1_2",
+    "part": "TS2068_2",
+    "pin": "B15",
+    "name": "A14B",
+    "nets": [
+      "A14"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1_2",
+    "part": "TS2068_2",
+    "pin": "B16",
+    "name": "A13B",
+    "nets": [
+      "A13"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1_2",
+    "part": "TS2068_2",
+    "pin": "B17",
+    "name": "A12",
+    "nets": [
+      "A12"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1_2",
+    "part": "TS2068_2",
+    "pin": "B18",
+    "name": "A11",
+    "nets": [
+      "A11"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1_2",
+    "part": "TS2068_2",
+    "pin": "B19",
+    "name": "A10",
+    "nets": [
+      "A10"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1_2",
+    "part": "TS2068_2",
+    "pin": "B20",
+    "name": "A9",
+    "nets": [
+      "A9"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1_2",
+    "part": "TS2068_2",
+    "pin": "B21",
+    "name": "A8",
+    "nets": [
+      "A8"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1_2",
+    "part": "TS2068_2",
+    "pin": "B22",
+    "name": "A7",
+    "nets": [
+      "A7"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1_2",
+    "part": "TS2068_2",
+    "pin": "B23",
+    "name": "A6",
+    "nets": [
+      "A6"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1_2",
+    "part": "TS2068_2",
+    "pin": "B24",
+    "name": "A5",
+    "nets": [
+      "A5"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1_2",
+    "part": "TS2068_2",
+    "pin": "B25",
+    "name": "A4",
+    "nets": [
+      "A4"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1_2",
+    "part": "TS2068_2",
+    "pin": "B26",
+    "name": "DZOUT",
+    "nets": [
+      "U14"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1_2",
+    "part": "TS2068_2",
+    "pin": "B27",
+    "name": "RED",
+    "nets": [
+      "U15"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1_2",
+    "part": "TS2068_2",
+    "pin": "B28",
+    "name": "GREEN",
+    "nets": [
+      "U16"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1_2",
+    "part": "TS2068_2",
+    "pin": "B29",
+    "name": "BLUE",
+    "nets": [
+      "U17"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1_2",
+    "part": "TS2068_2",
+    "pin": "B30",
+    "name": "BUSISO",
+    "nets": [
+      "/BE_IN"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1_2",
+    "part": "TS2068_2",
+    "pin": "B31",
+    "name": "VIDEO",
+    "nets": [
+      "U19"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "P1_2",
+    "part": "TS2068_2",
+    "pin": "B32",
+    "name": "GND",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "SW2",
+    "part": "JTP1230A",
+    "pin": "1",
+    "name": "1",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "SW2",
+    "part": "JTP1230A",
+    "pin": "2",
+    "name": "2",
+    "nets": [
+      "/RESET"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "SW2",
+    "part": "JTP1230A",
+    "pin": "3",
+    "name": "P",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "SW2",
+    "part": "JTP1230A",
+    "pin": "4",
+    "name": "2",
+    "nets": [
+      "/RESET"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "SW1",
+    "part": "JTP1230A",
+    "pin": "1",
+    "name": "1",
+    "nets": [
+      "/NMI"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "SW1",
+    "part": "JTP1230A",
+    "pin": "2",
+    "name": "2",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "SW1",
+    "part": "JTP1230A",
+    "pin": "3",
+    "name": "P",
+    "nets": [
+      "/NMI"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "SW1",
+    "part": "JTP1230A",
+    "pin": "4",
+    "name": "2",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "C15",
+    "part": "0.1UF/TH",
+    "pin": "1",
+    "name": "P",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "C15",
+    "part": "0.1UF/TH",
+    "pin": "2",
+    "name": "P",
+    "nets": [
+      "/NMI"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "C16",
+    "part": "10UF",
+    "pin": "1",
+    "name": "1",
+    "nets": [
+      "++5V"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "C16",
+    "part": "10UF",
+    "pin": "2",
+    "name": "2",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "JP1",
+    "part": "HDR2",
+    "pin": "1",
+    "name": "P",
+    "nets": [
+      "/BE_OUT"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "JP1",
+    "part": "HDR2",
+    "pin": "2",
+    "name": "P",
+    "nets": [
+      "/BE_DRV"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "JP1",
+    "part": "HDR2",
+    "pin": "1",
+    "name": "P",
+    "nets": [
+      "/BE_OUT"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "JP1",
+    "part": "HDR2",
+    "pin": "2",
+    "name": "P",
+    "nets": [
+      "@ts2068Interface-SchDoc:6050:5900"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "U11",
+    "part": "TLC555IP",
+    "pin": "1",
+    "name": "GND",
+    "nets": [
+      "GND"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "U11",
+    "part": "TLC555IP",
+    "pin": "2",
+    "name": "TRIG",
+    "nets": [
+      "@ts2068Interface-SchDoc:6100:4550"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "U11",
+    "part": "TLC555IP",
+    "pin": "3",
+    "name": "OUT",
+    "nets": [
+      "@ts2068Interface-SchDoc:6500:4400"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "U11",
+    "part": "TLC555IP",
+    "pin": "4",
+    "name": "RESET",
+    "nets": [
+      "++5V"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "U11",
+    "part": "TLC555IP",
+    "pin": "5",
+    "name": "CONT",
+    "nets": [
+      "@ts2068Interface-SchDoc:7500:4500"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "U11",
+    "part": "TLC555IP",
+    "pin": "6",
+    "name": "THRESH",
+    "nets": [
+      "@ts2068Interface-SchDoc:7500:4300"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "U11",
+    "part": "TLC555IP",
+    "pin": "7",
+    "name": "DISCH",
+    "nets": [
+      "@ts2068Interface-SchDoc:7500:4300"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "U11",
+    "part": "TLC555IP",
+    "pin": "8",
+    "name": "VDD",
+    "nets": [
+      "++5V"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "C12",
+    "part": "10UF",
+    "pin": "1",
+    "name": "1",
+    "nets": [
+      "@ts2068Interface-SchDoc:7500:4300"
+    ]
+  },
+  {
+    "sheet": "ts2068Interface-SchDoc",
+    "ref": "C12",
+    "part": "10UF",
+    "pin": "2",
+    "name": "2",
+    "nets": [
+      "GND"
+    ]
+  }
+]

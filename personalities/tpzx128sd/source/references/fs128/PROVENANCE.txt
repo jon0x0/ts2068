@@ -1,0 +1,21 @@
+layout.inc, tpi_legacy.asm and files_legacy.asm are the original reusable
+Z80 assets from the user's ts2068-tspico-development AI skill:
+D:/T7_Recover/Jon/Personal/Timex/AISkill_TS2068/skills/ts2068-tspico-development
+
+dual_transport.asm is retained from:
+https://github.com/jon0x0/ts2068/blob/cpm22-v0.1.0/CPM_2068/src/dual_transport.asm
+
+detect_protocol.asm is the detect_protocol section through detect_body from:
+https://github.com/jon0x0/ts2068/blob/cpm22-v0.1.0/CPM_2068/src/sram_loader.asm
+
+The build relocates DUAL_PROTOCOL to C3A0 and diagnostic_stage to C3A1.
+It changes the detector's completed legacy probe from SAVE tpi:cd / to
+LOAD tpi:path (TADDR 1, same eight-byte command length, updated checksums).
+This preserves the caller's selected SD directory; modern identification
+still depends on ACK 01 followed by MID F7 before sending SYNC.
+The original settle delays remain in the emitted hardware ROM. The host
+functional peer elides only legacy_settle because its replies are immediate;
+this does not measure or validate real MicroPython/SPI timing.
+
+The modern transport branch is retained for future 2.3 integration. The
+current hardware service runner uses only the installed legacy 1.00 handlers.

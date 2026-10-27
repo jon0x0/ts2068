@@ -6,6 +6,10 @@ import re
 ROOT = Path(__file__).resolve().parents[1]
 GITHUB = 'https://github.com/jon0x0/'
 groups = {
+    'TSPico personalities': [
+        ('tpzx128', 'Temporary Spectrum 128 baseline for TSPico V2.2. Revision-2 no-reset startup confirmed on hardware; source and USB helpers included.', [('Procedure and downloads', GITHUB+'ts2068/tree/main/personalities/tpzx128'), ('Technical description', GITHUB+'ts2068/blob/main/personalities/tpzx128/TECHNICAL.md')]),
+        ('tpzx128sd', 'Experimental Spectrum 128 SD configuration with legacy file services. Physical SD BASIC and no-reset SD handoff acceptance pending.', [('Procedure and downloads', GITHUB+'ts2068/tree/main/personalities/tpzx128sd'), ('Technical description', GITHUB+'ts2068/blob/main/personalities/tpzx128sd/TECHNICAL.md')]),
+    ],
     'Remastered games': [
         ('The Crown', 'Three dungeon levels, Leap v2 bytecode, TSVideoCodec startup animation and hardware joystick support.', [('Release', 'ts2068-cartridges/remastered/TheCrown/'), ('Play with virtual DPad', 'ts2068-cartridges/remastered/TheCrown/play/'), ('Download TheCrown.dck', 'ts2068-cartridges/remastered/TheCrown/TheCrown.dck')]),
     ],

@@ -1,0 +1,296 @@
+{
+  "format": "tspico128-rom-prototype-1",
+  "hardware_tested": false,
+  "title": "TSPico Spectrum 128",
+  "preferred_filename": "TPZX128.ROM",
+  "legacy_filename": "tspico128.rom",
+  "paging_port": 15,
+  "required_firmware": "firmware/personality128_stock.py plus personality128.py definitions",
+  "sram_regions_cleared_at_boot": [
+    {
+      "start": 49152,
+      "length": 16384
+    },
+    {
+      "start": 114688,
+      "length": 16384
+    },
+    {
+      "start": 180224,
+      "length": 16384
+    },
+    {
+      "start": 245760,
+      "length": 16384
+    },
+    {
+      "start": 311296,
+      "length": 16384
+    },
+    {
+      "start": 376832,
+      "length": 16384
+    },
+    {
+      "start": 442368,
+      "length": 16384
+    },
+    {
+      "start": 507904,
+      "length": 16384
+    }
+  ],
+  "input_sha256": [
+    "3ba308f23b9471d13d9ba30c23030059a9ce5d4b317b85b86274b132651d1425",
+    "8d93c3342321e9d1e51d60afcd7d15f6a7afd978c231b43435a7c0757c60b9a3"
+  ],
+  "output_sha256": [
+    "a653c8708794032031b475a0c680d58786157555a52882817e2d4d77921f7234",
+    "a5cf38b13fab921e321598434825ccc01ef6da30d7c0bd59fd928385cf584267"
+  ],
+  "patches": [
+    {
+      "rom": 0,
+      "address": 75,
+      "address_hex": "004B",
+      "before": "fd",
+      "after": "0f",
+      "reason": "Paging BC low byte FD -> private 0F"
+    },
+    {
+      "rom": 0,
+      "address": 110,
+      "address_hex": "006E",
+      "before": "fd",
+      "after": "0f",
+      "reason": "Paging BC low byte FD -> private 0F"
+    },
+    {
+      "rom": 0,
+      "address": 146,
+      "address_hex": "0092",
+      "before": "fd",
+      "after": "0f",
+      "reason": "Paging BC low byte FD -> private 0F"
+    },
+    {
+      "rom": 0,
+      "address": 164,
+      "address_hex": "00A4",
+      "before": "fd",
+      "after": "0f",
+      "reason": "Paging BC low byte FD -> private 0F"
+    },
+    {
+      "rom": 0,
+      "address": 184,
+      "address_hex": "00B8",
+      "before": "fd",
+      "after": "0f",
+      "reason": "Paging BC low byte FD -> private 0F"
+    },
+    {
+      "rom": 0,
+      "address": 205,
+      "address_hex": "00CD",
+      "before": "fd",
+      "after": "0f",
+      "reason": "Paging BC low byte FD -> private 0F"
+    },
+    {
+      "rom": 0,
+      "address": 1454,
+      "address_hex": "05AE",
+      "before": "fd",
+      "after": "0f",
+      "reason": "Paging BC low byte FD -> private 0F"
+    },
+    {
+      "rom": 0,
+      "address": 7289,
+      "address_hex": "1C79",
+      "before": "fd",
+      "after": "0f",
+      "reason": "Paging BC low byte FD -> private 0F"
+    },
+    {
+      "rom": 0,
+      "address": 7926,
+      "address_hex": "1EF6",
+      "before": "fd",
+      "after": "0f",
+      "reason": "Paging BC low byte FD -> private 0F"
+    },
+    {
+      "rom": 0,
+      "address": 7996,
+      "address_hex": "1F3C",
+      "before": "fd",
+      "after": "0f",
+      "reason": "Paging BC low byte FD -> private 0F"
+    },
+    {
+      "rom": 0,
+      "address": 8141,
+      "address_hex": "1FCD",
+      "before": "fd",
+      "after": "0f",
+      "reason": "Paging BC low byte FD -> private 0F"
+    },
+    {
+      "rom": 0,
+      "address": 8167,
+      "address_hex": "1FE7",
+      "before": "fd",
+      "after": "0f",
+      "reason": "Paging BC low byte FD -> private 0F"
+    },
+    {
+      "rom": 0,
+      "address": 9305,
+      "address_hex": "2459",
+      "before": "fd",
+      "after": "0f",
+      "reason": "Paging BC low byte FD -> private 0F"
+    },
+    {
+      "rom": 0,
+      "address": 13174,
+      "address_hex": "3376",
+      "before": "fd",
+      "after": "0f",
+      "reason": "Paging BC low byte FD -> private 0F"
+    },
+    {
+      "rom": 0,
+      "address": 13294,
+      "address_hex": "33EE",
+      "before": "fd",
+      "after": "0f",
+      "reason": "Paging BC low byte FD -> private 0F"
+    },
+    {
+      "rom": 0,
+      "address": 13302,
+      "address_hex": "33F6",
+      "before": "fd",
+      "after": "0f",
+      "reason": "Paging BC low byte FD -> private 0F"
+    },
+    {
+      "rom": 0,
+      "address": 13354,
+      "address_hex": "342A",
+      "before": "fd",
+      "after": "0f",
+      "reason": "Paging BC low byte FD -> private 0F"
+    },
+    {
+      "rom": 0,
+      "address": 9,
+      "address_hex": "0009",
+      "before": "c3c700",
+      "after": "c33623",
+      "reason": "Reset via Timex mapping initialization"
+    },
+    {
+      "rom": 0,
+      "address": 9014,
+      "address_hex": "2336",
+      "before": "21ff5b22815bcd451fc3cb25a7ed52444d19ebc9010100e5",
+      "after": "f3afd3ff3ec0d3f421004011014001ff7f3600edb0c3c700",
+      "reason": "Unused Spanish-ROM routine area: Timex startup shim"
+    },
+    {
+      "rom": 0,
+      "address": 246,
+      "address_hex": "00F6",
+      "before": "ed79",
+      "after": "0000",
+      "reason": "Skip Spectrum keypad electrical reset"
+    },
+    {
+      "rom": 0,
+      "address": 251,
+      "address_hex": "00FB",
+      "before": "ed79",
+      "after": "0000",
+      "reason": "Skip Spectrum keypad electrical reset"
+    },
+    {
+      "rom": 0,
+      "address": 314,
+      "address_hex": "013A",
+      "before": "ed79",
+      "after": "d3f5",
+      "reason": "Boot AY register select"
+    },
+    {
+      "rom": 0,
+      "address": 319,
+      "address_hex": "013F",
+      "before": "ed79",
+      "after": "d3f6",
+      "reason": "Boot AY mixer data"
+    },
+    {
+      "rom": 0,
+      "address": 3710,
+      "address_hex": "0E7E",
+      "before": "fd",
+      "after": "f5",
+      "reason": "PLAY register-select port"
+    },
+    {
+      "rom": 0,
+      "address": 3715,
+      "address_hex": "0E83",
+      "before": "fd",
+      "after": "f6",
+      "reason": "PLAY register-data port"
+    },
+    {
+      "rom": 0,
+      "address": 9056,
+      "address_hex": "2360",
+      "before": "8200193803ed72d8fd3600",
+      "after": "c501f5ffed790ced78c1c9",
+      "reason": "AY read shim with original IN flags and preserved BC"
+    },
+    {
+      "rom": 0,
+      "address": 3721,
+      "address_hex": "0E89",
+      "before": "c501fd",
+      "after": "c36023",
+      "reason": "Redirect AY read routine"
+    },
+    {
+      "rom": 0,
+      "address": 4515,
+      "address_hex": "11A3",
+      "before": "6f",
+      "after": "c9",
+      "reason": "Disable unsupported Spectrum MIDI output"
+    },
+    {
+      "rom": 1,
+      "address": 14752,
+      "address_hex": "39A0",
+      "before": "cd",
+      "after": "c9",
+      "reason": "Disable unavailable Spectrum serial keypad scanning"
+    }
+  ],
+  "features_pending": [
+    "SD LOAD/SAVE integration",
+    "50 Hz pacing",
+    "hardware timing validation"
+  ],
+  "unsupported": [
+    "native shadow screen",
+    "true bank 2/5 aliases",
+    "Spectrum serial keypad",
+    "RS232/MIDI"
+  ]
+}

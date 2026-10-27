@@ -1,0 +1,19 @@
+{
+  "mode": "zx128",
+  "origin": 32768,
+  "symbols": {
+    "wait_ack": 32797,
+    "wait_rom": 32807,
+    "check_rom": 32815,
+    "not_ready": 32831,
+    "failed": 32844,
+    "signature": 32847
+  },
+  "rom_sha256": "02a63e511f45ba2d0c05ba31e245f77b7527480e9215ea7c7f61287da3ca2f87",
+  "rom_slot": 4,
+  "handoff_revision": 2,
+  "rom_poll_f4": 0,
+  "physical_reset_required": false,
+  "hardware_tested": true,
+  "hardware_evidence": "User confirmed revision-2 zx128 reached working mode without TS Reset on 2026-10-27; no filesystem service in this baseline mode."
+}

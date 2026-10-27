@@ -1,5 +1,21 @@
 # Maintaining the TS2068 hub
 
+## TSPico Spectrum 128 personalities
+
+The 2026-10-27 development snapshot is published under `personalities/tpzx128/`
+and `personalities/tpzx128sd/`. Each includes the current helper/firmware source,
+matching runtime ROM/TAP assets, procedure, technical description, build guide,
+status, and package ZIP. Development remains in Spectrum128_PicoCartridge.
+The source duplication is intentional: the current common helper loads shared
+definitions and builds both handoff TAPs. Do not evolve the two copies separately.
+
+When updating, capture a coherent source snapshot, rebuild/compare its generated
+artifacts, run the supplied tests, and update STATUS.json for those exact hashes.
+Keep physical results separate from functional-model results. Regenerate package
+checksums and ZIPs after documentation changes. Do not publish local serial jobs,
+logs, installed desktop dependencies, or unmodified input ROMs. Regenerate this
+hub using scripts/build_site.py after changing its personality cards.
+
 ## CP/M 2.2 release
 
 Imported under `CPM_2.2_2068/` with tag `cpm22-v0.1.0`. The project Pages entry

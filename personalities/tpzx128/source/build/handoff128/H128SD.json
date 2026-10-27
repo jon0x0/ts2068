@@ -1,0 +1,18 @@
+{
+  "mode": "zx128sd",
+  "origin": 32768,
+  "symbols": {
+    "wait_ack": 32797,
+    "wait_rom": 32807,
+    "check_rom": 32815,
+    "not_ready": 32831,
+    "failed": 32844,
+    "signature": 32847
+  },
+  "rom_sha256": "f3e158da6fa4b1085f5f83f6098c7a9c9421e12d7dddb69b8cf125cc8e5651e8",
+  "rom_slot": 4,
+  "handoff_revision": 2,
+  "rom_poll_f4": 0,
+  "physical_reset_required": false,
+  "hardware_tested": false
+}
