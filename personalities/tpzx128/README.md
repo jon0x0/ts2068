@@ -8,6 +8,10 @@ An experimental, temporary Spectrum 128 configuration for a Timex Sinclair
 [Technical description](TECHNICAL.md) · [Source and rebuild instructions](BUILD.md) ·
 [Exact status and hashes](STATUS.json) · [Complete package ZIP](downloads/tpzx128-20261027.zip)
 
+<a href="images/tpzx128.png"><img src="images/tpzx128.png" alt="tpzx128 running on a Timex TS2068 with TSPico" width="20%"></a>
+
+*Screenshot of tpzx128 running on a Timex TS2068 with TSPico. Click to view full size.*
+
 ## What is included
 
 - `sd/TAP/128/`: the matching ROM, revision-2 handoff TAP, and SD test TAP where applicable.
