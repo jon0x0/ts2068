@@ -17,9 +17,11 @@ to the Pico, replace `main.py`, install a `/TS` package, flash a UF2, choose
 a Flash ROM slot, run MEMBOOT, or save a boot selection. No installed
 firmware change is needed for the documented, supported development setup.
 
-Use the traced TSPico V2.2 / RP2040 configuration, stock 270 MHz control
+Use the traced TSPico hardware revision V2.2 / RP2040 configuration, stock 270 MHz control
 timing, and the installed legacy firmware/module interface used by the trials.
 MicroPython 1.20 was physically exercised; other combinations need review.
+V2.2 refers to the board. Current firmware/protocol support is v1.00;
+provision for the next protocol version is planned, not yet implemented or validated.
 This baseline has no TSPico filesystem service while active.
 
 Starting discards the current BASIC session and overwrites external SRAM

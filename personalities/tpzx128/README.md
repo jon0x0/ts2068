@@ -1,7 +1,7 @@
 # tpzx128 — TSPico Spectrum 128
 
 An experimental, temporary Spectrum 128 configuration for a Timex Sinclair
-2068 with TSPico V2.2 / RP2040. This baseline uses banked SRAM and the patched Spectrum ROM, without TSPico SD services while active.
+2068 with TSPico hardware revision V2.2 / RP2040. This baseline uses banked SRAM and the patched Spectrum ROM, without TSPico SD services while active.
 
 **Current status:** Revision-2 no-reset startup was confirmed working by the user on October 27, 2026. Earlier stock-controller trials also confirmed 128 BASIC PRINT 1+2 and audible PLAY. This does not establish general Spectrum software compatibility.
 
@@ -12,6 +12,14 @@ An experimental, temporary Spectrum 128 configuration for a Timex Sinclair
 <a href="images/tpzx128.png"><img src="images/tpzx128.png" alt="tpzx128 running on a Timex TS2068 with TSPico" width="20%"></a>
 
 *Screenshot of tpzx128 running on a Timex TS2068 with TSPico. Click to view full size.*
+
+## Hardware and protocol versions
+
+**V2.2 is the TSPico hardware revision**, using an RP2040. It is not the
+firmware or file-protocol version. The current implementation supports
+**TSPico firmware/protocol v1.00**. Provision for the next protocol version
+is planned through a separate backend; that support is not yet implemented
+or validated. The baseline personality has no active SD service while running.
 
 ## What is included
 
@@ -42,7 +50,7 @@ clear the Pico paging latch. No return-to-Timex mode command is implemented.
 
 ## Requirements
 
-- Traced V2.2 TSPico board, RP2040, and the installed stock control timing;
+- Traced TSPico hardware revision V2.2 board, RP2040, and the installed stock control timing;
   the corrected adapter expects the stock 270 MHz clock.
 - The physically exercised runtime is MicroPython 1.20; do not change firmware
   merely to perform this trial. Other runtime/board combinations need review.

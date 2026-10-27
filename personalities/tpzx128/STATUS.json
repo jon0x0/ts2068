@@ -79,5 +79,8 @@
     "start_fs128_sd.ps1": "d3d532c66293b68a09b240f1104ca94e8f9b8d7292b73c43ee0cef090c846a01",
     "tspico-connectivity.json": "4167ba59a070baa160e335e34227c796be082d6af3fe876d31cf2c6135c23709",
     "tspico-mapping-analysis.json": "a9ee6d27a0b121c82803bfbde74c1264599de134d8144df21f5b8dd231887590"
-  }
+  },
+  "hardware_revision": "TSPico V2.2 (RP2040)",
+  "supported_firmware_protocol": "v1.00",
+  "next_protocol_support": "planned; separate backend not yet implemented or validated"
 }

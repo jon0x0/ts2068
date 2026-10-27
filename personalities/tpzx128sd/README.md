@@ -1,7 +1,7 @@
 # tpzx128sd — TSPico Spectrum 128 SD
 
 An experimental, temporary Spectrum 128 configuration for a Timex Sinclair
-2068 with TSPico V2.2 / RP2040. This version adds a cooperative legacy TSPico SD gateway.
+2068 with TSPico hardware revision V2.2 / RP2040. This version adds a cooperative legacy TSPico SD gateway.
 
 **Current status:** The current SD BASIC ROM and no-reset SD handoff still need physical acceptance. The underlying legacy SD gateway previously passed a separate hardware diagnostic. Desktop tests are recorded for these exact artifacts; do not equate the gateway pass with a completed BASIC SAVE/LOAD hardware test.
 
@@ -12,6 +12,14 @@ An experimental, temporary Spectrum 128 configuration for a Timex Sinclair
 <a href="images/tpzx128sd.png"><img src="images/tpzx128sd.png" alt="tpzx128sd running on a Timex TS2068 with TSPico" width="20%"></a>
 
 *Screenshot of tpzx128sd running on a Timex TS2068 with TSPico. Click to view full size.*
+
+## Hardware and protocol versions
+
+**V2.2 is the TSPico hardware revision**, using an RP2040. It is not the
+firmware or file-protocol version. The current implementation supports
+**TSPico firmware/protocol v1.00**. Provision for the next protocol version
+is planned through a separate backend; that support is not yet implemented
+or validated. The baseline personality has no active SD service while running.
 
 ## What is included
 
@@ -42,11 +50,11 @@ clear the Pico paging latch. No return-to-Timex mode command is implemented.
 
 ## Requirements
 
-- Traced V2.2 TSPico board, RP2040, and the installed stock control timing;
+- Traced TSPico hardware revision V2.2 board, RP2040, and the installed stock control timing;
   the corrected adapter expects the stock 270 MHz clock.
 - The physically exercised runtime is MicroPython 1.20; do not change firmware
   merely to perform this trial. Other runtime/board combinations need review.
-- The installed legacy 1.00 file-handler contract. Modern 2.3 storage is not supported.
+- The installed v1.00 firmware/file-protocol contract. Support for the next protocol version is planned, not yet implemented or validated.
 - Desktop Python 3.10+, a USB serial cable, and exclusive access to the Pico
   COM port. Close Thonny, Tera Term, and other serial clients before the helper.
 
@@ -194,8 +202,8 @@ HOME A000-BFFF is protected service RAM and BASIC RAMTOP is 9FFFh, reducing
 contiguous BASIC workspace by about 24 KiB relative to the baseline. CODE
 transfers into that reservation, ROM, or wrapping past FFFFh are rejected.
 C000-FFFF CODE uses the current external bank. Use 128 BASIC for acceptance;
-separate 48 BASIC SD operation has not been qualified. Modern 2.3 handlers
-are unsupported. Do not interrupt an SD write or replay a partly completed SAVE.
+separate 48 BASIC SD operation has not been qualified. Support for the next protocol version is planned; its handlers
+are not yet supported. Do not interrupt an SD write or replay a partly completed SAVE.
 
 
 ## Errors and unfinished jobs

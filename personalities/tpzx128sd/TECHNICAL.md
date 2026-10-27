@@ -8,7 +8,9 @@ the proposed `/MODES` manager, which is not implemented by these packages.
 This is a patched-ROM personality, not a Spectrum CPU emulator running on
 the Pico. The Timex Z80 executes the modified Spectrum ROM. The Pico supplies
 the expansion-memory control and, in the SD variant, cooperates with file I/O.
-The design targets the traced TSPico V2.2 wiring on RP2040.
+The design targets the traced TSPico hardware revision V2.2 wiring on RP2040.
+V2.2 identifies the board, not the firmware/protocol. Current support is for
+firmware/protocol v1.00; provision for the next protocol version is planned.
 
 The fixed HOME RAM remains separate from the external SRAM. Selecting DOCK
 for C000-FFFF exposes a 16 KiB window into one of eight external RAM banks.
@@ -97,7 +99,7 @@ the shared bus pins over to its installed native SD routines. It then restores
 the actual cached mapping and ROM-half initializer, clears stale DMA request
 credits, and returns to the personality controller.
 
-`fs128_legacy.py` validates and wraps the installed legacy 1.00 handler
+`fs128_legacy.py` validates and wraps the installed v1.00 firmware/file-protocol handler
 contract. It reuses normal LOAD/SAVE handlers and their ordinary TAP cache.
 Wrapped functions are restored after the session, including on exceptions.
 SAVE completion is acknowledged after native write cleanup and controller
@@ -117,8 +119,9 @@ continue the selected transport. RAM-disk `!` operations retain their own
 path. Directory replies use the main screen, with 14 entries per page and
 bounded per-page requests; SD sessions close before waiting for a key.
 
-Modern 2.3 storage support has not been implemented. A protocol detector or
-an old modern-transport reference is not a tested 2.3 backend. The baseline
+Support for the next protocol version is planned through a separate backend
+but is not implemented or validated. Retained protocol detection and transport
+references are groundwork, not a supported next-version backend. The baseline
 `tpzx128` has no active TSPico file service at all.
 
 ## Helper behavior and temporary operation

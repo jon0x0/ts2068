@@ -14,7 +14,10 @@ games, applications, audio and demos, linking to their owning projects.
 
 ## TSPico personalities
 
-Temporary Spectrum 128 environments for TSPico V2.2 / RP2040, with complete
+V2.2 denotes the board revision. Current firmware/protocol support is v1.00;
+provision for the next protocol version is planned, not yet implemented or validated.
+
+Temporary Spectrum 128 environments for TSPico hardware revision V2.2 / RP2040, with complete
 source, current USB helpers, matching ROM/TAP files, and startup procedures
 that leave Pico firmware and saved boot configuration unchanged.
 
