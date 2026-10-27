@@ -11,7 +11,7 @@
   "temporary_sram_only_procedure": true,
   "pico_installation_required": false,
   "physical_no_reset_boot_confirmed": null,
-  "physical_confirmation": "Both tpzx128 and tpzx128sd are confirmed by the user to boot and function as BASIC environments on a physical Timex TS2068 with TSPico (October 27, 2026). General Spectrum software compatibility is not established; individual disk-command and RAM-disk coverage is recorded separately.",
+  "physical_confirmation": "Both tpzx128 and tpzx128sd are confirmed by the user to boot and function as BASIC environments on a physical Timex TS2068 with TSPico (October 27, 2026). General Spectrum software compatibility is not established; Directory listing and file loading in tpzx128sd are hardware-confirmed; other disk operations and RAM-disk coverage remain separately qualified.",
   "physical_ramdisk_acceptance": "pending",
   "general_software_compatibility": "not established",
   "host_verification": {
@@ -87,5 +87,11 @@
   "physical_basic_function_confirmed": true,
   "physical_confirmation_date": "2026-10-27",
   "physical_no_reset_boot_note": "Latest user confirmation establishes boot and functional BASIC but does not identify startup method.",
-  "physical_disk_command_coverage": "Individual commands not itemized by latest user confirmation; prior component and desktop test results retained."
+  "physical_disk_command_coverage": "Directory listing and file loading confirmed by user on physical hardware on 2026-10-27. File types, SAVE, VERIFY, PATH, directory paging controls and other operations were not individually confirmed.",
+  "physical_disk_operations_confirmed": {
+    "directory_listing": true,
+    "file_load": true,
+    "confirmed_by": "user",
+    "date": "2026-10-27"
+  }
 }

@@ -9,6 +9,8 @@ REPL commands run on the Pico. `COM14` is an example: substitute your port.
 
 **Qualification:** Both tpzx128 and tpzx128sd are confirmed by the user to boot and function as BASIC environments on a physical Timex TS2068 with TSPico (October 27, 2026). General Spectrum software compatibility is not established; individual disk-command and RAM-disk coverage is recorded separately.
 
+**Confirmed disk operations:** The user confirmed directory listing and file loading work on physical hardware on October 27, 2026. SAVE, VERIFY and other operations retain their separate test qualifications.
+
 ## What remains temporary
 
 The ROM is staged in expansion **SRAM slot 4**, and additional Python

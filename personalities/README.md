@@ -14,7 +14,7 @@ they do not require permanent Pico firmware or startup changes.
 | Package | Current status | Documentation |
 | --- | --- | --- |
 | [tpzx128](tpzx128/) | Boot and functional BASIC confirmed on hardware; baseline no-reset startup also confirmed | [Procedure](tpzx128/README.md) · [Technical description](tpzx128/TECHNICAL.md) · [Build](tpzx128/BUILD.md) |
-| [tpzx128sd](tpzx128sd/) | Boot and functional BASIC confirmed on hardware; individual disk-command coverage recorded separately | [Procedure](tpzx128sd/README.md) · [Technical description](tpzx128sd/TECHNICAL.md) · [Build](tpzx128sd/BUILD.md) |
+| [tpzx128sd](tpzx128sd/) | Boot, functional BASIC, directory listing and file loading confirmed on hardware; other disk operations separately qualified | [Procedure](tpzx128sd/README.md) · [Technical description](tpzx128sd/TECHNICAL.md) · [Build](tpzx128sd/BUILD.md) |
 
 Each directory contains source, current helper scripts, matching ROM/TAP files,
 checksums, status, and a complete download ZIP. Starting discards the current

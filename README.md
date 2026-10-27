@@ -30,7 +30,7 @@ that leave Pico firmware and saved boot configuration unchanged.
 | Package | Status | Links |
 | --- | --- | --- |
 | tpzx128 | Boot and functional BASIC confirmed on hardware; baseline no-reset startup also confirmed | [Procedure and download](personalities/tpzx128/) · [Technical description](personalities/tpzx128/TECHNICAL.md) |
-| tpzx128sd | Boot and functional BASIC confirmed on hardware; individual disk-command coverage recorded separately | [Procedure and download](personalities/tpzx128sd/) · [Technical description](personalities/tpzx128sd/TECHNICAL.md) |
+| tpzx128sd | Boot, functional BASIC, directory listing and file loading confirmed on hardware; other disk operations separately qualified | [Procedure and download](personalities/tpzx128sd/) · [Technical description](personalities/tpzx128sd/TECHNICAL.md) |
 
 See the [personality directory](personalities/) for requirements and recovery.
 These trial packages do not implement the proposed automatic mode menu.

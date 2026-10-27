@@ -12,7 +12,7 @@ control and supporting services. This is not a full Spectrum CPU emulator
 running on the Pico. The tested hardware is TSPico board revision V2.2
 with RP2040; current firmware/protocol support is v1.00.
 
-**Current status:** Both tpzx128 and tpzx128sd are confirmed by the user to boot and function as BASIC environments on a physical Timex TS2068 with TSPico (October 27, 2026). General Spectrum software compatibility is not established; individual disk-command and RAM-disk coverage is recorded separately.
+**Current status:** Both tpzx128 and tpzx128sd are confirmed by the user to boot and function as BASIC environments on a physical Timex TS2068 with TSPico (October 27, 2026). General Spectrum software compatibility is not established; Directory listing and file loading in tpzx128sd are also hardware-confirmed. SAVE, VERIFY, other disk operations, and RAM-disk coverage remain separately qualified.
 
 [Temporary operation command guide](RUN-TEMPORARILY.md) ·
 [Technical description](TECHNICAL.md) · [Source and rebuild instructions](BUILD.md) ·
@@ -38,9 +38,10 @@ component diagnostic pass does not qualify every combination or BASIC command.
 | RAM-disk SAVE/LOAD | Retains Spectrum 128 RAM-disk paths | Exact four-byte round trip passed in the baseline desktop ROM model; physical RAM-disk acceptance remains pending |
 | No-reset startup | HOME-RAM trampoline coordinates controller replacement | Both environments boot and function on hardware; baseline revision-2 no-reset startup specifically confirmed; the latest SD confirmation does not identify its reset/handoff method |
 | Legacy TSPico SD gateway | Temporarily hands shared resources to installed file handlers | Separate hardware diagnostic passed 256-byte load/save/reload and restored ROM/bank state; this is a gateway component result |
-| SD-backed BASIC program and CODE I/O | SD variant provides LOAD/SAVE/VERIFY hooks | CODE byte-pattern and BASIC SAVE/LOAD/RUN round trips pass in the desktop model; the latest hardware confirmation does not itemize individual disk-command round trips |
+| SD file LOAD | Loads files from TSPico SD within Spectrum 128 BASIC | User confirmed file loading works on physical hardware on October 27, 2026; file types and transfer-boundary coverage were not itemized |
+| SD SAVE and VERIFY | SD variant provides program/CODE SAVE and VERIFY hooks | CODE byte-pattern and BASIC SAVE/LOAD/RUN round trips pass in the desktop model; separate physical SAVE and VERIFY confirmation remains outstanding |
 | SD numeric arrays and MERGE | SD variant preserves the ROM's data/program handling | Numeric-array round trip and MERGE ordering pass in the desktop model; command-specific physical coverage is not separately recorded |
-| SD PATH and paged DIR | SD variant displays replies and bounded directory pages | Desktop keyboard tests cover continuation, final-page acknowledgement, N/Space cancellation, and service closure before key waits; command-specific physical coverage is not separately recorded |
+| SD PATH and paged DIR | SD variant displays replies and bounded directory pages | User confirmed directory listing works on physical hardware on October 27, 2026. Desktop tests additionally cover paging, acknowledgement, cancellation and service closure; PATH and each paging control were not separately confirmed on hardware |
 | Protected SD service memory | SD variant rejects transfers through its reserved HOME area | Desktop tests check bounds, address wrap and driver protection |
 | Calculator, 48 BASIC and Tape Tester menu choices | Choices retained from the Spectrum ROM | Presence is not a claim of complete independent physical acceptance for each facility |
 
