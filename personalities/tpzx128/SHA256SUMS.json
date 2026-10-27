@@ -2,7 +2,7 @@
   ".gitattributes": "8b9c3028d6467ff3be7c793141927841d70f47f52d0590677438f488ca154992",
   ".gitignore": "8ddbedf3beb4ec42ba4795bfdb9ce0bbbb9b23bf7240709515fa5261c713b195",
   "BUILD.md": "57cb01969baa2cf88d4aac6b07c4772b7dec8a94328d2a1fb84e0b791f8aa2f0",
-  "README.md": "5a5d5640f1f2888b5bb70177a91c36f28d68edd71e131f2a914be2a606e2356b",
+  "README.md": "98caa3fe5eb3727bfbc5571ac764660b0856c1306e93e517b914bb9918c5d1a7",
   "sd/TAP/128/H128.TAP": "7239acd5351ce7aed86c9d2ceb15f5e83d792253cffcae74a7de2ac9de595c2d",
   "sd/TAP/128/TPZX128.ROM": "02a63e511f45ba2d0c05ba31e245f77b7527480e9215ea7c7f61287da3ca2f87",
   "source/build/fs128-rom/manifest.json": "55fb582930266696f0d91d96477872777543b1e3e67286b2f607b7233143a492",
@@ -71,8 +71,8 @@
   "source/tspico-connectivity.json": "4167ba59a070baa160e335e34227c796be082d6af3fe876d31cf2c6135c23709",
   "source/tspico-mapping-analysis.json": "a9ee6d27a0b121c82803bfbde74c1264599de134d8144df21f5b8dd231887590",
   "source/z80_link.py": "78e15498542ce63861237bbe8ea0824d71177c4cd7f617ea9ea871ede38cda0d",
-  "STATUS.json": "08b4d78a645c88c76fe0731087729c86159d3a21c47ce0b7582049688320ace1",
+  "STATUS.json": "d7467c62320c26a910147e2190b533faec8a34aacb720a01a7db1272a644d384",
   "TECHNICAL.md": "4ccd187fc3943c5d8f076cb7a2ec6164aa91954ca0620ce8fd5b2cef6e431cc3",
   "images/tpzx128.png": "0c1cd095d51ffcddb5ab7ac1fb9c2bc8ef7f5a0aadbbfbc5a863a040dfc85b1a",
-  "RUN-TEMPORARILY.md": "3f29d0e240568430bfbbadba9dda9a2aa7180bfebf50d5873d493d7c34b639c6"
+  "RUN-TEMPORARILY.md": "6fa6dace25b188782cc944148ff1dd496dda2c456f235e70b1ac96b0eed25a8d"
 }

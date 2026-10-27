@@ -7,7 +7,7 @@ menu. Use the files together from this package. All PC commands below run
 from **this package's `source` directory**. BASIC commands run on the Timex;
 REPL commands run on the Pico. `COM14` is an example: substitute your port.
 
-**Qualification:** The SD BASIC integration and the no-reset SD handoff remain pending physical acceptance in this published snapshot. A separate underlying SD-gateway diagnostic passed on hardware.
+**Qualification:** Both tpzx128 and tpzx128sd are confirmed by the user to boot and function as BASIC environments on a physical Timex TS2068 with TSPico (October 27, 2026). General Spectrum software compatibility is not established; individual disk-command and RAM-disk coverage is recorded separately.
 
 ## What remains temporary
 
@@ -249,7 +249,8 @@ to continue, N/Space to cancel, and acknowledge the final page.
 ## SD alternative with a manually held reset
 
 This is a **separate fresh session**, not an additional step after methods
-A–C. It uses the current SD BASIC ROM, whose physical acceptance remains pending.
+A–C. It uses the current SD BASIC ROM, which is confirmed to boot and function;
+the latest confirmation does not identify or separately qualify this startup method.
 Power off both sources, boot stock, and stage TPZXSD.ROM in SRAM slot 4 as
 above. This time leave the stock installer's completion screen waiting and
 do not select restart. Do not load/run H128SD.TAP for this alternative.

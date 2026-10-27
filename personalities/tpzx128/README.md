@@ -12,7 +12,7 @@ control and supporting services. This is not a full Spectrum CPU emulator
 running on the Pico. The tested hardware is TSPico board revision V2.2
 with RP2040; current firmware/protocol support is v1.00.
 
-**Current status:** Revision-2 no-reset startup was confirmed working by the user on October 27, 2026. Earlier stock-controller trials also confirmed 128 BASIC PRINT 1+2 and audible PLAY. This does not establish general Spectrum software compatibility.
+**Current status:** Both tpzx128 and tpzx128sd are confirmed by the user to boot and function as BASIC environments on a physical Timex TS2068 with TSPico (October 27, 2026). General Spectrum software compatibility is not established; individual disk-command and RAM-disk coverage is recorded separately.
 
 [Temporary operation command guide](RUN-TEMPORARILY.md) ·
 [Technical description](TECHNICAL.md) · [Source and rebuild instructions](BUILD.md) ·
@@ -30,17 +30,17 @@ component diagnostic pass does not qualify every combination or BASIC command.
 
 | Feature | Implemented behavior | Evidence and current qualification |
 | --- | --- | --- |
-| Spectrum 128 menu | Starts the modified two-ROM environment | Baseline physical boot confirmed; supplied hardware photographs show both configurations at their menus |
-| 128 BASIC editor and execution | Keyboard entry, tokenized BASIC, editing and RUN | Baseline hardware check: `10 PRINT 1+2` / `RUN` produced `3`; both ROMs execute BASIC in the desktop model |
+| Spectrum 128 menu | Starts the modified two-ROM environment | Both configurations confirmed by the user to boot and function on physical hardware; supplied photographs show both menus |
+| 128 BASIC editor and execution | Keyboard entry, tokenized BASIC, editing and RUN | Both BASIC environments confirmed functional on hardware; earlier baseline `10 PRINT 1+2` / `RUN` produced `3`; both ROMs also execute BASIC in the desktop model |
 | AY sound through PLAY | Adapts ROM sound accesses to Timex AY ports | Baseline `PLAY "C"` produced an audible note on hardware; register writes are checked in the desktop model |
 | Eight-bank RAM switching | Selects external banks 0–7 at `C000–FFFF` | Dedicated hardware diagnostic passed eight-bank retention; desktop PIO tests cover bank selection |
 | ROM-half selection and paging lock | Switches ROM halves and ignores paging writes after lock | Dedicated hardware paging diagnostic passed; controller and handoff tests cover these paths |
 | RAM-disk SAVE/LOAD | Retains Spectrum 128 RAM-disk paths | Exact four-byte round trip passed in the baseline desktop ROM model; physical RAM-disk acceptance remains pending |
-| No-reset startup | HOME-RAM trampoline coordinates controller replacement | Revision-2 baseline startup confirmed on hardware; both modes pass desktop handoff tests; SD physical handoff acceptance remains pending |
+| No-reset startup | HOME-RAM trampoline coordinates controller replacement | Both environments boot and function on hardware; baseline revision-2 no-reset startup specifically confirmed; the latest SD confirmation does not identify its reset/handoff method |
 | Legacy TSPico SD gateway | Temporarily hands shared resources to installed file handlers | Separate hardware diagnostic passed 256-byte load/save/reload and restored ROM/bank state; this is a gateway component result |
-| SD-backed BASIC program and CODE I/O | SD variant provides LOAD/SAVE/VERIFY hooks | CODE byte-pattern and BASIC SAVE/LOAD/RUN round trips pass in the desktop model; physical end-to-end BASIC SD acceptance remains pending |
-| SD numeric arrays and MERGE | SD variant preserves the ROM's data/program handling | Numeric-array round trip and MERGE ordering pass in the desktop model; physical acceptance remains pending |
-| SD PATH and paged DIR | SD variant displays replies and bounded directory pages | Desktop keyboard tests cover continuation, final-page acknowledgement, N/Space cancellation, and service closure before key waits; physical acceptance remains pending |
+| SD-backed BASIC program and CODE I/O | SD variant provides LOAD/SAVE/VERIFY hooks | CODE byte-pattern and BASIC SAVE/LOAD/RUN round trips pass in the desktop model; the latest hardware confirmation does not itemize individual disk-command round trips |
+| SD numeric arrays and MERGE | SD variant preserves the ROM's data/program handling | Numeric-array round trip and MERGE ordering pass in the desktop model; command-specific physical coverage is not separately recorded |
+| SD PATH and paged DIR | SD variant displays replies and bounded directory pages | Desktop keyboard tests cover continuation, final-page acknowledgement, N/Space cancellation, and service closure before key waits; command-specific physical coverage is not separately recorded |
 | Protected SD service memory | SD variant rejects transfers through its reserved HOME area | Desktop tests check bounds, address wrap and driver protection |
 | Calculator, 48 BASIC and Tape Tester menu choices | Choices retained from the Spectrum ROM | Presence is not a claim of complete independent physical acceptance for each facility |
 
