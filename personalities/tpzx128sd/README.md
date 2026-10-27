@@ -1,7 +1,16 @@
-# tpzx128sd — TSPico Spectrum 128 SD
+# tpzx128sd — Spectrum 128 with the TSPico disk interface
 
-An experimental, temporary Spectrum 128 configuration for a Timex Sinclair
-2068 with TSPico hardware revision V2.2 / RP2040. This version adds a cooperative legacy TSPico SD gateway.
+**tpzx128sd is a Spectrum 128 implementation for the Timex TS2068
+using TSPico, with TSPico disk-interface handling implemented and
+accessible from within the Spectrum 128 BASIC environment.** It adds
+SD-backed file operations and directory access to the baseline.
+
+Both configurations provide functional Spectrum 128 BASIC environments,
+but neither is guaranteed compatible with all Spectrum 128 software.
+The Timex Z80 executes the ROM and BASIC code; the Pico supplies memory
+control and supporting services. This is not a full Spectrum CPU emulator
+running on the Pico. The tested hardware is TSPico board revision V2.2
+with RP2040; current firmware/protocol support is v1.00.
 
 **Current status:** The current SD BASIC ROM and no-reset SD handoff still need physical acceptance. The underlying legacy SD gateway previously passed a separate hardware diagnostic. Desktop tests are recorded for these exact artifacts; do not equate the gateway pass with a completed BASIC SAVE/LOAD hardware test.
 
@@ -12,6 +21,111 @@ An experimental, temporary Spectrum 128 configuration for a Timex Sinclair
 <a href="images/tpzx128sd.png"><img src="images/tpzx128sd.png" alt="tpzx128sd running on a Timex TS2068 with TSPico" width="20%"></a>
 
 *Screenshot of tpzx128sd running on a Timex TS2068 with TSPico. Click to view full size.*
+
+## What works and what has been tested
+
+"Hardware" below means a physical Timex TS2068 and TSPico. "Desktop model"
+means real Z80 ROM execution or PIO/helper contract tests on the PC. A
+component diagnostic pass does not qualify every combination or BASIC command.
+
+| Feature | Implemented behavior | Evidence and current qualification |
+| --- | --- | --- |
+| Spectrum 128 menu | Starts the modified two-ROM environment | Baseline physical boot confirmed; supplied hardware photographs show both configurations at their menus |
+| 128 BASIC editor and execution | Keyboard entry, tokenized BASIC, editing and RUN | Baseline hardware check: `10 PRINT 1+2` / `RUN` produced `3`; both ROMs execute BASIC in the desktop model |
+| AY sound through PLAY | Adapts ROM sound accesses to Timex AY ports | Baseline `PLAY "C"` produced an audible note on hardware; register writes are checked in the desktop model |
+| Eight-bank RAM switching | Selects external banks 0–7 at `C000–FFFF` | Dedicated hardware diagnostic passed eight-bank retention; desktop PIO tests cover bank selection |
+| ROM-half selection and paging lock | Switches ROM halves and ignores paging writes after lock | Dedicated hardware paging diagnostic passed; controller and handoff tests cover these paths |
+| RAM-disk SAVE/LOAD | Retains Spectrum 128 RAM-disk paths | Exact four-byte round trip passed in the baseline desktop ROM model; physical RAM-disk acceptance remains pending |
+| No-reset startup | HOME-RAM trampoline coordinates controller replacement | Revision-2 baseline startup confirmed on hardware; both modes pass desktop handoff tests; SD physical handoff acceptance remains pending |
+| Legacy TSPico SD gateway | Temporarily hands shared resources to installed file handlers | Separate hardware diagnostic passed 256-byte load/save/reload and restored ROM/bank state; this is a gateway component result |
+| SD-backed BASIC program and CODE I/O | SD variant provides LOAD/SAVE/VERIFY hooks | CODE byte-pattern and BASIC SAVE/LOAD/RUN round trips pass in the desktop model; physical end-to-end BASIC SD acceptance remains pending |
+| SD numeric arrays and MERGE | SD variant preserves the ROM's data/program handling | Numeric-array round trip and MERGE ordering pass in the desktop model; physical acceptance remains pending |
+| SD PATH and paged DIR | SD variant displays replies and bounded directory pages | Desktop keyboard tests cover continuation, final-page acknowledgement, N/Space cancellation, and service closure before key waits; physical acceptance remains pending |
+| Protected SD service memory | SD variant rejects transfers through its reserved HOME area | Desktop tests check bounds, address wrap and driver protection |
+| Calculator, 48 BASIC and Tape Tester menu choices | Choices retained from the Spectrum ROM | Presence is not a claim of complete independent physical acceptance for each facility |
+
+Disk-specific rows apply to **tpzx128sd**, not to the baseline while it is
+running. Its startup procedure still needs the PC helper/temporary Pico
+definitions; it is not an installed standalone firmware release.
+
+## Memory map and bank switching
+
+Addresses below are hexadecimal. The arrangement provides the ROM's BASIC
+environment and eight external RAM banks, but differs from a real Spectrum
+128 memory map in important ways.
+
+| CPU address | tpzx128 | tpzx128sd | Spectrum compatibility |
+| --- | --- | --- | --- |
+| `0000–3FFF` | One selected 16 KiB half of the patched 32 KiB ROM pair | Same arrangement, with additional SD hooks | Two ROM halves are selectable; the bytes are modified for Timex/TSPico |
+| `4000–7FFF` | Fixed Timex HOME RAM, including the normal display and attributes | Same | Not an alias of external bank 5 |
+| `8000–9FFF` | Fixed Timex HOME RAM | Fixed Timex HOME RAM available below the SD reservation | Not an alias of external bank 2 |
+| `A000–BFFF` | Fixed Timex HOME RAM available to the baseline environment | Protected HOME service code, buffers and stack | Reserved in SD mode; BASIC RAMTOP is capped at `9FFF` |
+| `C000–FFFF` | Selected external 16 KiB SRAM bank, numbered 0–7 | Same banked window; CODE accesses refer to the current bank | Bank switching works, but mapping bank 2 or 5 here does not mirror the fixed HOME regions |
+
+The normal display uses HOME `4000–57FF` for pixels and `5800–5AFF` for
+attributes. There is no automatic Spectrum alternate-screen display from
+bank 7. Both configurations retain the Timex display hardware.
+
+The ROM pair is staged in **SRAM slot 4**, occupying physical expansion
+SRAM `20000–27FFF`. The eight 16 KiB RAM windows occupy `0C000–0FFFF`,
+`1C000–1FFFF`, through `7C000–7FFFF`. They are separate from fixed HOME RAM.
+The current corrected controller requires slot 4; arbitrary relocation has
+not been implemented. Boot initializes the external banks and HOME memory,
+discarding existing contents.
+
+Paging is driven by the Pico PIO/DMA controller through private low port
+`0F`, with the ROM's paging accesses patched accordingly. Latch bits 0–2
+select RAM bank 0–7, bit 4 selects the ROM half, and bit 5 locks further
+paging changes. The Spectrum screen-selection bit does not implement a
+shadow screen here. The dedicated hardware paging diagnostic passed bank
+retention, ROM-half selection, and lock behavior; desktop PIO tests also
+exercise the bank/ROM combinations and ignored writes after lock.
+
+Stock `7FFD` paging is not transparently intercepted. Unmodified machine
+code using Spectrum paging ports will need adaptation. The ROM handles its
+own patched paging; that does not make arbitrary bank-switching software
+compatible. Programs expecting the real Spectrum's fixed bank-2/bank-5
+aliases can fail even when simple bank switching works correctly.
+
+In SD mode the 8 KiB HOME reservation also prevents BASIC from treating
+`C000–FFFF` as contiguous ordinary BASIC workspace: compared with the
+baseline, contiguous BASIC space is reduced by about **24 KiB**. The banked
+RAM and RAM-disk paths still exist separately. SD CODE transfers into
+`A000–BFFF`, into ROM, or wrapping beyond `FFFF` are rejected.
+
+## Known unimplemented features and incompatibilities
+
+- **General Spectrum 128 software compatibility is not established.** These
+  are functional BASIC environments, not cycle-accurate Spectrum replicas.
+- **No true fixed bank-2/bank-5 aliases or native bank-7 shadow screen.**
+  Software relying on these memory relationships needs changes.
+- **No transparent stock Spectrum I/O compatibility.** The ROM's paging
+  and AY accesses are adapted, but independent machine code using `7FFD`,
+  `FFFD`, or `BFFD` needs suitable patches.
+- **Spectrum timing is not reproduced faithfully.** PAL 50 Hz pacing,
+  contention, floating-bus behavior, and raster-sensitive effects are not
+  implemented as a complete compatibility model.
+- **Spectrum serial keypad, RS232 and MIDI interfaces are unavailable.**
+  Unsupported ROM paths are disabled or bypassed.
+- **No general snapshot/game loader or validated game library is included.**
+  Games and timing-sensitive machine-code programs require separate work.
+- **Tape transport and RAM-disk hardware coverage remain incomplete.** A
+  menu item or retained ROM routine is not proof of a physical round trip.
+- **The 48 BASIC choice is retained, but is not the dedicated stock TSPico
+  Spectrum 48K mode.** Separate SD acceptance in 48 BASIC is not claimed;
+  its paging lock also does not clear when only TS Reset is pressed.
+- **The SD backend currently supports v1.00 only.** Provision for the next
+  protocol version is planned through a separate backend, not yet implemented
+  or validated. The baseline has no active TSPico disk service while running.
+- **No automatic personality menu, persistent personality boot, or
+  return-to-Timex command is implemented.** Use the temporary helper and
+  complete-power-cycle recovery documented below.
+
+The published common source snapshot passed **75 desktop regression tests**,
+and exact rebuild comparisons matched the ROMs, service image, and handoff
+TAPs. Those checks do not establish electrical timing or replace physical
+acceptance. See [STATUS.json](STATUS.json) for artifact identities and
+[TECHNICAL.md](TECHNICAL.md) for the implementation.
 
 ## Hardware and protocol versions
 

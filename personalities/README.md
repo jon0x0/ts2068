@@ -1,6 +1,11 @@
 # TSPico personalities
 
-Experimental operating environments for the TS2068 with TSPico hardware revision V2.2 / RP2040.
+Two functional Spectrum 128 BASIC environments for the Timex TS2068 with
+TSPico hardware revision V2.2 / RP2040. **tpzx128** is the baseline
+implementation; **tpzx128sd** adds TSPico disk-interface handling accessible
+from Spectrum 128 BASIC. Neither is guaranteed compatible with all
+Spectrum 128 software. Each page lists tested features, memory mapping,
+bank-switching behavior and known incompatibilities.
 Current firmware/protocol support is v1.00. Provision for the next protocol
 version is planned through a separate backend and is not yet implemented or validated.
 These packages use temporary SRAM ROM staging and USB REPL definitions;

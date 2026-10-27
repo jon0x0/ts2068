@@ -17,7 +17,13 @@ games, applications, audio and demos, linking to their owning projects.
 V2.2 denotes the board revision. Current firmware/protocol support is v1.00;
 provision for the next protocol version is planned, not yet implemented or validated.
 
-Temporary Spectrum 128 environments for TSPico hardware revision V2.2 / RP2040, with complete
+Two functional Spectrum 128 BASIC implementations for the Timex TS2068
+using TSPico hardware revision V2.2 / RP2040. The baseline **tpzx128**
+provides the ROM and banked-memory environment; **tpzx128sd** adds
+TSPico disk-interface handling accessible from Spectrum 128 BASIC.
+General Spectrum software compatibility is not guaranteed. Each project
+page lists tested features, memory-map differences, bank switching and
+known limitations. Both include complete
 source, current USB helpers, matching ROM/TAP files, and startup procedures
 that leave Pico firmware and saved boot configuration unchanged.
 
