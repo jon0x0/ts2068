@@ -96,7 +96,7 @@ added when it is ready for publication.
 a windowed desktop with [normal-screen](https://jon0x0.github.io/ts2068/ZXDesk2068/?mode=normal#try)
 and [512×192](https://jon0x0.github.io/ts2068/ZXDesk2068/?mode=hires#try) TSRun demos,
 TAP downloads, source archive, and a [2068 mouse-interface proposal](https://jon0x0.github.io/ts2068/ZXDesk2068/#mouse).
-Persistent TSPico filesystem 2.x integration is planned, not implemented.
+TSPico filesystem 2.x support is planned.
 
 | Project | Description | Links |
 | --- | --- | --- |
