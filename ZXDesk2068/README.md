@@ -40,8 +40,9 @@ RANDOMIZE USR 33280
 
 The 512 CODE-only tape instead uses `CLEAR 30719` and `RANDOMIZE USR 36352`.
 
-Hold **both SHIFT keys** and use **Q/A/O/P** (up/down/left/right), or
-5/6/7/8, to move the pointer. SPACE is the pointer button. Either built-in
+On a **real TS2068**, hold **SHIFT + SYMBOL SHIFT** and use the
+**arrow-marked keys: 5 ←, 6 ↓, 7 ↑, 8 →** to move the pointer.
+**Q/A/O/P** also work for up/down/left/right. SPACE is the pointer button. Either built-in
 joystick moves it; fire is the button. Unshifted letters type into Notes.
 Kempston mouse detection is disabled in this native baseline.
 In the **browser player**, click inside the emulator and use the **arrow keys**

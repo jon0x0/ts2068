@@ -54,5 +54,6 @@ Switching versions discards volatile RAM state.
 
 The arrow-key workaround is confined to the web wrapper. Space and other typing
 keys pass through unchanged; the app source and TAP files are unchanged. On the
-TS2068, use both shifts with Q/A/O/P (or the original cursor digits) to move,
+real TS2068, hold SHIFT + SYMBOL SHIFT with the arrow-marked keys
+(5 left, 6 down, 7 up, 8 right), or Q/A/O/P, to move,
 Space for the existing pointer button, or either joystick and its fire button.
