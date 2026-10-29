@@ -108,18 +108,7 @@ Persistent TSPico filesystem 2.x integration is planned, not implemented.
 | speech2ay | Harmonic AY synthesis for speech and effects, including the TS2068 Audio Lab | [Repository](https://github.com/jon0x0/speech2ay) Â· [Audio Lab](https://jon0x0.github.io/speech2ay/) |
 | TSVideoCodec | SCLD-aware video codec | [Repository](https://github.com/jon0x0/TSVideoCodec) |
 
-## Working with the source
-
-Sinistar's existing Git history is retained. Its source lives under
-`arcade-ports/sinistar/`; the original-source submodule is pinned by the
-root `.gitmodules` file. Existing development checkouts can remain at their
-current paths. See [maintenance notes](MAINTENANCE.md) for how to update this
-import without creating competing source copies.
-
-For a fresh checkout, initialize submodules and place the existing compatible
-TSRun checkout at `TSRun/` beside `arcade-ports/`. TSRun is a local
-dependency and is ignored by this repository. Then follow the
-[Sinistar build instructions](arcade-ports/sinistar/README.md).
+Build instructions and development notes are in each project's README.
 
 Project assets and dependencies retain their own attribution and licensing.
 This directory does not apply a blanket license to third-party material.

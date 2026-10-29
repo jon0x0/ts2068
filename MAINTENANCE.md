@@ -79,6 +79,11 @@ compatible TSRun checkout at the hub root supplies the local emulator
 dependency. The development server maps `/tsrun/` to that checkout. Use the
 new `play/` package for static hosting instead.
 
+For a fresh development checkout, initialize submodules (the original-source
+submodule is pinned by the root `.gitmodules`) and place the existing compatible
+TSRun checkout at `TSRun/` beside `arcade-ports/`. This local dependency is ignored
+by Git. Follow the [Sinistar build instructions](arcade-ports/sinistar/README.md).
+
 ## Preparation checks
 
 The source checkpoint passed a cartridge rebuild, frontend, playable lifecycle,
