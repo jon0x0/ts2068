@@ -1,0 +1,3 @@
+# Preserve the pinned emulator bytes so its provenance hashes match downloads.
+/tsrun/** -text
+/downloads/** -text
