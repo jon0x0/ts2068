@@ -1,5 +1,16 @@
 # Maintaining the TS2068 hub
 
+## ZXDesk2068
+
+The normal and 512x192 demos, TAP downloads and source archive live under
+`ZXDesk2068/`. Development remains in the ZXDesk2068 workspace. Its
+`scripts/publish_site.py --hub PATH_TO_HUB --tsrun PATH_TO_TSRUN` stages an
+explicit source snapshot and the pinned, unmodified emulator. Rebuild and run
+both port tests before staging; see `ZXDesk2068/docs/PUBLICATION.md`.
+The emulator is isolated from other projects. Preserve its provenance manifest
+and regenerate download checksums when updating artifacts. The Applications
+card is owned by `scripts/build_site.py`; regenerate the root index after edits.
+
 ## TSPico Spectrum 128 personalities
 
 The 2026-10-27 development snapshot is published under `personalities/tpzx128/`

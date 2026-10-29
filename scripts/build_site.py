@@ -30,6 +30,7 @@ groups = {
         ('Aqueduct', 'Aqueduct and speedboat parallax demo.', [('Play', 'https://jon0x0.github.io/aqueduct_ts2068/'), ('Project', GITHUB+'aqueduct_ts2068')]),
     ],
     'Applications': [
+        ('ZXDesk2068', 'A native windowed desktop in 256×192 and 512×192, with notes, clock, calendar and RAM files. A foundation for a graphical 2068 environment.', [('Project & downloads', 'ZXDesk2068/'), ('Normal screen', 'ZXDesk2068/?mode=normal#try'), ('High resolution', 'ZXDesk2068/?mode=hires#try'), ('Mouse interface proposal', 'ZXDesk2068/#mouse')]),
         ('CP/M 2.2', 'Cartridge CP/M with TSPico RAMDisk, Oliger/Fuse disk images, 64/80 columns and a browser environment.', [('Project & downloads', 'CPM_2.2_2068/'), ('Run CP/M', 'CPM_2.2_2068/play/'), ('Quickstart', 'CPM_2.2_2068/docs/quickstart.html')]),
         ('TSWriter', 'Native word processor with proportional fonts, extended color, pictures and RTF interchange.', [('Run in browser', 'https://jon0x0.github.io/TSWriter/play/'), ('Project page', 'https://jon0x0.github.io/TSWriter/'), ('Project', GITHUB+'TSWriter')]),
     ],

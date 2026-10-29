@@ -91,6 +91,12 @@ added when it is ready for publication.
 
 ## Applications
 
+**[ZXDesk2068](https://jon0x0.github.io/ts2068/ZXDesk2068/)** — native windowed
+desktop with [normal-screen](https://jon0x0.github.io/ts2068/ZXDesk2068/?mode=normal#try)
+and [512×192](https://jon0x0.github.io/ts2068/ZXDesk2068/?mode=hires#try) TSRun demos,
+TAP downloads, source archive, and a [2068 mouse-interface proposal](https://jon0x0.github.io/ts2068/ZXDesk2068/#mouse).
+Persistent TSPico filesystem 2.x integration is planned, not implemented.
+
 | Project | Description | Links |
 | --- | --- | --- |
 | TSWriter | Native word processor with proportional fonts, extended color, pictures and RTF interchange | [Repository](https://github.com/jon0x0/TSWriter) Â· [Run in browser](https://jon0x0.github.io/TSWriter/play/) · [Project page](https://jon0x0.github.io/TSWriter/) |
