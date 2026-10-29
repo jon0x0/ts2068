@@ -4,7 +4,9 @@
 · [Public source](https://github.com/jon0x0/ts2068/tree/main/ZXDesk2068)
 · [TSWriter](https://jon0x0.github.io/TSWriter/)
 
-An initial native TS2068 port of [ZXDesk](https://github.com/mindbox77/zxdesk).
+An initial native TS2068 port of the original **ZX Spectrum ZXDesk**, created by
+**[mindbox77](https://github.com/mindbox77)**.
+[Original ZXDesk source](https://github.com/mindbox77/zxdesk) (MIT licensed).
 The desktop has separate 256×192 and experimental 512×192 builds on stock
 48 KiB HOME RAM.
 No Spectrum ROM cartridge, extra RAM, or TS Pico firmware change is required.
