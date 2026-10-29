@@ -43,7 +43,16 @@ TSRun is hosted separately under the project's `tsrun/` directory with its
 upstream README and ROM provenance retained. ZXDesk's MIT license does not
 relicense third-party emulator code or ROMs.
 
-Browser controls differ from Fuse: TSRun uses Ctrl+Shift+Q/A/O/P for this program;
-Fuse additionally supports Tab as the combined shifts. Do not document Tab as
-the browser pointer modifier. The on-page controls offer an alternative and a
-latched click for dragging. Switching versions discards volatile RAM state.
+Browser controls: click inside the embedded emulator and use plain arrow keys
+for pointer movement, and Space to click or drag. The wrapper captures arrows
+before TSRun's cursor-key mapping and sends emulated shifts plus Q/A/O/P.
+Do not press Ctrl+Shift+Q: browsers may reserve it for quitting. The player link
+opens this wrapper in another tab, retaining the safe mapping. Unmodified TSRun
+opened directly does not include it. Fuse additionally supports Tab as the
+combined shifts. On-page controls and Hold click remain available.
+Switching versions discards volatile RAM state.
+
+The arrow-key workaround is confined to the web wrapper. Space and other typing
+keys pass through unchanged; the app source and TAP files are unchanged. On the
+TS2068, use both shifts with Q/A/O/P (or the original cursor digits) to move,
+Space for the existing pointer button, or either joystick and its fire button.

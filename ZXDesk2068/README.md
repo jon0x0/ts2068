@@ -44,6 +44,10 @@ Hold **both SHIFT keys** and use **Q/A/O/P** (up/down/left/right), or
 5/6/7/8, to move the pointer. SPACE is the pointer button. Either built-in
 joystick moves it; fire is the button. Unshifted letters type into Notes.
 Kempston mouse detection is disabled in this native baseline.
+In the **browser player**, click inside the emulator and use the **arrow keys**
+to move, with **Space** to click or drag. No modifier keys are needed. Avoid
+Ctrl+Shift+Q in a browser: it may close the browser.
+
 In **Fuse**, hold **Tab + Q/A/O/P**, or **Ctrl+Shift + Q/A/O/P**. Tab supplies
 both emulated shift keys; pressing the two physical PC Shift keys does not.
 

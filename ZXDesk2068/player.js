@@ -23,14 +23,31 @@ function start(which){
   url.searchParams.set('crt','0');url.searchParams.set('auto','1');url.searchParams.set('turbo','1');url.searchParams.set('muted','1');
   frame.hidden=false;document.getElementById('placeholder').hidden=true;
   document.getElementById('placeholder').style.display='none';
-  document.getElementById('standalone').href=url.href;
+  document.getElementById('standalone').href=`?mode=${which}#try`;
   status.textContent=`Loading ${which==='hires'?'512 × 192':'256 × 192'} in TSRun. Please allow the tape to finish.`;
   frame.src=url.href;restart.disabled=false;
   history.replaceState(null,'',`?mode=${which}#try`);
 }
 normal.addEventListener('click',()=>start('normal'));hires.addEventListener('click',()=>start('hires'));
 restart.addEventListener('click',()=>{if(mode)start(mode)});
-frame.addEventListener('load',()=>{ready=true;status.textContent=`${mode==='hires'?'512 × 192':'256 × 192'} selected. TSRun loads the tape automatically; click inside its screen to use the keyboard.`;});
+frame.addEventListener('load',()=>{
+  ready=true;
+  const target=frame.contentWindow;
+  const arrows={ArrowUp:'KeyQ',ArrowDown:'KeyA',ArrowLeft:'KeyO',ArrowRight:'KeyP'};
+  for(const type of ['keydown','keyup'])target.addEventListener(type,event=>{
+    const code=arrows[event.code];
+    if(!code)return;
+    // Capture before TSRun maps arrows to Spectrum cursor keys. Synthetic
+    // modifier events stay in the emulator; no browser shortcut is pressed.
+    event.preventDefault();event.stopImmediatePropagation();
+    if(type==='keydown'){
+      held.add(code);updateModifiers();send('keydown',code);
+    }else{
+      held.delete(code);send('keyup',code);updateModifiers();
+    }
+  },true);
+  target.addEventListener('blur',releaseAll);
+  status.textContent=`${mode==='hires'?'512 × 192':'256 × 192'} selected. TSRun loads the tape automatically; click inside its screen to use the keyboard.`;});
 function updateModifiers(){
   const moving=[...held].some(k=>k!=='Space');
   send(moving?'keydown':'keyup','ShiftLeft');send(moving?'keydown':'keyup','ControlLeft');
