@@ -64,7 +64,7 @@ def main():
  begin=source.index('help: db ');end=source.index('volume_text:',begin)
  lines=[f"help: db 'SOURCE {a.start:.2f} TO {a.start+a.duration:.2f} SEC',13"]
  for i,pr in enumerate(profiles.values(),1):lines+=[f"      db '{i} {pr['width']}X{pr['height']} ECM / {pr['fps_target']} FPS TARGET',13",f"      db '  {pr['source_frames']} FRAMES / {pr['nominal_loop_seconds']:.2f} SEC',13"]
- lines+=["      db 13,'REPLACES ALL 512K SRAM',13,'X STOP  SPACE PAUSE / RESUME',13,0"]
+ lines+=["      db 13,'REPLACES ALL 512K SRAM',13,'SPACE/ENTER MENU  Q QUIT',13,0"]
  source=source[:begin]+'\n'.join(lines)+'\n'+source[end:]
  name=a.prefix.lower()+'512';generated=ROOT/'src'/f'{name}_generated.asm'
  if generated.exists():raise FileExistsError(f'Refusing to replace {generated}; choose another prefix')

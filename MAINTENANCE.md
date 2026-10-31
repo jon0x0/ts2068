@@ -133,3 +133,10 @@ The converter and standalone player builder in source/tools are portable;
 their release rebuild and full re-encode were checked against generated assets.
 Regenerate SHA256SUMS.txt and the source ZIP after changing the source/docs.
 The hub card is owned by scripts/build_site.py; rerun it before publishing.
+
+
+The 512K video control revision 2 uses Space/Enter for menu, Q to restore Flash
+and restart normal ROM/BASIC startup, and X for statistics. Requests during
+loading are latched and acted on only after the transaction drains. Preserve
+these controls in generated players and keep the loading-screen instructions
+in sync. The video samples did not change; existing sample files can be reused.

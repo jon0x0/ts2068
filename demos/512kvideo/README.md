@@ -12,6 +12,10 @@ replacement is required for the tested firmware 1.00 setup.
 
 ## Install and run
 
+**Control update:** Space/Enter returns to the menu; Q quits; X shows statistics.
+Existing installations only need the updated [SC512.TAP](downloads/SC512.TAP)
+or [SW512.TAP](downloads/SW512.TAP). The 32 sample files per version are unchanged.
+
 **Put ALL 33 TAP files directly in the SD card's `/TAP/` directory — they
 will not run elsewhere. Do not put them in a subdirectory.** The supplied
 player uses fixed sample names and the firmware's TAP directory.
@@ -28,9 +32,16 @@ LOAD "tpi:SC512.TAP"
 LOAD ""
 ```
 
-Choose 1 or 2 and wait for all SRAM to load and verify. Space pauses/resumes;
-X stops and displays counters. After stopping, any key returns to the menu.
-Selecting an option again reloads SRAM.
+Choose 1 or 2 and wait for all SRAM to load and verify. The loading screen
+shows **Space/Enter: menu** and **Q: quit**. These keys work during playback
+and loading; during a transfer the request is latched until its transaction
+finishes, so the Pico link is not abandoned halfway through a reply.
+
+**Space or Enter returns directly to the menu. Q restores normal Flash
+mapping and restarts ROM/BASIC startup. X shows playback statistics; any key
+then returns to the menu.** There is no Space pause toggle in this revision.
+Selecting an option again reloads SRAM. Quit does not recover SRAM contents
+overwritten by the demo or return through the overwritten BASIC workspace.
 
 **Loading replaces all 512 KiB of SRAM, including SRAM cartridges and RAM
 disks.** Both options coexist on SD, but only the selected option occupies
@@ -48,8 +59,8 @@ to integer pixels, with black borders in the 256×192 display.
 |---|---:|---:|---:|---:|---:|
 | Original / `SW512.TAP` | 1 | 256×108 | 90 | 12 | 11.89 |
 | Original / `SW512.TAP` | 2 | 240×102 | 113 | 15 | 14.68 |
-| Colour Detail 2 / `SC512.TAP` | 1 | 256×108 | 90 | 12 | 11.82 |
-| Colour Detail 2 / `SC512.TAP` | 2 | 232×98 | 113 | 15 | 14.53 |
+| Colour Detail 2 / `SC512.TAP` | 1 | 256×108 | 90 | 12 | 11.64 |
+| Colour Detail 2 / `SC512.TAP` | 2 | 232×98 | 113 | 15 | 14.58 |
 
 The original conversion favors neutral gray surfaces and suppresses false
 cyan/magenta speckles, but loses some helmet, cockpit and control-panel
@@ -76,7 +87,7 @@ measurements: two complete loops, a 60 Hz tick basis, access-driven selector
 transitions, and an additional 50 ms bank-response delay. Both samples were
 fully loaded through the legacy protocol, byte-compared across all 512 KiB,
 checked again for bank aliasing, and reconstructed exactly without copy
-shortcuts. Native Fuse startup and decoder checks and pause/stop/error tests
+shortcuts. Native Fuse startup, decoder and ROM-quit-entry checks and menu/quit/loading-cancel/error tests
 also passed. Fuse does not emulate the TSPico filesystem or electrical bus.
 Exact reports and hashes are in [validation/](validation/).
 

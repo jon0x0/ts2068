@@ -1,7 +1,21 @@
 {
   "passed": true,
-  "pause_preserves_frame": true,
-  "resume_plays": true,
-  "stop_restores_home_and_flash_dock0": true,
-  "image_sha256": "018218b3b3ee7535cf75baa2aae2f23604a1e0f35d9bdd3a84b8dba9addb3b4b"
+  "cases": [
+    "playback ' '",
+    "playback '\\r'",
+    "playback 'Q'",
+    "playback 'X'",
+    "bank response ' '",
+    "bank response 'Q'",
+    "loading ' '",
+    "loading '\\r'",
+    "loading 'Q'",
+    "menu Q"
+  ],
+  "space_enter_return_directly_to_menu": true,
+  "quit_restores_flash_and_enters_rom_zero": true,
+  "loading_cancellation_drains_transaction": true,
+  "subsequent_file_load_after_cancel": true,
+  "x_statistics_retained": true,
+  "image_sha256": "99ab07b771824df6872634a062f06a318a8d0bac5227d4c6da5cdd7ce3a66e82"
 }

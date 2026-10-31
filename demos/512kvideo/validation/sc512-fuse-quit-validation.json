@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "real_fuse_z80": true,
+  "rom_entry": 0,
+  "sp": 65535,
+  "interrupt_mode": 1,
+  "iff1": false,
+  "iff2": false,
+  "image_sha256": "99ab07b771824df6872634a062f06a318a8d0bac5227d4c6da5cdd7ce3a66e82"
+}

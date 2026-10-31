@@ -27,6 +27,28 @@ stack handles chunk 7 without hiding live code or stack. Alias cases copy
 through a protected HOME bounce buffer. Interrupt state and mappings are
 restored before returning. No runtime ROM library or BASIC calls are needed.
 
+## Menu, quit and safe loading cancellation
+
+Space and Enter stop playback and return directly to the menu. Q is available
+at the menu, during loading and during playback. X retains the optional
+statistics screen. Controls are shown on the loading screen as well as the menu.
+
+During file transfer, the receiver latches a request while continuing to consume
+the payload, checksum, acknowledgement and reply. The request takes effect at
+a completed transaction boundary. Keyboard requests during bank-command replies
+also wait for the command to drain. This avoids the legacy FIFO becoming stuck.
+
+Menu return and quit disable rendering/interrupts, unmap DOCK and restore Flash
+DOCK slot 0. Quit then selects normal display mode, IM1 and a clean stack and
+jumps to HOME ROM 0000. It restarts normal ROM/BASIC startup: the full-control
+player has overwritten BASIC's workspace, so returning through its original
+USR stack would be unsafe. The previous SRAM contents are not restored.
+
+Real matrix-key tests cover Space, Enter and Q during playback and loading,
+Q at the menu, X statistics, cancellation during a region reply, and a working
+file mount/load after a cancelled transfer. Native Fuse also verifies the ROM
+0000 handoff with SP=FFFF, IM1 and both interrupt flip-flops clear.
+
 ## The MEMDOCK lesson
 
 The first loader failed its page-00 header readback. A revision with a longer

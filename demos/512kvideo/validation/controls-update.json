@@ -1,0 +1,17 @@
+{
+  "controls_revision": 2,
+  "passed": true,
+  "sample_taps_unchanged": 64,
+  "keys": {
+    "Space": "menu",
+    "Enter": "menu",
+    "Q": "Flash mapping + normal ROM startup",
+    "X": "statistics"
+  },
+  "model_fps": {
+    "SCF": "11.64",
+    "SCW": "14.58",
+    "SWF": "11.89",
+    "SWW": "14.68"
+  }
+}

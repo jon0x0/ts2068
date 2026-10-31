@@ -15,6 +15,14 @@ Outputs are `build/SC512.TAP` and `build/SW512.TAP`. The assembler must be
 executable by the Python process: use Windows sjasmplus with Windows Python,
 or Linux sjasmplus with Linux/WSL Python. `SJASMPLUS` can replace --assembler.
 
+## Player controls
+
+Space or Enter returns to the menu. Q quits by restoring Flash mapping and
+restarting normal ROM/BASIC startup; the old BASIC workspace is not preserved.
+During loading, a request is latched and the current transaction finishes
+before it takes effect. X shows playback statistics. The loading screen and
+menu show the controls. These controls also apply to generated custom players.
+
 ## Convert another local movie
 
 ```sh

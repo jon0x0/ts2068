@@ -56,6 +56,7 @@ D_STAGE equ $fe6a
 D_OFFSET equ $fe6c
 D_EXPECT equ $fe6e
 D_ACTUAL equ $fe6f
+LOADING equ $fe70
 SUMS equ $7e00
 META equ $7e80
 INDEX equ $7800
@@ -141,6 +142,8 @@ menu:   di
         call screen_puts
 menu_key:
         call key_get
+        cp 'Q'
+        jp z,quit
         cp '1'
         jr z,.full
         cp '2'
@@ -149,8 +152,20 @@ menu_key:
         jr .choose
 .full:  ld a,'F'
 .choose:ld (PROFILE),a
+        xor a
+        ld (STOP),a
+        ld a,1
+        ld (LOADING),a
         call preload
-        jp c,error_screen
+        push af
+        xor a
+        ld (LOADING),a
+        pop af
+        jr nc,.loaded
+        cp E_CANCEL
+        jp nz,error_screen
+        jp stopped
+.loaded:
         call begin_play
         jp c,error_screen
 .play:  call pump
@@ -161,18 +176,13 @@ menu_key:
         jp c,error_screen
         jr .play
 stopped:
-        xor a
-        ld (PLAY),a
-        ld (IRQ_ALLOW),a
-        di
-        out ($f4),a
-        ld a,2
-        ld (PARAM_MEM),a
-        xor a
-        call select_region
+        call restore_host
         jp c,error_screen
-        ld a,$40
-        out ($ff),a
+        ld a,(STOP)
+        cp 2
+        jp z,quit_reboot
+        cp 3
+        jp nz,menu
         call screen_clear
         ld hl,done_text
         call screen_puts
@@ -204,6 +214,33 @@ stopped:
         call hexword
         call key_get
         jp menu
+quit:
+        call restore_host
+        jp c,error_screen
+quit_reboot:
+        ; This full-control player overwrites BASIC's workspace: cold ROM
+        ; entry is safe; returning through the original USR stack is not.
+        di
+        xor a
+        out ($f4),a
+        out ($ff),a
+        im 1
+        ld sp,$ffff
+        jp $0000
+restore_host:
+        xor a
+        ld (PLAY),a
+        ld (IRQ_ALLOW),a
+        di
+        out ($f4),a
+        ld a,2
+        ld (PARAM_MEM),a
+        xor a
+        call select_region
+        jp c,error_screen
+        ld a,$40
+        out ($ff),a
+        ret
 error_screen:
         ld (FERROR),a
         xor a
@@ -375,6 +412,8 @@ preload:
         ld hl,root
         call legacy_chdir
         ret c
+        call check_cancel
+        ret c
 .volume:
         ld d,4
         ld e,0
@@ -388,6 +427,8 @@ preload:
         ld (D_STAGE),a
         ld hl,FILE_NAME
         call legacy_mount
+        ret c
+        call check_cancel
         ret c
         ld a,(LOAD_VOLUME)
         or a
@@ -512,7 +553,10 @@ preload:
         ; A second sweep catches aliasing after later region writes.
         xor a
         ld (LOAD_PAGE),a
-.sweep: ld a,'S'
+.sweep: call keys
+        call check_cancel
+        ret c
+        ld a,'S'
         ld (D_STAGE),a
         ld a,1
         ld (FETCH_SLOT),a
@@ -593,6 +637,8 @@ read_code:
         xor a
         call legacy_read_block
         ret c
+        call check_cancel
+        ret c
         ld a,(NAME_BUFFER)
         cp 3
         jp nz,bad
@@ -606,7 +652,16 @@ read_code:
         ld a,$ff
         ld de,(LEGACY_DEST)
         ld bc,(LEGACY_CAP)
-        jp legacy_read_block
+        call legacy_read_block
+        ret c
+        jp check_cancel
+check_cancel:
+        ld a,(STOP)
+        or a
+        ret z
+        ld a,E_CANCEL
+        scf
+        ret
 ensure_region:
         rrca
         rrca
@@ -948,29 +1003,34 @@ frame_done:
 .next:  xor a
         ld (BUSY),a
         ret
-keys:   ld bc,$fefe
+keys:   ld a,(STOP)
+        or a
+        ret nz                       ; latch the first request until drained
+        ld bc,$fbfe                 ; Q
+        in a,(c)
+        bit 0,a
+        jr z,.quit
+        ld bc,$7ffe                 ; Space
+        in a,(c)
+        bit 0,a
+        jr z,.menu
+        ld bc,$bffe                 ; Enter
+        in a,(c)
+        bit 0,a
+        jr z,.menu
+        ld bc,$fefe                 ; X retains the optional statistics screen
         in a,(c)
         bit 2,a
-        jr nz,.space
+        ret nz
+        ld a,3
+        jr .request
+.menu:  ld a,1
+        jr .request
+.quit:  ld a,2
+.request:
+        ld (STOP),a
         xor a
         ld (PLAY),a
-        ld a,1
-        ld (STOP),a
-        ret
-.space: ld bc,$7ffe
-        in a,(c)
-        and 1
-        ld b,a
-        ld a,(KEY_OLD)
-        cp b
-        ret z
-        ld a,b
-        ld (KEY_OLD),a
-        or a
-        ret nz
-        ld a,(PAUSED)
-        xor 1
-        ld (PAUSED),a
         ret
 prefetch:
         ld a,(FETCH_ACTIVE)
@@ -1241,6 +1301,9 @@ v2_rx_hook:
         push de
         push hl
         call poll_pump
+        ld a,(LOADING)
+        or a
+        call nz,keys
         pop hl
         pop de
         pop bc
@@ -1340,10 +1403,10 @@ help: db 'SOURCE 44.5 TO 52.0 SECONDS',13
       db 'PRELOADS AND VERIFIES 512K',13
       db 'REPLACES SRAM CARTRIDGES',13
       db 'AND RAM DISKS - THEN LOOPS',13,13
-      db 'X STOP  SPACE PAUSE / RESUME',13,0
+      db 'SPACE/ENTER MENU  Q QUIT',13,0
 volume_text: db 'LOADING VOLUME $',0
 verify_text: db 'VERIFYING ALL 64 PAGES',0
-loading_text: db 'PRELOAD AND VERIFY 512K SRAM',13,'PLEASE WAIT - NO VIDEO YET',13,0
+loading_text: db 'PRELOAD AND VERIFY 512K SRAM',13,'SPACE/ENTER MENU  Q QUIT',13,'WAIT FOR CURRENT TRANSFER',13,'X STATS DURING PLAYBACK',13,0
 done_text: db 'STOPPED - SHOWN $',0
 loop_text: db 13,'LOOPS $',0
 late_text: db 13,'LATE STARTS $',0

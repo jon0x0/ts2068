@@ -12,7 +12,7 @@
   "sram_bytes": 524288,
   "loaded_through_legacy_protocol": true,
   "copy_shortcut": false,
-  "image_sha256": "cc99bcad81a99cfc892bb39f709be839a88d6495df740b30d7702857add7e859",
+  "image_sha256": "9a3337cc37d76577d6a4f43d758fddff93956b5c02b4acd7eaef138808240c94",
   "sram_sha256": "a4253c9c94cb6154028463db75e5c389b3bae913452c1422ec097e90efa0ab84",
   "samples_sha256": "b077ad879074c6603adad935ea1d52ebaf1c9c03b1df34e05b382d4127c120e5",
   "frame_start_or_finish_ticks": [
@@ -80,7 +80,7 @@
     254,
     258,
     262,
-    269,
+    270,
     272,
     276,
     280,
@@ -133,7 +133,7 @@
     472,
     476,
     480,
-    484,
+    483,
     488,
     492,
     495,
@@ -193,7 +193,7 @@
     717,
     721,
     725,
-    732,
+    733,
     735,
     739,
     743,
@@ -244,7 +244,7 @@
     924
   ],
   "bank_commands": 16,
-  "bank_total_ticks": 104,
+  "bank_total_ticks": 102,
   "bank_max_ticks": 8,
   "no_sd_file_reads_during_playback": true
 }
