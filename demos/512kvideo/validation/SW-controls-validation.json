@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "pause_preserves_frame": true,
+  "resume_plays": true,
+  "stop_restores_home_and_flash_dock0": true,
+  "image_sha256": "cc99bcad81a99cfc892bb39f709be839a88d6495df740b30d7702857add7e859"
+}

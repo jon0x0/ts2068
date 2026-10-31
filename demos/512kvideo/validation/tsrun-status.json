@@ -1,0 +1,16 @@
+{
+  "checked": "2026-10-31",
+  "tspico_implementation_found": false,
+  "required": [
+    "legacy shared FIFO on ports 0E/0F",
+    "mounted TAP file service",
+    "MEMDOCK selection",
+    "eight 64 KiB SRAM regions"
+  ],
+  "repositories": {
+    "josef-jelinek/TSRun": "41dbe3e41c692a1806f2cb900c5a0faa1549ae77",
+    "nchiker/TSRun": "016787f6b69d8622462e0148fa92190539e918db",
+    "factus10/TSRun": "22e0152a76a71242511d636140ce3f93b5db70f7"
+  },
+  "evidence": "Inspected current README and machine.js in each repository; upstream ioRead/ioWrite do not implement a TSPico device."
+}

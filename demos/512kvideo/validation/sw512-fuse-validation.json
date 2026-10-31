@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "tape_sha256": "75aba1895f23bae49ca01e4d96ab0a31370dad4f4214fbe14a02ae0c9bbf4126",
+  "player_sha256": "cc99bcad81a99cfc892bb39f709be839a88d6495df740b30d7702857add7e859",
+  "machine": "TS2068",
+  "auto_tape_load": true,
+  "im2_vector": 63993,
+  "im2_interrupt_executed": true
+}

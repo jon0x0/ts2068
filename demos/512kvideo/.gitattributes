@@ -1,0 +1,7 @@
+# Preserve exact source/report bytes and their published SHA-256 checksums.
+* -text whitespace=trailing-space,space-before-tab,cr-at-eol
+*.bin binary
+*.TAP binary
+*.zip binary
+*.mp4 binary
+*.png binary

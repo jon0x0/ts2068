@@ -118,3 +118,18 @@ The expected DCK SHA-256 is
 `481a5ada28700ce312b5b8388008195701a523da671f7a0fefe7f835a31540cd`.
 Publication is a normal reviewed commit and push of this prepared tree to
 main; GitHub Pages then serves the new release and player paths.
+
+
+## 512K video / TSPico
+
+Published under demos/512kvideo. Development remains in TS2068_TSPicoAnalysis.
+Keep the original SW512 and Colour Detail 2 SC512 packages distinct, together
+with their source, conversion tool, target-cadence MP4 previews and exact
+validation reports. Put all 33 TAP files directly in /TAP/; the supplied
+players will not find samples elsewhere. The player replaces all 512 KiB SRAM.
+Document model fps separately from physical reports. Native TSRun does not
+currently emulate this TSPico setup; MP4 previews are not emulator sessions.
+The converter and standalone player builder in source/tools are portable;
+their release rebuild and full re-encode were checked against generated assets.
+Regenerate SHA256SUMS.txt and the source ZIP after changing the source/docs.
+The hub card is owned by scripts/build_site.py; rerun it before publishing.

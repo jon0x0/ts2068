@@ -83,6 +83,7 @@ added when it is ready for publication.
 
 | Project | Description | Links |
 | --- | --- | --- |
+| 512K video | Requires TSPico; complete movie clip preloaded into 512 KiB SRAM and looped in 8×1 extended color, 12/15 fps targets. Put all TAP files directly in `/TAP/`; they will not run elsewhere. | [Preview & instructions](https://jon0x0.github.io/ts2068/demos/512kvideo/) · [Download](demos/512kvideo/downloads/tspico-starwars-colour2-512k.zip) · [Source & converter](demos/512kvideo/source/) |
 | Boing Ball | Bouncing ball in Extended Colour Mode with AY sound | [Play](https://jon0x0.github.io/TSVideoCodec/?demo=boing) · [Repository](https://github.com/jon0x0/TSVideoCodec) |
 | Juggler | Banked video cartridge with temporal reconstruction | [Play](https://jon0x0.github.io/TSVideoCodec/?demo=juggler) · [Repository](https://github.com/jon0x0/TSVideoCodec) |
 | Newton | Tape-loadable RAM-player demo | [Play](https://jon0x0.github.io/TSVideoCodec/?demo=newton) · [Repository](https://github.com/jon0x0/TSVideoCodec) |

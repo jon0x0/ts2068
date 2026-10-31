@@ -23,6 +23,7 @@ groups = {
         ('TSRun', 'Josef Jelinek’s TS2068 browser emulator.', [('Emulator', 'https://josef-jelinek.github.io/TSRun/'), ('Project', 'https://github.com/josef-jelinek/TSRun')]),
     ],
     'Demos': [
+        ('512K video · TS2068 + TSPico', 'Star Wars trench-run video preloaded into TSPico’s 512 KiB SRAM, then looped from RAM. Extended color at 12/15 fps targets; original and Colour Detail 2 versions.', [('Preview & instructions', 'demos/512kvideo/'), ('Download · Colour Detail 2', 'demos/512kvideo/downloads/tspico-starwars-colour2-512k.zip'), ('Source & converter', GITHUB+'ts2068/tree/main/demos/512kvideo/source')]),
         ('Boing Ball', 'Amiga-inspired bouncing ball in TS2068 Extended Colour Mode with AY sound.', [('Play', 'https://jon0x0.github.io/TSVideoCodec/?demo=boing'), ('Project', GITHUB+'TSVideoCodec')]),
         ('Juggler', 'Banked video cartridge demonstrating temporal reconstruction.', [('Play', 'https://jon0x0.github.io/TSVideoCodec/?demo=juggler'), ('Project', GITHUB+'TSVideoCodec')]),
         ('Newton', 'Tape-loadable TSVideoCodec RAM-player demo.', [('Play', 'https://jon0x0.github.io/TSVideoCodec/?demo=newton'), ('Project', GITHUB+'TSVideoCodec')]),

@@ -1,0 +1,239 @@
+{
+  "version": 1,
+  "source": "STAR WARS EPISODE IV DESPECIALIZED Lukes Trench Run (Remastered to 4K48fps).mp4",
+  "source_sha256": "f72927e7ffef8a51742f14de4898395d8e6e6c0ec5a83ee093926a43719c4182",
+  "profiles": {
+    "F": {
+      "width": 256,
+      "height": 108,
+      "fps_target": 12,
+      "ticks_per_frame": 5,
+      "source_start": 44.5,
+      "source_end": 52,
+      "source_frames": 90,
+      "source_seconds": 7.5,
+      "playback_seconds": 7.5,
+      "sram_bytes": 524288,
+      "meaningful_bytes": 491008,
+      "utilization": 0.9365234375,
+      "record_count": 90,
+      "max_blocks": 43,
+      "mean_frame_bytes": 5319.111111111111,
+      "volumes": [
+        {
+          "name": "SCF000.TAP",
+          "bytes": 33495,
+          "sha256": "0579cf715d65026b062f28a4810f87550327503198ff9e3e64f0b205ad44687b"
+        },
+        {
+          "name": "SCF001.TAP",
+          "bytes": 32868,
+          "sha256": "0fcd872898b112d6e33380ece89a808a4e7b31bf2faad91fbcca5fd0ba499d11"
+        },
+        {
+          "name": "SCF002.TAP",
+          "bytes": 32868,
+          "sha256": "bf7fa461895f7181ec672395cbd04db9c777f3a6ea1ee58e4ec6cbb5c5ee9eb3"
+        },
+        {
+          "name": "SCF003.TAP",
+          "bytes": 32868,
+          "sha256": "aca503c3954d4e229f947854dc029a8d690f248010c38a251817f648702bb8cc"
+        },
+        {
+          "name": "SCF004.TAP",
+          "bytes": 32868,
+          "sha256": "b79d6a34a0e8ca29ccb2f25fa9dbd7b281e8e6997f012807693bbeaf9450bc39"
+        },
+        {
+          "name": "SCF005.TAP",
+          "bytes": 32868,
+          "sha256": "ac81a2f90c950a9f36ceb868bc84e8f80b69957933772e0294201c17bfe916d1"
+        },
+        {
+          "name": "SCF006.TAP",
+          "bytes": 32868,
+          "sha256": "e969ca0003587623252c201db086fe0824c2e9424eb449ae72aa573bcef5b026"
+        },
+        {
+          "name": "SCF007.TAP",
+          "bytes": 32868,
+          "sha256": "8b0fd4615f75c3883acd8ca13b98dc3dd9a69e70c2bbdc5a4ac2d3322e646e0b"
+        },
+        {
+          "name": "SCF008.TAP",
+          "bytes": 32868,
+          "sha256": "d0a9e558928e749d5d297a3e7dfe71e83d1926993e59e18a0c78eb9bfebad4e4"
+        },
+        {
+          "name": "SCF009.TAP",
+          "bytes": 32868,
+          "sha256": "239f3b69f2422cc52bd33c7309df531be8fd1c30c5bb47af6d41adc739b7ee81"
+        },
+        {
+          "name": "SCF010.TAP",
+          "bytes": 32868,
+          "sha256": "be49ef687e2ea640fdb5804ced36115b98e2334b8d1a3360bddc52b928e3257c"
+        },
+        {
+          "name": "SCF011.TAP",
+          "bytes": 32868,
+          "sha256": "1f34be9039825eaefd8f65f187663423c1a218fe8ae9d1ff9d2d819c466ebbf9"
+        },
+        {
+          "name": "SCF012.TAP",
+          "bytes": 32868,
+          "sha256": "12a58da8b97b66dd2b11417a58c996942023f4ec9263c33d60607263b16c34c2"
+        },
+        {
+          "name": "SCF013.TAP",
+          "bytes": 32868,
+          "sha256": "1caf0f68aeeee3754feaac5fddb00734910a2ef294cc439c34567bfd9fc29aa5"
+        },
+        {
+          "name": "SCF014.TAP",
+          "bytes": 32868,
+          "sha256": "cc3de3b8dee16b75e5b05fc5ccba59c63fd4b9c6c1232cdc69e4f9d2be93c526"
+        },
+        {
+          "name": "SCF015.TAP",
+          "bytes": 32868,
+          "sha256": "79e000697b0b78215401743e2e885bbf598976a647e4cd95b53649ba9109db10"
+        }
+      ],
+      "image_sha256": "d7de062b70e86799442f9b1f0d30ba1a12dee7635890d69c69b85e0acf630c93",
+      "frames_sha256": "17ce534e7fcd101a4362446c065b17df55883df85870abf024afd2e5cbac361e",
+      "codec": "paired 16-bit replacements; fixed 256-byte blocks",
+      "quality": "colour-detail v2 8x1; pixel-local colour confidence, 2x confidence weighting, selective +10 percent saturation, adaptive neutral penalty; gamma 1.06 fixed Bayer",
+      "all_frames_exact": true
+    },
+    "W": {
+      "width": 232,
+      "height": 98,
+      "fps_target": 15,
+      "ticks_per_frame": 4,
+      "source_start": 44.5,
+      "source_end": 52,
+      "source_frames": 113,
+      "source_seconds": 7.5,
+      "playback_seconds": 7.533333333333333,
+      "sram_bytes": 524288,
+      "meaningful_bytes": 480768,
+      "utilization": 0.9169921875,
+      "record_count": 113,
+      "max_blocks": 36,
+      "mean_frame_bytes": 4145.840707964602,
+      "volumes": [
+        {
+          "name": "SCW000.TAP",
+          "bytes": 33587,
+          "sha256": "cd653562c806b4f86c317ee541acd685bb1c00af7e56ee04cc82781a109ec736"
+        },
+        {
+          "name": "SCW001.TAP",
+          "bytes": 32868,
+          "sha256": "2cdd69a967e3fe6a6d70e9f075f3674b5682e8be832b2d7ed957116059d2159c"
+        },
+        {
+          "name": "SCW002.TAP",
+          "bytes": 32868,
+          "sha256": "2fca7b35fe227f1655a3f57f91835fa121fbc617e4541396c7df8426ee530353"
+        },
+        {
+          "name": "SCW003.TAP",
+          "bytes": 32868,
+          "sha256": "c140519a445013bfebffb9f73519203d2b5fe708aa321bb6760def552e87fdfa"
+        },
+        {
+          "name": "SCW004.TAP",
+          "bytes": 32868,
+          "sha256": "c7647f685fa02c433b94c0177eddcd0db97c74230e9933d2af979f30549cb945"
+        },
+        {
+          "name": "SCW005.TAP",
+          "bytes": 32868,
+          "sha256": "2c1d404f2d2970e4df6c9a49ceabebf5d657f12b297b130fc1608a5c184ea68a"
+        },
+        {
+          "name": "SCW006.TAP",
+          "bytes": 32868,
+          "sha256": "7b854e4976046769f3cb17b3980e0a56213b799782e2550a002835683d6719b8"
+        },
+        {
+          "name": "SCW007.TAP",
+          "bytes": 32868,
+          "sha256": "48833dd9d927b0f1231d4aea1b2bad0ec5e3e458868e7c2240025783bc44b43b"
+        },
+        {
+          "name": "SCW008.TAP",
+          "bytes": 32868,
+          "sha256": "f648d7eef4081757596b55d6704260ac7d89f4eb711408d9781a8870cd2bacea"
+        },
+        {
+          "name": "SCW009.TAP",
+          "bytes": 32868,
+          "sha256": "3596da46e5ea53d11d7ce51f3caa108476df4e1403ffb552ac472b395f449c90"
+        },
+        {
+          "name": "SCW010.TAP",
+          "bytes": 32868,
+          "sha256": "1d01655f2cdfcb6c0f5f5c7c61fd56a14d878de93107ba7c24c08d9225617e7b"
+        },
+        {
+          "name": "SCW011.TAP",
+          "bytes": 32868,
+          "sha256": "bd8daed31a926d44f174e53328e7bdef1d915159009d70ea5182338aea7559fe"
+        },
+        {
+          "name": "SCW012.TAP",
+          "bytes": 32868,
+          "sha256": "0688c559244bef0fd2fddcab948ac13cef44f742614e3fd77d11d0d7dd1d47ed"
+        },
+        {
+          "name": "SCW013.TAP",
+          "bytes": 32868,
+          "sha256": "822342c119deea10ee91bed1152ee352d7083bb4b8592c1d65ff357ccbe7fd3e"
+        },
+        {
+          "name": "SCW014.TAP",
+          "bytes": 32868,
+          "sha256": "7527d2d21f03dd99b44473242a23387013fd81dc92961fcb27a6b86cfb24904c"
+        },
+        {
+          "name": "SCW015.TAP",
+          "bytes": 32868,
+          "sha256": "fc24cdfe5e1fa3211b2fc6a0e2020871c4514322d932a669238f1f30c0d71ff2"
+        }
+      ],
+      "image_sha256": "6556d009d9ac6b3ac0d8e74b467b696560558a696991873bdb225b6c737fdbf6",
+      "frames_sha256": "ef37d786994009147855fa8e95a4312590fed58f937743d02ec86043ed76c81e",
+      "codec": "paired 16-bit replacements; fixed 256-byte blocks",
+      "quality": "colour-detail v2 8x1; pixel-local colour confidence, 2x confidence weighting, selective +10 percent saturation, adaptive neutral penalty; gamma 1.06 fixed Bayer",
+      "all_frames_exact": true
+    }
+  },
+  "candidates": [
+    {
+      "tag": "F",
+      "width": 256,
+      "height": 108,
+      "fps": 12,
+      "fits": true
+    },
+    {
+      "tag": "W",
+      "width": 240,
+      "height": 102,
+      "fps": 15,
+      "fits": false,
+      "reason": "512 KiB full"
+    },
+    {
+      "tag": "W",
+      "width": 232,
+      "height": 98,
+      "fps": 15,
+      "fits": true
+    }
+  ]
+}

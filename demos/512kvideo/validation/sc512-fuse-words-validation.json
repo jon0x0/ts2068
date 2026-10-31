@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "real_fuse_z80": true,
+  "paired_word_checks": 64,
+  "normal_stack_restored": true,
+  "source_advanced_256": true,
+  "image_sha256": "018218b3b3ee7535cf75baa2aae2f23604a1e0f35d9bdd3a84b8dba9addb3b4b"
+}

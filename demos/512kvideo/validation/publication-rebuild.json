@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "source_rebuild_byte_identical": true,
+  "converter_sram_images_identical": 2,
+  "converter_tap_files_identical": 32,
+  "player_sha256": "a4e78d1847e54f84937310a88c851077d931ba2df752561f021ad2b9e6dc8acc"
+}

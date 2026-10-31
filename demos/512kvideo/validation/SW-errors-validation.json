@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "cases": 23,
+  "invalid_destinations_rejected": true,
+  "invalid_spans_rejected": true,
+  "oversized_index_rejected_before_copy": true,
+  "bad_checksum_stops_before_play": true,
+  "image_sha256": "cc99bcad81a99cfc892bb39f709be839a88d6495df740b30d7702857add7e859"
+}
