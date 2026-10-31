@@ -1,0 +1,12 @@
+{
+  "repository": "https://github.com/josef-jelinek/TSRun",
+  "commit": "41dbe3e41c692a1806f2cb900c5a0faa1549ae77",
+  "modifications": [],
+  "files": {
+    "z80.js": "a456d79a9734c5311594f0ce035394b809c0b78577936a14cbb06c5a37fcc501",
+    "machine.js": "c61596b2da7086dea10c5fd7f607d639b47ab70e64e5d360e99198c54e5141dc",
+    "dock.js": "06cb47a2bc25aa70a7fb2eda40312325292bd97771d526e67fc580c3fed69277",
+    "tape.js": "1eaa4c1b180ef12bbceef43f7042ec95eeca2530d0aadb23836dbdb175f25a36",
+    "ay.js": "d5f06e0482166b003e9f3de9ad2ede0252b027f1cd70f8c7ee0438df636e1132"
+  }
+}

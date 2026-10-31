@@ -140,3 +140,29 @@ and restart normal ROM/BASIC startup, and X for statistics. Requests during
 loading are latched and acted on only after the transaction drains. Preserve
 these controls in generated players and keep the loading-screen instructions
 in sync. The video samples did not change; existing sample files can be reused.
+
+
+## SCLD Display Lab
+
+The curated gallery lives under `demos/SCLD/`. Its twelve experiment families
+contain eighteen distinct cartridge variants; related image/dither/instruction
+variants share one entry. The browser runs actual native Z80 cartridges in the
+unmodified TSRun core pinned by `player/tsrun-version.json`. The custom Canvas
+player intentionally has no CRT shader, upstream desk UI, ROM picker or
+iframes. Keep this emulator snapshot isolated from the other projects.
+
+`catalog.json` owns the list, descriptions and cartridge/TAP links. After edits,
+run `node demos/SCLD/tools/check-gallery.mjs` and
+`python3 demos/SCLD/tools/package.py`, then `python3 scripts/build_site.py`.
+The first command boots all cartridges and exercises available Space image
+comparisons; the second refreshes download archives and SHA-256 checksums.
+
+The source snapshots retain original project layouts and recorded validations.
+Dynamic ECM's extra-color result is specific to the tested emulator raster;
+physical attribute latching/contention are not established. Preserve that
+distinction in the gallery. The Pico TAP is a separate hardware-test download,
+not a cartridge the gallery can run. It overwrites SRAM slots 2–15.
+
+Pages already serves the main branch root. Publishing this prepared directory
+and the generated hub update makes the gallery available at
+https://jon0x0.github.io/ts2068/demos/SCLD/. No new Pages workflow is required.

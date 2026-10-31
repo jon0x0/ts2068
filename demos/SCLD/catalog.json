@@ -1,0 +1,465 @@
+{
+  "title": "SCLD Display Lab",
+  "version": 1,
+  "tsrunCommit": "41dbe3e41c692a1806f2cb900c5a0faa1549ae77",
+  "families": [
+    {
+      "id": "evolution",
+      "title": "Split Personality Evolution",
+      "group": "Mode mixing",
+      "subtitle": "One display. A boundary that refuses to stay straight.",
+      "what": "An ECM picture and a real 512\u00d7192 high-resolution drawing share the screen. The boundary moves left, becomes diagonal, bends into a sine wave, travels, and resolves into four different quadrants. Both pictures stay stationary.",
+      "how": "Native Z80 code changes port FF on every scanline. Two writable kernels alternate while precomputed bitmap/attribute patches replace only the cells crossed by the boundary. Border writes are synchronized with scanout.",
+      "look": "Watch the narrow high-resolution ribbon lines, then the green/blue/magenta/red quadrants. The complete cartridge sequence repeats; a brief black reset separates loops.",
+      "controls": "No keys needed. The display runs continuously.",
+      "space": null,
+      "manual": false,
+      "experimental": false,
+      "variants": [
+        {
+          "id": "main",
+          "title": "Complete looping animation",
+          "cartridge": "cartridges/split-personality-evolution.dck",
+          "sha256": "46e7a913bd09b405ba084237e6696c3e0691a56cb098420edf3fcb3ed61cdd33",
+          "bytes": 163867,
+          "taps": [
+            {
+              "name": "split-personality-evolution.tap",
+              "url": "taps/split-personality-evolution.tap"
+            },
+            {
+              "name": "split-personality-evolution-pico.tap",
+              "url": "taps/split-personality-evolution-pico.tap"
+            }
+          ]
+        }
+      ],
+      "source": "source/color-and-evolution/",
+      "technical": "source/color-and-evolution/split-evolution/README.md",
+      "preview": "previews/evolution.png"
+    },
+    {
+      "id": "triple",
+      "title": "Triple Personality Mosaic",
+      "group": "Mode mixing",
+      "subtitle": "Three native screen modes, ten regions on every line.",
+      "what": "High resolution, 8\u00d71 Extended Color Mode and standard 8\u00d78 color cells appear together on every scanline. Alternate horizontal bands reverse their order.",
+      "how": "Ten timed port-FF writes per row select the genuine modes. The shared display memory is laid out so that its bitmap and attributes are valid in each region. This is 1,920 mode writes per frame, with nine internal boundaries per line.",
+      "look": "Compare the one-pixel high-resolution rules, the one-scanline ECM swatches and the larger standard-mode color blocks.",
+      "controls": "No keys needed. The display runs continuously.",
+      "space": null,
+      "manual": false,
+      "experimental": false,
+      "variants": [
+        {
+          "id": "main",
+          "title": "Three-mode mosaic",
+          "cartridge": "cartridges/triple-personality-mosaic.dck",
+          "sha256": "c8effd5f6deb92c494a8f4c177f583c242144d089d01788be7c21ee55c03d566",
+          "bytes": 24585,
+          "taps": [
+            {
+              "name": "triple-personality-mosaic.tap",
+              "url": "taps/triple-personality-mosaic.tap"
+            }
+          ]
+        }
+      ],
+      "source": "source/triple/",
+      "technical": "source/triple/triple-personality/README.md",
+      "preview": "previews/triple.png"
+    },
+    {
+      "id": "split",
+      "title": "Split Personality",
+      "group": "Mode mixing",
+      "subtitle": "ECM on the left, yellow-on-blue high resolution on the right.",
+      "what": "A vertical split changes both the display mode and its border color. The ECM panel includes scanline color strips and color checker patterns; the high-resolution side shows fine bitmap graphics.",
+      "how": "The raster changes port FF at the same horizontal point on every row, while timed FE writes and high-resolution paper colors create the distinct border regions.",
+      "look": "The left side demonstrates 8\u00d71 color addressing: attributes can change on every scanline. The right side uses both display planes for 512 horizontal pixels.",
+      "controls": "No keys needed. The display runs continuously.",
+      "space": null,
+      "manual": false,
+      "experimental": false,
+      "variants": [
+        {
+          "id": "main",
+          "title": "Static vertical split",
+          "cartridge": "cartridges/split-personality.dck",
+          "sha256": "770a01270adbba00055729bf4217d5eeb9d38e5471e7241615c8d35caf0aac98",
+          "bytes": 24585,
+          "taps": [
+            {
+              "name": "split-personality.tap",
+              "url": "taps/split-personality.tap"
+            }
+          ]
+        }
+      ],
+      "source": "source/split/",
+      "technical": "source/split/split-personality/README.md",
+      "preview": "previews/split.png"
+    },
+    {
+      "id": "reveal",
+      "title": "Four-screen Resolution Wipe",
+      "group": "Mode mixing",
+      "subtitle": "Color pictures reveal crisp 512-pixel typography and shaded graphics.",
+      "what": "A butterfly, a prepared high-resolution title, a frog and a dithered high-resolution 3D scene cycle through stationary-image reveals. Each wipe chooses an upward or downward direction, followed by an approximately four-second hold.",
+      "how": "The mode changes in horizontal blanking at the moving dividing scanline. Incoming rows are copied during the border interval. An LFSR chooses the wipe direction; the images themselves never scroll.",
+      "look": "Inspect the proportional lettering, genuine 64-column Timex glyphs, one-pixel Celtic braid, checkerboard gray field and solid-white contrast bar. The shaded scene is a prepared one-bit bitmap.",
+      "controls": "Space pauses/resumes the sequence. Q and A move the boundary manually; R resumes automatic playback.",
+      "space": "Pause sequence",
+      "manual": true,
+      "experimental": false,
+      "variants": [
+        {
+          "id": "main",
+          "title": "Four-image cartridge sequence",
+          "cartridge": "cartridges/timex-ecm-highres-reveal.dck",
+          "sha256": "41f246fe8e7bd08ab831d6aedfb9b13d2c731977fe5c593f980c31cd7d18e7e6",
+          "bytes": 81938,
+          "taps": [
+            {
+              "name": "ecm-hires-wipe-morpho-title.tap",
+              "url": "taps/ecm-hires-wipe-morpho-title.tap"
+            },
+            {
+              "name": "ecm-hires-wipe-frog-scene.tap",
+              "url": "taps/ecm-hires-wipe-frog-scene.tap"
+            }
+          ]
+        }
+      ],
+      "source": "source/reveal/",
+      "technical": "source/reveal/timex-reveal/README.md",
+      "preview": "previews/reveal.png"
+    },
+    {
+      "id": "atlas",
+      "title": "Timex Color Atlas",
+      "group": "Mode mixing",
+      "subtitle": "Border colors, high-resolution pairs and the ECM palette in one view.",
+      "what": "Eight horizontal bands show all eight border colors, all eight native high-resolution ink/paper combinations, and all sixteen ECM palette entries.",
+      "how": "Every row switches from ECM to high resolution at the midpoint, including the visible border. The following row\u2019s border color is staged while high-resolution paper controls the current border.",
+      "look": "The high-resolution ink and paper are complementary native pairs; they are not independently selected like an ECM attribute. No BRIGHT control is available for these high-resolution pairs.",
+      "controls": "No keys needed. The display runs continuously.",
+      "space": null,
+      "manual": false,
+      "experimental": false,
+      "variants": [
+        {
+          "id": "main",
+          "title": "All native high-resolution color pairs",
+          "cartridge": "cartridges/timex-color-atlas.dck",
+          "sha256": "ab8377ace67f6799a0d079c540b86fac5acdc711c2e037644e0394bbac3278c4",
+          "bytes": 40969,
+          "taps": [
+            {
+              "name": "timex-color-atlas.tap",
+              "url": "taps/timex-color-atlas.tap"
+            }
+          ]
+        }
+      ],
+      "source": "source/color-and-evolution/",
+      "technical": "source/color-and-evolution/color-experiments/README.md",
+      "preview": "previews/atlas.png"
+    },
+    {
+      "id": "macaw",
+      "title": "Dynamic ECM \u00b7 Macaw",
+      "group": "Dynamic ECM",
+      "subtitle": "An image-specific raster schedule, with adapted dithering.",
+      "what": "A colorful macaw scene compares ordinary ECM with timed attribute replacements in selected cells. Sierra Lite is the main version; the variant selector offers other dithering and scheduling choices.",
+      "how": "The ten-position engine preloads four replacement values and uses 14T address/write slots across each scanline. Some attributes are restored during blanking. An alternative nine-position engine chooses each replacement independently.",
+      "look": "Press Compare ECM to switch between the two native images. Ten scheduled positions do not mean ten added pixels or four colors everywhere; the source pixels and chosen pairs determine the visible benefit.",
+      "controls": "Space compares Dynamic ECM (green border) with ordinary ECM (blue border).",
+      "space": "Compare ECM",
+      "manual": false,
+      "experimental": true,
+      "variants": [
+        {
+          "id": "sierra-lite",
+          "title": "Sierra Lite \u00b7 10 positions",
+          "cartridge": "cartridges/timex-dynamic-ecm-macaw-sierra-lite.dck",
+          "sha256": "ca6e6828b8bee81bc9539d30489b417a46da10b972cf7be8ad2f05c27244bd05",
+          "bytes": 65554,
+          "taps": [
+            {
+              "name": "dynamic-ecm-macaw-sierra-lite.tap",
+              "url": "taps/dynamic-ecm-macaw-sierra-lite.tap"
+            }
+          ]
+        },
+        {
+          "id": "sierra-line",
+          "title": "Sierra Line \u00b7 10 positions",
+          "cartridge": "cartridges/timex-dynamic-ecm-macaw-sierra-line.dck",
+          "sha256": "e5351ee34eb9c5a54726aa554027648202d2664a909b5d57871d931a9f91b119",
+          "bytes": 65554,
+          "taps": [
+            {
+              "name": "dynamic-ecm-macaw-sierra-line.tap",
+              "url": "taps/dynamic-ecm-macaw-sierra-line.tap"
+            }
+          ]
+        },
+        {
+          "id": "sierra2",
+          "title": "Two-row Sierra \u00b7 10 positions",
+          "cartridge": "cartridges/timex-dynamic-ecm-macaw-sierra2.dck",
+          "sha256": "5195e58295af2b3b6ec689cdf324013d11580300eac7363b243afc81ed624715",
+          "bytes": 65554,
+          "taps": [
+            {
+              "name": "dynamic-ecm-macaw-sierra2.tap",
+              "url": "taps/dynamic-ecm-macaw-sierra2.tap"
+            }
+          ]
+        },
+        {
+          "id": "independent9",
+          "title": "Nine independent replacements",
+          "cartridge": "cartridges/timex-dynamic-ecm-macaw-9-independent.dck",
+          "sha256": "ee232a97a9aee7185c0b31ccb8d19fc7648e14a5dea83854a6692196d1325d3e",
+          "bytes": 65554,
+          "taps": [
+            {
+              "name": "dynamic-ecm-macaw-9-independent.tap",
+              "url": "taps/dynamic-ecm-macaw-9-independent.tap"
+            }
+          ]
+        }
+      ],
+      "source": "source/macaw/",
+      "technical": "source/macaw/display10/README.md",
+      "preview": "previews/macaw.png"
+    },
+    {
+      "id": "butterfly",
+      "title": "Dynamic ECM \u00b7 Blue Morpho",
+      "group": "Dynamic ECM",
+      "subtitle": "Photographic detail with seven independent or eight shared updates.",
+      "what": "The supplied butterfly image is scaled and dithered under the ECM constraints, then enhanced at scheduled attribute-change positions. The seven-position version prioritizes independent palette choices; eight positions trades some independence for coverage.",
+      "how": "The image-specific Z80 program is fully unrolled. Addresses and color values are embedded in instructions, with preparation writes prestaged during blanking. Seven positions use 4/4-pixel splits; the eight-position schedule alternates 2/6 and 6/2 splits.",
+      "look": "Compare the blue wing gradients and dark outlines with the ordinary ECM reference. More scheduled writes do not automatically produce better image fidelity.",
+      "controls": "Space compares Dynamic ECM (green border) with the supplied ordinary ECM image (blue border).",
+      "space": "Compare ECM",
+      "manual": false,
+      "experimental": true,
+      "variants": [
+        {
+          "id": "7",
+          "title": "Seven independent replacements",
+          "cartridge": "cartridges/timex-dynamic-ecm-morpho-7.dck",
+          "sha256": "64b2fa7f9b6a7896b0853a410124bb6b6d91fc2a3c265947b1781d54863667cc",
+          "bytes": 65554,
+          "taps": [
+            {
+              "name": "dynamic-ecm-morpho-7.tap",
+              "url": "taps/dynamic-ecm-morpho-7.tap"
+            }
+          ]
+        },
+        {
+          "id": "8",
+          "title": "Eight positions \u00b7 two shared values",
+          "cartridge": "cartridges/timex-dynamic-ecm-morpho-8.dck",
+          "sha256": "41c17801325b6bb192178e89ebd80106d91cd998cd105995ba96b194ee994f02",
+          "bytes": 65554,
+          "taps": [
+            {
+              "name": "dynamic-ecm-morpho-8.tap",
+              "url": "taps/dynamic-ecm-morpho-8.tap"
+            }
+          ]
+        }
+      ],
+      "source": "source/butterfly/",
+      "technical": "source/butterfly/README.md",
+      "preview": "previews/butterfly.png"
+    },
+    {
+      "id": "prismatic",
+      "title": "Dynamic ECM \u00b7 Prismatic Orbit",
+      "group": "Dynamic ECM",
+      "subtitle": "Rainbow ramps, glossy curves and a Bayer-dithered image.",
+      "what": "A prepared torus, spheres and ribbon scene is fitted to legal Timex color pairs. The scene was designed to give timed attribute changes useful color ramps and highlights.",
+      "how": "Seven independently chosen cells per line receive a replacement attribute after the fourth pixel in TSRun\u2019s raster model. A 4\u00d74 Bayer conversion was selected after comparison with other dithering methods.",
+      "look": "Use Compare ECM to see where the additional pairs help the gradients. In this image, 427 selected cells actually display more than two colors; the remaining screen still follows ordinary ECM constraints.",
+      "controls": "Space compares Dynamic ECM (green border) and ordinary ECM (blue border).",
+      "space": "Compare ECM",
+      "manual": false,
+      "experimental": true,
+      "variants": [
+        {
+          "id": "main",
+          "title": "Seven-position Bayer conversion",
+          "cartridge": "cartridges/timex-dynamic-ecm-prismatic.dck",
+          "sha256": "b391c8664178e04e6bce5ce9aad3b7bad804262fbd4bbf70985180d657f3b4ac",
+          "bytes": 65554,
+          "taps": [
+            {
+              "name": "dynamic-ecm-prismatic.tap",
+              "url": "taps/dynamic-ecm-prismatic.tap"
+            }
+          ]
+        }
+      ],
+      "source": "source/prismatic/",
+      "technical": "source/prismatic/prismatic-orbit/README.md",
+      "preview": "previews/prismatic.png"
+    },
+    {
+      "id": "prover",
+      "title": "Ten-position Color Prover",
+      "group": "Dynamic ECM",
+      "subtitle": "Four colors per 8\u00d71 cell, at ten positions on each test line.",
+      "what": "A diagnostic image guarantees four distinct colors in each of ten selected cells on 64 consecutive scanlines: 640 four-color cells in TSRun. The other 128 lines use ordinary ECM.",
+      "how": "It uses the macaw ten-position engine, with color pairs and bitmap patterns chosen to prove the available density rather than to optimize a photograph.",
+      "look": "Read \u201c4 colors per 8\u00d71 cell\u201d literally within each targeted cell. Ten of the 32 cells on a test line are scheduled; this is not a full-screen four-color-per-cell mode.",
+      "controls": "Space compares the dynamic diagnostic with its ordinary ECM version.",
+      "space": "Compare ECM",
+      "manual": false,
+      "experimental": true,
+      "variants": [
+        {
+          "id": "main",
+          "title": "Ten cells \u00d7 64 test lines",
+          "cartridge": "cartridges/timex-dynamic-ecm-macaw-10-prover.dck",
+          "sha256": "7f09602a218c09b18db80c7c2d31eaf66ab69b26795d9e768461c0a4fba28a5d",
+          "bytes": 65554,
+          "taps": [
+            {
+              "name": "dynamic-ecm-10-prover.tap",
+              "url": "taps/dynamic-ecm-10-prover.tap"
+            }
+          ]
+        }
+      ],
+      "source": "source/macaw/",
+      "technical": "source/macaw/display10/README.md",
+      "preview": "previews/prover.png"
+    },
+    {
+      "id": "race",
+      "title": "Attribute Race Lab",
+      "group": "Timing lab",
+      "subtitle": "A mid-screen comparison of two-color and targeted four-color cells.",
+      "what": "A shaded sphere and floor use ordinary two-color ECM above the divider and timed attribute replacements below it. A separate diagnostic band forces four distinct colors in the targeted cells.",
+      "how": "Five spaced columns receive one replacement attribute halfway through each selected cell in TSRun\u2019s raster model. Each unrolled row costs exactly 224T.",
+      "look": "The divider marks the comparison. The improvement in the shaded image is intentionally modest: only the five scheduled columns can gain another pair.",
+      "controls": "No keys needed. The display runs continuously.",
+      "space": null,
+      "manual": false,
+      "experimental": true,
+      "variants": [
+        {
+          "id": "main",
+          "title": "Five-position comparison",
+          "cartridge": "cartridges/attribute-race-lab.dck",
+          "sha256": "a24a4cabdd384d6a2d73bff00e4b0781fec139a76d92cf681a2b09a7535fcfd2",
+          "bytes": 40969,
+          "taps": [
+            {
+              "name": "attribute-race-lab.tap",
+              "url": "taps/attribute-race-lab.tap"
+            }
+          ]
+        }
+      ],
+      "source": "source/color-and-evolution/",
+      "technical": "source/color-and-evolution/color-experiments/README.md",
+      "preview": "previews/race.png"
+    },
+    {
+      "id": "speed",
+      "title": "Attribute Speed Lab",
+      "group": "Timing lab",
+      "subtitle": "Back-to-back 7T writes test the color ceiling.",
+      "what": "Three preloaded ink/paper pairs are written to the same attribute address, with seven whole-T-state phases swept down the screen at three horizontal locations.",
+      "how": "LD (HL),r removes value reloads and takes 7T per write. An eight-pixel ECM cell spans only 4T, so two successive 7T-spaced replacements cannot both land within the same cell window.",
+      "look": "The pinned TSRun test reaches a maximum of four colors per 8\u00d71 cell, not six or eight. The surrounding sphere is a stationary background for the narrow test columns.",
+      "controls": "No keys needed. The display runs continuously.",
+      "space": null,
+      "manual": false,
+      "experimental": true,
+      "variants": [
+        {
+          "id": "main",
+          "title": "Three-register phase sweep",
+          "cartridge": "cartridges/attribute-speed-lab.dck",
+          "sha256": "31efe852484c5181feed6c90e5c611ae43927ab5d517a5573b831c944aaf7840",
+          "bytes": 40969,
+          "taps": [
+            {
+              "name": "attribute-speed-lab.tap",
+              "url": "taps/attribute-speed-lab.tap"
+            }
+          ]
+        }
+      ],
+      "source": "source/speed/",
+      "technical": "source/speed/README.md",
+      "preview": "previews/speed.png"
+    },
+    {
+      "id": "probe",
+      "title": "Dynamic ECM Instruction Probes",
+      "group": "Timing lab",
+      "subtitle": "Three bands isolate single, adjacent and dense attribute writes.",
+      "what": "Static reference strips surround a single-change phase sweep, a two-address burst and a dense three-address sequence. The selector changes the instruction used in the middle band.",
+      "how": "The middle band compares LD (nn),HL, PUSH HL and EX (SP),HL. Their nominal instruction times and bus operations differ, even though TSRun currently timestamps each instruction\u2019s two memory-write callbacks together.",
+      "look": "Look for four distinct colors within one horizontal 8\u00d71 cell. Agreement between these three emulator images does not establish identical physical bus timing.",
+      "controls": "No keys needed. The display runs continuously.",
+      "space": null,
+      "manual": false,
+      "experimental": true,
+      "variants": [
+        {
+          "id": "store16",
+          "title": "LD (nn),HL \u00b7 16T",
+          "cartridge": "cartridges/timex-dynamic-ecm-probe.dck",
+          "sha256": "bfe3fef9f0bd22d8df4fdf47f32d232e366053b9e33be14ff5da2db7ead984f5",
+          "bytes": 40969,
+          "taps": [
+            {
+              "name": "dynamic-ecm-probe.tap",
+              "url": "taps/dynamic-ecm-probe.tap"
+            }
+          ]
+        },
+        {
+          "id": "push",
+          "title": "PUSH HL \u00b7 11T",
+          "cartridge": "cartridges/timex-dynamic-ecm-push.dck",
+          "sha256": "c2cad4aefd639256db9b389cdd828db829fc0c7903a96ba0ae3876e77419c52c",
+          "bytes": 40969,
+          "taps": [
+            {
+              "name": "dynamic-ecm-push.tap",
+              "url": "taps/dynamic-ecm-push.tap"
+            }
+          ]
+        },
+        {
+          "id": "exchange",
+          "title": "EX (SP),HL \u00b7 19T",
+          "cartridge": "cartridges/timex-dynamic-ecm-exchange.dck",
+          "sha256": "40d2f9d1efea4de26655240503b1b53a4281b708155a74f57cdaa4b4e60f19d6",
+          "bytes": 40969,
+          "taps": [
+            {
+              "name": "dynamic-ecm-exchange.tap",
+              "url": "taps/dynamic-ecm-exchange.tap"
+            }
+          ]
+        }
+      ],
+      "source": "source/probes/",
+      "technical": "source/probes/README.md",
+      "preview": "previews/probe.png"
+    }
+  ]
+}

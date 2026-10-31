@@ -1,0 +1,43 @@
+{
+  "frames": 4359,
+  "pixels": 428507136,
+  "splitPositions": 193,
+  "maxMismatch": 0,
+  "continuousLoop": true,
+  "titleVisits": 4,
+  "pictureVisits": 4,
+  "sequence": [
+    "title0",
+    "ecm1",
+    "title1",
+    "ecm0",
+    "title0",
+    "ecm1",
+    "title1",
+    "ecm0"
+  ],
+  "directions": [
+    "down",
+    "up",
+    "up",
+    "down",
+    "up",
+    "up",
+    "down",
+    "up"
+  ],
+  "pauseFrames": 240,
+  "modeCombinations": [
+    "62/2",
+    "2/62"
+  ],
+  "checkerPixels": 54912,
+  "whiteBarPixels": 10848,
+  "checkerFrameThickness": 30,
+  "timex64ColumnGlyphs": true,
+  "twoTitles": true,
+  "twoECMPictures": true,
+  "manualBothOrientations": true,
+  "spaceEdge": true,
+  "tsrunCommit": "41dbe3e41c692a1806f2cb900c5a0faa1549ae77"
+}

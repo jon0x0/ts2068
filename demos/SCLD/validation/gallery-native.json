@@ -1,0 +1,153 @@
+{
+  "families": 12,
+  "cartridges": 18,
+  "unmodifiedTsrunCore": true,
+  "crt": false,
+  "systemRomRequired": false,
+  "results": [
+    {
+      "family": "evolution",
+      "variant": "main",
+      "sha256": "46e7a913bd09b405ba084237e6696c3e0691a56cb098420edf3fcb3ed61cdd33",
+      "bootFrames": 120,
+      "colors": 11,
+      "compareChanged": null
+    },
+    {
+      "family": "triple",
+      "variant": "main",
+      "sha256": "c8effd5f6deb92c494a8f4c177f583c242144d089d01788be7c21ee55c03d566",
+      "bootFrames": 120,
+      "colors": 16,
+      "compareChanged": null
+    },
+    {
+      "family": "split",
+      "variant": "main",
+      "sha256": "770a01270adbba00055729bf4217d5eeb9d38e5471e7241615c8d35caf0aac98",
+      "bootFrames": 120,
+      "colors": 16,
+      "compareChanged": null
+    },
+    {
+      "family": "reveal",
+      "variant": "main",
+      "sha256": "41f246fe8e7bd08ab831d6aedfb9b13d2c731977fe5c593f980c31cd7d18e7e6",
+      "bootFrames": 120,
+      "colors": 16,
+      "compareChanged": null
+    },
+    {
+      "family": "atlas",
+      "variant": "main",
+      "sha256": "ab8377ace67f6799a0d079c540b86fac5acdc711c2e037644e0394bbac3278c4",
+      "bootFrames": 120,
+      "colors": 16,
+      "compareChanged": null
+    },
+    {
+      "family": "macaw",
+      "variant": "sierra-lite",
+      "sha256": "ca6e6828b8bee81bc9539d30489b417a46da10b972cf7be8ad2f05c27244bd05",
+      "bootFrames": 120,
+      "colors": 16,
+      "compareChanged": true
+    },
+    {
+      "family": "macaw",
+      "variant": "sierra-line",
+      "sha256": "e5351ee34eb9c5a54726aa554027648202d2664a909b5d57871d931a9f91b119",
+      "bootFrames": 120,
+      "colors": 16,
+      "compareChanged": true
+    },
+    {
+      "family": "macaw",
+      "variant": "sierra2",
+      "sha256": "5195e58295af2b3b6ec689cdf324013d11580300eac7363b243afc81ed624715",
+      "bootFrames": 120,
+      "colors": 16,
+      "compareChanged": true
+    },
+    {
+      "family": "macaw",
+      "variant": "independent9",
+      "sha256": "ee232a97a9aee7185c0b31ccb8d19fc7648e14a5dea83854a6692196d1325d3e",
+      "bootFrames": 120,
+      "colors": 16,
+      "compareChanged": true
+    },
+    {
+      "family": "butterfly",
+      "variant": "7",
+      "sha256": "64b2fa7f9b6a7896b0853a410124bb6b6d91fc2a3c265947b1781d54863667cc",
+      "bootFrames": 120,
+      "colors": 16,
+      "compareChanged": true
+    },
+    {
+      "family": "butterfly",
+      "variant": "8",
+      "sha256": "41c17801325b6bb192178e89ebd80106d91cd998cd105995ba96b194ee994f02",
+      "bootFrames": 120,
+      "colors": 16,
+      "compareChanged": true
+    },
+    {
+      "family": "prismatic",
+      "variant": "main",
+      "sha256": "b391c8664178e04e6bce5ce9aad3b7bad804262fbd4bbf70985180d657f3b4ac",
+      "bootFrames": 120,
+      "colors": 16,
+      "compareChanged": true
+    },
+    {
+      "family": "prover",
+      "variant": "main",
+      "sha256": "7f09602a218c09b18db80c7c2d31eaf66ab69b26795d9e768461c0a4fba28a5d",
+      "bootFrames": 120,
+      "colors": 16,
+      "compareChanged": true
+    },
+    {
+      "family": "race",
+      "variant": "main",
+      "sha256": "a24a4cabdd384d6a2d73bff00e4b0781fec139a76d92cf681a2b09a7535fcfd2",
+      "bootFrames": 120,
+      "colors": 9,
+      "compareChanged": null
+    },
+    {
+      "family": "speed",
+      "variant": "main",
+      "sha256": "31efe852484c5181feed6c90e5c611ae43927ab5d517a5573b831c944aaf7840",
+      "bootFrames": 120,
+      "colors": 9,
+      "compareChanged": null
+    },
+    {
+      "family": "probe",
+      "variant": "store16",
+      "sha256": "bfe3fef9f0bd22d8df4fdf47f32d232e366053b9e33be14ff5da2db7ead984f5",
+      "bootFrames": 120,
+      "colors": 7,
+      "compareChanged": null
+    },
+    {
+      "family": "probe",
+      "variant": "push",
+      "sha256": "c2cad4aefd639256db9b389cdd828db829fc0c7903a96ba0ae3876e77419c52c",
+      "bootFrames": 120,
+      "colors": 7,
+      "compareChanged": null
+    },
+    {
+      "family": "probe",
+      "variant": "exchange",
+      "sha256": "40d2f9d1efea4de26655240503b1b53a4281b708155a74f57cdaa4b4e60f19d6",
+      "bootFrames": 120,
+      "colors": 7,
+      "compareChanged": null
+    }
+  ]
+}

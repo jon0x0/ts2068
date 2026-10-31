@@ -1,0 +1,362 @@
+[
+  {
+    "band": 0,
+    "start": 0,
+    "end": 3,
+    "mode": "H"
+  },
+  {
+    "band": 0,
+    "start": 3,
+    "end": 6,
+    "mode": "E"
+  },
+  {
+    "band": 0,
+    "start": 6,
+    "end": 9,
+    "mode": "N"
+  },
+  {
+    "band": 0,
+    "start": 9,
+    "end": 12,
+    "mode": "H"
+  },
+  {
+    "band": 0,
+    "start": 12,
+    "end": 15,
+    "mode": "E"
+  },
+  {
+    "band": 0,
+    "start": 15,
+    "end": 18,
+    "mode": "N"
+  },
+  {
+    "band": 0,
+    "start": 18,
+    "end": 21,
+    "mode": "H"
+  },
+  {
+    "band": 0,
+    "start": 21,
+    "end": 24,
+    "mode": "E"
+  },
+  {
+    "band": 0,
+    "start": 24,
+    "end": 27,
+    "mode": "N"
+  },
+  {
+    "band": 0,
+    "start": 27,
+    "end": 32,
+    "mode": "H"
+  },
+  {
+    "band": 1,
+    "start": 0,
+    "end": 3,
+    "mode": "N"
+  },
+  {
+    "band": 1,
+    "start": 3,
+    "end": 6,
+    "mode": "E"
+  },
+  {
+    "band": 1,
+    "start": 6,
+    "end": 9,
+    "mode": "H"
+  },
+  {
+    "band": 1,
+    "start": 9,
+    "end": 12,
+    "mode": "N"
+  },
+  {
+    "band": 1,
+    "start": 12,
+    "end": 15,
+    "mode": "E"
+  },
+  {
+    "band": 1,
+    "start": 15,
+    "end": 18,
+    "mode": "H"
+  },
+  {
+    "band": 1,
+    "start": 18,
+    "end": 21,
+    "mode": "N"
+  },
+  {
+    "band": 1,
+    "start": 21,
+    "end": 24,
+    "mode": "E"
+  },
+  {
+    "band": 1,
+    "start": 24,
+    "end": 27,
+    "mode": "H"
+  },
+  {
+    "band": 1,
+    "start": 27,
+    "end": 32,
+    "mode": "N"
+  },
+  {
+    "band": 2,
+    "start": 0,
+    "end": 3,
+    "mode": "H"
+  },
+  {
+    "band": 2,
+    "start": 3,
+    "end": 6,
+    "mode": "E"
+  },
+  {
+    "band": 2,
+    "start": 6,
+    "end": 9,
+    "mode": "N"
+  },
+  {
+    "band": 2,
+    "start": 9,
+    "end": 12,
+    "mode": "H"
+  },
+  {
+    "band": 2,
+    "start": 12,
+    "end": 15,
+    "mode": "E"
+  },
+  {
+    "band": 2,
+    "start": 15,
+    "end": 18,
+    "mode": "N"
+  },
+  {
+    "band": 2,
+    "start": 18,
+    "end": 21,
+    "mode": "H"
+  },
+  {
+    "band": 2,
+    "start": 21,
+    "end": 24,
+    "mode": "E"
+  },
+  {
+    "band": 2,
+    "start": 24,
+    "end": 27,
+    "mode": "N"
+  },
+  {
+    "band": 2,
+    "start": 27,
+    "end": 32,
+    "mode": "H"
+  },
+  {
+    "band": 3,
+    "start": 0,
+    "end": 3,
+    "mode": "N"
+  },
+  {
+    "band": 3,
+    "start": 3,
+    "end": 6,
+    "mode": "E"
+  },
+  {
+    "band": 3,
+    "start": 6,
+    "end": 9,
+    "mode": "H"
+  },
+  {
+    "band": 3,
+    "start": 9,
+    "end": 12,
+    "mode": "N"
+  },
+  {
+    "band": 3,
+    "start": 12,
+    "end": 15,
+    "mode": "E"
+  },
+  {
+    "band": 3,
+    "start": 15,
+    "end": 18,
+    "mode": "H"
+  },
+  {
+    "band": 3,
+    "start": 18,
+    "end": 21,
+    "mode": "N"
+  },
+  {
+    "band": 3,
+    "start": 21,
+    "end": 24,
+    "mode": "E"
+  },
+  {
+    "band": 3,
+    "start": 24,
+    "end": 27,
+    "mode": "H"
+  },
+  {
+    "band": 3,
+    "start": 27,
+    "end": 32,
+    "mode": "N"
+  },
+  {
+    "band": 4,
+    "start": 0,
+    "end": 3,
+    "mode": "H"
+  },
+  {
+    "band": 4,
+    "start": 3,
+    "end": 6,
+    "mode": "E"
+  },
+  {
+    "band": 4,
+    "start": 6,
+    "end": 9,
+    "mode": "N"
+  },
+  {
+    "band": 4,
+    "start": 9,
+    "end": 12,
+    "mode": "H"
+  },
+  {
+    "band": 4,
+    "start": 12,
+    "end": 15,
+    "mode": "E"
+  },
+  {
+    "band": 4,
+    "start": 15,
+    "end": 18,
+    "mode": "N"
+  },
+  {
+    "band": 4,
+    "start": 18,
+    "end": 21,
+    "mode": "H"
+  },
+  {
+    "band": 4,
+    "start": 21,
+    "end": 24,
+    "mode": "E"
+  },
+  {
+    "band": 4,
+    "start": 24,
+    "end": 27,
+    "mode": "N"
+  },
+  {
+    "band": 4,
+    "start": 27,
+    "end": 32,
+    "mode": "H"
+  },
+  {
+    "band": 5,
+    "start": 0,
+    "end": 3,
+    "mode": "N"
+  },
+  {
+    "band": 5,
+    "start": 3,
+    "end": 6,
+    "mode": "E"
+  },
+  {
+    "band": 5,
+    "start": 6,
+    "end": 9,
+    "mode": "H"
+  },
+  {
+    "band": 5,
+    "start": 9,
+    "end": 12,
+    "mode": "N"
+  },
+  {
+    "band": 5,
+    "start": 12,
+    "end": 15,
+    "mode": "E"
+  },
+  {
+    "band": 5,
+    "start": 15,
+    "end": 18,
+    "mode": "H"
+  },
+  {
+    "band": 5,
+    "start": 18,
+    "end": 21,
+    "mode": "N"
+  },
+  {
+    "band": 5,
+    "start": 21,
+    "end": 24,
+    "mode": "E"
+  },
+  {
+    "band": 5,
+    "start": 24,
+    "end": 27,
+    "mode": "H"
+  },
+  {
+    "band": 5,
+    "start": 27,
+    "end": 32,
+    "mode": "N"
+  }
+]

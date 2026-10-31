@@ -1,0 +1,235 @@
+{
+  "sierra-lite": {
+    "conversion": {
+      "source": "source.png",
+      "dither": "sierra-lite",
+      "strength": 1,
+      "candidateWritesPerRow": 10,
+      "actualWrites": 1070,
+      "maxWritesPerRow": 9,
+      "rowsWithNineOrTenWrites": 3,
+      "writeCountHistogram": {
+        "3": 10,
+        "4": 27,
+        "5": 57,
+        "6": 56,
+        "7": 28,
+        "8": 11,
+        "9": 3
+      },
+      "cellsWithMoreThanTwoColors": 484,
+      "maxMulticolorCellsPerRow": 6,
+      "untrimmedWrites": 1070,
+      "budgetTrimmed": 0,
+      "averaged2x2LinearRgbMse": {
+        "ecm": 0.004118806008125609,
+        "dynamic": 0.004027276354289873
+      },
+      "relativeAveragedMseReduction": 0.022222375527073845,
+      "restoreTiming": {
+        "beforeT": 8737,
+        "afterT": 3501
+      },
+      "hardwareVerified": false
+    },
+    "validation": {
+      "frames": 360,
+      "checkedVisiblePixels": 55296000,
+      "pixelMismatches": 0,
+      "framesByMode": {
+        "dynamic": 240,
+        "ecm": 120
+      },
+      "spaceTogglesVerified": 2,
+      "attributeWritesPerDynamicFrame": 2140,
+      "maxChangesPerRow": 9,
+      "prestagedResets": 686,
+      "allAttributeWritesTimed": true,
+      "comparisonMatchesSuppliedTap": false,
+      "hardwareVerified": false,
+      "tsrunCommit": "41dbe3e41c692a1806f2cb900c5a0faa1549ae77"
+    }
+  },
+  "sierra-line": {
+    "conversion": {
+      "source": "source.png",
+      "dither": "line-sierra",
+      "strength": 1,
+      "candidateWritesPerRow": 10,
+      "actualWrites": 1159,
+      "maxWritesPerRow": 10,
+      "rowsWithNineOrTenWrites": 6,
+      "writeCountHistogram": {
+        "3": 2,
+        "4": 17,
+        "5": 53,
+        "6": 55,
+        "7": 37,
+        "8": 22,
+        "9": 5,
+        "10": 1
+      },
+      "cellsWithMoreThanTwoColors": 372,
+      "maxMulticolorCellsPerRow": 6,
+      "untrimmedWrites": 1159,
+      "budgetTrimmed": 0,
+      "averaged2x2LinearRgbMse": {
+        "ecm": 0.006041619281340765,
+        "dynamic": 0.005877718355005378
+      },
+      "relativeAveragedMseReduction": 0.027128641958884536,
+      "restoreTiming": {
+        "beforeT": 8749,
+        "afterT": 5002
+      },
+      "hardwareVerified": false
+    },
+    "validation": {
+      "frames": 360,
+      "checkedVisiblePixels": 55296000,
+      "pixelMismatches": 0,
+      "framesByMode": {
+        "dynamic": 240,
+        "ecm": 120
+      },
+      "spaceTogglesVerified": 2,
+      "attributeWritesPerDynamicFrame": 2318,
+      "maxChangesPerRow": 10,
+      "prestagedResets": 775,
+      "allAttributeWritesTimed": true,
+      "comparisonMatchesSuppliedTap": false,
+      "hardwareVerified": false,
+      "tsrunCommit": "41dbe3e41c692a1806f2cb900c5a0faa1549ae77"
+    }
+  },
+  "sierra2": {
+    "conversion": {
+      "source": "source.png",
+      "dither": "sierra2",
+      "strength": 1,
+      "candidateWritesPerRow": 10,
+      "actualWrites": 1014,
+      "maxWritesPerRow": 9,
+      "rowsWithNineOrTenWrites": 1,
+      "writeCountHistogram": {
+        "2": 2,
+        "3": 17,
+        "4": 32,
+        "5": 57,
+        "6": 48,
+        "7": 31,
+        "8": 4,
+        "9": 1
+      },
+      "cellsWithMoreThanTwoColors": 403,
+      "maxMulticolorCellsPerRow": 6,
+      "untrimmedWrites": 1014,
+      "budgetTrimmed": 0,
+      "averaged2x2LinearRgbMse": {
+        "ecm": 0.00489711357807442,
+        "dynamic": 0.004714735820807535
+      },
+      "relativeAveragedMseReduction": 0.03724188838164477,
+      "restoreTiming": {
+        "beforeT": 8750,
+        "afterT": 2530
+      },
+      "hardwareVerified": false
+    },
+    "validation": {
+      "frames": 360,
+      "checkedVisiblePixels": 55296000,
+      "pixelMismatches": 0,
+      "framesByMode": {
+        "dynamic": 240,
+        "ecm": 120
+      },
+      "spaceTogglesVerified": 2,
+      "attributeWritesPerDynamicFrame": 2028,
+      "maxChangesPerRow": 9,
+      "prestagedResets": 630,
+      "allAttributeWritesTimed": true,
+      "comparisonMatchesSuppliedTap": false,
+      "hardwareVerified": false,
+      "tsrunCommit": "41dbe3e41c692a1806f2cb900c5a0faa1549ae77"
+    }
+  },
+  "9-independent": {
+    "conversion": {
+      "source": "source.png",
+      "dither": "sierra-lite",
+      "strength": 1,
+      "candidateWritesPerRow": 9,
+      "actualWrites": 1203,
+      "maxWritesPerRow": 9,
+      "rowsWithNineOrTenWrites": 2,
+      "writeCountHistogram": {
+        "3": 2,
+        "4": 13,
+        "5": 43,
+        "6": 48,
+        "7": 48,
+        "8": 36,
+        "9": 2
+      },
+      "cellsWithMoreThanTwoColors": 535,
+      "maxMulticolorCellsPerRow": 7,
+      "untrimmedWrites": 1203,
+      "budgetTrimmed": 0,
+      "averaged2x2LinearRgbMse": {
+        "ecm": 0.004118806008125609,
+        "dynamic": 0.004044676657535429
+      },
+      "relativeAveragedMseReduction": 0.01799777664787716,
+      "restoreTiming": {
+        "beforeT": 8745,
+        "afterT": 5754
+      },
+      "hardwareVerified": false
+    },
+    "validation": {
+      "frames": 360,
+      "checkedVisiblePixels": 55296000,
+      "pixelMismatches": 0,
+      "framesByMode": {
+        "dynamic": 240,
+        "ecm": 120
+      },
+      "spaceTogglesVerified": 2,
+      "attributeWritesPerDynamicFrame": 2406,
+      "maxChangesPerRow": 9,
+      "prestagedResets": 819,
+      "allAttributeWritesTimed": true,
+      "comparisonMatchesSuppliedTap": false,
+      "hardwareVerified": false,
+      "tsrunCommit": "41dbe3e41c692a1806f2cb900c5a0faa1549ae77"
+    }
+  },
+  "10-prover": {
+    "conversion": {
+      "prover": true,
+      "cellsWithMoreThanTwoColors": 640,
+      "maxMulticolorCellsPerRow": 10,
+      "actualWrites": 640,
+      "maxWritesPerRow": 10,
+      "hardwareVerified": false
+    },
+    "validation": {
+      "frames": 360,
+      "checkedVisiblePixels": 55296000,
+      "pixelMismatches": 0,
+      "framesByMode": {
+        "dynamic": 240,
+        "ecm": 120
+      },
+      "spaceTogglesVerified": 2,
+      "attributeWritesPerDynamicFrame": 1280,
+      "maxChangesPerRow": 10,
+      "prestagedResets": 512,
+      "allAttributeWritesTimed": true,
+      "comparisonMatchesSuppliedTap": false,
+      "hardwareVerified": false,
+      "tsrunCommit": "41dbe3e41c692a1806f2cb900c5a0faa1549ae77"
+    }
+  }
+}

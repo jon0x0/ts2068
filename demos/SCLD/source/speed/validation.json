@@ -1,0 +1,53 @@
+{
+  "frames": 120,
+  "checkedActivePixels": 11796480,
+  "pixelMismatches": 0,
+  "sameAddressWriteIntervalTstates": 7,
+  "phases": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "maxColorsPer8x1Cell": 4,
+  "targetCellHistogram": {
+    "2": 247,
+    "4": 188
+  },
+  "burstTests": [
+    {
+      "name": "PUSH BC",
+      "tstates": 11,
+      "writes": [
+        {
+          "address": 24833,
+          "value": 81
+        },
+        {
+          "address": 24832,
+          "value": 116
+        }
+      ],
+      "sameAddress": false
+    },
+    {
+      "name": "EX (SP),HL",
+      "tstates": 19,
+      "writes": [
+        {
+          "address": 24834,
+          "value": 116
+        },
+        {
+          "address": 24835,
+          "value": 81
+        }
+      ],
+      "sameAddress": false
+    }
+  ],
+  "hardwareVerified": false
+}

@@ -1,0 +1,19 @@
+{
+  "frames": 300,
+  "checkedVisiblePixels": 46080000,
+  "pixelMismatches": 0,
+  "modeWritesPerFrame": 1920,
+  "actualModeChangesPerFrame": 1734,
+  "horizontalBoundariesPerFrame": 1728,
+  "regionsPerLine": 10,
+  "allThreeModesOnEveryActiveLine": true,
+  "pixelsByMode": {
+    "H": 35328,
+    "E": 27648,
+    "N": 35328
+  },
+  "orderReversesEvery": 32,
+  "allPortWritesTimed": true,
+  "hardwareVerified": false,
+  "tsrunCommit": "41dbe3e41c692a1806f2cb900c5a0faa1549ae77"
+}

@@ -1,0 +1,32 @@
+{
+  "source": "source.png",
+  "dither": "sierra-lite",
+  "strength": 1,
+  "candidateWritesPerRow": 10,
+  "actualWrites": 1070,
+  "maxWritesPerRow": 9,
+  "rowsWithNineOrTenWrites": 3,
+  "writeCountHistogram": {
+    "3": 10,
+    "4": 27,
+    "5": 57,
+    "6": 56,
+    "7": 28,
+    "8": 11,
+    "9": 3
+  },
+  "cellsWithMoreThanTwoColors": 484,
+  "maxMulticolorCellsPerRow": 6,
+  "untrimmedWrites": 1070,
+  "budgetTrimmed": 0,
+  "averaged2x2LinearRgbMse": {
+    "ecm": 0.004118806008125609,
+    "dynamic": 0.004027276354289873
+  },
+  "relativeAveragedMseReduction": 0.022222375527073845,
+  "restoreTiming": {
+    "beforeT": 8737,
+    "afterT": 3501
+  },
+  "hardwareVerified": false
+}

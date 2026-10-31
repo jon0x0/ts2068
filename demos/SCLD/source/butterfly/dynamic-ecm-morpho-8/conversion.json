@@ -1,0 +1,31 @@
+{
+  "source": "source.jpg",
+  "referenceTap": "reference.tap",
+  "referenceToneMatching": "per-cell mean color matched; photograph supplies sub-cell variation",
+  "unchangedOutsideScheduledCells": true,
+  "width": 256,
+  "height": 192,
+  "fit": "stretch",
+  "dither": "floyd",
+  "ditherStrength": 1.0,
+  "pairSearch": "linear-light segment coverage; exhaustive two-new-attribute choice per row",
+  "scheduledCells": 1536,
+  "totalCells": 6144,
+  "cellsWithMoreThanTwoColors": 262,
+  "errorMetricTarget": "reference-tone-matched photograph",
+  "linearRgbMse": {
+    "ecm": 0.038610279533866906,
+    "dynamic": 0.03794942844445096
+  },
+  "averaged2x2LinearRgbMse": {
+    "ecm": 0.0051177664031240916,
+    "dynamic": 0.004915250946609578
+  },
+  "relativeAveragedMseReduction": 0.03957106295255863,
+  "palette": "Retro Pixel Converter Timex palette; BRIGHT black is gray",
+  "schedule": "eight cells per row; 14T cadence; alternating 2/6 pixel splits",
+  "columnStart": 2,
+  "hardwareVerified": false,
+  "midcellAttributeStores": 1536,
+  "differentAttributeValues": 889
+}

@@ -1,0 +1,18 @@
+{
+  "frames": 360,
+  "checkedVisiblePixels": 55296000,
+  "pixelMismatches": 0,
+  "framesByMode": {
+    "dynamic": 240,
+    "ecm": 120
+  },
+  "spaceTogglesVerified": 2,
+  "attributeWritesPerDynamicFrame": 2688,
+  "enhancedCellsPerRow": 7,
+  "prestagedResets": 768,
+  "allAttributeWritesTimed": true,
+  "unchangedOutsideScheduledCells": true,
+  "comparisonMatchesSuppliedTap": true,
+  "hardwareVerified": false,
+  "tsrunCommit": "41dbe3e41c692a1806f2cb900c5a0faa1549ae77"
+}

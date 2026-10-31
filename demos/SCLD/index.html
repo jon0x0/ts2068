@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Run twelve families of native TS2068 SCLD display experiments in a minimal TSRun player. Switch instantly, compare ECM images, and download cartridges and tapes.">
+  <title>SCLD Display Lab · TS2068</title>
+  <link rel="stylesheet" href="gallery.css">
+</head>
+<body>
+  <div class="spectrum" aria-hidden="true"></div>
+  <header class="masthead">
+    <div><a class="back" href="../../">TS2068 projects <span aria-hidden="true">↗</span></a><h1>SCLD Display Lab<span class="cursor" aria-hidden="true">_</span></h1></div>
+    <div class="intro"><p>Native Z80. One screen, more possibilities.</p><span class="meta">12 experiment families <span>·</span> TSRun <span>·</span> CRT off</span></div>
+  </header>
+  <main class="layout">
+    <aside class="library" aria-label="Choose a display experiment">
+      <div class="library-heading"><h2>Experiments</h2><span id="count">12</span></div>
+      <div id="demo-list" class="demo-list"></div>
+      <nav class="collection-links" aria-label="Collection downloads">
+        <a href="downloads/SCLD-cartridges.zip" download>All curated cartridges <span>↓</span></a>
+        <a href="downloads/TS2068-display-tricks-TAPs.zip" download>Complete 21-TAP collection <span>↓</span></a>
+        <a href="downloads/SCLD-sources.zip" download>Source &amp; recorded checks <span>↓</span></a>
+        <a href="README.md">Collection notes <span>↗</span></a>
+      </nav>
+    </aside>
+    <section class="workspace" aria-label="Live emulator and explanation">
+      <div class="now-playing"><span class="live-dot" aria-hidden="true"></span><span id="status" role="status">Loading the experiment list…</span><span id="engine-note">LIVE TSRun · no CRT filter</span></div>
+      <div class="screen-shell" id="screen-shell">
+        <canvas id="screen" width="640" height="480" tabindex="0" aria-label="Live TS2068 display. Click to focus; use the controls below."></canvas>
+        <div class="error" id="error" role="alert" hidden><strong>Could not load this cartridge.</strong><p id="error-detail"></p><button id="retry">Try again</button></div>
+      </div>
+      <div class="toolbar" aria-label="Emulator controls">
+        <div class="playback"><button id="previous" title="Previous experiment (Left arrow)" aria-label="Previous experiment">←</button><button id="pause" aria-pressed="false">Pause</button><button id="restart">Restart</button><button id="next" title="Next experiment (Right arrow)" aria-label="Next experiment">→</button></div>
+        <div><button id="native-space" hidden>Compare ECM</button><button id="fullscreen">Fullscreen</button></div>
+      </div>
+      <div class="selection-bar"><label for="variant">Version</label><select id="variant" aria-label="Experiment variant"></select><a id="cartridge-download" download>Download .dck <span>↓</span></a><a id="demo-source">Source <span>↗</span></a></div>
+      <article class="explanation" aria-labelledby="demo-title">
+        <p id="category" class="eyebrow">Mode mixing</p><h2 id="demo-title">Split Personality Evolution</h2><p id="subtitle" class="subtitle"></p>
+        <p id="what"></p>
+        <div class="explanation-grid"><section><h3>How it works</h3><p id="how"></p></section><section><h3>What to look for</h3><p id="look"></p></section></div>
+        <p id="experimental" class="experimental" hidden><strong>Emulator experiment.</strong> The extra colors from mid-cell attribute writes depend on TSRun’s raster behavior. Physical SCLD attribute latching and contention remain unverified; this is not an established new hardware graphics mode.</p>
+        <div class="controls-note"><span id="controls"></span><div id="manual-controls" hidden><button data-native="KeyQ">Boundary ↑</button><button data-native="KeyA">Boundary ↓</button><button data-native="KeyR">Auto</button></div></div>
+        <div class="detail-links"><a id="technical">Technical notes ↗</a><a id="permalink">Link to this experiment ↗</a></div>
+        <details class="tape-downloads"><summary>TAP versions &amp; hardware notes</summary><div id="tapes"></div><p>The browser runs cartridge versions. Standard-RAM TAPs support Q/Enter exit; some are adapted from the cartridge sequence. The Pico Evolution TAP needs supported TS-Pico 2.x firmware, overwrites SRAM slots 2–15 and is not runnable in this browser player. <a href="downloads/TS2068-TAP-guide.md">Read the TAP guide</a> · <a href="downloads/Split-Personality-Evolution-Pico-TAP.md">Pico requirements</a></p></details>
+      </article>
+    </section>
+  </main>
+  <footer><p>Click another experiment to switch immediately. Left / Right: change experiment. Space: the cartridge’s own control, when available.</p><p>TSRun by <a href="https://github.com/josef-jelinek/TSRun">Josef Jelinek</a>, pinned to the tested October 4, 2026 core. These are running Z80 cartridges, not prerecorded videos. <a href="https://github.com/jon0x0/ts2068/tree/main/demos/SCLD">GitHub source</a></p></footer>
+  <noscript><p class="noscript">Enable JavaScript to run the cartridges. The <a href="downloads/SCLD-cartridges.zip">cartridge downloads</a> and <a href="README.md">collection notes</a> are available without it.</p></noscript>
+  <script type="module" src="gallery.js"></script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+{
+  "frames": 3300,
+  "pixels": 322928640,
+  "pixelMismatches": 0,
+  "allVisibleBordersChecked": true,
+  "stableAnimatedTopAndBottomBorder": "green",
+  "independentEcmAndHiresArtwork": true,
+  "loopRestarts": 3,
+  "restartFrames": 15,
+  "finalHoldFrames": 120,
+  "stages": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "stableFinalFrames": 360,
+  "exactPerScanlineTiming": true,
+  "finalBorderColors": {
+    "upperLeft": "green",
+    "upperRight": "blue",
+    "lowerLeft": "magenta",
+    "lowerRight": "red"
+  },
+  "lowerLeftInk": "green (native complement of magenta)",
+  "samples": [
+    {
+      "file": "000.ppm",
+      "stage": 0
+    },
+    {
+      "file": "017.ppm",
+      "stage": 1
+    },
+    {
+      "file": "034.ppm",
+      "stage": 2
+    },
+    {
+      "file": "051.ppm",
+      "stage": 3
+    },
+    {
+      "file": "059.ppm",
+      "stage": 4
+    },
+    {
+      "file": "067.ppm",
+      "stage": 4
+    },
+    {
+      "file": "075.ppm",
+      "stage": 4
+    },
+    {
+      "file": "083.ppm",
+      "stage": 5
+    },
+    {
+      "file": "084.ppm",
+      "stage": 5
+    },
+    {
+      "file": "088.ppm",
+      "stage": 5
+    },
+    {
+      "file": "092.ppm",
+      "stage": 5
+    },
+    {
+      "file": "096.ppm",
+      "stage": 5
+    },
+    {
+      "file": "100.ppm",
+      "stage": 5
+    }
+  ]
+}

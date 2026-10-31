@@ -1,0 +1,52 @@
+{
+  "frames": 180,
+  "checkedPixels": 27648000,
+  "modeWrites": 86400,
+  "exactModePhases": [
+    8,
+    96
+  ],
+  "paletteSwatches": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "onePixelVerticalColorSequence": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "ecmOnePixelChecker": true,
+  "leftMode": "ECM 2",
+  "rightMode": "512-mode 6; yellow ink / blue paper",
+  "leftBorder": "green",
+  "rightBorder": "blue",
+  "pixelMismatches": 0,
+  "tsrunCommit": "41dbe3e41c692a1806f2cb900c5a0faa1549ae77"
+}

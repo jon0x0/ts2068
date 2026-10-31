@@ -1,0 +1,68 @@
+{
+  "browser": "156.0.8078.74",
+  "families": 12,
+  "variants": 18,
+  "crt": false,
+  "iframeCount": 0,
+  "pauseResume": true,
+  "rapidSwitch": true,
+  "deepLinks": true,
+  "variantDownloads": true,
+  "keyboardNavigation": true,
+  "mobileNoHorizontalOverflow": true,
+  "fetchFailureRetry": true,
+  "fullscreen": true,
+  "nearestNeighbor": true,
+  "allLocalLinksOk": true,
+  "pageErrors": [],
+  "switchChecks": [
+    {
+      "id": "evolution",
+      "clickToReadyMs": 94
+    },
+    {
+      "id": "triple",
+      "clickToReadyMs": 67
+    },
+    {
+      "id": "split",
+      "clickToReadyMs": 64
+    },
+    {
+      "id": "reveal",
+      "clickToReadyMs": 80
+    },
+    {
+      "id": "atlas",
+      "clickToReadyMs": 76
+    },
+    {
+      "id": "macaw",
+      "clickToReadyMs": 75
+    },
+    {
+      "id": "butterfly",
+      "clickToReadyMs": 68
+    },
+    {
+      "id": "prismatic",
+      "clickToReadyMs": 69
+    },
+    {
+      "id": "prover",
+      "clickToReadyMs": 60
+    },
+    {
+      "id": "race",
+      "clickToReadyMs": 78
+    },
+    {
+      "id": "speed",
+      "clickToReadyMs": 69
+    },
+    {
+      "id": "probe",
+      "clickToReadyMs": 74
+    }
+  ]
+}

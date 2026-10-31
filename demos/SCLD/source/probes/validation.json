@@ -1,0 +1,140 @@
+[
+  {
+    "cartridge": "timex-dynamic-ecm-probe.dck",
+    "dockCopyBootstrapTested": false,
+    "frames": 120,
+    "checkedVisiblePixels": 18432000,
+    "pixelMismatches": 0,
+    "allAttributeWritesTimed": true,
+    "targetCellColorHistogram": {
+      "single": {
+        "2": 24,
+        "4": 12
+      },
+      "burst": {
+        "2": 58,
+        "4": 6
+      },
+      "dense": {
+        "2": 64,
+        "4": 32
+      }
+    },
+    "hardwareVerified": false
+  },
+  {
+    "cartridge": "timex-dynamic-ecm-probe-hardware.dck",
+    "dockCopyBootstrapTested": true,
+    "frames": 120,
+    "checkedVisiblePixels": 18432000,
+    "pixelMismatches": 0,
+    "allAttributeWritesTimed": true,
+    "targetCellColorHistogram": {
+      "single": {
+        "2": 24,
+        "4": 12
+      },
+      "burst": {
+        "2": 58,
+        "4": 6
+      },
+      "dense": {
+        "2": 64,
+        "4": 32
+      }
+    },
+    "hardwareVerified": false
+  },
+  {
+    "cartridge": "timex-dynamic-ecm-push.dck",
+    "dockCopyBootstrapTested": false,
+    "frames": 120,
+    "checkedVisiblePixels": 18432000,
+    "pixelMismatches": 0,
+    "allAttributeWritesTimed": true,
+    "targetCellColorHistogram": {
+      "single": {
+        "2": 24,
+        "4": 12
+      },
+      "burst": {
+        "2": 58,
+        "4": 6
+      },
+      "dense": {
+        "2": 64,
+        "4": 32
+      }
+    },
+    "hardwareVerified": false
+  },
+  {
+    "cartridge": "timex-dynamic-ecm-push-hardware.dck",
+    "dockCopyBootstrapTested": true,
+    "frames": 120,
+    "checkedVisiblePixels": 18432000,
+    "pixelMismatches": 0,
+    "allAttributeWritesTimed": true,
+    "targetCellColorHistogram": {
+      "single": {
+        "2": 24,
+        "4": 12
+      },
+      "burst": {
+        "2": 58,
+        "4": 6
+      },
+      "dense": {
+        "2": 64,
+        "4": 32
+      }
+    },
+    "hardwareVerified": false
+  },
+  {
+    "cartridge": "timex-dynamic-ecm-exchange.dck",
+    "dockCopyBootstrapTested": false,
+    "frames": 120,
+    "checkedVisiblePixels": 18432000,
+    "pixelMismatches": 0,
+    "allAttributeWritesTimed": true,
+    "targetCellColorHistogram": {
+      "single": {
+        "2": 24,
+        "4": 12
+      },
+      "burst": {
+        "2": 58,
+        "4": 6
+      },
+      "dense": {
+        "2": 64,
+        "4": 32
+      }
+    },
+    "hardwareVerified": false
+  },
+  {
+    "cartridge": "timex-dynamic-ecm-exchange-hardware.dck",
+    "dockCopyBootstrapTested": true,
+    "frames": 120,
+    "checkedVisiblePixels": 18432000,
+    "pixelMismatches": 0,
+    "allAttributeWritesTimed": true,
+    "targetCellColorHistogram": {
+      "single": {
+        "2": 24,
+        "4": 12
+      },
+      "burst": {
+        "2": 58,
+        "4": 6
+      },
+      "dense": {
+        "2": 64,
+        "4": 32
+      }
+    },
+    "hardwareVerified": false
+  }
+]
