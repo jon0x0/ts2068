@@ -32,6 +32,7 @@ groups = {
         ('Aqueduct', 'Aqueduct and speedboat parallax demo.', [('Play', 'https://jon0x0.github.io/aqueduct_ts2068/'), ('Project', GITHUB+'aqueduct_ts2068')]),
     ],
     'Applications': [
+        ('VU-3D', 'Cartridge conversion with the wineglass example and Shade keyboard fix; run the original in TSRun or visit Josef’s WU-3D recreation.', [('Release & downloads', 'ts2068-cartridges/conversions/VU3D/'), ('Run in TSRun', 'ts2068-cartridges/conversions/VU3D/play/'), ('Josef’s WU-3D', 'https://josef-jelinek.github.io/WU-3D/')]),
         ('ZXDesk2068', 'A TS2068 port of mindbox77’s original ZX Spectrum ZXDesk, with 256×192 and 512×192 desktops, notes, clock, calendar and RAM files.', [('Project & downloads', 'ZXDesk2068/'), ('Original ZXDesk · mindbox77', 'https://github.com/mindbox77/zxdesk'), ('Normal screen', 'ZXDesk2068/?mode=normal#try'), ('High resolution', 'ZXDesk2068/?mode=hires#try'), ('Mouse interface proposal', 'ZXDesk2068/#mouse')]),
         ('CP/M 2.2', 'Cartridge CP/M with TSPico RAMDisk, Oliger/Fuse disk images, 64/80 columns and a browser environment.', [('Project & downloads', 'CPM_2.2_2068/'), ('Run CP/M', 'CPM_2.2_2068/play/'), ('Quickstart', 'CPM_2.2_2068/docs/quickstart.html')]),
         ('TSWriter', 'Native word processor with proportional fonts, extended color, pictures and RTF interchange.', [('Run in browser', 'https://jon0x0.github.io/TSWriter/play/'), ('Project page', 'https://jon0x0.github.io/TSWriter/'), ('Project', GITHUB+'TSWriter')]),
@@ -50,7 +51,7 @@ def page(title, body, back=''):
     return '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+escape(title)+'</title><style>'+style+'</style></head><body><main>'+back+body+'<footer>Timex Sinclair 2068 projects · '+link('GitHub', GITHUB+'ts2068')+'<p>Projects retain their own attribution and licensing. Existing project URLs remain unchanged.</p></footer></main></body></html>\n'
 
 body='<p class="eyebrow">Timex Sinclair 2068</p><h1>TS2068</h1><p>Arcade and Spectrum ports, demos, applications and development tools — together in one place.</p>'
-body+='<div class="feature">'+link('TS2068 Cartridges →', 'ts2068-cartridges/')+'<p>Get all ten available .dck cartridge downloads from one catalog.</p></div>'
+body+='<div class="feature">'+link('TS2068 Cartridges →', 'ts2068-cartridges/')+'<p>Get all eleven available .dck cartridge downloads from one catalog.</p></div>'
 for heading, projects in groups.items():
     body+='<section><h2>'+escape(heading)+'</h2><div class="cards">'
     for title, description, links in projects:
@@ -79,7 +80,7 @@ for line in (ROOT/'ts2068-cartridges/README.md').read_text(encoding='utf-8').spl
         body+=link(label,target)
     body+='</div></article>'
 if opened:body+='</div></section>'
-assert count==10, f'Update the hub download count: found {count}'
+assert count==11, f'Update the hub download count: found {count}'
 body+='<p>Sinistar is a playable development port verified in emulators; physical hardware validation is pending. See each project for controls and compatibility.</p>'
 (ROOT/'ts2068-cartridges/index.html').write_text(page('TS2068 Cartridges', body, '<nav>'+link('← TS2068 hub','../')+'</nav>'),encoding='utf-8')
 (ROOT/'.nojekyll').touch()

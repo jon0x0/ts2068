@@ -43,6 +43,10 @@ These trial packages do not implement the proposed automatic mode menu.
 | --- | --- | --- |
 | The Crown | All three recovered dungeon levels, Leap v2 bytecode/runtime, TSVideoCodec startup animation and a native random dungeon initializer; keyboard and eight-direction player 1 joystick support | [Release](ts2068-cartridges/remastered/TheCrown/) · [Play with virtual DPad](ts2068-cartridges/remastered/TheCrown/play/) · [TheCrown.dck](ts2068-cartridges/remastered/TheCrown/TheCrown.dck) |
 
+## VU-3D cartridge conversion
+
+[Release and downloads](ts2068-cartridges/conversions/VU3D/) · [Run in TSRun](ts2068-cartridges/conversions/VU3D/play/) · [Josef Jelinek’s WU-3D](https://josef-jelinek.github.io/WU-3D/). Includes the wineglass example and the Shade keyboard fix.
+
 ## Development tools
 
 **[CP/M 2.2 for TS2068](CPM_2.2_2068/)** ·

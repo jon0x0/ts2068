@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" href="app.css">
+<title>TSRun</title>
+<style>
+body {
+    grid-template-areas: ". tv deck" "case case case";
+}
+/* The ROMs are part of the machine, so unlike the cartridge behind the dock
+   door they are seen through an opening cut into the case: the board inside,
+   with each chip in its socket, and the keys that replace them below. */
+.rom {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 300px;
+}
+/* The case wall shades the top of the opening and light catches its lower lip;
+   faint lines on the board stand in for its traces. */
+.rom-bay {
+    display: grid;
+    gap: 6px;
+    padding: 10px 12px;
+    border-radius: 4px;
+    background:
+        repeating-linear-gradient(90deg, transparent 0 17px, #FFFFFF0A 17px 18px),
+        repeating-linear-gradient(transparent 0 23px, #FFFFFF08 23px 24px),
+        #2A2A2A;
+    box-shadow: inset 0 4px 8px #000000B3, inset 0 0 0 1px #0000008C, 0 1px 0 #FFFFFFB3;
+}
+.rom-chip {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: 14px;
+}
+/* A DIP package: notch on the left, pins on both long sides */
+.dip {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 62px;
+    height: 26px;
+    margin: 4px 0;
+    padding-left: 12px;
+    border-radius: 2px;
+    background:
+        radial-gradient(circle at 0 50%, #B9B9B9 0 4px, transparent 4.5px),
+        linear-gradient(#2B2B2B, #121212);
+    box-shadow: 0 2px 3px #00000066;
+    color: #DADADA;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    line-height: 1.15;
+}
+.dip small {
+    color: #9A9A9A;
+    font-size: 8px;
+}
+.dip::before,
+.dip::after {
+    content: "";
+    position: absolute;
+    left: 5px;
+    right: 5px;
+    height: 4px;
+    background: repeating-linear-gradient(90deg, #7A7A7A 0 3px, transparent 3px 7px);
+}
+.dip::before {
+    top: -4px;
+}
+.dip::after {
+    bottom: -4px;
+}
+/* The socket around the chip, wide enough to take its pins */
+.rom-chip .dip {
+    margin: 7px;
+    box-shadow: 0 2px 3px #00000099, 0 0 0 6px #505050, 0 0 0 7px #161616;
+}
+.rom-chip .media-info {
+    overflow: hidden;
+    color: var(--label);
+    font-size: 11.5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.dock-keys,
+.rom-keys {
+    display: flex;
+    gap: 8px;
+}
+.dock-keys .kc,
+.rom-keys .kc {
+    flex: 1;
+}
+/* The folded strip: machine keys over the badge stripe, then the ROM opening
+   with its chips side by side and its keys stacked beside it, the grille, and
+   the dock with its keys stacked the same way. */
+body:has(#keyboard-toggle:not(:checked)) .case {
+    grid-template-columns: auto auto minmax(0, 1fr) auto;
+    grid-template-areas: "fn rom grille dock" "brand rom grille dock";
+}
+body:has(#keyboard-toggle:not(:checked)) .rom {
+    grid-area: rom;
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    gap: 6px 14px;
+    max-width: none;
+}
+body:has(#keyboard-toggle:not(:checked)) .rom-bay {
+    grid-template-columns: auto auto;
+    column-gap: 22px;
+}
+body:has(#keyboard-toggle:not(:checked)) .rom-keys {
+    grid-column: 2;
+    grid-row: 1 / 3;
+}
+body:has(#keyboard-toggle:not(:checked)) .dock-keys,
+body:has(#keyboard-toggle:not(:checked)) .rom-keys {
+    flex-direction: column;
+    width: 84px;
+}
+@media (max-width: 1100px) {
+    body {
+        grid-template-areas: "tv tv" "case case" ". deck";
+    }
+    /* The folded strip takes two rows: machine keys over the stripe on the
+       left, ROMs over the dock on the right. */
+    body:has(#keyboard-toggle:not(:checked)) .case {
+        grid-template-columns: auto minmax(0, 1fr);
+        grid-template-areas: "fn rom" "brand dock";
+    }
+    body:has(#keyboard-toggle:not(:checked)) .grille {
+        display: none;
+    }
+    body:has(#keyboard-toggle:not(:checked)) .rom,
+    body:has(#keyboard-toggle:not(:checked)) .dock {
+        justify-self: end;
+    }
+}
+@media (max-width: 760px) {
+    body {
+        grid-template-areas: "tv" "case" "deck";
+    }
+    .case {
+        grid-template-areas: "fn" "keys" "rom" "dock" "brand";
+    }
+    body:has(#keyboard-toggle:not(:checked)) .case {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas: "fn" "rom" "dock" "brand";
+    }
+    /* With the board shown too, the ROM opening and the dock keep the
+       folded strip's layout. */
+    .rom {
+        grid-area: rom;
+        display: grid;
+        grid-template-columns: auto auto;
+        align-items: center;
+        gap: 6px 14px;
+        max-width: none;
+    }
+    .rom-keys {
+        grid-column: 2;
+        grid-row: 1 / 3;
+    }
+    .dock-keys,
+    .rom-keys {
+        flex-direction: column;
+        width: 84px;
+    }
+    .rom-bay,
+    body:has(#keyboard-toggle:not(:checked)) .rom-bay {
+        grid-template-columns: auto;
+    }
+    .rom,
+    .dock,
+    body:has(#keyboard-toggle:not(:checked)) .rom,
+    body:has(#keyboard-toggle:not(:checked)) .dock {
+        justify-self: start;
+    }
+}
+</style>
+</head>
+<body>
+<svg class="icon-defs" width="0" height="0">
+    <symbol id="i-eject" viewBox="0 0 24 24"><path d="M12 4 21 15H3z"/><path d="M3 18h18v3H3z"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M6 4v16l14-8z"/></symbol>
+    <symbol id="i-rew" viewBox="0 0 24 24"><path d="M12 5v14L2 12z"/><path d="M22 5v14l-10-7z"/></symbol>
+    <symbol id="i-ff" viewBox="0 0 24 24"><path d="M2 5v14l10-7z"/><path d="M12 5v14l10-7z"/></symbol>
+</svg>
+<div class="tv-slot">
+    <section class="tv" aria-label="Screen">
+        <div id="screen-slot">
+            <div class="tube">
+                <canvas id="screen" width="640" height="240"></canvas>
+            </div>
+        </div>
+        <div class="tv-foot">
+            <div class="tv-brand">TSRun<small>TS 2068 emulator</small></div>
+            <div class="status"><span id="init-info">Initializing...</span><span id="sound-info" title="Emulated frames per second (60.1 is real time), then audio an overrun discarded and audio an underrun filled with silence, over the last second"></span><span id="startup-file-info"></span></div>
+            <div class="tv-controls">
+                <label class="tv-btn" title="Silence the emulator's sound; it keeps running at the same speed"><input id="muted" type="checkbox"><i class="led"></i><span class="cap"></span>Mute</label>
+                <label class="tv-btn" title="Spread AY channels A/B/C across the stereo image; the hardware is mono"><input id="stereo" type="checkbox"><i class="led"></i><span class="cap"></span>Stereo</label>
+                <label class="tv-btn" title="CRT display filter"><input id="crt" type="checkbox" checked><i class="led"></i><span class="cap"></span>CRT</label>
+                <button id="fullscreen-toggle" class="tv-btn" title="Fullscreen (F11)"><i class="led"></i><span class="cap"></span>Full</button>
+                <label class="tv-btn" title="Pause the emulated machine; press again to continue"><input id="paused" type="checkbox"><i class="led"></i><span class="cap"></span>Pause</label>
+            </div>
+        </div>
+    </section>
+</div>
+
+<aside class="deck">
+    <nav class="links">
+        <a href="archive.html">Archive browser</a>
+        <a href="https://github.com/josef-jelinek/TSRun">GitHub</a>
+    </nav>
+    <div id="printout" class="printout" aria-label="Tape contents" hidden>
+        <div class="slip">
+            <div class="slip-head"><b id="printout-name"></b><span id="printout-summary"></span></div>
+            <div id="printout-rows" class="slip-rows">
+                <table>
+                    <colgroup><col class="c-num"><col class="c-block"><col><col class="c-bytes"><col class="c-state"></colgroup>
+                    <thead><tr><th class="num">#</th><th>Block</th><th>Contents</th><th class="num">Bytes</th><th></th></tr></thead>
+                    <tbody id="tape-blocks"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <section id="recorder" class="recorder" aria-label="Tape" data-state="empty">
+        <div class="plate"><b>TS 2020</b><span class="fill"></span><span>Program recorder</span></div>
+        <div class="window">
+            <div class="cassette">
+                <div class="cas-label"><span class="side-a">A</span><span id="tape-label" class="name"></span></div>
+                <div class="cas-window"><i class="reel"></i><i class="reel"></i></div>
+            </div>
+        </div>
+        <div class="transport">
+            <div id="tape-counter" class="counter" title="Next block"><span>0</span><span>0</span><span>0</span></div>
+            <span id="tape-total" class="counter-note"></span>
+        </div>
+        <div id="tape-info" class="media-info">No tape</div>
+        <div class="piano">
+            <button id="load-tape" class="pk" title="Insert a .tap or .tzx tape"><span class="cap"><svg class="i"><use href="#i-eject"></use></svg></span>Load</button>
+            <input id="file-tape" type="file" accept=".tap,.tzx" style="display: none">
+            <button id="rew-tape" class="pk" title="Rewind to the start of this block, or to the previous block" disabled><span class="cap"><svg class="i"><use href="#i-rew"></use></svg></span>Rew</button>
+            <button id="play-tape" class="pk" title="Start or resume tape playback" disabled><span class="cap"><svg class="i"><use href="#i-play"></use></svg></span><span id="play-tape-label">Play</span></button>
+            <button id="ff-tape" class="pk" title="Fast-forward past the next block" disabled><span class="cap"><svg class="i"><use href="#i-ff"></use></svg></span>FF</button>
+            <label class="pk" title="Start selected tapes with the bundled TS2068 ROM loader"><input id="auto" type="checkbox" checked><span class="cap"><i class="led"></i></span>Auto</label>
+            <label class="pk" title="Run many times faster than real time while the tape plays"><input id="turbo" type="checkbox" checked><span class="cap"><i class="led"></i></span>Turbo</label>
+        </div>
+    </section>
+</aside>
+
+<section class="case" aria-label="Machine">
+    <div id="keyboard-split" title="Drag to resize the keyboard"></div>
+    <div class="badge">
+        <div class="fn-keys">
+            <button id="reset" class="kc" title="Restart the Z80 at address 0; tape and cartridge stay"><b>RESET</b><small>PC 0000</small></button>
+            <button id="nmi" class="kc" title="Non-maskable interrupt"><b>NMI</b><small>PC 0066</small></button>
+            <label class="kc" title="Onscreen keyboard (F1)"><input id="keyboard-toggle" type="checkbox"><b>KEYS</b><i class="led"></i><small>F1</small></label>
+        </div>
+        <div class="rom">
+            <div class="case-label"><span>ROM</span><span>LOAD RESETS</span></div>
+            <div class="rom-bay" aria-label="ROMs">
+                <div class="rom-chip">
+                    <div class="dip">HOME<small>16K</small></div>
+                    <div id="rom0-info" class="media-info">No HOME ROM file</div>
+                </div>
+                <div class="rom-chip">
+                    <div class="dip">EXROM<small>8K</small></div>
+                    <div id="rom1-info" class="media-info">No EXROM file</div>
+                </div>
+            </div>
+            <div class="rom-keys">
+                <button id="load-rom0" class="kc" title="Set the 16K HOME ROM"><b>LOAD</b><small>ROM0</small></button>
+                <input id="file-rom0" type="file" accept=".rom, .bin" style="display: none">
+                <button id="load-rom1" class="kc" title="Set the 8K EXROM"><b>LOAD</b><small>ROM1</small></button>
+                <input id="file-rom1" type="file" accept=".rom, .bin" style="display: none">
+            </div>
+        </div>
+        <div class="brand">
+            <div class="stripe"><i></i><i></i><i></i></div>
+            <div class="pcc">PERSONAL COLOR COMPUTER</div>
+        </div>
+    </div>
+
+    <div class="grille"></div>
+    <div id="keyboard">
+        <div class="keyboard-face"></div>
+    </div>
+
+    <div class="dock">
+        <div class="door">
+            <div class="case-label"><span>DOCK</span><span>LROS · AROS</span></div>
+            <div class="slot"><div id="cart-info" class="media-info">No cartridge.</div></div>
+        </div>
+        <div class="dock-keys">
+            <button id="load-cart" class="kc" title="Insert a .dck cartridge and reset"><b>LOAD</b><small>Cart</small></button>
+            <input id="file-cart" type="file" accept=".dck" style="display: none">
+            <button id="eject-cart" class="kc" title="Unplug the cartridge and reset" disabled><b>EJECT</b><small>Cart</small></button>
+        </div>
+        <div class="ports">
+            <div class="port"><i class="dsub"></i><span>Joy 1<small id="joy1-info">No gamepad</small></span></div>
+            <div class="port"><i class="dsub"></i><span>Joy 2<small id="joy2-info">No gamepad</small></span></div>
+        </div>
+    </div>
+</section>
+<script type="module" src="main.js"></script>
+</body>
+</html>

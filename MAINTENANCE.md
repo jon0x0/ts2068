@@ -166,3 +166,7 @@ not a cartridge the gallery can run. It overwrites SRAM slots 2–15.
 Pages already serves the main branch root. Publishing this prepared directory
 and the generated hub update makes the gallery available at
 https://jon0x0.github.io/ts2068/demos/SCLD/. No new Pages workflow is required.
+
+## VU-3D cartridge conversion
+
+Published under `ts2068-cartridges/conversions/VU3D/`. Preserve the final G4M cartridge, raw ROM and EPROM image with their checksums. The player has its own pinned TSRun snapshot and links to Josef Jelinek’s separate WU-3D recreation. Hub entry is owned by `scripts/build_site.py`; catalog entry by the cartridge README. See the release validation notes before making compatibility claims.

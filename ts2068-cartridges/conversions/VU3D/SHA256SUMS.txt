@@ -1,0 +1,3 @@
+a0610cab84f05ae3dcbbc70c4134bdd5d2caf83ff0270f3c73071a7f15e6826c  VU-3D.dck
+7701dc72bdebe06d41d75d77a37d5e3ddaf4c3a99fd33ddff415adaa7914cf9f  VU3D-rom.bin
+a9d1f5b5eec7ab29bfd4b2559e5e6f01e6a51576c93e6244bebcf4a445e72583  VU3D256Kbit.bin
