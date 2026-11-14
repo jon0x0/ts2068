@@ -1,0 +1,10 @@
+{
+  "reason": "User requested evaluation before committing these replacements. Preserve current r67 artwork.",
+  "entries": [
+    "L2_003",
+    "L2_004",
+    "L2_005",
+    "L2_006",
+    "L3_040"
+  ]
+}

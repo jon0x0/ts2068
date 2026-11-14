@@ -1,0 +1,13 @@
+import fs from'node:fs';import path from'node:path';import assert from'node:assert/strict';import{api,z}from'./r22_test_machine.mjs';import{out,symbols,demandFixture}from'./transition_disk_fixture.mjs';
+const f=demandFixture({delay:true,selectorDelay:500000}),{m,joy,controller:c,store}=f;let cacheRound=0,cachedVisits=[];let playedLevel=0;let updates=0,last=-1,frame=0,stage=0,initial=null,changes=[],mountCount=0;const read=m.bus.read;
+m.bus.read=a=>{if(m.stepAdded===0&&a===m.cpu.pc&&last!==m.tstates){last=m.tstates;if(a===0x8634){m.ram[0x91f2]=201;console.log('MENU',frame,'death opcode',m.ram[0x91f2]);}if(a===0x8b06&&read(0x7aa4)>0){const n=read(0x719c)-48;if(n!==playedLevel){playedLevel=n;updates=0;}updates++;}}return read(a);};
+for(frame=0;frame<45000;frame++){if(frame>34000&&frame%1000===0)console.log('Sample',frame,m.cpu.pc,m.cpu.sp,m.cpu.iff1,m.cpu.halted,m.ram[0xbe23],m.ram[0x8d8c]);
+ joy[0]=c.booted&&frame%180<90?239:255;api.runFrame(m);if(c.mounts.length!==mountCount){mountCount=c.mounts.length;updates=0;}
+ if(c.booted&&!initial){initial={frame,mounts:[...c.mounts],blocks:c.blocks};assert.deepEqual(c.mounts,['RTBOOT.TAP']);assert.equal(c.blocks,16);assert(c.initialLoadedSnapshot.equals(fs.readFileSync(path.join(out,'boot_region.bin'))),'Startup image byte mismatch before launch');console.log('Boot',initial);}
+ const level=m.dock[3][0x119c]-48;
+ if(cacheRound===1&&playedLevel===8&&updates>120){cachedVisits.push(8);break;}if(c.booted&&level>=1&&level<=8&&updates>120&&stage===level-1){if(cacheRound===1)cachedVisits.push(level);m.dock[3][0x1a9b]=1;stage++;updates=0;changes.push({frame,level,force_victory:true});console.log('Victory',level,frame);}
+ if(stage===8&&playedLevel===1&&level===1&&updates>50){assert.equal(cacheRound,0);cacheRound=1;stage=0;updates=0;console.log('Second circuit: disk cache only');}
+ if(m.cpu.pc===56){fs.writeFileSync(path.join(out,'failed.home.bin'),m.ram);fs.writeFileSync(path.join(out,'failed.store.bin'),store);throw Error('ROM38 '+JSON.stringify({frame,region:c.region,commands:c.commands,sp:m.cpu.sp,desired:m.ram[0xfda4],page:m.ram[0xd600],op:m.ram[0xd609]}));}if(m.cpu.pc===symbols.fatal_halt)throw Error('Loader error '+Buffer.from(m.ram.slice(symbols.error_text,symbols.error_text+23)).toString()+' step '+m.ram[0xd609]+' page '+m.ram[0xd600]);
+}
+fs.writeFileSync(path.join(out,'stalled.home.bin'),m.ram);for(const b of[1,2,3])fs.writeFileSync(path.join(out,`stalled.dock${b}.bin`),m.dock[b]);console.log({frame,pc:m.cpu.pc,sp:m.cpu.sp,mode:m.portFF,map:m.portF4,game:m.dock[3][0x1aa4],desired:m.ram[0xfda4],playedLevel,updates,stage,cacheRound,dead:m.ram[0x91f2],bindings:Array.from(m.dock[3].slice(0x1780,0x178c))});
+fs.writeFileSync(path.join(out,'stalled.cpu.json'),JSON.stringify(m.cpu));

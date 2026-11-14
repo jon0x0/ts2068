@@ -1,0 +1,107 @@
+*{box-sizing:border-box}body{margin:0;background:#080b0b;color:#eee;font:16px system-ui}main{height:100dvh;width:100%;display:flex;flex-direction:column;padding:8px;overflow:auto;background:#080b0b}header{height:38px;flex-shrink:0;display:flex;justify-content:space-between;align-items:center;gap:12px}header strong{color:#ff5454}button{min-height:44px;border:1px solid #778087;border-radius:10px;background:#293036;color:white;padding:8px 12px;font:inherit;touch-action:manipulation}button:disabled{opacity:.45}#fullscreen{min-height:34px;font-size:13px}
+#stage{flex:1;min-height:0;display:grid;grid-template-columns:clamp(110px,15vw,180px) minmax(0,1fr) clamp(110px,15vw,180px);gap:12px;align-items:center;position:relative}iframe{grid-column:2;grid-row:1;display:block;width:100%;height:100%;border:0;min-height:0}
+#pad{grid-column:1;grid-row:1;width:100%;aspect-ratio:1;position:relative;border-radius:50%;border:3px solid #555;background:repeating-conic-gradient(from 22.5deg,#333 0deg 43deg,#555 43deg 45deg);box-shadow:inset 0 3px 10px #000,0 2px 0 #666;touch-action:none;user-select:none;-webkit-user-select:none}#knob{position:absolute;inset:26%;border-radius:50%;background:radial-gradient(circle at 35% 25%,#999,#444 65%,#222);box-shadow:0 4px 8px #000;pointer-events:none}
+#actions{grid-column:3;grid-row:1;position:absolute;top:50%;width:100%;transform:translateY(calc(clamp(80px,11vw,130px) / -2));display:flex;flex-direction:column;align-items:center;gap:20px}#fire{width:clamp(80px,11vw,130px);height:clamp(80px,11vw,130px);border-radius:50%;border:6px solid #580909;background:radial-gradient(circle at 35% 25%,#f77,#e21b1b 55%,#970000);box-shadow:inset 0 2px 2px #faa,0 5px 0 #310000,0 7px 8px #000;font-weight:bold;touch-action:none;user-select:none}#below-fire{width:100%;display:flex;flex-wrap:wrap;justify-content:center;gap:8px}#below-fire button{font-size:12px;padding:6px 4px;flex:1 0 45%;min-width:0;white-space:nowrap}#coin{flex-basis:100%!important}#status{position:fixed;bottom:0;left:0;max-width:100%;margin:0;padding:6px;background:#080b0b;font-size:14px}#status:empty{display:none}
+@media(max-aspect-ratio:1/1){#stage{grid-template-columns:1fr 1fr;grid-template-rows:minmax(0,1fr) 235px;gap:12px}iframe{grid-column:1/3;grid-row:1}#pad{grid-column:1;grid-row:2;width:min(35vw,160px);align-self:start;justify-self:start;margin-top:10px}#actions{grid-column:2;grid-row:2;position:static;transform:none;align-self:start;justify-self:end;width:min(42vw,180px);margin-top:10px}#fire{width:100px;height:100px}}
+
+@media(min-aspect-ratio:1/1){
+ main{padding:0;overflow:hidden}
+ header{position:absolute;top:6px;left:8px;right:8px;z-index:2;pointer-events:none}
+ header button{pointer-events:auto}
+ #stage{height:100dvh;grid-template-columns:minmax(0,1fr) min(calc(100dvh * 4 / 3),80vw) minmax(0,1fr);gap:0}
+ #pad{width:min(85%,180px);justify-self:center}
+ #actions{width:min(92%,180px);justify-self:center}
+}
+@media(min-aspect-ratio:1/1){
+ #actions{top:0;bottom:0;transform:none;display:block}
+ #fire{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}
+ #below-fire{position:absolute;bottom:8px;left:0}
+}
+@media(max-aspect-ratio:1/1){
+ #actions{height:100%;margin-top:0;position:relative;display:block}
+ #fire{position:absolute;top:10px;left:50%;transform:translateX(-50%)}
+ #below-fire{position:absolute;bottom:0;left:0}
+}
+@media(max-aspect-ratio:1/1){#stage{flex:none;height:calc(100dvh - 54px)}}
+main:fullscreen{width:100vw;height:100dvh;max-width:none;max-height:none}
+@media(min-aspect-ratio:1/1){main:fullscreen #stage{height:100dvh;flex:none}main:fullscreen header{height:0}main:fullscreen header strong{display:none}}
+@media(max-aspect-ratio:1/1){#actions{top:auto;bottom:auto}}
+/* Session actions stay in the top-right corner, away from the thumb controls. */
+#below-fire{position:fixed;top:8px;right:8px;bottom:auto;left:auto;width:clamp(145px,15vw,180px);z-index:3}
+header{justify-content:flex-start}
+#fullscreen{margin-left:12px}
+@media(min-aspect-ratio:1/1){#below-fire{position:fixed;top:8px;right:8px;bottom:auto;left:auto}main:fullscreen header{height:38px}}
+@media(max-aspect-ratio:1/1){header{height:108px;align-items:flex-start}header strong{padding-top:8px}#fullscreen{margin-left:0}#stage{height:calc(100dvh - 124px);grid-template-rows:minmax(0,1fr) 160px}#below-fire{position:fixed;top:8px;right:8px;bottom:auto;left:auto}}
+@media(min-aspect-ratio:1/1){#below-fire{width:clamp(100px,calc((100vw - min(100dvh * 4 / 3,80vw)) / 2 - 16px),180px)}}
+
+/* Fill the available thumb area; leave the full-height screen unobscured. */
+#pad::before{content:"";position:absolute;inset:27.5%;border:2px solid #aaa8;border-radius:50%;background:#2228;pointer-events:none}
+@media(min-aspect-ratio:1/1){#pad{width:min(calc(100% - 8px),80dvh)}}
+@media(max-aspect-ratio:1/1){#stage{grid-template-rows:minmax(0,1fr) min(46vw,240px)}#pad{width:min(100%,calc(46vw - 8px),232px);margin-top:4px}}
+
+/* Keep all session controls and the touch switch reachable when touch is off. */
+#below-fire #coin{flex-basis:45%!important;white-space:normal}
+#touch-toggle{white-space:nowrap}
+.touch-off #pad,.touch-off #fire{display:none}
+@media(max-aspect-ratio:1/1){.touch-off #stage{grid-template-rows:minmax(0,1fr) 0;row-gap:0}.touch-off #actions{margin:0}}
+
+/* Upper-left display controls; upper-right session controls. */
+header #touch-toggle{pointer-events:auto;min-height:34px;font-size:13px;padding:8px 12px}
+#below-fire #coin{flex-basis:100%!important}
+@media(max-aspect-ratio:1/1){header{flex-wrap:wrap;align-content:flex-start;width:calc(100% - clamp(145px,15vw,180px) - 16px);gap:8px}header strong{flex-basis:100%}header #touch-toggle{margin:0}}
+
+/* Keep the name visible in fullscreen; CRT sits below the display buttons. */
+header{display:grid;grid-template-columns:auto auto auto;grid-template-rows:34px 34px;justify-content:start;align-content:start;gap:8px 12px;height:auto}
+header strong,main:fullscreen header strong{display:block;grid-column:1;grid-row:1;align-self:center}
+#fullscreen{grid-column:2;grid-row:1;margin-left:0}
+#touch-toggle{grid-column:3;grid-row:1}
+#crt-toggle{grid-column:2;grid-row:2;pointer-events:auto;min-height:34px;font-size:13px;padding:8px 12px}
+@media(max-aspect-ratio:1/1){header{height:108px;grid-template-columns:auto auto;grid-template-rows:24px 34px 34px;gap:4px 8px}header strong,main:fullscreen header strong{grid-column:1/3;grid-row:1;padding:0}#fullscreen{grid-column:1;grid-row:2}#touch-toggle{grid-column:2;grid-row:2}#crt-toggle{grid-column:1;grid-row:3}}
+
+.brand{line-height:1.05}.brand span{display:block;font-size:12px;letter-spacing:.09em;margin-top:3px}
+@media(max-aspect-ratio:1/1){header{grid-template-rows:34px 34px 34px}}
+
+/* TSRun active switch convention: blue background and black text. */
+header button[aria-pressed="true"]{background:#0bf;color:#000}
+header #touch-toggle{font-size:12px;line-height:12px;padding:4px 10px;text-align:center}
+
+header #touch-toggle{height:34px;min-height:34px;max-height:34px}
+
+/* Instructions have their own row, visible with or without virtual controls. */
+#sound-toggle{grid-column:3;grid-row:2;pointer-events:auto;height:34px;min-height:34px;font-size:12px;padding:4px 8px;white-space:nowrap}
+#controls-help{flex-shrink:0;padding:8px;text-align:center;color:#c4cdd1;font-size:12px;line-height:1.5;background:#080b0b}
+#controls-help span{display:block}
+#controls-help b{color:#fff}
+main{--help-height:70px}
+#controls-help{height:var(--help-height)}
+@media(min-aspect-ratio:1/1){
+ #stage,main:fullscreen #stage{height:calc(100dvh - var(--help-height));flex:none;grid-template-columns:minmax(0,1fr) min(calc((100dvh - var(--help-height)) * 4 / 3),80vw) minmax(0,1fr)}
+ #pad{max-width:calc(100dvh - var(--help-height) - 160px)}
+}
+@media(max-aspect-ratio:1/1){
+ main{--help-height:106px}
+ #sound-toggle{grid-column:2;grid-row:3}
+ #stage{height:calc(100dvh - 124px - var(--help-height))}
+ #controls-help{padding:8px 0}
+}
+
+@media(max-width:360px) and (max-aspect-ratio:1/1){main{--help-height:124px}header{column-gap:4px}header button{padding-left:7px!important;padding-right:7px!important}#below-fire{width:140px}}
+
+/* Reclaim the instruction row for fullscreen gameplay. */
+main:fullscreen{--help-height:0px;overflow:hidden}
+main:fullscreen #controls-help,main:fullscreen #status{display:none}
+
+main{height:auto;min-height:100dvh;overflow:auto!important}header{position:relative!important;height:auto;min-height:44px;flex-wrap:wrap;pointer-events:auto;inset:auto!important}header select{font:inherit;background:#293036;color:white;padding:8px}#stage{height:min(72vh,720px)!important;flex:none}#controls-help{height:auto!important;text-align:left;max-width:1000px;margin:auto;font-size:14px}#controls-help p{margin:8px 0}a{color:#8de0ed}#below-fire button{white-space:normal}main:fullscreen #stage{height:calc(100dvh - 60px)!important}main:fullscreen #controls-help{display:none}@media(max-aspect-ratio:1/1){#stage{height:68vh!important;grid-template-rows:minmax(0,1fr) 150px}#actions{gap:6px}#fire{height:80px;width:80px}#below-fire{gap:4px}#below-fire button{min-height:30px}}
+
+/* R-Type keeps level and session controls in normal flow. */
+header{display:flex!important;justify-content:flex-start;align-items:center!important;gap:8px;padding:8px;min-height:60px}
+header>*{grid-column:auto!important;grid-row:auto!important;position:static!important;flex-basis:auto!important;margin:0!important}
+header strong{flex:1 1 250px!important}header label{white-space:nowrap}
+header button{min-height:34px;font-size:13px}header #sound-toggle{height:34px}
+#actions{position:static!important;transform:none!important;display:flex!important;flex-direction:column;justify-content:center;align-items:center;gap:16px;height:100%;width:95%;margin:0!important}
+#fire{position:static!important;transform:none!important;flex-shrink:0}
+#below-fire{position:static!important;inset:auto!important;width:100%!important;display:grid;grid-template-columns:1fr 1fr;gap:6px}
+#below-fire button{font-size:12px;min-height:38px}
+@media(max-aspect-ratio:1/1){#stage{grid-template-rows:minmax(0,1fr) 220px!important}#actions{align-self:center!important;justify-self:center!important;width:95%;gap:8px}#pad{align-self:center;width:min(38vw,160px)}#below-fire button{min-height:32px}.touch-off #stage{grid-template-rows:minmax(0,1fr) 116px!important}}
+
+header{width:100%!important}header strong{max-width:100%}

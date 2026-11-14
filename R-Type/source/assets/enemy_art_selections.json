@@ -1,0 +1,68 @@
+{
+  "status": "L8 A-profile detail integrated in r52; other listed choices retain their recorded pending/integrated status",
+  "choices": {
+    "1": {
+      "8": "D",
+      "9": "D",
+      "16": "revisit geometry"
+    },
+    "2": {
+      "3": "D",
+      "4": "D"
+    },
+    "3": {
+      "40": "D",
+      "60": "A",
+      "101": "revisit source and resolution"
+    },
+    "4": {
+      "25": "D",
+      "27": "D"
+    },
+    "5": {
+      "8": "current",
+      "9": "current",
+      "11": "current"
+    },
+    "6": {
+      "all": "current"
+    },
+    "7": {
+      "49": "current",
+      "50": "current"
+    },
+    "8": {
+      "42": "A",
+      "43": "A",
+      "44": "A"
+    }
+  },
+  "interpretation": "User's L4 #11 current is provisionally interpreted as L5 #11, which was shown in the gallery. Unlisted descriptors are unchanged; choices do not automatically propagate to animation siblings.",
+  "profiles": {
+    "A": {
+      "gamma": 1.8,
+      "saturation": 4.5,
+      "hue_preserving": false
+    },
+    "D": {
+      "gamma": 1.8,
+      "saturation": 2.0,
+      "hue_preserving": true
+    }
+  },
+  "integration": {
+    "r52": {
+      "level": 8,
+      "descriptors": [
+        42,
+        43,
+        44,
+        45,
+        46
+      ],
+      "profile": "A direction: gamma1.8, saturation4.5, Sierra Lite after native-size scaling and packed-palette fitting",
+      "geometry_unchanged": true
+    },
+    "other_choices": "See per-build state; this update does not claim all pending gallery choices are integrated"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "palettePool": null,
+  "deathBypassForStress": true,
+  "nativeCompletion": false,
+  "passed": true,
+  "level": 7,
+  "frames": 4840,
+  "updates": 240,
+  "copies": 293,
+  "actors": 1432,
+  "repair": 0,
+  "stoppedSamples": 0,
+  "romWrites": 0,
+  "scope": "Live native double-B boss encounter with firing, 240 world updates; native death entry bypassed and invulnerability refreshed only for stress coverage; no victory or survival claim"
+}

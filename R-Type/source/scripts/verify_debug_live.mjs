@@ -1,0 +1,5 @@
+import fs from'node:fs';import path from'node:path';import assert from'node:assert/strict';import{root,api}from'./r22_test_machine.mjs';import{demandFixture}from'./debug_disk_fixture.mjs';
+const{m,joy,controller:c}=demandFixture();let boot=-1;for(let f=0;f<6000;f++){if(c.booted&&boot<0)boot=f;m.keyMatrix.fill(31);if(boot>=0&&f-boot>=600&&f-boot<700)m.keyMatrix[3]=27;joy[0]=boot>=0&&f-boot>=800&&f%180<90?239:255;api.runFrame(m);}
+assert.equal(c.region,2);m.ram.set([0xc3,0,0x84],0x8400);Object.assign(m.cpu,{pc:0x8400,sp:0xfff0,iff1:true,iff2:true,im:2,i:0x84,halted:false,eiDelay:false});m.stepAdded=0;m.portF4=9;m.portFF=2;m.keyMatrix.fill(31);joy.fill(255);for(let f=0;f<3;f++)api.runFrame(m);
+m.keyMatrix[0]=30;m.keyMatrix[1]=27;for(let f=0;f<20;f++)api.runFrame(m);
+const b=Buffer.from(m.ram);assert.equal(b.readUInt16LE(0x7c0e),0x8400,'Interrupted stuck main PC');assert.equal(b.readUInt16LE(0x7c20),0xfff0);assert.equal(m.cpu.iff1,false);assert(m.cpu.halted);fs.writeFileSync(path.join(root,'build/diagnostics/debug_key_r37/live_stall.home.bin'),b);console.log('Real frame IRQ captured deliberately stuck main loop at8400');

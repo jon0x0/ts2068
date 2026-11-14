@@ -1,0 +1,2 @@
+from pathlib import Path
+p=Path('scripts/verify_pause_r65.mjs');s=p.read_text();s=s.replace('const rr=m.bus.read;','const trace=[];const rr=m.bus.read;');s=s.replace('if(a===m.cpu.pc&&m.stepAdded===0){','if(a===m.cpu.pc&&m.stepAdded===0){trace.push([a,m.portF4,m.cpu.sp]);if(trace.length>100)trace.shift();if(a===0x8101&&m.portF4===25)throw Error(JSON.stringify({frame,boot,trace}));');Path('scripts/debug_pause_l5_r65.mjs').write_text(s)

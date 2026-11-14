@@ -1,0 +1,36 @@
+L2 artwork and scroll review r117 (offline, not a game release)
+
+Open index.html. Seven tabs cover terrain, approved C small walker, scorpion,
+white/green-legged creature, segmented snake, emergence heads and boss structure.
+Settings/crop/scale apply to all poses. Export choices or the L2 asset ZIP.
+Current game remains r116; no banks, gameplay, ROM archives or reference projects changed.
+
+Terrain geometry is locked256x160, including imported settings. Arcade material
+projection retains that silhouette but is NOT a verified one-to-one tile match.
+Original arcade context and full candidate/contact sheets are included. Scorpion
+and skeletal-chain matches are explicitly tentative. Frame order is NOT proven gait.
+Walker C source is exact previously approved converted artwork; neutral settings
+avoid double enhancement. Default24x24retains existing footprint,32is a size trial.
+
+Scrolling: hold pairs over each horizontal occupied run until an8pixelgap,
+or choose conservative full-row palettes. SierraLite, Floyd, ordered and nearest
+pair modes use the existing RPC CPU pipeline. Normal black at silhouettes;
+all8horizontalphases checked. Unchecking scrolling shows stationary-only detail.
+A legal offline picture does NOT establish collision, overlap, memory or game speed.
+
+Investigation: current L2 boss compressed tile payload and palette dictionary are
+byte-identical to r67, so no damaged stored asset was found. Current ordinary L2
+approach reproduced with1547worldupdates/27310emulatedframes, game-over/death
+bypass explicit. No double-B shortcut. Captures columns54..64and fine0..7.
+Pixel comparison on fine approach mostly finds exactonepixeltranslation in the
+boss interior; some mismatches remain due animated/overlapping objects. This is
+NOT proof of a completed fix. Red/yellow patch and boss entrance need runtime
+palette/tile-assembly work; no corrected game ZIP is supplied by this review.
+The proposed separate scroll-safe entrance / stationary detail / tentacle reveal
+remains to be implemented and gameplay-tested after source/palette choices.
+
+Browser tests (Edge): all7families,27sourceframes,
+legal normal ECM bytes, nativeZIPdownload,4dithers,gap/fullrow, locked terrain,
+independent8phaseaudit PASS. Chrome exited before openingtestpage; Edge used.
+Screenshots *_ui.png, native_inventory.png, arcade_inventory.png and RAMcaptures
+recorded; whitelegs_ui visually inspected. No hardware or measured performance claim.

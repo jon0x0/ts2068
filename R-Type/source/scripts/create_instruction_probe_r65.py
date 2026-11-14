@@ -1,0 +1,2 @@
+from pathlib import Path
+s=Path('scripts/verify_resident_title_r65.mjs').read_text();s=s.replace('const rr=m.bus.read;','let tracing=0;const log=[];const rr=m.bus.read;');s=s.replace('if(a===0x8634){','if(a===0x9ea6&&phase===3&&frame-mark>20&&frame-mark<250&&!tracing)tracing=1;if(tracing){log.push([a,m.cpu.a,m.cpu.f,m.cpu.b,m.cpu.c,m.portF4]);if(++tracing>60)throw Error(JSON.stringify({frame,log}));}if(a===0x8634){');Path('scripts/probe_ui_instructions_r65.mjs').write_text(s)

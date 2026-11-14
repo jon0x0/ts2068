@@ -1,0 +1,2 @@
+from pathlib import Path
+s=Path('scripts/verify_resident_title_r65.mjs').read_text().replace('frame<30000','frame<14500').replace('if(a===0x8634){','if(a===0x9ea6&&phase===3&&frame-mark<280)console.log("UI",frame,frame-mark,m.ram[0x5bc2],m.ram[0xfd4a],m.ram[0xfda5],Array.from(m.keyMatrix));if(a===0x8634){').replace('pc:m.cpu.pc,map:m.portF4,live:', 'u,bytes:Array.from(m.dock[4].slice(0x1ea0,0x1ed0)),pc:m.cpu.pc,map:m.portF4,live:');Path('scripts/probe_resident_ui_r65.mjs').write_text(s)

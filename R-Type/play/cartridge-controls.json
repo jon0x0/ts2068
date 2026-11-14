@@ -1,0 +1,48 @@
+{
+  "title": "R-Type Remastered",
+  "actions": [
+    {
+      "id": "start",
+      "label": "Start",
+      "code": "Space",
+      "placement": "below-fire"
+    },
+    {
+      "id": "keys",
+      "label": "Set keys",
+      "code": "Enter",
+      "placement": "below-fire"
+    },
+    {
+      "id": "boss",
+      "label": "Boss B B",
+      "sequence": [
+        "KeyB",
+        "KeyB"
+      ],
+      "placement": "below-fire"
+    },
+    {
+      "id": "music",
+      "label": "Music M",
+      "code": "KeyM",
+      "placement": "below-fire"
+    },
+    {
+      "id": "pause",
+      "label": "Pause",
+      "code": "KeyP",
+      "shift": true,
+      "placement": "below-fire"
+    },
+    {
+      "id": "detach",
+      "label": "Force / missile",
+      "code": "Enter",
+      "placement": "below-fire"
+    }
+  ],
+  "touchPad": {
+    "deadZone": 0.45
+  }
+}

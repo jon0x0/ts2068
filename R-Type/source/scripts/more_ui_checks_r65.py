@@ -1,0 +1,3 @@
+from pathlib import Path
+s=Path('scripts/verify_rapid_fire_r64.mjs').read_text().replace('boss_motion_fixture_r64','boss_motion_fixture_r65').replace('?239:255','?127:255');s=s.replace('for(let row=0;row<8;row++)if(!(selected.port&(1<<row)))m.keyMatrix[row]&=31^selected.mask','joy[0]=127');Path('scripts/verify_joystick_fire_r65.mjs').write_text(s)
+s=Path('scripts/verify_pause_r65.mjs').read_text();s=s.replace('phase=1;mark=frame;','phase=1;mark=frame;for(let j=0;j<6;j++)m.dock[3].set([254,2],0x1780+j*2);',1).replace('m.keyMatrix[5]&=~1;m.keyMatrix[0]&=~1;','m.keyMatrix[5]&=~1;');s=s.replace('`pause_L${level}.json`','`pause_plain_P_L${level}.json`');Path('scripts/verify_pause_plain_r65.mjs').write_text(s)

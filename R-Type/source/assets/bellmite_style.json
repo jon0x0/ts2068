@@ -1,0 +1,19 @@
+{
+  "native_sphere_frames": [
+    30,
+    31,
+    32,
+    33
+  ],
+  "approved_base": "B: deep shadows",
+  "requested_refinement": "Keep approved deep shadows; use dark-blue edge shading, retaining interior highlights",
+  "rim_candidates": {
+    "D": "Source-guided white upper/left rim, cyan inner edge, darker lower edge",
+    "E": "Stronger cyan perimeter with white upper/left edge"
+  },
+  "native_integration": "pending; previews are not a compositor fix",
+  "approved_edge_colour": "dark blue instead of white",
+  "preferred_edge_placement": "top and right, planned legal 8x1 cells",
+  "approved_edge_method": "H: planned edge with selective byte-boundary alignment",
+  "local_refinement": "K: small one-pixel contour trims under review; H remains approved baseline"
+}

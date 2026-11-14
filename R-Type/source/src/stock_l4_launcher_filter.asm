@@ -1,0 +1,5 @@
+ ORG FILTER_CODE
+ CP $FA
+ RET NZ
+ XOR A
+ RET

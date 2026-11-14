@@ -1,0 +1,41 @@
+R-Type TS2068 r127 - L2 snake anatomy and boss backdrop repair
+
+Replace the complete rtype folder, reset, and launch rtype/rt.tap.
+Startup identity: R127 PREPARING. Select level2; double B previews the boss.
+
+Snake head/tail orientation mappings remain unchanged. Native body records now
+keep chain-relative anatomical roles:9 round2450 segments then4 spiny2454
+segments. Both native animation phases retain the same part at each position.
+This adapts the arcade's round/spiny arrangement to the existing13-body chain.
+
+The stopped boss has an immutable predecoded2592-byte backdrop cache in L2
+bank6 CB00..D51F, after the native source snapshot and before the D800 IM2 page.
+Its pixels and legal8x1 colours are restored together after the displayed frame, updating native7800 attributes and7E00 dirty cells,
+so opaque shot/actor erasures cannot permanently destroy the boss artwork.
+Original native8CFD drawing entry is preserved. No gameplay/collision change.
+Four fixed32x24 mouth descriptors use precomposed background artwork; the
+nearly identical43 pose shares42's raw packet, preserving the proven decoder.
+All ten selected scorpion frames and the earlier projectile palette fix remain.
+
+The repair is189 bytes, with a59-byte initial capture helper. Drawing notifications avoid redundant repair scans. It flags only changed cells for visible refresh. Bank4 access is
+interrupt-protected on EVERY call; caller mapping/IFF and alternate registers
+are restored. A missed reverse-palette call after relocation was also fixed.
+The full diagnostic RAM capture is preserved; its screen shows16 key fields.
+
+Scripted emulation passed700 post-BB updates with sustained firing,5 exact
+background bitmap/colour comparisons, immutable cache checks, stable mixed
+snake roles,31 actual actor decodes,128 tile cases,96 shared palette rows and
+160 scrolling scanlines. Twelve cold/cached transitions,6 boss/reset/revisit
+routes,3 normal cold-start/fire timings, debug/Space redraw, all16 level tapes
+and actual256 IM2 words passed. Long boss coverage uses invulnerability and a
+game-over bypass; separate cold-start/fire tests do not. Hardware testing pending.
+
+Measured cached repair cost is about504000 emulated CPU cycles per call versus
+1288000 for the conservative redraw (about61% less). This is not a hardware FPS
+measurement or a claim of an equivalent whole-game speedup. Temporary shared-cell colour
+clash/opaque foreground edges remain possible; permanent backdrop damage is fixed.
+
+Other seven levels, stable r99/r100 and the stock64KB target are unchanged.
+This ZIP is the full banked disk candidate. Failed r127 diagnostic experiments
+are excluded from the package. Build: scripts/build_l2_roles_r127.py then
+scripts/finalize_l2_roles_r127.py after the listed final-binary checks.

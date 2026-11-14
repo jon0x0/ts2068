@@ -1,0 +1,32 @@
+R-Type L1 blue enemy - interactive source/conversion comparison
+
+Open index.html in Chrome or Edge. Standalone/offline, no server/API needed.
+The picturedcyanenemy is native41, currently40x40. This tool does NOT change
+acceptedlargewalker43/44orvirtual201-204, nor the playable game.
+
+A: original246/palette6, actualframe2400. Closest picturedpose.
+246/p11at2700and246/p2at3900arebyte-identicalRGBA: verified, not distinct
+colourchoices. Changingcapturedpalette-numberalone does not improve it.
+B: original256/258 relatedwalkingposes, normalizedunflippedfacing. May provide
+betterlegmovement; native41iscurrentlyonepose, so animatingitrequiresgamework.
+C: original260/262action/boostposes. Notadditionalwalkingintermediates.
+Current: actualr114native41forcomparison.
+
+AllarcadeRGBusesactualverifiedpalettefromframe2400; canonicalROMtilelayout
+avoidsalternatingdirectionfromcapturedspriteflipflags. Sourcegalleryincludes
+capturedalternatives, whereaseditablewalksourcehasconsistentfacing.
+No AIreplacement, no inventedintermediateframes.
+
+Default40x40 matchescurrentgamefootprint. Change32x32fororiginalarcadepixel
+size; sourceRGBisscaledbeforeRPCconversion. No integrationorperformancefit
+is implied byeditorchoices. Defaultconversionreuseslastghostsettings56/66/89/
+gamma0.74. PresetsincludepriorC52/59/82/.87andneutral/soft/RPCchoices.
+
+Brightness/contrast/saturation/gamma/crop/palette/dither apply to ALLposes in
+selectedset. Sourcecomparisons,currentart,32/40size,animation,8x1grid/inspector,
+SierraLite/FloydSteinberg/orderedBayer/none,normalblack,noFLASH/brightblack.
+Localautosaveisindependentofghost/walkereditors. ExportchoicesJSONorblueenemy
+assetZIP whenready; ZIPincludesPNGs/preserve masks/bitmap/attributes/column-
+majorpairedrows/settings/provenance. Sendexportbackforintegrationreview.
+
+GPLsource/licenceprovided. IllustrativeeditoranimationisnotgameFPS.

@@ -1,0 +1,30 @@
+R-Type TS2068 r130 - L2 boss star trails/holes
+
+Replace the complete rtype folder, reset, launch rtype/rt.tap.
+Startup identity: R130 PREPARING. Full disk build.
+
+Native stars run in interrupts between boss redraws. Both their old-pixel erase
+and new-pixel draw now respect the stopped L2 boss region. Stars at x0..63 stay
+active; x64..255 is conservatively occluded during the stopped encounter,
+including gaps in that region. Ordinary scrolling stars retain the native path.
+No extra boss redraw, new RAM allocation, artwork or animation changes.
+The r129 selective background and foreground restoration are preserved.
+
+Native sweep:9728cases (19active records of21slots x4speeds x32positions
+x4clockphases), zero writes into occupied boss cells; r129 negative control
+writes11408. Actual live700update firing encounter: zero star writes into boss,
+30974 outside. Two700update firing/ceasefire runs verify actual7523visible
+boss pixels at five checkpoints each. Firing also verifies1744background
+scanlinecells per checkpoint. Quiet-phase intermediate background differs at
+update300; actual visible output remains exact. Diagnostic retained in summary.
+12cold/cached transitions,6longbossrevisits,3ordinary cold/fire cases,31actor
+and128tile decodes,96palette160terrain rows,debug/Space,256actualRAM IM2words,
+all16tape reconstructions/TAP checksums/ZIPCRC pass. Long boss tests use
+invulnerability/game-over bypasses. Fixed-FF emulator, not hardware probes.
+
+Matched CPU cost versus r129: +0.32% (1642280cycles/update).
+This is scripted emulator CPU measurement, not hardware FPS.
+Other7levels, all artwork/cache/runtime-image bytes, stable99/100, stock64KB
+and reference projects/source ZIPs are unchanged. Hardware confirmation pending.
+
+Build: scripts/build_l2_star_guard_r130.py, finalize_l2_star_guard_r130.py.

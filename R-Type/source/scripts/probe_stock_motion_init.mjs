@@ -1,0 +1,1 @@
+import fs from'node:fs';import{stockFixture}from'./stock_fixture.mjs';const{m,out,call}=stockFixture(8),c=JSON.parse(fs.readFileSync(out+'/tap_motion_contract.json'));console.log(c.state,c.code,Array.from(m.ram.slice(...c.state)));call(c.code+3);console.log('reset',Array.from(m.ram.slice(c.state[0],c.state[0]+8)));

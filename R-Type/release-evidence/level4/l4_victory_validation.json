@@ -1,0 +1,436 @@
+{
+  "passed": true,
+  "counts": {
+    "34076": 16,
+    "34103": 16,
+    "34130": 16
+  },
+  "victory": true,
+  "hits": [
+    {
+      "encounter": 204,
+      "a": 34130,
+      "from": 16,
+      "to": 15
+    },
+    {
+      "encounter": 205,
+      "a": 34130,
+      "from": 15,
+      "to": 14
+    },
+    {
+      "encounter": 205,
+      "a": 34130,
+      "from": 14,
+      "to": 13
+    },
+    {
+      "encounter": 205,
+      "a": 34130,
+      "from": 13,
+      "to": 12
+    },
+    {
+      "encounter": 205,
+      "a": 34130,
+      "from": 12,
+      "to": 11
+    },
+    {
+      "encounter": 206,
+      "a": 34130,
+      "from": 11,
+      "to": 10
+    },
+    {
+      "encounter": 206,
+      "a": 34130,
+      "from": 10,
+      "to": 9
+    },
+    {
+      "encounter": 206,
+      "a": 34130,
+      "from": 9,
+      "to": 8
+    },
+    {
+      "encounter": 206,
+      "a": 34130,
+      "from": 8,
+      "to": 7
+    },
+    {
+      "encounter": 207,
+      "a": 34130,
+      "from": 7,
+      "to": 6
+    },
+    {
+      "encounter": 207,
+      "a": 34130,
+      "from": 6,
+      "to": 5
+    },
+    {
+      "encounter": 207,
+      "a": 34130,
+      "from": 5,
+      "to": 4
+    },
+    {
+      "encounter": 282,
+      "a": 34130,
+      "from": 4,
+      "to": 3
+    },
+    {
+      "encounter": 283,
+      "a": 34130,
+      "from": 3,
+      "to": 2
+    },
+    {
+      "encounter": 284,
+      "a": 34130,
+      "from": 2,
+      "to": 1
+    },
+    {
+      "encounter": 284,
+      "a": 34130,
+      "from": 1,
+      "to": 0
+    },
+    {
+      "encounter": 486,
+      "a": 34103,
+      "from": 16,
+      "to": 15
+    },
+    {
+      "encounter": 487,
+      "a": 34103,
+      "from": 15,
+      "to": 14
+    },
+    {
+      "encounter": 487,
+      "a": 34103,
+      "from": 14,
+      "to": 13
+    },
+    {
+      "encounter": 487,
+      "a": 34103,
+      "from": 13,
+      "to": 12
+    },
+    {
+      "encounter": 487,
+      "a": 34103,
+      "from": 12,
+      "to": 11
+    },
+    {
+      "encounter": 488,
+      "a": 34103,
+      "from": 11,
+      "to": 10
+    },
+    {
+      "encounter": 489,
+      "a": 34103,
+      "from": 10,
+      "to": 9
+    },
+    {
+      "encounter": 490,
+      "a": 34103,
+      "from": 9,
+      "to": 8
+    },
+    {
+      "encounter": 491,
+      "a": 34103,
+      "from": 8,
+      "to": 7
+    },
+    {
+      "encounter": 491,
+      "a": 34103,
+      "from": 7,
+      "to": 6
+    },
+    {
+      "encounter": 491,
+      "a": 34103,
+      "from": 6,
+      "to": 5
+    },
+    {
+      "encounter": 492,
+      "a": 34103,
+      "from": 5,
+      "to": 4
+    },
+    {
+      "encounter": 493,
+      "a": 34103,
+      "from": 4,
+      "to": 3
+    },
+    {
+      "encounter": 493,
+      "a": 34103,
+      "from": 3,
+      "to": 2
+    },
+    {
+      "encounter": 493,
+      "a": 34103,
+      "from": 2,
+      "to": 1
+    },
+    {
+      "encounter": 494,
+      "a": 34103,
+      "from": 1,
+      "to": 0
+    },
+    {
+      "encounter": 500,
+      "a": 34076,
+      "from": 16,
+      "to": 15
+    },
+    {
+      "encounter": 560,
+      "a": 34076,
+      "from": 15,
+      "to": 14
+    },
+    {
+      "encounter": 562,
+      "a": 34076,
+      "from": 14,
+      "to": 13
+    },
+    {
+      "encounter": 562,
+      "a": 34076,
+      "from": 13,
+      "to": 12
+    },
+    {
+      "encounter": 563,
+      "a": 34076,
+      "from": 12,
+      "to": 11
+    },
+    {
+      "encounter": 564,
+      "a": 34076,
+      "from": 11,
+      "to": 10
+    },
+    {
+      "encounter": 565,
+      "a": 34076,
+      "from": 10,
+      "to": 9
+    },
+    {
+      "encounter": 566,
+      "a": 34076,
+      "from": 9,
+      "to": 8
+    },
+    {
+      "encounter": 567,
+      "a": 34076,
+      "from": 8,
+      "to": 7
+    },
+    {
+      "encounter": 567,
+      "a": 34076,
+      "from": 7,
+      "to": 6
+    },
+    {
+      "encounter": 568,
+      "a": 34076,
+      "from": 6,
+      "to": 5
+    },
+    {
+      "encounter": 569,
+      "a": 34076,
+      "from": 5,
+      "to": 4
+    },
+    {
+      "encounter": 571,
+      "a": 34076,
+      "from": 4,
+      "to": 3
+    },
+    {
+      "encounter": 572,
+      "a": 34076,
+      "from": 3,
+      "to": 2
+    },
+    {
+      "encounter": 572,
+      "a": 34076,
+      "from": 2,
+      "to": 1
+    },
+    {
+      "encounter": 573,
+      "a": 34076,
+      "from": 1,
+      "to": 0
+    }
+  ],
+  "encounter": 574,
+  "hpTrace": [
+    {
+      "a": 34076,
+      "encounter": 63,
+      "from": 0,
+      "v": 16,
+      "pc": 36958
+    },
+    {
+      "a": 34076,
+      "encounter": 500,
+      "from": 16,
+      "v": 15,
+      "pc": 42365
+    },
+    {
+      "a": 34076,
+      "encounter": 560,
+      "from": 15,
+      "v": 14,
+      "pc": 42365
+    },
+    {
+      "a": 34076,
+      "encounter": 562,
+      "from": 14,
+      "v": 13,
+      "pc": 42365
+    },
+    {
+      "a": 34076,
+      "encounter": 562,
+      "from": 13,
+      "v": 12,
+      "pc": 42365
+    },
+    {
+      "a": 34076,
+      "encounter": 563,
+      "from": 12,
+      "v": 11,
+      "pc": 42365
+    },
+    {
+      "a": 34076,
+      "encounter": 564,
+      "from": 11,
+      "v": 10,
+      "pc": 42365
+    },
+    {
+      "a": 34076,
+      "encounter": 565,
+      "from": 10,
+      "v": 9,
+      "pc": 42365
+    },
+    {
+      "a": 34076,
+      "encounter": 566,
+      "from": 9,
+      "v": 8,
+      "pc": 42365
+    },
+    {
+      "a": 34076,
+      "encounter": 567,
+      "from": 8,
+      "v": 7,
+      "pc": 42365
+    },
+    {
+      "a": 34076,
+      "encounter": 567,
+      "from": 7,
+      "v": 6,
+      "pc": 42365
+    },
+    {
+      "a": 34076,
+      "encounter": 568,
+      "from": 6,
+      "v": 5,
+      "pc": 42365
+    },
+    {
+      "a": 34076,
+      "encounter": 569,
+      "from": 5,
+      "v": 4,
+      "pc": 42365
+    },
+    {
+      "a": 34076,
+      "encounter": 571,
+      "from": 4,
+      "v": 3,
+      "pc": 42365
+    },
+    {
+      "a": 34076,
+      "encounter": 572,
+      "from": 3,
+      "v": 2,
+      "pc": 42365
+    },
+    {
+      "a": 34076,
+      "encounter": 572,
+      "from": 2,
+      "v": 1,
+      "pc": 42365
+    },
+    {
+      "a": 34076,
+      "encounter": 573,
+      "from": 1,
+      "v": 0,
+      "pc": 42365
+    },
+    {
+      "a": 34076,
+      "encounter": 573,
+      "from": 0,
+      "v": 0,
+      "pc": 42369
+    },
+    {
+      "a": 34076,
+      "encounter": 573,
+      "from": 0,
+      "v": 0,
+      "pc": 62775
+    }
+  ],
+  "scope": "Native death entry bypassed only for target pilot; actual native pickup->rear docking; no firing until200bossupdates; normal keyboard input pilot with player protection only, no enemyHP/timer edits"
+}

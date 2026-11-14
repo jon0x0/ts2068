@@ -1,0 +1,25 @@
+Individual cartridge port r146: INCOMPLETE
+
+Latest playable expanded-memory release r145 is unchanged.
+All8 earlier original-graphics native ROM foundations have been copied and
+revalidated from reset:150game updates each, native keyboard start/restarts,
+no death bypass,0post-entry ROMwrite attempts, all cartridge bytes immutable.
+8192firmware probes per boot precede cartridge entry and are counted separately.
+L8 initially failed the150update threshold after losing lives; repeated normal
+keyboard starts/restarts reached150 without bypassing death/game-over.
+
+Current r145 data are staged in packed_inputs using existing Z80 LZ packets;
+all streams roundtrip exactly. Per-level packed totals including sharedcore:
+55180,56192,51133,53587,51226,51280,54151,47691bytes (L1..8).
+These are storage budgets only, not proof of stock48KB RAM compatibility.
+The native_reference_only DCKs contain ORIGINAL graphics, not currentECM.
+The packed inputs are NOT executable ROMs and must not be programmed.
+
+Remaining: implement current ECM sprite/player/projectile adapters on the old
+stock RAM layout (ROM0/ROM1 plus workspace A600-BDFF); replace mutable DOCK2/3
+and bank5/6/7 caches/retained backing with ROM-backed art and bounded stock-RAM
+buffers. Pack and decompress encounter art as required; audit all address
+relocations, IRQ stacks and ROM mappings. Then build ROM-only DCK and exact
+65536byte PicoROM ROM/BIN per level and verify startup/gameplay/boss paths.
+No updated stock cartridge has yet passed those runtime checks. No updated
+cartridge release is published. Preserve earlier ROMs/r100/r145/referenceprojects.

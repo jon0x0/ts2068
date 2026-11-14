@@ -1,0 +1,1 @@
+import fs from'node:fs';import path from'node:path';import{api}from'./r22_test_machine.mjs';import{out,demandFixture}from'./boss_motion_fixture_r61.mjs';const{m}=demandFixture();for(let frame=0;frame<=500;frame++){api.runFrame(m);if([20,100,500].includes(frame))fs.writeFileSync(path.join(out,`ui_${frame}.home.bin`),m.ram);}

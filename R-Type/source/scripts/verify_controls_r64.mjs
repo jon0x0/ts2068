@@ -1,0 +1,11 @@
+import fs from'node:fs';import path from'node:path';import assert from'node:assert/strict';import{api,root}from'./r22_test_machine.mjs';import{out,demandFixture}from'./boss_motion_fixture_r64.mjs';
+const {m,joy,controller:c}=demandFixture();let boot=-1,start=-1,main=0,last=-1,frame=0,index=0,inPhase=0,results=[];const read=m.bus.read;m.bus.read=a=>{if(m.stepAdded===0&&a===m.cpu.pc&&last!==m.tstates){last=m.tstates;if(a===0x8634)m.ram[0x91f2]=201;if(a===0x94f1)main++;}return read(a);};
+const phases=[{name:'right',mask:4,frames:60,dx:1,dy:0},{name:'left',mask:2,frames:60,dx:-1,dy:0},{name:'up',mask:8,frames:60,dx:0,dy:-1},{name:'down',mask:16,frames:60,dx:0,dy:1},{name:'diagonal',mask:12,frames:30,dx:1,dy:-1},{name:'keyboard and second joystick cancel',mask:2,joy:247,frames:30,dx:0,dy:0},{name:'second joystick up',mask:0,joy:254,frames:30,dx:0,dy:-1}];const pos=()=>({x:m.dock[7][0x1680],y:m.dock[7][0x1681]});let before=null;
+for(;frame<8000;frame++){
+ if(c.booted&&boot<0)boot=frame;const t=frame-boot;m.keyMatrix.fill(31);joy.fill(255);joy[0]=boot>=0&&t>=800&&t<840?239:255;
+ if(main>=60&&start<0&&m.ram[0x5bc2]){start=frame;m.dock[3].set([254,2,254,4,254,8,254,16],0x1780);before=pos();}
+ if(start>=0){m.dock[3][0x1a98]=1;m.ram[0x5bc4]=0;const p=phases[index];m.keyMatrix[0]&=31^p.mask;joy[1]=p.joy??255;}
+ api.runFrame(m);
+ if(start>=0&&++inPhase>=phases[index].frames){const after=pos(),p=phases[index],dx=after.x-before.x,dy=after.y-before.y;if(p.dx)assert(Math.sign(dx)===p.dx&&Math.abs(dx)>=4,p.name+' X');else assert.equal(dx,0,p.name+' X neutral');if(p.dy)assert(Math.sign(dy)===p.dy&&Math.abs(dy)>=4,p.name+' Y');else assert.equal(dy,0,p.name+' Y neutral');results.push({name:p.name,before,after,dx,dy});index++;inPhase=0;before=after;if(index===phases.length)break;}
+}
+assert.equal(index,phases.length);const result={passed:true,custom_native_bindings:[254,2,254,4,254,8,254,16],fixed_QAOP_in_game:false,keyboard_and_both_native_joysticks:true,results,scope:'Actual game with injected redefined native binding table; invulnerable motion route'};fs.writeFileSync(path.join(out,'custom_controls_validation.json'),JSON.stringify(result,null,2));fs.writeFileSync(path.join(out,'custom_controls.home.bin'),m.ram);console.log(result);

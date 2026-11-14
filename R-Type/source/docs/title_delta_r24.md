@@ -1,0 +1,22 @@
+# Retained title raster deltas, r24
+
+The title uses a specialized TSCodec-style replacement-window renderer. It does not store a video stream of complete frames or blindly XOR the screen. Reusable precomputed suffix silhouettes encode the still-overlapping letters, with four-pixel phases. Each update replaces only the union of the old/new moving group spans, at most eight byte columns per row. Fixed prefix letters are restored where they overlap that window; other settled letters are untouched. Bitmap and ECM colours travel together. A white/cyan vertical split avoids conflicting palettes while letters overlap; released columns regain the final artwork palette, including blue shading.
+
+The shape is quantized once and shifted, so fine motion does not requantize its dither. Sweep uses four-pixel rather than eight-pixel steps; spread uses four rather than sixteen. The encoder also retains two-pixel sweep phases for comparison, but that trial stretched the complete sequence to5.72seconds and was not selected. The four-pixel version gives116 exact pictures in3.762 emulated seconds versus46 in4.393seconds. Measured completed-picture cadence rises from about10 to31 per second; this is model timing, not a physical-hardware benchmark. Mean decoder cost87,258T, maximum119,573T. One picture can exceed a display refresh; this is not a hardware page flip or a claim of zero raster tearing.
+
+## Memory contract
+
+* ROM0:01A0 holds the star-entry guard; the existing renderer and banking gateway remain in ROM0. ROM4:9D10..9EA0 holds delta preparation/row control, beside the existing title bitmap/attribute source9000..9BFF.
+* ROM7:E400..F8FF stores5376bytes of reusable suffix phases. It is clear of the full-game enemy palette atE000..E3FF, compiled ship codeFB00..FCFF, bit reversalFD00..FDFF and musicFE00 onward.
+* HOME A600..AB3F is a1344-byte title phase cache. SRAM saves/restores the displaced common graphics using DOCK2:4000..453F. The read-only target uses its existing disposable title staging area. Gameplay regenerates its buffers afterward.
+* HOME FC50..FC61 contains transient title parameters. HOME FC80..FCCx contains the byte loop; only its immediate bounds are patched. Those writes are to copied HOME code, never cartridge ROM. The packer resolves patch addresses from assembler symbols.
+* Mask13 selects DOCK0/1/4 while leaving HOME bitmap4000 and ECM attributes6000 visible. Atlas copies use mask93 under DI with uninterrupted LDIR, no stack accesses, calls or returns while chunk7 hides the stack. Mask13 is restored before any call/return. The gateway restores runtime mask9(SRAM) or3(read-only). The title explicitly enables mode2 interrupts before HALT.
+* Star protection marks menu text rows2..11, columns9..31 in the existing dirty grid. Its upper bound is never extended into the IRQ stub at8383. The footer guard suppresses menu stars in the copyright band using the native menu/game state, consuming the same two source bytes as a normal star update; gameplay keeps the original entry instructions.
+
+## Evidence and reproduction
+
+Set RTYPE_TITLE_DELTA=1 before scripts/build_ecm_native.py and scripts/build_rom_ecm.py for level-one candidates. Run verify_title_delta.mjs, the r24 sprite/music/control/IRQ/runtime validators and probe_title_screen_r24.py. publish_title_r24.py checks matching reports before producing the read-only .rom/.dck. Set RTYPE_TITLE_DELTA=1 before scripts/build_fullgame.py for the full SD release; scripts/validate_title_fullgame.py can rebuild/revalidate it from existing prepared source assets.
+
+All116 pictures compare both planes byte-for-byte to an independent pixel geometry reference, including the final state and restored SRAM graphics. Each target passes1024 moving-star updates and900240 text-byte checks, covering instruction/key-selection/copyright lines. Scripted Fuse captures at refresh600 show intact text. Read-only runtime passes8000refreshes, unchanged ROM banks and zero cartridge writes; both targets pass3480 sprite/flip/clip/IFF cases each, music loops, M/SFX coexistence, live joystick and IRQ banking. The full-game candidate repeats all-level gameplay, bosses, music, controls, transitions, ending, SD readback/alias rejection and its own116-state title test.
+
+Reports and actual-frame GIF: build/diagnostics/title_delta_r24/. Fuse captures: build/{ecm_native,readonly_ecm}/probe_600_r24_text.*. Full regression logs: build/fullgame/r24_*.log. Physical hardware remains untested. Normal defaults preserve r22 byte-for-byte; r23 versioned files remain available.

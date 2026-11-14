@@ -1,0 +1,74 @@
+{
+  "name": "Reviewed artwork default",
+  "settings": {
+    "brightness": 49,
+    "contrast": 65,
+    "saturation": 78,
+    "gamma": 1.13
+  },
+  "method": "Median within each unique animation/source family, median within each represented level, then median across levels; rounded to UI precision. Excludes all explicit evaluation holds and unreviewed entries.",
+  "families": 37,
+  "levels": [
+    1,
+    2,
+    3,
+    4,
+    6,
+    8
+  ],
+  "per_level_medians": {
+    "1": {
+      "brightness": 43.5,
+      "contrast": 70.0,
+      "saturation": 79.5,
+      "gamma": 1.45
+    },
+    "3": {
+      "brightness": 50.5,
+      "contrast": 57.5,
+      "saturation": 87.5,
+      "gamma": 1.205
+    },
+    "4": {
+      "brightness": 48.5,
+      "contrast": 51.0,
+      "saturation": 77.0,
+      "gamma": 1.17
+    },
+    "8": {
+      "brightness": 45.0,
+      "contrast": 77.0,
+      "saturation": 80.0,
+      "gamma": 1.09
+    },
+    "2": {
+      "brightness": 50.0,
+      "contrast": 62.0,
+      "saturation": 60.0,
+      "gamma": 1.0
+    },
+    "6": {
+      "brightness": 51.0,
+      "contrast": 67.0,
+      "saturation": 71.0,
+      "gamma": 1.06
+    }
+  },
+  "unrounded_level_balanced_median": {
+    "brightness": 49.25,
+    "contrast": 64.5,
+    "saturation": 78.25,
+    "gamma": 1.13
+  },
+  "family_weighted_alternative": {
+    "brightness": 50.0,
+    "contrast": 59.0,
+    "saturation": 86.0,
+    "gamma": 1.16
+  },
+  "algorithm": "Actual RPC CPU linear adjustment; segment-coverage pairs; serpentine Sierra Lite",
+  "normal_black": true,
+  "bright_nonblack": true,
+  "geometry": "Use measured current-game footprint; do not enlarge by default",
+  "scope": "Starting point for future conversions, not an override of per-asset choices or a guarantee of the best result"
+}

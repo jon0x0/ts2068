@@ -1,0 +1,38 @@
+R-Type TS2068 r131 - L4 shared approved ECM walkers
+
+Replace the complete rtype folder, reset, launch rtype/rt.tap.
+Startup: R131 PREPARING. Full disk build.
+
+White ghost L4 native19..21: exact saved L1 ghost ZIP,3poses,32x32.
+White/magenta walking head L4 native5..9: approved C32x32 conversion already
+used in L1 (saved L6_head artwork). Four matching native poses6..9 retain
+order; extra native5 uses the first approved pose. All4approvedframes retained.
+Round yellow walker L4 native28..31: exact chosen walker ZIP used in L1,
+4poses24x24. No resampling, new conversion or settings changes.
+Existing L4 gunwalker14..18 remains unchanged.
+
+The first two families lacked L4 runtime mappings; the round walker used older
+art. There are now11exact approved frame assets serving the12native IDs.
+Native collision/movement scripts remain unchanged;32x32art has a larger
+visual footprint than original24x24. No claimed hardware performance result.
+
+Space remains within existing RAM allocation. ArtworkB280..BFDF (3424bytes).
+Boss cache5744bytes is unchanged; repartitioned compression expands first,
+before its source storage is reused. A366byte second art stream uses only
+retired native head packets; HOME backup is copied to temporary prefix RAM,
+expanded to the tail, then the main stream overwrites that temporary prefix.
+Preload remains gated by the existing cache-valid flag and uses a visible
+scratch stack. Original restore/respawn and cold/cached paths retained.
+
+PASS actualZ80 cold L4 title/game starts,600ordinaryupdates with all3families
+observed, exact3424liveartbytes and5744boss cachebytes, native-ID/pose tests,
+400update BB boss fight/art retention,12cold/cached transitions including
+L4revisit,640nativeattrs pertransition,all16TAP reconstructions/checksums/ZIPCRC.
+Gameplay tests use invulnerability diagnostics; not hardware confirmation.
+
+Other7levels (including r130 L2 star fix),L4boss artwork,terrain/palettes,
+stable99/100,stock64KB and reference/source ZIPs unchanged.
+Comparison: build/graphics/l4_shared_review_r131/confirmed_families.png
+Scripts: build_l4_shared_r131.py,verify_l4_shared_runtime_r131.mjs,
+verify_l4_shared_boss_r131.mjs,verify_native_revisits_r131.mjs,
+finalize_l4_shared_r131.py. Hardware confirmation pending.

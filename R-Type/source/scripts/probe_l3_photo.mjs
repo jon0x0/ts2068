@@ -1,0 +1,4 @@
+import fs from'node:fs';import path from'node:path';import{root,api}from'./r22_test_machine.mjs';import{demandFixture}from'./transition_disk_fixture.mjs';
+const out=path.join(root,'build/diagnostics/l3_photo');fs.mkdirSync(out,{recursive:true});const{m,joy,controller:c}=demandFixture();let boot=-1,frame=0,last=-1,updates=0;const read=m.bus.read;
+m.bus.read=a=>{if(m.stepAdded===0&&a===m.cpu.pc&&last!==m.tstates){last=m.tstates;if(a===0x8634)m.ram[0x91f2]=201;if(a===0x8b06&&read(0x7aa4)>0)updates++;}return read(a);};
+for(;frame<17000;frame++){if(c.booted&&boot<0)boot=frame;m.keyMatrix.fill(31);if(boot>=0&&frame-boot>=600&&frame-boot<700)m.keyMatrix[3]=27;joy[0]=boot>=0&&frame-boot>=800&&frame%180<90?239:255;api.runFrame(m);if(frame>=4000&&frame%500===0){fs.writeFileSync(path.join(out,`frame${frame}.home.bin`),m.ram);for(const b of[1,2,3])fs.writeFileSync(path.join(out,`frame${frame}.dock${b}.bin`),m.dock[b]);console.log(frame,updates,m.cpu.pc);}}

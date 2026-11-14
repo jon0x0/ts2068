@@ -1,0 +1,2 @@
+from pathlib import Path
+p=Path('scripts/build_ui_r65.py');s=p.read_text().replace('level_hotkeys_r65.asm','level_hotkeys_r64.asm').replace(' assert b[0x1c8:0x200]==bytes([255])*56',' shim_at=0x1b17 if special else 0x1c8\n assert b[shim_at:shim_at+8]==bytes([255])*8').replace('b[0x1c8:0x1d0]=shim;b[0x1d0:0x1d7]=title','b[shim_at:shim_at+8]=shim').replace("b[0xcc2:0xcc5]=bytes.fromhex('cd c8 01')","b[0xcc2:0xcc5]=bytes([0xcd,shim_at&255,shim_at>>8])");p.write_text(s)

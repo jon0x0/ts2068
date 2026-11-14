@@ -1,0 +1,8 @@
+import fs from'node:fs';import assert from'node:assert/strict';import{api,z}from'./r22_test_machine.mjs';
+const dir='build/fullgame/boss_targets_r132/',image=fs.readFileSync(dir+'L4_runtime_image.bin'),c=JSON.parse(fs.readFileSync(dir+'weakpoint_contract.json'));let cases=0;
+for(const source of [0xd7ea,0xd7eb,0xd7ff,0xd800,0xd83b,0xd83c,0xc9c7])for(const owner of [0,129,132,135,138,139])for(const parent of [0,129,130,131,132,250]){
+ const m=api.createMachine(new Uint8Array(8).fill(31),new Uint8Array(2).fill(255));api.insertDock(m,Buffer.concat([Buffer.from([0,...Array(8).fill(3)]),Buffer.alloc(65536)]));m.dock[5].set(image);m.portF4=0x29;m.dock[3][0x1a9c]=owner;m.dock[3][0x1e00]=parent;m.ram[0x8506]=({132:0x3b,135:0x4b,138:0x5b}[owner]??0);m.ram[0xffe0]=0x14;m.ram[0xffe1]=0x0d;m.ram[0xffe2]=0x24;m.ram[0xffe3]=0x8d;m.dock[0].set([0xfb,0xd3,0xf4,0xf1,0xc9],0xe10);Object.assign(m.cpu,{pc:c.entry,sp:0xffe0,yh:0x85,yl:1,h:source>>8,l:source&255,d:0x7e,e:0,b:11,c:8,iff1:false,iff2:false});
+ let steps=0;while(![0xa22e,0x8d24].includes(m.cpu.pc)&&steps++<100)z.runZ80(m.cpu,m.bus,1,m);
+ const accepted=[[132,131],[135,130],[138,129]].some(([a,b])=>owner===a&&parent===b);assert.equal(m.cpu.pc,accepted?0x8d24:0xa22e);assert.equal(m.cpu.h*256+m.cpu.l,source);assert.equal(m.cpu.d*256+m.cpu.e,0x7e00);assert.equal(m.cpu.sp,accepted?0xffe4:0xffe0);assert.equal(m.portF4,accepted?9:0x29);cases++;
+}
+fs.writeFileSync(dir+'weakpoint_gateway_validation.json',JSON.stringify({passed:true,cases,nativeActorTypeChecks:true,onlyMatchingParents:true,sourceRegistersPreserved:true,nativeStackReturn:true},null,2));console.log({cases});

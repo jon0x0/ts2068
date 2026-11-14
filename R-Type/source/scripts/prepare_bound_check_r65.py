@@ -1,0 +1,2 @@
+from pathlib import Path
+s=Path('scripts/verify_pause_r65.mjs').read_text().replace('phase=1;mark=frame;','phase=1;mark=frame;m.dock[3].set([223,1],0x1780);',1).replace('m.keyMatrix[5]&=~1;m.keyMatrix[0]&=~1;','m.keyMatrix[5]&=~1;if(frame-mark>=15)m.keyMatrix[0]&=~1;').replace('phase=2;mark=frame;','assert(frame-mark>=15,"Bound P must remain a gameplay key");phase=2;mark=frame;',1).replace('`pause_L${level}.json`','`pause_bound_P_L${level}.json`');Path('scripts/verify_pause_bound_r65.mjs').write_text(s)

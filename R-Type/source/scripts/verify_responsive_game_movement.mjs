@@ -1,0 +1,11 @@
+import fs from'node:fs';import path from'node:path';import assert from'node:assert/strict';import{api,root}from'./r22_test_machine.mjs';import{out,demandFixture}from'./responsive_game_fixture.mjs';
+const {m,joy,controller:c}=demandFixture();let boot=-1,frame=0,main=0,last=-1,start=-1,positions=[],selected=null;let irqStart=0;const irqTimes=[];
+const read=m.bus.read;m.bus.read=a=>{if(m.stepAdded===0&&a===m.cpu.pc&&m.tstates!==last){last=m.tstates;if(a===0xfb00)irqStart=m.tstates;if(a===0xbe30&&irqStart){irqTimes.push(m.tstates-irqStart);irqStart=0;}if(a===0x8634)m.ram[0x91f2]=201;if(a===0x94f1)main++;if(a===0xe400&&(m.portF4&128)&&start>=0&&frame-start<100)positions.push({frame,x:m.dock[7][0x1680],y:m.dock[7][0x1681],active:m.ram[0x5bc2],lock:m.ram[0x5bc3]});}return read(a);};
+for(;frame<5000;frame++){
+ if(c.booted&&boot<0)boot=frame;const t=frame-boot;m.keyMatrix.fill(31);joy[0]=boot>=0&&t>=800&&t<840?239:255;
+ if(main>=60&&start<0&&m.ram[0x5bc2]){start=frame;const port=m.dock[3][0x1782],mask=m.dock[3][0x1783];selected={port,mask};}
+ if(start>=0&&frame-start<100){for(let row=0;row<8;row++)if(!(selected.port&(1<<row)))m.keyMatrix[row]&=31^selected.mask;}
+ if(start>=0){m.dock[3][0x1a98]=1;m.ram[0x5bc4]=0;}api.runFrame(m);if(start>=0&&frame-start>=120)break;
+}
+assert(start>=0,'No active game');let xs=positions.map(r=>r.x),moved=0;for(let i=1;i<xs.length;i++){let dx=xs[i]-xs[i-1];assert(dx===0||dx===1||dx===3,'Not a one-pixel positive step '+dx);if(dx>0)moved+=dx;}assert(xs.some((v,i)=>i&&v-xs[i-1]===1),'Fine step absent');assert(xs.some((v,i)=>i&&v-xs[i-1]===3),'Cruise step absent');assert(moved>=35,'No sustained movement '+JSON.stringify(selected));fs.writeFileSync(path.join(out,'movement.home.bin'),m.ram);fs.writeFileSync(path.join(out,'movement.dock7.bin'),m.dock[7]);let result={passed:true,selected_binding:selected,main_updates:main,pixel_steps:moved,positions,scope:'Actual full-game right-key movement; native chosen binding, one-pixel fine taps / three-pixel sustained IRQ steps, death bypass for route stability'};fs.writeFileSync(path.join(out,'movement_validation.json'),JSON.stringify(result,null,2));console.log({frame,selected,moved,irqMean:irqTimes.reduce((a,b)=>a+b,0)/irqTimes.length,irqMax:Math.max(...irqTimes),positions:positions.slice(0,12)});
+

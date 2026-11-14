@@ -1,0 +1,7 @@
+import fs from 'node:fs';import assert from 'node:assert/strict';import{stockFixture}from './stock_fixture.mjs';import{api}from './r22_test_machine.mjs';
+const f=stockFixture(4),{m,call,out}=f,joy=m.joystick,rd=m.bus.read,sy=Object.fromEntries([...fs.readFileSync(out+'/stock_controls.sym','utf8').matchAll(/(\w+): EQU 0x([0-9a-f]+)/ig)].map(x=>[x[1],parseInt(x[2],16)]));
+m.ram[0x91f2]=0xc9;m.ram[0x7aa4]=3;call(sy.boss_jump);m.ram.set([254,2,254,4,254,8,254,16,127,1,127,2],0xbd80);Object.assign(m.cpu,{pc:0x8653,sp:0xfffe,iff1:true,iff2:true});
+const hpWrites=[];const wr=m.bus.write;m.bus.write=(a,v)=>{if([0x851c,0x8537,0x8552].includes(a))hpWrites.push({a,v,pc:m.cpu.pc});wr(a,v)};console.log('INITIAL',Array.from(m.ram.slice(0x851c,0x8557)));let encounter=0,last=-1; m.bus.read=a=>{if(m.stepAdded===0&&a===m.cpu.pc&&last!==m.tstates){last=m.tstates;if(a===0x94f1){encounter++;m.ram[0x7a98]=255;}}return rd(a)};
+let collected=false,docked=false;for(let k=0;k<10000&&!docked;k++){m.keyMatrix.fill(31);joy.fill(255);if(m.ram[0x7abe]<2)m.keyMatrix[0]&=~4;api.runFrame(m);collected ||= m.ram[0x7abe]>=2;docked=collected&&m.ram[0x7aa3]>0;}
+assert(docked,'Collectible Force must dock');
+console.log({encounter,health:[m.ram[0x851c],m.ram[0x8537],m.ram[0x8552]],hpWrites});

@@ -1,0 +1,59 @@
+{
+  "passed": true,
+  "level": 3,
+  "baseline": {
+    "spawns": 0,
+    "taps": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "pending": 1,
+    "romWrites": 0
+  },
+  "fixed": {
+    "spawns": 6,
+    "taps": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "pending": 0,
+    "romWrites": 0
+  },
+  "joysticks": [
+    {
+      "spawns": 6,
+      "taps": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "pending": 0,
+      "romWrites": 0
+    },
+    {
+      "spawns": 6,
+      "taps": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "pending": 0,
+      "romWrites": 0
+    }
+  ],
+  "scope": "Actual stock IRQ gateway calls with selected keyboard, six short press/release cycles and independent projectile ticks; deterministic component test, not hardware timing"
+}

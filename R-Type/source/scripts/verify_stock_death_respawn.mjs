@@ -1,0 +1,16 @@
+import fs from 'node:fs';import assert from 'node:assert/strict';import{stockFixture}from './stock_fixture.mjs';import{api}from './r22_test_machine.mjs';
+const n=Number(process.argv[2]||1),f=stockFixture(n,process.argv.find(v=>v.endsWith('.dck'))),{m,call,out}=f;let started=false,stamp=-1;const coldRead=m.bus.read;m.bus.read=a=>{if(m.stepAdded===0&&a===m.cpu.pc&&stamp!==m.tstates){stamp=m.tstates;if(a===0x94f1&&m.ram[0x7aa4]===3){started=true;throw Error('ACTIVE');}}return coldRead(a);};try{for(let t=0;t<4000&&!started;t++){m.keyMatrix.fill(31);m.joystick.fill(255);if(t>60&&t%240<45)m.joystick[0]=127;api.runFrame(m);}}catch(e){if(!started)throw e;}assert(started);m.bus.read=coldRead;m.joystick.fill(255);
+const fontBefore=Buffer.from(m.ram.slice(0x7ae8,0x7ce8));
+if(process.argv.includes('--pause')){
+ const sy=Object.fromEntries([...fs.readFileSync(out+'/stock_controls.sym','utf8').matchAll(/(\w+): EQU 0x([0-9a-f]+)/ig)].map(v=>[v[1],parseInt(v[2],16)]));
+ const savedCpu={...m.cpu},stack=Buffer.from(m.ram.slice(0xff00));let reads=0;
+ m.keyMatrix.fill(31);m.keyMatrix[5]=30;m.keyMatrix[0]&=~1;
+ m.bus.read=a=>{if(m.stepAdded===0&&a===m.cpu.pc&&a===sy.read_p){reads++;m.keyMatrix[5]=reads===2?30:31;}return coldRead(a);};
+ call(sy.pause_poll);assert(reads>=3);m.bus.read=coldRead;Object.assign(m.cpu,savedCpu);m.ram.set(stack,0xff00);m.keyMatrix.fill(31);
+ assert(Buffer.from(m.ram.slice(0x7ae8,0x7ce8)).equals(fontBefore),'Pause corrupted respawn font');
+}
+let messageChecks=0;
+let message=false;let last=-1,updates=0,death=0,respawn=0,triggers=0,after=-1,frames=0;const rd=m.bus.read;
+m.bus.read=a=>{if(m.stepAdded===0&&a===m.cpu.pc&&last!==m.tstates){last=m.tstates;if(a===0x94f1){updates++;if(triggers<2&&updates>10&&((triggers===0)||(respawn>=1&&updates>after+10))){m.ram[0x5c87]=1;m.ram[0x7a98]=0;triggers++;}}if(a===0x91f2){death++;fs.writeFileSync(out+'/respawn_font.bin',Buffer.from(m.ram.slice(0x7ae8,0x7d00)));}if(a===0x92c5)message=true;if(a===0x92e2&&message){let string=0xb6ac,cx=8,ch;do{ch=m.ram[string++];const c=ch&127,index=c===32?59:c-32;for(let y=0;y<16;y++){const sy=176+y,off=((sy&192)<<5)|((sy&7)<<8)|((sy&56)<<2)|cx;assert.equal(m.ram[0x4000+off],fontBefore[index*8+(y>>1)],'Respawn message bitmap char '+c+' raster '+y);}cx++;}while(!(ch&128));messageChecks++;fs.writeFileSync(out+'/respawn_message.screen.bin',Buffer.concat([Buffer.from(m.ram.slice(0x4000,0x5800)),Buffer.from(m.ram.slice(0x6000,0x7800))]));fs.writeFileSync(out+'/respawn_message.home.bin',Buffer.from(m.ram));message=false;}if(a===0x8bae&&death){respawn++;after=updates;}}return rd(a)};
+for(;frames<8000&&(respawn<2||updates<after+5);frames++){m.keyMatrix.fill(31);m.joystick.fill(255);api.runFrame(m);}
+const r={messageChecks,pauseBeforeDeath:process.argv.includes('--pause'),nativeFontPreserved:Buffer.from(m.ram.slice(0x7ae8,0x7ce8)).equals(fontBefore),passed:messageChecks>=2&&respawn>=2&&triggers===2&&updates>after,level:n,frames,updates,triggers,deathEntries:death,respawns:respawn,romWrites:f.romWrites,scope:'Real native death/respawn routines after simulated current player collision flags; no death bypass, not full game-over/name entry coverage'};fs.writeFileSync(out+(process.argv.some(v=>v.endsWith('.dck'))?'/death_respawn_export_validation.json':'/death_respawn_validation.json'),JSON.stringify(r,null,2));console.log(r);assert(r.passed);

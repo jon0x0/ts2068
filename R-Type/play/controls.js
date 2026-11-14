@@ -1,0 +1,96 @@
+const frame=document.querySelector('#emulator');
+const api=()=>frame.contentWindow.rtype;
+let ready=false,direction=255,firing=false,touchEnabled=true;
+const send=()=>{if(ready)api().contacts(direction & (firing?0x7f:255));};
+const release=()=>{direction=255;firing=false;document.querySelector('#knob').style.transform='';if(ready)api().release();};
+const config=await (await fetch('cartridge-controls.json')).json();
+for(const action of config.actions){
+  const button=document.createElement('button');button.textContent=action.label;button.id=action.id;button.disabled=true;
+  button.addEventListener('click',()=>{if(action.sequence)api()?.sequence(action.sequence);else if(action.shift)api()?.chord(action.code);else api()?.press(action.code);});
+  document.getElementById(action.placement).append(button);
+}
+window.addEventListener('message',event=>{
+  if(event.origin!==location.origin||event.source!==frame.contentWindow)return;
+  if(event.data.type==='rtype-ready'){ready=true;document.querySelectorAll('button').forEach(b=>b.disabled=false);document.querySelector('#status').textContent='';}
+  if(event.data.type==='rtype-error')document.querySelector('#status').textContent=event.data.message;
+});
+const pad=document.querySelector('#pad'),fire=document.querySelector('#fire');
+let padId=null,fireId=null;
+function move(event){const r=pad.getBoundingClientRect(),x=(event.clientX-r.left-r.width/2)/(r.width/2),y=(event.clientY-r.top-r.height/2)/(r.height/2);direction=Math.hypot(x,y)<(config.touchPad?.deadZone ?? .45)?255:[0xf7,0xf5,0xfd,0xf9,0xfb,0xfa,0xfe,0xf6][(Math.round(Math.atan2(y,x)/(Math.PI/4))+8)%8];const length=Math.max(1,Math.hypot(x,y));document.querySelector('#knob').style.transform=`translate(${x/length*r.width*.24}px,${y/length*r.height*.24}px)`;send();}
+pad.addEventListener('pointerdown',e=>{if(!ready||!touchEnabled||padId!==null)return;e.preventDefault();padId=e.pointerId;pad.setPointerCapture(padId);move(e);});
+pad.addEventListener('pointermove',e=>{if(e.pointerId===padId)move(e);});
+fire.addEventListener('pointerdown',e=>{if(!ready||!touchEnabled||fireId!==null)return;e.preventDefault();fireId=e.pointerId;fire.setPointerCapture(fireId);firing=true;send();});
+for(const name of ['pointerup','pointercancel','lostpointercapture']){
+ pad.addEventListener(name,e=>{if(e.pointerId===padId){padId=null;direction=255;document.querySelector('#knob').style.transform='';send();}});
+ fire.addEventListener(name,e=>{if(e.pointerId===fireId){fireId=null;firing=false;send();}});
+}
+for(const name of ['blur','pagehide'])window.addEventListener(name,release);
+document.addEventListener('visibilitychange',()=>{if(document.hidden)release();});
+window.addEventListener('resize',release);
+document.addEventListener('fullscreenchange',release);
+document.querySelector('#fullscreen').addEventListener('click',async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else await document.querySelector('main').requestFullscreen();}catch{document.querySelector('#status').textContent='Fullscreen is unavailable in this browser.';}});
+
+window.addEventListener('keydown',e=>{if(!window.rtypeCommand(e,true)&&ready)api().key(e,true);});
+window.addEventListener('keyup',e=>{if(!window.rtypeCommand(e,false)&&ready)api().key(e,false);});
+
+// Cartridge-owned touch switch; keyboard and physical gamepads remain active.
+const touchToggle=document.createElement('button');
+touchToggle.id='touch-toggle';touchToggle.innerHTML='Virtual<br>DPad';
+touchToggle.title='Show or hide the on-screen D-pad and Fire button';
+touchToggle.setAttribute('aria-label','On-screen touch controls');
+touchToggle.setAttribute('aria-pressed','true');
+document.querySelector('#fullscreen').after(touchToggle);
+touchToggle.addEventListener('click',()=>{
+  touchEnabled=!touchEnabled;
+  // Drop touch contacts only; do not interrupt held physical keyboard keys.
+  direction=255;firing=false;
+  document.querySelector('#knob').style.transform='';
+  const oldPad=padId,oldFire=fireId;padId=null;fireId=null;
+  if(oldPad!==null&&pad.hasPointerCapture(oldPad))pad.releasePointerCapture(oldPad);
+  if(oldFire!==null&&fire.hasPointerCapture(oldFire))fire.releasePointerCapture(oldFire);
+  if(ready)api().contacts(255);
+  document.querySelector('main').classList.toggle('touch-off',!touchEnabled);
+  touchToggle.setAttribute('aria-pressed',String(touchEnabled));
+});
+
+const crtToggle=document.createElement('button');
+crtToggle.id='crt-toggle';crtToggle.textContent='CRT';crtToggle.disabled=!ready;
+crtToggle.title='Enable or disable CRT scanlines';
+crtToggle.setAttribute('aria-pressed','false');
+document.querySelector('header').append(crtToggle);
+let crtEnabled=false;
+crtToggle.addEventListener('click',()=>{
+  crtEnabled=!crtEnabled;api().setCrt(crtEnabled);
+  crtToggle.setAttribute('aria-pressed',String(crtEnabled));
+});
+
+const fullscreenToggle=document.querySelector('#fullscreen');
+fullscreenToggle.setAttribute('aria-pressed',String(!!document.fullscreenElement));
+document.addEventListener('fullscreenchange',()=>fullscreenToggle.setAttribute('aria-pressed',String(!!document.fullscreenElement)));
+
+// Mute only the output; keep emulation and the audio queue running normally.
+const soundToggle=document.createElement('button');
+soundToggle.id='sound-toggle';soundToggle.textContent='Sound On';soundToggle.disabled=!ready;
+soundToggle.title='Turn game sound on or off';
+soundToggle.setAttribute('aria-pressed','true');
+document.querySelector('header').append(soundToggle);
+let soundEnabled=true;
+soundToggle.addEventListener('click',()=>{
+  soundEnabled=!soundEnabled;api().setSound(soundEnabled);
+  soundToggle.textContent=soundEnabled?'Sound On':'Sound Off';
+  soundToggle.setAttribute('aria-pressed',String(soundEnabled));
+});
+
+const levels=document.querySelector('#level');
+for(let n=1;n<=8;n++){const o=document.createElement('option');o.value=n;o.textContent='Level '+n;levels.append(o);}
+let armed=0;
+function loadLevel(n){ready=false;api()?.release();levels.value=n;document.querySelector('#status').textContent='Loading level '+n+'...';frame.src='emulator/index.html?level='+n+'&v=r160';history.replaceState(null,'','?level='+n);}
+levels.addEventListener('change',()=>loadLevel(Number(levels.value)));
+window.rtypeCommand=(e,down)=>{
+ if(e.target?.matches?.('input,select,textarea')||e.ctrlKey||e.altKey||e.metaKey)return false;
+ if(e.code==='KeyL'){e.preventDefault();if(down&&!e.repeat){armed=performance.now()+4000;document.querySelector('#status').textContent='Choose level 1-8';}return true;}
+ if(armed>performance.now()&&/^Digit[1-8]$/.test(e.code)){e.preventDefault();if(down){armed=0;loadLevel(Number(e.code.slice(-1)));}return true;}
+ return false;
+};
+document.querySelector('#restart').addEventListener('click',()=>api()?.reset());
+const first=Math.max(1,Math.min(8,Number(new URLSearchParams(location.search).get('level'))||1));loadLevel(first);

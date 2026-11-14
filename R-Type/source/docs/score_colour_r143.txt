@@ -1,0 +1,17 @@
+R-Type TS2068 r143 - original high-score colors restored
+
+Replace complete rtype folder, reset, run rtype/rt.tap.
+The score restore now initializes the original alternating white/color rows
+using native routine76CB, instead of forcing all attributes white. The
+original seven-color phase and native animation routine are retained.
+Standard-video restoration from the score corruption repair is retained.
+All r142 changes, including16health per L4 target and recovery pickups, remain.
+
+L4/L7 cold gameplay followed by actual score-display caller tested in emulation.
+Native palette phase advances and white/colored rows coexist. Video mode0,
+bank09, shadow0 verified. Direct native palette calls verify color progression;
+this is not a full natural death/name-entry hardware test. All8level helper
+changes bounded to existing17bytes; CORE unchanged. All20TAP checksums and
+all LEVEL/START reconstruction pass. Hardware testing pending.
+
+SHA256 6ca7533e7acbb95bb56c9b8842bc58f103c762a1182a9a4b6d6bebd85bde8a09

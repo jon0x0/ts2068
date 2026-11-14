@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "rows": 4090,
+  "rasters": 32720,
+  "tokens": 3059,
+  "tokenIdEnd": 3072,
+  "reversalEntries": 256,
+  "immutable": true,
+  "cacheEvictionChurn": 1024,
+  "cacheLossReconstruction": true,
+  "all12BitFlagsAndBothOrientations": true,
+  "romWrites": 0,
+  "scope": "All permanent palette identifiers independently reconstructed from upper/lower source-row recipes; exact single/bulk readers,1024 evictions and cache loss; no mutable frame-generation or allocation lifetime"
+}

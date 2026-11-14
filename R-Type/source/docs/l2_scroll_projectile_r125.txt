@@ -1,0 +1,41 @@
+R-Type TS2068 r125 - L2 scrolling colours and player projectile fix
+
+Replace the entire rtype folder, reset, and launch rtype/rt.tap.
+Startup identity: R125 PREPARING.
+
+r124 missed the regular flat-cell scrolling path: it reverted to the old yellow
+terrain colours. That path now uses the selected per-scanline terrain palette.
+It preserves the actual caller bank mapping, including back-buffer updates.
+Boundary, initial and regular scrolling now use the same palette policy.
+
+r124 also reused the live shared actor/projectile palette at1B20. All96 original
+rows are now preserved losslessly in a423-byte compressed block. First use
+expands it into L2 runtime RAM D940..DC3F AFTER the native bootstrap copy; the
+cold bank image retains its original bootstrap bytes. All96 renderer rows have
+been checked against the original table in actual emulated Z80 RAM.
+
+To fit safely, tile packets use planar pixels and reconstruct redundant native
+cell attributes exactly. All128 native/body/bounds/moving/stopped decoder cases
+match expected bytes. The 52-entry pointer table uses retired authoring palette
+space1160..11C7; the131-byte reveal hook uses106C..10EE. Initial-copy-only access
+to those old palette ranges was traced; no normal gameplay reads in the r124
+full-level firing audit. Scratch/source/bootstrap ownership is documented in
+integration_contract.json and palette_contract.json. No bank7 storage reuse.
+
+Selected L2 actors and all TEN scorpion frames retained. Native terrain bitmap
+silhouettes/dimensions unchanged. Detailed boss reveal after stopping retained.
+Other seven levels unchanged. Colours follow the chosen material settings with
+a conservative full-row scrolling policy; this is not a new arcade tile map.
+
+Verification: all96 shared palette rows; all160 terrain scanlines in both front
+and back mappings;128 tile cases;27 actor packets;1547 sustained-firing updates
+through the ordinary approach;3 unmodified cold/fire timings;12 general and6
+boss/reset/revisit routes;18-tile stopped reveal;all16 tape checksums and full
+reconstruction. Actual screen captures firing_64.home.png,
+ordinary_L2_col54.home.png and boss_probe_160.home.png inspected. All256 IM2
+words checked in actual RAM; emulator fixedFF vector, not hardware IRQ probes.
+Long approach uses an invulnerability/game-over bypass for coverage. Separate
+startup/fire tests do not. Debug direct-entry/font/Space redraw checked.
+
+Hardware confirmation pending. Stable r99/r100, source ZIPs/reference projects
+and stock64KB cartridge target remain unchanged. Full banked disk game only.

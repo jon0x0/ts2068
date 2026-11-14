@@ -1,0 +1,32 @@
+R-Type TS2068 r110 - selected C shell walker, full32x32
+
+Replace the COMPLETE rtype folder, reset, launch rtype/rt.tap.
+Startup R110 PREPARING. Ordinary L1 shows this walker later in the level;
+double-B skips the ordinary encounter.
+
+The magenta-front shell (native30-33) now uses your selected C artwork:
+exact32x32 B+mods52/59/82/gamma0.87, all4savedposes. No downscaling or clipping.
+The native pose order, movement and collision logic remain unchanged.
+Your r107 round walker and snake artwork remain byte-identical, as do all
+seven other level regions, including the complete L3 rocket exhaust.
+
+Uses the existing compiled renderer and existing bank allocation. Retired an
+unreferenced pre-expanded walker cache whose IDs already map to bank5 art;
+kept its3024byte zero-filled initialization block. Originalcache backup retained
+in build artifacts. All activecompiled pointers checked outside retiredcache.
+Runtimeimage endA83D < artbaseA900, artendBD90 < C000, packedend3729 < 3A00.
+No extra bank or geometry/movement change. Native bitmap sources untouched.
+
+Measured deterministic emulation, not real-hardware FPS:
+32vs24 same-art renderer: +5.4%mean update time during shell encounter,
++2.1%in controlled simultaneous head+snake stress,
++1.1%across normal130..500 update interval.
+The stress test substitutes this head for another walker's drawing only in the
+test fixture. Shipping gameplay has no synthetic actor substitution.
+
+Ordinary700update nofire trace sees79draws/all4headposes, plus existingwalker
+and snake; longtraces usegameover bypass. Three coldL1firetimings WITHOUTthe
+bypass and12cold/cachedlevelroutes pass. Exactart/prefixidentity, native-source,
+scope, packetidentity, bankbounds, TAPreconstruction/checksums and ZIPCRC pass.
+Hardware confirmation pending. Stable r100 fallback kept unchanged.
+Stock64KB cartridge is separate and unchanged by this disk/512KB candidate.

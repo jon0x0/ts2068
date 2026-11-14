@@ -11,11 +11,16 @@ groups = {
         ('tpzx128sd', "Working. Spectrum 128 BASIC with TSPico disk-interface handling accessible from the Spectrum environment. Uses TSPico's bank-switchable memory to provide a Spectrum 128-style memory layout and banking system on the Timex TS2068. Hardware revision V2.2 / RP2040; firmware/protocol v1.00. General Spectrum software compatibility is not guaranteed.", [('Procedure and downloads', GITHUB+'ts2068/tree/main/personalities/tpzx128sd'), ('Technical description', GITHUB+'ts2068/blob/main/personalities/tpzx128sd/TECHNICAL.md')]),
     ],
     'Remastered games': [
+        ('R-Type Remastered', 'ZX Spectrum conversion remastered in 8x1 Extended Colour Mode, with selected arcade-derived artwork and AY audio. All eight levels.', [('Project and downloads', 'R-Type/'), ('Play with Virtual DPad or keyboard', 'R-Type/play/'), ('TSRun archive', 'R-Type/downloads/RType_TS2068_TSRun_r160.zip')]),
         ('The Crown', 'Three dungeon levels, Leap v2 bytecode, TSVideoCodec startup animation and hardware joystick support.', [('Release', 'ts2068-cartridges/remastered/TheCrown/'), ('Play with virtual DPad', 'ts2068-cartridges/remastered/TheCrown/play/'), ('Download TheCrown.dck', 'ts2068-cartridges/remastered/TheCrown/TheCrown.dck')]),
     ],
     'TS2068 Arcade ports': [
+        ('R-Type Remastered', 'ZX Spectrum conversion remastered in 8x1 Extended Colour Mode, with selected arcade-derived artwork and AY audio. All eight levels.', [('Project and downloads', 'R-Type/'), ('Play with Virtual DPad or keyboard', 'R-Type/play/'), ('TSRun archive', 'R-Type/downloads/RType_TS2068_TSRun_r160.zip')]),
         ('Sinistar', 'Mine crystals, build your Sinibomb supply and survive the hunt.', [('Play · virtual D-pad', 'arcade-ports/sinistar/play-dpad/'), ('Newer TSRun comparison', 'arcade-ports/sinistar/play/'), ('Original 60 Hz demo', 'arcade-ports/sinistar/web/'), ('Source', GITHUB+'ts2068/tree/main/arcade-ports/sinistar'), ('Graphics & optimization article', 'articles/drawing-less/')]),
         ('Berzerk', 'The arcade port with virtual D-pad and touch controls.', [('Play', 'https://jon0x0.github.io/berzerk_ts2068/'), ('Project', GITHUB+'berzerk_ts2068')]),
+    ],
+    'Spectrum ports': [
+        ('R-Type Remastered', 'ZX Spectrum conversion remastered in 8x1 Extended Colour Mode, with selected arcade-derived artwork and AY audio. All eight levels.', [('Project and downloads', 'R-Type/'), ('Play with Virtual DPad or keyboard', 'R-Type/play/'), ('TSRun archive', 'R-Type/downloads/RType_TS2068_TSRun_r160.zip')]),
     ],
     'Development tools': [
         ('TS2068 Diagnostic Lab', 'ROM-based hardware diagnostics and RAM chip/bit reporting; cartridge and simplified HOME ROM editions.', [('Project', 'DiagnosticLab2068/'), ('Download v0.3', 'DiagnosticLab2068/release/TS2068DiagnosticLab-v0.3.zip'), ('Manual', 'DiagnosticLab2068/docs/manual/')]),
@@ -51,13 +56,13 @@ def page(title, body, back=''):
     return '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+escape(title)+'</title><style>'+style+'</style></head><body><main>'+back+body+'<footer>Timex Sinclair 2068 projects · '+link('GitHub', GITHUB+'ts2068')+'<p>Projects retain their own attribution and licensing. Existing project URLs remain unchanged.</p></footer></main></body></html>\n'
 
 body='<p class="eyebrow">Timex Sinclair 2068</p><h1>TS2068</h1><p>Arcade and Spectrum ports, demos, applications and development tools — together in one place.</p>'
-body+='<div class="feature">'+link('TS2068 Cartridges →', 'ts2068-cartridges/')+'<p>Get all eleven available .dck cartridge downloads from one catalog.</p></div>'
+body+='<div class="feature">'+link('TS2068 Cartridges →', 'ts2068-cartridges/')+'<p>Get all nineteen available .dck cartridge downloads from one catalog.</p></div>'
 for heading, projects in groups.items():
     body+='<section><h2>'+escape(heading)+'</h2><div class="cards">'
     for title, description, links in projects:
         body+='<article class="card"><h3>'+escape(title)+'</h3><p>'+escape(description)+'</p><div class="links">'+''.join(link(*pair) for pair in links)+'</div></article>'
     body+='</div></section>'
-body+='<section><h2>Spectrum ports</h2><p>Elite conversion work is currently local. Public source and cartridge links will be added when ready.</p></section>'
+body+='<p>Elite conversion work is currently local; its public links will follow when ready.</p>'
 (ROOT/'index.html').write_text(page('TS2068 · Projects and cartridges', body), encoding='utf-8')
 
 # Cartridge rows are maintained in the catalog README, including exact download URLs.
@@ -80,7 +85,7 @@ for line in (ROOT/'ts2068-cartridges/README.md').read_text(encoding='utf-8').spl
         body+=link(label,target)
     body+='</div></article>'
 if opened:body+='</div></section>'
-assert count==11, f'Update the hub download count: found {count}'
+assert count==19, f'Update the hub download count: found {count}'
 body+='<p>Sinistar is a playable development port verified in emulators; physical hardware validation is pending. See each project for controls and compatibility.</p>'
 (ROOT/'ts2068-cartridges/index.html').write_text(page('TS2068 Cartridges', body, '<nav>'+link('← TS2068 hub','../')+'</nav>'),encoding='utf-8')
 (ROOT/'.nojekyll').touch()

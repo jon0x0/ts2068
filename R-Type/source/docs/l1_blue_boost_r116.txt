@@ -1,0 +1,40 @@
+R-Type TS2068 r116 - chosen flying action/boost enemy
+
+Replace the COMPLETE rtype folder, reset, launch rtype/rt.tap.
+Startup R116 PREPARING. OrdinaryL1 shows this enemy; doubleBskipsencounters.
+
+Native41 now uses your EXACTtwoexported40x40actionposes260/262, alternating
+whileflying. Settingsbrightness56/contrast56/saturation100/gamma0.35/SierraLite.
+Noresize,reconversion orreplacementwithwalkingposes. Native movement/collision
+and40x40footprint retained. Earlierchosenwalkers,snake,ghosts,L3exhaustretained;
+bank5pairedartbyte-identicalr114 and all7otherlevelregionsbyte-identical.
+
+New800byteart lives in retiredbank6cache C300..C61F. ExistingghosthelperC100,
+blue-loaderC200/tableC260,ghostvariablesC2F0 do notoverlap. Packedsource411bytes
+is gathered from22ranges in unusedDOCK1palette rows into scratchC900, then
+expanded toC300. Everycolourrow referencedbyoriginalnativegraphicsandfirst16
+reservedrowsremainsunchanged. Transparentmarker54neverreadsitscolourrow.
+IMPORTANTforfuturebuilders: blue_contract.json source_ranges are now reserved;
+neverreuse these rows for anotherpaletteconversion. Source unchanged after
+1800updates and cachedrevisits. Bank7 is byte-identicalr114; no assetstorethere.
+An earlierunpublishedbank7sourceexperimentfailedrevisittestandwasdiscarded.
+
+Loaderstackuses isolatedDOCK6C7F0/saveC7F2 whilepreloading/gathering, with
+callerSPandmappingrestored. Realstartupobservationspassed2stackrestorechecks.
+Existingruntimeimage freshlyzerosactorphasearray; redundantclearremoved.
+NativeIDs>=205guardedbefore compact205entrymap, twoframecounterforbase184.
+Runtimeguard31bytes intact, bank5artA870..BFFF, newartendsC620, packedend39FE
+below3A00. No extraRAMbank or changes to native bitmap/descriptordata.
+
+Tests:1800ordinaryupdates/1320boostdraws/bothposes/exactbank6bytes/source/guard,
+10866ghostdraws,96oldnewghost-planequivalencecases,threecoldfiretimings,
+12cold/cachedlevelroutes, scope/source/asset/bounds/decode/TAPreconstruction/
+checksums/ZIPCRC pass. Longordinarytraces explicitlyusegameoverbypass; coldfire
+testsdoNOT. ActualRAMcomparisonincluded. Hardwareconfirmationpending.
+
+CPU-emulatedtimingvsr114: early130..500updatetime +0.5%, busyghostwindow
+920..1100 -1.4% in thisspecificnofiretrace. DifferencesinIRQtiming affect
+comparison; not proof ofa universalFPSgain orphysicalhardwaremeasurements.
+Existingr114busyghostslowdownvsoriginalwhite24 remains; no redrawspeedclaim.
+
+Stock64KBcartridgetargetseparate/unchanged. Stable100andpriorr114archiveskept.

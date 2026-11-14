@@ -1,0 +1,2 @@
+from pathlib import Path
+p=Path('scripts/verify_pause_r65.mjs');s=p.read_text().replace('let original=null,restored=false;','let original=null,restored=false,volumes=null;').replace('if(a===sy.pause&&!original)original=', 'if(a===sy.pause&&!original){volumes=Array.from(m.ay.regs.slice(8,11));original=').replace('if(a===sy.done&&original){','}if(a===sy.done&&original){assert.deepEqual(Array.from(m.ay.regs.slice(8,11)),volumes);').replace('assert.equal(u,updates);','assert.equal(u,updates);assert.equal(m.ay.regs[8]|m.ay.regs[9]|m.ay.regs[10],0);');p.write_text(s)

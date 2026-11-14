@@ -1,0 +1,17 @@
+L2 review r118: corrected arcade assembly, not a game release.
+User export convref/rtype-l2-art-assets.zip preserved unchanged. Settings and notes
+retained. Review decisions remain review, not silently accepted.
+Scorpion:10complete64x64captured paired poses,32x64halves joined by actual x/y,
+palette and sprite-table offsets. Existing40x40target retained. Captured flips
+preserved; inventory ordering is not a proven animation gait.
+Snake: actual frame15900chain,22placements/6distinct capturedRGBAparts, including
+2450/2454body and terminal/head objects2480/2496/2482/2464. Wrong skeletal
+candidate withdrawn. Captured layout available in Connected snake preview.
+Walker: source remains exact previously approved Chead, already used in L1r110.
+Your exported24x24size retained; integration/mapping not yet changed.
+Boss: exact user-exported scroll-safe entrance, then whole8x1cell dissolve to
+native192x104previousdetail once stopped. Offline prototype, not gameplay fix.
+Terrain, whitelegs and emergence selections/settings preserved. Fixed256x160terrain.
+Edge browser all7families, all4dithers/gap/fullrow,8phasecolouraudit/nativeZIP,
+retained settings PASS. scorpion_ui.png and assembly evidence visually reviewed.
+Game remainsr116; no new gameplay, bank placement, performance or hardware claims.

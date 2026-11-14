@@ -1,0 +1,17 @@
+R-Type TS2068 r142 - easier L4 boss
+
+Replace the complete rtype folder, reset, run rtype/rt.tap.
+Each of the three L4 targets now has16 health instead of32:48 registered
+one-point damage hits total instead of96. Native damage/victory rules,
+openings, geometry and artwork are unchanged. All r141 pickup recovery
+and r140 artwork selections are retained.
+
+Native settled boss defeat passed in scripted emulation:16 hits per target,
+48 total, native victory reached. Player protection only; no enemy health
+or timer edits during the test. Two actual native death/respawn/recollect/
+rear-dock/rear-fire cycles also passed. Static checks confirm only three
+L4 region bytes changed; other seven levels and CORE are identical.
+All TAP checksums and L4 reconstruction passed. Hardware testing pending.
+Stable r100, stock64KB target and prior release archives are unchanged.
+
+SHA256 b7618e84827c9bb63dfeb1c9f45551ca2120f1730646d4cfef60ef158b63add2

@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "cases": 2048,
+  "allGlyphBytes": true,
+  "cacheDeliberatelyOverwritten": true,
+  "liveVariablesAndScoresPreserved": true,
+  "iffPreserved": true,
+  "romWrites": 0,
+  "scope": "All512 source bytes through both native ROM-font readers with IFF on/off; native text/score flows separately tested"
+}

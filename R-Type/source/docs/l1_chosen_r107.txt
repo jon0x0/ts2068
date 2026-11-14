@@ -1,0 +1,30 @@
+R-Type TS2068 r107 - selected L1 walker and snake artwork
+
+Replace the COMPLETE rtype folder, reset, and launch rtype/rt.tap.
+Startup identifies R107 PREPARING. Play ordinary level 1 to see these enemies.
+Double-B jumps past the ordinary encounter.
+
+Uses your supplied rtype-l1-walker-snake-assets.zip. Four selected 24x24 walker
+poses replace only the small round walker (native53-56). The accepted larger
+walkers are unchanged. The snake uses seven of the ten exported orientations,
+selected by the native four pose IDs and two flip flags. No random gait cycling
+is applied to snake orientations. Pixel/attribute pairs are exact exports.
+All ten exported orientations and settings remain in your original ZIP.
+
+Small gaps remain between some diagonal snake joints. This candidate preserves
+the selected artwork and original segment coordinates/collision scripts rather
+than inventing connecting pixels or changing the snake's motion.
+
+L1 runtime art relocated from B000 to A900, beyond runtime code ending A811;
+art ends B990, compressed payload ends39DA, below reserved3A00 boundary.
+No extra RAM bank. Existing native-bank restoration helper retained.
+All other seven level regions are byte-identical to r104. The complete L3
+photo-reference exhaust, stable L5 execution and other gameplay are retained.
+
+OrdinaryL1 rapid-fire and no-fire700-update routes pass, all4walker poses seen;
+actual bank5 bytes match exported art. ColdL1/L3 fire timings and12cold/cached
+level routes pass. Static exact-art/scope, bank bounds, TAP reconstruction,
+checksums and ZIP CRC pass. Long ordinary traces use game-over bypass, while
+cold fire tests do not. Captures are scripted emulation, not hardware or FPS
+measurements. Hardware confirmation pending. Stable r100 fallback retained.
+Stock64KB cartridge target remains separate and unchanged by this disk build.

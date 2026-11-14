@@ -1,0 +1,44 @@
+R-Type TS2068 r128 - corrected L2 scorpion directions and snake anatomy
+
+Replace the complete rtype folder, reset, launch rtype/rt.tap.
+Startup identity: R128 PREPARING.
+
+Your direction convention is used throughout the comparison and provenance:
+FlipX=false means head right. FlipY=false means head down.
+Frames0..9 captured flags (X,Y):
+0 false,false;1 false,true;2 true,false;3 false,true;4 true,false;
+5 true,true;6 true,true;7 true,true;8 false,true;9 false,false.
+Frame3 is your confirmed false/true, also independently proven because its
+64x64arcade source pixels are an exact vertical flip of Frame9.
+
+The runtime normalization differed from the old preview labels. Frames2 and5
+were the incorrectly facing game artwork: both have now been mirrored in X/Y,
+bitmap AND8x1 colour planes together. All ten exact chosen exports are retained;
+no rescaling, colour settings, animation sequence or frame-rate changes. Each
+actual Z80 decode is verified against the chosen export with the corrected flip.
+The four-direction comparison animates all ten with one fixed heading.
+
+The native snake already has a separate neck segment (role4). Its sequence is
+now head - existing neck - four spiny body sections - nine round sections - tail.
+All13 body slots keep their anatomical type across native22/23 animation phases.
+Head/tail orientation mappings and all sprite sizes are unchanged. Exactly two
+expanded runtime bytes change the anatomy boundary; no extra drawing work.
+
+The r127 boss-backdrop repair, native refresh bookkeeping, bank/stack/IM2
+contracts and all other level artwork are retained. Corrected scorpion packets
+fit their existing slots and are16bytes smaller; runtime image size is unchanged.
+Source ZIPs, stable r99/r100 and stock64KB target unchanged. Full disk build.
+
+Verified in scripted emulation:31 actual actor decodes including all ten chosen
+scorpion exports;1547-update ordinary L2 approach observed all ten IDs;
+700-update firing/boss test verified every body slot, immutable backdrop cache
+and exact pixels/colours at five checkpoints;12 cold/cached transitions and6
+long boss/reset/revisits;3 ordinary cold/fire cases;128 tiles,96 shared palette
+rows,160 scrolling scanlines,288 injected dirty cells;debug/Space redraw;
+actual256IM2words and all16level/start tapes/ZIP CRCs. Fixed-FF emulator,
+not hardware IRQ probes. Long gameplay coverage uses invulnerability/game-over
+bypasses; separate cold/fire tests do not. Real hardware confirmation pending.
+
+Comparison: build/graphics/l2_orientations_r128/index.html
+Build: scripts/build_l2_orientations_r128.py, preview_l2_orientations_r128.py,
+listed verification scripts, then finalize_l2_orientations_r128.py.

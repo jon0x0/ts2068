@@ -1,0 +1,33 @@
+import fs from'node:fs';import path from'node:path';import assert from'node:assert/strict';
+import{api,root}from'./r22_test_machine.mjs';import{out,demandFixture}from'./boss_motion_fixture_r61.mjs';
+const profileOut=path.join(root,'build/diagnostics/startup_r61/fixed');fs.mkdirSync(profileOut,{recursive:true});const results=[];let wrapperCount=0;const overrides={};let captured=-1;let trace=[];
+for(const level of('5').split(',').map(Number)){
+ const{m,joy,controller:c}=demandFixture();let boot=-1,updates=0,last=-1,jumps=0,before=0,after=0,phase=0,phaseAt=0,stops=0;const seen=new Set();
+ const write=m.bus.write;m.bus.write=(a,v)=>{if(c.booted&&c.region===4&&(m.cpu.pc!==0x5e04)&&a<8192&&(m.portF4&1)&&m.dock[0][a]!==v){fs.writeFileSync(path.join(out,'bad_write.home.bin'),m.ram);fs.writeFileSync(path.join(out,'trace.json'),JSON.stringify(trace));throw Error('ROM WRITE '+JSON.stringify({a,v,pc:m.cpu.pc,sp:m.cpu.sp,hl:(m.cpu.h<<8)|m.cpu.l,de:(m.cpu.d<<8)|m.cpu.e,map:m.portF4,active:m.ram[0x5c80],stage:c.region}));}write(a,v);};const read=m.bus.read;m.bus.read=a=>{if(m.stepAdded===0&&a===m.cpu.pc&&last!==m.tstates){last=m.tstates;if(phase>=4&&m.cpu.sp<0xfd00&&!(m.cpu.sp>=0x5c60&&m.cpu.sp<=0x5cf2 || m.cpu.sp>=0x5b60&&m.cpu.sp<=0x5bc0)){fs.writeFileSync(path.join(out,'trace.json'),JSON.stringify(trace));throw Error('BAD SP '+m.cpu.sp.toString(16));}if(a===0x8634){m.ram[0x91f2]=201;m.ram.set([0xaf,0xc9],0xbff1);}
+ if(a===0x94f1&&!(m.portF4&16)&&read(0x7aa4)>0){updates++;if(phase>=4)after++;}
+ if(a===0xc0e4&&(m.portF4&4)&&m.cpu.sp>=0x5c84&&m.cpu.sp<=0x5ca0){m.cpu.pc=0xbff1;return read(0xbff1);}if(a===0x8cfd&&phase>=4){const id=read(0x7a9c);if(id>=9&&id<=26){const key=id+':'+read(0x8eb1);overrides[key]=(overrides[key]||0)+1;}}
+
+ if(a===jumpPC){jumps++;console.log('jump',level,updates);}
+ if(a===0x90b5&&phase>=4)stops++;
+ if(a===0x8e85&&phase>=4)seen.add(m.cpu.a);
+ }return read(a);};
+ const sym=fs.readFileSync(path.join(out,'boss_preview.sym'),'utf8');const jumpPC=parseInt(sym.match(/boss_jump: EQU 0x([0-9a-f]+)/i)[1],16);
+ let projectilePhases=0,boltTrace=[];const shotWrite=m.bus.write;m.bus.write=(a,v)=>{if(profileStart>=0&&m.portF4===9&&a===0x5eb5)boltTrace.push({frame:frame-profileStart,x:v,pc:m.cpu.pc});shotWrite(a,v);};
+ let frame=0,profileStart=-1,profileUpdates=0,irq=0,ticks=0,busy=0,diCycles=0,lastCycle=0,shots=0,beams=0,minStack=0x5bc0;const positions=[],raster=[],paintEvents=[];const oldRead=m.bus.read;m.bus.read=a=>{if(m.stepAdded===0&&a===m.cpu.pc&&m.tstates!==lastCycle){if(profileStart>=0){if(!m.cpu.iff1)diCycles+=m.tstates-lastCycle;if(m.portF4===9&&m.cpu.sp>=0x5b60&&m.cpu.sp<=0x5bc0)minStack=Math.min(minStack,m.cpu.sp);if(a===0x9d5c&&!(m.portF4&16))shots++;if(a===0x9aa2&&!(m.portF4&16))beams++;if(a===0xfb00){irq++;if(m.ram[0x5bcd])busy++;}if(a===0xe400&&(m.portF4&128))ticks++;if(a===0x5883&&(m.portF4&4))projectilePhases++;if(a===0x1e20&&(m.portF4&4)&&m.dock[2][0x1ff1]===1){const slot=m.dock[2][0x1ff0],at=0x1f80+slot*3;paintEvents.push({t:frame-profileStart,slot,type:m.dock[2][at],x:m.dock[2][at+1],y:m.dock[2][at+2]});}}lastCycle=m.tstates;}return oldRead(a);};
+ for(;frame<50000;frame++){
+  if(c.booted&&boot<0)boot=frame;
+  m.keyMatrix.fill(31);const t=frame-boot;
+  if(boot>=0&&t>=600&&t<700){if(level<=5)m.keyMatrix[3]=31^(1<<(level-1));else m.keyMatrix[4]=31^(1<<(10-level));}
+  joy[0]=boot>=0&&t>=800&&t<840?239:255;
+  if(updates>=15&&phase===0){phase=1;phaseAt=updates;before=m.bus.read(0x7a84);}
+  if(phase===1||phase===3)m.keyMatrix[7]&=~16;
+  if(phase===4&&updates-phaseAt<10)m.keyMatrix[7]&=~16;
+  if(after>=100&&profileStart<0){profileStart=frame;profileUpdates=after;}if(profileStart>=0){const t=frame-profileStart;const slot=t%64<32?0x1782:0x1780;const port=m.dock[3][slot],mask=m.dock[3][slot+1];if(false)for(let r=0;r<8;r++)if(!(port&(1<<r)))m.keyMatrix[r]&=31^mask;if(t<6){const fp=m.dock[3][0x1788],fm=m.dock[3][0x1789];for(let r=0;r<8;r++)if(!(fp&(1<<r)))m.keyMatrix[r]&=31^fm;}m.ram[0x5bc4]=0;m.dock[3][0x1a98]=1;}api.runFrame(m);if(profileStart>=0){const scan=[];for(let x=1;x<30;x++){let same=true;for(let r=0;r<8;r++)for(let c=0;c<2;c++)for(let px=0;px<8;px++){const bits=m.ram[0xb05c+c*9+r],color=(bits&(128>>px))?(c?6:4):0;if(m.pixels[(24+80+r)*640+64+(x+c)*16+px*2]!==color)same=false;}if(same)scan.push(x);}raster.push({t:frame-profileStart,found:scan});}if(profileStart>=0)positions.push({slots:Array.from({length:16},(_,i)=>({pool:[...m.ram.slice(0x5eb4+i*3,0x5eb7+i*3)],draw:[...m.dock[2].slice(0x1f80+i*3,0x1f83+i*3)],mask:[...m.dock[2].slice(0x1fc0+i*2,0x1fc2+i*2)]})),queue:m.dock[7][0x16a4],served:m.dock[7][0x16a5],charge:m.dock[3][0x1abf],frame:frame-profileStart,x:m.dock[7][0x1680],y:m.dock[7][0x1681],copy:m.ram[0x5bc3],busy:m.ram[0x5bcd]});
+  if(phase===1&&updates-phaseAt>=10){assert.equal(jumps,0,'Held first B must not jump');phase=2;phaseAt=updates;}
+  if(phase===2&&updates-phaseAt>=4){phase=3;phaseAt=updates;}
+  if(phase===3&&jumps===1){phase=4;phaseAt=updates;}
+  // Keep the second press held for several updates to verify latch, then release.
+  if(profileStart>=0&&frame-profileStart>=479){assert.equal(shots,1);assert.equal(beams,0);assert(raster.every(v=>v.found.length<=1));let last=0;for(const e of paintEvents){assert(e.x>=last,'Painted an earlier projectile position');last=e.x;}last=0;for(const f of raster)for(const x of f.found){assert(x>=last,'L5 raster displayed a previous position');last=x;}assert(paintEvents.some(e=>e.x>=28));const result={passed:true,level,irq,ticks,busy,shots,beams,minStack,projectilePhases,boltTrace,raster,paintEvents,world_updates:after-profileUpdates,diCycles,positions};fs.writeFileSync(path.join(root,'build/fullgame/startup_r61/l5_single_order_validation.json'),JSON.stringify(result,null,2));console.log({level,irq,ticks,busy,shots,beams,minStack,projectilePhases,world_updates:after-profileUpdates,diCycles,moves:positions.filter((p,i)=>i&&p.x!==positions[i-1].x).length,travel:positions.reduce((n,p,i)=>n+(i?Math.abs(p.x-positions[i-1].x):0),0)});break;}
+ }
+
+}

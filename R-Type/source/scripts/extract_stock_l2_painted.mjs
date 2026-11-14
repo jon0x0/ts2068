@@ -1,0 +1,20 @@
+import fs from'node:fs';import assert from'node:assert/strict';import{api,z,root,off,rev}from'./r22_test_machine.mjs';import{demandFixture}from'./boss_motion_fixture_r145.mjs';
+const level=Number(process.argv[2]||1);assert(level>=1&&level<=8);const out=root+'/build/cartridges/integration_work';fs.mkdirSync(out,{recursive:true});const foundation=JSON.parse(fs.readFileSync(root+'/build/fullgame/foundation/manifest.json')).levels[level-1], {m,joy,controller:c}=demandFixture();let boot=-1,u=0,last=-1;const rd=m.bus.read;m.bus.read=a=>{if(m.stepAdded===0&&a===m.cpu.pc&&last!==m.tstates){last=m.tstates;if(a===0x94f1&&rd(0x7aa4)>0)u++;}return rd(a)};for(let f=0;f<8000&&u<5;f++){m.keyMatrix.fill(31);joy.fill(255);if(c.booted&&boot<0)boot=f;if(f>=30&&(boot<0||f-boot<120)){if(level<=5)m.keyMatrix[3]&=~(1<<(level-1));else m.keyMatrix[4]&=~(1<<(10-level));}if(boot>=0&&f-boot>=300)joy[0]=127;api.runFrame(m);}assert(u>=5);assert.equal(c.region,level-1);console.log('selectors',level,'game',rd(0x7aa4),'mode',m.portFF,m.dock[1][0x1ff0],Array.from(m.ram.slice(0x9172,0x917a)),Array.from(m.ram.slice(0x8e85,0x8e8c)));
+const meta=JSON.parse(fs.readFileSync(root+'/build/fullgame/visible_hits_r145/walker_runtime.json')).find(q=>q.level===level)||(level===2?{extension:Object.fromEntries([...fs.readFileSync(root+'/build/fullgame/visible_hits_r145/L2_actor_extension.sym','utf8').matchAll(/(\w+): EQU 0x([0-9a-f]+)/ig)].map(v=>[v[1],parseInt(v[2],16)]))}:null),home=Buffer.from(m.ram),banks=m.dock.map(v=>Buffer.from(v)),select=rd(0x9173)+256*rd(0x9174),palette=[],frames=[],variants=[],unique=new Map();
+function run(pc,regs={},flip=0){m.portF4=9;m.portFF=2;Object.assign(m.cpu,{pc,sp:0xffe0,iff1:false,iff2:false,halted:false,eiDelay:false},regs);m.ram.set([0,0xf0,0,flip,0,0],0xffe0);let n=0;while(m.cpu.pc!==0xf000&&n++<1000000)z.runZ80(m.cpu,m.bus,1,m);assert(n<1000000,'hang '+m.cpu.pc.toString(16));}
+
+
+const painted=[];const wr=m.bus.write;let capture=false;const writes=new Map();m.bus.write=(a,v)=>{if(capture)writes.set(a,v);wr(a,v);};
+for(let tile=34;tile<52;tile++){
+ m.ram.set(home);for(let i=0;i<8;i++)m.dock[i].set(banks[i]);
+ m.dock[3].fill(0,0x1800,0x2000);m.ram.fill(0,0x8000,0x8380);m.dock[3][0x1a8e]=1;m.dock[3][0x1a9c]=1;m.ram[0x8eb1]=0;m.ram[0x8ebf]=0x60;
+ run(0x882d,{a:tile});const ptr=m.cpu.h*256+m.cpu.l;
+ writes.clear();capture=true;run(0x8cfd,{b:2,c:2,d:4,e:4,h:ptr>>8,l:ptr&255});capture=false;
+ const bits=[],attrs=[];
+ for(let cy=0;cy<4;cy++)for(let cx=0;cx<4;cx++){
+  const bb=[],aa=[];for(let y=0;y<8;y++){const p=off(16+cy*8+y)+2+cx;bb.push(writes.get(0x6000+p)??0);aa.push(writes.get(0x4000+p)??7);}
+  bits.push(...bb);attrs.push(aa);
+ }
+ painted.push({tile,bits,attrs});
+}
+fs.writeFileSync(out+'/L2_boss_painted.json',JSON.stringify({source:'Actual r145 native882D getter followed by native8CFD painter, stopped state, captured bitmap/raster-attribute writes; no guessed palette addresses',tiles:painted}));console.log({painted:painted.length,attrs:[...new Set(painted.flatMap(t=>t.attrs.flat()))]});

@@ -1,0 +1,31 @@
+R-Type TS2068 r129 - L2 snake/boss layering and draw optimization
+
+Replace the complete rtype folder, reset, launch rtype/rt.tap.
+Startup identity: R129 PREPARING. Full disk build.
+
+Restores the stopped boss's foreground after entity drawing, so the snake and
+projectile cleanup cannot leave erased patches on its right side. Bitmap and
+8x1 ECM colours are restored together. Boss artwork wins overlapping occupied
+8x8 cells, including their black padding; this is not per-pixel alpha blending.
+Empty boss cells remain available to actors.
+
+Skips70 empty cached cells and restores the background only in actor-owned
+cells. Same artwork, dimensions,13body segments, anatomy and animation rates.
+Matched scripted encounter costs 10.1% fewer CPU cycles per update
+than r128. This is emulator CPU measurement, not hardware FPS; the encounter
+can still be demanding. r128 scorpion directions and snake anatomy retained.
+
+Verified: two700-update encounters with firing/ceasefire; five checkpoints each
+compare7523 actual visible boss pixels and1744 background scanline cells;
+221occupied/67empty-cell injection test (direct fixture);12cold/cached transitions,6longboss
+revisit routes,3ordinary cold/fire cases;31actual actor decodes,128tilecases,
+96globalpalette and160terrain rows,debug/Space redraw,256actual RAM IM2words,
+all16LEVEL/START tape reconstructions and TAP/ZIP checksums.
+Long encounter tests use invulnerability/game-over bypasses; separate cold/fire
+tests do not. Fixed-FF emulator; no hardware IRQ or hardware gameplay claim.
+
+Other7levels, projectile source, cold bootstrap, source ZIPs, reference projects,
+stable r99/r100 and stock64KB target preserved. No new graphics in this build.
+Actual gameplay capture: boss_visible_690.home.png in this build directory.
+Build: scripts/build_l2_pre_copy_r129.py and finalize_l2_pre_copy_r129.py.
+Real hardware confirmation pending.

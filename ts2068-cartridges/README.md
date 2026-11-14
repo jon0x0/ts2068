@@ -9,6 +9,14 @@ the projects are updated. File paths were checked on October 7, 2026.
 
 | Cartridge | Download | Project |
 | --- | --- | --- |
+| R-Type Remastered - Level 1 | [rt_l1_r160.dck](../R-Type/play/assets/rt_l1_r160.dck) | [Project](../R-Type/) - [Play level 1](../R-Type/play/?level=1) |
+| R-Type Remastered - Level 2 | [rt_l2_r160.dck](../R-Type/play/assets/rt_l2_r160.dck) | [Project](../R-Type/) - [Play level 2](../R-Type/play/?level=2) |
+| R-Type Remastered - Level 3 | [rt_l3_r160.dck](../R-Type/play/assets/rt_l3_r160.dck) | [Project](../R-Type/) - [Play level 3](../R-Type/play/?level=3) |
+| R-Type Remastered - Level 4 | [rt_l4_r160.dck](../R-Type/play/assets/rt_l4_r160.dck) | [Project](../R-Type/) - [Play level 4](../R-Type/play/?level=4) |
+| R-Type Remastered - Level 5 | [rt_l5_r160.dck](../R-Type/play/assets/rt_l5_r160.dck) | [Project](../R-Type/) - [Play level 5](../R-Type/play/?level=5) |
+| R-Type Remastered - Level 6 | [rt_l6_r160.dck](../R-Type/play/assets/rt_l6_r160.dck) | [Project](../R-Type/) - [Play level 6](../R-Type/play/?level=6) |
+| R-Type Remastered - Level 7 | [rt_l7_r160.dck](../R-Type/play/assets/rt_l7_r160.dck) | [Project](../R-Type/) - [Play level 7](../R-Type/play/?level=7) |
+| R-Type Remastered - Level 8 | [rt_l8_r160.dck](../R-Type/play/assets/rt_l8_r160.dck) | [Project](../R-Type/) - [Play level 8](../R-Type/play/?level=8) |
 | The Crown remastered | [TheCrown.dck](remastered/TheCrown/TheCrown.dck) | [Release](remastered/TheCrown/) · [Play with virtual DPad](remastered/TheCrown/play/) |
 | Berzerk | [berzerk.dck](https://raw.githubusercontent.com/jon0x0/berzerk_ts2068/main/personalizations/berzerk/assets/berzerk.dck) | [Project](https://github.com/jon0x0/berzerk_ts2068) · [Play](https://jon0x0.github.io/berzerk_ts2068/) |
 | Sinistar v58 | [sinistar.dck](../arcade-ports/sinistar/play/assets/sinistar.dck?raw=true) | [Browser player and setup](../arcade-ports/sinistar/play/) · [Source](../arcade-ports/sinistar/) |
@@ -31,8 +39,8 @@ the projects are updated. File paths were checked on October 7, 2026.
 | Boing | [BoingDemo.dck](https://raw.githubusercontent.com/jon0x0/TSVideoCodec/main/demos/BoingDemo.dck) | [TSVideoCodec](https://github.com/jon0x0/TSVideoCodec) |
 | Juggler ECM | [jugglerecm.dck](https://raw.githubusercontent.com/jon0x0/TSVideoCodec/main/demos/jugglerecm.dck) | [TSVideoCodec](https://github.com/jon0x0/TSVideoCodec) |
 
-No public Spectrum-port cartridge was found in the repositories checked for
-this initial catalog. Add those links as ports are published. The AI skill
+R-Type Remastered supplies eight Spectrum-port cartridges with selected
+arcade-derived artwork and native TS2068 ECM enhancements. The AI skill
 repository currently supplies development resources rather than `.dck` files.
 
 Compatibility, controls and attribution belong to each project's documentation.

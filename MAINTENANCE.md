@@ -170,3 +170,17 @@ https://jon0x0.github.io/ts2068/demos/SCLD/. No new Pages workflow is required.
 ## VU-3D cartridge conversion
 
 Published under `ts2068-cartridges/conversions/VU3D/`. Preserve the final G4M cartridge, raw ROM and EPROM image with their checksums. The player has its own pinned TSRun snapshot and links to Josef Jelinek’s separate WU-3D recreation. Hub entry is owned by `scripts/build_site.py`; catalog entry by the cartridge README. See the release validation notes before making compatibility claims.
+
+
+## R-Type Remastered r160
+
+[Project](R-Type/) - [Play with keyboard or Virtual DPad](https://jon0x0.github.io/ts2068/R-Type/play/) - [TSRun archive](R-Type/downloads/RType_TS2068_TSRun_r160.zip).
+Spectrum conversion remastered in native TS2068 ECM with selected arcade art.
+Development stays in cartridgeconversion/R-Type; R-Type/source is a publication
+snapshot. The isolated unchanged Berzerk runtime is the one used by Sinistar
+play-dpad; hashes/provenance are in R-Type/play/tsrun-version.json. Its custom
+adapter handles native joystick bit7 and browser L+number cartridge switching.
+Physical cartridges remain single-level. Keys are chosen in-game; suggested
+O/P/Q/A/Space/Enter, double-B boss, M music, Shift-P pause. Preserve archive
+and hardware/software validation distinctions. Hub categories and catalog
+are maintained by scripts/build_site.py and ts2068-cartridges/README.md.

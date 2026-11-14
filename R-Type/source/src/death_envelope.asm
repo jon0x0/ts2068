@@ -1,0 +1,20 @@
+        ORG $0BC0
+        LD A,($FBC1)
+        CP 11
+        RET NZ
+        LD A,11
+        LD E,(HL)
+        INC HL
+        CALL $F88C
+        LD A,12
+        LD E,(HL)
+        INC HL
+        CALL $F88C
+        LD A,(HL)
+        INC HL
+        CP 255
+        RET Z
+        LD E,A
+        LD A,13
+        JP $F88C
+        ASSERT $ <= $0C00

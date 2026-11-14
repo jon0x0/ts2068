@@ -1,0 +1,40 @@
+R-Type TS2068 r124 - complete selected L2 integration
+
+Replace the complete rtype folder, reset, and launch rtype/rt.tap.
+Startup identity: R124 PREPARING. Select 2 for level 2; B twice previews boss.
+
+Selected v2 actor art retained: all TEN scorpion exports (native heading flips
+preserved), C shell walker, white-legged creature, emergence heads and snake.
+All27 actor packets decode exactly in actual emulated RAM.
+
+L2 scrolling terrain retains all34 native tile silhouettes and dimensions.
+Selected arcade-material colour guidance is projected into coherent per-scanline
+ink-on-black palettes. This conservative full-row policy trades local colour
+variation for safe single-pixel horizontal scrolling. It is not a new one-to-one
+arcade terrain tile extraction. Blank sky cells remain sky, not opaque rectangles.
+
+Fixed the old collision between terrain IDs19..33 and the boss tiles. Boss art
+now uses separate IDs34..51. While entering it uses a coherent moving palette;
+after the actual native stop, its detailed selected red/white/yellow artwork is
+repainted one occupied tile per update into BOTH the background and screen.
+No repeated full-screen palette scan. Alternate registers are preserved.
+
+Native prefix snapshot/restore covers A458..A84B. Packed tile data uses the old
+terrain storage plus retired palette space; no player code/data in DOCK7 is reused.
+Duplicate diagnostic font replaced with the same native ROM font at3D00; debug
+screen remains readable. Other seven levels are byte-identical to r123.
+
+Validation: 128 actual Z80 tile cases,27 actor packets,all10 scorpion IDs drawn,
+all8 scrolling phases captured;1547 ordinary updates;3 unmodified cold/fire cases;
+12 general and6 long boss/reset/revisit routes;all16 level/start tape checksums
+and reconstruction. All256 IM2 words checked in actual RAM; emulator IRQ vector
+is fixedFF, not256 hardware IRQ probes. Long route uses invulnerability/game-over
+bypass. Debug direct-entry/font/Space redraw tested; live chord not established
+by this test. Actual RAM images recorded and inspected.
+
+Performance: ordinary1547-update run38775 emulated frames versus r12339205.
+This is a small emulator improvement, not a hardware FPS measurement. Large
+selected actors remain more expensive than the older smaller graphics.
+
+Hardware validation pending. Stable r99/r100 and stock64KB read-only cartridge
+remain unchanged. This is the full banked disk game candidate, not a new64KB ROM.

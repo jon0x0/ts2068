@@ -1,0 +1,43 @@
+R-Type TS2068 r123 - L2 actor integration
+
+Replace the complete rtype folder, reset, and launch rtype/rt.tap.
+Startup identity: R123 PREPARING. Number 2 selects level 2.
+
+Integrated from rtype-l2-art-assets_v2.zip:
+- All ten scorpion exports, 40x40. Whole-image normalization preserves native
+  heading flips; four base packets plus six lossless XOR deltas retain every
+  converted frame, including diffusion differences.
+- Approved four-frame C shell walker, 24x24; three-frame white-legged shell.
+- Selected snake body/head/tail orientations, 24x24.
+- Two 40x40 emergence heads; native mirrored variants use the caller flip flag.
+  Horizontal head movement retains native 8-pixel coordinates; vertical 2-pixel
+  smoothing remains. No AI or collision geometry changes.
+
+The expanded runtime now preserves L2's native uninstall trailer and restores
+its overwritten native source prefix before leaving/reloading a level. Packed
+actor sources occupy only explicitly retired L2 sprite records. DOCK4 and
+DOCK7 are unchanged. Other seven levels match r116 byte-for-byte, including
+prior selected L1 artwork and the L3 photographic rocket plume.
+
+LIMITATION: This package completes the selected actor integration. It does not
+complete the terrain/boss palette integration. Original strip dimensions,
+terrain maps and detailed boss artwork remain unchanged. The full-background
+palette scan was rejected because it slows updates; no scan is included here.
+The reviewed terrain and stopped-boss reveal still require a cheaper path.
+
+Tests are scripted TSRun emulation, not hardware confirmation. The long ordinary
+approach uses an invulnerability/game-over bypass for coverage; separate early
+L2 startup/fire cases use unmodified gameplay. Larger selected actors cost time:
+the earlier 1547-update approach took roughly 39k emulated frames versus 27k for
+r116. This is not a speed improvement or a hardware FPS measurement.
+
+Stock 64KB cartridge target and stable r100 release are unchanged. This package
+is the full banked disk game candidate only. Keep r99/r100 archives for recovery.
+
+Final validation: all27 actual Z80 decode packets; all10 scorpion IDs observed
+in ordinary play; 1547 world updates; 3 unmodified cold/fire timings; 12 general
+transitions; 6 boss/reset/revisit routes; all16 level/START tapes reconstructed.
+All256 IM2 vector words checked in actual RAM (not 256 hardware IRQ probes).
+Intentional HOME plan C4F2..C635 and tile C700..C78F scratch are excluded only
+while the L2 runtime is active; equivalent workspace differences were reproduced
+on unchanged r116. Separate DOCK6 C700..CA9B stores the native prefix snapshot.

@@ -1,0 +1,37 @@
+R-Type stock TS2068 cartridge integration trial r147
+
+EXPERIMENTAL L1 ONLY. This is NOT the completed current all-level release.
+ROM/BIN: exactly 65536 bytes; DCK: ROM-only bank flags, no writable DOCK RAM.
+
+Integrated: current r145 L1 native actor appearances, including chosen walkers,
+ghost, blue enemy, snake pose changes and ordinary native boss sprite frames.
+70 deduplicated rendered frames / 307 ECM palette rows; actual native selector
+and painter used for extraction, not old art-ID guesses. Four animation phases
+and all flips retained. 1497-byte maximum decompressed frame in HOME RAM.
+Compressed ROM packets; one bounded frame cache; unchanged frames reused.
+Retained background ECM colour tokens, per-line palette restoration, safe
+interrupt masking for ROM reads/decompression; physical joystick fire bit7.
+Canonical bit-reversal table repairs missing mirrored single-pixel detail.
+
+Verified in scripted TS2068 emulation: 1760 direct/retained rendering cases,
+exact visible colours and nonblack BRIGHT values, 600 native game updates with
+normal keyboard starts/restarts, zero post-entry ROM writes, immutable banks.
+Compressed boot checks required initialized HOME regions, excluding untouched
+firmware scratch and explicitly restored CPU-register slots. No hardware test.
+
+Not integrated yet: latest terrain artwork/palette/scrolling adapters, latest
+1-pixel player and projectile clock, all current native compatibility/control
+changes, latest title/audio presentation, other seven levels. Full boss defeat
+and natural complete-level playthrough have not been verified. This is a
+technical test cartridge, not a substitute for r145 or the stable release.
+Do not use compressed_kernel_base.dck: it intentionally has no actor artwork
+until the cache hook is installed. The earlier shell-only prototype is also
+superseded by L1_actor_cache_experimental for component experimentation.
+
+Build order:
+node scripts/extract_stock_frames_r147.mjs
+python scripts/build_stock_compressed_base_r147.py
+python scripts/build_stock_actor_cache_r147.py
+node scripts/verify_stock_compressed_boot_r147.mjs
+node scripts/verify_stock_actor_cache_r147.mjs
+node scripts/verify_stock_actor_gameplay_r147.mjs

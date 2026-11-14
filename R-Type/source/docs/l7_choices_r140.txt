@@ -1,0 +1,35 @@
+R-Type TS2068 r140 - complete selected L7 artwork integration
+
+Install: replace the complete rtype folder, reset, run rtype/rt.tap.
+Startup identity: R140 PREPARING. Full eight-level disk/512KB RAM target.
+The preserved stock64KB cartridge target and stable r100 archive are unchanged.
+
+Installed selections:
+- White arcade walker: native14..17; chosen three poses in native0/1/2/1 order.
+- Blue/cyan variant: native30..32, all three chosen poses.
+- Red/yellow/green enemy: native37, chosen arcade598 conversion.
+- Asteroid/orb: native35, chosen16x16 image.
+- Emerging machinery: native51, chosen24x48 image.
+- Wall enemy: chosen four articulated poses. Housing41 is fixed; moving42..45
+  use the selected left half, with original42/43/44/45/44/43 timing. The fixed
+  housing uses the chosen rest-pose right half so it remains stable.
+
+Native erase/source masks are updated for the selected silhouettes. Native
+movement scripts and overall sprite footprints are retained. The wall joint
+is at the original16pixel boundary; no enlarged moving housing.
+
+Lossless planar streams are expanded and interleaved during L7 preparation.
+The independent interleave test measured16,860,831Tstates for both buffers,
+about4.8seconds at3.528MHz, plus decompression. This cost is during preparation,
+not every gameplay frame. No new use of native script storage or IM2 pages.
+
+Validation:600protected firing updates,2160-update wall encounter captures,
+12cold/cached level transitions, unmodified L7 startup/fire, high-score display
+transition, exact RAM artwork/cache checks, all20TAP checksums/reconstruction,
+other7level regions andCORE byte-identical to r138. Visual wall captures
+inspected. Long encounter tests prevent player death; they are not a full
+unmodified playthrough. Hardware confirmation remains pending.
+
+Archive SHA256: d1a29adec8bc131bec1417ed07ea0998db98e2af7a4b56e75b0266bb7175e696
+Build: python scripts/prepare_l7_final_inputs.py; python scripts/build_l7_all_choices_r140.py
+Validation and source allocation details: TEST_HISTORY entry228.

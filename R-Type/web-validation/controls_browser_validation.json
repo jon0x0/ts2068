@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "errors": [],
+  "actions": [
+    "Enter key definition O P Q A Space Enter",
+    "native joystick Fire",
+    "P movement",
+    "Shift-P pause/resume",
+    "double B"
+  ],
+  "scope": "Actual browser input execution; screenshots reviewed separately"
+}

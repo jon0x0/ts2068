@@ -1,0 +1,32 @@
+R-Type TS2068 r145 - collision coverage follows the displayed frame
+
+Replace complete rtype folder, reset, run rtype/rt.tap.
+Fast normal/spread shots now query the retained displayed-frame owner map
+already used by the smooth player. Previously they queried the next frame's
+working map while enemies were still displayed at their previous positions.
+This shared change applies to all eight levels. Native damage, armor,
+transparent gaps, boss openings/weak points and weapon behavior are retained.
+No global rectangle inflation or sprite rescaling.
+
+The earlier24x24-versus32x32 explanation was incomplete: the compiled renderer
+already builds collision ownership at its actual enlarged dimensions. A1500draw
+L1 audit (including walkers) found no missing owners immediately after drawing;
+the reproduced problem is the time mismatch between that map and display.
+
+Negative controls reproduce both old errors (missing a displayed target and
+hitting a future position). Fixed cases, terrain, empty gaps and reused-actor
+safety pass. Real L1 firing reaches native damage.14cold/cached transitions
+cover all8levels. Cold L1/L5 firing and L4 native16hits/target victory pass.
+L5 boss160updates/13components and all256IM2targets pass; actual return probes
+at0/255, remaining targets identical. These are scripted emulation checks,
+not hardware confirmation or complete all-boss playthroughs.
+
+Clock code remains below5B5B vector/private stacks. Source grows640->663bytes;
+F380..F396 retires23bytes of an obsolete L5 flipped cache prefix. The current
+phased renderer has no direct base reference and no non-copy reads in the
+cold/boss trace. Active artwork, native descriptors and L5 IM2/UI are unchanged.
+CORE differs only in two copy-length bytes. All20TAP checksums and LEVEL/START
+reconstruction pass. L7 silent preparation, score colors, L4 recovery retained.
+Stable r100 and stock64KB cartridge target unchanged.
+
+SHA256 bb0c9311569bbb3c688de3fa2cc36816f69b0a2397275c7228d55a45799eefcf

@@ -1,0 +1,21 @@
+R-Type TS2068 r126 - stable L2 snake body parts
+
+Replace the complete rtype folder, reset, and launch rtype/rt.tap.
+Startup identity: R126 PREPARING.
+
+The arcade export explicitly describes parts/orientations, not a gait cycle.
+Native Spectrum body descriptors22/23 were alternating between arcade cels2454
+and2450. Both now use the repeated cel2450/palette5 body (export frame02, ID199).
+Head/tail descriptors25..30 keep their orientation mappings. Movement, collision,
+animation clocks, source artwork, all ten scorpion frames and r125 palette fixes
+are unchanged. Exactly ONE byte in the expanded L2 runtime image changed.
+
+Scripted actual gameplay:455 body draws (221 native22,234 native23) consistently
+mapped to199 through the boss encounter. The frame160 actual-RAM image was
+visually inspected. All27 actor packets decode exactly,96 shared palette rows
+match,160 terrain scanlines tested in both mappings;12 cold/cached transitions
+pass. All16 level/start tapes reconstructed and checksummed;other7 levels exact
+r125. This is emulation coverage, not real-hardware confirmation. Boss stress
+uses the existing invulnerability/game-over bypass for coverage.
+
+Full banked disk candidate. Stable r99/r100 and stock64KB target unchanged.

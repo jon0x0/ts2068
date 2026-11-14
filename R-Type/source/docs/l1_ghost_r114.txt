@@ -1,0 +1,34 @@
+R-Type TS2068 r114 - chosen arcade ghost artwork
+
+Replace the COMPLETE rtype folder, reset, launch rtype/rt.tap.
+Startup R114 PREPARING. Ghosts appear later in ordinaryL1 (not double-B).
+
+Your exact exported32x32cels450/452/454 palette6 replace native35/36/37.
+Settings56/66/89/gamma0.74, SierraLite, normalpalette. No recolouring or resize.
+Three native poses select corresponding three exported frames. Previous chosen
+walkers, snake and L3 exhaust are retained; all7otherlevelregions byte-identical.
+
+Compiledart relocated A900->A870 tofit6032bytes endingexactlyC000. Runtimeimage
+endsA870 including18byte A7guard; executable/data endsA85E. Guard intact after
+1800updates. Packedpayload397B<3A00. No extraRAMbank. Nativegraphics sources,
+movement and collision logic unchanged. Head/ghost32visuals exceed native24
+footprints as previously discussed; collision logic retains original behaviour.
+
+Cached per-tilevisibility removes repeatedghostsource scanning. Uses768bytes
+of the alreadyretired bank6cache, with smallhelperatC100. Same foreground,
+clipping and IRQ setup; other sprites fall back to originalplanner. Exactplan
+headers/endpointer match originalplanner in96pose/flip/position tests.
+
+PERFORMANCE (emulated CPUcycles, not physicalhardwareFPS):
+Busyghostwindow920..1100 mean update 420.1ms versus 311.3ms oldwhite24x24.
+This is 34.9%moreupdate time. Optimization saves 4.7%versus initial32x32
+implementation. Largercolourghosts still have material cost in busy encounters.
+The previoussnake/headwindows are nearlyunchanged. Playerinterruptcadence is
+not measured by these nativewhole-scene intervals.
+
+1800ordinaryupdates/10866ghostdraws/all3poses/exactRAMart/guardPASS; testuses
+explicitgameoverbypass. ThreecoldL1firetimings WITHOUTbypass and12cold/cached
+levelroutesPASS. ExactZIPassetidentity/otherart/native-source/scope/bankbounds,
+packetdecode/planbackup/allTAPreconstruction/checksums/ZIPCRC pass.
+Hardwareconfirmation pending. Stable100/r110archives retained. No unoptimized
+r113packagepublished. Stock64KBtarget remains separate and unchanged.

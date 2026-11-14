@@ -1,0 +1,9 @@
+import fs from'node:fs';import path from'node:path';import assert from'node:assert/strict';
+import{api,z,root,rev,off}from'./r22_test_machine.mjs';
+const out=path.join(root,'build/fullgame/native_fit_r64');
+let minPrivateStack=0x5ca0;
+const b=fs.readFileSync(path.join(out,'boot_region.bin')),engine=fs.readFileSync(path.join(out,'projectile_clock.bin'));
+function fixture(){const m=api.createMachine(new Uint8Array(8).fill(31),new Uint8Array(2).fill(255));api.insertDock(m,Buffer.concat([Buffer.from([0,...Array(8).fill(3)]),b]));m.ram.set(b.subarray(0x4000,0x8000),0x8000);m.ram.set(b.subarray(0xa000,0xe000),0xc000);m.portF4=9;m.portFF=2;for(let i=0;i<256;i++)m.ram[0x5d00+i]=rev(i);m.ram.fill(0,0x5b00,0x6000);m.dock[3].fill(0);m.dock[2].fill(0,0,0x1880);m.ram[0x7aa1]=4;m.ram[0x7aa2]=10;m.ram[0x7aa4]=2;run(m,0x94f9);return m;}
+function run(m,pc,a=0,e=0){Object.assign(m.cpu,{pc,sp:0xffe0,a,e,iff1:false,iff2:false});m.ram[0xffe0]=0xf0;m.ram[0xffe1]=0xbf;let n=0;const start=m.tstates;while(m.cpu.pc!==0xbff0&&n++<100000){if((m.portF4&4)&&m.cpu.pc>=0x5880&&m.cpu.pc<0x5b5b){minPrivateStack=Math.min(minPrivateStack,m.cpu.sp);assert(m.cpu.sp>=0x5c84&&m.cpu.sp<=0x5ca0,'Private stack crossed shader scratch');}z.runZ80(m.cpu,m.bus,1,m);}assert(n<100000,'hang '+m.cpu.pc.toString(16));assert.equal(m.cpu.sp,0xffe2);assert.equal(m.portF4,9);return m.tstates-start;}
+
+const m=fixture();m.ram.set([0x18,8,14],0x5eb4);run(m,0x9501,1);const before=Buffer.from(m.ram.slice(0x4000,0x5800)),maskBefore=Array.from(m.dock[2].slice(0x1fc0,0x1fc2));run(m,0x9501,5);const maskAfter=Array.from(m.dock[2].slice(0x1fc0,0x1fc2));run(m,0x9501,0);const ghosts=[...m.ram.slice(0x4000,0x5800)].filter(v=>v).length;const result={ghosts,maskBefore,maskAfter,sourceGlyph:Array.from(m.ram.slice(0xb05b,0xb06d))};fs.writeFileSync(path.join(out,'bolt_redraw_baseline.json'),JSON.stringify(result,null,2));console.log(result);assert(ghosts>0,'Expected baseline stale-row reproduction');

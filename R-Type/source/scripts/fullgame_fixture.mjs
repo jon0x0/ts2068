@@ -1,0 +1,12 @@
+import fs from'node:fs';import path from'node:path';import assert from'node:assert/strict';import{root,api}from'./r22_test_machine.mjs';
+export function fullgameFixture(){
+ const image=fs.readFileSync(path.join(root,'build/fullgame/RType_fullgame_candidate.ram512')),store=new Uint8Array(image),joy=new Uint8Array(2).fill(255),m=api.createMachine(new Uint8Array(8).fill(31),joy),game=fs.readFileSync(path.join(root,'build/fullgame/level01/game_progression.dck'));m.homeRom.set(fs.readFileSync(path.resolve(root,'../../TSRun/roms/ts2068-0.rom')));m.exRom.set(fs.readFileSync(path.resolve(root,'../../TSRun/roms/ts2068-1.rom')));api.insertDock(m,game);api.resetMachine(m);
+ const controller={region:0,booted:false,pending:null,primes:0,commands:[],tx_bytes:0,rx_bytes:0},fifo=[];let packet=[],phase='header',lastTx=-10000;
+ const map=r=>{controller.region=r;for(let b=0;b<8;b++)m.dock[b]=store.subarray(r*65536+b*8192,r*65536+(b+1)*8192);};map(0);
+ const read=m.bus.read,write=m.bus.write,ioRead=m.bus.ioRead,ioWrite=m.bus.ioWrite;
+ m.bus.read=a=>{if(a===0x8634&&m.cpu.pc===a&&m.stepAdded===0)controller.booted=true;if(controller.pending!==null&&(m.portF4&1)&&a<8192){controller.primes++;if(controller.primes===8){map(controller.pending);controller.pending=null;}}return read(a);};
+ m.bus.write=(a,v)=>{if(controller.pending!==null&&(m.portF4&(1<<(a>>>13))))throw Error('External write before selector priming');if(controller.booted&&(m.portF4&(1<<(a>>>13)))&&!m.dockRam[a>>>13])throw Error('ROM/code write at'+a.toString(16));write(a,v);};
+ m.bus.ioRead=p=>{if((p&255)===14){controller.rx_bytes++;return fifo.shift()??255;}return ioRead(p);};
+ m.bus.ioWrite=(p,v)=>{if((p&255)!==14){ioWrite(p,v);return;}assert(m.tstates-lastTx>=300,'Unpaced legacy TX');lastTx=m.tstates;controller.tx_bytes++;packet.push(v);if(phase==='header'&&packet.length===10){assert.equal(packet.reduce((a,b)=>a^b,0),0);assert.deepEqual(packet.slice(0,5),[66,0,255,1,0]);assert.equal(packet[5]&1,0);assert.equal(packet[7],11);assert.equal(packet[8],0);assert.equal(fifo.length,0);controller.pending=packet[5]/2;assert(controller.pending<8);controller.primes=0;controller.commands.push(packet);packet=[];phase='body';fifo.push(1,64);}else if(phase==='body'&&packet.length===15){assert.equal(packet.reduce((a,b)=>a^b,0),0);assert.equal(Buffer.from(packet.slice(3,14)).toString(),'tpi:memdock');packet=[];phase='header';fifo.push(1,64,...(controller.commands.length%2?[1]:[129,1,79,75,0]));}};
+ return{m,joy,controller,store,image};
+}

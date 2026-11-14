@@ -1,0 +1,8 @@
+from pathlib import Path
+import subprocess,json,hashlib,os
+ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'build/fullgame/force_loading_r62';NODE='C:/Users/Jon/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe'
+files=list(OUT.glob('*_region.bin'))+list((OUT/'RTYPE').glob('*.TAP'))+[OUT/'launcher.bin'];sha=lambda:{str(p.relative_to(OUT)):hashlib.sha256(p.read_bytes()).hexdigest()for p in files};frozen=sha();previous=json.loads((OUT/'current_checks.json').read_text()) if (OUT/'frozen_r62.json').exists() and json.loads((OUT/'frozen_r62.json').read_text())==frozen else [];(OUT/'frozen_r62.json').write_text(json.dumps(frozen,indent=2));rows=[]
+cases=[('force','verify_force_r62.mjs',{}),('preload1','verify_preload_all_r62.mjs',{}),('preload5','verify_preload_all_r62.mjs',{'RTYPE_PRELOAD_LEVEL':'5'}),('jumps','verify_level_jumps_r62.mjs',{}),('controls','verify_boss_motion_controls_r62.mjs',{}),('death','verify_boss_motion_death_r62.mjs',{}),('fx','verify_boss_motion_fx_r62.mjs',{}),('L3play','verify_l3_play_r62.mjs',{}),('title','verify_boss_motion_title_r62.mjs',{})]
+for name,script,extra in cases:
+ if any(x['case']==name and x['passed']for x in previous):rows.append({'case':name,'passed':True});continue
+ print('RUN',name,flush=True);r=subprocess.run([NODE,'--max-old-space-size=128','--max-semi-space-size=4','scripts/'+script],cwd=ROOT,env={**os.environ,**extra},capture_output=True,text=True);(OUT/('check_'+name+'.log')).write_text(r.stdout+r.stderr);rows.append({'case':name,'passed':r.returncode==0});(OUT/'current_checks.json').write_text(json.dumps(rows,indent=2));print((r.stdout+r.stderr)[-1800:],flush=True);assert r.returncode==0;assert sha()==frozen

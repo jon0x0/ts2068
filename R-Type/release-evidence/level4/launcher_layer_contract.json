@@ -1,0 +1,1 @@
+{"native_ids": [52, 53, 54], "projectile_owner": 250, "layer_code": 2877, "filter_code": 12657, "predicate_code": 12809, "temporary_native_sites": [36566, 36619], "scope": "Launcher foreground over projectile cells only; all native object records, terrain and other actor occlusion unchanged; native predicate bytes restored after every draw"}

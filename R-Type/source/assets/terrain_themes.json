@@ -1,0 +1,151 @@
+{
+  "active_playable_level": 1,
+  "policy": "A coherent level theme with two complementary group arrangements; preserve black paper, neutral highlights and safe group boundaries.",
+  "status": "Authored theme families. Level1 integrated; levels2-8 are prepared assets pending gameplay conversion and arcade-reference refinement.",
+  "themes": [
+    {
+      "level": 1,
+      "name": "Copper and teal machinery",
+      "primary_ink_map": {
+        "2": 2,
+        "6": 6,
+        "7": 7,
+        "14": 14,
+        "15": 15
+      },
+      "secondary_ink_map": {
+        "1": 1,
+        "5": 5,
+        "7": 7,
+        "13": 13,
+        "15": 15
+      }
+    },
+    {
+      "level": 2,
+      "name": "Violet and green organic",
+      "primary_ink_map": {
+        "2": 3,
+        "6": 4,
+        "7": 7,
+        "14": 12,
+        "15": 15
+      },
+      "secondary_ink_map": {
+        "1": 1,
+        "5": 3,
+        "7": 7,
+        "13": 11,
+        "15": 15
+      }
+    },
+    {
+      "level": 3,
+      "name": "Steel and amber",
+      "primary_ink_map": {
+        "2": 1,
+        "6": 5,
+        "7": 7,
+        "14": 13,
+        "15": 15
+      },
+      "secondary_ink_map": {
+        "1": 2,
+        "5": 6,
+        "7": 7,
+        "13": 14,
+        "15": 15
+      }
+    },
+    {
+      "level": 4,
+      "name": "Rust and turquoise",
+      "primary_ink_map": {
+        "2": 2,
+        "6": 6,
+        "7": 7,
+        "14": 10,
+        "15": 15
+      },
+      "secondary_ink_map": {
+        "1": 4,
+        "5": 5,
+        "7": 7,
+        "13": 13,
+        "15": 15
+      }
+    },
+    {
+      "level": 5,
+      "name": "Crimson and violet",
+      "primary_ink_map": {
+        "2": 2,
+        "6": 3,
+        "7": 7,
+        "14": 11,
+        "15": 15
+      },
+      "secondary_ink_map": {
+        "1": 1,
+        "5": 3,
+        "7": 7,
+        "13": 13,
+        "15": 15
+      }
+    },
+    {
+      "level": 6,
+      "name": "Emerald and bronze",
+      "primary_ink_map": {
+        "2": 4,
+        "6": 6,
+        "7": 7,
+        "14": 12,
+        "15": 15
+      },
+      "secondary_ink_map": {
+        "1": 2,
+        "5": 6,
+        "7": 7,
+        "13": 14,
+        "15": 15
+      }
+    },
+    {
+      "level": 7,
+      "name": "Ice and electric blue",
+      "primary_ink_map": {
+        "2": 1,
+        "6": 5,
+        "7": 7,
+        "14": 13,
+        "15": 15
+      },
+      "secondary_ink_map": {
+        "1": 1,
+        "5": 3,
+        "7": 7,
+        "13": 9,
+        "15": 15
+      }
+    },
+    {
+      "level": 8,
+      "name": "Gold and amethyst",
+      "primary_ink_map": {
+        "2": 2,
+        "6": 6,
+        "7": 7,
+        "14": 14,
+        "15": 15
+      },
+      "secondary_ink_map": {
+        "1": 1,
+        "5": 3,
+        "7": 7,
+        "13": 11,
+        "15": 15
+      }
+    }
+  ]
+}

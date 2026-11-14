@@ -1,0 +1,17 @@
+R-Type TS2068 r144 - clean silent L7 preparation
+
+Replace complete rtype folder, reset, run rtype/rt.tap.
+The substantial L7 art preparation delay now shows a small PREPARING LEVEL
+message on clean black space, with all three AY volumes and beeper silenced.
+Both cold and runtime preparation gateways use the same presentation.
+No per-frame work is added. The art preparation itself still takes about5s.
+All r143 graphics, score colors and L4 health/recovery improvements retained.
+
+Cold L7 preparation:293 emulator display frames with stable framebuffer and
+zero AY volumes, followed by real firing gameplay. Repeated cold/cached routes
+and L7 preparation screen/sound checks pass. These are scripted emulator
+checks, not hardware confirmation. Other seven level regions and CORE are
+byte-identical; L5 IM2/UI reservations unchanged. All20TAP checksums and
+LEVEL/START reconstruction pass. Stable100 and stock64KB target unchanged.
+
+SHA256 cdd1f75ac85d31ec724c22dd12b285dc98054799a8db92e0542a1d59f89dd5bd
