@@ -12,6 +12,7 @@ for(const action of config.actions){
 window.addEventListener('message',event=>{
   if(event.origin!==location.origin||event.source!==frame.contentWindow)return;
   if(event.data.type==='rtype-ready'){ready=true;document.querySelectorAll('button').forEach(b=>b.disabled=false);document.querySelector('#status').textContent='';}
+  if(event.data.type==='rtype-command')document.querySelector('#status').textContent=event.data.message;
   if(event.data.type==='rtype-error')document.querySelector('#status').textContent=event.data.message;
 });
 const pad=document.querySelector('#pad'),fire=document.querySelector('#fire');

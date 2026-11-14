@@ -6,8 +6,8 @@ cartridges and isolated Berzerk TSRun snapshot from Sinistar play-dpad, preserve
 its hash manifest, adapts native joystick bit7 and adds browser L+number level
 switching. It does not modify cartridge bytes or reference projects.
 
-The final page/controls include layout and browser-validation adjustments made
-after initial staging; retain those reviewed files when updating a release.
+The maintained frontend lives in web/. The staging script overlays these
+reviewed files after adapting the isolated reference runtime.
 The TSRun archive contains play/ and README.md; serve the extracted folder
 with python -m http.server 8000 and open /play/. All dependencies are local.
 Source and third-party attribution are included; original game input ZIPs and

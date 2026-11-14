@@ -60,11 +60,23 @@ async function boot(){
     contacts(value){touch=value;this.start();},
     release(){touch=255;keys.handleBlur(kbd);},
     start(){started=true;sound.resumeSound(sfx);return true;},
-    press(code){
+    press(code,duration=120){
       this.start();const event={code,preventDefault(){},repeat:false};
-      keys.handleKeyDown(kbd,event);setTimeout(()=>keys.handleKeyUp(kbd,event),120);
+      keys.handleKeyDown(kbd,event);setTimeout(()=>keys.handleKeyUp(kbd,event),duration);
     },
-    async sequence(codes){for(const code of codes){this.press(code);await new Promise(r=>setTimeout(r,260));}},
+    async sequence(codes){
+      if(codes.join(',')!=='KeyB,KeyB'){for(const code of codes){this.press(code,500);await new Promise(r=>setTimeout(r,1000));}return;}
+      // Acknowledge the native chord latch; do not edit game state or rely on FPS.
+      this.start();this.release();
+      const wait=async(test)=>{for(let n=0;n<160;n++){if(test())return true;await new Promise(r=>setTimeout(r,50));}return false;};
+      if(!await wait(()=>machine.ram[0x7aa4]>=2&&machine.ram[0x7aa4]<=4&&[0,2].includes(machine.ram[0xfd4b]))){notify('rtype-command','Start the game before using Boss.');return;}
+      const e={code:'KeyB',preventDefault(){},repeat:false};
+      if(machine.ram[0xfd4b]===0){
+        keys.handleKeyDown(kbd,e);const seen=await wait(()=>machine.ram[0xfd4b]===1);keys.handleKeyUp(kbd,e);
+        if(!seen||!await wait(()=>machine.ram[0xfd4b]===2))return;
+      }
+      keys.handleKeyDown(kbd,e);await wait(()=>machine.ram[0xfd4b]!==2);keys.handleKeyUp(kbd,e);
+    },
     chord(code){this.start();const e={code,preventDefault(){},repeat:false},s={...e,code:'ShiftLeft'};keys.handleKeyDown(kbd,s);keys.handleKeyDown(kbd,e);setTimeout(()=>{keys.handleKeyUp(kbd,e);keys.handleKeyUp(kbd,s);},160);},
     reset(){touch=255;keys.handleBlur(kbd);sound.resetSound(sfx);cpu.resetMachine(machine);},
   };

@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "nativeGameMode": 3,
+  "beforeColumn": 15,
+  "afterColumn": 98,
+  "nativeBossLatch": 3,
+  "allKeysReleased": true,
+  "method": "Real browser touch button; actual native latch acknowledgements, no game-memory edits",
+  "scope": "Boss checkpoint entered, not boss victory"
+}

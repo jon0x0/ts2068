@@ -1425,3 +1425,11 @@ not been modified. ZIP CRC, pinned TSRun hashes, cart identities and local page
 links PASS. Diagnostics under build/publication_r160 and published web-validation/.
 Hub generator lists Remastered games, Arcade ports, Spectrum ports and8 new
 cartridge entries (19 total). Physical hardware acceptance remains separate.
+
+Web publication follow-up: touch Boss now acknowledges native FD4B latch
+press/release/press instead of assuming a frame rate or initialized chord.
+Actual Edge test PASS: mode3, column15 to98, latch3, all keyboard contacts
+released. No native RAM edits. Diagnostic inspect API removed from final
+adapter. Maintained frontend lives in web/ and is overlaid by staging script.
+First public commit56eb577 deployed successfully; final control/archive update
+follows. Public Pages project/player/hub and ZIP/DCK returned HTTP200.

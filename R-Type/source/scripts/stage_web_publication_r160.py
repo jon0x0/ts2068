@@ -109,7 +109,7 @@ No blanket licence is applied to Irem, Spectrum, ROM or TSRun third-party assets
 E=P/'release-evidence';shutil.copytree(R/'build/cartridges/r160',E,dirs_exist_ok=True)
 # Avoid a second copy of the downloadable ZIP inside evidence.
 for f in E.glob('*.zip'):f.unlink()
-for folder in ['src','scripts','assets','third_party']:
+for folder in ['src','scripts','assets','third_party','web']:
  for f in (R/folder).rglob('*'):
   if f.is_file() and '__pycache__' not in f.parts and f.suffix!='.pyc':
    t=P/'source'/f.relative_to(R);t.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(f,t)
@@ -119,6 +119,10 @@ for name in ['AGENTS.md','PROJECT_STATE.md','TEST_HISTORY.md','requirements.txt'
 shutil.copytree(R/'docs',P/'source/docs',dirs_exist_ok=True)
 # Preserve the source snapshot itself outside generated build output.
 (P/'source/README.md').write_text(readme+'\nSnapshot: 2026-11-14, stock cartridge r160. See ../release-evidence/.\n')
+# Apply the maintained R-Type frontend after copying the reference adapter.
+for f in (R/'web').rglob('*'):
+ if f.is_file():
+  q=W/f.relative_to(R/'web');q.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(f,q)
 with zipfile.ZipFile(D/'RType_TS2068_TSRun_r160.zip','w',zipfile.ZIP_DEFLATED) as z:
  for f in W.rglob('*'):
   if f.is_file():z.write(f,f.relative_to(P))
