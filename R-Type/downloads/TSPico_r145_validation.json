@@ -1,0 +1,9 @@
+{
+  "source": "build/fullgame/visible_hits_r145/RType_TS2068_r145.zip",
+  "sha256": "bb0c9311569bbb3c688de3fa2cc36816f69b0a2397275c7228d55a45799eefcf",
+  "tapFiles": 20,
+  "blocks": 962,
+  "entry": "rtype/rt.tap",
+  "passed": true,
+  "scope": "Byte-identical archived r145 disk build, archive CRC, manifest hashes and all TAP block checksums; no new hardware claim"
+}

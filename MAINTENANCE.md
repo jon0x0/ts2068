@@ -184,3 +184,5 @@ Physical cartridges remain single-level. Keys are chosen in-game; suggested
 O/P/Q/A/Space/Enter, double-B boss, M music, Shift-P pause. Preserve archive
 and hardware/software validation distinctions. Hub categories and catalog
 are maintained by scripts/build_site.py and ts2068-cartridges/README.md.
+
+R-Type hardware download: downloads/RType_TS2068_TSPico_r145.zip is the preserved r145 disk archive, containing all20 TAP files in rtype/ and rtype/rt.tap as entry point. Keep it distinct from cartridge r160; do not relabel old disk bytes as r160. Its CRC, manifest and all TAP block checksums are verified in downloads/TSPico_r145_validation.json.

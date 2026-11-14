@@ -11,6 +11,15 @@ Original game: Irem; Spectrum edition: Electric Dreams / Software Studios.
 | [TSRun archive](downloads/RType_TS2068_TSRun_r160.zip)
 | [Eight 64KB cartridges](downloads/RType_TS2068_64K_cartridges_r160.zip)
 
+## Full-game disk download
+
+[Download the TSPico archive - r145](downloads/RType_TS2068_TSPico_r145.zip).
+Extract into the SD card `/TAP/` directory, preserving the complete `rtype/`
+folder. Reset and launch **`rtype/rt.tap`**. All 20 loadable TAP files are
+already included in that folder; do not mix files from different releases.
+The disk edition loads and caches levels in 512KB RAM. This is the preserved
+r145 disk build; r160 identifies the separate individual cartridge edition.
+
 ## Keys
 
 Press Enter at the title to define the six controls, following the prompts.

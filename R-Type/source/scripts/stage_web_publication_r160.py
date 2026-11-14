@@ -127,6 +127,13 @@ with zipfile.ZipFile(D/'RType_TS2068_TSRun_r160.zip','w',zipfile.ZIP_DEFLATED) a
  for f in W.rglob('*'):
   if f.is_file():z.write(f,f.relative_to(P))
  z.writestr('README.md',readme)
+# Preserve the complete disk edition separately from the cartridge/browser edition.
+disk=R/'build/fullgame/visible_hits_r145/RType_TS2068_r145.zip'
+shutil.copy2(disk,D/'RType_TS2068_TSPico_r145.zip')
+with zipfile.ZipFile(disk) as z:
+ for name in z.namelist():
+  if name.startswith('rtype/') and name.lower().endswith('.tap'):
+   f=P/name;f.parent.mkdir(parents=True,exist_ok=True);f.write_bytes(z.read(name))
 checks={str(f.relative_to(P)):hashlib.sha256(f.read_bytes()).hexdigest() for f in P.rglob('*') if f.is_file()}
 (P/'SHA256SUMS.txt').write_text(''.join(f'{v}  {k}\n' for k,v in sorted(checks.items())))
 print('Staged',len(checks),'R-Type files; TSRun ZIP', (D/'RType_TS2068_TSRun_r160.zip').stat().st_size)

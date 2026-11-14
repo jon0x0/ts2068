@@ -1,0 +1,12 @@
+R-Type TS2068 full disk game - r145
+
+Extract RType_TS2068_TSPico_r145.zip into the SD card /TAP directory.
+Keep the complete rtype folder together: /TAP/rtype/rt.tap and all companion
+TAP files. Reset the TS2068 and launch rtype/rt.tap.
+Replace the complete folder when upgrading; do not mix releases.
+
+This is the eight-level disk/512KB edition, with per-level loading/caching.
+It is distinct from the r160 individual cartridges and browser player.
+The archive is byte-identical to the preserved r145 build. See the included
+README and validation records for software test scope. Stable r99/r100
+archives remain unchanged.

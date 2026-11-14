@@ -133,3 +133,5 @@ Physical cartridges remain single-level. Keys are chosen in-game; suggested
 O/P/Q/A/Space/Enter, double-B boss, M music, Shift-P pause. Preserve archive
 and hardware/software validation distinctions. Hub categories and catalog
 are maintained by scripts/build_site.py and ts2068-cartridges/README.md.
+
+R-Type full disk download: [TSPico archive r145](R-Type/downloads/RType_TS2068_TSPico_r145.zip). Extract to /TAP/, keep the complete rtype folder, and start rtype/rt.tap. Browser/individual cartridges are the separate r160 edition.
