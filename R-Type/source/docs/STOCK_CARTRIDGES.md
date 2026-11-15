@@ -1,11 +1,11 @@
-# Individual stock TS2068 cartridges: r161
+# Individual stock TS2068 cartridges: r162
 
-[Download all eight cartridges](../build/cartridges/r161/RType_TS2068_64K_cartridges_r161.zip).
+[Download all eight cartridges](../build/cartridges/r162/RType_TS2068_64K_cartridges_r162.zip).
 
 Use each level's **.bin** or identical **.rom** for PicoROM: exactly 65536 bytes,
 eight ascending 8KB DOCK banks, no header. The **.dck** is the emulator version.
-[Instructions](../build/cartridges/r161/README.txt) and
-[manifest](../build/cartridges/r161/manifest.json) are included.
+[Instructions](../build/cartridges/r162/README.txt) and
+[manifest](../build/cartridges/r162/manifest.json) are included.
 
 This consolidates the shooting, ship ghosting, missing-enemy, colour dictionary,
 L1 boss shortcut, L4 orb erasure and respawn-font fixes after r148, plus restored
@@ -56,17 +56,17 @@ native cell headers/transparent markers; they are not ROM storage or RGB sizes.
 Terrain dimensions are preserved. See individual acceptance.json files for scope.
 
 Create another version without overwriting this archive:
-`python scripts/release_stock_cartridges.py --version r161`.
+`python scripts/release_stock_cartridges.py --version r162`.
 
 Archive SHA256: `292725eb5e53efb1f6ce9003164094a2a23b06aeab336893f82308ec792a5c2f`.
 
 The unpromoted r158 package is withdrawn because its L4 cache overwrote HUD
-attributes. Use r161. r157 and earlier protected archives remain unchanged.
+attributes. Use r162. r157 and earlier protected archives remain unchanged.
 
 L4 twin-launcher poses52-54 now draw both rocket sides over orb-owned cells.
 Original projectile collision ownership is restored after drawing. All72 pose,
 flip and layering cases and263 launcher interrupt/guard cases pass.
-[Before/after comparison](../build/cartridges/r161/launcher_comparison.png).
+[Before/after comparison](../build/cartridges/r162/launcher_comparison.png).
 
 ## Earlier releases and regression history
 ## Historical r148 release
@@ -136,3 +136,6 @@ T242 audit found stock gateway drift beyond the missing short-shot consumer: the
 ## r153 color-refresh test
 
 Use `build/cartridges/r153_colour_fix_test/rt_l4_r153_test.rom` for L4. This corrects compact palette IDs leaking into the legacy adjacent-cell/global color refresh and producing solid blocks. Current artwork is preserved. Exact old-file negative control detects7blocks; corrected live test detects0, and all8 shared renderer regressions pass. Per-level test ROMs/DCKs, checksums and static before/after/boss diagnostics are included in that folder and its ZIP. Build/export: `python scripts/package_stock_colour_test.py`. This remains a scoped hardware test, not a full release or hardware-confirmed result.
+
+The r162 cleared-cell fix changes exactly16bytes per ROM from r161; all RAM
+layouts and kernel entry addresses stay fixed. See [details](CLEARED_CELLS_R162.md).

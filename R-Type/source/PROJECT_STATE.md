@@ -1466,3 +1466,11 @@ TSRun player guide now links the TSPico full-game ZIP and explains full512KB RAM
 r161 final stock package: build/cartridges/r161/RType_TS2068_64K_cartridges_r161.zip SHA256 ddcc30a673e724cba5f8ec5e3a6bcf3af54f23549138cfcf61df5f2ec3c69b17. All8component/source-data-RAM-audio/package gates,16paired scenarios and ZIP/ROM/BIN/DCK checks PASS. Software component package acceptance is distinct from broader cycle/pixel parity publish_ready=false and hardware acceptance.
 
 r161 browser smoke: Edge local HTTP, published TSRun core/palette unchanged; r161 L1/L4 DCK requests200, BW toggle/colour restore PASS,0JS errors. Actual cropped browser_colour.png (inspected) has0pixels at original bright-black RGB51/51/51; browser_bw.png has0non-gray pixels tolerance2. Diagnostics and report under R-Type/web-validation/normal-black-r161/. No emulator palette flattening.
+
+Published r161 game fixes to jon0x0/ts2068 main commit31b9db93d3b339da49cd125b5046acd2356b6d52. Clean publication worktree build/publication_r161_hub; original build/publish_rtype_hub emulator investigation remains untouched/unpublished. TAP/cart/TSRun ZIP CRCs, all8headers, source checksums and actual Edge startup/BW/black-background capture passed; Pages deployment being verified.
+
+Pages deployment43731592124 success. Live HTTP verification: all3r161 ZIP downloads byte-exact to local archives, L1DCK/adapter exact, browserHTMLr161/cache-busted controls, all3hub category links updated. Evidence build/normal_black_audit/live_publication.json.
+
+r162 fixed player-adjacent stale coloured paper inall8stock/browser renderers: native cleared marker3 bypasses stale dictionary row. Exact16bytes/ROM, no RAM/kernel-address/layout/art changes. Natural failingcontrol229badframes->0; ownedshading preserved; all8suites and16TAP/cart scenariosPASS. TAP161unchanged; emulatorcoreunchanged. See docs/CLEARED_CELLS_R162.md.
+
+r162 final package33ec9c7b973a6d05999a2cb4d11626a43cb15c7991232b7a3d9f93a59c1d2e68. Final actual Edge browser L1/L4r162asset requests200/BWtoggle/colourrestore/0JSerrors PASS; screenshots browser_colour.png/browser_bw.png under web-validation/player-clear-r162. Eight64KB rawROM/BINidentity/readonlyDCKheaders/ZIPCRC/source-RAM-audio/packageacceptance PASS;16pairedscenarios and natural229->0 regression PASS. Staging preserves161TAP and TSRun core; no hardwareclaim.

@@ -1,0 +1,1 @@
+{"entry": 3920, "bytes": 22, "call": 5833, "source": "Actual legacy native flat attribute; no palette IDs", "policy": "Clear BRIGHT only when a colour endpoint is black; preserve two-nonblack pairs"}

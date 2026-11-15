@@ -8,8 +8,16 @@ Original game: Irem; Spectrum edition: Electric Dreams / Software Studios.
 
 [Play in the browser with TSRun: Virtual DPad (phone touchscreen) or keyboard](https://jon0x0.github.io/ts2068/R-Type/play/)
 | [Project page](https://jon0x0.github.io/ts2068/R-Type/)
-| [TSRun archive](downloads/RType_TS2068_TSRun_r161.zip)
-| [Eight 64KB cartridges](downloads/RType_TS2068_64K_cartridges_r161.zip)
+| [TSRun archive](downloads/RType_TS2068_TSRun_r162.zip)
+| [Eight 64KB cartridges](downloads/RType_TS2068_64K_cartridges_r162.zip)
+
+## Full-game disk download
+
+[Download the TSPico archive - r161](downloads/RType_TS2068_TSPico_r161.zip).
+Extract into the SD card `/TAP/` directory, preserving the complete `rtype/`
+folder. Reset and launch **`rtype/rt.tap`**. All 20 loadable TAP files are
+already included in that folder; do not mix files from different releases.
+The disk edition loads and caches levels in 512KB RAM. The disk stays at r161. Browser/individual cartridges are r162, including the cleared-cell paper fix.
 
 ## Keys
 
@@ -39,7 +47,7 @@ R-Type-specific adapter and controls are separate from that unchanged runtime.
 
 ## Release scope
 
-r161 is the current eight-cartridge release. All eight software acceptance suites,
+r162 is the current eight-cartridge release. All eight software acceptance suites,
 16 paired TAP actor/event/control scenarios and read-only image contracts pass.
 Physical cartridge confirmation remains pending; elapsed timing differs from
 the expanded-RAM disk edition. Not every graphic is an arcade replacement.
@@ -55,4 +63,10 @@ not copied here; provide your own inputs to rebuild conversions. Historical
 scripts reference workspace build checkpoints, which are not all in this snapshot.
 No blanket licence is applied to Irem, Spectrum, ROM or TSRun third-party assets.
 
-Snapshot: 2026-11-15, stock cartridge r161. See ../release-evidence/.
+
+r161 fixes unintended bright black in title, score, preparation and restored backgrounds. Bright black remains a valid colour; the emulator palette is unchanged. Software verified; hardware confirmation pending.
+
+
+r162 fixes stale coloured blocks beside the moving/firing ship. [Cause and verification](CLEARED_CELLS_R162.md). Disk archive unchanged at r161.
+
+Snapshot:2026-11-15, cartridge/browser162; disk161.

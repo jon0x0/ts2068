@@ -1,0 +1,88 @@
+{
+  "passed": true,
+  "before": {
+    "0": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "1": [
+      41,
+      41,
+      41,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "2": [
+      41,
+      41,
+      41,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "3": [
+      41,
+      41,
+      41,
+      1,
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  "after": {
+    "0": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "1": [
+      41,
+      41,
+      41,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "2": [
+      41,
+      41,
+      41,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "3": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "scope": "Actual native restoration gateway; marker3 unowned/cleared cells do not revive stale dictionary paper, owned markers1/2 preserve all shading."
+}

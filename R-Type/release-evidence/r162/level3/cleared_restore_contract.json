@@ -1,0 +1,38 @@
+{
+  "passed": true,
+  "level": 3,
+  "changed_bytes": 16,
+  "offsets": [
+    3952,
+    3953,
+    3954,
+    3955,
+    3956,
+    3957,
+    3958,
+    3959,
+    3960,
+    3961,
+    3962,
+    3963,
+    8812,
+    8813,
+    8814,
+    8815
+  ],
+  "helper": [
+    3952,
+    3964
+  ],
+  "kernel_size_unchanged": true,
+  "ram_layout_unchanged": true,
+  "empty_markers": [
+    0,
+    3
+  ],
+  "owned_markers_preserved": [
+    1,
+    2
+  ],
+  "scope": "Exact difference from archived r161 cartridge:12padding bytes and4dispatch bytes only"
+}

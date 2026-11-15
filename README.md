@@ -121,9 +121,9 @@ Project assets and dependencies retain their own attribution and licensing.
 This directory does not apply a blanket license to third-party material.
 
 
-## R-Type Remastered r161
+## R-Type Remastered r162
 
-[Project](R-Type/) - [Play in the browser with TSRun: Virtual DPad (phone touchscreen) or keyboard](https://jon0x0.github.io/ts2068/R-Type/play/) - [TSRun archive](R-Type/downloads/RType_TS2068_TSRun_r161.zip).
+[Project](R-Type/) - [Play in the browser with TSRun: Virtual DPad (phone touchscreen) or keyboard](https://jon0x0.github.io/ts2068/R-Type/play/) - [TSRun archive](R-Type/downloads/RType_TS2068_TSRun_r162.zip).
 Spectrum conversion remastered in native TS2068 ECM with selected arcade art.
 Development stays in cartridgeconversion/R-Type; R-Type/source is a publication
 snapshot. The isolated unchanged Berzerk runtime is the one used by Sinistar
@@ -134,4 +134,4 @@ O/P/Q/A/Space/Enter, double-B boss, M music, Shift-P pause. Preserve archive
 and hardware/software validation distinctions. Hub categories and catalog
 are maintained by scripts/build_site.py and ts2068-cartridges/README.md.
 
-R-Type full disk download: [TSPico archive r161](R-Type/downloads/RType_TS2068_TSPico_r161.zip). Extract to /TAP/, keep the complete rtype folder, and start rtype/rt.tap. Browser and individual cartridges also use r161.
+R-Type full disk download: [TSPico archive r161](R-Type/downloads/RType_TS2068_TSPico_r161.zip). Extract to /TAP/, keep the complete rtype folder, and start rtype/rt.tap. Browser and individual cartridges now use r162; the disk stays at r161.

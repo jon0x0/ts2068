@@ -1,0 +1,1289 @@
+{
+  "passed": true,
+  "level": 7,
+  "cases": 256,
+  "romWrites": 0,
+  "scope": "Actual IRQ return probes for all 256 computed targets; explicit target injection in fixed-FF emulator, not hardware vector measurement",
+  "results": [
+    {
+      "vector": 0,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 1,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 2,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 3,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 4,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 5,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 6,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 7,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 8,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 9,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 10,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 11,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 12,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 13,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 14,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 15,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 16,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 17,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 18,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 19,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 20,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 21,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 22,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 23,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 24,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 25,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 26,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 27,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 28,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 29,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 30,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 31,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 32,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 33,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 34,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 35,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 36,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 37,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 38,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 39,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 40,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 41,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 42,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 43,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 44,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 45,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 46,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 47,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 48,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 49,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 50,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 51,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 52,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 53,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 54,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 55,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 56,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 57,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 58,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 59,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 60,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 61,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 62,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 63,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 64,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 65,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 66,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 67,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 68,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 69,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 70,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 71,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 72,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 73,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 74,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 75,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 76,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 77,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 78,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 79,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 80,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 81,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 82,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 83,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 84,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 85,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 86,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 87,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 88,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 89,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 90,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 91,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 92,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 93,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 94,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 95,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 96,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 97,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 98,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 99,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 100,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 101,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 102,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 103,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 104,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 105,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 106,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 107,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 108,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 109,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 110,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 111,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 112,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 113,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 114,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 115,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 116,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 117,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 118,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 119,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 120,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 121,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 122,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 123,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 124,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 125,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 126,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 127,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 128,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 129,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 130,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 131,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 132,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 133,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 134,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 135,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 136,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 137,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 138,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 139,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 140,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 141,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 142,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 143,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 144,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 145,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 146,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 147,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 148,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 149,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 150,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 151,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 152,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 153,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 154,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 155,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 156,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 157,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 158,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 159,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 160,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 161,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 162,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 163,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 164,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 165,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 166,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 167,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 168,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 169,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 170,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 171,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 172,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 173,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 174,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 175,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 176,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 177,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 178,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 179,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 180,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 181,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 182,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 183,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 184,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 185,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 186,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 187,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 188,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 189,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 190,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 191,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 192,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 193,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 194,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 195,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 196,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 197,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 198,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 199,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 200,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 201,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 202,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 203,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 204,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 205,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 206,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 207,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 208,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 209,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 210,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 211,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 212,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 213,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 214,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 215,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 216,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 217,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 218,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 219,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 220,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 221,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 222,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 223,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 224,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 225,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 226,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 227,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 228,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 229,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 230,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 231,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 232,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 233,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 234,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 235,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 236,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 237,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 238,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 239,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 240,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 241,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 242,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 243,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 244,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 245,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 246,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 247,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 248,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 249,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 250,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 251,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 252,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 253,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 254,
+      "target": 33667,
+      "steps": 176
+    },
+    {
+      "vector": 255,
+      "target": 33667,
+      "steps": 176
+    }
+  ]
+}

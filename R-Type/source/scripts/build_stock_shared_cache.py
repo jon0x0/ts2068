@@ -132,7 +132,12 @@ b[0xf50:0xf50+len(data)]=data
 assert b[0x164e:0x1650]==bytes.fromhex('287b') and b[0x16c9:0x16cd]==bytes.fromhex('1800e67f')
 b[0x164f]=0x79 # JR Z restore_uniform now enters the two retired JR bytes
 b[0x16c9:0x16cd]=bytes.fromhex('cd500f00')
-(O/'normal_black_restore_contract.json').write_text(json.dumps(dict(entry=0xf50,bytes=len(data),call=0x16c9,source='Actual legacy native flat attribute; no palette IDs',policy='Clear BRIGHT only when a colour endpoint is black; preserve two-nonblack pairs')))
+# Empty dispatch uses ROM0 padding, preserving the tight L2/L4 kernel size.
+p=O/'stock_clear_dispatch.asm';p.write_text((R/'src/stock_clear_dispatch.asm').read_text())
+q=subprocess.run([str(exe),f'--raw={p.with_suffix(".bin")}',str(p)],capture_output=True,text=True);assert not q.returncode,q.stdout+q.stderr
+data=p.with_suffix('.bin').read_bytes();assert all(v==255 for v in b[0xf70:0xf70+len(data)])
+b[0xf70:0xf70+len(data)]=data
+(O/'normal_black_restore_contract.json').write_text(json.dumps(dict(entry=0xf50,bytes=(O/'stock_normal_black.bin').stat().st_size,call=0x16c9,source='Actual legacy native flat attribute; no palette IDs',policy='Clear BRIGHT only when a colour endpoint is black; preserve two-nonblack pairs')))
 
 assert b[0x145a:0x145d]==bytes.fromhex('7ee67f')
 b[0x145c]=0x3f
@@ -1310,6 +1315,7 @@ font_hud:
  RET
  ASSERT $ <= $2400
 '''
+source=source.replace(' OR A\n JP Z,$162F\n PUSH AF',' CALL $0F70\n NOP\n PUSH AF',1)
 p=O/'stock_actor_kernel.asm';p.write_text(source);q=subprocess.run([str(exe),f'--raw={p.with_suffix(".bin")}',f'--sym={p.with_suffix(".sym")}',str(p)],capture_output=True,text=True);assert not q.returncode,q.stdout+q.stderr
 sym={k:int(v,16)for k,v in re.findall(r'(\w+): EQU 0x([0-9A-Fa-f]+)',p.with_suffix('.sym').read_text())};code=p.with_suffix('.bin').read_bytes();b[0x2000:0x2000+len(code)]=code
 if proc_enabled:

@@ -22,6 +22,8 @@ for n in levels:
   commands.extend([[str(NODE),'scripts/verify_stock_l4_launcher_layers.mjs'],[str(NODE),'scripts/verify_stock_actor_draw_guard.mjs','4','--launcher']])
   commands.extend([[str(NODE),'scripts/probe_stock_l4_orbs.mjs',str(folder/'L4_shared_cache_internal.dck')],[str(NODE),'scripts/verify_stock_l4_orb_erase.mjs']])
  if n==1:
+  commands.append([str(NODE),'scripts/verify_player_clear_r162.mjs'])
+  commands.append([str(NODE),'scripts/verify_player_natural_r162.mjs'])
   commands.extend([[str(NODE),'scripts/verify_stock_l1_walker_cells.mjs'],[str(NODE),'scripts/verify_stock_l1_walker_pilot.mjs'],[str(NODE),'scripts/verify_stock_l1_walker_pilot.mjs','--charged']])
  if n==2:
   commands.append([str(NODE),'scripts/verify_stock_l2_body.mjs'])
@@ -42,7 +44,7 @@ for n in levels:
  if composition_enabled(n):artifacts.extend(['dynamic_palette_validation.json','overlap_validation.json'])
  if tap_motion_enabled(n):artifacts.append('tap_motion_validation.json')
  if compact_snapshot_enabled(n)and tap_motion_enabled(n):artifacts.append('compact_snapshot_validation.json')
- if n==1:artifacts.extend(['walker_live_cells_validation.json','walker_live_pilot.json','walker_charged_pilot.json'])
+ if n==1:artifacts.extend(['cleared_restore_validation.json','natural_clear_validation.json','walker_live_cells_validation.json','walker_live_pilot.json','walker_charged_pilot.json'])
  if n==2:artifacts.extend(['l2_body_validation.json','l2_row_palette_validation.json'])
  if n==4:artifacts.extend(['launcher_layers_validation.json','launcher_actor_guard_validation.json','orb_erase_validation.json','live_colour_validation.json','l4_victory_validation.json','l4_recovery_validation.json'])
  assert all(json.loads((folder/a).read_text())['passed']for a in artifacts)

@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "before": {
+    "active": 502,
+    "badFrames": 229,
+    "max": 5
+  },
+  "after": {
+    "active": 503,
+    "badFrames": 0,
+    "max": 0
+  },
+  "framesPerRun": 1551,
+  "scope": "Exact published TSRun core and ordinary joystick movement/fire, cold boot, no game-memory patches; formerly solid paper cells over blank near-player background absent after fix."
+}

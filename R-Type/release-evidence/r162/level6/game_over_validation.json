@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "level": 6,
+  "frames": 2888,
+  "updates": 210,
+  "triggers": 5,
+  "pc": 37618,
+  "scoreSeededForQualification": true,
+  "deathEntries": 5,
+  "respawns": 4,
+  "scoreScreenReached": true,
+  "standardMode": true,
+  "romWrites": 0,
+  "scope": "Native deaths through game over after simulated player-hit flags, actual score caller/video restoration; no death bypass, name entry not automated"
+}
