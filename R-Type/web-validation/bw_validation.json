@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "colourPixels": {
+    "bw_colour.png": 100791,
+    "bw_grayscale.png": 0
+  },
+  "screenshotInsetPixels": 1,
+  "screenshotInsetReason": "Fractional iframe bounds include a row of parent background",
+  "toggleOnOff": true,
+  "retainedAcrossLevelSwitch": true,
+  "javascriptErrors": 0,
+  "scope": "Browser display-only filter; native cartridge/emulator core unchanged"
+}
