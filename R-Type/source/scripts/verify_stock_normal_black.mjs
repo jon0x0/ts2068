@@ -1,0 +1,4 @@
+import fs from'node:fs';import assert from'node:assert/strict';import{stockFixture}from'./stock_fixture.mjs';
+const n=Number(process.argv[2]||1),f=stockFixture(n),{m,call,out}=f;let brightPairs=0;
+for(let a=0;a<256;a++){let v=a&127,expected=(v&64)&&(!(v&7)||!(v&56))?v&~64:v;call(0xf50,{a,b:0x12,c:0x34,d:0x56,e:0x78,h:0x9a,l:0xbc});assert.equal(m.cpu.a,expected,'actual attribute '+a);assert.deepEqual([m.cpu.b,m.cpu.c,m.cpu.d,m.cpu.e,m.cpu.h,m.cpu.l],[0x12,0x34,0x56,0x78,0x9a,0xbc]);if(v&64&&(v&7)&&(v&56)){assert.equal(m.cpu.a,v);brightPairs++;}}
+const result={passed:true,level:n,actualAttributeCases:256,brightNonblackPairsPreserved:brightPairs,registersPreserved:true,romWrites:f.romWrites,scope:'Actual ROM fallback normalizer; decoded attributes only, not encoded palette IDs. Live frame audit separately checks title/score/gameplay.'};fs.writeFileSync(out+'/normal_black_validation.json',JSON.stringify(result,null,2));console.log(result);

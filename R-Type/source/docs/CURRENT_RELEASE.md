@@ -45,6 +45,11 @@ and original arcade/Spectrum ZIPs remain untouched.
 
 ## Separate stock cartridge release
 
-Individual64KB read-only cartridges: [r160](STOCK_CARTRIDGES.md).
-Create another version with `python scripts/release_stock_cartridges.py --version r161`. The r100 disk
+Individual64KB read-only cartridges: [r161](STOCK_CARTRIDGES.md).
+Create another version with `python scripts/release_stock_cartridges.py --version r162`. The r100 disk
 release and its latest pointer above remain unchanged.
+
+## Separate current experimental disk release
+
+[r161 normal-black fixes](NORMAL_BLACK_R161.md) cover all eight TAP levels and
+individual stock cartridges. The hardware-confirmed r100 pointer above is unchanged.

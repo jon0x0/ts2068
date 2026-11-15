@@ -1,0 +1,20 @@
+{
+  "hudSamples": 0,
+  "hudPaperErrors": 0,
+  "palettePool": {
+    "used": 192,
+    "overflows": 0
+  },
+  "deathBypassForStress": true,
+  "nativeCompletion": false,
+  "passed": true,
+  "level": 5,
+  "frames": 11991,
+  "updates": 240,
+  "copies": 293,
+  "actors": 1019,
+  "repair": 0,
+  "stoppedSamples": 79754970,
+  "romWrites": 0,
+  "scope": "Live native double-B boss encounter with firing, 240 world updates; native death entry bypassed and invulnerability refreshed only for stress coverage; no victory or survival claim"
+}

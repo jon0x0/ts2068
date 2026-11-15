@@ -1433,3 +1433,36 @@ released. No native RAM edits. Diagnostic inspect API removed from final
 adapter. Maintained frontend lives in web/ and is overlaid by staging script.
 First public commit56eb577 deployed successfully; final control/archive update
 follows. Public Pages project/player/hub and ZIP/DCK returned HTTP200.
+
+Publication complete: GitHub main ff8ae7d5c86363f5e65ca30d103845a0d8f88b9e,
+Pages status built. Live project/player/hub HTTP200. Deployed browser L4 startup
+and Virtual DPad hide/restore PASS with zero JS/HTTP errors. Public final TSRun
+ZIP SHA256 2c77bef360c8eb1fe044fbf6944c454362b6e09009df8e9aa6b8c32f41185057
+verified; latch-aware adapter deployed without diagnostic inspect API. Exact
+live resource evidence: build/publication_r160/live_publication_validation.json.
+Git checkout build/publish_rtype_hub is clean. No original cartridge or disk
+archive changed.
+
+
+## 2026-11-14: publish full disk/TSPico download
+
+User clarified that the hardware archive is required, not only the TSRun ZIP.
+Published preserved r145 full-game archive as
+R-Type/downloads/RType_TS2068_TSPico_r145.zip, with complete rtype/ folder and
+rtype/rt.tap entry point. Also published the20 loose companion TAP files under
+R-Type/rtype/. ZIP CRC,20 manifest hashes and962 TAP block checksums PASS.
+SHA256 bb0c9311569bbb3c688de3fa2cc36816f69b0a2397275c7228d55a45799eefcf.
+Project page/README and all3 hub category download links now prioritize this
+full disk edition. Installation: extract to /TAP/, keep /TAP/rtype/ intact,
+reset and launch rtype/rt.tap. Distinct from cartridge/browser r160; no new
+hardware claim or relabeling. Stable r99/r100 archives unchanged.
+
+TSRun player guide now links the TSPico full-game ZIP and explains full512KB RAM whole-game preloading or per-level loading/caching, plus /TAP/rtype/rt.tap installation. Maintained web source and offline TSRun ZIP synchronized; ZIP CRC and embedded link/text checked. No game/cartridge changes.
+
+2026-11-15 BW browser option: display-only grayscale button next to CRT. Native core/art/cartridge bytes unchanged; colour UI retained. Actual Edge PASS toggle/colour restore/retained level switch, zero JS errors. Screenshot interior chroma PASS: colour has non-gray pixels, BW zero (tolerance2). Exclude1px fractional-bounds parent-background edge, which caused initial whole-image check failure. Diagnostics build/bw_colour.png and build/bw_grayscale.png inspected; published web-validation/bw_validation.json. Offline browser ZIP synchronized and CRC PASS.
+
+2026-11-15 r161: normal-black producers fixed in all8TAP levels and stock carts, preserving valid bright nonblack pairs and native animated scores. New ROM0 conditional flat restore helper uses padding, no added RAM. 62341post-bootstrap primary-display RAM frames clean, all8component suites/16paired scenarios/14cold-cached routes/256L5vectors checked; hardware pending. See docs/NORMAL_BLACK_R161.md. Original palette/core experiments held separately; stable99/100 pointer unchanged.
+
+r161 final stock package: build/cartridges/r161/RType_TS2068_64K_cartridges_r161.zip SHA256 ddcc30a673e724cba5f8ec5e3a6bcf3af54f23549138cfcf61df5f2ec3c69b17. All8component/source-data-RAM-audio/package gates,16paired scenarios and ZIP/ROM/BIN/DCK checks PASS. Software component package acceptance is distinct from broader cycle/pixel parity publish_ready=false and hardware acceptance.
+
+r161 browser smoke: Edge local HTTP, published TSRun core/palette unchanged; r161 L1/L4 DCK requests200, BW toggle/colour restore PASS,0JS errors. Actual cropped browser_colour.png (inspected) has0pixels at original bright-black RGB51/51/51; browser_bw.png has0non-gray pixels tolerance2. Diagnostics and report under R-Type/web-validation/normal-black-r161/. No emulator palette flattening.

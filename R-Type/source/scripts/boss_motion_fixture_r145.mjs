@@ -1,5 +1,5 @@
 import fs from'node:fs';import path from'node:path';import assert from'node:assert/strict';import{root,up,api}from'./r22_test_machine.mjs';
-export const out=path.join(root,'build/fullgame/visible_hits_r145');
+export const out=process.env.RTYPE_DISK_TEST_DIR||path.join(root,'build/fullgame/visible_hits_r145');
 export const symbols=Object.fromEntries([...fs.readFileSync(path.join(out,'demand_loader.sym'),'utf8').matchAll(/(\w+): EQU 0x([0-9a-f]+)/ig)].map(v=>[v[1],parseInt(v[2],16)]));
 function tape(file){const b=fs.readFileSync(file),blocks=[];for(let p=0;p<b.length;){const n=b.readUInt16LE(p),v=b.subarray(p+2,p+2+n);assert.equal(v.reduce((a,c)=>a^c,0),0);blocks.push({flag:v[0],data:v.subarray(1,-1),checksum:v.at(-1)});p+=n+2;}return blocks;}
 const globalTags=new Set(Object.keys(JSON.parse(fs.readFileSync(path.join(out,'global_tags.json'),'utf8'))).map(Number));

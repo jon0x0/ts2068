@@ -20,8 +20,8 @@ shared_colour:
         AND 31
         ADD A,3
         CP B
-        LD A,$47
+        LD A,$07
         RET NC
-        LD A,$45
+        LD A,$05
         RET
         ASSERT $ <= $0200

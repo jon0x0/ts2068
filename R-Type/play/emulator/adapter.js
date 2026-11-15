@@ -18,7 +18,7 @@ async function boot(){
   const machine=cpu.createMachine(matrix,joystick);
   const [rom0,rom1,cartridge,vert,frag]=await Promise.all([
     resource(upstream+'roms/ts2068-0.rom',true),resource(upstream+'roms/ts2068-1.rom',true),
-    resource(`../assets/rt_l${Math.max(1,Math.min(8,Number(new URLSearchParams(location.search).get('level'))||1))}_r160.dck`,true),
+    resource(`../assets/rt_l${Math.max(1,Math.min(8,Number(new URLSearchParams(location.search).get('level'))||1))}_r161.dck`,true),
     resource(upstream+'screen.vert.glsl'),resource(upstream+'screen.frag.glsl')]);
   if(rom0.length!==16384||rom1.length!==8192)throw new Error('Unexpected TS2068 system ROM sizes.');
   machine.homeRom.set(rom0);machine.exRom.set(rom1);

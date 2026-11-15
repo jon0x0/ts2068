@@ -27,7 +27,7 @@ for n in range(1,9):
   matrix['levels'][n-1]['requirements'][key]={'passed':True,'evidence':proof,'scope':'Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits'}
  matrix['levels'][n-1]['status']='software_validated_stock_cartridge'
  manifest['levels'].append({'level':n,'bytes':len(b),'rom':matrix['levels'][n-1]['rom'],'bin':matrix['levels'][n-1]['bin'],'dck':matrix['levels'][n-1]['dck'],'graphics_frames':a['frames'],'palette_rows':a['palette_rows'],'frame_cache_bytes':a['frame_cache_bytes'],'native_frame_bytes':a['unique_frame_native_bytes'],'palette_bytes':a['palette_bytes']})
- for name in ['current_validation_summary.json','actor_draw_guard_validation.json','repeated_fire_validation.json','death_respawn_validation.json','l4_victory_validation.json','l4_recovery_validation.json','game_over_validation.json','stock_vector_validation.json','boss_runtime_validation.json','shared_cache_gameplay_validation.json','tap_motion_validation.json','compact_snapshot_validation.json','l4_procedural_validation.json','l4_constructor_irq_validation.json','l4_bank_windows_validation.json','rom_font_validation.json','launcher_layers_validation.json','launcher_actor_guard_validation.json','launcher_layer_contract.json','l4_stable_tokens.json','player_ram_layout.json']:
+ for name in ['normal_black_validation.json','normal_black_restore_contract.json','current_validation_summary.json','actor_draw_guard_validation.json','repeated_fire_validation.json','death_respawn_validation.json','l4_victory_validation.json','l4_recovery_validation.json','game_over_validation.json','stock_vector_validation.json','boss_runtime_validation.json','shared_cache_gameplay_validation.json','tap_motion_validation.json','compact_snapshot_validation.json','l4_procedural_validation.json','l4_constructor_irq_validation.json','l4_bank_windows_validation.json','rom_font_validation.json','launcher_layers_validation.json','launcher_actor_guard_validation.json','launcher_layer_contract.json','l4_stable_tokens.json','player_ram_layout.json']:
   if (d/name).exists():shutil.copy2(d/name,dest/name)
  if (d/'boss_runtime.screen.png').exists():shutil.copy2(d/'boss_runtime.screen.png',dest/'boss_snapshot.png')
 shutil.copy2(W/'current_integration_report.json',O/'comparison_report.json')
@@ -56,6 +56,10 @@ Includes restored current r145 actor captures across all levels, corrected L2
 painted-body/row-colour paths, L5 overlap composition and per-level AY tracks/effects,
 fine player movement, independently clocked shots, title delta animation,
 animated score colours, pause, native input and normal black in ECM space.
+Release r161 also fixes native title clears/delta edges, both score entry paths,
+and flat legacy restoration. Bright black remains valid; black-paper pairs use
+normal black. Bright pairs with two nonblack colours are preserved.
+No emulator palette flattening is required.
 Artwork expands from compressed ROM into a bounded HOME cache when needed.
 All seven moving-boss ports L2/L3/L4/L5/L6/L7/L8 include fractional artwork
 and two-pixel movement. L1 is static. L4 uses permanent adjacent-row colour

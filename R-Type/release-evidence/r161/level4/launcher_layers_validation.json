@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "level": 4,
+  "cases": 72,
+  "opaqueRasterCells": 1664,
+  "poses": 3,
+  "flips": 4,
+  "directAndRetained": true,
+  "terrainAndOtherActorsPreserved": true,
+  "projectileRecordsUnchanged": true,
+  "projectileCollisionOwnershipPreserved": true,
+  "nativePredicatesRestored": true,
+  "romWrites": 0,
+  "scope": "All launcher poses/flips over projectile occupancy including adjacent cells; whole source bitmap restored, transparent cells retained, terrain/other actors still occlude, native actor records unchanged"
+}

@@ -1,0 +1,96 @@
+{
+  "passed": true,
+  "scope": "Actual exposed bright-black pixels from game display RAM; original hardware palette, no flattening; genuine cold boot/title/score/gameplay. Keyboard/joystick inputs only. Not hardware confirmation or full playthrough.",
+  "levels": [
+    {
+      "level": 1,
+      "boot": 175,
+      "updates": 72,
+      "framesAudited": 3901,
+      "maxExposed": 49152,
+      "samples": [
+        {
+          "f": 100,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 47713,
+          "attrs": 6056
+        },
+        {
+          "f": 400,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 2973,
+          "attrs": 646
+        },
+        {
+          "f": 700,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 2973,
+          "attrs": 646
+        },
+        {
+          "f": 1000,
+          "mode": 0,
+          "game": 0,
+          "updates": 0,
+          "exposed": 40148,
+          "attrs": 6012
+        },
+        {
+          "f": 1400,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 47713,
+          "attrs": 6056
+        },
+        {
+          "f": 1800,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 2973,
+          "attrs": 646
+        },
+        {
+          "f": 2200,
+          "mode": 0,
+          "game": 0,
+          "updates": 0,
+          "exposed": 40148,
+          "attrs": 6012
+        },
+        {
+          "f": 3000,
+          "mode": 2,
+          "game": 3,
+          "updates": 3,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 3400,
+          "mode": 2,
+          "game": 3,
+          "updates": 34,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 3800,
+          "mode": 2,
+          "game": 3,
+          "updates": 64,
+          "exposed": 0,
+          "attrs": 0
+        }
+      ],
+      "rom_sha256": "d8a09396a803fc3e32ec28524e8e39424384f5ff8f01814061a2a3b38a0ef5ed"
+    }
+  ]
+}

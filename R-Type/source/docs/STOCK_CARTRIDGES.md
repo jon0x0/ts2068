@@ -1,11 +1,11 @@
-# Individual stock TS2068 cartridges: r160
+# Individual stock TS2068 cartridges: r161
 
-[Download all eight cartridges](../build/cartridges/r160/RType_TS2068_64K_cartridges_r160.zip).
+[Download all eight cartridges](../build/cartridges/r161/RType_TS2068_64K_cartridges_r161.zip).
 
 Use each level's **.bin** or identical **.rom** for PicoROM: exactly 65536 bytes,
 eight ascending 8KB DOCK banks, no header. The **.dck** is the emulator version.
-[Instructions](../build/cartridges/r160/README.txt) and
-[manifest](../build/cartridges/r160/manifest.json) are included.
+[Instructions](../build/cartridges/r161/README.txt) and
+[manifest](../build/cartridges/r161/manifest.json) are included.
 
 This consolidates the shooting, ship ghosting, missing-enemy, colour dictionary,
 L1 boss shortcut, L4 orb erasure and respawn-font fixes after r148, plus restored
@@ -27,7 +27,8 @@ The comparison report retains publish_ready=false for that broader milestone;
 stock_component_package_ready and this package's acceptance matrix pass.
 
 The complete final L4 suite and all eight source/data/RAM/audio contracts pass.
-The other seven cartridges retain their byte-identical r157 validated binaries.
+All eight cartridges include normal-black title/score/restoration fixes;
+bright nonblack ECM pairs remain unchanged. See [r161 details](NORMAL_BLACK_R161.md).
 Sixteen hash-bound early/boss actor/event/control comparisons pass. L7 paired
 comparisons use the same explicit coarse-death shield in both builds. Separate
 unmodified cold-start tests cover actual enemies and firing. L4 has a native
@@ -60,12 +61,12 @@ Create another version without overwriting this archive:
 Archive SHA256: `292725eb5e53efb1f6ce9003164094a2a23b06aeab336893f82308ec792a5c2f`.
 
 The unpromoted r158 package is withdrawn because its L4 cache overwrote HUD
-attributes. Use r160. r157 and earlier protected archives remain unchanged.
+attributes. Use r161. r157 and earlier protected archives remain unchanged.
 
 L4 twin-launcher poses52-54 now draw both rocket sides over orb-owned cells.
 Original projectile collision ownership is restored after drawing. All72 pose,
 flip and layering cases and263 launcher interrupt/guard cases pass.
-[Before/after comparison](../build/cartridges/r160/launcher_comparison.png).
+[Before/after comparison](../build/cartridges/r161/launcher_comparison.png).
 
 ## Earlier releases and regression history
 ## Historical r148 release

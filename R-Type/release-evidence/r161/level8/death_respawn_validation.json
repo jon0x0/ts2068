@@ -1,0 +1,14 @@
+{
+  "messageChecks": 2,
+  "pauseBeforeDeath": true,
+  "nativeFontPreserved": true,
+  "passed": true,
+  "level": 8,
+  "frames": 984,
+  "updates": 89,
+  "triggers": 2,
+  "deathEntries": 2,
+  "respawns": 2,
+  "romWrites": 0,
+  "scope": "Real native death/respawn routines after simulated current player collision flags; no death bypass, not full game-over/name entry coverage"
+}

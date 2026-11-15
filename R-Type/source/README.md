@@ -6,10 +6,10 @@ AY music and effects, smoother player motion and enhanced boss presentation.
 It belongs to Remastered games, Spectrum ports and arcade-derived conversions.
 Original game: Irem; Spectrum edition: Electric Dreams / Software Studios.
 
-[Play with keyboard or Virtual DPad](https://jon0x0.github.io/ts2068/R-Type/play/)
+[Play in the browser with TSRun: Virtual DPad (phone touchscreen) or keyboard](https://jon0x0.github.io/ts2068/R-Type/play/)
 | [Project page](https://jon0x0.github.io/ts2068/R-Type/)
-| [TSRun archive](downloads/RType_TS2068_TSRun_r160.zip)
-| [Eight 64KB cartridges](downloads/RType_TS2068_64K_cartridges_r160.zip)
+| [TSRun archive](downloads/RType_TS2068_TSRun_r161.zip)
+| [Eight 64KB cartridges](downloads/RType_TS2068_64K_cartridges_r161.zip)
 
 ## Keys
 
@@ -39,7 +39,7 @@ R-Type-specific adapter and controls are separate from that unchanged runtime.
 
 ## Release scope
 
-r160 is the current eight-cartridge release. All eight software acceptance suites,
+r161 is the current eight-cartridge release. All eight software acceptance suites,
 16 paired TAP actor/event/control scenarios and read-only image contracts pass.
 Physical cartridge confirmation remains pending; elapsed timing differs from
 the expanded-RAM disk edition. Not every graphic is an arcade replacement.
@@ -55,4 +55,4 @@ not copied here; provide your own inputs to rebuild conversions. Historical
 scripts reference workspace build checkpoints, which are not all in this snapshot.
 No blanket licence is applied to Irem, Spectrum, ROM or TSRun third-party assets.
 
-Snapshot: 2026-11-14, stock cartridge r160. See ../release-evidence/.
+Snapshot: 2026-11-15, stock cartridge r161. See ../release-evidence/.

@@ -37,9 +37,9 @@ delta_shared_colour:
         LD A,C
 delta_colour_offset: SUB 0
         CP 4
-        LD A,$47
+        LD A,$07
         JR C,delta_store_colour
-        LD A,$45
+        LD A,$05
 delta_store_colour:
         SET 5,D
         LD (DE),A

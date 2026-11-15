@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "level": 8,
+  "actualAttributeCases": 256,
+  "brightNonblackPairsPreserved": 98,
+  "registersPreserved": true,
+  "romWrites": 0,
+  "scope": "Actual ROM fallback normalizer; decoded attributes only, not encoded palette IDs. Live frame audit separately checks title/score/gameplay."
+}

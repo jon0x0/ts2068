@@ -2,8 +2,10 @@
 from pathlib import Path
 import json,subprocess,re,hashlib,sys
 from pack_optimal_r87 import pack_optimal
+from normal_black_policy import patch_stock_title, patch_score, patch_stock_home
 from stock_tap_motion_config import procedural_enabled
 R=Path.cwd();level=int(sys.argv[1]);assert 1<=level<=8;O=R/f'build/cartridges/integration_work/level{level:02d}';O.mkdir(parents=True,exist_ok=True);old=(R/'build/readonly_ecm/RType_level1_ECM_64K_PicoROM_r24.rom').read_bytes();b=bytearray(old)
+patch_stock_title(b)
 exe=R.parent/'sinistar/tools/sjasmplus/sjasmplus-1.20.3.win/sjasmplus.exe'
 current_region=(R/f'build/fullgame/visible_hits_r145/level{level:02d}_region.bin').read_bytes()
 b[0x480:0x8c0]=current_region[0x480:0x8c0]
@@ -13,6 +15,8 @@ def asm(name,source):
 # Reclaim raw initial graphics storage: native selectors will use the new cache.
 foundation=json.loads((R/'build/fullgame/foundation/manifest.json').read_text())['levels'][level-1];payload=(R/f'build/fullgame/foundation/level{level:02d}.payload').read_bytes();home=bytearray(65536)
 for bank,dest in ((7,0x4000),(3,0xa000),(5,0xc000),(6,0xe000),(2,0x8000)):home[dest:dest+8192]=old[bank*8192:(bank+1)*8192]
+patch_stock_home(home)
+patch_score(home,0xbccb,'f0fd')
 home[0xc4ae:0xc4ae+len(payload)]=payload;home[0xb79c]=48+level
 native=(R/f'build/fullgame/foundation/level{level:02d}.raw').read_bytes()
 # Import current event records for every level. Matching event pointers alone

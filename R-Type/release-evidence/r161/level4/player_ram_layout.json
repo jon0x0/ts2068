@@ -1,0 +1,105 @@
+{
+  "clock_flags": [
+    23683,
+    23707
+  ],
+  "irq_stack_top": 50652,
+  "native_projectile_pool_reserved": [
+    24064,
+    24576
+  ],
+  "level": 4,
+  "status": "Static allocation; tail use and player/IRQ runtime still require validation",
+  "allocations": {
+    "phase_counters": [
+      50382,
+      50446
+    ],
+    "context_and_stack": [
+      50446,
+      50654
+    ],
+    "sprite_cache": [
+      50654,
+      51915
+    ],
+    "player_state": [
+      23296,
+      23808
+    ],
+    "player_phases": [
+      51915,
+      52683
+    ],
+    "published_owner_map": [
+      52683,
+      53323
+    ],
+    "backing_pixels": [
+      53323,
+      53963
+    ],
+    "backing_attributes": [
+      53963,
+      54123
+    ],
+    "projectile_state": [
+      63360,
+      63488
+    ],
+    "working_player_palettes": [
+      54123,
+      54187
+    ],
+    "boss_motion_state": [
+      54187,
+      54315
+    ],
+    "l4_procedural_state": [
+      54315,
+      54461
+    ],
+    "l4_pair_cache_keys": [
+      54461,
+      54909
+    ],
+    "motion_dense_parent": [
+      54909,
+      56053
+    ],
+    "l4_expanded_row_tail": [
+      56053,
+      56077
+    ],
+    "ecm_palette_cache": [
+      22528,
+      23168
+    ],
+    "rom_glyph_cache": [
+      31496,
+      31944
+    ]
+  },
+  "free_segments": [
+    [
+      56077,
+      56085
+    ],
+    [
+      63488,
+      63488
+    ]
+  ],
+  "tail_range": [
+    63360,
+    63488
+  ],
+  "actor_slot_hash_proof": {
+    "stride": 9,
+    "slots": 28,
+    "mask": 63,
+    "distinct": 28
+  },
+  "native_descriptor_start": 56085,
+  "native_payload_end": 63348
+}

@@ -6,19 +6,18 @@ AY music and effects, smoother player motion and enhanced boss presentation.
 It belongs to Remastered games, Spectrum ports and arcade-derived conversions.
 Original game: Irem; Spectrum edition: Electric Dreams / Software Studios.
 
-[Play with keyboard or Virtual DPad](https://jon0x0.github.io/ts2068/R-Type/play/)
+[Play in the browser with TSRun: Virtual DPad (phone touchscreen) or keyboard](https://jon0x0.github.io/ts2068/R-Type/play/)
 | [Project page](https://jon0x0.github.io/ts2068/R-Type/)
-| [TSRun archive](downloads/RType_TS2068_TSRun_r160.zip)
-| [Eight 64KB cartridges](downloads/RType_TS2068_64K_cartridges_r160.zip)
+| [TSRun archive](downloads/RType_TS2068_TSRun_r161.zip)
+| [Eight 64KB cartridges](downloads/RType_TS2068_64K_cartridges_r161.zip)
 
 ## Full-game disk download
 
-[Download the TSPico archive - r145](downloads/RType_TS2068_TSPico_r145.zip).
+[Download the TSPico archive - r161](downloads/RType_TS2068_TSPico_r161.zip).
 Extract into the SD card `/TAP/` directory, preserving the complete `rtype/`
 folder. Reset and launch **`rtype/rt.tap`**. All 20 loadable TAP files are
 already included in that folder; do not mix files from different releases.
-The disk edition loads and caches levels in 512KB RAM. This is the preserved
-r145 disk build; r160 identifies the separate individual cartridge edition.
+The disk edition loads and caches levels in 512KB RAM. Both the disk and individual cartridge editions now carry the r161 normal-black fixes.
 
 ## Keys
 
@@ -48,7 +47,7 @@ R-Type-specific adapter and controls are separate from that unchanged runtime.
 
 ## Release scope
 
-r160 is the current eight-cartridge release. All eight software acceptance suites,
+r161 is the current eight-cartridge release. All eight software acceptance suites,
 16 paired TAP actor/event/control scenarios and read-only image contracts pass.
 Physical cartridge confirmation remains pending; elapsed timing differs from
 the expanded-RAM disk edition. Not every graphic is an arcade replacement.
@@ -63,3 +62,6 @@ scripts and assembly. Original arcade and Spectrum input archives are deliberate
 not copied here; provide your own inputs to rebuild conversions. Historical
 scripts reference workspace build checkpoints, which are not all in this snapshot.
 No blanket licence is applied to Irem, Spectrum, ROM or TSRun third-party assets.
+
+
+r161 fixes unintended bright black in title, score, preparation and restored backgrounds. Bright black remains a valid colour; the emulator palette is unchanged. Software verified; hardware confirmation pending.

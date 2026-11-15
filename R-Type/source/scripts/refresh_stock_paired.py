@@ -1,7 +1,7 @@
 """Refresh paired TAP/cartridge traces; never changes cartridge binaries."""
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor
-import subprocess,sys,json,time
+import subprocess,sys,json,time,os
 R=Path(__file__).resolve().parents[1]
 NODE='C:/Users/Jon/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe'
 levels=list(map(int,sys.argv[1:]))or list(range(1,9))
@@ -16,4 +16,4 @@ def run(n):
   result=json.loads((out/'comparison.json').read_text());assert result['passed'],(n,boss,'paired trace failed')
   print('PASS paired',n,'boss'if boss else'early',flush=True)
  return n
-with ThreadPoolExecutor(max_workers=2)as pool:list(pool.map(run,levels))
+with ThreadPoolExecutor(max_workers=max(1,min(4,int(os.environ.get('RTYPE_PAIRED_WORKERS','2')))))as pool:list(pool.map(run,levels))

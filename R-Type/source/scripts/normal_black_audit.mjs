@@ -1,0 +1,1 @@
+export function audit(m){let exposed=0,attrs=0;for(let y=0;y<192;y++)for(let x=0;x<32;x++){const a=((y&192)<<5)|((y&7)<<8)|((y&56)<<2)|x;const bits=m.ram[0x4000+a],v=m.ram[((m.portFF&2)?0x6000+a:0x5800+(y>>3)*32+x)];if(!(v&64))continue;let pop=0;for(let b=bits;b;b&=b-1)pop++;const n=(!(v&7)?pop:0)+(!(v&56)?8-pop:0);if(n){exposed+=n;attrs++;}}return{exposed,attrs};}

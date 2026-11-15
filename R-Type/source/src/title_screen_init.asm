@@ -10,7 +10,7 @@
         CALL $FDF0
         LD HL,$6000
         LD BC,$1800
-        LD A,$47
+        LD A,$07
         CALL $FDF0
         LD A,2
         LD (MODE_SHADOW),A

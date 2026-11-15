@@ -1,0 +1,1115 @@
+{
+  "policy": "No partial cartridge releases. All eight levels must pass every integration and runtime requirement against the same current source baseline.",
+  "baseline": "r145",
+  "source_hashes": {
+    "level01_region.bin": "c941de280b453a335fd23f8f5a880f17f82e8c604c02b5fb380f459f7eb24593",
+    "level02_region.bin": "003a2b9133642a6ca387e52d9c818c6cb0234191e163e959d7474acc938cca71",
+    "level03_region.bin": "d8fcdb2895c187b1d479bf6bf30dbda692d95654ebcb3f4c5105f21329fe247e",
+    "level04_region.bin": "8c87f7b7084fe0aa267c3d360ccc1b36140b7146868f2632665057163b9fa5a1",
+    "level05_region.bin": "91421231a2b35e5735b22d51098f312e38630953851c637380d30453bdaedd22",
+    "level06_region.bin": "2d13962da0815fd2a521a773c718fe43abaee41e75c0d74f38a6a35e5a8a4f4a",
+    "level07_region.bin": "d83a56aa3e357d24ac24f135808365fe6aca6a05c43514241dbe4f945d923177",
+    "level08_region.bin": "143cc75f073029ca14ebee4a423fa19113524483f9a3ae6b1ea60dba25764af6",
+    "expanded_release": "bb0c9311569bbb3c688de3fa2cc36816f69b0a2397275c7228d55a45799eefcf"
+  },
+  "levels": [
+    {
+      "level": 1,
+      "status": "software_validated_stock_cartridge",
+      "captured_frames": 70,
+      "captured_palette_rows": 307,
+      "captured_variants": 1120,
+      "requirements": {
+        "current_actor_art": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level1/acceptance.json",
+            "sha256": "61e15fcdf3cb2c7bd0b18a354fcb73d350a42e88765c33e54d61b33171f4d46a"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "terrain_art_and_scroll_palettes": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level1/acceptance.json",
+            "sha256": "61e15fcdf3cb2c7bd0b18a354fcb73d350a42e88765c33e54d61b33171f4d46a"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "composite_boss_art_and_animation": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level1/acceptance.json",
+            "sha256": "61e15fcdf3cb2c7bd0b18a354fcb73d350a42e88765c33e54d61b33171f4d46a"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "current_stock_renderer": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level1/acceptance.json",
+            "sha256": "61e15fcdf3cb2c7bd0b18a354fcb73d350a42e88765c33e54d61b33171f4d46a"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "one_pixel_player": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level1/acceptance.json",
+            "sha256": "61e15fcdf3cb2c7bd0b18a354fcb73d350a42e88765c33e54d61b33171f4d46a"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "projectiles_and_visible_collision": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level1/acceptance.json",
+            "sha256": "61e15fcdf3cb2c7bd0b18a354fcb73d350a42e88765c33e54d61b33171f4d46a"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "native_input_pause_controls": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level1/acceptance.json",
+            "sha256": "61e15fcdf3cb2c7bd0b18a354fcb73d350a42e88765c33e54d61b33171f4d46a"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "current_audio_and_title": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level1/acceptance.json",
+            "sha256": "61e15fcdf3cb2c7bd0b18a354fcb73d350a42e88765c33e54d61b33171f4d46a"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "boss_targets_and_recovery": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level1/acceptance.json",
+            "sha256": "61e15fcdf3cb2c7bd0b18a354fcb73d350a42e88765c33e54d61b33171f4d46a"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "cartridge_loading_instructions": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level1/acceptance.json",
+            "sha256": "61e15fcdf3cb2c7bd0b18a354fcb73d350a42e88765c33e54d61b33171f4d46a"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "rom_ram_and_interrupt_contracts": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level1/acceptance.json",
+            "sha256": "61e15fcdf3cb2c7bd0b18a354fcb73d350a42e88765c33e54d61b33171f4d46a"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "cold_gameplay_death_restart": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level1/acceptance.json",
+            "sha256": "61e15fcdf3cb2c7bd0b18a354fcb73d350a42e88765c33e54d61b33171f4d46a"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        }
+      },
+      "rom": {
+        "path": "build/cartridges/r161/level1/rt_l1_r161.rom",
+        "sha256": "60074ff826a566af6dfa6e8fb67693c32842d9d98581b32c6a0864c429519925"
+      },
+      "bin": {
+        "path": "build/cartridges/r161/level1/rt_l1_r161.bin",
+        "sha256": "60074ff826a566af6dfa6e8fb67693c32842d9d98581b32c6a0864c429519925"
+      },
+      "dck": {
+        "path": "build/cartridges/r161/level1/rt_l1_r161.dck",
+        "sha256": "5f42cd7c64f9fd929b000f49f7d745625dd67c5b2eec2b547dde589b99024b3b"
+      },
+      "internal_component_evidence": [
+        {
+          "path": "build/cartridges/integration_work/level01/actor_cache_validation.json",
+          "sha256": "cacd80a7ab6298fea89ef10deb240f7ed871b1071fab825609bda10e4f20539b",
+          "scope": "Actual native actor selector/painter components, not complete gameplay release",
+          "passed": true
+        },
+        {
+          "path": "build/cartridges/integration_work/level01/actor_cache_gameplay_validation.json",
+          "sha256": "38d7411592874fbd5867e0cb027a0029667ffaa12e8d9d7380278afe81d7b1c8",
+          "scope": "Per-level actor-cache integration only; terrain and current gameplay-code parity pending",
+          "passed": true
+        }
+      ],
+      "component_progress": {
+        "path": "build/cartridges/integration_work/level01/current_validation_summary.json",
+        "sha256": "2c4c87f44292b8849dc41a95726f38e9b3e617393a0a12ed2756a054259b992b",
+        "passed": true,
+        "scope": "Internal checks only; all release requirements still held pending full integration"
+      }
+    },
+    {
+      "level": 2,
+      "status": "software_validated_stock_cartridge",
+      "captured_frames": 37,
+      "captured_palette_rows": 250,
+      "captured_variants": 3328,
+      "requirements": {
+        "current_actor_art": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level2/acceptance.json",
+            "sha256": "18e2bd5d1c0bf60cecba8e2cb3c2750f6974b40a94cce8a8135273a725abf68b"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "terrain_art_and_scroll_palettes": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level2/acceptance.json",
+            "sha256": "18e2bd5d1c0bf60cecba8e2cb3c2750f6974b40a94cce8a8135273a725abf68b"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "composite_boss_art_and_animation": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level2/acceptance.json",
+            "sha256": "18e2bd5d1c0bf60cecba8e2cb3c2750f6974b40a94cce8a8135273a725abf68b"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "current_stock_renderer": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level2/acceptance.json",
+            "sha256": "18e2bd5d1c0bf60cecba8e2cb3c2750f6974b40a94cce8a8135273a725abf68b"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "one_pixel_player": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level2/acceptance.json",
+            "sha256": "18e2bd5d1c0bf60cecba8e2cb3c2750f6974b40a94cce8a8135273a725abf68b"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "projectiles_and_visible_collision": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level2/acceptance.json",
+            "sha256": "18e2bd5d1c0bf60cecba8e2cb3c2750f6974b40a94cce8a8135273a725abf68b"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "native_input_pause_controls": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level2/acceptance.json",
+            "sha256": "18e2bd5d1c0bf60cecba8e2cb3c2750f6974b40a94cce8a8135273a725abf68b"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "current_audio_and_title": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level2/acceptance.json",
+            "sha256": "18e2bd5d1c0bf60cecba8e2cb3c2750f6974b40a94cce8a8135273a725abf68b"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "boss_targets_and_recovery": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level2/acceptance.json",
+            "sha256": "18e2bd5d1c0bf60cecba8e2cb3c2750f6974b40a94cce8a8135273a725abf68b"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "cartridge_loading_instructions": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level2/acceptance.json",
+            "sha256": "18e2bd5d1c0bf60cecba8e2cb3c2750f6974b40a94cce8a8135273a725abf68b"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "rom_ram_and_interrupt_contracts": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level2/acceptance.json",
+            "sha256": "18e2bd5d1c0bf60cecba8e2cb3c2750f6974b40a94cce8a8135273a725abf68b"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "cold_gameplay_death_restart": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level2/acceptance.json",
+            "sha256": "18e2bd5d1c0bf60cecba8e2cb3c2750f6974b40a94cce8a8135273a725abf68b"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        }
+      },
+      "rom": {
+        "path": "build/cartridges/r161/level2/rt_l2_r161.rom",
+        "sha256": "89e59a079a905375abd450f3fad88d328ecd179ccfbf0adaa8c7a77c94be2548"
+      },
+      "bin": {
+        "path": "build/cartridges/r161/level2/rt_l2_r161.bin",
+        "sha256": "89e59a079a905375abd450f3fad88d328ecd179ccfbf0adaa8c7a77c94be2548"
+      },
+      "dck": {
+        "path": "build/cartridges/r161/level2/rt_l2_r161.dck",
+        "sha256": "9936a0700f4dccd9cf4de3f9509ac81c15ae3bf88a72798f30b6e8d26a5c590f"
+      },
+      "internal_component_evidence": [
+        {
+          "path": "build/cartridges/integration_work/level02/actor_cache_validation.json",
+          "sha256": "6d53e9e670b8151a772bb5edd474b1e52091e4eb7a6ab08427118f7b87e89efe",
+          "scope": "Actual native actor selector/painter components, not complete gameplay release",
+          "passed": true
+        },
+        {
+          "path": "build/cartridges/integration_work/level02/actor_cache_gameplay_validation.json",
+          "sha256": "d7394d1846323c2033a2240f22a818ec46a18401e8b79a099f8a4cef3b850c7b",
+          "scope": "Per-level actor-cache integration only; terrain and current gameplay-code parity pending",
+          "passed": true
+        }
+      ],
+      "component_progress": {
+        "path": "build/cartridges/integration_work/level02/current_validation_summary.json",
+        "sha256": "2b011523db61db2d1c4dd06b02047f0ba5f63d7d7bdb2fe505c7213c49ee6a30",
+        "passed": true,
+        "scope": "Internal checks only; all release requirements still held pending full integration"
+      }
+    },
+    {
+      "level": 3,
+      "status": "software_validated_stock_cartridge",
+      "captured_frames": 114,
+      "captured_palette_rows": 172,
+      "captured_variants": 1696,
+      "requirements": {
+        "current_actor_art": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level3/acceptance.json",
+            "sha256": "0e8744ba5e4ae325085ea9b18a07f146d40698dd92c35b23213037d23b852fea"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "terrain_art_and_scroll_palettes": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level3/acceptance.json",
+            "sha256": "0e8744ba5e4ae325085ea9b18a07f146d40698dd92c35b23213037d23b852fea"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "composite_boss_art_and_animation": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level3/acceptance.json",
+            "sha256": "0e8744ba5e4ae325085ea9b18a07f146d40698dd92c35b23213037d23b852fea"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "current_stock_renderer": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level3/acceptance.json",
+            "sha256": "0e8744ba5e4ae325085ea9b18a07f146d40698dd92c35b23213037d23b852fea"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "one_pixel_player": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level3/acceptance.json",
+            "sha256": "0e8744ba5e4ae325085ea9b18a07f146d40698dd92c35b23213037d23b852fea"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "projectiles_and_visible_collision": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level3/acceptance.json",
+            "sha256": "0e8744ba5e4ae325085ea9b18a07f146d40698dd92c35b23213037d23b852fea"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "native_input_pause_controls": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level3/acceptance.json",
+            "sha256": "0e8744ba5e4ae325085ea9b18a07f146d40698dd92c35b23213037d23b852fea"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "current_audio_and_title": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level3/acceptance.json",
+            "sha256": "0e8744ba5e4ae325085ea9b18a07f146d40698dd92c35b23213037d23b852fea"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "boss_targets_and_recovery": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level3/acceptance.json",
+            "sha256": "0e8744ba5e4ae325085ea9b18a07f146d40698dd92c35b23213037d23b852fea"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "cartridge_loading_instructions": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level3/acceptance.json",
+            "sha256": "0e8744ba5e4ae325085ea9b18a07f146d40698dd92c35b23213037d23b852fea"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "rom_ram_and_interrupt_contracts": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level3/acceptance.json",
+            "sha256": "0e8744ba5e4ae325085ea9b18a07f146d40698dd92c35b23213037d23b852fea"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "cold_gameplay_death_restart": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level3/acceptance.json",
+            "sha256": "0e8744ba5e4ae325085ea9b18a07f146d40698dd92c35b23213037d23b852fea"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        }
+      },
+      "rom": {
+        "path": "build/cartridges/r161/level3/rt_l3_r161.rom",
+        "sha256": "a8285cb0eddf92438e8579ff5bcd7e719328a44f4e28d64dbae42ea01645592c"
+      },
+      "bin": {
+        "path": "build/cartridges/r161/level3/rt_l3_r161.bin",
+        "sha256": "a8285cb0eddf92438e8579ff5bcd7e719328a44f4e28d64dbae42ea01645592c"
+      },
+      "dck": {
+        "path": "build/cartridges/r161/level3/rt_l3_r161.dck",
+        "sha256": "970a55ac3695038487458f5ff982ecb89d11267086c6505275ff578a87b2c82b"
+      },
+      "internal_component_evidence": [
+        {
+          "path": "build/cartridges/integration_work/level03/actor_cache_validation.json",
+          "sha256": "377d37bdc471b8d32811709877e9cc8fbb55ea852de9f307d093c6d3cbce1bd1",
+          "scope": "Actual native actor selector/painter components, not complete gameplay release",
+          "passed": true
+        },
+        {
+          "path": "build/cartridges/integration_work/level03/actor_cache_gameplay_validation.json",
+          "sha256": "2ccd888330dca0643b7c50320fb0f2762bfa63d4c9d42617dc1f4c3aa798100b",
+          "scope": "Per-level actor-cache integration only; terrain and current gameplay-code parity pending",
+          "passed": true
+        }
+      ],
+      "component_progress": {
+        "path": "build/cartridges/integration_work/level03/current_validation_summary.json",
+        "sha256": "2fb19d92ae5e7e6d00883bf2ce4975b1742ad158635be27803828120b5f2c470",
+        "passed": true,
+        "scope": "Internal checks only; all release requirements still held pending full integration"
+      }
+    },
+    {
+      "level": 4,
+      "status": "software_validated_stock_cartridge",
+      "captured_frames": 80,
+      "captured_palette_rows": 365,
+      "captured_variants": 1648,
+      "requirements": {
+        "current_actor_art": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level4/acceptance.json",
+            "sha256": "2048ab68d8f9d9d53f5632e730bd856be686fed08196503f9dca9b1478937666"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "terrain_art_and_scroll_palettes": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level4/acceptance.json",
+            "sha256": "2048ab68d8f9d9d53f5632e730bd856be686fed08196503f9dca9b1478937666"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "composite_boss_art_and_animation": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level4/acceptance.json",
+            "sha256": "2048ab68d8f9d9d53f5632e730bd856be686fed08196503f9dca9b1478937666"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "current_stock_renderer": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level4/acceptance.json",
+            "sha256": "2048ab68d8f9d9d53f5632e730bd856be686fed08196503f9dca9b1478937666"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "one_pixel_player": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level4/acceptance.json",
+            "sha256": "2048ab68d8f9d9d53f5632e730bd856be686fed08196503f9dca9b1478937666"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "projectiles_and_visible_collision": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level4/acceptance.json",
+            "sha256": "2048ab68d8f9d9d53f5632e730bd856be686fed08196503f9dca9b1478937666"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "native_input_pause_controls": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level4/acceptance.json",
+            "sha256": "2048ab68d8f9d9d53f5632e730bd856be686fed08196503f9dca9b1478937666"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "current_audio_and_title": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level4/acceptance.json",
+            "sha256": "2048ab68d8f9d9d53f5632e730bd856be686fed08196503f9dca9b1478937666"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "boss_targets_and_recovery": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level4/acceptance.json",
+            "sha256": "2048ab68d8f9d9d53f5632e730bd856be686fed08196503f9dca9b1478937666"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "cartridge_loading_instructions": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level4/acceptance.json",
+            "sha256": "2048ab68d8f9d9d53f5632e730bd856be686fed08196503f9dca9b1478937666"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "rom_ram_and_interrupt_contracts": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level4/acceptance.json",
+            "sha256": "2048ab68d8f9d9d53f5632e730bd856be686fed08196503f9dca9b1478937666"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "cold_gameplay_death_restart": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level4/acceptance.json",
+            "sha256": "2048ab68d8f9d9d53f5632e730bd856be686fed08196503f9dca9b1478937666"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        }
+      },
+      "rom": {
+        "path": "build/cartridges/r161/level4/rt_l4_r161.rom",
+        "sha256": "7d889c534a78a17e5721c4adb3581d3447e2355a6003afe501ce62b9b713a70a"
+      },
+      "bin": {
+        "path": "build/cartridges/r161/level4/rt_l4_r161.bin",
+        "sha256": "7d889c534a78a17e5721c4adb3581d3447e2355a6003afe501ce62b9b713a70a"
+      },
+      "dck": {
+        "path": "build/cartridges/r161/level4/rt_l4_r161.dck",
+        "sha256": "ab2dec40d1d11db91c11a42e4b3ed40ab1bf6ce408a8281f4395327ade64a2c7"
+      },
+      "internal_component_evidence": [
+        {
+          "path": "build/cartridges/integration_work/level04/actor_cache_validation.json",
+          "sha256": "f1685eb19ffbfc01570914d3ab334f7eeb695a55f9fbb095472b7457dbddf90c",
+          "scope": "Actual native actor selector/painter components, not complete gameplay release",
+          "passed": true
+        },
+        {
+          "path": "build/cartridges/integration_work/level04/actor_cache_gameplay_validation.json",
+          "sha256": "6a6fe9835b69c012e056aa077303445a9d833f573a34a56a79ef014fce7dace4",
+          "scope": "Per-level actor-cache integration only; terrain and current gameplay-code parity pending",
+          "passed": true
+        }
+      ],
+      "component_progress": {
+        "path": "build/cartridges/integration_work/level04/current_validation_summary.json",
+        "sha256": "5148e6c24f968b0959c4e82f63bcc7727f3b39fa3b138dbc7b6dc67fe9ea103b",
+        "passed": true,
+        "scope": "Internal checks only; all release requirements still held pending full integration"
+      }
+    },
+    {
+      "level": 5,
+      "status": "software_validated_stock_cartridge",
+      "captured_frames": 9,
+      "captured_palette_rows": 63,
+      "captured_variants": 624,
+      "requirements": {
+        "current_actor_art": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level5/acceptance.json",
+            "sha256": "152e7812db26a3ee8ccd90e428b670c557fb54235e5936d377060a99ed357887"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "terrain_art_and_scroll_palettes": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level5/acceptance.json",
+            "sha256": "152e7812db26a3ee8ccd90e428b670c557fb54235e5936d377060a99ed357887"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "composite_boss_art_and_animation": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level5/acceptance.json",
+            "sha256": "152e7812db26a3ee8ccd90e428b670c557fb54235e5936d377060a99ed357887"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "current_stock_renderer": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level5/acceptance.json",
+            "sha256": "152e7812db26a3ee8ccd90e428b670c557fb54235e5936d377060a99ed357887"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "one_pixel_player": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level5/acceptance.json",
+            "sha256": "152e7812db26a3ee8ccd90e428b670c557fb54235e5936d377060a99ed357887"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "projectiles_and_visible_collision": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level5/acceptance.json",
+            "sha256": "152e7812db26a3ee8ccd90e428b670c557fb54235e5936d377060a99ed357887"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "native_input_pause_controls": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level5/acceptance.json",
+            "sha256": "152e7812db26a3ee8ccd90e428b670c557fb54235e5936d377060a99ed357887"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "current_audio_and_title": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level5/acceptance.json",
+            "sha256": "152e7812db26a3ee8ccd90e428b670c557fb54235e5936d377060a99ed357887"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "boss_targets_and_recovery": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level5/acceptance.json",
+            "sha256": "152e7812db26a3ee8ccd90e428b670c557fb54235e5936d377060a99ed357887"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "cartridge_loading_instructions": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level5/acceptance.json",
+            "sha256": "152e7812db26a3ee8ccd90e428b670c557fb54235e5936d377060a99ed357887"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "rom_ram_and_interrupt_contracts": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level5/acceptance.json",
+            "sha256": "152e7812db26a3ee8ccd90e428b670c557fb54235e5936d377060a99ed357887"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "cold_gameplay_death_restart": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level5/acceptance.json",
+            "sha256": "152e7812db26a3ee8ccd90e428b670c557fb54235e5936d377060a99ed357887"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        }
+      },
+      "rom": {
+        "path": "build/cartridges/r161/level5/rt_l5_r161.rom",
+        "sha256": "a3a5eb787489d9405e0e5b493ad37b7594eaa48ab691b5c2200fc30394be96da"
+      },
+      "bin": {
+        "path": "build/cartridges/r161/level5/rt_l5_r161.bin",
+        "sha256": "a3a5eb787489d9405e0e5b493ad37b7594eaa48ab691b5c2200fc30394be96da"
+      },
+      "dck": {
+        "path": "build/cartridges/r161/level5/rt_l5_r161.dck",
+        "sha256": "25e662d6783c5ac76e8fd57ddad8713a8b581311a03ec9c1fe51394a69fcd584"
+      },
+      "internal_component_evidence": [
+        {
+          "path": "build/cartridges/integration_work/level05/actor_cache_validation.json",
+          "sha256": "8869164a9fdd2e880074f8ae7496ee6bf9e18a1d1e91fbd61fccea9ba9f0fa22",
+          "scope": "Actual native actor selector/painter components, not complete gameplay release",
+          "passed": true
+        },
+        {
+          "path": "build/cartridges/integration_work/level05/actor_cache_gameplay_validation.json",
+          "sha256": "e62b54d6282a175ed6f07c9e09f4f7afd73437a45d442fafded1cf872522cfca",
+          "scope": "Per-level actor-cache integration only; terrain and current gameplay-code parity pending",
+          "passed": true
+        }
+      ],
+      "component_progress": {
+        "path": "build/cartridges/integration_work/level05/current_validation_summary.json",
+        "sha256": "08e7f8cf3899a87ade0f1a1089c7ff5a1343137522e813fcdf9c72bf5cd6b9b9",
+        "passed": true,
+        "scope": "Internal checks only; all release requirements still held pending full integration"
+      }
+    },
+    {
+      "level": 6,
+      "status": "software_validated_stock_cartridge",
+      "captured_frames": 19,
+      "captured_palette_rows": 77,
+      "captured_variants": 528,
+      "requirements": {
+        "current_actor_art": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level6/acceptance.json",
+            "sha256": "ecf429608eef04739c4053a76143416f9ab37e549754a67296e3165e28181de6"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "terrain_art_and_scroll_palettes": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level6/acceptance.json",
+            "sha256": "ecf429608eef04739c4053a76143416f9ab37e549754a67296e3165e28181de6"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "composite_boss_art_and_animation": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level6/acceptance.json",
+            "sha256": "ecf429608eef04739c4053a76143416f9ab37e549754a67296e3165e28181de6"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "current_stock_renderer": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level6/acceptance.json",
+            "sha256": "ecf429608eef04739c4053a76143416f9ab37e549754a67296e3165e28181de6"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "one_pixel_player": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level6/acceptance.json",
+            "sha256": "ecf429608eef04739c4053a76143416f9ab37e549754a67296e3165e28181de6"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "projectiles_and_visible_collision": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level6/acceptance.json",
+            "sha256": "ecf429608eef04739c4053a76143416f9ab37e549754a67296e3165e28181de6"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "native_input_pause_controls": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level6/acceptance.json",
+            "sha256": "ecf429608eef04739c4053a76143416f9ab37e549754a67296e3165e28181de6"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "current_audio_and_title": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level6/acceptance.json",
+            "sha256": "ecf429608eef04739c4053a76143416f9ab37e549754a67296e3165e28181de6"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "boss_targets_and_recovery": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level6/acceptance.json",
+            "sha256": "ecf429608eef04739c4053a76143416f9ab37e549754a67296e3165e28181de6"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "cartridge_loading_instructions": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level6/acceptance.json",
+            "sha256": "ecf429608eef04739c4053a76143416f9ab37e549754a67296e3165e28181de6"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "rom_ram_and_interrupt_contracts": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level6/acceptance.json",
+            "sha256": "ecf429608eef04739c4053a76143416f9ab37e549754a67296e3165e28181de6"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "cold_gameplay_death_restart": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level6/acceptance.json",
+            "sha256": "ecf429608eef04739c4053a76143416f9ab37e549754a67296e3165e28181de6"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        }
+      },
+      "rom": {
+        "path": "build/cartridges/r161/level6/rt_l6_r161.rom",
+        "sha256": "5ec85e65b327ca93d107dc79569d9f5a2d1386c90b8ea0e47422cf9d7ace6c50"
+      },
+      "bin": {
+        "path": "build/cartridges/r161/level6/rt_l6_r161.bin",
+        "sha256": "5ec85e65b327ca93d107dc79569d9f5a2d1386c90b8ea0e47422cf9d7ace6c50"
+      },
+      "dck": {
+        "path": "build/cartridges/r161/level6/rt_l6_r161.dck",
+        "sha256": "ed4be724b052fb3a73eb8c508c461829f0d66d458fc3323e17bba5ed731323b8"
+      },
+      "internal_component_evidence": [
+        {
+          "path": "build/cartridges/integration_work/level06/actor_cache_validation.json",
+          "sha256": "04be6d1fbb676f5dfc16e99cf8359e70f9de358bbf4a1b96b55f1d0241de8a0e",
+          "scope": "Actual native actor selector/painter components, not complete gameplay release",
+          "passed": true
+        },
+        {
+          "path": "build/cartridges/integration_work/level06/actor_cache_gameplay_validation.json",
+          "sha256": "79263f2aa777352f35d22e95715180913c84aaa5156486d829148871124bf408",
+          "scope": "Per-level actor-cache integration only; terrain and current gameplay-code parity pending",
+          "passed": true
+        }
+      ],
+      "component_progress": {
+        "path": "build/cartridges/integration_work/level06/current_validation_summary.json",
+        "sha256": "566506332a979bcdbbfaa1c5884d4635550fab46f218a6fd3042f5d04bb7b0fb",
+        "passed": true,
+        "scope": "Internal checks only; all release requirements still held pending full integration"
+      }
+    },
+    {
+      "level": 7,
+      "status": "software_validated_stock_cartridge",
+      "captured_frames": 43,
+      "captured_palette_rows": 219,
+      "captured_variants": 864,
+      "requirements": {
+        "current_actor_art": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level7/acceptance.json",
+            "sha256": "1f9d6d16977da4a02e77ec10ada5bf9100cece332694c6e84f38e78a4152eef4"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "terrain_art_and_scroll_palettes": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level7/acceptance.json",
+            "sha256": "1f9d6d16977da4a02e77ec10ada5bf9100cece332694c6e84f38e78a4152eef4"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "composite_boss_art_and_animation": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level7/acceptance.json",
+            "sha256": "1f9d6d16977da4a02e77ec10ada5bf9100cece332694c6e84f38e78a4152eef4"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "current_stock_renderer": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level7/acceptance.json",
+            "sha256": "1f9d6d16977da4a02e77ec10ada5bf9100cece332694c6e84f38e78a4152eef4"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "one_pixel_player": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level7/acceptance.json",
+            "sha256": "1f9d6d16977da4a02e77ec10ada5bf9100cece332694c6e84f38e78a4152eef4"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "projectiles_and_visible_collision": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level7/acceptance.json",
+            "sha256": "1f9d6d16977da4a02e77ec10ada5bf9100cece332694c6e84f38e78a4152eef4"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "native_input_pause_controls": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level7/acceptance.json",
+            "sha256": "1f9d6d16977da4a02e77ec10ada5bf9100cece332694c6e84f38e78a4152eef4"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "current_audio_and_title": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level7/acceptance.json",
+            "sha256": "1f9d6d16977da4a02e77ec10ada5bf9100cece332694c6e84f38e78a4152eef4"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "boss_targets_and_recovery": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level7/acceptance.json",
+            "sha256": "1f9d6d16977da4a02e77ec10ada5bf9100cece332694c6e84f38e78a4152eef4"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "cartridge_loading_instructions": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level7/acceptance.json",
+            "sha256": "1f9d6d16977da4a02e77ec10ada5bf9100cece332694c6e84f38e78a4152eef4"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "rom_ram_and_interrupt_contracts": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level7/acceptance.json",
+            "sha256": "1f9d6d16977da4a02e77ec10ada5bf9100cece332694c6e84f38e78a4152eef4"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "cold_gameplay_death_restart": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level7/acceptance.json",
+            "sha256": "1f9d6d16977da4a02e77ec10ada5bf9100cece332694c6e84f38e78a4152eef4"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        }
+      },
+      "rom": {
+        "path": "build/cartridges/r161/level7/rt_l7_r161.rom",
+        "sha256": "3083ccf13216de16988ef37129d8dc9fb2e6614f3649c09058801892e8a7aa6e"
+      },
+      "bin": {
+        "path": "build/cartridges/r161/level7/rt_l7_r161.bin",
+        "sha256": "3083ccf13216de16988ef37129d8dc9fb2e6614f3649c09058801892e8a7aa6e"
+      },
+      "dck": {
+        "path": "build/cartridges/r161/level7/rt_l7_r161.dck",
+        "sha256": "8599b98dbb6a3f6a3528eb88a8c7741b4d21411b056b6d04617da07ededdc7fc"
+      },
+      "internal_component_evidence": [
+        {
+          "path": "build/cartridges/integration_work/level07/actor_cache_validation.json",
+          "sha256": "8152c37b9725a680776fb3aec8d12d6ddce0cb1545975a8347149138216b91c0",
+          "scope": "Actual native actor selector/painter components, not complete gameplay release",
+          "passed": true
+        },
+        {
+          "path": "build/cartridges/integration_work/level07/actor_cache_gameplay_validation.json",
+          "sha256": "a868998a3b29862a610e1d7fc016a95504ebd8ccc3ef85fdd4acd0500db02541",
+          "scope": "Per-level actor-cache integration only; terrain and current gameplay-code parity pending",
+          "passed": true
+        }
+      ],
+      "component_progress": {
+        "path": "build/cartridges/integration_work/level07/current_validation_summary.json",
+        "sha256": "a7e7fca8af2c7e801183cd09380a17b59e5374413841733b62dee46ac86efd60",
+        "passed": true,
+        "scope": "Internal checks only; all release requirements still held pending full integration"
+      }
+    },
+    {
+      "level": 8,
+      "status": "software_validated_stock_cartridge",
+      "captured_frames": 10,
+      "captured_palette_rows": 28,
+      "captured_variants": 736,
+      "requirements": {
+        "current_actor_art": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level8/acceptance.json",
+            "sha256": "29312c67ff8e25bb07cd6387f4c36b238f613833ce589662a8e4274b9abc2216"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "terrain_art_and_scroll_palettes": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level8/acceptance.json",
+            "sha256": "29312c67ff8e25bb07cd6387f4c36b238f613833ce589662a8e4274b9abc2216"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "composite_boss_art_and_animation": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level8/acceptance.json",
+            "sha256": "29312c67ff8e25bb07cd6387f4c36b238f613833ce589662a8e4274b9abc2216"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "current_stock_renderer": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level8/acceptance.json",
+            "sha256": "29312c67ff8e25bb07cd6387f4c36b238f613833ce589662a8e4274b9abc2216"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "one_pixel_player": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level8/acceptance.json",
+            "sha256": "29312c67ff8e25bb07cd6387f4c36b238f613833ce589662a8e4274b9abc2216"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "projectiles_and_visible_collision": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level8/acceptance.json",
+            "sha256": "29312c67ff8e25bb07cd6387f4c36b238f613833ce589662a8e4274b9abc2216"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "native_input_pause_controls": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level8/acceptance.json",
+            "sha256": "29312c67ff8e25bb07cd6387f4c36b238f613833ce589662a8e4274b9abc2216"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "current_audio_and_title": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level8/acceptance.json",
+            "sha256": "29312c67ff8e25bb07cd6387f4c36b238f613833ce589662a8e4274b9abc2216"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "boss_targets_and_recovery": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level8/acceptance.json",
+            "sha256": "29312c67ff8e25bb07cd6387f4c36b238f613833ce589662a8e4274b9abc2216"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "cartridge_loading_instructions": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level8/acceptance.json",
+            "sha256": "29312c67ff8e25bb07cd6387f4c36b238f613833ce589662a8e4274b9abc2216"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "rom_ram_and_interrupt_contracts": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level8/acceptance.json",
+            "sha256": "29312c67ff8e25bb07cd6387f4c36b238f613833ce589662a8e4274b9abc2216"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        },
+        "cold_gameplay_death_restart": {
+          "passed": true,
+          "evidence": {
+            "path": "build/cartridges/r161/level8/acceptance.json",
+            "sha256": "29312c67ff8e25bb07cd6387f4c36b238f613833ce589662a8e4274b9abc2216"
+          },
+          "scope": "Stock single-level software acceptance; see acceptance.json for exact checks and hardware/coverage limits"
+        }
+      },
+      "rom": {
+        "path": "build/cartridges/r161/level8/rt_l8_r161.rom",
+        "sha256": "73a74b814915094865015d888f5bb030bf4e3aac85f1a146f7eff4e2840a42e3"
+      },
+      "bin": {
+        "path": "build/cartridges/r161/level8/rt_l8_r161.bin",
+        "sha256": "73a74b814915094865015d888f5bb030bf4e3aac85f1a146f7eff4e2840a42e3"
+      },
+      "dck": {
+        "path": "build/cartridges/r161/level8/rt_l8_r161.dck",
+        "sha256": "3f1015843614ad20721a18af01ddf3c565e9e8501fb0e352c0c3645f080e63cd"
+      },
+      "internal_component_evidence": [
+        {
+          "path": "build/cartridges/integration_work/level08/actor_cache_validation.json",
+          "sha256": "db2de347a1cc8f443bca4da0ee4e8f4b87becbf7eed293dc745f36c35fa55033",
+          "scope": "Actual native actor selector/painter components, not complete gameplay release",
+          "passed": true
+        },
+        {
+          "path": "build/cartridges/integration_work/level08/actor_cache_gameplay_validation.json",
+          "sha256": "19071316f1e2258d1dee5bc410fedfaf37c3b0e57b334b6007807a384069dde1",
+          "scope": "Per-level actor-cache integration only; terrain and current gameplay-code parity pending",
+          "passed": true
+        }
+      ],
+      "component_progress": {
+        "path": "build/cartridges/integration_work/level08/current_validation_summary.json",
+        "sha256": "8cfd17046712b9ce263353acfe7d43659c21c7749efc7ca5bdca198bc2c23d35",
+        "passed": true,
+        "scope": "Internal checks only; all release requirements still held pending full integration"
+      }
+    }
+  ],
+  "publish_ready": false,
+  "release_hold": "User requires all current artwork, renderer and gameplay code across all eight levels before another release."
+}

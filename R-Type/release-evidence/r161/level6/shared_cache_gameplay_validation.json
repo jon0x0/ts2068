@@ -1,0 +1,55 @@
+{
+  "passed": true,
+  "results": [
+    {
+      "level": 6,
+      "frames": 3333,
+      "updates": 150,
+      "starts": 2,
+      "calls": {
+        "irq": 2243,
+        "tick": 494,
+        "copy": 234,
+        "sync": 150,
+        "clock": 987,
+        "hitDrain": 322
+      },
+      "actorIds": {
+        "1": 355,
+        "9": 2,
+        "10": 2,
+        "11": 4,
+        "12": 8,
+        "13": 38,
+        "14": 112,
+        "15": 28,
+        "16": 56,
+        "17": 28,
+        "18": 14,
+        "19": 15,
+        "20": 15,
+        "21": 14,
+        "22": 14,
+        "23": 14,
+        "24": 14,
+        "25": 14,
+        "26": 13,
+        "27": 14,
+        "28": 14,
+        "29": 13,
+        "30": 13,
+        "31": 13,
+        "32": 13,
+        "33": 13
+      },
+      "enemyEventPointer": 56054,
+      "romWrites": 0,
+      "firmwareProbeWrites": 8192,
+      "romOnly": true,
+      "keyboardStart": true,
+      "deathBypass": false,
+      "passed": true
+    }
+  ],
+  "scope": "Native actor-cache and current player lifecycle exercised; independent projectile lifecycle exercised; terrain, composite and full-code parity pending"
+}

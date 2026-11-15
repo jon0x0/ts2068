@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "cycles": [
+    {
+      "deathFrame": 46,
+      "respawnFrame": 1543,
+      "pickupFrame": 1544,
+      "equipmentLost": true,
+      "collected": true,
+      "rearDocked": true,
+      "rearFire": true
+    },
+    {
+      "deathFrame": 8,
+      "respawnFrame": 422,
+      "pickupFrame": 422,
+      "equipmentLost": true,
+      "collected": true,
+      "rearDocked": true,
+      "rearFire": true
+    }
+  ],
+  "romWrites": 0,
+  "scope": "Two real native deaths at L4 boss, equipment loss, ordinary replacement pickups, native collection/rear docking/rear fire; simulated player-hit flag only, real death entry restored for each death; death entry bypassed only during automated recollection/fire pilot"
+}

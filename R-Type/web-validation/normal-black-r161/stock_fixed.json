@@ -1,0 +1,726 @@
+{
+  "passed": true,
+  "scope": "Actual exposed bright-black pixels from game display RAM; original hardware palette, no flattening; genuine cold boot/title/score/gameplay. Keyboard/joystick inputs only. Not hardware confirmation or full playthrough.",
+  "levels": [
+    {
+      "level": 1,
+      "boot": 175,
+      "updates": 71,
+      "framesAudited": 3901,
+      "maxExposed": 0,
+      "samples": [
+        {
+          "f": 100,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 400,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 700,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 1000,
+          "mode": 0,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 1400,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 1800,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 2200,
+          "mode": 0,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 3000,
+          "mode": 2,
+          "game": 3,
+          "updates": 3,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 3400,
+          "mode": 2,
+          "game": 3,
+          "updates": 34,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 3800,
+          "mode": 2,
+          "game": 3,
+          "updates": 63,
+          "exposed": 0,
+          "attrs": 0
+        }
+      ],
+      "rom_sha256": "5f42cd7c64f9fd929b000f49f7d745625dd67c5b2eec2b547dde589b99024b3b"
+    },
+    {
+      "level": 2,
+      "boot": 175,
+      "updates": 3,
+      "framesAudited": 3901,
+      "maxExposed": 0,
+      "samples": [
+        {
+          "f": 100,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 400,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 700,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 1000,
+          "mode": 0,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 1400,
+          "mode": 0,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 1800,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 2200,
+          "mode": 0,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 3000,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 3400,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 3800,
+          "mode": 2,
+          "game": 3,
+          "updates": 2,
+          "exposed": 0,
+          "attrs": 0
+        }
+      ],
+      "rom_sha256": "9936a0700f4dccd9cf4de3f9509ac81c15ae3bf88a72798f30b6e8d26a5c590f"
+    },
+    {
+      "level": 3,
+      "boot": 175,
+      "updates": 58,
+      "framesAudited": 3901,
+      "maxExposed": 0,
+      "samples": [
+        {
+          "f": 100,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 400,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 700,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 1000,
+          "mode": 0,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 1400,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 1800,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 2200,
+          "mode": 0,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 3000,
+          "mode": 2,
+          "game": 3,
+          "updates": 2,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 3400,
+          "mode": 2,
+          "game": 3,
+          "updates": 31,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 3800,
+          "mode": 2,
+          "game": 3,
+          "updates": 53,
+          "exposed": 0,
+          "attrs": 0
+        }
+      ],
+      "rom_sha256": "970a55ac3695038487458f5ff982ecb89d11267086c6505275ff578a87b2c82b"
+    },
+    {
+      "level": 4,
+      "boot": 176,
+      "updates": 37,
+      "framesAudited": 3901,
+      "maxExposed": 0,
+      "samples": [
+        {
+          "f": 100,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 400,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 700,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 1000,
+          "mode": 0,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 1400,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 1800,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 2200,
+          "mode": 0,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 3000,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 3400,
+          "mode": 2,
+          "game": 3,
+          "updates": 16,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 3800,
+          "mode": 2,
+          "game": 3,
+          "updates": 33,
+          "exposed": 0,
+          "attrs": 0
+        }
+      ],
+      "rom_sha256": "ab2dec40d1d11db91c11a42e4b3ed40ab1bf6ce408a8281f4395327ade64a2c7"
+    },
+    {
+      "level": 5,
+      "boot": 176,
+      "updates": 28,
+      "framesAudited": 3901,
+      "maxExposed": 0,
+      "samples": [
+        {
+          "f": 100,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 400,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 700,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 1000,
+          "mode": 0,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 1400,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 1800,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 2200,
+          "mode": 0,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 3000,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 3400,
+          "mode": 2,
+          "game": 3,
+          "updates": 16,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 3800,
+          "mode": 2,
+          "game": 0,
+          "updates": 28,
+          "exposed": 0,
+          "attrs": 0
+        }
+      ],
+      "rom_sha256": "25e662d6783c5ac76e8fd57ddad8713a8b581311a03ec9c1fe51394a69fcd584"
+    },
+    {
+      "level": 6,
+      "boot": 176,
+      "updates": 67,
+      "framesAudited": 3901,
+      "maxExposed": 0,
+      "samples": [
+        {
+          "f": 100,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 400,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 700,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 1000,
+          "mode": 0,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 1400,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 1800,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 2200,
+          "mode": 0,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 3000,
+          "mode": 2,
+          "game": 3,
+          "updates": 5,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 3400,
+          "mode": 2,
+          "game": 3,
+          "updates": 38,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 3800,
+          "mode": 2,
+          "game": 3,
+          "updates": 62,
+          "exposed": 0,
+          "attrs": 0
+        }
+      ],
+      "rom_sha256": "ed4be724b052fb3a73eb8c508c461829f0d66d458fc3323e17bba5ed731323b8"
+    },
+    {
+      "level": 7,
+      "boot": 175,
+      "updates": 49,
+      "framesAudited": 3901,
+      "maxExposed": 0,
+      "samples": [
+        {
+          "f": 100,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 400,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 700,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 1000,
+          "mode": 0,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 1400,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 1800,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 2200,
+          "mode": 0,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 3000,
+          "mode": 2,
+          "game": 3,
+          "updates": 2,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 3400,
+          "mode": 2,
+          "game": 0,
+          "updates": 5,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 3800,
+          "mode": 2,
+          "game": 3,
+          "updates": 41,
+          "exposed": 0,
+          "attrs": 0
+        }
+      ],
+      "rom_sha256": "8599b98dbb6a3f6a3528eb88a8c7741b4d21411b056b6d04617da07ededdc7fc"
+    },
+    {
+      "level": 8,
+      "boot": 175,
+      "updates": 39,
+      "framesAudited": 3901,
+      "maxExposed": 0,
+      "samples": [
+        {
+          "f": 100,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 400,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 700,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 1000,
+          "mode": 0,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 1400,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 1800,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 2200,
+          "mode": 0,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 3000,
+          "mode": 2,
+          "game": 0,
+          "updates": 0,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 3400,
+          "mode": 2,
+          "game": 0,
+          "updates": 22,
+          "exposed": 0,
+          "attrs": 0
+        },
+        {
+          "f": 3800,
+          "mode": 2,
+          "game": 3,
+          "updates": 30,
+          "exposed": 0,
+          "attrs": 0
+        }
+      ],
+      "rom_sha256": "3f1015843614ad20721a18af01ddf3c565e9e8501fb0e352c0c3645f080e63cd"
+    }
+  ]
+}

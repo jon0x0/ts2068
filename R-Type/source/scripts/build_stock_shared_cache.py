@@ -120,14 +120,25 @@ b[0x0200:0x0480]=bytes([255])*(0x0480-0x0200)
 b[0x0d00]=0xc9 # old orb callback targets retired native graphics
 for lo,hi in ((0x0c00,0x0d00),(0x0d30,0x0e00),(0x1000,0x10f0),(0x1b20,0x1e20)):b[lo:hi]=bytes([255])*(hi-lo)
 # Normal black in ECM empty cells and mirrored native HUD; standard-mode
-# score palette still uses its original animated bright colors.
+# score palette keeps its native colour animation with normal-black paper.
 assert b[0x16c5:0x16c9]==bytes.fromhex('3e47e647')
 b[0x16c6]=7;b[0x16c8]=7
+# Flat native restoration can inherit bright black even with a normal cache.
+# Use the fixed unused ROM0 title padding; no cache/palette allocations move.
+p=O/'stock_normal_black.asm';p.write_text((R/'src/stock_normal_black.asm').read_text())
+q=subprocess.run([str(exe),f'--raw={p.with_suffix(".bin")}',str(p)],capture_output=True,text=True);assert not q.returncode,q.stdout+q.stderr
+data=p.with_suffix('.bin').read_bytes();assert all(v==255 for v in b[0xf50:0xf50+len(data)])
+b[0xf50:0xf50+len(data)]=data
+assert b[0x164e:0x1650]==bytes.fromhex('287b') and b[0x16c9:0x16cd]==bytes.fromhex('1800e67f')
+b[0x164f]=0x79 # JR Z restore_uniform now enters the two retired JR bytes
+b[0x16c9:0x16cd]=bytes.fromhex('cd500f00')
+(O/'normal_black_restore_contract.json').write_text(json.dumps(dict(entry=0xf50,bytes=len(data),call=0x16c9,source='Actual legacy native flat attribute; no palette IDs',policy='Clear BRIGHT only when a colour endpoint is black; preserve two-nonblack pairs')))
+
 assert b[0x145a:0x145d]==bytes.fromhex('7ee67f')
 b[0x145c]=0x3f
 b[0x18f7:0x18f9]=bytes.fromhex("a7c9")
 score_address=0xc15 if level==2 else 0xc06
-b[score_address:score_address+12]=bytes.fromhex('af3200bed3ffcdcbbcc390bc')
+b[score_address:score_address+12]=bytes.fromhex('cdcbbcaf3200bed3ffc390bc')
 b[0xd30:0xdd0]=bytes([255])*0xa0
 ram_layout=json.loads((O/'player_ram_layout.json').read_text());ram=ram_layout['allocations'];ctx=ram['context_and_stack'][0];cache=ram['sprite_cache'][0];phase_mask=ram_layout['actor_slot_hash_proof']['mask']
 pickup_template=f'PLAYER_STATE EQU ${ram["player_state"][0]:04X}\nPLAYER_FLAGS EQU ${ram_layout["clock_flags"][0]:04X}\n'+(R/'src/stock_pickup_contact.asm').read_text()
