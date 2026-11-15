@@ -65,6 +65,20 @@ crtToggle.addEventListener('click',()=>{
   crtToggle.setAttribute('aria-pressed',String(crtEnabled));
 });
 
+// Display-only grayscale leaves native artwork, timing and controls unchanged.
+const bwToggle=document.createElement('button');
+bwToggle.id='bw-toggle';bwToggle.textContent='BW';
+bwToggle.title='Toggle grayscale display';
+bwToggle.setAttribute('aria-label','Grayscale display');
+bwToggle.setAttribute('aria-pressed','false');
+crtToggle.after(bwToggle);
+let bwEnabled=false;
+bwToggle.addEventListener('click',()=>{
+  bwEnabled=!bwEnabled;
+  frame.style.filter=bwEnabled?'grayscale(1)':'';
+  bwToggle.setAttribute('aria-pressed',String(bwEnabled));
+});
+
 const fullscreenToggle=document.querySelector('#fullscreen');
 fullscreenToggle.setAttribute('aria-pressed',String(!!document.fullscreenElement));
 document.addEventListener('fullscreenchange',()=>fullscreenToggle.setAttribute('aria-pressed',String(!!document.fullscreenElement)));
