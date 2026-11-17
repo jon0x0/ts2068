@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "level": 4,
+  "cases": 256,
+  "playerTicks": 256,
+  "proceduralAttributeCalls": 256,
+  "forcedPaletteReads": 256,
+  "romWrites": 0,
+  "scope": "All256 explicit IM2 vector injections during live horizontal/vertical construction with real player IRQ ticks and forced permanent-row palette reads on the actual private IRQ stack, scratch/cache/context/IX/IY preservation; fixedFF emulator, not a measured hardware vector"
+}

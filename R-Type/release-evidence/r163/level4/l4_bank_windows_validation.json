@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "negativeControlDetected": true,
+  "level": 4,
+  "cases": 96,
+  "entries": 96,
+  "fetches": 4504422,
+  "mappedFetches": 545580,
+  "enabledFetches": 1865290,
+  "romWrites": 0,
+  "scope": "Every constructor phase with saved caller IFF off/on: all mapped-source instruction windows stay DI; ordinary RAM construction resumes interrupts; complements actual256-vector return probes, not hardware timing"
+}

@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "browser": "Edge headless",
+  "newLevel3And4AssetsLoaded": true,
+  "release": 163,
+  "bwToggle": true,
+  "errors": [],
+  "requests": [
+    {
+      "url": "http://127.0.0.1:8767/R-Type/play/assets/rt_l3_r163.dck",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8767/R-Type/play/assets/rt_l4_r163.dck",
+      "status": 200
+    }
+  ],
+  "scope": "Published unchanged TSRun core, original palette; local browser startup/asset routing/BW smoke, not complete browser playthrough."
+}

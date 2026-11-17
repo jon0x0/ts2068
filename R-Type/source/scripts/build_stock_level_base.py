@@ -69,6 +69,10 @@ if procedural_enabled(level):
  hook(0x90c4,'210078110058018002edb0',bytes.fromhex('cd180c')+bytes(8))
 hook(0x865f,'cd068b',bytes.fromhex('cdf81f'))
 hook(0xc2a3,'cd03fe',bytes.fromhex('c3030c'))
+# Game-over replay stays on this resident cartridge. Native later-level replay
+# resets level to zero and enters FE03, which asks to rewind side2.
+# L1 already bypasses that tape path; extend the same title restart to all levels.
+hook(0x92b3,'ca3486',bytes.fromhex('c33486'))
 hook(0x8a4d,'cd200f',bytes.fromhex('cd000c'))
 hook(0x94f6,'2aa17a',bytes.fromhex('c30910'))
 hook(0x9560,'cdfe99',bytes.fromhex('cd7ac0'))

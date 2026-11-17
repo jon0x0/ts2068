@@ -45,8 +45,8 @@ and original arcade/Spectrum ZIPs remain untouched.
 
 ## Separate stock cartridge release
 
-Individual64KB read-only cartridges: [r162](STOCK_CARTRIDGES.md).
-Create another version with `python scripts/release_stock_cartridges.py --version r163`. The r100 disk
+Individual64KB read-only cartridges: [r163](STOCK_CARTRIDGES.md).
+Create another version with `python scripts/release_stock_cartridges.py --version r164`. The r100 disk
 release and its latest pointer above remain unchanged.
 
 ## Separate current experimental disk release

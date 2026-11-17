@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "level": 7,
+  "checks": 640,
+  "rows": 64,
+  "columns": 10,
+  "bytesSaved": 480,
+  "sourceMutationAfterCapture": true,
+  "romWrites": 0,
+  "scope": "Captured compact token/flag background resolves all640 raster attributes exactly after source maps change; registers preserved; full64-row player window unchanged"
+}

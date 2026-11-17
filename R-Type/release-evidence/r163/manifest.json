@@ -1,0 +1,180 @@
+{
+  "release": "r163",
+  "target": "Eight individual stock TS2068 64KB read-only ECM cartridges",
+  "baseline": "r145 selected artwork/audio and current player/projectile adapters",
+  "physical_hardware_tested": false,
+  "tap_cycle_pixel_equivalence": false,
+  "l4_boss_motion": "exact fractional artwork and 2-pixel movement; immutable adjacent-row codec",
+  "paired_scenarios": 16,
+  "levels": [
+    {
+      "level": 1,
+      "bytes": 65536,
+      "rom": {
+        "path": "build/cartridges/r163/level1/rt_l1_r163.rom",
+        "sha256": "5dc3263d684dea709bee92a45329bf727b82827f314b0b47723c28957eef836b"
+      },
+      "bin": {
+        "path": "build/cartridges/r163/level1/rt_l1_r163.bin",
+        "sha256": "5dc3263d684dea709bee92a45329bf727b82827f314b0b47723c28957eef836b"
+      },
+      "dck": {
+        "path": "build/cartridges/r163/level1/rt_l1_r163.dck",
+        "sha256": "b2267ada7d0cbf2b5d781caf673d06cb7fb1173d949fc0fbaca82c759113387c"
+      },
+      "graphics_frames": 157,
+      "palette_rows": 388,
+      "frame_cache_bytes": 1597,
+      "native_frame_bytes": 12138,
+      "palette_bytes": 3104
+    },
+    {
+      "level": 2,
+      "bytes": 65536,
+      "rom": {
+        "path": "build/cartridges/r163/level2/rt_l2_r163.rom",
+        "sha256": "971e0b7a9897e6bb3e39d12a621792101b56de5b23e33491c6b22f89ad7246b2"
+      },
+      "bin": {
+        "path": "build/cartridges/r163/level2/rt_l2_r163.bin",
+        "sha256": "971e0b7a9897e6bb3e39d12a621792101b56de5b23e33491c6b22f89ad7246b2"
+      },
+      "dck": {
+        "path": "build/cartridges/r163/level2/rt_l2_r163.dck",
+        "sha256": "4122d366718b73182740423bdb46ec49caccf8710b014648cef366655e0592d9"
+      },
+      "graphics_frames": 166,
+      "palette_rows": 513,
+      "frame_cache_bytes": 273,
+      "native_frame_bytes": 15895,
+      "palette_bytes": 4104
+    },
+    {
+      "level": 3,
+      "bytes": 65536,
+      "rom": {
+        "path": "build/cartridges/r163/level3/rt_l3_r163.rom",
+        "sha256": "5a3e0be477b0d58df773e959de8aef7d763b01b5f5a513365acf9bf0c7123d03"
+      },
+      "bin": {
+        "path": "build/cartridges/r163/level3/rt_l3_r163.bin",
+        "sha256": "5a3e0be477b0d58df773e959de8aef7d763b01b5f5a513365acf9bf0c7123d03"
+      },
+      "dck": {
+        "path": "build/cartridges/r163/level3/rt_l3_r163.dck",
+        "sha256": "a00f526b23aeef21eb6ba6b1666c279ff81517ddaf1d69f0fd3d620bb18b252f"
+      },
+      "graphics_frames": 219,
+      "palette_rows": 291,
+      "frame_cache_bytes": 236,
+      "native_frame_bytes": 13591,
+      "palette_bytes": 2328
+    },
+    {
+      "level": 4,
+      "bytes": 65536,
+      "rom": {
+        "path": "build/cartridges/r163/level4/rt_l4_r163.rom",
+        "sha256": "cc7f034da75cd439794e16ef431133678b447e40fe27d27a8f69db329e2c1840"
+      },
+      "bin": {
+        "path": "build/cartridges/r163/level4/rt_l4_r163.bin",
+        "sha256": "cc7f034da75cd439794e16ef431133678b447e40fe27d27a8f69db329e2c1840"
+      },
+      "dck": {
+        "path": "build/cartridges/r163/level4/rt_l4_r163.dck",
+        "sha256": "358043f72629309617100121b57e9943162beaf793c3e17386e4bb6732260764"
+      },
+      "graphics_frames": 215,
+      "palette_rows": 1939,
+      "frame_cache_bytes": 1261,
+      "native_frame_bytes": 47488,
+      "palette_bytes": 15512
+    },
+    {
+      "level": 5,
+      "bytes": 65536,
+      "rom": {
+        "path": "build/cartridges/r163/level5/rt_l5_r163.rom",
+        "sha256": "22290dc80620a43e3bf49dd722f761ae2caf4f07054b9b507d520926f2b6d9c3"
+      },
+      "bin": {
+        "path": "build/cartridges/r163/level5/rt_l5_r163.bin",
+        "sha256": "22290dc80620a43e3bf49dd722f761ae2caf4f07054b9b507d520926f2b6d9c3"
+      },
+      "dck": {
+        "path": "build/cartridges/r163/level5/rt_l5_r163.dck",
+        "sha256": "05b7788576ed6f205c5027b7268b21f8f05126bd29e21ec0812b621d9f38faf9"
+      },
+      "graphics_frames": 172,
+      "palette_rows": 911,
+      "frame_cache_bytes": 1022,
+      "native_frame_bytes": 25657,
+      "palette_bytes": 7288
+    },
+    {
+      "level": 6,
+      "bytes": 65536,
+      "rom": {
+        "path": "build/cartridges/r163/level6/rt_l6_r163.rom",
+        "sha256": "52f123646447575980a57438c7521c9dfd8d5034827e4db2d450127e117e4b8f"
+      },
+      "bin": {
+        "path": "build/cartridges/r163/level6/rt_l6_r163.bin",
+        "sha256": "52f123646447575980a57438c7521c9dfd8d5034827e4db2d450127e117e4b8f"
+      },
+      "dck": {
+        "path": "build/cartridges/r163/level6/rt_l6_r163.dck",
+        "sha256": "1b36c3241d2ed7e2eac08770493aba1a906e128fdc601b0b43cf85cf17c4b842"
+      },
+      "graphics_frames": 211,
+      "palette_rows": 395,
+      "frame_cache_bytes": 258,
+      "native_frame_bytes": 21613,
+      "palette_bytes": 3160
+    },
+    {
+      "level": 7,
+      "bytes": 65536,
+      "rom": {
+        "path": "build/cartridges/r163/level7/rt_l7_r163.rom",
+        "sha256": "9c4a6950256325b4b256b9d4e17992ff8fbe7ce84c479e06a915fc0ce8ac230b"
+      },
+      "bin": {
+        "path": "build/cartridges/r163/level7/rt_l7_r163.bin",
+        "sha256": "9c4a6950256325b4b256b9d4e17992ff8fbe7ce84c479e06a915fc0ce8ac230b"
+      },
+      "dck": {
+        "path": "build/cartridges/r163/level7/rt_l7_r163.dck",
+        "sha256": "f1ce1f07a567789209971a07f779158dc1b353e78cbeecd91e6d67c134d5a4ba"
+      },
+      "graphics_frames": 181,
+      "palette_rows": 1048,
+      "frame_cache_bytes": 443,
+      "native_frame_bytes": 18254,
+      "palette_bytes": 8384
+    },
+    {
+      "level": 8,
+      "bytes": 65536,
+      "rom": {
+        "path": "build/cartridges/r163/level8/rt_l8_r163.rom",
+        "sha256": "ca01f822e6a6cdcb56a45378eb457b0febf4eb757ea99a1f222f5384e6af8738"
+      },
+      "bin": {
+        "path": "build/cartridges/r163/level8/rt_l8_r163.bin",
+        "sha256": "ca01f822e6a6cdcb56a45378eb457b0febf4eb757ea99a1f222f5384e6af8738"
+      },
+      "dck": {
+        "path": "build/cartridges/r163/level8/rt_l8_r163.dck",
+        "sha256": "2979b38f19f60e1642a12549c0315e8f2137aa0513433820ed269bdeeaa72cf5"
+      },
+      "graphics_frames": 161,
+      "palette_rows": 503,
+      "frame_cache_bytes": 1997,
+      "native_frame_bytes": 16647,
+      "palette_bytes": 4024
+    }
+  ],
+  "scope": "Native per-level gameplay and boss event scripts with stock HOME compressed-cache renderer; expanded-RAM bank caches and multi-level switching are separate."
+}

@@ -99,7 +99,7 @@ soundToggle.addEventListener('click',()=>{
 const levels=document.querySelector('#level');
 for(let n=1;n<=8;n++){const o=document.createElement('option');o.value=n;o.textContent='Level '+n;levels.append(o);}
 let armed=0;
-function loadLevel(n){ready=false;api()?.release();levels.value=n;document.querySelector('#status').textContent='Loading level '+n+'...';frame.src='emulator/index.html?level='+n+'&v=r162';history.replaceState(null,'','?level='+n);}
+function loadLevel(n){ready=false;api()?.release();levels.value=n;document.querySelector('#status').textContent='Loading level '+n+'...';frame.src='emulator/index.html?level='+n+'&v=r163';history.replaceState(null,'','?level='+n);}
 levels.addEventListener('change',()=>loadLevel(Number(levels.value)));
 window.rtypeCommand=(e,down)=>{
  if(e.target?.matches?.('input,select,textarea')||e.ctrlKey||e.altKey||e.metaKey)return false;

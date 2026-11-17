@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "level": 3,
+  "cases": 263,
+  "playerTicks": 263,
+  "all256Vectors": true,
+  "flipsAndNestedGuardRestored": true,
+  "romWrites": 0,
+  "scope": "Actual full actor draw with IRQ between selection and painting; explicit all-vector injection in fixedFF emulator. Not hardware FPS."
+}

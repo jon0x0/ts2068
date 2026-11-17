@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "level": 3,
+  "before": false,
+  "tapePrompt": false,
+  "title": true,
+  "started": true,
+  "frames": 698,
+  "romWrites": 0,
+  "scope": "Actual native post-game-over restart entry92A4 through title and ordinary fire to active gameplay; score/name handling covered separately. Baseline control detects FE26 tape prompt."
+}

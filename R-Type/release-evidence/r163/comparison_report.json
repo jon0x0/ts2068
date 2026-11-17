@@ -1,0 +1,235 @@
+{
+  "levels": [
+    {
+      "level": 1,
+      "component_checks_passed": true,
+      "rom_sha256": "5dc3263d684dea709bee92a45329bf727b82827f314b0b47723c28957eef836b",
+      "summary_sha256": "8f7d4078ae360b571e628bd0f73a901dc5f2ea71c6ef0e65ad5ead76e6b92baf",
+      "scenarios": [
+        {
+          "trace": "level01_seeded_candidate",
+          "passed": true,
+          "hash": "6dc2958165540b854afdb995ad974d7d72c646b21954e0fa74696f6a05f935e8",
+          "native_death_bypass": false,
+          "matched_updates": 120,
+          "tap_refreshes": 1228,
+          "cart_refreshes": 1611
+        },
+        {
+          "trace": "level01_boss_seeded_candidate_safe",
+          "passed": true,
+          "hash": "5ea986c5abfa01cc65467cb7cd543b87bfd4a0ff40931b76e37375738063d24b",
+          "native_death_bypass": false,
+          "matched_updates": 120,
+          "tap_refreshes": 1430,
+          "cart_refreshes": 2001
+        }
+      ],
+      "fine_boss_motion": "static native boss"
+    },
+    {
+      "level": 2,
+      "component_checks_passed": true,
+      "rom_sha256": "971e0b7a9897e6bb3e39d12a621792101b56de5b23e33491c6b22f89ad7246b2",
+      "summary_sha256": "2d19bbdaba7e5a9c15984e77e988133d2903381ce4ea3ea4e2c479d3c4144161",
+      "scenarios": [
+        {
+          "trace": "level02_seeded_candidate",
+          "passed": true,
+          "hash": "cc421075751760d4991afd36c22d1c61434863618bfb9e9da624c1a9d2e3b1cf",
+          "native_death_bypass": false,
+          "matched_updates": 120,
+          "tap_refreshes": 2423,
+          "cart_refreshes": 4168
+        },
+        {
+          "trace": "level02_boss_seeded_candidate_safe",
+          "passed": true,
+          "hash": "02007297001778e232195e8ae8dde847290eae599a744c8499b447f1e6506a8f",
+          "native_death_bypass": false,
+          "matched_updates": 120,
+          "tap_refreshes": 1378,
+          "cart_refreshes": 2460
+        }
+      ],
+      "fine_boss_motion": "exact TAP fractional artwork and2-pixel motion tested"
+    },
+    {
+      "level": 3,
+      "component_checks_passed": true,
+      "rom_sha256": "5a3e0be477b0d58df773e959de8aef7d763b01b5f5a513365acf9bf0c7123d03",
+      "summary_sha256": "1ec7dfe1060a5c6662bdb11bed4d44b7d6d0dec61e22996aa6d62870fa207a7e",
+      "scenarios": [
+        {
+          "trace": "level03_seeded_candidate",
+          "passed": true,
+          "hash": "849d0551959b7e986fb696d9eb75ba5fe8c84cd9bf9362038352cc3015818b37",
+          "native_death_bypass": false,
+          "matched_updates": 120,
+          "tap_refreshes": 1450,
+          "cart_refreshes": 2012
+        },
+        {
+          "trace": "level03_boss_seeded_candidate_safe",
+          "passed": true,
+          "hash": "36a1ffe6d2e48d94313a636555e0b79c7b8a69b84e2f0b3f1394076deaee497d",
+          "native_death_bypass": false,
+          "matched_updates": 120,
+          "tap_refreshes": 1229,
+          "cart_refreshes": 1930
+        }
+      ],
+      "fine_boss_motion": "exact TAP fractional artwork and2-pixel motion tested"
+    },
+    {
+      "level": 4,
+      "component_checks_passed": true,
+      "rom_sha256": "cc7f034da75cd439794e16ef431133678b447e40fe27d27a8f69db329e2c1840",
+      "summary_sha256": "80ed139a090b59de74c4336f1209bdc06a4c171d4f1884766643759e3ff23f54",
+      "scenarios": [
+        {
+          "trace": "level04_seeded_candidate",
+          "passed": true,
+          "hash": "35f65198171409f6e36f74d608c4fbdb4264f208d3f0f96b3a178fb2cf5915fc",
+          "native_death_bypass": false,
+          "matched_updates": 120,
+          "tap_refreshes": 2176,
+          "cart_refreshes": 2919
+        },
+        {
+          "trace": "level04_boss_seeded_candidate_safe",
+          "passed": true,
+          "hash": "16ec01476b3ed03fc67b0f82883d43b195647a5ddec3938add08d405ad343c74",
+          "native_death_bypass": false,
+          "matched_updates": 120,
+          "tap_refreshes": 4287,
+          "cart_refreshes": 2759
+        }
+      ],
+      "fine_boss_motion": "exact TAP fractional artwork and2-pixel motion tested"
+    },
+    {
+      "level": 5,
+      "component_checks_passed": true,
+      "rom_sha256": "22290dc80620a43e3bf49dd722f761ae2caf4f07054b9b507d520926f2b6d9c3",
+      "summary_sha256": "555b60cc2f19db6fb6cefcbd99b63e53b8a40fe38cdf501954a8bf44233cdd7b",
+      "scenarios": [
+        {
+          "trace": "level05_seeded_candidate",
+          "passed": true,
+          "hash": "25df5afdf96b54046862d6cadbd1cad1eb84c10556c6e3e7527f78b9635da634",
+          "native_death_bypass": false,
+          "matched_updates": 120,
+          "tap_refreshes": 1983,
+          "cart_refreshes": 2882
+        },
+        {
+          "trace": "level05_boss_seeded_candidate_safe",
+          "passed": true,
+          "hash": "9b8f5da9cd76c2216170ac1f29deb35732f8c1b8d27437c374c19386801bd986",
+          "native_death_bypass": false,
+          "matched_updates": 120,
+          "tap_refreshes": 2265,
+          "cart_refreshes": 2933
+        }
+      ],
+      "fine_boss_motion": "exact TAP fractional artwork and2-pixel motion tested"
+    },
+    {
+      "level": 6,
+      "component_checks_passed": true,
+      "rom_sha256": "52f123646447575980a57438c7521c9dfd8d5034827e4db2d450127e117e4b8f",
+      "summary_sha256": "9238ba6cf864cfd3245690923a0c96e01bbd8fdc03e176b917312f0f5df41eb3",
+      "scenarios": [
+        {
+          "trace": "level06_seeded_candidate",
+          "passed": true,
+          "hash": "1e05e04cddc7936e1976803355f5675b73bb60e43dd16a606e1535b1a2510bef",
+          "native_death_bypass": false,
+          "matched_updates": 120,
+          "tap_refreshes": 1521,
+          "cart_refreshes": 1818
+        },
+        {
+          "trace": "level06_boss_seeded_candidate_safe",
+          "passed": true,
+          "hash": "e7a056125c52209644a14e241c0254e3aef9e416651e35017c37ca0958cd843a",
+          "native_death_bypass": false,
+          "matched_updates": 120,
+          "tap_refreshes": 1144,
+          "cart_refreshes": 1548
+        }
+      ],
+      "fine_boss_motion": "exact TAP fractional artwork and2-pixel motion tested"
+    },
+    {
+      "level": 7,
+      "component_checks_passed": true,
+      "rom_sha256": "9c4a6950256325b4b256b9d4e17992ff8fbe7ce84c479e06a915fc0ce8ac230b",
+      "summary_sha256": "5f7f93662468e1621574d254a06e82eea0e414df299784d795557f825f58417d",
+      "scenarios": [
+        {
+          "trace": "level07_seeded_candidate_native_shield",
+          "passed": true,
+          "hash": "e2f67fdb7f8d74c689ceb227c3d1278f6a21bc9200f57ea8d12b71e8c2039b04",
+          "native_death_bypass": true,
+          "matched_updates": 120,
+          "tap_refreshes": 1461,
+          "cart_refreshes": 1900
+        },
+        {
+          "trace": "level07_boss_seeded_candidate_safe_native_shield",
+          "passed": true,
+          "hash": "e2242066d7d34fc93ee2070124566586c2b82f341b7d6c1cbcfc0040ee9e1323",
+          "native_death_bypass": true,
+          "matched_updates": 120,
+          "tap_refreshes": 1366,
+          "cart_refreshes": 1859
+        }
+      ],
+      "fine_boss_motion": "exact TAP fractional artwork and2-pixel motion tested"
+    },
+    {
+      "level": 8,
+      "component_checks_passed": true,
+      "rom_sha256": "ca01f822e6a6cdcb56a45378eb457b0febf4eb757ea99a1f222f5384e6af8738",
+      "summary_sha256": "b90654426542a4aea527dfb32425673b1e2385f74ea0c924f915c63bd991ca7d",
+      "scenarios": [
+        {
+          "trace": "level08_seeded_candidate",
+          "passed": true,
+          "hash": "c25da1b95ae4dcce74e8a40776f3f9bb3fcd4e5ed4b22fee743840c56afbf7fd",
+          "native_death_bypass": false,
+          "matched_updates": 120,
+          "tap_refreshes": 1244,
+          "cart_refreshes": 1764
+        },
+        {
+          "trace": "level08_boss_seeded_candidate_safe",
+          "passed": true,
+          "hash": "7cbcb6a3dc88403b0dff93448f9c0bcc7a137db150753ededd99c1de9ec77b65",
+          "native_death_bypass": false,
+          "matched_updates": 120,
+          "tap_refreshes": 1356,
+          "cart_refreshes": 2017
+        }
+      ],
+      "fine_boss_motion": "exact TAP fractional artwork and2-pixel motion tested"
+    }
+  ],
+  "all_component_checks_passed": true,
+  "paired_scenarios_passed": true,
+  "publish_ready": false,
+  "stock_component_package_ready": true,
+  "tap_equivalence_confirmed": false,
+  "hardware_confirmed": false,
+  "visual_parity_confirmed": false,
+  "remaining": [
+    "L2 native painted-body reveal and L5 overlap composition are integrated. Completed-frame comparisons retain elapsed-IRQ differences in player effects/stars and some dynamic colours; actor/event matching is not pixel equivalence.",
+    "L4 fractional artwork and 2-pixel movement pass all384 direct/retained phases, permanent-row cache/IRQ probes and the unchanged240-update/12000-refresh cadence bound. It remains an emulator acceptance result.",
+    "Cartridge elapsed world-update times differ from TAP; input/music tempo and performance parity need further work.",
+    "L7 paired fixture bypasses native coarse-projectile death in both builds; does not establish unmodified survival equivalence.",
+    "No full eight-level hardware acceptance or all-boss victory claim."
+  ],
+  "scope": "Internal component and120-native-update paired runtime evidence against r145 TAP. Screens are completed world update100; images require visual review. Protected scenarios and emulated refresh counts are explicitly identified. No release promotion."
+}

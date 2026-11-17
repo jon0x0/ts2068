@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "level": 5,
+  "cases": 640,
+  "variants": 320,
+  "directAndRetained": true,
+  "romWrites": 0,
+  "writableDockBanks": 0,
+  "scope": "Exact captured TAP fractional selector dimensions/positions and all pixel colors/brightness, direct and retained native painters, native hit ownership; phase state seeded for isolated component coverage, not hardware cadence"
+}

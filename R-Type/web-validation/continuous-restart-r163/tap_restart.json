@@ -1,0 +1,32 @@
+[
+  {
+    "level": 3,
+    "frames": 6797,
+    "mounts": [
+      "START01.TAP",
+      "RTCORE.TAP",
+      "LEVEL03.TAP"
+    ],
+    "reverse_table_checks": 161,
+    "core_and_workspace_checks": 3,
+    "max_selector_prime_reads": 101384,
+    "gameover_restart": true,
+    "tape_entries": 0,
+    "passed": true
+  },
+  {
+    "level": 8,
+    "frames": 6918,
+    "mounts": [
+      "START01.TAP",
+      "RTCORE.TAP",
+      "LEVEL08.TAP"
+    ],
+    "reverse_table_checks": 160,
+    "core_and_workspace_checks": 3,
+    "max_selector_prime_reads": 101384,
+    "gameover_restart": true,
+    "tape_entries": 0,
+    "passed": true
+  }
+]
